@@ -254,54 +254,39 @@ export default function ProcessFlowSection() {
     if (window.innerWidth < 768) return
 
     const n = steps.length
-    let rafId   = 0
-    let stackTop = 0
+    let rafId = 0
 
-    const computeBounds = () => {
-      let top = 0
-      let el: HTMLElement | null = stack
-      while (el) { top += el.offsetTop; el = el.offsetParent as HTMLElement | null }
-      stackTop = top
+    // Cards: absolutely positioned, filling the sticky container (done once)
+    cardRefs.current.forEach((card, i) => {
+      if (!card) return
+      card.style.position   = 'absolute'
+      card.style.top        = '0'
+      card.style.left       = '0'
+      card.style.right      = '0'
+      card.style.height     = '100%'
+      card.style.margin     = '0'
+      card.style.zIndex     = String(i + 1)
+      card.style.willChange = 'transform'
+      card.style.transition = 'none'
+    })
 
-      // Stack zone: N viewports of scroll space (last card gets 1 extra viewport to rest)
-      stack.style.height = `${n * 100}vh`
-
-      // Sticky viewport: pins to top of screen, clips sliding cards
-      sticky.style.position = 'sticky'
-      sticky.style.top      = '0'
-      sticky.style.height   = '100vh'
-      sticky.style.overflow = 'hidden'
-
-      // Cards: all stacked at the same absolute position inside the sticky container
-      cardRefs.current.forEach((card, i) => {
-        if (!card) return
-        card.style.position   = 'absolute'
-        card.style.top        = '0'
-        card.style.left       = '0'
-        card.style.right      = '0'
-        card.style.height     = '100%'
-        card.style.margin     = '0'
-        card.style.zIndex     = String(i + 1)
-        card.style.willChange = 'transform'
-        card.style.transition = 'none'
-      })
-    }
-
-    computeBounds()
-
-    const onResize = () => { computeBounds(); update() }
+    const onResize = () => { update() }
     window.addEventListener('resize', onResize, { passive: true })
 
     const update = () => {
-      const vh       = window.innerHeight
-      const scrolled = window.scrollY - stackTop
+      const vh         = window.innerHeight
+      // Use zoneBottom (BCR) instead of absolute scroll position.
+      // This is immune to layout shifts from lazy-loaded images above the section:
+      // zoneBottom starts at n*vh when the zone enters the viewport and decreases
+      // by 1 for every pixel scrolled, giving us exact in-zone progress.
+      const zoneBottom = stack.getBoundingClientRect().bottom
 
       cardRefs.current.forEach((card, i) => {
         if (!card) return
         // Card 0 is the base — always visible once the section is in view.
         if (i === 0) { card.style.transform = 'translateY(0%)'; return }
-        // Card i slides in during scroll window [(i-1)*vh … i*vh].
-        const progress = Math.min(Math.max((scrolled - (i - 1) * vh) / vh, 0), 1)
+        // Card i slides in during scroll window [(i-1)*vh … i*vh] inside the zone.
+        const progress = Math.min(Math.max((n * vh - zoneBottom - (i - 1) * vh) / vh, 0), 1)
         card.style.transform = `translateY(${(1 - progress) * 100}%)`
       })
     }
@@ -332,8 +317,8 @@ export default function ProcessFlowSection() {
       </div>
 
       {/* ── Stack zone: provides scroll distance; sticky container pins inside it ── */}
-      <div ref={stackRef}>
-        <div ref={stickyRef}>
+      <div ref={stackRef} className="pf-stack-zone">
+        <div ref={stickyRef} className="pf-stack-sticky">
           {steps.map((s, i) => {
             const graphicPanel = (
               <div className="pf-card__graphic" key="graphic">

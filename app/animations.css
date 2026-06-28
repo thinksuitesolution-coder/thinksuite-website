@@ -534,6 +534,10 @@
 .pf-heading { font-family: var(--font-h); font-size: clamp(1.9rem, 3.5vw, 3.2rem); font-weight: 900; letter-spacing: -.04em; line-height: 1.08; color: var(--white); margin-bottom: 1.25rem; }
 .pf-sub { font-size: .95rem; line-height: 1.7; color: var(--text2); max-width: 44ch; }
 
+/* Stack zone & sticky container — desktop layout driven by CSS, cards animated by JS   */
+.pf-stack-zone   { height: 400vh; }
+.pf-stack-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+
 /* Desktop: JS sets position:absolute + translateY on cards inside the sticky container  */
 /* Mobile fallback: cards flow naturally as a vertical list                              */
 .pf-card { position: relative; height: 75vh; display: grid; grid-template-columns: 1fr 1fr; border-radius: 1.25rem; overflow: hidden; margin-bottom: 1.5rem; }
@@ -650,6 +654,11 @@
   .pf-header { padding: 4rem 0 2.5rem; }
   .pf-step__inner { padding: 2rem 1.5rem 2rem 2.5rem; }
   .pf-card--text-left .pf-step__inner { padding: 2rem 2.5rem 2rem 1.5rem; }
+}
+
+@media (max-width: 767px) {
+  .pf-stack-zone   { height: auto; }
+  .pf-stack-sticky { position: relative; height: auto; overflow: visible; }
 }
 
 @media (max-width: 768px) {
