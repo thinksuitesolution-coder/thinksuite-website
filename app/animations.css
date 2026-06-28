@@ -534,11 +534,10 @@
 .pf-heading { font-family: var(--font-h); font-size: clamp(1.9rem, 3.5vw, 3.2rem); font-weight: 900; letter-spacing: -.04em; line-height: 1.08; color: var(--white); margin-bottom: 1.25rem; }
 .pf-sub { font-size: .95rem; line-height: 1.7; color: var(--text2); max-width: 44ch; }
 
-/* Sticky stack — NO max-width/margin:auto on sticky element (breaks offset calc) */
-/* Section padding (2.5rem sides) handles the "not full-width" look */
-.pf-card { position: sticky; top: 5vh; height: 75vh; display: grid; grid-template-columns: 1fr 1fr; border-radius: 1.25rem; overflow: hidden; will-change: transform; }
+/* Sticky stack — NO will-change:transform on sticky elements (breaks compositor z-order) */
+/* NO max-width/margin:auto either — both kill sticky offset calculation */
+.pf-card { position: sticky; top: 5vh; height: 75vh; display: grid; grid-template-columns: 1fr 1fr; border-radius: 1.25rem; overflow: hidden; }
 
-/* Each card has a different resting tilt — like cards thrown on a table */
 .pf-card--1 { z-index: 1; background: #ffffff; box-shadow: 0 8px 48px rgba(0,0,0,0.10); }
 .pf-card--2 { z-index: 2; background: #ffffff; box-shadow: 0 8px 48px rgba(0,0,0,0.11); }
 .pf-card--3 { z-index: 3; background: #ffffff; box-shadow: 0 8px 48px rgba(0,0,0,0.12); }

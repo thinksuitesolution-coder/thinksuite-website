@@ -300,28 +300,22 @@ export default function ProcessFlowSection() {
 
       const cards = section.querySelectorAll<HTMLElement>('.pf-card')
 
-      // Final resting rotation per card — subtle "thrown on table" tilt
-      const finalRotates = [-0.7, 0.5, -0.5, 0.3]
-
-      const triggers = Array.from(cards).map((card, i) => {
+      const triggers = Array.from(cards).map((card) => {
         const num   = card.querySelector('.pf-step__num')
         const title = card.querySelector('.pf-step__title')
         const desc  = card.querySelector('.pf-step__desc')
 
-        // Card starts tilted (like a card mid-flight), text hidden
-        gsap.set(card, { rotate: 3, transformOrigin: 'center center' })
-        gsap.set([num, title, desc].filter(Boolean), { opacity: 0, y: 28 })
+        // Animate only the inner text — never transform the sticky card itself
+        gsap.set([num, title, desc].filter(Boolean), { opacity: 0, y: 24 })
 
         const tl = gsap.timeline({ paused: true })
-        // Card "lands" and settles to its final resting tilt
-        tl.to(card,  { rotate: finalRotates[i] ?? 0, duration: 0.55, ease: 'back.out(2)' }, 0)
-          .to(num,   { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' }, 0.2)
-          .to(title, { opacity: 1, y: 0, duration: 0.6,  ease: 'power3.out' }, 0.3)
-          .to(desc,  { opacity: 1, y: 0, duration: 0.5,  ease: 'power3.out' }, 0.42)
+        tl.to(num,   { opacity: 1, y: 0, duration: 0.4,  ease: 'power3.out' })
+          .to(title, { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out' }, '-=0.2')
+          .to(desc,  { opacity: 1, y: 0, duration: 0.5,  ease: 'power3.out' }, '-=0.25')
 
         return ScrollTrigger.create({
           trigger: card,
-          start: 'top 72%',
+          start: 'top 70%',
           onEnter:     () => tl.play(),
           onLeaveBack: () => tl.reverse(),
         })
