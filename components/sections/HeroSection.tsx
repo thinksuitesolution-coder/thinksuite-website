@@ -41,7 +41,7 @@ const AI_ENGINES = [
     icon: 'fa-brands fa-google',
     color: '#4285F4',
     query: 'Top interior designer in Delhi NCR near me',
-    intro: 'AI Overview — Highly-rated interior designers in Delhi NCR:',
+    intro: 'AI Overview: Highly-rated interior designers in Delhi NCR',
     results: [
       { name: 'Livspace',      desc: 'Award-winning. 500+ projects delivered.' },
       { name: 'Urban Company', desc: 'Verified designers. Packages from ₹1.29L.' },
@@ -303,7 +303,13 @@ function WebPanel() {
 
       <div className={s.panelCallout}>
         <i className="fa-solid fa-check-circle" style={{ color: '#10b981' }} />
-        Wireframe to live website — <strong>delivered in 4 weeks.</strong>
+        Wireframe to live website{' '}
+        <svg width="28" height="12" viewBox="0 0 28 12" fill="none" style={{display:'inline',verticalAlign:'middle',margin:'0 4px'}} aria-hidden="true">
+          <line x1="0" y1="6" x2="10" y2="6" stroke="currentColor" strokeWidth="1" strokeOpacity="0.4"/>
+          <rect x="12" y="3" width="4" height="4" transform="rotate(45 14 5.5)" fill="currentColor" fillOpacity="0.55"/>
+          <line x1="18" y1="6" x2="28" y2="6" stroke="currentColor" strokeWidth="1" strokeOpacity="0.4"/>
+        </svg>{' '}
+        <strong>delivered in 4 weeks.</strong>
       </div>
     </div>
   )
@@ -426,7 +432,13 @@ function SaasPanel() {
 
       <div className={s.panelCallout}>
         <i className="fa-solid fa-cube" style={{ color: '#8b5cf6' }} />
-        We build SaaS products — <strong>and deploy them for you.</strong>
+        We build SaaS products{' '}
+        <svg width="28" height="12" viewBox="0 0 28 12" fill="none" style={{display:'inline',verticalAlign:'middle',margin:'0 4px'}} aria-hidden="true">
+          <line x1="0" y1="6" x2="10" y2="6" stroke="currentColor" strokeWidth="1" strokeOpacity="0.4"/>
+          <rect x="12" y="3" width="4" height="4" transform="rotate(45 14 5.5)" fill="currentColor" fillOpacity="0.55"/>
+          <line x1="18" y1="6" x2="28" y2="6" stroke="currentColor" strokeWidth="1" strokeOpacity="0.4"/>
+        </svg>{' '}
+        <strong>and deploy them for you.</strong>
       </div>
     </div>
   )
@@ -494,7 +506,7 @@ export default function HeroSection() {
             </div>
           ))}
 
-          {/* Panel — key forces remount on tab change */}
+          {/* Panel: key forces remount on tab change */}
           <div className={s.panelWrap} key={activeTab}>
             {activeTab === 0 && <GeoPanel />}
             {activeTab === 1 && <WebPanel />}
@@ -508,7 +520,13 @@ export default function HeroSection() {
         <p className={s.sub}>
           ThinkSuite builds <strong>high-performance websites</strong>, gets your business found in{' '}
           <strong>Google &amp; AI search</strong>, automates operations with{' '}
-          <strong>smart workflows</strong>, and ships <strong>SaaS products</strong> — all under one roof.
+          <strong>smart workflows</strong>, and ships <strong>SaaS products</strong>{' '}
+          <svg width="28" height="12" viewBox="0 0 28 12" fill="none" style={{display:'inline',verticalAlign:'middle',margin:'0 4px'}} aria-hidden="true">
+            <line x1="0" y1="6" x2="10" y2="6" stroke="currentColor" strokeWidth="1" strokeOpacity="0.4"/>
+            <rect x="12" y="3" width="4" height="4" transform="rotate(45 14 5.5)" fill="currentColor" fillOpacity="0.55"/>
+            <line x1="18" y1="6" x2="28" y2="6" stroke="currentColor" strokeWidth="1" strokeOpacity="0.4"/>
+          </svg>{' '}
+          all under one roof.
         </p>
 
         {/* CTAs */}

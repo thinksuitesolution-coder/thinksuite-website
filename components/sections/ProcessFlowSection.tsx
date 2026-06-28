@@ -8,7 +8,9 @@ const steps = [
     step: 0,
     num: '01',
     title: ['Strategic Discovery', '& Market Research'],
-    body: 'Every engagement starts with deep-dive discovery, understanding your business goals, target audience, competitive landscape, and growth opportunities. We deliver a strategy document with defined KPIs, go-to-market recommendations, and a realistic project roadmap before a single pixel or line of code is created.',
+    body: 'We start with a deep-dive session to understand your business goals, target audience, competitive landscape, and growth opportunities. You receive a strategy document with defined KPIs, go-to-market recommendations, and a realistic roadmap before a single line of code is written.',
+    tags: ['Business Goals', 'Audience Research', 'Competitor Analysis', 'KPI Framework'],
+    highlight: 'Strategy document delivered within 3 to 5 business days',
     textLeft: true,
     graphic: 'audit',
   },
@@ -16,7 +18,9 @@ const steps = [
     step: 1,
     num: '02',
     title: ['Brand Design', '& System Architecture'],
-    body: 'Our designers and solution architects work in parallel, crafting your brand identity, UX wireframes, and high-fidelity prototypes alongside a scalable technical foundation. Whether it is a SaaS platform, marketing system, or brand identity design, every decision is client-approved before build begins.',
+    body: 'Our designers and solution architects work in parallel, crafting your brand identity, UX wireframes, and high-fidelity prototypes alongside a scalable technical foundation. Every design decision is client-approved before build begins, with two rounds of revisions included.',
+    tags: ['Brand Identity', 'UX Wireframes', 'Prototyping', 'Tech Architecture'],
+    highlight: 'Two full revision rounds included at no extra cost',
     textLeft: false,
     graphic: 'blueprint',
   },
@@ -24,7 +28,9 @@ const steps = [
     step: 2,
     num: '03',
     title: ['Agile Development', '& Campaign Launch'],
-    body: 'From web and mobile app development to performance marketing campaigns, our cross-functional teams ship fast and test constantly. QA-verified code, A/B-tested creatives, and phased rollouts ensure your product or campaign goes live with confidence, not guesswork.',
+    body: 'From web and mobile development to performance marketing campaigns, our cross-functional teams ship fast and test constantly. QA-verified code, A/B-tested creatives, and phased rollouts ensure your product or campaign goes live with confidence, not guesswork.',
+    tags: ['Sprint Delivery', 'QA Testing', 'A/B Testing', 'Phased Rollout'],
+    highlight: 'Weekly sprint check-ins with live progress tracking',
     textLeft: true,
     graphic: 'build',
   },
@@ -32,7 +38,9 @@ const steps = [
     step: 3,
     num: '04',
     title: ['Data-Driven Growth', '& Optimization'],
-    body: 'Post-launch is where results compound. We monitor real-time analytics, optimize conversion funnels, scale winning ad campaigns, and continuously improve product performance. Monthly reporting keeps you fully informed, and every decision is backed by data, not assumptions.',
+    body: 'Post-launch is where results compound. We monitor real-time analytics, optimize conversion funnels, scale winning campaigns, and continuously improve product performance. Every decision is backed by data, and monthly reports keep you fully informed.',
+    tags: ['Real-Time Analytics', 'Conversion Funnels', 'Campaign Scaling', 'Monthly Reports'],
+    highlight: 'Monthly performance reports with live dashboard access',
     textLeft: false,
     graphic: 'roi',
   },
@@ -355,6 +363,10 @@ export default function ProcessFlowSection() {
                 ))}
               </h3>
               <p className="pf-step__desc">{s.body}</p>
+              <ul className="pf-step__tags">
+                {s.tags.map((tag) => <li key={tag}>{tag}</li>)}
+              </ul>
+              <p className="pf-step__highlight">{s.highlight}</p>
             </div>
           </div>
         )
