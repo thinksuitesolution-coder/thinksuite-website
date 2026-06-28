@@ -756,8 +756,31 @@
   .ab-svc-grid { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .ab-hero { padding: 96px 0 64px; }
+  .ab-story,
+  .ab-services,
+  .ab-ecosystem,
+  .ab-team { padding: 64px 0; }
+  .ab-values { padding: 64px 0; }
+  .ab-numbers { padding: 56px 0; }
+  .ab-numbers-head { margin-bottom: 32px; }
   .ab-hero-h1 { letter-spacing: -2px; }
+  .ab-val-card { padding: 24px 18px; }
+  .ab-svc-card { padding: 22px 18px; }
+  .ab-eco-card { padding: 22px 18px 20px; }
+  .ab-hero-btns { gap: 10px; }
+}
+
+@media (max-width: 640px) {
+  .ab-hero { padding: 80px 0 48px; }
+  .ab-story,
+  .ab-services,
+  .ab-ecosystem,
+  .ab-team { padding: 48px 0; }
+  .ab-values { padding: 48px 0; }
+  .ab-numbers { padding: 40px 0; }
+  .ab-hero-h1 { letter-spacing: -1.5px; }
   .ab-stat-strip { flex-direction: column; border-radius: 16px; }
   .ab-stat-item { border-right: none !important; border-bottom: 1px solid rgba(0,0,0,0.06); }
   .ab-stat-item:last-child { border-bottom: none; }
@@ -767,4 +790,25 @@
   .ab-num-item:nth-child(2) { border-right: none; }
   .ab-num-item:nth-child(3) { border-right: 1px solid rgba(79,70,229,0.08); }
   .ab-roles-grid { grid-template-columns: 1fr; }
+  .ab-hero-btns { flex-direction: column; align-items: stretch; }
+  .ab-hero-btns .btn { justify-content: center; }
+  .ab-story-grid { gap: 32px; }
+  .ab-team-grid { gap: 32px; }
+}
+
+@media (max-width: 480px) {
+  .ab-hero { padding: 72px 0 40px; }
+  .ab-story,
+  .ab-services,
+  .ab-ecosystem,
+  .ab-team { padding: 40px 0; }
+  .ab-values { padding: 40px 0; }
+  .ab-numbers { padding: 36px 0; }
+  .ab-hero-h1 { letter-spacing: -1px; }
+  .ab-hero-sub { font-size: 15px; }
+  .ab-val-card { padding: 20px 16px; }
+  .ab-svc-card { padding: 18px 14px; }
+  .ab-num-val { font-size: clamp(32px, 8vw, 48px); }
+  .ab-services-head,
+  .ab-ecosystem-head { margin-bottom: 32px; }
 }

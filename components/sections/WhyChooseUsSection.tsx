@@ -63,7 +63,7 @@ export default function WhyChooseUsSection() {
           ))}
         </div>
 
-        <div className="reveal" style={{ marginTop: 56, display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 2, borderRadius: 20, overflow: 'hidden', border: '1px solid var(--border)' }}>
+        <div className="reveal guarantee-strip" style={{ marginTop: 56 }}>
           {[
             { icon: 'fa-clock', label: '24-Hour Response', sub: 'On every inquiry' },
             { icon: 'fa-lock', label: 'NDA Protected', sub: 'Your ideas stay yours' },

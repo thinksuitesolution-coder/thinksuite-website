@@ -29,7 +29,7 @@
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden;max-width:100vw}
 body{font-family:var(--font-b);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
@@ -639,8 +639,37 @@ textarea.form-input{resize:vertical;min-height:130px}
   .page-hero{padding:110px 0 64px}
   .title-block{margin-bottom:36px}
   .container{padding:0 18px}
+  .container-wide{padding:0 18px}
   .service-detail-grid{gap:40px}
   .contact-form-wrap{padding:24px 18px}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .soi-inner{padding:0 18px}
+  .hero-v2-title{white-space:normal;word-break:break-word}
+  .bc-heading,.sc-heading,.pf-heading{letter-spacing:-0.04em}
+}
+
+/* Extra-small screens ≤ 480px */
+@media(max-width:480px){
+  .section{padding:48px 0}
+  .section-sm{padding:32px 0}
+  .cta-section{padding:48px 0}
+  .page-hero{padding:96px 0 44px}
+  .container{padding:0 14px}
+  .container-wide{padding:0 14px}
+  .btn-lg{padding:13px 26px;font-size:15px}
+  .title-block{margin-bottom:24px}
+  .title-block h2{margin-top:8px;margin-bottom:12px}
+  .footer-top{padding:56px 0 36px}
+  .footer-bottom{padding:16px 0}
+  .cta-btns{flex-direction:column;align-items:stretch}
+  .cta-btns .btn{justify-content:center}
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .about-badge{right:8px;bottom:8px}
+  .service-card{padding:28px 20px}
+  .process-step{padding:28px 20px}
+  .testi-card{padding:24px 18px}
+  .contact-form-wrap{padding:20px 14px}
+  .page-hero h1{font-size:clamp(24px,7vw,38px) !important}
 }
 
 /* ================================================================
@@ -1434,3 +1463,18 @@ textarea.form-input{resize:vertical;min-height:130px}
 .sdr-card-link:hover{gap:9px}
 .sdr-footer{padding:16px 28px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0;background:#fff}
 @media(max-width:640px){.sdr-panel{width:100vw}.sdr-grid{grid-template-columns:1fr}.sdr-footer{flex-direction:column;align-items:stretch}.sdr-footer .btn{justify-content:center}}
+
+/* ── Responsive grid utilities ───────────────────────────────────────── */
+/* StatsStrip 6-col: override inline style via selector specificity */
+.stats-strip .stats-grid{grid-template-columns:repeat(6,1fr)}
+@media(max-width:900px){.stats-strip .stats-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.stats-strip .stats-grid{grid-template-columns:repeat(2,1fr)}}
+/* WhyChooseUs guarantee strip */
+.guarantee-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;border-radius:20px;overflow:hidden;border:1px solid var(--border)}
+@media(max-width:768px){.guarantee-strip{grid-template-columns:repeat(2,1fr)}}
+/* Intelligence section two-col layout */
+.intelligence-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+@media(max-width:900px){.intelligence-layout{grid-template-columns:1fr;gap:40px}}
+/* Intelligence modules 2-col grid */
+.intelligence-modules{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:480px){.intelligence-modules{grid-template-columns:1fr}}

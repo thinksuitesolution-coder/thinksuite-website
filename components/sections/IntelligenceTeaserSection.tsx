@@ -15,7 +15,7 @@ export default function IntelligenceTeaserSection() {
   return (
     <section className="section" id="intelligence-teaser">
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
+        <div className="intelligence-layout">
 
           {/* Left, Text */}
           <div>
@@ -65,9 +65,7 @@ export default function IntelligenceTeaserSection() {
 
           {/* Right, Modules Grid */}
           <div>
-            <div style={{
-              display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14,
-            }}>
+            <div className="intelligence-modules">
               {modules.map((m) => (
                 <Link
                   key={m.href}

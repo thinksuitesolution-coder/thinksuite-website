@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next'
+﻿import type { Metadata, Viewport } from 'next'
 import { Outfit, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import './animations.css'
@@ -27,6 +27,11 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-m',
   display: 'swap',
 })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
   title: {

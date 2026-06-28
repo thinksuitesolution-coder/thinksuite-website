@@ -92,11 +92,7 @@ export default function EcosystemSection() {
         </div>
 
         {/* Products Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: 24,
-        }}>
+        <div className="grid-2" style={{ gap: 24 }}>
           {products.map((p) => (
             <div
               key={p.id}

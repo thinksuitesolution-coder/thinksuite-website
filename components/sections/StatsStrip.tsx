@@ -11,7 +11,7 @@ export default function StatsStrip() {
   return (
     <section className="stats-strip">
       <div className="container">
-        <div className="stats-grid" style={{ gridTemplateColumns: 'repeat(6,1fr)' }}>
+        <div className="stats-grid">
           {stats.map((s) => (
             <div key={s.label} className="stat-item">
               <span className="stat-num counter" data-target={s.target} data-suffix={s.suffix}>0</span>

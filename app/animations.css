@@ -644,6 +644,7 @@
 }
 
 @media (max-width: 1024px) {
+  .pf-header { padding: 6rem 2.5rem 4rem; }
   .pf-step__inner { padding: 4rem 2.5rem 4rem 3rem; }
   .pf-card--text-left .pf-step__inner { padding: 4rem 3rem 4rem 2.5rem; }
 }

@@ -96,15 +96,15 @@ export default function ChatWidget() {
         .ts-cw-sug:hover { background:rgba(37,99,235,.1) !important; color:#2563eb !important; border-color:rgba(37,99,235,.35) !important; }
       `}</style>
 
-      <div style={{ position:'fixed', bottom:24, right:24, zIndex:9999, fontFamily:"'Space Grotesk',sans-serif" }}>
+      <div style={{ position:'fixed', bottom:16, right:16, zIndex:9999, fontFamily:"'Space Grotesk',sans-serif" }}>
 
         {/* Chat panel */}
         {open && (
           <div
             className="ts-cw-panel"
             style={{
-              position:'absolute', bottom:68, right:0,
-              width:370, maxHeight:520,
+              position:'fixed', bottom:80, right:16,
+              width:'min(370px, calc(100vw - 32px))', maxHeight:'min(520px, calc(100dvh - 100px))',
               background:'#ffffff',
               border:'1px solid rgba(37,99,235,.13)',
               borderRadius:20,
