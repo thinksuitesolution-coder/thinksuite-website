@@ -526,20 +526,23 @@
    PROCESS FLOW, .pf-*
 ================================================================ */
 
-.pf-section { background: #dbe5f0; overflow: clip; padding: 0 2.5rem 4rem; }
+.pf-section { background: #dbe5f0; padding: 0 2.5rem 6rem; }
+/* ↑ NO overflow:clip — it breaks position:sticky in Safari/Firefox */
 
 .pf-header { background: transparent; padding: 5rem 0 3.5rem; max-width: 700px; }
 .pf-eyebrow { font-family: var(--font-m); display: inline-block; font-size: .68rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--text2); margin-bottom: 1.5rem; }
 .pf-heading { font-family: var(--font-h); font-size: clamp(1.9rem, 3.5vw, 3.2rem); font-weight: 900; letter-spacing: -.04em; line-height: 1.08; color: var(--white); margin-bottom: 1.25rem; }
 .pf-sub { font-size: .95rem; line-height: 1.7; color: var(--text2); max-width: 44ch; }
 
-.pf-card { position: sticky; top: 5vh; height: 75vh; max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; border-radius: 1.25rem; overflow: hidden; will-change: transform; }
+/* Sticky stack — NO max-width/margin:auto on sticky element (breaks offset calc) */
+/* Section padding (2.5rem sides) handles the "not full-width" look */
+.pf-card { position: sticky; top: 5vh; height: 75vh; display: grid; grid-template-columns: 1fr 1fr; border-radius: 1.25rem; overflow: hidden; will-change: transform; }
 
-/* Floating card look — white on slate-blue section */
-.pf-card--1 { z-index: 1; background: #ffffff; box-shadow: 0 6px 40px rgba(0,0,0,0.09); }
-.pf-card--2 { z-index: 2; background: #ffffff; box-shadow: 0 6px 40px rgba(0,0,0,0.10); }
-.pf-card--3 { z-index: 3; background: #ffffff; box-shadow: 0 6px 40px rgba(0,0,0,0.11); }
-.pf-card--4 { z-index: 4; background: #ffffff; box-shadow: 0 6px 40px rgba(0,0,0,0.13); }
+/* Each card has a different resting tilt — like cards thrown on a table */
+.pf-card--1 { z-index: 1; background: #ffffff; box-shadow: 0 8px 48px rgba(0,0,0,0.10); }
+.pf-card--2 { z-index: 2; background: #ffffff; box-shadow: 0 8px 48px rgba(0,0,0,0.11); }
+.pf-card--3 { z-index: 3; background: #ffffff; box-shadow: 0 8px 48px rgba(0,0,0,0.12); }
+.pf-card--4 { z-index: 4; background: #ffffff; box-shadow: 0 8px 48px rgba(0,0,0,0.14); }
 
 .pf-card__graphic { position: relative; overflow: hidden; }
 
