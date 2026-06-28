@@ -6,7 +6,7 @@ const products = [
     emoji: '📡',
     logo: null,
     name: 'Visibility AI',
-    tagline: 'GEO — Rank in AI Search Engines',
+    tagline: 'GEO: Rank in AI Search Engines',
     desc: 'Get your business cited by ChatGPT, Perplexity, Google SGE, and every major AI engine. Generative Engine Optimization that puts your brand in the answer, not just the results.',
     features: ['GEO Strategy', 'AI Search Ranking', 'Brand Citation Audit', 'Content Optimization'],
     cta: 'Coming Soon',

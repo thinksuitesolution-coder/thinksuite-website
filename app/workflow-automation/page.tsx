@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Workflow Automation Services India | ThinkSuite',
   description: 'Business workflow automation for Indian companies: CRM automation, invoice processing, marketing automation, and data sync across your existing tools and platforms.',
+  keywords: ['workflow automation India', 'business process automation', 'CRM automation India', 'Zapier Make n8n India', 'marketing automation India', 'invoice automation', 'no-code automation India', 'automation agency Gurgaon'],
 }
 
 export default function WorkflowAutomationPage() {

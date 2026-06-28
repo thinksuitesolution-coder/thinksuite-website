@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Contact ThinkSuite | Get a Free Consultation',
   description: 'Get in touch with ThinkSuite. Book a free discovery call, share your project requirements, and get a custom proposal for your business goals and budget.',
+  keywords: ['contact ThinkSuite', 'hire digital agency India', 'get website quote India', 'book digital marketing consultation', 'ThinkSuite Gurgaon contact', 'digital agency inquiry India'],
 }
 
 export default function ContactPage() {

@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Business Consulting and Growth Advisory India | ThinkSuite',
   description: 'Strategic business consulting for Indian companies. Growth advisory, digital transformation strategy, operational consulting, and leadership advisory for SMEs and scaling businesses.',
+  keywords: ['business consulting India', 'growth advisory India', 'management consulting India', 'SME consulting India', 'digital transformation India', 'operational consulting Gurgaon', 'business growth consultant India', 'strategy consulting India'],
 }
 
 export default function ConsultingGrowthPage() {

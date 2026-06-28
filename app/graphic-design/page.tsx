@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Graphic Design Services India | ThinkSuite',
   description: 'Professional graphic design for Indian businesses. Social media graphics, brochures, presentations, packaging, banners, and infographics designed for impact.',
+  keywords: ['graphic design India', 'social media design India', 'brochure design India', 'presentation design', 'infographic design India', 'packaging design India', 'banner design India', 'graphic designer Gurgaon'],
 }
 
 export default function GraphicDesignPage() {

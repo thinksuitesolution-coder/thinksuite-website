@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Startup Consulting India | ThinkSuite',
   description: 'Expert startup consulting for Indian founders. Business model validation, go-to-market strategy, pitch deck creation, fundraising support, and MVP planning.',
+  keywords: ['startup consulting India', 'startup advisor India', 'go to market strategy India', 'pitch deck India', 'MVP planning India', 'business model validation', 'startup funding advisory India', 'early stage startup consulting'],
 }
 
 export default function StartupConsultingPage() {

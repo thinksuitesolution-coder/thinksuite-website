@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'WavCart — eStore & Automation Platform for Local Vendors | ThinkSuite',
+  title: 'WavCart: eStore and Automation Platform for Local Vendors | ThinkSuite',
   description: 'WavCart is an AI-powered eStore and automation platform built for local vendors and D2C brands. Smart listings, auto marketing, and inventory intelligence.',
   alternates: { canonical: 'https://thinksuite.in/ecosystem/wavcart' },
 }
@@ -13,7 +13,7 @@ const BORDER = 'rgba(5,150,105,0.15)'
 
 const features = [
   { icon: 'fa-store', title: 'Instant eStore', desc: 'Set up your online store in under 24 hours with AI-written product listings' },
-  { icon: 'fa-robot', title: 'Marketing Automation', desc: 'Campaigns that create, run, and optimize themselves — zero manual work' },
+  { icon: 'fa-robot', title: 'Marketing Automation', desc: 'Campaigns that create, run, and optimize themselves with zero manual work' },
   { icon: 'fa-boxes-stacked', title: 'Inventory Intelligence', desc: 'Predict demand, prevent stockouts, and reorder automatically' },
   { icon: 'fa-list-check', title: 'Smart Product Listings', desc: 'AI-generated titles, descriptions, and SEO tags for every product' },
   { icon: 'fa-envelope', title: 'WhatsApp & Email', desc: 'Automated customer journeys across WhatsApp, email, and SMS' },
@@ -81,7 +81,7 @@ export default function WavCartPage() {
             <span className="label" style={{ marginBottom: 12, display: 'inline-block' }}>PLATFORM FEATURES</span>
             <h2>Built for Vendors Who Want to <span className="grad-text">Sell &amp; Scale</span></h2>
             <p style={{ color: 'var(--text2)', maxWidth: 500, margin: '16px auto 0', fontSize: 16, lineHeight: 1.7 }}>
-              Everything a local vendor needs to sell online — without the tech headaches.
+              Everything a local vendor needs to sell online, without any tech headaches.
             </p>
           </div>
           <div className="grid-3" style={{ gap: 20 }}>

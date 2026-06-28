@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'MyThinkAI — Targeted Lead Lists by Occupation & Location | ThinkSuite',
+  title: 'MyThinkAI: Targeted Lead Lists by Occupation and Location | ThinkSuite',
   description: 'MyThinkAI provides hyper-targeted business lead lists filtered by occupation, location, and industry. Get verified contacts ready for outreach.',
   alternates: { canonical: 'https://thinksuite.in/ecosystem/mythinkai' },
 }
@@ -12,11 +12,11 @@ const ACCENT_BG = 'rgba(217,119,6,0.08)'
 const BORDER = 'rgba(217,119,6,0.15)'
 
 const features = [
-  { icon: 'fa-briefcase', title: 'Occupation-Based Filters', desc: 'Target leads by exact job title, profession, or business role — doctors, lawyers, retailers, and more' },
-  { icon: 'fa-location-dot', title: 'City & Location Targeting', desc: 'Filter leads by city, district, state, or pincode — get hyper-local or go national' },
-  { icon: 'fa-address-card', title: 'Verified Contact Data', desc: 'Name, phone, email, and business address — verified and ready for outreach' },
+  { icon: 'fa-briefcase', title: 'Occupation-Based Filters', desc: 'Target leads by exact job title, profession, or business role: doctors, lawyers, retailers, and more' },
+  { icon: 'fa-location-dot', title: 'City & Location Targeting', desc: 'Filter leads by city, district, state, or pincode. Get hyper-local or go national' },
+  { icon: 'fa-address-card', title: 'Verified Contact Data', desc: 'Name, phone, email, and business address, all verified and ready for outreach' },
   { icon: 'fa-industry', title: 'Industry Segmentation', desc: 'Narrow down by industry, business size, revenue range, and more filters' },
-  { icon: 'fa-file-csv', title: 'Bulk CSV Export', desc: 'Download your lead list instantly in CSV or Excel format — CRM-ready' },
+  { icon: 'fa-file-csv', title: 'Bulk CSV Export', desc: 'Download your lead list instantly in CSV or Excel format, CRM-ready' },
   { icon: 'fa-rotate', title: 'Fresh Daily Data', desc: 'Lead database updated daily to ensure accuracy and remove outdated contacts' },
 ]
 
@@ -53,7 +53,7 @@ export default function MyThinkAIPage() {
           <h1 style={{ fontSize: 'clamp(36px,5vw,64px)', fontWeight: 900, color: '#fff', marginBottom: 14, lineHeight: 1.1 }}>MyThinkAI</h1>
           <p style={{ fontSize: 20, fontWeight: 600, color: COLOR, marginBottom: 20 }}>Targeted Lead Lists by Occupation &amp; Location</p>
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.65)', maxWidth: 580, margin: '0 auto 40px', lineHeight: 1.85 }}>
-            Tell us what kind of customers you need — their profession, city, and industry — and we deliver a verified, ready-to-use lead list so you can start your outreach immediately.
+            Tell us what kind of customers you need, their profession, city, and industry, and we deliver a verified, ready-to-use lead list so you can start your outreach immediately.
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/contact" className="btn btn-primary btn-lg">Get Your Lead List <i className="fa-solid fa-arrow-right" /></Link>
@@ -120,7 +120,7 @@ export default function MyThinkAIPage() {
         <div className="container">
           <h2 style={{ marginBottom: 16 }}>Start Reaching the <span className="grad-text">Right Customers</span></h2>
           <p style={{ color: 'var(--text2)', fontSize: 17, maxWidth: 500, margin: '0 auto 36px', lineHeight: 1.7 }}>
-            Tell us your target customer profile and get a verified lead list delivered to you — ready for outreach.
+            Tell us your target customer profile and get a verified lead list delivered to you, ready for outreach.
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/contact" className="btn btn-primary btn-lg">Get Your Lead List <i className="fa-solid fa-arrow-right" /></Link>

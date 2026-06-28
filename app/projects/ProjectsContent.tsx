@@ -37,8 +37,8 @@ const projects: Project[] = [
     title: 'Laghima Jewelry',
     industry: 'Jewelry & Accessories',
     industryIcon: 'fa-gem',
-    tagline: 'Premium gold and silver rings and bracelets — from brand identity to full digital presence.',
-    desc: 'Complete brand presence built for Laghima Jewelry — a luxury jewelry brand specializing in handcrafted gold and silver rings and bracelets. We developed the full brand identity including logo, typography, and color palette, then designed and built an elegant catalog website, and grew their Instagram presence with premium curated content.',
+    tagline: 'Premium gold and silver rings and bracelets, from brand identity to full digital presence.',
+    desc: 'Complete brand presence built for Laghima Jewelry, a luxury jewelry brand specializing in handcrafted gold and silver rings and bracelets. We developed the full brand identity including logo, typography, and color palette, then designed and built an elegant catalog website, and grew their Instagram presence with premium curated content.',
     services: [
       'Brand Identity & Logo Design',
       'Website Design & Development',
@@ -121,7 +121,7 @@ const projects: Project[] = [
     industry: 'Healthcare & Wellness',
     industryIcon: 'fa-user-doctor',
     tagline: 'Clean, trust-building static website for a doctor-led healthcare initiative.',
-    desc: 'Designed and developed a professional static website for Bliss Foundation — a doctor-led healthcare and wellness initiative. The site presents the doctor\'s credentials, specializations, consultation process, and contact details with a calm, trustworthy aesthetic that patients immediately connect with.',
+    desc: 'Designed and developed a professional static website for Bliss Foundation, a doctor-led healthcare and wellness initiative. The site presents the doctor\'s credentials, specializations, consultation process, and contact details with a calm, trustworthy aesthetic that patients immediately connect with.',
     services: [
       'Website Design',
       'Static Website Development',
@@ -159,7 +159,7 @@ const projects: Project[] = [
     industry: 'Technology & Digital',
     industryIcon: 'fa-vr-cardboard',
     tagline: 'Social media identity and community built from scratch for a digital-first brand.',
-    desc: 'Built and managed the complete social media presence for ThinkVirtual — setting up the account identity, defining a consistent brand voice, creating a content calendar, and growing an engaged audience through creative, platform-optimized content.',
+    desc: 'Built and managed the complete social media presence for ThinkVirtual, setting up the account identity, defining a consistent brand voice, creating a content calendar, and growing an engaged audience through creative, platform-optimized content.',
     services: [
       'Social Media Account Setup',
       'Brand Voice & Tone Definition',
@@ -192,7 +192,7 @@ const projects: Project[] = [
     industry: 'E-Commerce',
     industryIcon: 'fa-cart-shopping',
     tagline: 'Social media growth and conversion-focused content for an emerging e-commerce brand.',
-    desc: 'Managed end-to-end social media for WavCart — including platform setup, content strategy, creative production, and audience building. Helped position WavCart as a trusted shopping platform through engaging, conversion-driven posts and consistent brand storytelling.',
+    desc: 'Managed end-to-end social media for WavCart, including platform setup, content strategy, creative production, and audience building. Helped position WavCart as a trusted shopping platform through engaging, conversion-driven posts and consistent brand storytelling.',
     services: [
       'Social Media Management',
       'Content Creation & Design',
@@ -225,7 +225,7 @@ const projects: Project[] = [
     industry: 'K–5 Education',
     industryIcon: 'fa-book-open',
     tagline: 'Warm social media for a kids learning centre covering Grades 1–5 academics and moral values.',
-    desc: 'Created and managed the social media presence for Rewa Education — a learning centre providing academic classes for children from Grades 1 to 5, combined with a strong focus on moral values and character development. Content is warm, colorful, and parent-focused to build trust and grow community.',
+    desc: 'Created and managed the social media presence for Rewa Education, a learning centre providing academic classes for children from Grades 1 to 5, combined with a strong focus on moral values and character development. Content is warm, colorful, and parent-focused to build trust and grow community.',
     services: [
       'Social Media Handle Setup',
       'Content Creation for Parents and Kids',
@@ -257,7 +257,7 @@ const projects: Project[] = [
     industry: 'AI Education & Online Courses',
     industryIcon: 'fa-robot',
     tagline: 'Social media for an AI-focused online education platform offering courses and live classes.',
-    desc: 'Built and managed the social media identity for AKLR Academy — an online education platform specializing in AI learning through structured courses and live classes. Content focuses on making AI accessible to beginners, showcasing learning outcomes, and building a community of motivated learners.',
+    desc: 'Built and managed the social media identity for AKLR Academy, an online education platform specializing in AI learning through structured courses and live classes. Content focuses on making AI accessible to beginners, showcasing learning outcomes, and building a community of motivated learners.',
     services: [
       'Social Media Handle Setup',
       'AI Education Content Creation',
@@ -289,7 +289,7 @@ const projects: Project[] = [
     industry: 'IT Services & Technology',
     industryIcon: 'fa-microchip',
     tagline: 'Professional social media for an IT services and technology news brand.',
-    desc: 'Managed the social media presence for AKLR Tech — an IT services company that also covers technology news and industry updates. We developed a professional, authoritative content strategy covering tech news, service highlights, and insights to establish credibility and attract business clients.',
+    desc: 'Managed the social media presence for AKLR Tech, an IT services company that also covers technology news and industry updates. We developed a professional, authoritative content strategy covering tech news, service highlights, and insights to establish credibility and attract business clients.',
     services: [
       'Social Media Management',
       'Tech News Content Curation',
@@ -321,8 +321,8 @@ const projects: Project[] = [
     title: 'VibéStyl',
     industry: 'Fashion & Clothing',
     industryIcon: 'fa-shirt',
-    tagline: 'Trendy clothing store with a full e-commerce website — browse, pick, and order online.',
-    desc: 'Designed and developed a full e-commerce website for VibéStyl — a fashion-forward clothing brand. The site features a product catalog with category filters, size and color selection, a smooth cart experience, and a clean checkout flow. The brand identity was built to match the vibe: bold, modern, and unapologetically stylish.',
+    tagline: 'Trendy clothing store with a full e-commerce website. Browse, pick, and order online.',
+    desc: 'Designed and developed a full e-commerce website for VibéStyl, a fashion-forward clothing brand. The site features a product catalog with category filters, size and color selection, a smooth cart experience, and a clean checkout flow. The brand identity was built to match the vibe: bold, modern, and unapologetically stylish.',
     services: [
       'E-commerce Website Design & Development',
       'Brand Identity & Logo',
@@ -360,8 +360,8 @@ const projects: Project[] = [
     title: 'Shri Surbhi Kripa',
     industry: 'Organic & Natural Products',
     industryIcon: 'fa-seedling',
-    tagline: 'Static product website for an organic goods brand — browse catalog and order via WhatsApp.',
-    desc: 'Designed and built a clean static product showcase website for Shri Surbhi Kripa — a brand dealing in pure, natural organic products. Customers browse the full product catalog on the website and place orders directly through WhatsApp, making the buying process simple and personal. The design reflects the brand\'s natural, trustworthy character.',
+    tagline: 'Static product website for an organic goods brand. Browse the catalog and order via WhatsApp.',
+    desc: 'Designed and built a clean static product showcase website for Shri Surbhi Kripa, a brand dealing in pure, natural organic products. Customers browse the full product catalog on the website and place orders directly through WhatsApp, making the buying process simple and personal. The design reflects the brand\'s natural, trustworthy character.',
     services: [
       'Static Website Design & Development',
       'Product Catalog Design',
@@ -400,7 +400,7 @@ const projects: Project[] = [
     industry: 'Printing & Design Services',
     industryIcon: 'fa-print',
     tagline: 'Static showcase website for a full-service printing and graphic design studio.',
-    desc: 'Designed and developed a static product and service showcase website for A2Z Graphics and Computer — a studio offering comprehensive printing and graphic design services. The site presents their service offerings, past work samples, and contact details in a bold, professional layout that mirrors their creative expertise.',
+    desc: 'Designed and developed a static product and service showcase website for A2Z Graphics and Computer, a studio offering comprehensive printing and graphic design services. The site presents their service offerings, past work samples, and contact details in a bold, professional layout that mirrors their creative expertise.',
     services: [
       'Website Design & Development',
       'Service Portfolio Showcase',
@@ -463,7 +463,7 @@ export default function ProjectsContent() {
         <div className="container">
           <div className="prj-hero-label">Our Work</div>
           <h1>Real Projects. <span>Real Results.</span></h1>
-          <p>From brand identities to social media growth — here's what we've built and grown for our clients.</p>
+          <p>From brand identities to social media growth, here is what we have built and grown for our clients.</p>
           <div className="prj-stats">
             <div className="prj-stat">
               <div className="prj-stat-num">60+</div>

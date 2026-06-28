@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Business Strategy Consulting India | ThinkSuite',
   description: 'Business strategy and growth consulting for Indian startups and enterprises. Competitive analysis, roadmapping, digital transformation, and revenue architecture.',
+  keywords: ['business strategy consulting India', 'growth consulting India', 'startup strategy India', 'digital transformation consulting', 'business roadmap India', 'revenue growth consulting', 'strategy agency Gurgaon', 'competitive analysis India'],
 }
 
 export default function BusinessStrategyPage() {
@@ -14,7 +15,7 @@ export default function BusinessStrategyPage() {
       label="Business Consulting"
       title="Strategic Roadmaps Calculated"
       titleHighlight="For Market Leadership."
-      tagline="Growth without a technical blueprint is an operational risk. Our consulting cell conducts thorough ecosystem audits to engineer exact conversion plans and verified pathways to scale, with AI and custom SaaS built in."
+      tagline="Growing a business without a clear plan is expensive. Our consulting team takes a deep look at your operations, finds the gaps, and builds a step-by-step roadmap with measurable milestones so you always know where you are headed."
       stats={[
         { number: '3x', label: 'Average Revenue Growth' },
         { number: '40+', label: 'Enterprises Scaled' },
@@ -30,7 +31,7 @@ export default function BusinessStrategyPage() {
         {
           icon: 'fa-gears',
           title: 'Strategy Meets Execution',
-          desc: 'Unlike advisory firms that leave you with a deck, we build the technology the strategy requires, Custom SaaS, AI tools, and automation systems, from the same team that designed the roadmap.',
+          desc: 'Unlike advisory firms that hand you a slide deck and disappear, we also build the technology your strategy needs. Custom software, AI tools, and automation, all from the same team that designed your roadmap.',
         },
         {
           icon: 'fa-chart-line',
@@ -170,7 +171,7 @@ export default function BusinessStrategyPage() {
       ]}
       ctaTitle="Define Your"
       ctaTitleHighlight="Market Leadership Strategy"
-      ctaDesc="Every successful enterprise runs on a verified technical blueprint. Let our consulting cell audit your ecosystem and engineer a scaling roadmap with measurable conversion milestones."
+      ctaDesc="Every business that scales does it with a clear plan. Let our team look at your operations and build a growth roadmap with milestones you can actually track and measure."
     />
   )
 }

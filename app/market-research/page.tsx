@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Market Research Services India | ThinkSuite',
   description: 'Primary and secondary market research for Indian businesses. Consumer surveys, competitor analysis, market sizing, focus groups, and trend research for strategic decisions.',
+  keywords: ['market research India', 'consumer research India', 'competitor analysis India', 'market sizing India', 'focus group research', 'survey research India', 'business research Gurgaon', 'market intelligence India'],
 }
 
 export default function MarketResearchPage() {

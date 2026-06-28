@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'UI/UX Design Services India | ThinkSuite',
   description: 'Professional UI/UX design in India: user research, wireframing, Figma prototyping, and conversion-focused interface design for web and mobile products.',
+  keywords: ['UI UX design India', 'user experience design India', 'Figma design India', 'product design agency', 'app UX design India', 'interface design India', 'UX research India', 'mobile UX design'],
 }
 
 export default function UiUxPage() {

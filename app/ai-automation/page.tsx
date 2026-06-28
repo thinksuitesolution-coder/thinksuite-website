@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'AI Tool Integration and Automation Services | ThinkSuite',
   description: 'Custom AI tool integration and workflow automation for businesses in India. RAG systems, LLM-powered chatbots, and intelligent automation that reduces manual work.',
+  keywords: ['AI automation India', 'AI tool integration', 'workflow automation India', 'RAG systems India', 'LLM development India', 'business process automation', 'chatbot development India', 'AI agency Gurgaon', 'custom AI solutions India'],
 }
 
 export default function AiAutomationPage() {
@@ -14,7 +15,7 @@ export default function AiAutomationPage() {
       label="AI and Automation"
       title="Automate Legacy Friction."
       titleHighlight="Put Operations On Autopilot."
-      tagline="Manual overhead slows market expansion. We identify core operational friction points and replace them with custom AI integrations and autonomous systems that compound results month after month."
+      tagline="Too much manual work slows your team down. We find the bottlenecks in your operations and replace them with custom AI tools and automated systems that keep delivering better results over time."
       animationType="network"
       stats={[
         { number: '60%', label: 'Reduction in Manual Overhead' },
@@ -23,9 +24,9 @@ export default function AiAutomationPage() {
         { number: '90%', label: 'Task Accuracy Rate' },
       ]}
       highlights={[
-        { icon: 'fa-book-open', title: 'Intelligent RAG Systems', desc: 'Secure internal knowledge repositories that query company data instantly, resulting in zero-latency information access for your team.' },
-        { icon: 'fa-gears', title: 'Autonomous Backend Microservices', desc: 'Automated processing pipelines designed to sync background data arrays, delivering a 60% reduction in manual overhead.' },
-        { icon: 'fa-robot', title: 'Custom LLM Toolsets', desc: 'Self-learning enterprise AI tools that manage user acquisition funnels with high-fidelity context retention across sessions.' },
+        { icon: 'fa-book-open', title: 'Intelligent RAG Systems', desc: 'A private knowledge base built from your company data. Your team gets accurate answers instantly without digging through folders or waiting on colleagues.' },
+        { icon: 'fa-gears', title: 'Autonomous Backend Microservices', desc: 'Automated data pipelines that handle repetitive background tasks and sync your systems, cutting manual work by up to 60%.' },
+        { icon: 'fa-robot', title: 'Custom LLM Toolsets', desc: 'Custom AI tools trained on your business data that assist with customer communication, lead nurturing, and sales workflows while keeping full conversation history.' },
         { icon: 'fa-comments', title: 'Chatbot Solutions', desc: 'Intelligent conversational AI for customer support, lead generation, and internal knowledge management at enterprise scale.' },
         { icon: 'fa-brain', title: 'Machine Learning Models', desc: 'Custom ML models for prediction, classification, recommendation, and real-time anomaly detection across business systems.' },
         { icon: 'fa-database', title: 'Data Pipeline Automation', desc: 'Automated data ingestion, transformation, and reporting for real-time business intelligence and predictive decision support.' },
@@ -118,7 +119,7 @@ export default function AiAutomationPage() {
       ]}
       ctaTitle="Automate and"
       ctaTitleHighlight="Accelerate at Scale"
-      ctaDesc="Let AI eliminate the friction points holding your business back. Our automation engineering cells deploy high-velocity systems that compound results month over month."
+      ctaDesc="Let AI take over the repetitive work that is slowing your team down. We build automation systems that keep running and improving long after launch."
     />
   )
 }

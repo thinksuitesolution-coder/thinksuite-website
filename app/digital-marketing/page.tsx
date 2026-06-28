@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Digital Marketing Agency India | SEO, Ads, GEO | ThinkSuite',
   description: 'Full-stack digital marketing for Indian businesses: SEO, Google Ads, Meta Ads, social media, content marketing, and Generative Engine Optimization.',
+  keywords: ['digital marketing agency India', 'SEO agency India', 'Google Ads India', 'Meta Ads India', 'GEO optimization India', 'social media marketing India', 'content marketing agency', 'digital marketing Gurgaon', 'performance marketing India'],
 }
 
 export default function DigitalMarketingPage() {
@@ -14,7 +15,7 @@ export default function DigitalMarketingPage() {
       label="Digital Marketing and GEO"
       title="Claim The Definitive Answer"
       titleHighlight="Across Modern Search."
-      tagline="Traditional search indexation is shifting toward generative models. As a specialized GEO agency, we re-engineer your digital visibility so your brand is cited directly by ChatGPT, Gemini, and Perplexity, while running precision ROI campaigns across Google and Meta."
+      tagline="People are searching on Google and asking questions on ChatGPT and Gemini. We make sure your brand shows up on all of them, through SEO, paid ads, and GEO strategies that bring you real customers."
       stats={[
         { number: '3x', label: 'Organic Traffic Growth' },
         { number: '40%', label: 'Lower Acquisition Cost' },
@@ -23,7 +24,7 @@ export default function DigitalMarketingPage() {
       ]}
       chartTitle="Organic Traffic and GEO Citation Growth"
       chartBadge="3x Average Growth"
-      intro="AI-powered answer boxes now resolve 40% of search queries without a click. Brands not optimized for Generative Engine Optimization (GEO) are invisible to this growing traffic layer. We combine GEO infrastructure with precision paid campaigns to dominate both traditional and AI-native search channels."
+      intro="More and more people are using AI tools like ChatGPT and Gemini to find products and services. Businesses that are not showing up in these AI answers are missing a growing chunk of potential customers. We combine SEO, GEO, and paid campaigns so your brand gets found across all of them."
       introPoints={[
         'Structured semantic schema models so AI engines cite your brand as the top answer',
         'Precision Google and Meta ad campaigns focused on lowest customer acquisition cost',
@@ -35,37 +36,37 @@ export default function DigitalMarketingPage() {
           icon: 'fa-magnifying-glass-chart',
           metric: '5x Cited',
           title: 'Generative Engine Optimization',
-          desc: 'Structuring advanced semantic schema models and metadata layers so AI search engines choose your brand assets natively as the top cited answer.',
+          desc: 'Setting up your content and structured data so AI search engines like ChatGPT and Gemini naturally recommend your brand when users ask about your industry.',
         },
         {
           icon: 'fa-rectangle-ad',
           metric: 'Lowest CAC',
           title: 'ROI-Driven Ad Campaigns',
-          desc: 'Precision scaling across Google and Meta ad operations, removing vanity metrics to focus strictly on customer acquisition costs and pipeline value.',
+          desc: 'Google and Meta ad campaigns focused on bringing in real customers at the lowest possible cost, not just clicks or impressions that do not convert.',
         },
         {
           icon: 'fa-hashtag',
           metric: 'Omnichannel',
           title: 'Social Media Marketing',
-          desc: 'Synchronizing cross-platform social visibility to trap buyer intent at every stage of the digital decision journey across Instagram, LinkedIn, and YouTube.',
+          desc: 'Building your presence on Instagram, LinkedIn, and YouTube to reach potential customers at every stage, from first discovery to final purchase decision.',
         },
         {
           icon: 'fa-file-pen',
           metric: '3x CTR',
           title: 'Content Marketing',
-          desc: 'SEO-optimized semantic content frameworks that build topical authority and generate compounding organic search equity across all target keywords.',
+          desc: 'SEO content and blog strategy that builds your authority on topics your customers search for, driving steady organic traffic month after month.',
         },
         {
           icon: 'fa-envelope-open-text',
           metric: '42% Open',
           title: 'Email Marketing',
-          desc: 'Automated email sequences and behavioral drip campaigns engineered for high open rates and precise conversion attribution across your funnel.',
+          desc: 'Email sequences triggered by user behavior and sent at the right moment to nurture leads and bring them closer to making a purchase.',
         },
         {
           icon: 'fa-chart-bar',
           metric: 'Live Data',
           title: 'Analytics and Reporting',
-          desc: 'Comprehensive performance dashboards with actionable intelligence metrics tied directly to revenue outcome tracking, not vanity metrics.',
+          desc: 'Clear performance dashboards showing what is actually working, tied to real revenue outcomes so you always know where your marketing spend is going.',
         },
       ]}
       process={[

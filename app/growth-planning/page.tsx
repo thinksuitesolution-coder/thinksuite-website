@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Growth Planning Services India | ThinkSuite',
   description: 'Strategic growth planning for Indian businesses. Revenue growth strategy, customer acquisition planning, market expansion, and growth dashboards for SMEs and scaling businesses.',
+  keywords: ['growth planning India', 'revenue growth strategy India', 'customer acquisition planning', 'business growth India', 'growth consultant India', 'CAC LTV optimization', 'market expansion strategy India', 'KPI dashboard setup India'],
 }
 
 export default function GrowthPlanningPage() {

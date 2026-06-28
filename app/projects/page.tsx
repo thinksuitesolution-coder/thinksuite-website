@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import ProjectsContent from './ProjectsContent'
 
 export const metadata: Metadata = {
-  title: 'Projects | ThinkSuite — Real Work, Real Results',
-  description: 'Explore real client projects by ThinkSuite — from e-commerce websites and brand identities to social media growth. Clients include Laghima Jewelry, AKLR Foundation, Bliss Foundation, VibéStyl, Shri Surbhi Kripa, A2Z Graphics, WavCart, and more.',
+  title: 'Projects | ThinkSuite: Real Work, Real Results',
+  description: 'Explore real client projects by ThinkSuite, from e-commerce websites and brand identities to social media growth. Clients include Laghima Jewelry, AKLR Foundation, Bliss Foundation, VibéStyl, Shri Surbhi Kripa, A2Z Graphics, WavCart, and more.',
   keywords: [
     'ThinkSuite projects',
     'portfolio',

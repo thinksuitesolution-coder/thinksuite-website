@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Brand Identity Design India | ThinkSuite',
   description: 'Professional brand identity design for Indian businesses. Logo design, color systems, typography, brand guidelines, and complete visual identity packages.',
+  keywords: ['brand identity design India', 'logo design India', 'brand guidelines India', 'visual identity India', 'logo designer Gurgaon', 'brand design agency India', 'corporate identity design India'],
 }
 
 export default function BrandIdentityPage() {

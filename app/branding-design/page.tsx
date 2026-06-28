@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Branding and Design Services India | ThinkSuite',
   description: 'Professional branding and design services in India: brand identity design, UI/UX design, graphic design, and product design for startups and growing businesses.',
+  keywords: ['branding agency India', 'brand identity design India', 'logo design India', 'UI UX design India', 'graphic design agency', 'product design India', 'brand design Gurgaon', 'visual identity design India'],
 }
 
 export default function BrandingDesignPage() {
@@ -14,7 +15,7 @@ export default function BrandingDesignPage() {
       label="Branding & Design"
       title="Design That Builds"
       titleHighlight="Brand Authority"
-      tagline="Before a prospect reads your pitch, they have already judged your business by how it looks. We build visual systems, logo, identity, UI, graphics, that make that first impression earn your trust."
+      tagline="Before a potential client reads a single word of your pitch, they have already judged your business by how it looks. We build the visual identity, logo, UI, and design system that makes that first impression count."
       designType="brand-identity"
       stats={[
         { number: '5+', label: 'Years of Experience' },
@@ -23,12 +24,12 @@ export default function BrandingDesignPage() {
         { number: '100%', label: 'Brand Guidelines Included' },
       ]}
       highlights={[
-        { icon: 'fa-palette', title: 'Brand Identity Design', desc: 'Visual identity systems engineered to command market recognition and communicate enterprise authority at first contact.' },
-        { icon: 'fa-desktop', title: 'UI/UX Design', desc: 'Conversion-optimized interface design for web and mobile platforms that transforms visitor behavior into measurable revenue outcomes.' },
-        { icon: 'fa-pen-ruler', title: 'Graphic Design', desc: 'Strategic print and digital graphics, marketing collateral, presentations, and precision social assets that perform.' },
-        { icon: 'fa-layer-group', title: 'Product Design', desc: 'End-to-end product design from rapid wireframes to high-fidelity prototypes validated against real user acquisition data.' },
-        { icon: 'fa-wand-magic-sparkles', title: 'Motion and Animation', desc: 'Micro-animations, explainer videos, and motion graphics that accelerate attention capture and brand recall velocity.' },
-        { icon: 'fa-book-open', title: 'Brand Guidelines', desc: 'Comprehensive brand books and enterprise style guides ensuring conversion-consistent visual execution across all market touchpoints.' },
+        { icon: 'fa-palette', title: 'Brand Identity Design', desc: 'Logo, color palette, typography, and brand system designed to make people recognize and trust your business at first glance.' },
+        { icon: 'fa-desktop', title: 'UI/UX Design', desc: 'Interface design for web and mobile that makes it simple and enjoyable for visitors to take the next step and become paying customers.' },
+        { icon: 'fa-pen-ruler', title: 'Graphic Design', desc: 'Print and digital graphics, marketing materials, presentations, and social content designed to look professional and work hard for your brand.' },
+        { icon: 'fa-layer-group', title: 'Product Design', desc: 'Full product design from early wireframes to polished, interactive prototypes, tested with real users before a single line of code is written.' },
+        { icon: 'fa-wand-magic-sparkles', title: 'Motion and Animation', desc: 'Micro-animations, explainer videos, and motion graphics that grab attention and make your brand more memorable across any platform.' },
+        { icon: 'fa-book-open', title: 'Brand Guidelines', desc: 'A clear brand book and style guide so your visual identity stays consistent whether it appears on a business card, a website, or a billboard.' },
       ]}
       process={[
         {

@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Product Design Services India | ThinkSuite',
   description: 'End-to-end product design in India: discovery, wireframing, Figma prototyping, design systems, and developer handoff for web and mobile products.',
+  keywords: ['product design India', 'UX product design', 'Figma prototyping India', 'design system India', 'SaaS product design', 'wireframing India', 'mobile product design', 'product designer Gurgaon'],
 }
 
 export default function ProductDesignPage() {

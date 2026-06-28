@@ -35,10 +35,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: 'ThinkSuite: B2B Business Automation and Custom SaaS Development',
+    default: 'ThinkSuite: Digital Agency for Websites, Marketing and AI Automation',
     template: '%s | ThinkSuite Digital Agency',
   },
-  description: 'Accelerate your market growth with ThinkSuite. We deliver enterprise AI integration, high performance custom web platforms, and Generative Engine Optimization solutions.',
+  description: 'ThinkSuite is a full-service digital agency based in Gurgaon. We build websites, mobile apps, and custom software, run SEO and digital marketing campaigns, and create AI automation tools that help Indian businesses grow.',
   keywords: [
     'B2B business automation solutions', 'custom SaaS application development', 'enterprise AI tool integration',
     'custom workflow automation microservices', 'Generative Engine Optimization agency', 'high performance software engineering',
@@ -54,8 +54,8 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: 'https://thinksuite.in',
     siteName: 'ThinkSuite',
-    title: 'ThinkSuite, Full-Stack Digital Agency | AI, Software & Marketing',
-    description: "India's leading full-stack digital agency. We build AI-powered software, craft compelling brands, and run data-driven marketing campaigns that deliver measurable ROI.",
+    title: 'ThinkSuite | Digital Agency for Websites, Marketing and AI in India',
+    description: 'ThinkSuite is a digital agency in Gurgaon, India. We build websites and apps, run SEO and paid ad campaigns, create brand identities, and set up AI automation for businesses across every industry.',
     images: [{ url: '/assets/img/og-image.jpg', width: 1200, height: 630, alt: 'ThinkSuite Digital Agency India' }],
   },
   twitter: {

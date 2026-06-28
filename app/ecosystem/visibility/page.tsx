@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Visibility — GEO & AI Search Ranking Platform | ThinkSuite',
+  title: 'Visibility: GEO and AI Search Ranking Platform | ThinkSuite',
   description: 'Visibility helps businesses rank on Google and get cited by ChatGPT, Gemini, and Perplexity through GEO (Generative Engine Optimization) strategies.',
   alternates: { canonical: 'https://thinksuite.in/ecosystem/visibility' },
 }
@@ -17,7 +17,7 @@ const features = [
   { icon: 'fa-quote-left', title: 'Citation Optimization', desc: 'Structure your content so AI engines naturally quote and recommend your brand' },
   { icon: 'fa-code', title: 'Structured Data for AI', desc: 'Advanced schema markup optimized for AI crawlers and knowledge graphs' },
   { icon: 'fa-bullhorn', title: 'Brand Mention Strategy', desc: 'Proactive mention building across high-authority publications and sites' },
-  { icon: 'fa-chart-line', title: 'AI Answer Monitoring', desc: 'Track when, where, and how AI engines mention your brand — in real time' },
+  { icon: 'fa-chart-line', title: 'AI Answer Monitoring', desc: 'Track when, where, and how AI engines mention your brand, all in real time' },
 ]
 
 const stats = [
@@ -53,7 +53,7 @@ export default function VisibilityPage() {
           <h1 style={{ fontSize: 'clamp(36px,5vw,64px)', fontWeight: 900, color: '#fff', marginBottom: 14, lineHeight: 1.1 }}>Visibility</h1>
           <p style={{ fontSize: 20, fontWeight: 600, color: COLOR, marginBottom: 20 }}>Help Your Business Rank Through GEO</p>
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.65)', maxWidth: 580, margin: '0 auto 40px', lineHeight: 1.85 }}>
-            When someone asks ChatGPT or Gemini about businesses in your industry, does your name come up? Visibility makes sure it does — through GEO strategy, AI citation building, and authority optimization.
+            When someone asks ChatGPT or Gemini about businesses in your industry, does your name come up? Visibility makes sure it does, through GEO strategy, AI citation building, and authority optimization.
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/contact" className="btn btn-primary btn-lg">Get a GEO Audit <i className="fa-solid fa-arrow-right" /></Link>

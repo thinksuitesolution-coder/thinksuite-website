@@ -51,11 +51,11 @@ const products = [
     statusLabel: 'Coming Soon',
     href: '/ecosystem/mythinkai',
     ctaLabel: 'Get Your Lead List',
-    desc: 'MyThinkAI provides hyper-targeted lead lists for businesses. Tell us the occupation, city, and industry of the customers you need — and we deliver a verified, ready-to-use contact list so you can start outreach immediately.',
+    desc: 'MyThinkAI provides hyper-targeted lead lists for businesses. Tell us the occupation, city, and industry of the customers you need, and we deliver a verified, ready-to-use contact list so you can start outreach immediately.',
     capabilities: [
       { icon: 'fa-briefcase', label: 'Occupation-Based Filters', desc: 'Target doctors, lawyers, retailers, and any profession you need' },
       { icon: 'fa-location-dot', label: 'City & Location Targeting', desc: 'Filter by city, district, state, or pincode' },
-      { icon: 'fa-address-card', label: 'Verified Contact Data', desc: 'Name, phone, email, and business address — verified' },
+      { icon: 'fa-address-card', label: 'Verified Contact Data', desc: 'Name, phone, email, and business address, all verified' },
       { icon: 'fa-industry', label: 'Industry Segmentation', desc: 'Narrow down by industry, business size, and revenue' },
       { icon: 'fa-file-csv', label: 'Bulk CSV Export', desc: 'Download your lead list in CSV or Excel format instantly' },
       { icon: 'fa-rotate', label: 'Fresh Daily Data', desc: 'Database updated daily to ensure accuracy' },
@@ -109,7 +109,7 @@ const products = [
     statusLabel: 'Coming Soon',
     href: '/ecosystem/visibility',
     ctaLabel: 'Get a GEO Audit',
-    desc: 'Visibility is ThinkSuite\'s GEO (Generative Engine Optimization) platform. When someone asks ChatGPT, Gemini, or Perplexity about businesses in your industry, does your name come up? Visibility makes sure it does — through AI citation strategy, E-E-A-T authority building, and structured data optimization.',
+    desc: 'Visibility is ThinkSuite\'s GEO (Generative Engine Optimization) platform. When someone asks ChatGPT, Gemini, or Perplexity about businesses in your industry, does your name come up? Visibility makes sure it does, through AI citation strategy, E-E-A-T authority building, and structured data optimization.',
     capabilities: [
       { icon: 'fa-eye', label: 'AI Search Optimization', desc: 'Get cited by ChatGPT, Gemini, and Perplexity when users ask about your industry' },
       { icon: 'fa-shield-halved', label: 'E-E-A-T Authority', desc: 'Build credibility signals that AI models trust and cite' },

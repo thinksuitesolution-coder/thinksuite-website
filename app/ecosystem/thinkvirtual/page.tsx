@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'ThinkVirtual — Network Connecting & Project Platform | ThinkSuite',
+  title: 'ThinkVirtual: Network Connecting and Project Platform | ThinkSuite',
   description: 'ThinkVirtual connects freelancers, clients, and influencers to collaborate on projects. Post work, find talent, and build your professional network in India.',
   alternates: { canonical: 'https://thinksuite.in/ecosystem/thinkvirtual' },
 }
@@ -12,7 +12,7 @@ const ACCENT_BG = 'rgba(8,145,178,0.08)'
 const BORDER = 'rgba(8,145,178,0.15)'
 
 const features = [
-  { icon: 'fa-briefcase', title: 'Post Projects', desc: 'Clients post work, freelancers apply and get hired fast — no middlemen' },
+  { icon: 'fa-briefcase', title: 'Post Projects', desc: 'Clients post work, freelancers apply and get hired fast, with no middlemen' },
   { icon: 'fa-user-tie', title: 'Freelancer Profiles', desc: 'Showcase your skills, portfolio, rates, and verified client reviews' },
   { icon: 'fa-star', title: 'Influencer Network', desc: 'Influencers connect with brands for paid campaigns and collaborations' },
   { icon: 'fa-handshake', title: 'Direct Collaboration', desc: 'Clients and talent work together in one shared workspace' },
@@ -53,7 +53,7 @@ export default function ThinkVirtualPage() {
           <h1 style={{ fontSize: 'clamp(36px,5vw,64px)', fontWeight: 900, color: '#fff', marginBottom: 14, lineHeight: 1.1 }}>ThinkVirtual</h1>
           <p style={{ fontSize: 20, fontWeight: 600, color: COLOR, marginBottom: 20 }}>Network Connecting &amp; Project Platform</p>
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.65)', maxWidth: 560, margin: '0 auto 40px', lineHeight: 1.85 }}>
-            A professional network where freelancers, clients, and influencers connect, post projects, and collaborate — built for India&apos;s creative and digital economy.
+            A professional network where freelancers, clients, and influencers connect, post projects, and collaborate. Built for India&apos;s creative and digital economy.
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/contact" className="btn btn-primary btn-lg">Join Waitlist <i className="fa-solid fa-arrow-right" /></Link>
@@ -81,7 +81,7 @@ export default function ThinkVirtualPage() {
             <span className="label" style={{ marginBottom: 12, display: 'inline-block' }}>PLATFORM FEATURES</span>
             <h2>Everything You Need to <span className="grad-text">Connect &amp; Collaborate</span></h2>
             <p style={{ color: 'var(--text2)', maxWidth: 500, margin: '16px auto 0', fontSize: 16, lineHeight: 1.7 }}>
-              Find work, hire talent, and grow your professional network — all in one place.
+              Find work, hire talent, and grow your professional network, all in one place.
             </p>
           </div>
           <div className="grid-3" style={{ gap: 20 }}>

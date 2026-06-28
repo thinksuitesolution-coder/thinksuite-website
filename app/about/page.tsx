@@ -4,9 +4,9 @@ import CTASection from '@/components/sections/CTASection'
 import './about.css'
 
 export const metadata: Metadata = {
-  title: 'About ThinkSuite | AI-First Digital Agency, Gurgaon',
-  description: 'ThinkSuite is an AI-first full-service digital agency founded in Gurgaon in 2020. Web development, digital marketing, AI automation & 4 in-house SaaS products, 120+ projects, 50+ clients, one in-house team.',
-  keywords: ['about thinksuite', 'AI-First Digital Agency india', 'digital agency Gurgaon', 'full service digital agency', 'web development marketing AI india'],
+  title: 'About ThinkSuite | Digital Agency Based in Gurgaon, India',
+  description: 'ThinkSuite is a full-service digital agency founded in Gurgaon in 2020. We help businesses grow through website development, digital marketing, AI automation, and brand design. Over 120 projects delivered for 50+ clients across India.',
+  keywords: ['about ThinkSuite', 'digital agency Gurgaon', 'full service digital agency India', 'web development agency Gurgaon', 'marketing agency India', 'AI agency Gurgaon', 'ThinkSuite team', 'digital agency founded 2020'],
 }
 
 // ── HERO ─────────────────────────────────────────────────────────────────────

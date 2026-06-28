@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Custom AI Tools Development India | ThinkSuite',
   description: 'Custom AI tool development including NLP, computer vision, recommendation engines, and predictive analytics. AI solutions built for your specific data and business logic.',
+  keywords: ['custom AI development India', 'NLP development India', 'computer vision India', 'recommendation engine India', 'machine learning India', 'AI model development', 'predictive analytics India', 'AI software India'],
 }
 
 export default function AIToolsDevelopmentPage() {

@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'AI Chatbot Development India | ThinkSuite',
   description: 'Custom AI chatbot solutions for WhatsApp, websites, and CRM platforms. Customer support bots, lead generation bots, and appointment booking bots built for Indian businesses.',
+  keywords: ['AI chatbot India', 'WhatsApp chatbot India', 'customer support bot India', 'lead generation chatbot', 'chatbot development India', 'appointment booking bot', 'conversational AI India', 'chatbot agency Gurgaon'],
 }
 
 export default function ChatbotSolutionsPage() {
