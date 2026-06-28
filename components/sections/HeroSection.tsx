@@ -10,26 +10,53 @@ const TABS = [
   { id: 'saas',       icon: 'fa-solid fa-chart-line',       label: 'SaaS'       },
 ]
 
-const GEO_SEARCHES = [
+const AI_ENGINES = [
   {
-    query: 'CA firm for GST filing near me',
+    id: 'chatgpt',
+    name: 'ChatGPT',
+    icon: 'fa-solid fa-robot',
+    color: '#10a37f',
+    query: 'Find me a CA firm for GST filing in Delhi NCR',
+    intro: 'Here are the top CA firms I found for GST filing in Delhi NCR:',
     results: [
-      { title: 'ClearTax | GST Filing & CA Services', url: 'cleartax.in › ca-services', desc: 'Expert CA for GST returns, ITR filing. Trusted by 6M+ Indians.' },
-      { title: 'Tax2Win: Online CA Consultation',     url: 'tax2win.in › ca',            desc: 'Connect with top CAs for GST, income tax, audit. From ₹499/month.' },
+      { name: 'ClearTax',  desc: 'Most recommended for GST. Trusted by 6M+ users.' },
+      { name: 'Tax2Win',   desc: 'Verified CAs for GST & ITR. Starts at ₹499/month.' },
     ],
   },
   {
-    query: 'digital marketing agency Gurugram',
+    id: 'perplexity',
+    name: 'Perplexity',
+    icon: 'fa-solid fa-circle-nodes',
+    color: '#20b2aa',
+    query: 'Best digital marketing agency in Gurugram',
+    intro: 'Based on my search across the web, these agencies stand out:',
     results: [
-      { title: 'Social Panga | Digital Marketing',     url: 'socialpanga.com',       desc: 'Creative digital campaigns. Meta, Google Ads & SEO specialists.' },
-      { title: 'iProspect India | Performance Agency', url: 'iprospect.com › india', desc: 'Data-driven marketing. ROI-focused strategies for growing brands.' },
+      { name: 'Social Panga',    desc: 'Known for creative Meta & Google Ads campaigns.' },
+      { name: 'iProspect India', desc: 'Data-driven performance marketing experts.' },
     ],
   },
   {
-    query: 'best interior designer Delhi NCR',
+    id: 'google-ai',
+    name: 'Google AI',
+    icon: 'fa-brands fa-google',
+    color: '#4285F4',
+    query: 'Top interior designer in Delhi NCR near me',
+    intro: 'AI Overview — Highly-rated interior designers in Delhi NCR:',
     results: [
-      { title: 'Livspace | Award-Winning Interiors',   url: 'livspace.com › delhi',         desc: 'Top-rated designers. 500+ projects. Book free consultation today.' },
-      { title: 'Urban Company: Home Interior Services',url: 'urbancompany.com › interiors',  desc: 'Verified designers near you. Full home packages from ₹1.29L.' },
+      { name: 'Livspace',      desc: 'Award-winning. 500+ projects delivered.' },
+      { name: 'Urban Company', desc: 'Verified designers. Packages from ₹1.29L.' },
+    ],
+  },
+  {
+    id: 'gemini',
+    name: 'Gemini',
+    icon: 'fa-solid fa-gem',
+    color: '#8b5cf6',
+    query: 'Wedding photographer recommendation Delhi',
+    intro: 'I found these highly-reviewed wedding photographers in Delhi:',
+    results: [
+      { name: 'WeddingNama',        desc: 'Candid photography. Award-winning studio.' },
+      { name: 'Shutterdown Studios', desc: 'Cinematic films & candid photography.' },
     ],
   },
 ]
@@ -102,13 +129,13 @@ const MARQUEE_KEYWORDS = [
 
 // ── GEO Panel ──────────────────────────────────────────────────────────────
 function GeoPanel() {
-  const [searchIdx, setSearchIdx] = useState(0)
+  const [engineIdx, setEngineIdx] = useState(0)
   const [typed, setTyped] = useState('')
   const [phase, setPhase] = useState<'typing' | 'results' | 'clearing'>('typing')
   const [visibleResults, setVisibleResults] = useState<number[]>([])
 
   useEffect(() => {
-    const current = GEO_SEARCHES[searchIdx]
+    const engine = AI_ENGINES[engineIdx]
     let charIdx = 0
     setTyped('')
     setPhase('typing')
@@ -116,77 +143,91 @@ function GeoPanel() {
 
     const typeTimer = setInterval(() => {
       charIdx++
-      setTyped(current.query.slice(0, charIdx))
-      if (charIdx >= current.query.length) {
+      setTyped(engine.query.slice(0, charIdx))
+      if (charIdx >= engine.query.length) {
         clearInterval(typeTimer)
         setTimeout(() => {
           setPhase('results')
-          current.results.forEach((_, i) => {
-            setTimeout(() => setVisibleResults(prev => [...prev, i]), i * 220)
+          engine.results.forEach((_, i) => {
+            setTimeout(() => setVisibleResults(prev => [...prev, i]), i * 260)
           })
         }, 350)
         setTimeout(() => {
           setPhase('clearing')
-          setTimeout(() => setSearchIdx(prev => (prev + 1) % GEO_SEARCHES.length), 500)
-        }, 4200)
+          setTimeout(() => setEngineIdx(prev => (prev + 1) % AI_ENGINES.length), 500)
+        }, 4500)
       }
-    }, 48)
+    }, 46)
 
     return () => clearInterval(typeTimer)
-  }, [searchIdx])
+  }, [engineIdx])
 
-  const current = GEO_SEARCHES[searchIdx]
+  const engine = AI_ENGINES[engineIdx]
 
   return (
     <div className={s.panelCard} data-phase={phase}>
-      <div className={s.gLogo}>
-        <span style={{ color: '#4285F4' }}>G</span>
-        <span style={{ color: '#EA4335' }}>o</span>
-        <span style={{ color: '#FBBC05' }}>o</span>
-        <span style={{ color: '#4285F4' }}>g</span>
-        <span style={{ color: '#34A853' }}>l</span>
-        <span style={{ color: '#EA4335' }}>e</span>
-      </div>
-      <div className={s.searchBar}>
-        <i className={`fa-solid fa-magnifying-glass ${s.searchIcon}`} />
+
+      {/* Generic search bar */}
+      <div className={s.geoSearchBar}>
+        <i className="fa-solid fa-magnifying-glass" style={{ color: '#94a3b8', fontSize: '0.8rem', flexShrink: 0 }} />
         <div className={s.searchInput}>
           <span>{typed}</span>
           <span className={s.cursor} />
         </div>
-        <i className={`fa-solid fa-microphone ${s.micIcon}`} />
       </div>
-      <div className={s.resultsArea}>
-        <p className={s.resultCount}>
-          {phase !== 'typing' ? <>About <strong>1,87,000</strong> results</> : <>&nbsp;</>}
-        </p>
-        <div className={s.resultsList}>
-          {current.results.map((r, i) => (
+
+      {/* AI engine pills */}
+      <div className={s.enginePills}>
+        {AI_ENGINES.map((e, i) => (
+          <div
+            key={e.id}
+            className={`${s.enginePill} ${engineIdx === i ? s.enginePillActive : ''}`}
+            style={engineIdx === i ? { borderColor: e.color, color: e.color, background: `${e.color}10` } : undefined}
+          >
+            <i className={e.icon} />
+            <span>{e.name}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* AI response */}
+      <div className={s.aiResponse} style={{ borderLeftColor: engine.color }}>
+        <div className={s.aiResponseHeader}>
+          <i className={engine.icon} style={{ color: engine.color }} />
+          <span style={{ color: engine.color }}>{engine.name}</span>
+          <span className={s.aiTag}>AI Answer</span>
+        </div>
+        <p className={s.aiIntro}>{phase !== 'typing' ? engine.intro : ' '}</p>
+        <div className={s.aiResults}>
+          {engine.results.map((r, i) => (
             <div
-              key={`${searchIdx}-${i}`}
-              className={`${s.resultItem} ${visibleResults.includes(i) ? s.resultVisible : ''}`}
+              key={`${engineIdx}-${i}`}
+              className={`${s.aiResult} ${visibleResults.includes(i) ? s.aiResultVisible : ''}`}
             >
-              <span className={s.resultFavicon}><i className="fa-solid fa-globe" /></span>
-              <div className={s.resultBody}>
-                <div className={s.resultTitle}>{r.title}</div>
-                <div className={s.resultUrl}>{r.url}</div>
-                <div className={s.resultDesc}>{r.desc}</div>
+              <i className="fa-solid fa-check" style={{ color: engine.color, fontSize: '0.7rem', flexShrink: 0, marginTop: '3px' }} />
+              <div className={s.aiResultBody}>
+                <strong>{r.name}</strong>
+                <span>{r.desc}</span>
               </div>
             </div>
           ))}
-          <div className={s.missingSlot}>
-            <span className={s.missingFavicon}><i className="fa-regular fa-circle-question" /></span>
-            <div className={s.missingBody}>
-              <div className={s.missingTitle}>Your Business?</div>
-              <div className={s.missingUrl}>yourbusiness.com</div>
-              <div className={s.missingDesc}>Your clients are searching right now…</div>
+
+          {phase === 'results' && (
+            <div className={s.aiMissing}>
+              <i className="fa-solid fa-xmark" style={{ color: '#ef4444', fontSize: '0.7rem', flexShrink: 0, marginTop: '3px' }} />
+              <div className={s.aiResultBody}>
+                <strong style={{ color: '#94a3b8' }}>Your Business</strong>
+                <span className={s.notMentioned}>Not mentioned in AI results</span>
+              </div>
+              <span className={s.notFoundBadge}>Missing</span>
             </div>
-            <span className={s.notFoundBadge}>Not Visible</span>
-          </div>
+          )}
         </div>
       </div>
+
       <div className={s.panelCallout}>
         <i className="fa-solid fa-triangle-exclamation" style={{ color: '#f97316' }} />
-        Clients are finding your competitors. <strong>Are you there?</strong>
+        Your business is invisible to AI. <strong>Let&apos;s fix that.</strong>
       </div>
     </div>
   )

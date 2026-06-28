@@ -46,6 +46,16 @@
     background: rgba(249, 115, 22, 0.07);
   }
 }
+@keyframes pulseSlotRed {
+  0%, 100% {
+    border-color: rgba(239, 68, 68, 0.35);
+    background: rgba(239, 68, 68, 0.03);
+  }
+  50% {
+    border-color: rgba(239, 68, 68, 0.6);
+    background: rgba(239, 68, 68, 0.07);
+  }
+}
 @keyframes floatBubble {
   0%, 100% { transform: translateY(0px); }
   50%       { transform: translateY(-7px); }
@@ -424,6 +434,127 @@
   background: rgba(249,115,22,0.1);
   border-radius: 5px; padding: 2px 7px;
   text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;
+}
+
+/* ══════════════════════════
+   GEO PANEL — AI Engines
+══════════════════════════ */
+.geoSearchBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 100px;
+  padding: 10px 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+}
+
+.enginePills {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.enginePill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 11px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 100px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.67rem;
+  font-weight: 600;
+  color: #94a3b8;
+  transition: all 0.35s ease;
+  white-space: nowrap;
+}
+.enginePill i { font-size: 0.6rem; }
+.enginePillActive { }
+
+.aiResponse {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 3px solid #10a37f;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+  transition: border-left-color 0.4s ease;
+}
+.aiResponseHeader {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.aiResponseHeader i { font-size: 0.8rem; }
+.aiTag {
+  margin-left: auto;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #94a3b8;
+  background: #e2e8f0;
+  border-radius: 4px;
+  padding: 2px 7px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.aiIntro {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0 0 10px;
+  min-height: 20px;
+}
+.aiResults { display: flex; flex-direction: column; gap: 7px; }
+.aiResult {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+.aiResult.aiResultVisible { opacity: 1; transform: translateY(0); }
+.aiResultBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+.aiResultBody strong {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text, #334155);
+}
+.aiResultBody span {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.67rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+.aiMissing {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1.5px dashed rgba(239,68,68,0.4);
+  background: rgba(239,68,68,0.03);
+  position: relative;
+  animation: pulseSlotRed 2.4s ease-in-out infinite;
+}
+.notMentioned {
+  color: #ef4444 !important;
+  font-style: italic;
 }
 
 /* Shared panel callout (bottom of each card) */
