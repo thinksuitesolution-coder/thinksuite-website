@@ -37,8 +37,8 @@ export const serviceDrawerData: ServiceDrawerData[] = [
     ],
   },
   {
-    num: '03', title: 'Branding & Design', cardBg: '#fdf2f8',
-    numColor: '#db2777', lineColor: '#db2777', linkColor: '#db2777',
+    num: '03', title: 'Branding & Design', cardBg: '#fff7ed',
+    numColor: '#ea580c', lineColor: '#ea580c', linkColor: '#ea580c',
     desc: 'Build memorable brands with strategic identity, stunning visuals and seamless user experiences.',
     tagline: "Great brands aren't built by accident.",
     overview: 'We create brand identities that resonate deeply with your audience, from the first logo sketch to the final design system. Stunning visuals, strategic thinking, and careful execution in every project.',
@@ -50,8 +50,8 @@ export const serviceDrawerData: ServiceDrawerData[] = [
     ],
   },
   {
-    num: '04', title: 'AI & Automation', cardBg: '#eff6ff',
-    numColor: '#2563eb', lineColor: '#2563eb', linkColor: '#2563eb',
+    num: '04', title: 'AI & Automation', cardBg: '#e8f4fd',
+    numColor: '#1a237e', lineColor: '#1a237e', linkColor: '#1a237e',
     desc: 'Intelligent automation, AI chatbots, integrations and workflows that save time and scale operations.',
     tagline: 'Let machines do the heavy lifting.',
     overview: "We build intelligent automation systems that eliminate repetitive tasks, supercharge your team's productivity, and unlock new revenue streams. From custom AI tools to fully automated workflows, we make AI practical for real businesses.",
@@ -76,8 +76,8 @@ export const serviceDrawerData: ServiceDrawerData[] = [
     ],
   },
   {
-    num: '06', title: 'Consulting & Growth', cardBg: '#fffbeb',
-    numColor: '#d97706', lineColor: '#d97706', linkColor: '#d97706',
+    num: '06', title: 'Consulting & Growth', cardBg: '#e0f7fa',
+    numColor: '#0891b2', lineColor: '#0891b2', linkColor: '#0891b2',
     desc: 'Strategic consulting, business planning and growth roadmaps to scale smarter and faster.',
     tagline: 'Strategy that turns vision into traction.',
     overview: 'We partner with founders, CEOs, and marketing teams to cut through complexity, identify growth opportunities, and build actionable roadmaps. Our consultants bring cross-industry expertise and a bias for results over reports.',

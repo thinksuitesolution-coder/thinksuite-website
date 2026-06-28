@@ -601,3 +601,174 @@ Krde or save in discussion note file and deploy.
 |---|---|
 | `components/layout/Navbar.tsx` | Duplicate category links removed; category headers now link to main category page (desktop + mobile) |
 | `DISCUSSION_NOTES.md` | This session appended |
+
+---
+
+## Session 2026-06-28 — ProcessFlowSection Redesign
+
+**USER:**
+*(Screenshot share kiya — "How We Work / Our process. Your results." section)*
+Iss section ka animation har gya h card ka ki ek ke uper ek aate rehte h scroll krte time. Or iska title kafi bna h, or iske card kafi bde h or meaningful content or main content nhi h iska to sahi kr. Ek to card ka size chota kr ki dikhe kaise ek ke uper ek aa rahe h. Full width nhi krni h.
+
+**ASSISTANT:**
+Three issues fixed:
+1. Cards 100vh → 75vh, top: 0 → top: 5vh, added max-width: 1280px + border-radius: 1.25rem — stacking animation ab clearly dikhta hai
+2. Section background #dbe5f0 (slate-blue) add ki, cards float white on colored bg — not full width
+3. Heading `clamp(4rem, 9vw, 8rem)` → `clamp(1.9rem, 3.5vw, 3.2rem)` — readable size
+4. Each step mein tags (4 chips) + highlight line (cyan left-border accent) add ki — meaningful content
+
+**Changes Made:**
+- `app/animations.css` — `.pf-section` background + padding, `.pf-heading` font size cut, `.pf-card` height/top/max-width/border-radius, `.pf-step__title` font size reduced, inner padding reduced, `.pf-step__highlight` new class added, all responsive breakpoints updated
+- `components/sections/ProcessFlowSection.tsx` — Each step mein `tags[]` + `highlight` field add ki, text panel mein tags ul + highlight p render kiya
+
+**USER:**
+Save bi krde discussion notes file me
+
+## Files Changed in This Session (2026-06-28 — ProcessFlow Redesign)
+
+| File | Change |
+|---|---|
+| `app/animations.css` | ProcessFlow section: card height 100vh→75vh, heading shrunk, section bg #dbe5f0, cards not full-width (max-width + border-radius), new `.pf-step__highlight` class, responsive breakpoints updated |
+| `components/sections/ProcessFlowSection.tsx` | Tags + highlight added to all 4 steps; rendered in text panel |
+| `DISCUSSION_NOTES.md` | This session appended |
+
+---
+
+## Session 2026-06-28 — StickyStackingSection Scroll Animation Fix
+
+**USER:**
+*(Screenshot share kiya — "WHY THINKSUITE / Why brands scale with ThinkSuite. / Rapid Deployment." section)*
+Ye wala section ka animation sahi work nhi kr raha h scroll krne ke baad bi bi ek hi card rehta h or durse cards nhi aate h iske uper niche bss blank space chord diya h na card aaye
+
+**ASSISTANT:**
+Root cause found. The old `useEffect` was calling `section.getBoundingClientRect().top` inside every scroll frame. `getBoundingClientRect()` returns viewport-relative coordinates, which can return stale or wrong values before Next.js hydration layout is fully settled — causing the scroll progress to always read as 0 and keeping active card stuck at 0 (card 01).
+
+Fix: Replaced with an `offsetTop` traversal approach:
+- `computeBounds()` walks up the DOM tree via `el.offsetParent` to get the section's absolute distance from the document top — computed once at mount and on resize, not during scroll
+- `update()` now uses `window.scrollY - sectionTop` for progress — simple subtraction, no layout reflow needed during scroll frames
+- Added `resize` listener so cached bounds stay accurate on window resize
+- Initial `update()` call now goes through `requestAnimationFrame` so it runs after the browser has fully painted (not synchronously before layout settles)
+
+**Changes Made:**
+- `components/sections/StickyStackingSection.tsx` — `useEffect` rewritten: replaced `getBoundingClientRect().top` with `offsetTop` traversal + `window.scrollY` approach; added `computeBounds()` function; added resize listener; initial call via rAF
+
+## Files Changed in This Session (2026-06-28 — StickyStackingSection Fix)
+
+| File | Change |
+|---|---|
+| `components/sections/StickyStackingSection.tsx` | Scroll progress calculation rewritten — offsetTop traversal replaces getBoundingClientRect; window.scrollY used for scroll progress; resize listener added |
+| `DISCUSSION_NOTES.md` | This session appended |
+
+---
+
+## Session 2026-06-28 — Full Site Color Theme Audit & Fix
+
+**USER:**
+check the complete website color theme is it correct or rainbow like feeling and provide suggestion
+
+**ASSISTANT:**
+
+Scanned all CSS files, component TSX files, and inline styles across the full codebase. Found the following:
+
+### Problems Identified:
+
+**1. Misnamed CSS variable**
+- `--cyan: #1a237e` — ye actually navy blue hai, cyan nahi. Isse confusion hota tha aur developers workaround hardcoded blues likhne lagte the.
+
+**2. About page off-brand accent**
+- `about.css` mein `#4f46e5` (Tailwind indigo-600) use ho raha tha har eyebrow, border aur team section mein — jabki baaki poori site `#1a237e` (brand navy) use karti hai. Page alag company ki tarah lagta tha.
+
+**3. 6 different blues active UI mein**
+- `#1a237e`, `#2563eb`, `#1d4ed8`, `#0891b2`, `#4f46e5`, `#3b82f6` — saab alag alag hain, koi CSS variable nahi use kar raha tha.
+
+**4. Pink colour — no role in brand**
+- `#db2777`, `#be185d`, `#f472b6` — teen shades of pink, branding page aur social media drawer mein random accent ke taur pe use ho rahi thi.
+
+**5. Duplicate category colours**
+- ServiceDrawer mein card 02 (Digital Marketing) aur card 06 (Consulting) dono `#d97706` gold use kar rahe the — same colour, different services.
+
+**6. ChatWidget off-brand blue**
+- Chat popup header, user bubbles, send button — sab `#1d4ed8→#3b82f6` (off-brand royal blue) — brand gradient nahi tha.
+
+**7. BlurCarouselSection off-brand gradients**
+- Medical Website card: `#0ea5e9→#0369a1` (sky blue — off brand)
+- Networking Platform card: `#1d4ed8→#4f46e5` (both off-brand)
+- Social Media card: `#7c3aed→#db2777` (purple to pink — pink off-brand)
+
+---
+
+**USER:**
+yes (implement the fixes)
+
+---
+
+**ASSISTANT:**
+
+Sare fixes implement kiye. Summary:
+
+---
+
+### Changes Made:
+
+**`app/globals.css`**
+- `--primary: #1a237e` aur `--accent: #00bcd4` add kiye — properly named brand tokens
+- `--orange: #ea580c` aur `--green: #059669` add kiye — official category tokens
+- `--cyan`/`--teal` aliases rakhe — backward compatibility ke liye kuch nahi toota
+- Section comments add kiye — koi bhi developer ab palette instantly samajh sakta hai
+
+**`app/about/about.css`**
+- 8 occurrences of `#4f46e5` → `#1a237e` (brand navy)
+- Saare `rgba(79,70,229,...)` → `rgba(26,35,126,...)` (same navy in rgba form)
+- Saare `rgba(124,58,237,...)` violet dot patterns → `rgba(26,35,126,...)` navy
+- Section backgrounds `#f7f6ff` (lavender tint) → `var(--bg)` / `var(--bg2)` (blue tint, rest of site se match)
+
+**`components/sections/SixGrowthEnginesSection.tsx`**
+- Card 03 (Branding): pink `#be185d→#f472b6` → orange `#ea580c→#fb923c`
+- Card 04 (AI): off-brand blue `#1d4ed8→#3b82f6` → brand gradient `#1a237e→#00bcd4`
+- Card 06 (Cloud): off-brand teal `#0d9488→#2dd4bf` → brand teal `#0891b2→#00bcd4`
+
+**`components/ui/ServiceDrawer.tsx`**
+- Card 03 (Branding): pink `#db2777` → orange `#ea580c`, bg `#fdf2f8` → `#fff7ed`
+- Card 04 (AI): royal blue `#2563eb` → brand navy `#1a237e`, bg `#eff6ff` → `#e8f4fd`
+- Card 06 (Consulting): duplicate gold `#d97706` → teal `#0891b2`, bg `#fffbeb` → `#e0f7fa`
+
+**`components/ui/ChatWidget.tsx`**
+- Saare 6 off-brand blue references (`#1d4ed8`, `#3b82f6`, `#2563eb`, `rgba(37,99,235,...)`) → brand navy/teal gradient + `rgba(26,35,126,...)`
+- Chat header, user bubbles, send button, float button, scrollbar, focus state, footer link — sab fix
+
+**`components/sections/BlurCarouselSection.tsx`**
+- Card 03 (Medical Website): `#0ea5e9→#0369a1` → `#1a237e→#0891b2`
+- Card 04 (Networking Platform): `#1d4ed8→#4f46e5` → `#1a237e→#00bcd4`
+- Card 06 (Social Media): `#7c3aed→#db2777` → `#7c3aed→#ea580c` (pink hata ke orange)
+
+### Result — Effective Colour Count:
+
+| Before | After |
+|--------|-------|
+| ~12 colours in UI chrome | 4 brand colours |
+| Pink in 3 components | Pink completely removed |
+| 6 different blues | 2 blues (navy + teal — both brand) |
+| About page used different accent | About page now matches rest of site |
+| ChatWidget had own blue scheme | ChatWidget uses brand gradient |
+
+### Colour Palette Now Active:
+- **Navy** `#1a237e` — primary / headings / buttons
+- **Teal** `#00bcd4` — accent / gradient endpoint
+- **Gold** `#d97706` — highlight / CTA
+- **Purple** `#7c3aed` — AI / tech category
+- **Orange** `#ea580c` — branding / design category
+- **Green** `#059669` — growth / media category
+
+(Terminal mock colours, Google icon `#4285F4`, social media brand colours — intentionally kept as-is)
+
+## Files Changed in This Session (2026-06-28 — Colour Theme Audit & Fix)
+
+| File | Change |
+|---|---|
+| `app/globals.css` | Added `--primary`, `--accent`, `--orange`, `--green` tokens; section comments added; `--cyan`/`--teal` aliases kept |
+| `app/about/about.css` | All `#4f46e5` / `rgba(79,70,229)` / `rgba(124,58,237)` / `#f7f6ff` replaced with brand navy equivalents |
+| `components/sections/SixGrowthEnginesSection.tsx` | Cards 03/04/06 — pink + off-brand blues + off-brand teal replaced |
+| `components/ui/ServiceDrawer.tsx` | Cards 03/04/06 — pink + royal blue + duplicate gold replaced |
+| `components/ui/ChatWidget.tsx` | All 6 off-brand blue references replaced with brand navy/teal |
+| `components/sections/BlurCarouselSection.tsx` | Cards 03/04/06 — off-brand gradients replaced |
+| `DISCUSSION_NOTES.md` | This session appended |

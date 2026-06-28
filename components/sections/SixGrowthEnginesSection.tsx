@@ -28,8 +28,8 @@ const cards = [
     desc: 'We eliminate superficial vanity metrics and empty digital noise. Every performance marketing asset is cross-tracked natively against hard closed revenue metrics and real customer acquisition costs.',
     stat: '4.2x Average Ad ROI',
     icon: 'fa-pen-nib',
-    iconBg: 'linear-gradient(135deg,#be185d,#f472b6)',
-    cardBg: '#fdf2f8',
+    iconBg: 'linear-gradient(135deg,#ea580c,#fb923c)',
+    cardBg: '#fff7ed',
     img: '/assets/img/Branding%26design.png',
   },
   {
@@ -38,8 +38,8 @@ const cards = [
     desc: 'Stop managing scattered software shops, separate design consultants, and isolated marketing vendors. ThinkSuite acts as your unified technical execution team.',
     stat: '100% Workflow Continuity',
     icon: 'fa-brain',
-    iconBg: 'linear-gradient(135deg,#1d4ed8,#3b82f6)',
-    cardBg: '#eff6ff',
+    iconBg: 'linear-gradient(135deg,#1a237e,#00bcd4)',
+    cardBg: '#e8f4fd',
     img: '/assets/img/aI%20%26%20Automation.png',
   },
   {
@@ -58,8 +58,8 @@ const cards = [
     desc: 'Building enterprise grade custom SaaS applications that scale safely. Every product features secure multi-tenant cloud logic and high infrastructure runtime specs.',
     stat: '99.9% Production Runtime',
     icon: 'fa-cloud',
-    iconBg: 'linear-gradient(135deg,#0d9488,#2dd4bf)',
-    cardBg: '#f0fdfa',
+    iconBg: 'linear-gradient(135deg,#0891b2,#00bcd4)',
+    cardBg: '#e0f7fa',
     img: '/assets/img/aI%20%26%20Automation.png',
   },
 ]

@@ -72,33 +72,45 @@ export default function StickyStackingSection() {
 
     const n = cards.length
     let rafId = 0
+    let sectionTop = 0
+    let sectionHeight = 0
+
+    // Cache section bounds using offsetTop traversal (stable, not affected by scroll)
+    const computeBounds = () => {
+      let top = 0
+      let el: HTMLElement | null = section
+      while (el) {
+        top += el.offsetTop
+        el = el.offsetParent as HTMLElement | null
+      }
+      sectionTop = top
+      sectionHeight = section.offsetHeight
+    }
+
+    computeBounds()
+    window.addEventListener('resize', computeBounds, { passive: true })
 
     const update = () => {
-      const { top } = section.getBoundingClientRect()
-      const h = section.offsetHeight
       const vh = window.innerHeight
-      const scrollable = h - vh
+      const scrollable = sectionHeight - vh
       if (scrollable <= 0) return
 
-      const progress = Math.min(Math.max(-top / scrollable, 0), 1)
-      // Which card is active (0-indexed)
+      const scrolled = window.scrollY - sectionTop
+      const progress = Math.min(Math.max(scrolled / scrollable, 0), 1)
       const active = Math.min(Math.floor(progress * n), n - 1)
 
       cardRefs.current.forEach((card, i) => {
         if (!card) return
         if (i < active) {
-          // Past cards: scale down and peek from behind current card
           const depth = active - i
           card.style.transform = `scale(${1 - depth * 0.04}) translateY(${-depth * 14}px)`
           card.style.opacity = '1'
           card.style.zIndex = String(i + 1)
         } else if (i === active) {
-          // Active card: full size on top
           card.style.transform = 'scale(1) translateY(0px)'
           card.style.opacity = '1'
           card.style.zIndex = String(n + 2)
         } else {
-          // Future cards: hidden below
           card.style.transform = 'scale(1) translateY(60px)'
           card.style.opacity = '0'
           card.style.zIndex = '0'
@@ -112,9 +124,12 @@ export default function StickyStackingSection() {
     }
 
     window.addEventListener('scroll', onScroll, { passive: true })
-    update()
+    // Delay initial update so layout is fully settled after hydration
+    rafId = requestAnimationFrame(update)
+
     return () => {
       window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', computeBounds)
       cancelAnimationFrame(rafId)
     }
   }, [])

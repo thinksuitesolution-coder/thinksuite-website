@@ -89,11 +89,11 @@ export default function ChatWidget() {
         }
         .ts-cw-panel { animation: ts-chat-up .28s cubic-bezier(.34,1.56,.64,1) both; }
         .ts-cw-msgs::-webkit-scrollbar { width:4px; }
-        .ts-cw-msgs::-webkit-scrollbar-thumb { background:rgba(37,99,235,.18); border-radius:4px; }
-        .ts-cw-input:focus { border-color:#2563eb; outline:none; }
+        .ts-cw-msgs::-webkit-scrollbar-thumb { background:rgba(26,35,126,.18); border-radius:4px; }
+        .ts-cw-input:focus { border-color:#1a237e; outline:none; }
         .ts-cw-send:not(:disabled):hover { transform:scale(1.08); }
         .ts-cw-btn:hover { transform:scale(1.1); }
-        .ts-cw-sug:hover { background:rgba(37,99,235,.1) !important; color:#2563eb !important; border-color:rgba(37,99,235,.35) !important; }
+        .ts-cw-sug:hover { background:rgba(26,35,126,.1) !important; color:#1a237e !important; border-color:rgba(26,35,126,.35) !important; }
       `}</style>
 
       <div style={{ position:'fixed', bottom:16, right:16, zIndex:9999, fontFamily:"'Space Grotesk',sans-serif" }}>
@@ -106,16 +106,16 @@ export default function ChatWidget() {
               position:'fixed', bottom:80, right:16,
               width:'min(370px, calc(100vw - 32px))', maxHeight:'min(520px, calc(100dvh - 100px))',
               background:'#ffffff',
-              border:'1px solid rgba(37,99,235,.13)',
+              border:'1px solid rgba(26,35,126,.13)',
               borderRadius:20,
-              boxShadow:'0 24px 64px rgba(37,99,235,.14),0 4px 16px rgba(0,0,0,.07)',
+              boxShadow:'0 24px 64px rgba(26,35,126,.14),0 4px 16px rgba(0,0,0,.07)',
               display:'flex', flexDirection:'column',
               overflow:'hidden',
             }}
           >
             {/* Header */}
             <div style={{
-              background:'linear-gradient(135deg,#1d4ed8 0%,#3b82f6 100%)',
+              background:'linear-gradient(135deg,#1a237e 0%,#00bcd4 100%)',
               padding:'14px 18px',
               display:'flex', alignItems:'center', gap:12, flexShrink:0,
             }}>
@@ -172,7 +172,7 @@ export default function ChatWidget() {
                     maxWidth:'78%',
                     padding:'9px 13px',
                     borderRadius: m.role === 'user' ? '14px 14px 3px 14px' : '14px 14px 14px 3px',
-                    background: m.role === 'user' ? 'linear-gradient(135deg,#1d4ed8,#3b82f6)' : '#f1f5f9',
+                    background: m.role === 'user' ? 'linear-gradient(135deg,#1a237e,#00bcd4)' : '#f1f5f9',
                     color: m.role === 'user' ? '#fff' : '#1e293b',
                     fontSize:13,
                     lineHeight:1.65,
@@ -283,7 +283,7 @@ export default function ChatWidget() {
                 disabled={loading || !input.trim()}
                 style={{
                   width:38, height:38,
-                  background: input.trim() && !loading ? 'linear-gradient(135deg,#1d4ed8,#3b82f6)' : '#e2e8f0',
+                  background: input.trim() && !loading ? 'linear-gradient(135deg,#1a237e,#00bcd4)' : '#e2e8f0',
                   border:'none',
                   borderRadius:10,
                   cursor: input.trim() && !loading ? 'pointer' : 'not-allowed',
@@ -302,13 +302,13 @@ export default function ChatWidget() {
             <div style={{
               padding:'6px 14px',
               background:'#f8faff',
-              borderTop:'1px solid rgba(37,99,235,.06)',
+              borderTop:'1px solid rgba(26,35,126,.06)',
               fontSize:10.5,
               color:'#94a3b8',
               textAlign:'center',
               flexShrink:0,
             }}>
-              ThinkAI Â· Powered by ThinkSuite Â· <a href="mailto:info@thinksuite.in" style={{ color:'#2563eb' }}>info@thinksuite.in</a>
+              ThinkAI Â· Powered by ThinkSuite Â· <a href="mailto:info@thinksuite.in" style={{ color:'#1a237e' }}>info@thinksuite.in</a>
             </div>
           </div>
         )}
@@ -324,7 +324,7 @@ export default function ChatWidget() {
             borderRadius: open ? '50%' : '50% 50% 50% 8px',
             cursor:'pointer',
             display:'flex', alignItems:'center', justifyContent:'center',
-            boxShadow:'0 4px 24px rgba(37,99,235,.5)',
+            boxShadow:'0 4px 24px rgba(26,35,126,.5)',
             transition:'all .3s cubic-bezier(.34,1.56,.64,1)',
             position:'relative',
             padding:0,

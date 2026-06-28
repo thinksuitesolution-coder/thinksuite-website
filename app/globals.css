@@ -4,26 +4,46 @@
    ================================================================ */
 
 :root {
+  /* ── Backgrounds ─────────────────────────────────── */
   --bg:          #f0f8ff;
   --bg2:         #e3f0f8;
   --bg3:         #cce8f4;
   --surface:     #ffffff;
   --surface2:    rgba(255,255,255,0.92);
+
+  /* ── Borders ─────────────────────────────────────── */
   --border:      rgba(15,23,42,0.09);
   --border2:     rgba(0,188,212,0.25);
+
+  /* ── Brand palette ───────────────────────────────── */
+  --primary:     #1a237e;   /* deep navy  — main brand colour       */
+  --primary2:    #162778;   /* darker navy — depth / hover          */
+  --accent:      #00bcd4;   /* teal        — secondary brand colour */
+  --gold:        #d97706;   /* amber       — highlight / CTA        */
+  --purple:      #7c3aed;   /* violet      — AI / tech category     */
+  --orange:      #ea580c;   /* orange      — branding category      */
+  --green:       #059669;   /* emerald     — growth / media         */
+
+  /* Aliases — kept so existing var(--cyan) / var(--teal) still resolve */
   --cyan:        #1a237e;
   --cyan2:       #162778;
   --teal:        #00bcd4;
-  --gold:        #d97706;
-  --purple:      #7c3aed;
+
+  /* ── Text ────────────────────────────────────────── */
   --white:       #0f172a;
   --text:        #334155;
   --text2:       #64748b;
+
+  /* ── Gradients ───────────────────────────────────── */
   --grad1:       linear-gradient(135deg,#1a237e,#00bcd4);
   --grad2:       linear-gradient(135deg,#d97706,#f59e0b);
+
+  /* ── Shadows / FX ────────────────────────────────── */
   --shadow:      0 4px 24px rgba(26,35,126,0.07),0 1px 6px rgba(0,0,0,0.04);
   --shadow-lg:   0 20px 60px rgba(26,35,126,0.10),0 4px 16px rgba(0,0,0,0.05);
   --glow:        0 0 40px rgba(26,35,126,0.14),0 0 80px rgba(0,188,212,0.07);
+
+  /* ── Easing ──────────────────────────────────────── */
   --ease:        cubic-bezier(0.23,1,0.32,1);
   --spring:      cubic-bezier(0.34,1.56,0.64,1);
 }
