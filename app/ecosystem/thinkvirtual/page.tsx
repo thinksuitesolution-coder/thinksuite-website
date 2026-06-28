@@ -1,0 +1,133 @@
+import type { Metadata } from 'next'
+import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'ThinkVirtual — Network Connecting & Project Platform | ThinkSuite',
+  description: 'ThinkVirtual connects freelancers, clients, and influencers to collaborate on projects. Post work, find talent, and build your professional network in India.',
+  alternates: { canonical: 'https://thinksuite.in/ecosystem/thinkvirtual' },
+}
+
+const COLOR = '#0891b2'
+const ACCENT_BG = 'rgba(8,145,178,0.08)'
+const BORDER = 'rgba(8,145,178,0.15)'
+
+const features = [
+  { icon: 'fa-briefcase', title: 'Post Projects', desc: 'Clients post work, freelancers apply and get hired fast — no middlemen' },
+  { icon: 'fa-user-tie', title: 'Freelancer Profiles', desc: 'Showcase your skills, portfolio, rates, and verified client reviews' },
+  { icon: 'fa-star', title: 'Influencer Network', desc: 'Influencers connect with brands for paid campaigns and collaborations' },
+  { icon: 'fa-handshake', title: 'Direct Collaboration', desc: 'Clients and talent work together in one shared workspace' },
+  { icon: 'fa-chart-line', title: 'Career Growth', desc: 'Build your reputation, gather reviews, and grow your professional network' },
+  { icon: 'fa-globe', title: 'Professional Network', desc: 'LinkedIn-style platform built for India\'s growing gig economy' },
+]
+
+const stats = [
+  { num: '500+', label: 'Freelancers' },
+  { num: '200+', label: 'Projects Posted' },
+  { num: '50+', label: 'Partner Brands' },
+  { num: '4.8★', label: 'Avg Rating' },
+]
+
+const steps = [
+  { n: '01', title: 'Create Your Profile', desc: 'Sign up as a freelancer, client, or influencer and build your professional presence.' },
+  { n: '02', title: 'Post or Browse Work', desc: 'Clients post projects with budgets. Freelancers browse and apply in minutes.' },
+  { n: '03', title: 'Collaborate & Grow', desc: 'Work together, get paid, collect reviews, and build your reputation.' },
+]
+
+export default function ThinkVirtualPage() {
+  return (
+    <main>
+      <section style={{
+        background: 'linear-gradient(135deg, #07091a 0%, #0c1a2e 50%, #061620 100%)',
+        padding: '130px 0 80px', textAlign: 'center', position: 'relative', overflow: 'hidden',
+      }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 50% 40%, rgba(8,145,178,0.18) 0%, transparent 60%)', pointerEvents: 'none' }} />
+        <div className="container" style={{ position: 'relative' }}>
+          <div style={{
+            width: 80, height: 80, borderRadius: 24, background: 'rgba(8,145,178,0.15)',
+            border: '1.5px solid rgba(8,145,178,0.35)', display: 'flex', alignItems: 'center',
+            justifyContent: 'center', margin: '0 auto 28px',
+          }}>
+            <i className="fa-solid fa-diagram-project" style={{ color: COLOR, fontSize: 32 }} />
+          </div>
+          <span className="label" style={{ marginBottom: 16, display: 'inline-block', color: COLOR }}>THINKSUITE ECOSYSTEM</span>
+          <h1 style={{ fontSize: 'clamp(36px,5vw,64px)', fontWeight: 900, color: '#fff', marginBottom: 14, lineHeight: 1.1 }}>ThinkVirtual</h1>
+          <p style={{ fontSize: 20, fontWeight: 600, color: COLOR, marginBottom: 20 }}>Network Connecting &amp; Project Platform</p>
+          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.65)', maxWidth: 560, margin: '0 auto 40px', lineHeight: 1.85 }}>
+            A professional network where freelancers, clients, and influencers connect, post projects, and collaborate — built for India&apos;s creative and digital economy.
+          </p>
+          <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link href="/contact" className="btn btn-primary btn-lg">Join Waitlist <i className="fa-solid fa-arrow-right" /></Link>
+            <Link href="/ecosystem" className="btn btn-outline btn-lg" style={{ borderColor: 'rgba(255,255,255,0.2)', color: '#fff' }}>All Products</Link>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ background: 'var(--surface)', borderBottom: '1px solid var(--border)' }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', borderLeft: '1px solid var(--border)' }}>
+            {stats.map((s) => (
+              <div key={s.label} style={{ padding: '28px 20px', textAlign: 'center', borderRight: '1px solid var(--border)' }}>
+                <div style={{ fontSize: 28, fontWeight: 900, color: COLOR, fontFamily: 'var(--font-h)', lineHeight: 1 }}>{s.num}</div>
+                <div style={{ fontSize: 12, color: 'var(--text2)', marginTop: 6, fontWeight: 600, letterSpacing: 0.5 }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ background: 'var(--bg)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: 56 }}>
+            <span className="label" style={{ marginBottom: 12, display: 'inline-block' }}>PLATFORM FEATURES</span>
+            <h2>Everything You Need to <span className="grad-text">Connect &amp; Collaborate</span></h2>
+            <p style={{ color: 'var(--text2)', maxWidth: 500, margin: '16px auto 0', fontSize: 16, lineHeight: 1.7 }}>
+              Find work, hire talent, and grow your professional network — all in one place.
+            </p>
+          </div>
+          <div className="grid-3" style={{ gap: 20 }}>
+            {features.map((f) => (
+              <div key={f.title} style={{ background: 'var(--surface)', border: `1px solid ${BORDER}`, borderRadius: 16, padding: '24px' }}>
+                <div style={{ width: 44, height: 44, borderRadius: 12, background: ACCENT_BG, border: `1px solid ${BORDER}`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
+                  <i className={`fa-solid ${f.icon}`} style={{ color: COLOR, fontSize: 18 }} />
+                </div>
+                <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--white)', marginBottom: 8 }}>{f.title}</h3>
+                <p style={{ fontSize: 13.5, color: 'var(--text2)', lineHeight: 1.6, margin: 0 }}>{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-tinted">
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: 56 }}>
+            <span className="label" style={{ marginBottom: 12, display: 'inline-block' }}>HOW IT WORKS</span>
+            <h2>Get Started in <span className="grad-text">3 Simple Steps</span></h2>
+          </div>
+          <div className="grid-3" style={{ gap: 28 }}>
+            {steps.map((s) => (
+              <div key={s.n} style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 16, padding: '32px 28px' }}>
+                <div style={{ fontSize: 48, fontWeight: 900, fontFamily: 'var(--font-h)', lineHeight: 1, marginBottom: 16, color: COLOR, opacity: 0.3 }}>{s.n}</div>
+                <h3 style={{ fontSize: 17, fontWeight: 700, color: 'var(--white)', marginBottom: 10 }}>{s.title}</h3>
+                <p style={{ fontSize: 14, color: 'var(--text2)', lineHeight: 1.65, margin: 0 }}>{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: '80px 0', background: ACCENT_BG, borderTop: '1px solid var(--border)', textAlign: 'center' }}>
+        <div className="container">
+          <h2 style={{ marginBottom: 16 }}>Ready to Join <span className="grad-text">ThinkVirtual?</span></h2>
+          <p style={{ color: 'var(--text2)', fontSize: 17, maxWidth: 480, margin: '0 auto 36px', lineHeight: 1.7 }}>
+            Be among the first to access India&apos;s professional network for freelancers, clients, and creative talent.
+          </p>
+          <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link href="/contact" className="btn btn-primary btn-lg">Join Waitlist <i className="fa-solid fa-arrow-right" /></Link>
+            <Link href="/ecosystem" className="btn btn-outline btn-lg">Explore All Products</Link>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
