@@ -1,10 +1,12 @@
 /node_modules
+backend/node_modules
 /.next
 /out
 .env*.local
 .vercel
 *.tsbuildinfo
 next-env.d.ts
+backend/uploads/
 
 .vercel
 
