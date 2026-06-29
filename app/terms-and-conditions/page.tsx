@@ -1,0 +1,75 @@
+﻿import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Terms and Conditions | ThinkSuite',
+  description: 'Read ThinkSuite\'s terms and conditions governing the use of our services and website.',
+}
+
+export default function TermsPage() {
+  return (
+    <>
+      <section className="page-hero">
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <div className="breadcrumb mb-16">
+            <Link href="/">Home</Link>
+            <span>/</span>
+            <span style={{ color: 'var(--text)' }}>Terms & Conditions</span>
+          </div>
+          <span className="label">Legal</span>
+          <h1 className="mt-16">Terms & <span className="grad-text">Conditions</span></h1>
+          <p className="mt-16" style={{ color: 'var(--text2)' }}>Last updated: January 2025</p>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container" style={{ maxWidth: 860 }}>
+          <div className="service-card reveal" style={{ padding: '48px 40px' }}>
+            {[
+              {
+                title: '1. Acceptance of Terms',
+                text: 'By accessing and using ThinkSuite\'s website and services, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our services.',
+              },
+              {
+                title: '2. Services',
+                text: 'ThinkSuite provides digital agency services including software development, digital marketing, design, AI automation, and consulting. Service details, deliverables, and timelines are defined in individual project agreements.',
+              },
+              {
+                title: '3. Payment Terms',
+                text: 'Payment terms are defined in project agreements. Generally, projects require a deposit before work begins, with the remaining balance due upon project completion. Invoices are due within 14 days of issue.',
+              },
+              {
+                title: '4. Intellectual Property',
+                text: 'Upon full payment, clients receive full ownership of custom deliverables created specifically for their project. ThinkSuite retains the right to showcase completed work in our portfolio unless explicitly agreed otherwise.',
+              },
+              {
+                title: '5. Confidentiality',
+                text: 'We treat all client information as strictly confidential. We will not disclose your business information, project details, or any proprietary information to third parties without your explicit consent.',
+              },
+              {
+                title: '6. Limitation of Liability',
+                text: 'ThinkSuite\'s liability is limited to the total amount paid for the specific service in question. We are not liable for indirect, consequential, or incidental damages arising from the use of our services.',
+              },
+              {
+                title: '7. Governing Law',
+                text: 'These Terms are governed by the laws of India. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of courts in Gurgaon, India.',
+              },
+            ].map((section) => (
+              <div key={section.title} style={{ marginBottom: 32 }}>
+                <h3 style={{ fontSize: 20, marginBottom: 12, color: 'var(--white)' }}>{section.title}</h3>
+                <p style={{ color: 'var(--text2)', lineHeight: 1.85 }}>{section.text}</p>
+              </div>
+            ))}
+            <div>
+              <p style={{ color: 'var(--text2)' }}>
+                Questions about these terms? Contact us at{' '}
+                <a href="mailto:info@thinksuite.in" style={{ color: 'var(--cyan)' }}>info@thinksuite.in</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
+

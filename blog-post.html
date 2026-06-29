@@ -1,0 +1,313 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading… | ThinkSuite Insights</title>
+  <meta name="description" content="ThinkSuite Insights">
+  <link rel="canonical" href="" id="canonical-link">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ThinkSuite">
+  <meta property="og:title" content="" id="og-title">
+  <meta property="og:description" content="" id="og-desc">
+  <meta property="og:image" content="" id="og-image">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="" id="tw-title">
+  <meta name="twitter:description" content="" id="tw-desc">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236C63FF'/><text y='.9em' font-size='70' x='15' fill='white' font-weight='900'>T</text></svg>">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .post-toc { position:sticky; top:100px; }
+    .toc-list { display:flex; flex-direction:column; gap:8px; }
+    .toc-item { font-size:.875rem; color:var(--gray-500); padding:6px 12px; border-left:2px solid rgba(255,255,255,.08); transition:all var(--t-fast); cursor:pointer; }
+    .toc-item:hover, .toc-item.active { color:var(--purple-400); border-left-color:var(--purple-400); }
+    .post-layout { display:grid; grid-template-columns:1fr 280px; gap:80px; align-items:start; }
+    .post-share { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:24px; background:rgba(108,99,255,.06); border:1px solid rgba(108,99,255,.14); border-radius:var(--r-lg); margin-top:48px; }
+    .share-label { font-size:.875rem; font-weight:600; color:var(--gray-300); margin-right:4px; }
+    .share-btn { padding:7px 16px; border-radius:var(--r-sm); font-size:.8125rem; font-weight:600; background:rgba(255,255,255,.06); border:var(--border-subtle); color:var(--gray-400); cursor:pointer; transition:all var(--t-fast); text-decoration:none; display:inline-block; }
+    .share-btn:hover { background:rgba(108,99,255,.15); color:var(--purple-400); border-color:rgba(108,99,255,.3); }
+    .related-posts { margin-top:80px; }
+    .post-hero::before { background:radial-gradient(ellipse 60% 60% at 50% 100%, rgba(108,99,255,.15) 0%, transparent 70%); }
+    .post-404 { text-align:center; padding:80px 0; }
+    @media(max-width:1000px){ .post-layout{grid-template-columns:1fr} .post-toc{display:none} }
+  </style>
+</head>
+<body>
+
+<nav class="nav scrolled" id="main-nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><div class="logo-mark">T</div>ThinkSuite</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="projects.html" class="nav-link">Work</a>
+        <a href="blog.html" class="nav-link active">Insights</a>
+      </div>
+      <div class="nav-actions">
+        <a href="index.html#contact" class="btn btn-primary btn-sm">Start a Project</a>
+      </div>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile">
+  <a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a>
+  <a href="services.html" class="nav-link">Services</a><a href="projects.html" class="nav-link">Work</a>
+  <a href="blog.html" class="nav-link active">Insights</a>
+  <a href="index.html#contact" class="btn btn-primary btn-lg" style="margin-top:24px">Start a Project</a>
+</div>
+
+<!-- POST HERO -->
+<section class="post-hero section" style="text-align:center">
+  <div class="hero-orb hero-orb-1" style="opacity:.35"></div>
+  <div class="container">
+    <div class="post-hero-inner">
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:24px">
+        <a href="blog.html" style="color:var(--gray-500);font-size:.875rem;display:flex;align-items:center;gap:6px">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>
+          Back to Insights
+        </a>
+        <span style="color:var(--gray-700)">•</span>
+        <span class="badge badge-purple" id="post-category">Loading…</span>
+      </div>
+      <h1 class="post-title" id="post-title">Loading article…</h1>
+      <div class="post-meta-bar" style="justify-content:center;margin-top:24px">
+        <div class="post-author">
+          <div class="post-avatar">TS</div>
+          <div><div class="post-author-name">ThinkSuite Team</div></div>
+        </div>
+        <span style="color:var(--gray-700)">·</span>
+        <span style="font-size:.875rem;color:var(--gray-500)" id="post-date"></span>
+        <span style="color:var(--gray-700)">·</span>
+        <span style="font-size:.875rem;color:var(--gray-500)" id="post-read-time"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED IMAGE -->
+<div style="max-width:900px;margin:-20px auto 0;padding:0 40px">
+  <img id="post-hero-image" src="" alt="" style="display:none;width:100%;border-radius:var(--r-xl);border:var(--border-subtle)">
+</div>
+
+<!-- POST CONTENT -->
+<section class="section section--dark" style="padding-top:60px">
+  <div class="container">
+    <div class="post-layout">
+      <!-- Main content -->
+      <div>
+        <article class="prose" id="post-content">
+          <p style="color:var(--gray-500);text-align:center;padding:40px">Loading article content…</p>
+        </article>
+
+        <!-- Share -->
+        <div class="post-share">
+          <span class="share-label">Share this article:</span>
+          <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href).then(()=>this.textContent='Copied!').catch(()=>{})">📋 Copy Link</button>
+          <a class="share-btn" href="#" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(window.location.href),'_blank');return false">LinkedIn</a>
+          <a class="share-btn" href="#" onclick="window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(window.location.href)+'&text='+encodeURIComponent(document.title),'_blank');return false">𝕏 Twitter</a>
+          <a class="share-btn" href="#" onclick="window.open('https://wa.me/?text='+encodeURIComponent(document.title+' '+window.location.href),'_blank');return false">WhatsApp</a>
+        </div>
+
+        <!-- Related posts -->
+        <div class="related-posts">
+          <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:24px">More from ThinkSuite Insights</h3>
+          <div class="blog-grid" id="related-grid" style="grid-template-columns:repeat(2,1fr)">
+            <!-- populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="post-toc">
+        <div style="background:rgba(13,27,50,.85);border:var(--border-subtle);border-radius:var(--r-xl);padding:28px">
+          <h4 style="font-size:.875rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-400);margin-bottom:16px">In This Article</h4>
+          <div class="toc-list" id="toc-list"></div>
+        </div>
+
+        <div style="margin-top:24px;background:rgba(108,99,255,.08);border:var(--border-purple);border-radius:var(--r-xl);padding:28px">
+          <div style="font-size:1.25rem;margin-bottom:12px">🏗️</div>
+          <h4 style="font-size:1rem;font-weight:700;margin-bottom:8px">Ready to build?</h4>
+          <p style="font-size:.875rem;color:var(--gray-400);line-height:1.6;margin-bottom:16px">Apply what you read. Let's design the system for your specific business.</p>
+          <a href="index.html#contact" class="btn btn-primary btn-sm" style="width:100%;justify-content:center">Start a Project</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section section">
+  <div class="container">
+    <div class="cta-content">
+      <div class="tag-pill" style="margin:0 auto 20px"><span class="dot"></span>Apply the Thinking</div>
+      <h2 class="cta-title">Ready to Build <span class="text-gradient">Your System?</span></h2>
+      <p class="cta-sub">Knowledge is step one. Execution is where the results come from. Let's turn these concepts into your business reality.</p>
+      <div class="cta-actions" style="margin-top:36px">
+        <a href="index.html#contact" class="btn btn-primary btn-lg">Start a Conversation</a>
+        <a href="blog.html" class="btn btn-ghost btn-lg">More Insights</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand"><a href="index.html" class="nav-logo" style="display:inline-flex"><div class="logo-mark">T</div>ThinkSuite</a><p>We don't build websites. We build systems that scale businesses.</p><div class="footer-socials"><a href="#" class="social-btn">in</a><a href="#" class="social-btn">𝕏</a><a href="#" class="social-btn">ig</a><a href="#" class="social-btn">▶</a></div></div>
+      <div class="footer-col"><h4>Platform</h4><div class="footer-links"><a href="services.html" class="footer-link">Services</a><a href="projects.html" class="footer-link">Case Studies</a><a href="blog.html" class="footer-link">Insights</a><a href="about.html" class="footer-link">About</a></div></div>
+      <div class="footer-col"><h4>Ecosystem</h4><div class="footer-links"><a href="#" class="footer-link">ThinkVirtual</a><a href="#" class="footer-link">ThinkAI</a><a href="#" class="footer-link">ThinkBillion</a></div></div>
+      <div class="footer-col"><h4>Contact</h4><div class="footer-links"><a href="mailto:hello@thinksuite.in" class="footer-link">hello@thinksuite.in</a><a href="index.html#contact" class="footer-link">Start a Project</a></div></div>
+    </div>
+    <div class="footer-bottom"><span class="footer-copy">© 2025 ThinkSuite. All rights reserved.</span><div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+(async function() {
+  // Extract slug from URL path (/blog/:slug) or ?slug= query param (file:// mode)
+  const pathSlug = window.location.pathname.replace(/^\/blog\//, '').replace(/\/$/, '');
+  const slug = (pathSlug && pathSlug !== 'blog-post.html')
+    ? pathSlug
+    : new URLSearchParams(window.location.search).get('slug') || '';
+
+  if (!slug) { show404(); return; }
+
+  try {
+    const res = await fetch(`/api/blogs/${slug}`);
+    if (!res.ok) { show404(); return; }
+    const { data: post } = await res.json();
+    if (!post) { show404(); return; }
+
+    injectSEO(post);
+    renderPost(post);
+    loadRelated(post);
+  } catch (e) {
+    show404();
+  }
+
+  function injectSEO(post) {
+    const title = post.meta_title || post.title + ' | ThinkSuite Insights';
+    const desc  = post.meta_description || post.excerpt || '';
+    const img   = post.image ? (post.image.startsWith('http') ? post.image : window.location.origin + post.image) : '';
+
+    document.title = title;
+    setMeta('description', desc);
+    setMeta('keywords', post.meta_keywords || '');
+    setId('canonical-link', 'href', window.location.href);
+    setId('og-title', 'content', title);
+    setId('og-desc', 'content', desc);
+    setId('og-image', 'content', img);
+    setId('tw-title', 'content', title);
+    setId('tw-desc', 'content', desc);
+
+    // JSON-LD
+    const ld = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: post.title,
+      description: desc,
+      image: img || undefined,
+      datePublished: post.published_at,
+      dateModified: post.updated_at || post.published_at,
+      publisher: { '@type': 'Organization', name: 'ThinkSuite', url: window.location.origin },
+      author: { '@type': 'Organization', name: 'ThinkSuite Team' }
+    };
+    const s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.textContent = JSON.stringify(ld);
+    document.head.appendChild(s);
+  }
+
+  function renderPost(post) {
+    document.getElementById('post-category').textContent = post.category || 'Insights';
+    document.getElementById('post-title').textContent = post.title;
+    document.getElementById('post-date').textContent = post.published_at
+      ? new Date(post.published_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })
+      : '';
+    document.getElementById('post-read-time').textContent = post.read_time ? `${post.read_time} min read` : '';
+
+    if (post.image) {
+      const img = document.getElementById('post-hero-image');
+      img.src = post.image;
+      img.alt = post.title;
+      img.style.display = 'block';
+    }
+
+    document.getElementById('post-content').innerHTML = post.content || '';
+    buildTOC();
+  }
+
+  async function loadRelated(post) {
+    const grid = document.getElementById('related-grid');
+    try {
+      const res = await fetch(`/api/blogs?limit=4&category=${encodeURIComponent(post.category || '')}`);
+      const { data } = await res.json();
+      const others = (data || []).filter(b => b.slug !== post.slug).slice(0, 2);
+      if (!others.length) { grid.parentElement.style.display = 'none'; return; }
+      grid.innerHTML = others.map(b => `
+        <a href="blog-post.html?slug=${b.slug}" class="blog-card" style="text-decoration:none">
+          ${b.image ? `<div class="blog-thumb"><img src="${b.image}" alt="${b.title}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit"></div>` : `<div class="blog-thumb"><span>📝</span></div>`}
+          <div class="blog-body">
+            <div class="blog-meta"><span class="blog-cat">${b.category || 'Insights'}</span><span class="blog-sep"></span><span class="blog-date">${b.published_at ? new Date(b.published_at).toLocaleDateString('en-IN',{month:'short',year:'numeric'}) : ''}</span></div>
+            <h3 class="blog-title">${b.title}</h3>
+            <span class="blog-more">Read <svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></span>
+          </div>
+        </a>
+      `).join('');
+    } catch (e) {
+      grid.parentElement.style.display = 'none';
+    }
+  }
+
+  function show404() {
+    document.getElementById('post-title').textContent = 'Article Not Found';
+    document.getElementById('post-category').textContent = '404';
+    document.getElementById('post-content').innerHTML = `<div class="post-404"><p style="color:var(--gray-400);font-size:1.125rem;margin-bottom:24px">This article doesn't exist or may have been moved.</p><a href="blog.html" class="btn btn-primary">Browse All Insights</a></div>`;
+  }
+
+  function buildTOC() {
+    const prose = document.getElementById('post-content');
+    const tocList = document.getElementById('toc-list');
+    if (!prose || !tocList) return;
+    const headings = prose.querySelectorAll('h2, h3');
+    if (headings.length === 0) return;
+    headings.forEach((h, i) => {
+      const id = 'section-' + i;
+      h.id = id;
+      const item = document.createElement('div');
+      item.className = 'toc-item';
+      item.textContent = h.textContent;
+      item.style.paddingLeft = h.tagName === 'H3' ? '24px' : '12px';
+      item.addEventListener('click', () => h.scrollIntoView({ behavior: 'smooth' }));
+      tocList.appendChild(item);
+    });
+
+    // Active TOC highlight on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = Array.from(headings).indexOf(entry.target);
+          tocList.querySelectorAll('.toc-item').forEach((el, i) => el.classList.toggle('active', i === idx));
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    headings.forEach(h => observer.observe(h));
+  }
+
+  function setMeta(name, content) {
+    let el = document.querySelector(`meta[name="${name}"]`);
+    if (!el) { el = document.createElement('meta'); el.name = name; document.head.appendChild(el); }
+    el.content = content;
+  }
+  function setId(id, attr, val) {
+    const el = document.getElementById(id);
+    if (el && val) el.setAttribute(attr, val);
+  }
+})();
+</script>
+</body>
+</html>

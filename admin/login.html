@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login — ThinkSuite</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236C63FF'/><text y='.9em' font-size='70' x='15' fill='white' font-weight='900'>T</text></svg>">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div class="login-page">
+  <div class="login-orb login-orb-1"></div>
+  <div class="login-orb login-orb-2"></div>
+
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="login-logo-mark">T</div>
+      ThinkSuite
+    </div>
+
+    <h1 class="login-title">Admin Panel</h1>
+    <p class="login-sub">Sign in to manage content, blogs, and projects.</p>
+
+    <form id="login-form">
+      <div class="login-input-group">
+        <label class="login-label" for="email">Email Address</label>
+        <input class="login-input" type="email" id="email" name="email" placeholder="admin@thinksuite.in" required autocomplete="username">
+      </div>
+      <div class="login-input-group">
+        <label class="login-label" for="password">Password</label>
+        <input class="login-input" type="password" id="password" name="password" placeholder="••••••••" required autocomplete="current-password">
+      </div>
+      <button class="login-btn" type="submit" id="login-btn">Sign In</button>
+      <div class="login-err" id="login-err"></div>
+    </form>
+
+    <p style="margin-top:24px;text-align:center;font-size:.8125rem;color:var(--gray-600)">
+      Default: admin@thinksuite.in / Admin@123
+    </p>
+  </div>
+</div>
+
+<script>
+  // Redirect if already logged in
+  if (localStorage.getItem('ts_admin_token')) {
+    window.location.href = '/admin/dashboard.html';
+  }
+
+  document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('login-btn');
+    const errEl = document.getElementById('login-err');
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    btn.disabled = true;
+    btn.textContent = 'Signing in…';
+    errEl.style.display = 'none';
+
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        localStorage.setItem('ts_admin_token', data.token);
+        localStorage.setItem('ts_admin_user', JSON.stringify(data.admin));
+        window.location.href = '/admin/dashboard.html';
+      } else {
+        errEl.textContent = data.message || 'Invalid credentials.';
+        errEl.style.display = 'block';
+      }
+    } catch (err) {
+      errEl.textContent = 'Connection error. Make sure the server is running.';
+      errEl.style.display = 'block';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Sign In';
+    }
+  });
+</script>
+</body>
+</html>

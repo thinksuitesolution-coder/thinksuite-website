@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="assets/img/fevicon.svg">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Careers at ThinkSuite | Join Our Team in Gurgaon & Remote</title>
+<meta name="description" content="Join ThinkSuite and work on real AI, software, and marketing challenges. Explore open roles in Gurgaon and remote. We hire doers, not talkers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="author" content="ThinkSuite">
+<meta name="keywords" content="ThinkSuite careers, jobs in Gurgaon, digital marketing jobs, AI jobs India, software developer jobs, work at ThinkSuite">
+<link rel="canonical" href="https://thinksuite.in/careers.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thinksuite.in/careers.html">
+<meta property="og:title" content="Careers at ThinkSuite | Join Our Team">
+<meta property="og:description" content="Join ThinkSuite and work on real AI, software, and marketing challenges. Explore open roles in Gurgaon and remote.">
+<meta property="og:site_name" content="ThinkSuite">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Careers at ThinkSuite | Join Our Team">
+<meta name="twitter:description" content="Join ThinkSuite and work on real AI, software, and marketing challenges.">
+<style>
+/* ── CAREERS PAGE STYLES ── */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+.why-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px 28px;
+  transition: border-color .25s, transform .25s;
+}
+.why-card:hover {
+  border-color: var(--cyan);
+  transform: translateY(-4px);
+}
+.why-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: rgba(108,99,255,.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; color: var(--purple);
+  margin-bottom: 20px;
+}
+.why-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.why-text { font-size: 14px; color: var(--text2); line-height: 1.7; }
+
+.perks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 48px;
+}
+.perk-item {
+  display: flex; align-items: flex-start; gap: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 20px;
+}
+.perk-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: 10px;
+  background: rgba(0,212,255,.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; color: var(--cyan);
+}
+.perk-text h6 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.perk-text p { font-size: 13px; color: var(--text2); margin: 0; }
+
+.jobs-grid {
+  display: flex; flex-direction: column; gap: 20px;
+  margin-top: 48px;
+}
+.job-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  transition: border-color .25s;
+}
+.job-card:hover { border-color: var(--purple); }
+.job-info { flex: 1; }
+.job-title { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+.job-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.job-tag {
+  font-size: 12px; font-weight: 600;
+  padding: 4px 12px; border-radius: 20px;
+  background: rgba(108,99,255,.1); color: var(--purple);
+}
+.job-tag.remote { background: rgba(0,212,255,.1); color: var(--cyan); }
+.job-tag.intern { background: rgba(255,159,67,.1); color: #ff9f43; }
+.job-desc { font-size: 14px; color: var(--text2); margin-top: 12px; line-height: 1.7; max-width: 600px; }
+.job-apply { flex-shrink: 0; }
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0;
+  margin-top: 48px;
+  position: relative;
+}
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 36px; left: 12%; right: 12%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--purple), var(--cyan));
+  z-index: 0;
+}
+.process-step {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 16px;
+}
+.step-num {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--purple);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-m);
+  font-size: 22px; font-weight: 700; color: var(--purple);
+  margin: 0 auto 20px;
+}
+.step-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.step-text { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+.open-apply-box {
+  background: linear-gradient(135deg, rgba(108,99,255,.12), rgba(0,212,255,.08));
+  border: 1px solid rgba(108,99,255,.25);
+  border-radius: 24px;
+  padding: 56px 40px;
+  text-align: center;
+  margin-top: 64px;
+}
+.open-apply-box h2 { margin-bottom: 16px; }
+.open-apply-box p { color: var(--text2); max-width: 520px; margin: 0 auto 32px; line-height: 1.7; }
+
+@media (max-width: 768px) {
+  .job-card { flex-direction: column; align-items: flex-start; }
+  .process-steps::before { display: none; }
+}
+</style>
+</head>
+<body>
+<!-- BG Blobs -->
+<div class="blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="/" class="logo">Think<span>Suite</span></a>
+    <div class="nav-links">
+      <div class="nav-item">
+        <a href="/" class="nav-link">Home <i class="fas fa-chevron-down" style="font-size:9px;opacity:.5;margin-left:2px"></i></a>
+        <div class="dropdown">
+          <a href="https://thinkvirtual.in" target="_blank" class="dropdown-link">ThinkVirtual (ThinkV)</a>
+          <a href="#" class="dropdown-link">THINKAI</a>
+          <a href="#" class="dropdown-link">ThinkVdesk (Venture Desk)</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="service.html" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:9px;opacity:.5;margin-left:2px"></i></a>
+        <div class="mega-dropdown">
+          <div class="mega-grid">
+            <div>
+              <div class="mega-col-title">Software Dev</div>
+              <a href="web-development.html" class="mega-link">Web Development</a>
+              <a href="mobile-app-development.html" class="mega-link">Mobile App Development</a>
+              <a href="custom-software.html" class="mega-link">Custom Software</a>
+              <a href="saas-products.html" class="mega-link">SaaS Products</a>
+            </div>
+            <div>
+              <div class="mega-col-title">Digital Marketing</div>
+              <a href="seo-optimization.html" class="mega-link">AI SEO Optimization</a>
+              <a href="social-media-marketing.html" class="mega-link">AI Social Media Marketing</a>
+              <a href="google-meta-ads.html" class="mega-link">AI Google & Meta Ads</a>
+              <a href="content-marketing.html" class="mega-link">AI Content Marketing</a>
+            </div>
+            <div>
+              <div class="mega-col-title">Branding & Design</div>
+              <a href="ui-ux-design.html" class="mega-link">UI/UX Design</a>
+              <a href="brand-identity.html" class="mega-link">Brand Identity</a>
+              <a href="graphic-design.html" class="mega-link">Graphic Design</a>
+              <a href="product-design.html" class="mega-link">Product Design</a>
+            </div>
+            <div>
+              <div class="mega-col-title">AI & Automation</div>
+              <a href="ai-tools-development.html" class="mega-link">AI Tools Development</a>
+              <a href="chatbot-solutions.html" class="mega-link">Chatbot Solutions</a>
+              <a href="workflow-automation.html" class="mega-link">Workflow Automation</a>
+              <a href="ai-marketing-systems.html" class="mega-link">AI Marketing Systems</a>
+            </div>
+            <div>
+              <div class="mega-col-title">Media & Advertising</div>
+              <a href="indoor-advertising.html" class="mega-link">Indoor Advertising</a>
+              <a href="outdoor-advertising.html" class="mega-link">Outdoor Advertising</a>
+              <a href="influencer-marketing.html" class="mega-link">Influencer Marketing</a>
+              <a href="pr-campaigns.html" class="mega-link">PR Campaigns</a>
+            </div>
+            <div>
+              <div class="mega-col-title">Consulting & Growth</div>
+              <a href="startup-consulting.html" class="mega-link">Startup Consulting</a>
+              <a href="business-strategy.html" class="mega-link">Business Strategy</a>
+              <a href="growth-planning.html" class="mega-link">Growth Planning</a>
+              <a href="market-research.html" class="mega-link">Market Research</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html" class="nav-link">About <i class="fas fa-chevron-down" style="font-size:9px;opacity:.5;margin-left:2px"></i></a>
+        <div class="dropdown">
+          <a href="about.html" class="dropdown-link">About Us</a>
+          <a href="team-details.html" class="dropdown-link">Our Team</a>
+        </div>
+      </div>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <a href="contact.html" class="btn btn-primary nav-cta btn-sm">Start Project <i class="fas fa-arrow-right"></i></a>
+    <div class="hamburger" id="ham">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mClose"><i class="fas fa-times"></i></button>
+  <div style="margin-bottom:32px"><a href="/" class="footer-logo" style="font-size:28px">Think<span>Suite</span></a></div>
+  <a href="/" class="mobile-nav-link">Home</a>
+  <div class="mobile-nav-link mobile-toggle">Services <i class="fas fa-plus"></i></div>
+  <div class="mobile-sub">
+    <div class="mobile-sub-cat">Software Dev</div>
+    <a href="web-development.html" class="mobile-sub-link">Web Development</a>
+    <a href="mobile-app-development.html" class="mobile-sub-link">Mobile App Development</a>
+    <a href="custom-software.html" class="mobile-sub-link">Custom Software</a>
+    <a href="saas-products.html" class="mobile-sub-link">SaaS Products</a>
+    <div class="mobile-sub-cat">Digital Marketing</div>
+    <a href="seo-optimization.html" class="mobile-sub-link">AI SEO Optimization</a>
+    <a href="social-media-marketing.html" class="mobile-sub-link">AI Social Media Marketing</a>
+    <a href="google-meta-ads.html" class="mobile-sub-link">AI Google & Meta Ads</a>
+    <a href="content-marketing.html" class="mobile-sub-link">AI Content Marketing</a>
+    <div class="mobile-sub-cat">Branding & Design</div>
+    <a href="ui-ux-design.html" class="mobile-sub-link">UI/UX Design</a>
+    <a href="brand-identity.html" class="mobile-sub-link">Brand Identity</a>
+    <a href="graphic-design.html" class="mobile-sub-link">Graphic Design</a>
+    <a href="product-design.html" class="mobile-sub-link">Product Design</a>
+    <div class="mobile-sub-cat">AI & Automation</div>
+    <a href="ai-tools-development.html" class="mobile-sub-link">AI Tools Development</a>
+    <a href="chatbot-solutions.html" class="mobile-sub-link">Chatbot Solutions</a>
+    <a href="workflow-automation.html" class="mobile-sub-link">Workflow Automation</a>
+    <a href="ai-marketing-systems.html" class="mobile-sub-link">AI Marketing Systems</a>
+    <div class="mobile-sub-cat">Media & Advertising</div>
+    <a href="indoor-advertising.html" class="mobile-sub-link">Indoor Advertising</a>
+    <a href="outdoor-advertising.html" class="mobile-sub-link">Outdoor Advertising</a>
+    <a href="influencer-marketing.html" class="mobile-sub-link">Influencer Marketing</a>
+    <a href="pr-campaigns.html" class="mobile-sub-link">PR Campaigns</a>
+    <div class="mobile-sub-cat">Consulting & Growth</div>
+    <a href="startup-consulting.html" class="mobile-sub-link">Startup Consulting</a>
+    <a href="business-strategy.html" class="mobile-sub-link">Business Strategy</a>
+    <a href="growth-planning.html" class="mobile-sub-link">Growth Planning</a>
+    <a href="market-research.html" class="mobile-sub-link">Market Research</a>
+  </div>
+  <a href="about.html" class="mobile-nav-link">About</a>
+  <a href="team-details.html" class="mobile-nav-link">Team</a>
+  <a href="contact.html" class="mobile-nav-link">Contact</a>
+  <div style="margin-top:40px"><a href="contact.html" class="btn btn-primary">Start Project <i class="fas fa-arrow-right"></i></a></div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container" style="position:relative;z-index:2">
+    <div class="breadcrumb" style="margin-bottom:20px"><a href="/">Home</a><span>/</span><span style="color:rgba(255,255,255,.6)">Careers</span></div>
+    <span class="label">We're Hiring</span>
+    <h1 style="margin-top:14px">Build the Future<br>with <span class="gradient-text">ThinkSuite</span></h1>
+    <p style="color:var(--text2);max-width:560px;margin-top:16px;font-size:17px">We don't hire for titles. We hire for thinking. If you solve real problems, move fast, and want your work to matter — you'll fit right in.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:32px">
+      <a href="#open-positions" class="btn btn-primary">View Open Roles <i class="fas fa-arrow-down"></i></a>
+      <a href="mailto:careers@thinksuite.in" class="btn btn-outline">Send Your Resume</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THINKSUITE -->
+<section class="section">
+  <div class="container">
+    <span class="label">Why Join Us</span>
+    <h2 style="margin-top:14px;max-width:540px">A Place Where Your<br>Work Actually Moves Things</h2>
+    <p style="color:var(--text2);margin-top:12px;max-width:560px">ThinkSuite operates at the edge of AI, software, and business strategy. The work here is fast, real, and consequential.</p>
+
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fas fa-bolt"></i></div>
+        <div class="why-title">Ownership From Day One</div>
+        <div class="why-text">You're not a cog. Every person here owns a piece of the output. Ideas move from conversation to live product in weeks, not quarters.</div>
+      </div>
+      <div class="why-card reveal reveal-d1">
+        <div class="why-icon"><i class="fas fa-robot"></i></div>
+        <div class="why-title">Work With Real AI</div>
+        <div class="why-text">We build AI systems for clients and use AI internally to move faster. You'll be working with cutting-edge tools, not just talking about them.</div>
+      </div>
+      <div class="why-card reveal reveal-d2">
+        <div class="why-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="why-title">Grow Without a Ceiling</div>
+        <div class="why-text">We're a growing company. Every senior person here started junior. Progression is based on contribution, not time served.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fas fa-users"></i></div>
+        <div class="why-title">Work With Clients Who Matter</div>
+        <div class="why-text">Our clients are founders building serious businesses. You'll learn what it actually takes to scale from zero to real revenue.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERKS & BENEFITS -->
+<section class="section section--dark">
+  <div class="container">
+    <span class="label">Perks & Benefits</span>
+    <h2 style="margin-top:14px">What You Get<br>Beyond the Salary</h2>
+
+    <div class="perks-grid">
+      <div class="perk-item reveal">
+        <div class="perk-icon"><i class="fas fa-laptop-house"></i></div>
+        <div class="perk-text"><h6>Remote & Hybrid</h6><p>Work from our Gurgaon office or remotely. We care about output, not location.</p></div>
+      </div>
+      <div class="perk-item reveal reveal-d1">
+        <div class="perk-icon"><i class="fas fa-clock"></i></div>
+        <div class="perk-text"><h6>Flexible Hours</h6><p>Core hours exist, but we don't micromanage your schedule. Deliver and we're happy.</p></div>
+      </div>
+      <div class="perk-item reveal reveal-d2">
+        <div class="perk-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="perk-text"><h6>Learning Budget</h6><p>Courses, tools, certifications. We invest in your growth because it benefits everyone.</p></div>
+      </div>
+      <div class="perk-item reveal">
+        <div class="perk-icon"><i class="fas fa-hand-holding-usd"></i></div>
+        <div class="perk-text"><h6>Performance Bonus</h6><p>Deliver results and you get rewarded. No politics, no waiting for an annual cycle.</p></div>
+      </div>
+      <div class="perk-item reveal reveal-d1">
+        <div class="perk-icon"><i class="fas fa-comments"></i></div>
+        <div class="perk-text"><h6>Direct Founder Access</h6><p>You'll work with leadership directly. No layers of management blocking good ideas.</p></div>
+      </div>
+      <div class="perk-item reveal reveal-d2">
+        <div class="perk-icon"><i class="fas fa-rocket"></i></div>
+        <div class="perk-text"><h6>Fast Career Progression</h6><p>Stand out and move up fast. We promote based on impact, nothing else.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPEN POSITIONS -->
+<section class="section" id="open-positions">
+  <div class="container">
+    <span class="label">Open Positions</span>
+    <h2 style="margin-top:14px">Current Openings</h2>
+    <p style="color:var(--text2);margin-top:12px">Roles across tech, marketing, design, and business. All positions are open for immediate joining unless noted.</p>
+
+    <div class="jobs-grid">
+
+      <div class="job-card reveal">
+        <div class="job-info">
+          <div class="job-title">AI/ML Engineer</div>
+          <div class="job-tags">
+            <span class="job-tag">Engineering</span>
+            <span class="job-tag remote">Remote / Gurgaon</span>
+            <span class="job-tag">Full-time</span>
+          </div>
+          <div class="job-desc">Build AI-powered tools, automation pipelines, and intelligent systems for ThinkSuite clients. Strong Python and LLM integration experience preferred.</div>
+        </div>
+        <div class="job-apply">
+          <a href="mailto:careers@thinksuite.in?subject=Application: AI/ML Engineer" class="btn btn-primary btn-sm">Apply Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="job-card reveal reveal-d1">
+        <div class="job-info">
+          <div class="job-title">Frontend Developer (React / Next.js)</div>
+          <div class="job-tags">
+            <span class="job-tag">Engineering</span>
+            <span class="job-tag remote">Remote</span>
+            <span class="job-tag">Full-time</span>
+          </div>
+          <div class="job-desc">Build fast, modern web applications for clients and internal products. Strong React skills required. Next.js, TypeScript, and Tailwind are a plus.</div>
+        </div>
+        <div class="job-apply">
+          <a href="mailto:careers@thinksuite.in?subject=Application: Frontend Developer" class="btn btn-primary btn-sm">Apply Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="job-card reveal">
+        <div class="job-info">
+          <div class="job-title">Digital Marketing Manager</div>
+          <div class="job-tags">
+            <span class="job-tag">Marketing</span>
+            <span class="job-tag remote">Gurgaon</span>
+            <span class="job-tag">Full-time</span>
+          </div>
+          <div class="job-desc">Manage end-to-end SEO, paid ads (Google & Meta), and content campaigns for multiple client accounts. Must have 2+ years of hands-on experience with measurable results.</div>
+        </div>
+        <div class="job-apply">
+          <a href="mailto:careers@thinksuite.in?subject=Application: Digital Marketing Manager" class="btn btn-primary btn-sm">Apply Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="job-card reveal reveal-d1">
+        <div class="job-info">
+          <div class="job-title">UI/UX Designer</div>
+          <div class="job-tags">
+            <span class="job-tag">Design</span>
+            <span class="job-tag remote">Remote / Gurgaon</span>
+            <span class="job-tag">Full-time</span>
+          </div>
+          <div class="job-desc">Design product interfaces, brand assets, and marketing visuals. Proficiency in Figma required. Experience designing for SaaS or mobile apps is a strong advantage.</div>
+        </div>
+        <div class="job-apply">
+          <a href="mailto:careers@thinksuite.in?subject=Application: UI/UX Designer" class="btn btn-primary btn-sm">Apply Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="job-card reveal">
+        <div class="job-info">
+          <div class="job-title">Business Development Executive</div>
+          <div class="job-tags">
+            <span class="job-tag">Sales</span>
+            <span class="job-tag remote">Gurgaon</span>
+            <span class="job-tag">Full-time</span>
+          </div>
+          <div class="job-desc">Own the sales pipeline from lead generation to closure. Ideal candidate understands tech and marketing services and can consult clients on the right solution, not just sell packages.</div>
+        </div>
+        <div class="job-apply">
+          <a href="mailto:careers@thinksuite.in?subject=Application: Business Development Executive" class="btn btn-primary btn-sm">Apply Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="job-card reveal reveal-d1">
+        <div class="job-info">
+          <div class="job-title">Social Media & Content Creator</div>
+          <div class="job-tags">
+            <span class="job-tag">Marketing</span>
+            <span class="job-tag remote">Gurgaon / Hybrid</span>
+            <span class="job-tag intern">Internship</span>
+          </div>
+          <div class="job-desc">Create compelling content for LinkedIn, Instagram, and YouTube Shorts. Strong writing, basic video editing, and an eye for trends. Internship with conversion to full-time for top performers.</div>
+        </div>
+        <div class="job-apply">
+          <a href="mailto:careers@thinksuite.in?subject=Application: Social Media Intern" class="btn btn-primary btn-sm">Apply Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HIRING PROCESS -->
+<section class="section section--dark">
+  <div class="container">
+    <span class="label">How We Hire</span>
+    <h2 style="margin-top:14px;text-align:center">A Process That Respects<br>Your Time</h2>
+    <p style="color:var(--text2);text-align:center;margin-top:12px;max-width:480px;margin-left:auto;margin-right:auto">No 6-round interviews. No ghost forms. We keep it simple and move fast.</p>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Apply</div>
+        <div class="step-text">Send your resume and a short note on why you're a fit to careers@thinksuite.in. No cover letter novels needed.</div>
+      </div>
+      <div class="process-step reveal reveal-d1">
+        <div class="step-num">02</div>
+        <div class="step-title">Screening Call</div>
+        <div class="step-text">A 20-minute call with our team. We discuss your background, the role, and whether expectations align on both sides.</div>
+      </div>
+      <div class="process-step reveal reveal-d2">
+        <div class="step-num">03</div>
+        <div class="step-title">Task / Interview</div>
+        <div class="step-text">A short, paid practical task or a 45-minute technical conversation. We evaluate real skill, not textbook answers.</div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">04</div>
+        <div class="step-title">Offer</div>
+        <div class="step-text">If it's a fit, we move to an offer within 5 business days. Joining timelines are flexible where possible.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GENERAL APPLICATION CTA -->
+<section class="section">
+  <div class="container">
+    <div class="open-apply-box reveal">
+      <span class="label" style="margin-bottom:20px;display:inline-block">Don't See a Perfect Fit?</span>
+      <h2>Send Us Your Resume Anyway</h2>
+      <p>We regularly open new roles as the team grows. If you're talented and driven, we'd love to have you on our radar. Drop us a line with what you do and what you're looking for.</p>
+      <a href="mailto:careers@thinksuite.in" class="btn btn-primary btn-lg">Email careers@thinksuite.in <i class="fas fa-paper-plane"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Think<span>Suite</span></div>
+        <p>ThinkSuite is a technology-driven IT solutions company delivering smart, scalable, and result-oriented digital services. We specialise in AI, digital marketing, software development, and business automation.</p>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/company/107802546/" class="footer-social" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/thinksuite/" class="footer-social" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/919311821726" class="footer-social" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="footer-social"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <div class="footer-links">
+          <a href="about.html" class="footer-link">About Us</a>
+          <a href="team-details.html" class="footer-link">Meet Our Team</a>
+          <a href="service.html" class="footer-link">All Services</a>
+          <a href="faq.html" class="footer-link">Help & FAQs</a>
+          <a href="contact.html" class="footer-link">Contact Us</a>
+          <a href="careers.html" class="footer-link active">Careers</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <div class="footer-links">
+          <a href="software-development.html" class="footer-link">Software Development</a>
+          <a href="digital-marketing.html" class="footer-link">Digital Marketing</a>
+          <a href="ai-automation.html" class="footer-link">AI & Automation</a>
+          <a href="branding-design.html" class="footer-link">Branding & Design</a>
+          <a href="media-advertising.html" class="footer-link">Media & Advertising</a>
+          <a href="consulting-growth.html" class="footer-link">Consulting & Growth</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Ecosystem</h5>
+        <div class="footer-links">
+          <a href="https://thinkvirtual.in" target="_blank" class="footer-link">ThinkVirtual (ThinkV)</a>
+          <a href="#" class="footer-link">THINKAI</a>
+          <a href="#" class="footer-link">ThinkVdesk</a>
+        </div>
+        <div style="margin-top:28px;padding:20px;background:rgba(0,212,255,0.05);border:1px solid rgba(0,212,255,0.12);border-radius:12px">
+          <div style="font-family:var(--font-m);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text2);margin-bottom:10px">Contact</div>
+          <div style="font-size:13px;color:var(--text);margin-bottom:6px"><i class="fas fa-phone" style="color:var(--cyan);margin-right:8px;font-size:11px"></i>+91 9311821726</div>
+          <div style="font-size:13px;color:var(--text);margin-bottom:6px"><i class="fas fa-envelope" style="color:var(--cyan);margin-right:8px;font-size:11px"></i>info@thinksuite.in</div>
+          <div style="font-size:13px;color:var(--text)"><i class="fas fa-location-dot" style="color:var(--cyan);margin-right:8px;font-size:11px"></i>SaS Tower, Gurgaon</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 ThinkSuite. All Rights Reserved.</div>
+      <div class="footer-legal">
+        <a href="terms-and-conditions.html">Terms & Conditions</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(run)",
+      "Skill(run:*)",
+      "PowerShell(Start-Process -NoNewWindow -FilePath \"npm\" -ArgumentList \"run dev\" -WorkingDirectory \"C:\\\\Users\\\\Aakash\\\\Desktop\\\\Personal\\\\ThinkSuiteNextJS\" -PassThru)",
+      "WebFetch(domain:localhost)",
+      "Bash(curl -s \"http://localhost:3000/_next/static/css/app/layout.css?v=1781776142285\")",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(echo \"HTTP: $?\")",
+      "Bash(curl -s \"http://localhost:3000/_next/static/css/app/layout.css?v=1781776245743\")",
+      "Bash(taskkill /PID 17460 /F)",
+      "Bash(kill -9 17460)",
+      "Bash(rm -rf .next)",
+      "Bash(npm run *)",
+      "Bash(grep -v \"//\\\\|node_modules\")",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3002\" -UseBasicParsing -TimeoutSec 30)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3002\" -UseBasicParsing -TimeoutSec 20)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3000\" -UseBasicParsing -TimeoutSec 20)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3000\" -UseBasicParsing -TimeoutSec 30)"
+    ]
+  }
+}

@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Editor — ThinkSuite Admin</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236C63FF'/><text y='.9em' font-size='70' x='15' fill='white' font-weight='900'>T</text></svg>">
+  <link rel="stylesheet" href="css/admin.css">
+  <style>
+    .editor-layout { display:grid; grid-template-columns:1fr 340px; gap:24px; align-items:start; }
+    .content-preview { display:none; padding:24px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.07); border-radius:12px; margin-top:12px; min-height:200px; font-size:.9375rem; line-height:1.7; color:var(--gray-300); }
+    .content-preview h2 { color:white; font-size:1.5rem; margin:24px 0 12px; }
+    .content-preview h3 { color:white; font-size:1.25rem; margin:20px 0 10px; }
+    .content-preview p { margin-bottom:14px; }
+    .content-preview blockquote { border-left:3px solid var(--purple-500); padding:12px 20px; background:rgba(108,99,255,.06); margin:16px 0; border-radius:0 8px 8px 0; font-style:italic; }
+    @media(max-width:1100px){.editor-layout{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <div class="sidebar-logo"><div class="sidebar-logo-mark">T</div>ThinkSuite<span class="sidebar-badge">Admin</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a href="dashboard.html" class="sidebar-link"><svg class="sidebar-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>Dashboard</a>
+      <div class="nav-section-label" style="margin-top:16px">Content</div>
+      <a href="blogs.html" class="sidebar-link active"><svg class="sidebar-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd"/></svg>Blog Posts</a>
+      <a href="projects.html" class="sidebar-link"><svg class="sidebar-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>Projects</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="admin-user"><div class="admin-avatar" id="sidebar-avatar">A</div><div><div class="admin-name" id="sidebar-name">Admin</div><div class="admin-role" id="sidebar-role">Super Admin</div></div></div>
+      <button id="logout-btn" class="sidebar-link" style="width:100%;margin-top:8px;color:var(--red-500)"><svg class="sidebar-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>Sign Out</button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <span class="topbar-title" id="editor-page-title">New Blog Post</span>
+      <div class="topbar-actions">
+        <a href="blogs.html" class="topbar-btn topbar-btn-ghost">← Back to Posts</a>
+        <button type="submit" form="blog-form" class="topbar-btn topbar-btn-primary" id="save-btn">Save Post</button>
+      </div>
+    </div>
+
+    <div class="admin-body">
+      <div id="alert-container"></div>
+
+      <form id="blog-form" enctype="multipart/form-data">
+        <div class="editor-layout">
+          <!-- LEFT: Main Content -->
+          <div>
+            <!-- Title & Slug -->
+            <div class="form-section">
+              <div class="form-section-title">📝 Post Details</div>
+              <div class="form-group" style="margin-bottom:16px">
+                <label class="form-label" for="title">Post Title *</label>
+                <input class="form-input" type="text" id="title" name="title" placeholder="Enter a compelling post title…" required style="font-size:1.125rem;font-weight:600">
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="slug">URL Slug</label>
+                  <input class="form-input" type="text" id="slug" name="slug" placeholder="auto-generated-from-title">
+                  <span class="form-hint">yourdomain.com/blog/<strong>slug</strong></span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="category">Category</label>
+                  <select class="form-input" id="category" name="category">
+                    <option value="Insights">Insights</option>
+                    <option value="Systems Thinking">Systems Thinking</option>
+                    <option value="Automation">Automation</option>
+                    <option value="AI Systems">AI Systems</option>
+                    <option value="Growth">Growth</option>
+                    <option value="Case Studies">Case Studies</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="excerpt">Excerpt / Summary</label>
+                <textarea class="form-input" id="excerpt" name="excerpt" rows="3" placeholder="A short description shown in listing pages and search results…" style="min-height:80px"></textarea>
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="tags">Tags (comma-separated)</label>
+                  <input class="form-input" type="text" id="tags" name="tags" placeholder="automation, AI, business systems">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="read_time">Read Time (minutes)</label>
+                  <input class="form-input" type="number" id="read_time" name="read_time" value="5" min="1" max="60">
+                </div>
+              </div>
+            </div>
+
+            <!-- Content Editor -->
+            <div class="form-section">
+              <div class="form-section-title">✍️ Content</div>
+              <div class="editor-toolbar">
+                <button type="button" class="editor-btn" id="tb-h2">H2</button>
+                <button type="button" class="editor-btn" id="tb-h3">H3</button>
+                <div class="editor-sep"></div>
+                <button type="button" class="editor-btn" id="tb-bold"><strong>B</strong></button>
+                <button type="button" class="editor-btn" id="tb-italic"><em>I</em></button>
+                <button type="button" class="editor-btn" id="tb-link">🔗</button>
+                <div class="editor-sep"></div>
+                <button type="button" class="editor-btn" id="tb-ul">• List</button>
+                <button type="button" class="editor-btn" id="tb-ol">1. List</button>
+                <button type="button" class="editor-btn" id="tb-quote">" Quote</button>
+                <button type="button" class="editor-btn" id="tb-p">¶ Para</button>
+                <div class="editor-sep"></div>
+                <button type="button" class="editor-btn" id="tb-preview">👁️ Preview</button>
+              </div>
+              <textarea class="editor-area" id="content-area" name="content" placeholder="Write your post content in HTML…&#10;&#10;Example:&#10;&lt;h2&gt;Section Title&lt;/h2&gt;&#10;&lt;p&gt;Your paragraph content here.&lt;/p&gt;"></textarea>
+              <div id="content-preview" class="content-preview"></div>
+            </div>
+
+            <!-- SEO -->
+            <div class="form-section">
+              <div class="form-section-title">🔍 SEO Settings</div>
+              <div class="form-group" style="margin-bottom:16px">
+                <label class="form-label" for="meta_title">Meta Title</label>
+                <input class="form-input" type="text" id="meta_title" name="meta_title" placeholder="SEO optimized title (50-60 chars ideal)">
+              </div>
+              <div class="form-group" style="margin-bottom:16px">
+                <label class="form-label" for="meta_description">Meta Description</label>
+                <textarea class="form-input" id="meta_description" name="meta_description" rows="3" placeholder="SEO description shown in search results (150-160 chars ideal)" style="min-height:80px"></textarea>
+                <div class="form-char-count" id="meta-desc-count">0/160</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="meta_keywords">Meta Keywords</label>
+                <input class="form-input" type="text" id="meta_keywords" name="meta_keywords" placeholder="keyword1, keyword2, keyword3">
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Sidebar -->
+          <div>
+            <!-- Publish -->
+            <div class="form-section">
+              <div class="form-section-title">🚀 Publishing</div>
+              <div class="publish-toggle">
+                <div class="toggle-label">
+                  <h5>Publish Post</h5>
+                  <p>Make visible on website</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="publish-toggle" name="publish">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div style="margin-top:16px;display:flex;gap:10px">
+                <button type="submit" form="blog-form" class="btn-save" style="flex:1;justify-content:center" id="save-btn-sidebar">Save</button>
+                <a href="blogs.html" class="btn-cancel">Cancel</a>
+              </div>
+            </div>
+
+            <!-- Featured Image -->
+            <div class="form-section">
+              <div class="form-section-title">🖼️ Featured Image</div>
+              <div id="image-preview"></div>
+              <label class="image-upload-zone" id="upload-zone">
+                <input type="file" id="image" name="image" accept="image/*">
+                <div class="upload-icon">📸</div>
+                <div class="upload-text">Click to upload image</div>
+                <div class="upload-hint">JPEG, PNG, WebP — Max 5MB</div>
+              </label>
+            </div>
+
+            <!-- Tips -->
+            <div class="form-section" style="background:rgba(108,99,255,.06);border-color:rgba(108,99,255,.15)">
+              <div class="form-section-title" style="color:var(--purple-400)">💡 Writing Tips</div>
+              <ul style="display:flex;flex-direction:column;gap:10px;list-style:none;padding:0">
+                <li style="font-size:.8125rem;color:var(--gray-400);display:flex;gap:8px"><span>→</span> Use H2 for main sections, H3 for subsections</li>
+                <li style="font-size:.8125rem;color:var(--gray-400);display:flex;gap:8px"><span>→</span> Keep paragraphs short and scannable</li>
+                <li style="font-size:.8125rem;color:var(--gray-400);display:flex;gap:8px"><span>→</span> Include specific data points and examples</li>
+                <li style="font-size:.8125rem;color:var(--gray-400);display:flex;gap:8px"><span>→</span> Meta description: 150-160 chars for best SEO</li>
+                <li style="font-size:.8125rem;color:var(--gray-400);display:flex;gap:8px"><span>→</span> Toggle Preview to check HTML formatting</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script src="js/admin.js"></script>
+<script>ThinkAdmin.initBlogEditor();</script>
+</body>
+</html>
