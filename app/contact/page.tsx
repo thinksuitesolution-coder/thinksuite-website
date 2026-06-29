@@ -107,7 +107,7 @@ export default function ContactPage() {
       <section style={{ paddingTop: 0 }}>
         <div style={{ width: '100%', height: 420, position: 'relative' }}>
           <iframe
-            src="https://maps.google.com/maps?q=ThinkSuite+Solutions,+Gurgaon,+Haryana,+India&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            src="https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1sThinkSuite+Solutions,+Gurgaon,+Haryana,+India!6i15"
             width="100%"
             height="420"
             style={{ border: 0, display: 'block' }}
