@@ -17,6 +17,7 @@ const companyLinks = [
   { label: 'Team', href: '/team' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
+  { label: 'Careers', href: '/careers' },
 ]
 
 const legalLinks = [
