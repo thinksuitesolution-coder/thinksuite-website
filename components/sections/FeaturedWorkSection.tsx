@@ -152,7 +152,7 @@ export default function FeaturedWorkSection() {
                     <h3 className="fw-slide-title">{p.title}</h3>
                     <p className="fw-slide-tags">{p.tags}</p>
                   </div>
-                  <Link href="/work" className="fw-slide-cta" aria-label="View project">
+                  <Link href="/projects" className="fw-slide-cta" aria-label="View project">
                     <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
                       <circle cx="21" cy="21" r="20" stroke="currentColor" strokeWidth="1.5"/>
                       <path d="M14 21h14M21 14l7 7-7 7" stroke="currentColor" strokeWidth="1.5"
@@ -165,7 +165,7 @@ export default function FeaturedWorkSection() {
           </div>
         </div>
 
-        <Link href="/work" className="fw-explore-btn">
+        <Link href="/projects" className="fw-explore-btn">
           Explore More Projects
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5"

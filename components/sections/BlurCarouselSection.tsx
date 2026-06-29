@@ -14,7 +14,7 @@ const slides = [
     desc: 'A clean, donation-ready website for a non-profit organisation, built to build trust, communicate impact, and drive volunteer sign-ups through clear storytelling.',
     bg: 'linear-gradient(135deg,#16a34a 0%,#065f46 100%)',
     img: '/projects/ngo-website.jpg',
-    href: '/work',
+    href: '/projects',
   },
   {
     num: '02',
@@ -23,7 +23,7 @@ const slides = [
     desc: 'Full-stack jewellery store with product catalogue, wishlist, and checkout, designed to reflect the brand\'s premium positioning and grow organic traffic.',
     bg: 'linear-gradient(135deg,#b45309 0%,#92400e 100%)',
     img: '/projects/jewellery-ecommerce.jpg',
-    href: '/work',
+    href: '/projects',
   },
   {
     num: '03',
@@ -32,7 +32,7 @@ const slides = [
     desc: 'Professional static website for a medical practice, built for fast load times, local SEO, and clear patient-facing information across desktop and mobile.',
     bg: 'linear-gradient(135deg,#1a237e 0%,#0891b2 100%)',
     img: '/projects/medical-website.jpg',
-    href: '/work',
+    href: '/projects',
   },
   {
     num: '04',
@@ -41,7 +41,7 @@ const slides = [
     desc: 'LinkedIn-style networking platform with profiles, connection requests, industry feeds, and messaging, built for a niche professional community.',
     bg: 'linear-gradient(135deg,#1a237e 0%,#00bcd4 100%)',
     img: '/projects/networking-platform.jpg',
-    href: '/work',
+    href: '/projects',
   },
   {
     num: '05',
@@ -50,7 +50,7 @@ const slides = [
     desc: 'End-to-end WhatsApp automation system covering lead nurturing, appointment booking, and customer support, integrated with CRM and triggered by real business events.',
     bg: 'linear-gradient(135deg,#15803d 0%,#166534 100%)',
     img: '/projects/whatsapp-automation.jpg',
-    href: '/work',
+    href: '/projects',
   },
   {
     num: '06',
@@ -59,7 +59,7 @@ const slides = [
     desc: 'Full-suite social media handling across Instagram, LinkedIn, and Facebook for brands in fashion, food, and healthcare, covering content, scheduling, and growth.',
     bg: 'linear-gradient(135deg,#7c3aed 0%,#ea580c 100%)',
     img: '/projects/social-media-handling.jpg',
-    href: '/work',
+    href: '/projects',
   },
 ]
 
