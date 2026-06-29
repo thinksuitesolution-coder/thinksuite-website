@@ -111,3 +111,26 @@ ThinkSuiteNew/
 - [ ] careers@thinksuite.in email address verify/setup karna (job apply links use karte hain)
 - [ ] Career page ke liye banner image add karna (assets/img/website-banner/careers.svg)
 - [ ] ThinkSuiteNext ke saath sync rakhna
+
+---
+
+### 2026-06-29 (Deployment Session)
+**Task: GitHub Push — HTML Version**
+
+**What was done:**
+- Git repo initialize kiya `ThinkSuiteNew/ThinkSuiteNew` folder mein
+- Remote add kiya: `https://github.com/thinksuitesolution-coder/thinksuite-website`
+- Problem discover hui: remote repo pe Next.js version tha (master branch — `app/`, `components/`, `.tsx` files)
+- HTML version ko `html-site` branch pe push kiya — master ka Next.js code safe rakha
+- `.gitignore` add kiya (node_modules, backend/.env, uploads, logs)
+- 361 files pushed successfully
+
+**Branch Structure (GitHub):**
+- `master` — Next.js version (ThinkSuiteNext)
+- `html-site` — HTML version (ThinkSuiteNew) ← current production code
+
+**Repo URL:** https://github.com/thinksuitesolution-coder/thinksuite-website/tree/html-site
+
+**Pending Decision:**
+- [ ] Decide karna hai — `html-site` ko `master` banana hai ya alag rakhna
+- [ ] Hosting pe deploy karna hai — cPanel mein `html-site` branch select karna
