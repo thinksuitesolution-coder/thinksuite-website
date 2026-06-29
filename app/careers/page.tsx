@@ -2,55 +2,10 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Careers at ThinkSuite | Join Our Team in Gurgaon & Remote',
-  description: 'Join ThinkSuite and work on real AI, software, and marketing challenges. Explore open roles in Gurgaon and remote. We hire doers, not talkers.',
+  title: 'Careers at ThinkSuite | Join Our Team in Gurgaon',
+  description: 'Explore opportunities at ThinkSuite. We work at the intersection of AI, software, and marketing. Send us your resume and we\'ll be in touch when roles open.',
   keywords: ['ThinkSuite careers', 'jobs in Gurgaon', 'digital marketing jobs India', 'AI jobs India', 'software developer jobs', 'work at ThinkSuite'],
 }
-
-const openRoles = [
-  {
-    title: 'AI/ML Engineer',
-    dept: 'Engineering',
-    location: 'Remote / Gurgaon',
-    type: 'Full-time',
-    desc: 'Build AI-powered tools, automation pipelines, and intelligent systems for ThinkSuite clients. Strong Python and LLM integration experience preferred.',
-  },
-  {
-    title: 'Frontend Developer (React / Next.js)',
-    dept: 'Engineering',
-    location: 'Remote',
-    type: 'Full-time',
-    desc: 'Build fast, modern web applications for clients and internal products. Strong React skills required. Next.js, TypeScript, and Tailwind are a plus.',
-  },
-  {
-    title: 'Digital Marketing Manager',
-    dept: 'Marketing',
-    location: 'Gurgaon',
-    type: 'Full-time',
-    desc: 'Manage end-to-end SEO, paid ads (Google & Meta), and content campaigns for multiple client accounts. Must have 2+ years of hands-on experience with measurable results.',
-  },
-  {
-    title: 'UI/UX Designer',
-    dept: 'Design',
-    location: 'Remote / Gurgaon',
-    type: 'Full-time',
-    desc: 'Design product interfaces, brand assets, and marketing visuals. Proficiency in Figma required. Experience designing for SaaS or mobile apps is a strong advantage.',
-  },
-  {
-    title: 'Business Development Executive',
-    dept: 'Sales',
-    location: 'Gurgaon',
-    type: 'Full-time',
-    desc: 'Own the sales pipeline from lead generation to closure. Ideal candidate understands tech and marketing services and can consult clients, not just sell packages.',
-  },
-  {
-    title: 'Social Media & Content Creator',
-    dept: 'Marketing',
-    location: 'Gurgaon / Hybrid',
-    type: 'Internship',
-    desc: 'Create compelling content for LinkedIn, Instagram, and YouTube Shorts. Strong writing, basic video editing, and an eye for trends required.',
-  },
-]
 
 const perks = [
   { icon: 'fa-laptop-house', title: 'Remote & Hybrid', desc: 'Work from our Gurgaon office or remotely. We care about output, not location.' },
@@ -79,15 +34,15 @@ export default function CareersPage() {
             <span>/</span>
             <span style={{ color: 'var(--text)' }}>Careers</span>
           </div>
-          <span className="label">We&apos;re Hiring</span>
-          <h1 className="mt-16">Build the Future<br />with <span className="grad-text">ThinkSuite</span></h1>
+          <span className="label">Join Our Team</span>
+          <h1 className="mt-16">Grow With<br /><span className="grad-text">ThinkSuite</span></h1>
           <p className="mt-16" style={{ maxWidth: 560, color: 'var(--text2)', fontSize: 18 }}>
-            We don&apos;t hire for titles. We hire for thinking. If you solve real problems,
-            move fast, and want your work to matter — you&apos;ll fit right in.
+            We work at the intersection of AI, software, and business strategy.
+            If you solve real problems and want your work to matter, we&apos;d love to know you.
           </p>
           <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginTop: 32 }}>
             <a href="#open-positions" className="btn btn-primary">
-              View Open Roles <i className="fa-solid fa-arrow-down" />
+              See Openings <i className="fa-solid fa-arrow-down" />
             </a>
             <a href="mailto:careers@thinksuite.in" className="btn btn-outline">
               Send Your Resume
@@ -125,7 +80,7 @@ export default function CareersPage() {
       {/* PERKS */}
       <section className="section section--dark">
         <div className="container">
-          <span className="label">Perks & Benefits</span>
+          <span className="label">Perks &amp; Benefits</span>
           <h2 className="mt-16">What You Get Beyond the Salary</h2>
           <div className="perks-grid mt-48">
             {perks.map((p) => (
@@ -147,30 +102,23 @@ export default function CareersPage() {
           <span className="label">Open Positions</span>
           <h2 className="mt-16">Current Openings</h2>
           <p className="mt-12" style={{ color: 'var(--text2)' }}>
-            Roles across tech, marketing, design, and business. All positions open for immediate joining unless noted.
+            We post new roles as the team grows. Check back soon.
           </p>
-          <div className="jobs-grid mt-48">
-            {openRoles.map((job) => (
-              <div key={job.title} className="job-card reveal">
-                <div className="job-info">
-                  <div className="job-title">{job.title}</div>
-                  <div className="job-tags">
-                    <span className="job-tag">{job.dept}</span>
-                    <span className="job-tag remote">{job.location}</span>
-                    <span className={`job-tag${job.type === 'Internship' ? ' intern' : ''}`}>{job.type}</span>
-                  </div>
-                  <div className="job-desc">{job.desc}</div>
-                </div>
-                <div className="job-apply">
-                  <a
-                    href={`mailto:careers@thinksuite.in?subject=Application: ${job.title}`}
-                    className="btn btn-primary btn-sm"
-                  >
-                    Apply Now <i className="fa-solid fa-arrow-right" />
-                  </a>
-                </div>
-              </div>
-            ))}
+
+          {/* No Openings State */}
+          <div className="no-openings-box mt-48 reveal">
+            <div className="no-openings-icon">
+              <i className="fa-solid fa-briefcase" />
+            </div>
+            <h4>No openings right now</h4>
+            <p>
+              We&apos;re not actively hiring at the moment, but we&apos;re always open to
+              hearing from talented people. Send us your resume and we&apos;ll reach out
+              when something relevant opens up.
+            </p>
+            <a href="mailto:careers@thinksuite.in" className="btn btn-primary">
+              Send Your Resume <i className="fa-solid fa-paper-plane" />
+            </a>
           </div>
         </div>
       </section>
@@ -199,7 +147,7 @@ export default function CareersPage() {
       <section className="section">
         <div className="container">
           <div className="open-apply-box reveal">
-            <span className="label" style={{ marginBottom: 20, display: 'inline-block' }}>Don&apos;t See a Perfect Fit?</span>
+            <span className="label" style={{ marginBottom: 20, display: 'inline-block' }}>Stay on Our Radar</span>
             <h2>Send Us Your Resume Anyway</h2>
             <p>
               We regularly open new roles as the team grows. If you&apos;re talented and driven,
