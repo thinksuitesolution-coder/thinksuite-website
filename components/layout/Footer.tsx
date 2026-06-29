@@ -1,22 +1,7 @@
 ﻿import Link from 'next/link'
 
-const serviceLinks = [
-  { label: 'Web Development', href: '/web-development' },
-  { label: 'Mobile App Development', href: '/mobile-app-development' },
-  { label: 'Digital Marketing', href: '/digital-marketing' },
-  { label: 'UI/UX Design', href: '/ui-ux-design' },
-  { label: 'AI & Automation', href: '/ai-automation' },
-  { label: 'SEO Optimization', href: '/seo-optimization' },
-]
-
 const companyLinks = [
-  { label: 'About Us', href: '/about' },
-  { label: 'Services', href: '/services' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'AI News', href: '/blog' },
-  { label: 'Team', href: '/team' },
   { label: 'FAQ', href: '/faq' },
-  { label: 'Contact', href: '/contact' },
   { label: 'Careers', href: '/careers' },
 ]
 
@@ -49,18 +34,18 @@ export default function Footer() {
           </div>
 
           <div className="footer-col">
-            <h5>Services</h5>
+            <h5>Company</h5>
             <div className="footer-links">
-              {serviceLinks.map((l) => (
+              {companyLinks.map((l) => (
                 <Link key={l.href} href={l.href} className="footer-link">{l.label}</Link>
               ))}
             </div>
           </div>
 
           <div className="footer-col">
-            <h5>Company</h5>
+            <h5>Legal</h5>
             <div className="footer-links">
-              {companyLinks.map((l) => (
+              {legalLinks.map((l) => (
                 <Link key={l.href} href={l.href} className="footer-link">{l.label}</Link>
               ))}
             </div>
@@ -90,9 +75,8 @@ export default function Footer() {
             Copyright 2026 ThinkSuite. All rights reserved.
           </p>
           <div className="footer-legal">
-            {legalLinks.map((l) => (
-              <Link key={l.href} href={l.href}>{l.label}</Link>
-            ))}
+            <Link href="/privacy-policy">Privacy Policy</Link>
+            <Link href="/terms-and-conditions">Terms &amp; Conditions</Link>
           </div>
         </div>
       </div>
