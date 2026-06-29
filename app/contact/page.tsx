@@ -26,7 +26,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" style={{ paddingBottom: 0 }}>
         <div className="container">
           <div className="contact-grid">
             <div className="reveal">
@@ -101,6 +101,21 @@ export default function ContactPage() {
               </form>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section style={{ paddingTop: 0 }}>
+        <div style={{ width: '100%', height: 420, position: 'relative' }}>
+          <iframe
+            src="https://maps.google.com/maps?q=ThinkSuite+Solutions,+Gurgaon,+Haryana,+India&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="420"
+            style={{ border: 0, display: 'block' }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="ThinkSuite Location"
+          />
         </div>
       </section>
     </>
