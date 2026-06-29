@@ -74,10 +74,6 @@ export default function Footer() {
           <p className="footer-copy">
             Copyright 2026 ThinkSuite. All rights reserved.
           </p>
-          <div className="footer-legal">
-            <Link href="/privacy-policy">Privacy Policy</Link>
-            <Link href="/terms-and-conditions">Terms &amp; Conditions</Link>
-          </div>
         </div>
       </div>
     </footer>

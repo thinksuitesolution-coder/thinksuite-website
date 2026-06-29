@@ -26,7 +26,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="section" style={{ paddingBottom: 0 }}>
+      <section className="section" style={{ paddingBottom: 80 }}>
         <div className="container">
           <div className="contact-grid">
             <div className="reveal">
@@ -104,12 +104,12 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section style={{ paddingTop: 0 }}>
-        <div style={{ width: '100%', height: 420, position: 'relative' }}>
+      <section style={{ paddingTop: 0, paddingBottom: 0 }}>
+        <div style={{ width: '100%', height: 480, position: 'relative', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
           <iframe
             src="https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1sThinkSuite+Solutions,+Gurgaon,+Haryana,+India!6i15"
             width="100%"
-            height="420"
+            height="480"
             style={{ border: 0, display: 'block' }}
             allowFullScreen
             loading="lazy"
