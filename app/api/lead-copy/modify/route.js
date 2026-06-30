@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { getAIClient } from "@/lib/aiClient";
 
-const openai    = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai    = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || "build-placeholder" });
 const anthropic = getAIClient();
 
 const SYSTEM_PROMPT = `You are a senior B2B/B2C growth marketer and ad copy specialist.

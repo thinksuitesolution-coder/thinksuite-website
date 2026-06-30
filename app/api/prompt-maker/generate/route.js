@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { getAIClient } from "@/lib/aiClient";
 
-const openai    = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai    = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || "build-placeholder" });
 const anthropic = getAIClient();
 
 /* ── Type-specific system prompts ─────────────────────────────────────────── */

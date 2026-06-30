@@ -3,7 +3,7 @@ import Replicate from "replicate";
 import { NextResponse } from "next/server";
 import { withCreditGuard } from "@/lib/apiCreditMonitor";
 
-const openai    = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai    = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || "build-placeholder" });
 const replicate = new Replicate({ auth: process.env.REPLICATE_API_TOKEN });
 
 // STEP 1: GPT se enhanced prompt banao

@@ -2,13 +2,13 @@ import OpenAI from "openai";
 import Replicate from "replicate";
 import { NextResponse } from "next/server";
 
-const openai    = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-const replicate = new Replicate({ auth: process.env.REPLICATE_API_TOKEN });
+const getOpenAI    = () => new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const getReplicate = () => new Replicate({ auth: process.env.REPLICATE_API_TOKEN });
 
 /* ── Generate N unique image prompts from topic ── */
 async function generatePromptVariants(topic, count) {
   try {
-    const res = await openai.chat.completions.create({
+    const res = await getOpenAI().chat.completions.create({
       model: "gpt-4o-mini",
       messages: [{
         role: "user",
@@ -31,7 +31,7 @@ Return ONLY a JSON array of strings with no explanation. Example: ["prompt1","pr
 
 /* ── Model generators ── */
 async function withFlux(prompt, aspectRatio) {
-  const output = await replicate.run("black-forest-labs/flux-schnell", {
+  const output = await getReplicate().run("black-forest-labs/flux-schnell", {
     input: {
       prompt: `${prompt}. Pure background visual. No text, no typography, no watermarks.`,
       aspect_ratio: aspectRatio || "1:1",
@@ -51,7 +51,7 @@ async function withFlux(prompt, aspectRatio) {
 
 async function withDallE3(prompt, aspectRatio) {
   const sizeMap = { "1:1": "1024x1024", "16:9": "1792x1024", "9:16": "1024x1792", "4:3": "1024x1024" };
-  const res = await openai.images.generate({
+  const res = await getOpenAI().images.generate({
     model: "dall-e-3",
     prompt: `${prompt}. No text or typography inside the image.`,
     n: 1,

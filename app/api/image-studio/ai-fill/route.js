@@ -1,10 +1,9 @@
 import OpenAI from "openai";
 import { NextResponse } from "next/server";
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
 export async function POST(req) {
   try {
+    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
     const { prompt } = await req.json();
     if (!prompt?.trim()) return NextResponse.json({ error: "Prompt required" }, { status: 400 });
 
