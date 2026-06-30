@@ -5,6 +5,7 @@ import { BlogArticle } from '@/lib/news/types';
 import { StartupOpportunity } from '@/lib/news/pipeline/opportunities';
 import { CompetitorAnalysis } from '@/lib/news/pipeline/competitor-intel';
 import { PersonalizedVersion } from '@/lib/news/pipeline/personalized-versions';
+import TranslateWidget from './TranslateWidget';
 
 interface Props {
   article: Partial<BlogArticle>;
@@ -297,8 +298,18 @@ function fmtInline(t: string) {
     .replace(/`(.+?)`/g, '<code>$1</code>');
 }
 
+interface TranslatedData {
+  title: string; summary: string; content: string;
+  keyHighlights: string[]; whyItMatters: string; futurePrediction: string;
+}
+
 export default function ArticleTabs({ article, opportunities, competitorIntel, personalizedVersions }: Props) {
   const [tab, setTab] = useState<Tab>('article');
+  const [translated, setTranslated] = useState<TranslatedData | null>(null);
+
+  const displayArticle = translated
+    ? { ...article, ...translated }
+    : article;
 
   const tabs = [
     { id: 'article' as Tab, label: '📄 Analysis', always: true },
@@ -309,16 +320,23 @@ export default function ArticleTabs({ article, opportunities, competitorIntel, p
 
   return (
     <div className="article-tabs-wrap">
-      <div className="article-tabs-nav">
-        {tabs.map(t => (
-          <button key={t.id} className={`article-tab-btn ${tab === t.id ? 'active' : ''}`} onClick={() => setTab(t.id)}>
-            {t.label}
-          </button>
-        ))}
+      <div className="article-tabs-header">
+        <div className="article-tabs-nav">
+          {tabs.map(t => (
+            <button key={t.id} className={`article-tab-btn ${tab === t.id ? 'active' : ''}`} onClick={() => setTab(t.id)}>
+              {t.label}
+            </button>
+          ))}
+        </div>
+        <TranslateWidget
+          article={article}
+          onTranslated={setTranslated}
+          isTranslated={!!translated}
+        />
       </div>
 
       <div className="article-tab-content">
-        {tab === 'article' && <ArticleSection article={article} />}
+        {tab === 'article' && <ArticleSection article={displayArticle} />}
         {tab === 'opportunities' && <OpportunitiesSection data={opportunities} />}
         {tab === 'competitor' && <CompetitorSection data={competitorIntel} />}
         {tab === 'personalized' && <PersonalizedSection versions={personalizedVersions} />}

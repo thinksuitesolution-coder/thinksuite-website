@@ -1,7 +1,5 @@
-﻿import OpenAI from 'openai';
+﻿import { groqJSON, groqJSONFast } from '../../llm';
 import { ScoredEvent } from '../types';
-
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || 'build-placeholder' });
 
 export interface CompetitorAnalysis {
   triggerCompany: string;
@@ -76,15 +74,7 @@ Return JSON:
   "loserAnalysis": "Who is most threatened and why"
 }`;
 
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4o',
-      messages: [{ role: 'user', content: prompt }],
-      max_tokens: 1200,
-      temperature: 0.5,
-    });
-
-    const raw = completion.choices[0].message.content || '{}';
-    return JSON.parse(raw.replace(/```json\n?|\n?```/g, '').trim());
+    return await groqJSONFast<CompetitorAnalysis>(prompt, 1200);
   } catch (err) {
     console.error('Competitor intel failed:', (err as Error).message);
     return null;

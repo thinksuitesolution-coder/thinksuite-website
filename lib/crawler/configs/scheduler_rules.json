@@ -1,0 +1,33 @@
+{
+  "priority_queue": {
+    "tiers": {
+      "P0": { "score_min": 95, "max_age_minutes": 5,  "label": "Breaking / Official" },
+      "P1": { "score_min": 85, "max_age_minutes": 15, "label": "High Priority News" },
+      "P2": { "score_min": 75, "max_age_minutes": 30, "label": "Standard News" },
+      "P3": { "score_min": 65, "max_age_minutes": 60, "label": "Research & Dev" },
+      "P4": { "score_min": 0,  "max_age_minutes": 240,"label": "Low Priority" }
+    }
+  },
+  "retry_policy": {
+    "max_attempts": 3,
+    "backoff_ms": [1000, 5000, 30000],
+    "dead_after_attempts": 5
+  },
+  "source_discovery": {
+    "enabled": true,
+    "frequency": "24h",
+    "methods": ["rss_autodiscovery", "sitemap_discovery", "html_link_extraction"],
+    "auto_classify": true
+  },
+  "freshness_check": {
+    "etag_enabled": true,
+    "last_modified_enabled": true,
+    "content_hash_enabled": true
+  },
+  "batch_sizes": {
+    "rss_per_run":     50,
+    "http_per_run":    20,
+    "browser_per_run": 5,
+    "articles_to_write": 8
+  }
+}

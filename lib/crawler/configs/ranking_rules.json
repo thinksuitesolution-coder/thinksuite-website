@@ -1,0 +1,36 @@
+{
+  "weights": {
+    "importance_score":    0.30,
+    "source_priority":     0.20,
+    "freshness":           0.20,
+    "community_signal":    0.10,
+    "content_quality":     0.10,
+    "official_source":     0.05,
+    "research_paper":      0.05
+  },
+  "boosts": {
+    "founder_announcement": 1.15,
+    "github_stars_1k":      1.10,
+    "breaking_news":        1.20,
+    "model_release":        1.15,
+    "funding_round":        1.10,
+    "official_source":      1.08
+  },
+  "penalties": {
+    "no_image":             0.95,
+    "stub_article_lt_100w": 0.80,
+    "old_gt_7d":            0.60,
+    "duplicate_source":     0.50
+  },
+  "minimum_publish_score": 45,
+  "freshness_decay": {
+    "1h":   100,
+    "6h":   95,
+    "12h":  88,
+    "24h":  78,
+    "48h":  65,
+    "72h":  52,
+    "168h": 38,
+    "720h": 20
+  }
+}

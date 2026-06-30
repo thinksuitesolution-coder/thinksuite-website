@@ -33,7 +33,7 @@ const mobileLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Projects', href: '/projects' },
-  { label: 'AI News', href: '/blog' },
+  { label: 'AI News', href: '/ai-news' },
   { label: 'AI Tools', href: '/tools', hasChildren: 'tools' },
   { label: 'Services', href: '/services', hasChildren: 'services' },
   { label: 'Products', href: '/ecosystem', hasChildren: 'products' },
@@ -97,7 +97,7 @@ export default function Navbar() {
             <li className="nav-item"><Link href="/" className="nav-link">Home</Link></li>
             <li className="nav-item"><Link href="/about" className="nav-link">About</Link></li>
             <li className="nav-item"><Link href="/projects" className="nav-link">Projects</Link></li>
-            <li className="nav-item"><Link href="/blog" className="nav-link">AI News</Link></li>
+            <li className="nav-item"><Link href="/ai-news" className="nav-link">AI News</Link></li>
             <li className="nav-item">
               <span className="nav-link" style={{ cursor: 'default' }}>
                 AI Tools <i className="fa-solid fa-chevron-down" style={{ fontSize: 10, marginLeft: 4 }} />

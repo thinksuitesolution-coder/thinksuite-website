@@ -1,0 +1,31 @@
+{
+  "default_headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Cache-Control": "no-cache",
+    "DNT": "1"
+  },
+  "rss_headers": {
+    "User-Agent": "ThinkSuite-RSSReader/1.0 (+https://thinksuite.in/bot)",
+    "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml"
+  },
+  "github_headers": {
+    "User-Agent": "ThinkSuite-Crawler/1.0",
+    "Accept": "application/vnd.github.v3+json, application/atom+xml"
+  },
+  "reddit_headers": {
+    "User-Agent": "ThinkSuite:NewsAggregator:1.0 (by /u/thinksuite_bot)",
+    "Accept": "application/rss+xml"
+  },
+  "timeouts": {
+    "rss": 10000,
+    "http": 15000,
+    "jina": 20000,
+    "browser": 30000,
+    "firecrawl": 25000
+  },
+  "follow_redirects": true,
+  "max_redirects": 5
+}

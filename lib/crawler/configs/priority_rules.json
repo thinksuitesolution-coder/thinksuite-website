@@ -1,0 +1,36 @@
+{
+  "event_type_scores": {
+    "model_release":     95,
+    "breaking_news":     92,
+    "acquisition":       90,
+    "funding":           85,
+    "api_release":       85,
+    "product_launch":    82,
+    "open_source":       80,
+    "research_paper":    78,
+    "keynote":           88,
+    "github_release":    75,
+    "policy_regulation": 80,
+    "safety_incident":   95,
+    "partnership":       70,
+    "general":           55
+  },
+  "company_tiers": {
+    "T1": { "companies": ["OpenAI","Anthropic","Google","Google DeepMind","Meta","Microsoft","NVIDIA","xAI"], "boost": 20 },
+    "T2": { "companies": ["HuggingFace","Mistral","Cohere","Perplexity","Groq","Cerebras","ElevenLabs","Runway","Stability AI"], "boost": 10 },
+    "T3": { "companies": ["Together AI","Replicate","Modal","Scale AI","Weights & Biases","LangChain","LlamaIndex"], "boost": 5 }
+  },
+  "source_trust_bonus": {
+    "90_plus": 15,
+    "80_89":   10,
+    "70_79":    5,
+    "below_70": 0
+  },
+  "keyword_boosts": {
+    "GPT-5": 25, "Claude 4": 25, "Gemini Ultra": 25, "Grok 3": 20,
+    "AGI": 20, "alignment": 15, "safety": 12, "open source": 10,
+    "funding": 12, "acquisition": 15, "billion": 10, "regulation": 12,
+    "benchmark": 10, "SOTA": 15, "state-of-the-art": 15,
+    "agent": 10, "multimodal": 10, "reasoning": 10
+  }
+}

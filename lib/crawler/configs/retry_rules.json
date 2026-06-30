@@ -1,0 +1,19 @@
+{
+  "max_attempts": 3,
+  "backoff_strategy": "exponential",
+  "backoff_ms": [1000, 5000, 30000],
+  "retry_on_status": [429, 500, 502, 503, 504],
+  "no_retry_on_status": [400, 401, 403, 404, 410],
+  "dead_queue_after": 5,
+  "per_worker": {
+    "rss":       { "max": 3, "backoff": [500, 2000, 10000] },
+    "http":      { "max": 3, "backoff": [1000, 5000, 30000] },
+    "jina":      { "max": 2, "backoff": [2000, 10000] },
+    "browser":   { "max": 2, "backoff": [5000, 30000] },
+    "firecrawl": { "max": 2, "backoff": [5000, 60000] }
+  },
+  "rate_limit_handling": {
+    "429_backoff_ms": 60000,
+    "respect_retry_after_header": true
+  }
+}

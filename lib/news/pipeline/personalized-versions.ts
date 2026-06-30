@@ -1,7 +1,5 @@
-﻿import OpenAI from 'openai';
+﻿import { groqJSON, groqJSONFast } from '../../llm';
 import { BlogArticle } from '../types';
-
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || 'build-placeholder' });
 
 export type UserRole = 'developer' | 'founder' | 'investor' | 'marketer';
 
@@ -46,16 +44,8 @@ Generate a role-specific version as JSON:
   "fullSection": "150-word section specifically for ${role}s explaining why this matters to them"
 }`;
 
-      const completion = await openai.chat.completions.create({
-        model: 'gpt-4o-mini',
-        messages: [{ role: 'user', content: prompt }],
-        max_tokens: 500,
-        temperature: 0.7,
-      });
-
-      const raw = completion.choices[0].message.content || '{}';
-      const data = JSON.parse(raw.replace(/```json\n?|\n?```/g, '').trim());
-      versions.push({ role, ...data });
+      const data = await groqJSONFast(prompt, 500);
+      versions.push({ role, ...data } as PersonalizedVersion);
 
       await new Promise(r => setTimeout(r, 300));
     } catch {

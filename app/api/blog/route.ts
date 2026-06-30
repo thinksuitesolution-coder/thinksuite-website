@@ -10,25 +10,31 @@ export async function GET(req: NextRequest) {
   const tag = searchParams.get('tag');
 
   try {
-    let query = articlesCol()
+    // Fetch all published articles without composite index (client-side sort/filter)
+    const snap = await articlesCol()
       .where('status', '==', 'published')
-      .orderBy('publishedAt', 'desc');
+      .get();
 
-    if (category) query = query.where('category', '==', category) as typeof query;
-    if (company) query = query.where('company', '==', company) as typeof query;
+    let all = snap.docs.map(d => d.data());
 
-    const snap = await query.limit(limit * page).get();
-    const all = snap.docs.map(d => d.data());
+    // Sort by publishedAt descending (avoids composite index requirement)
+    all.sort((a, b) => {
+      const aTime = a.publishedAt?.toMillis?.() ?? new Date(a.publishedAt || 0).getTime();
+      const bTime = b.publishedAt?.toMillis?.() ?? new Date(b.publishedAt || 0).getTime();
+      return bTime - aTime;
+    });
 
-    // Tag filter (Firestore doesn't support array-contains with other filters easily)
-    const filtered = tag ? all.filter(a => a.tags?.includes(tag)) : all;
-    const paginated = filtered.slice((page - 1) * limit, page * limit);
+    if (category) all = all.filter(a => a.category === category);
+    if (company)  all = all.filter(a => a.company === company);
+    if (tag)      all = all.filter(a => a.tags?.includes(tag));
+
+    const paginated = all.slice((page - 1) * limit, page * limit);
 
     return NextResponse.json({
       articles: paginated,
-      total: filtered.length,
+      total: all.length,
       page,
-      hasMore: page * limit < filtered.length,
+      hasMore: page * limit < all.length,
     });
   } catch (err) {
     return NextResponse.json({ error: (err as Error).message }, { status: 500 });

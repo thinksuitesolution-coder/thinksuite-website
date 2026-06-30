@@ -3,7 +3,7 @@
 import Link from 'next/link'
 
 const modules = [
-  { icon: '📰', label: 'Live AI News', desc: '50+ sources, updated every 10 min', href: '/blog', badge: 'LIVE' },
+  { icon: '📰', label: 'Live AI News', desc: '50+ sources, updated every 10 min', href: '/ai-news', badge: 'LIVE' },
   { icon: '💬', label: 'AI Chat', desc: 'Ask anything about AI industry', href: '/intelligence/chat', badge: null },
   { icon: '📈', label: 'Trend Predictions', desc: '90-day AI market forecasts', href: '/intelligence/trends', badge: null },
   { icon: '💰', label: 'Funding Tracker', desc: 'Every major AI investment round', href: '/intelligence/funding', badge: null },
@@ -57,7 +57,7 @@ export default function IntelligenceTeaserSection() {
               <Link href="/intelligence" className="btn btn-primary">
                 Explore Intelligence Hub <i className="fa-solid fa-arrow-right" />
               </Link>
-              <Link href="/blog" className="btn btn-outline">
+              <Link href="/ai-news" className="btn btn-outline">
                 Latest AI News
               </Link>
             </div>

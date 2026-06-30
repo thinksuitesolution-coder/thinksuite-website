@@ -1,0 +1,97 @@
+{
+  "openai.com": {
+    "title": "h1",
+    "content": "article, .post-content, main",
+    "date": "time[datetime], .published-date",
+    "author": "[rel='author'], .author-name",
+    "image": "meta[property='og:image']",
+    "links": "article a[href]"
+  },
+  "anthropic.com": {
+    "title": "h1",
+    "content": "article, .content",
+    "date": "time[datetime]",
+    "image": "meta[property='og:image']"
+  },
+  "blog.google": {
+    "title": "h1.uni-article-header__title, h1",
+    "content": ".uni-article-body, article",
+    "date": "time",
+    "image": "meta[property='og:image']"
+  },
+  "venturebeat.com": {
+    "title": "h1.article-title, h1",
+    "content": ".article-content, .entry-content",
+    "date": "time[datetime]",
+    "author": ".author-name, .byline",
+    "image": "meta[property='og:image']"
+  },
+  "techcrunch.com": {
+    "title": "h1",
+    "content": ".article-content, .entry-content",
+    "date": "time[datetime]",
+    "author": ".by-line .by-line__author",
+    "image": "meta[property='og:image']"
+  },
+  "huggingface.co": {
+    "title": "h1",
+    "content": ".prose, article",
+    "date": "time",
+    "image": "meta[property='og:image']"
+  },
+  "arxiv.org": {
+    "title": ".title.mathjax",
+    "content": "#abs, .abstract",
+    "date": ".dateline",
+    "author": ".authors",
+    "image": null
+  },
+  "github.com": {
+    "title": ".markdown-title, h1",
+    "content": ".markdown-body, readme",
+    "date": "relative-time",
+    "author": ".author",
+    "image": "meta[property='og:image']"
+  },
+  "marktechpost.com": {
+    "title": "h1.entry-title",
+    "content": ".entry-content",
+    "date": ".entry-date",
+    "author": ".author",
+    "image": ".post-thumbnail img"
+  },
+  "analyticsindiamag.com": {
+    "title": "h1",
+    "content": ".entry-content, article",
+    "date": "time, .date",
+    "image": "meta[property='og:image']"
+  },
+  "thedecoder.com": {
+    "title": "h1",
+    "content": ".article-body, article",
+    "date": "time[datetime]",
+    "image": "meta[property='og:image']"
+  },
+  "bair.berkeley.edu": {
+    "title": "h1",
+    "content": ".post-content, article",
+    "date": ".post-date",
+    "author": ".author",
+    "image": "meta[property='og:image']"
+  },
+  "distill.pub": {
+    "title": "d-title h1, h1",
+    "content": "d-article, article",
+    "date": "d-pub-date",
+    "author": "d-author",
+    "image": "meta[property='og:image']"
+  },
+  "default": {
+    "title": "h1, meta[property='og:title'], title",
+    "content": "article, [role='main'], main, .content, .post-content, .entry-content",
+    "date": "time[datetime], meta[property='article:published_time'], .date, .published",
+    "author": "[rel='author'], .author, .byline",
+    "image": "meta[property='og:image'], .post-image img, article img:first-of-type",
+    "jsonld": "script[type='application/ld+json']"
+  }
+}

@@ -1,7 +1,5 @@
-﻿import OpenAI from 'openai';
+﻿import { groqJSON, groqJSONFast } from '../../llm';
 import { ScoredEvent } from '../types';
-
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || 'build-placeholder' });
 
 export interface StartupOpportunity {
   name: string;
@@ -58,15 +56,7 @@ Generate a startup opportunity report as JSON:
 
 Generate 5-7 specific, actionable startup ideas. Be specific about the product, not generic.`;
 
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4o',
-      messages: [{ role: 'user', content: prompt }],
-      max_tokens: 1500,
-      temperature: 0.8,
-    });
-
-    const raw = completion.choices[0].message.content || '{}';
-    return JSON.parse(raw.replace(/```json\n?|\n?```/g, '').trim());
+    return await groqJSONFast<OpportunityReport>(prompt, 1500);
   } catch (err) {
     console.error('Opportunity detection failed:', (err as Error).message);
     return null;

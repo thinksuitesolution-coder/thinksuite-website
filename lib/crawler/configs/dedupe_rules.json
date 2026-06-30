@@ -1,0 +1,29 @@
+{
+  "strategies": ["url_exact", "url_normalized", "title_exact", "simhash", "jaccard"],
+  "url": {
+    "normalize": true,
+    "remove_tracking_params": true,
+    "remove_fragment": true,
+    "lowercase_host": true,
+    "remove_www": true,
+    "remove_html_extension": true
+  },
+  "title": {
+    "normalize": true,
+    "ignore_case": true,
+    "remove_punctuation": true
+  },
+  "simhash": {
+    "enabled": true,
+    "bits": 32,
+    "hamming_threshold": 3,
+    "fields": ["title", "content_preview_500"]
+  },
+  "jaccard": {
+    "enabled": true,
+    "min_word_length": 3,
+    "threshold": 0.85
+  },
+  "cross_source_dedup": true,
+  "window_hours": 72
+}

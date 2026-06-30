@@ -1,7 +1,5 @@
-﻿import OpenAI from 'openai';
+﻿import { groqJSON, groqJSONFast } from '../../llm';
 import { BlogArticle } from '../types';
-
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || 'build-placeholder' });
 
 export interface SEOPackage {
   // Classic Google SEO
@@ -83,15 +81,7 @@ Generate SEO package as JSON:
   "suggestedInternalLinks": ["/blog", "/ai-automation", "/ai-tools-development"]
 }`;
 
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
-      messages: [{ role: 'user', content: prompt }],
-      max_tokens: 600,
-      temperature: 0.3,
-    });
-
-    const raw = completion.choices[0].message.content || '{}';
-    aiSEO = JSON.parse(raw.replace(/```json\n?|\n?```/g, '').trim());
+    aiSEO = await groqJSONFast(prompt, 600);
   } catch {
     aiSEO = {
       metaTitle: title.slice(0, 60),

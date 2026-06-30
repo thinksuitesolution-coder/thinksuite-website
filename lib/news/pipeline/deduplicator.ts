@@ -1,5 +1,18 @@
 ﻿import { ScoredEvent } from '../types';
 
+// Strip tracking params from URLs before comparing
+function normalizeUrl(url: string): string {
+  try {
+    const u = new URL(url);
+    const DROP = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term',
+                  'ref','source','via','fbclid','gclid','mc_cid','mc_eid'];
+    DROP.forEach(p => u.searchParams.delete(p));
+    return u.toString().replace(/\/$/, '').toLowerCase();
+  } catch {
+    return url.toLowerCase();
+  }
+}
+
 // Simple Jaccard similarity, no paid vector DB needed
 function tokenize(text: string): Set<string> {
   return new Set(
@@ -28,17 +41,18 @@ export function deduplicateEvents(events: ScoredEvent[]): ScoredEvent[] {
   const sorted = [...events].sort((a, b) => b.importanceScore - a.importanceScore);
 
   for (const event of sorted) {
+    const normUrl = normalizeUrl(event.url);
     const tokens = tokenize(`${event.title} ${event.content.slice(0, 300)}`);
 
     const isDuplicate = seen.some(({ tokens: seenTokens, url }) => {
-      if (url === event.url) return true;
+      if (url === normUrl) return true;
       return jaccardSimilarity(tokens, seenTokens) > 0.55;
     });
 
     if (isDuplicate) {
       event.isDuplicate = true;
     } else {
-      seen.push({ tokens, url: event.url });
+      seen.push({ tokens, url: normUrl });
       deduplicated.push(event);
     }
   }

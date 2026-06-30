@@ -4,19 +4,31 @@ import { getFirestore, Firestore } from 'firebase-admin/firestore';
 let _app: App | null = null;
 let _db: Firestore | null = null;
 
+function getCredential() {
+  // Prefer JSON service account blob (set in .env.local as FIREBASE_SERVICE_ACCOUNT_KEY)
+  const raw = process.env.FIREBASE_SERVICE_ACCOUNT_KEY || process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
+  if (raw) {
+    const sa = JSON.parse(raw);
+    if (sa.private_key) {
+      sa.private_key = sa.private_key.replace(/\\n/g, '\n');
+    }
+    return cert(sa);
+  }
+  // Fallback: individual env vars
+  return cert({
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+    privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+  });
+}
+
 function getAdminApp(): App {
   if (_app) return _app;
   if (getApps().length) {
     _app = getApps()[0];
     return _app;
   }
-  _app = initializeApp({
-    credential: cert({
-      projectId: process.env.FIREBASE_PROJECT_ID,
-      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-    }),
-  });
+  _app = initializeApp({ credential: getCredential() });
   return _app;
 }
 

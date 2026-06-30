@@ -1,7 +1,5 @@
-﻿import OpenAI from 'openai';
+﻿import { groqJSONFast } from '../../llm';
 import { ScoredEvent } from '../types';
-
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || 'build-placeholder' });
 
 export interface FactCheckResult {
   confidenceScore: number;       // 0,100
@@ -68,15 +66,7 @@ Rules:
 - Sensational/unverified claim = below 50
 - Clear misinformation = below 20`;
 
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
-      messages: [{ role: 'user', content: prompt }],
-      max_tokens: 300,
-      temperature: 0.2,
-    });
-
-    const raw = completion.choices[0].message.content || '{}';
-    aiVerdict = JSON.parse(raw.replace(/```json\n?|\n?```/g, '').trim());
+    aiVerdict = await groqJSONFast(prompt, 400);
   } catch {
     // Fallback scoring based on source credibility
     const trustedSources = ['openai', 'anthropic', 'google', 'meta ai', 'microsoft', 'nvidia', 'techcrunch', 'verge', 'venturebeat', 'mit', 'arxiv'];

@@ -1,7 +1,5 @@
-﻿import OpenAI from 'openai';
+﻿import { groqJSON, groqJSONFast } from '../../llm';
 import { BlogArticle } from '../types';
-
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || 'build-placeholder' });
 
 export type SupportedLanguage = 'hi' | 'es' | 'fr' | 'ar' | 'de' | 'ja' | 'pt' | 'zh';
 
@@ -64,15 +62,12 @@ Return ONLY JSON:
   "faqs": [{"question": "Q in ${config.name}?", "answer": "A in ${config.name}"}]
 }`;
 
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4o',
-      messages: [{ role: 'user', content: prompt }],
-      max_tokens: 3000,
-      temperature: 0.3,
-    });
-
-    const raw = completion.choices[0].message.content || '{}';
-    const data = JSON.parse(raw.replace(/```json\n?|\n?```/g, '').trim());
+    const data = await groqJSONFast<{
+      title?: string; summary?: string; content?: string;
+      metaTitle?: string; metaDescription?: string;
+      keyHighlights?: string[]; whyItMatters?: string;
+      faqs?: { question: string; answer: string }[];
+    }>(prompt, 3000);
 
     return {
       lang,

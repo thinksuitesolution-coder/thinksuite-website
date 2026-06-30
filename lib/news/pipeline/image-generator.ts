@@ -1,10 +1,10 @@
-﻿import OpenAI from 'openai';
+﻿import { groqJSONFast } from '../../llm';
 import { BlogArticle, ScoredEvent } from '../types';
-
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || 'build-placeholder' });
 
 export interface GeneratedImages {
   heroImageUrl: string;
+  heroImageCredit?: string;
+  heroImageSourceUrl?: string;
   infographicData: InfographicData | null;
   ogImageUrl: string;
 }
@@ -29,52 +29,55 @@ const COMPANY_COLORS: Record<string, string> = {
   'default': '#2563eb',
 };
 
-// Generate hero image via DALL-E 3
-async function generateHeroWithDALLE(event: ScoredEvent): Promise<string | null> {
-  if (!process.env.OPENAI_API_KEY) return null;
+const PEXELS_QUERY_MAP: Record<string, string> = {
+  model_release: 'artificial intelligence robot technology',
+  research_paper: 'science research data visualization',
+  funding: 'startup investment growth technology',
+  open_source: 'coding software collaboration technology',
+  product_launch: 'technology product launch innovation',
+  github_release: 'code programming developer screen',
+  breaking_news: 'technology news digital information',
+  keynote: 'conference presentation technology stage',
+  policy_update: 'government technology policy law',
+  api_release: 'software development api code',
+  acquisition: 'business handshake deal technology',
+  interview: 'technology podcast microphone interview',
+  default: 'artificial intelligence technology future',
+};
 
-  const prompts: Record<string, string> = {
-    model_release: `Futuristic AI neural network visualization for ${event.company}, electric blue and purple glowing circuits on dark background, professional tech photography style, 16:9 aspect ratio`,
-    research_paper: `Abstract AI research visualization, scientific data flowing through neural pathways, glowing equations and graphs on deep blue background, academic tech aesthetic`,
-    funding: `Modern startup funding concept, rising graph with financial data, clean minimalist design, ${COMPANY_COLORS[event.company] || '#2563eb'} accent colors on white background`,
-    open_source: `Open source code repository visualization, interconnected nodes and branches glowing, community collaboration concept, dark background with colorful highlights`,
-    product_launch: `Product launch announcement visual, sleek modern interface mockup with glowing elements, ${event.company} brand colors, dark premium tech aesthetic`,
-    breaking_news: `Breaking AI news alert visualization, urgent red and white design with digital circuits, news ticker aesthetic, dramatic lighting`,
-    default: `Professional AI technology visualization for ${event.company}, modern neural network design, blue gradient, photorealistic render`,
-  };
+// Pexels — real, relevant, high-quality stock photos matched to event topic
+async function getPexelsImage(event: ScoredEvent): Promise<{ url: string; credit: string; sourceUrl: string } | null> {
+  const key = process.env.PEXELS_API_KEY;
+  if (!key) return null;
 
-  const prompt = prompts[event.eventType] || prompts.default;
-
+  const query = PEXELS_QUERY_MAP[event.eventType] || PEXELS_QUERY_MAP.default;
   try {
-    const response = await openai.images.generate({
-      model: 'dall-e-3',
-      prompt: `${prompt}. No text, no watermarks. Suitable for a professional AI news publication.`,
-      size: '1792x1024',
-      quality: 'standard',
-      n: 1,
-    });
-    return response.data?.[0]?.url || null;
-  } catch (err) {
-    console.warn('DALL-E generation failed, using Unsplash fallback:', (err as Error).message);
+    const res = await fetch(
+      `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=1&orientation=landscape`,
+      { headers: { Authorization: key }, signal: AbortSignal.timeout(8000) }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    const photo = data?.photos?.[0];
+    if (!photo) return null;
+
+    return {
+      url: photo.src.large2x || photo.src.large,
+      credit: `Photo: ${photo.photographer} (Pexels)`,
+      sourceUrl: photo.url,
+    };
+  } catch {
     return null;
   }
 }
 
-// Unsplash free fallback (no API key needed)
-function getUnsplashFallback(event: ScoredEvent): string {
-  const queryMap: Record<string, string> = {
-    model_release: 'artificial+intelligence+robot+technology',
-    research_paper: 'science+research+data+visualization',
-    funding: 'startup+investment+growth+technology',
-    open_source: 'coding+software+collaboration+technology',
-    product_launch: 'technology+product+launch+innovation',
-    github_release: 'code+programming+developer+screen',
-    breaking_news: 'technology+news+digital+information',
-    keynote: 'conference+presentation+technology+stage',
-    default: 'artificial+intelligence+technology+future',
+// Picsum — last-resort placeholder (no API key, always works)
+function getPicsumFallback(event: ScoredEvent): { url: string; credit: string; sourceUrl: string } {
+  return {
+    url: `https://picsum.photos/seed/${event.id}/1792/1024`,
+    credit: 'Image: Picsum Photos (placeholder)',
+    sourceUrl: 'https://picsum.photos',
   };
-  const query = queryMap[event.eventType] || queryMap.default;
-  return `https://source.unsplash.com/1792x1024/?${query}&sig=${Date.now()}`;
 }
 
 // Generate infographic data structure for the article
@@ -110,15 +113,7 @@ Return JSON:
   }
 }`;
 
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
-      messages: [{ role: 'user', content: prompt }],
-      max_tokens: 400,
-      temperature: 0.3,
-    });
-
-    const raw = completion.choices[0].message.content || '{}';
-    return JSON.parse(raw.replace(/```json\n?|\n?```/g, '').trim());
+    return await groqJSONFast<InfographicData>(prompt, 400);
   } catch {
     return null;
   }
@@ -128,17 +123,40 @@ export async function generateImages(
   article: Partial<BlogArticle>,
   event: ScoredEvent
 ): Promise<GeneratedImages> {
-  // Try DALL-E first, fall back to Unsplash
-  const [dalleUrl, infographic] = await Promise.all([
-    generateHeroWithDALLE(event),
-    generateInfographicData(article, event),
+  // If the original event already has a real image from RSS, use it — no DALL-E cost
+  if (event.imageUrl && event.imageUrl.startsWith('http')) {
+    const infographic = await generateInfographicData(article, event).catch(() => null);
+    return {
+      heroImageUrl: event.imageUrl,
+      heroImageCredit: event.imageCredit || `Image: ${event.sourceName}`,
+      heroImageSourceUrl: event.imageSourceUrl || event.url,
+      infographicData: infographic,
+      ogImageUrl: event.imageUrl,
+    };
+  }
+
+  // No RSS image — try Pexels (real, relevant), then Picsum placeholder
+  const [pexelsImg, infographic] = await Promise.all([
+    getPexelsImage(event),
+    generateInfographicData(article, event).catch(() => null),
   ]);
 
-  const heroImageUrl = dalleUrl || getUnsplashFallback(event);
+  if (pexelsImg) {
+    return {
+      heroImageUrl: pexelsImg.url,
+      heroImageCredit: pexelsImg.credit,
+      heroImageSourceUrl: pexelsImg.sourceUrl,
+      infographicData: infographic,
+      ogImageUrl: pexelsImg.url,
+    };
+  }
 
+  const fallback = getPicsumFallback(event);
   return {
-    heroImageUrl,
+    heroImageUrl: fallback.url,
+    heroImageCredit: fallback.credit,
+    heroImageSourceUrl: fallback.sourceUrl,
     infographicData: infographic,
-    ogImageUrl: heroImageUrl,
+    ogImageUrl: fallback.url,
   };
 }

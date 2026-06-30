@@ -1,0 +1,42 @@
+{
+  "schedules": {
+    "official_company":  { "rss": "5min",  "article": "15min", "sitemap": "30min" },
+    "ai_news":           { "rss": "10min", "article": "30min", "sitemap": "1h"    },
+    "research":          { "rss": "30min", "article": "1h",    "sitemap": "6h"    },
+    "github":            { "rss": "15min", "article": "1h",    "sitemap": "6h"    },
+    "community":         { "rss": "15min", "article": "1h",    "sitemap": "2h"    },
+    "vc_funding":        { "rss": "30min", "article": "2h",    "sitemap": "6h"    },
+    "developer":         { "rss": "30min", "article": "2h",    "sitemap": "6h"    },
+    "newsletter":        { "rss": "1h",    "article": "2h",    "sitemap": "12h"   },
+    "healthcare_ai":     { "rss": "1h",    "article": "6h",    "sitemap": "12h"   },
+    "finance_ai":        { "rss": "1h",    "article": "6h",    "sitemap": "12h"   },
+    "education_ai":      { "rss": "2h",    "article": "6h",    "sitemap": "24h"   },
+    "legal_ai":          { "rss": "2h",    "article": "6h",    "sitemap": "24h"   },
+    "robotics":          { "rss": "1h",    "article": "6h",    "sitemap": "12h"   },
+    "semiconductor":     { "rss": "30min", "article": "2h",    "sitemap": "6h"    },
+    "cloud_ai":          { "rss": "30min", "article": "2h",    "sitemap": "6h"    },
+    "government_ai":     { "rss": "2h",    "article": "12h",   "sitemap": "24h"   },
+    "india_ai":          { "rss": "30min", "article": "2h",    "sitemap": "6h"    },
+    "social":            { "rss": "10min", "article": "30min", "sitemap": "2h"    },
+    "podcast":           { "rss": "6h",    "article": "12h",   "sitemap": "24h"   },
+    "youtube":           { "rss": "6h",    "article": "12h",   "sitemap": "24h"   }
+  },
+  "adaptive_scheduling": {
+    "enabled": true,
+    "increase_threshold": 3,
+    "decrease_threshold": 0,
+    "min_frequency": "5min",
+    "max_frequency": "24h",
+    "window_hours": 24
+  },
+  "max_articles_per_run": 8,
+  "max_articles_per_source_per_run": 3,
+  "max_concurrent_workers": 10,
+  "rate_limits": {
+    "rss":        { "concurrent": 10, "delay_ms": 500  },
+    "http":       { "concurrent": 5,  "delay_ms": 800  },
+    "jina":       { "concurrent": 3,  "delay_ms": 1200 },
+    "browser":    { "concurrent": 2,  "delay_ms": 2000 },
+    "firecrawl":  { "concurrent": 1,  "delay_ms": 3000 }
+  }
+}

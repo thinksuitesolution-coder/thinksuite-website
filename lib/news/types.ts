@@ -24,6 +24,17 @@ export interface RawEvent {
   content: string;
   publishedAt: string;
   imageUrl?: string;
+  imageCredit?: string;    // "Source: TechCrunch" or photographer name
+  imageSourceUrl?: string; // link to image source page
+}
+
+export interface NewsSource {
+  id?: string;
+  name: string;
+  url: string;
+  type: 'rss' | 'api' | 'github' | 'arxiv';
+  category?: 'company_blog' | 'news' | 'research' | 'social' | 'github';
+  company?: string;
 }
 
 export interface ScoredEvent extends RawEvent {
@@ -60,6 +71,8 @@ export interface BlogArticle {
   eventType: EventType;
   importanceScore: number;
   heroImageUrl: string;
+  heroImageCredit?: string;    // e.g. "Image: OpenAI" or "Photo via TechCrunch"
+  heroImageSourceUrl?: string; // link to original image source
   status: ArticleStatus;
   originalUrl: string;
   sourceName: string;
@@ -68,10 +81,3 @@ export interface BlogArticle {
   updatedAt: string;
 }
 
-export interface NewsSource {
-  name: string;
-  url: string;
-  type: 'rss' | 'api' | 'github' | 'arxiv';
-  category: 'company_blog' | 'news' | 'research' | 'social' | 'github';
-  company?: string;
-}
