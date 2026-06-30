@@ -1,7 +1,9 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ToolDemoAnimation from '@/components/tools/ToolDemoAnimation'
 import ToolAuthModal from '@/components/tools/ToolAuthModal'
+import ToolSubscribeModal from '@/components/tools/ToolSubscribeModal'
+import { useAuth } from '@/lib/auth-context'
 
 const FEATURE_BADGES = [
   { icon: '👥', title: '100+', subtitle: 'Leads Per Search', desc: 'Get high-quality leads instantly' },
@@ -109,7 +111,31 @@ const FAQS = [
 
 export default function LeadGenerationPage() {
   const [authOpen, setAuthOpen] = useState(false)
+  const [subscribeOpen, setSubscribeOpen] = useState(false)
+  const [subStatus, setSubStatus] = useState<'checking' | 'none' | 'active' | 'expired'>('checking')
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const { user, loading } = useAuth()
+
+  useEffect(() => {
+    if (!loading && !user) setAuthOpen(true)
+  }, [loading, user])
+
+  // After login, check subscription for lead-generation tool
+  useEffect(() => {
+    if (!user || loading) return
+    fetch('/api/subscription-status', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: user.uid, toolSlug: 'lead-generation' }),
+    })
+      .then(r => r.json())
+      .then(d => {
+        const s = d.status === 'active' ? 'active' : d.status === 'expired' ? 'expired' : 'none'
+        setSubStatus(s)
+        if (s === 'none' || s === 'expired') setSubscribeOpen(true)
+      })
+      .catch(() => setSubStatus('none'))
+  }, [user, loading])
 
   return (
     <>
@@ -147,10 +173,22 @@ export default function LeadGenerationPage() {
             </p>
 
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 32 }}>
-              <button onClick={() => setAuthOpen(true)}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'linear-gradient(90deg,#1a237e,#3b82f6)', color: '#fff', border: 'none', fontWeight: 700, fontSize: 16, padding: '14px 32px', borderRadius: 12, boxShadow: '0 8px 32px rgba(26,35,126,0.25)', cursor: 'pointer', fontFamily: 'inherit' }}>
-                <span>🎯</span> Find 100+ Leads Free
-              </button>
+              {!user ? (
+                <button onClick={() => setAuthOpen(true)}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'linear-gradient(90deg,#1a237e,#3b82f6)', color: '#fff', border: 'none', fontWeight: 700, fontSize: 16, padding: '14px 32px', borderRadius: 12, boxShadow: '0 8px 32px rgba(26,35,126,0.25)', cursor: 'pointer', fontFamily: 'inherit' }}>
+                  <span>🔐</span> Login / Sign Up
+                </button>
+              ) : subStatus === 'active' ? (
+                <a href="/dashboard/lead-generation"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'linear-gradient(90deg,#1a237e,#3b82f6)', color: '#fff', textDecoration: 'none', fontWeight: 700, fontSize: 16, padding: '14px 32px', borderRadius: 12, boxShadow: '0 8px 32px rgba(26,35,126,0.25)' }}>
+                  <span>🎯</span> Access Your Tool →
+                </a>
+              ) : (
+                <button onClick={() => setSubscribeOpen(true)}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'linear-gradient(90deg,#7c3aed,#3b82f6)', color: '#fff', border: 'none', fontWeight: 700, fontSize: 16, padding: '14px 32px', borderRadius: 12, boxShadow: '0 8px 32px rgba(124,58,237,0.25)', cursor: 'pointer', fontFamily: 'inherit' }}>
+                  <span>🔒</span> {subStatus === 'checking' ? 'Checking…' : 'Subscribe to Access →'}
+                </button>
+              )}
               <a href="#how-it-works" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#ffffff', border: '1px solid rgba(26,35,126,0.15)', color: '#1a237e', textDecoration: 'none', fontWeight: 600, fontSize: 16, padding: '14px 32px', borderRadius: 12 }}>
                 How It Works
               </a>
@@ -560,10 +598,22 @@ export default function LeadGenerationPage() {
                 <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.65)', lineHeight: 1.9, marginBottom: 36, maxWidth: 420 }}>
                   On ThinkSuite AI, you can grow your business risk-free. Every AI tool is backed by our 7-day money-back guarantee so you can create, generate, and scale with total confidence.
                 </p>
-                <button onClick={() => setAuthOpen(true)}
-                  style={{ display: 'inline-block', padding: '16px 48px', background: '#ffffff', border: 'none', borderRadius: 100, color: '#1a237e', fontSize: 15, fontWeight: 900, cursor: 'pointer', fontFamily: 'inherit', letterSpacing: 0.2, boxShadow: '0 8px 40px rgba(255,255,255,0.2)' }}>
-                  Try now →
-                </button>
+                {!user ? (
+                  <button onClick={() => setAuthOpen(true)}
+                    style={{ display: 'inline-block', padding: '16px 48px', background: '#ffffff', border: 'none', borderRadius: 100, color: '#1a237e', fontSize: 15, fontWeight: 900, cursor: 'pointer', fontFamily: 'inherit', letterSpacing: 0.2, boxShadow: '0 8px 40px rgba(255,255,255,0.2)' }}>
+                    Login / Sign Up →
+                  </button>
+                ) : subStatus === 'active' ? (
+                  <a href="/dashboard/lead-generation"
+                    style={{ display: 'inline-block', padding: '16px 48px', background: '#ffffff', borderRadius: 100, color: '#1a237e', fontSize: 15, fontWeight: 900, textDecoration: 'none', letterSpacing: 0.2, boxShadow: '0 8px 40px rgba(255,255,255,0.2)' }}>
+                    Access Your Tool →
+                  </a>
+                ) : (
+                  <button onClick={() => setSubscribeOpen(true)}
+                    style={{ display: 'inline-block', padding: '16px 48px', background: '#ffffff', border: 'none', borderRadius: 100, color: '#1a237e', fontSize: 15, fontWeight: 900, cursor: 'pointer', fontFamily: 'inherit', letterSpacing: 0.2, boxShadow: '0 8px 40px rgba(255,255,255,0.2)' }}>
+                    {subStatus === 'checking' ? 'Loading…' : 'Subscribe Now →'}
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -601,7 +651,25 @@ export default function LeadGenerationPage() {
         `}</style>
       </div>
 
-      <ToolAuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} toolName="AI Lead Generation" />
+      <ToolAuthModal
+        isOpen={authOpen}
+        onClose={() => setAuthOpen(false)}
+        toolName="AI Lead Generation"
+        slug="lead-generation"
+        redirectTo="/tools/lead-generation"
+      />
+      {user && (
+        <ToolSubscribeModal
+          isOpen={subscribeOpen}
+          onClose={() => setSubscribeOpen(false)}
+          toolSlug="lead-generation"
+          toolName="AI Lead Generation"
+          toolColor="#7c3aed"
+          toolIcon="🎯"
+          userId={user.uid}
+          onSubscribed={() => { setSubStatus('active'); setSubscribeOpen(false) }}
+        />
+      )}
     </>
   )
 }

@@ -113,7 +113,7 @@ a { text-decoration: none; color: inherit; }
 .tool-ThinkVirtual { background: rgba(139,92,246,.15); color: var(--purple-400); }
 .tool-WavCart { background: rgba(0,209,255,.1); color: var(--cyan-500); }
 .tool-Visibility { background: rgba(245,158,11,.12); color: var(--amber-500); }
-.tool-MyThinkAI { background: rgba(34,197,94,.1); color: var(--green-500); }
+.tool-Thinksuite { background: rgba(34,197,94,.1); color: var(--green-500); }
 
 /* FORMS */
 .form-card { background: var(--navy-800); border: 1px solid rgba(255,255,255,.07); border-radius: 14px; padding: 24px; }

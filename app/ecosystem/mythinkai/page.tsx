@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'MyThinkAI: Targeted Lead Lists by Occupation and Location | ThinkSuite',
-  description: 'MyThinkAI provides hyper-targeted business lead lists filtered by occupation, location, and industry. Get verified contacts ready for outreach.',
-  alternates: { canonical: 'https://thinksuite.in/ecosystem/mythinkai' },
+  title: 'Thinksuite: Targeted Lead Lists by Occupation and Location | ThinkSuite',
+  description: 'Thinksuite provides hyper-targeted business lead lists filtered by occupation, location, and industry. Get verified contacts ready for outreach.',
+  alternates: { canonical: 'https://thinksuite.in/ecosystem/Thinksuite' },
 }
 
 const COLOR = '#d97706'
@@ -33,7 +33,7 @@ const steps = [
   { n: '03', title: 'Download & Outreach', desc: 'Get your list in CSV format and start calling, emailing, or WhatsApp campaigns immediately.' },
 ]
 
-export default function MyThinkAIPage() {
+export default function ThinksuitePage() {
   return (
     <main>
       <section style={{
@@ -50,7 +50,7 @@ export default function MyThinkAIPage() {
             <i className="fa-solid fa-crosshairs" style={{ color: COLOR, fontSize: 32 }} />
           </div>
           <span className="label" style={{ marginBottom: 16, display: 'inline-block', color: COLOR }}>THINKSUITE ECOSYSTEM</span>
-          <h1 style={{ fontSize: 'clamp(36px,5vw,64px)', fontWeight: 900, color: '#fff', marginBottom: 14, lineHeight: 1.1 }}>MyThinkAI</h1>
+          <h1 style={{ fontSize: 'clamp(36px,5vw,64px)', fontWeight: 900, color: '#fff', marginBottom: 14, lineHeight: 1.1 }}>Thinksuite</h1>
           <p style={{ fontSize: 20, fontWeight: 600, color: COLOR, marginBottom: 20 }}>Targeted Lead Lists by Occupation &amp; Location</p>
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.65)', maxWidth: 580, margin: '0 auto 40px', lineHeight: 1.85 }}>
             Tell us what kind of customers you need, their profession, city, and industry, and we deliver a verified, ready-to-use lead list so you can start your outreach immediately.

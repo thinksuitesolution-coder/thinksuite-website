@@ -2,10 +2,9 @@
 import { Outfit, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import './animations.css'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
+import ConditionalNav from '@/components/layout/ConditionalNav'
 import ClientInit from '@/components/effects/ClientInit'
-import ChatWidget from '@/components/ui/ChatWidget'
+import { AuthProvider } from '@/lib/auth-context'
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -123,11 +122,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <ChatWidget />
-        <ClientInit />
+        <AuthProvider>
+          <ConditionalNav>{children}</ConditionalNav>
+          <ClientInit />
+        </AuthProvider>
       </body>
     </html>
   )

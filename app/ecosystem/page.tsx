@@ -3,8 +3,8 @@ import Link from 'next/link'
 import EcosystemNav from '@/components/ui/EcosystemNav'
 
 export const metadata: Metadata = {
-  title: 'ThinkSuite Ecosystem | ThinkVirtual, WavCart, Visibility & MyThinkAI',
-  description: 'Explore the ThinkSuite product ecosystem: ThinkVirtual for professional networking, WavCart for local vendor eStores, Visibility for GEO ranking, and MyThinkAI for targeted leads.',
+  title: 'ThinkSuite Ecosystem | ThinkVirtual, WavCart, Visibility & Thinksuite',
+  description: 'Explore the ThinkSuite product ecosystem: ThinkVirtual for professional networking, WavCart for local vendor eStores, Visibility for GEO ranking, and Thinksuite for targeted leads.',
   alternates: { canonical: 'https://thinksuite.in/ecosystem' },
 }
 
@@ -39,19 +39,19 @@ const products = [
     ],
   },
   {
-    id: 'mythinkai',
+    id: 'Thinksuite',
     emoji: '🤖',
-    logo: '/assets/img/logos/mythinkai.jpeg',
-    name: 'MyThinkAI',
+    logo: '/assets/img/logos/Thinksuite.jpeg',
+    name: 'Thinksuite',
     tagline: 'Targeted Leads by Occupation & Location',
     color: '#d97706',
     accentBg: 'rgba(217,119,6,0.06)',
     border: 'rgba(217,119,6,0.14)',
     status: 'coming_soon',
     statusLabel: 'Coming Soon',
-    href: '/ecosystem/mythinkai',
+    href: '/ecosystem/Thinksuite',
     ctaLabel: 'Get Your Lead List',
-    desc: 'MyThinkAI provides hyper-targeted lead lists for businesses. Tell us the occupation, city, and industry of the customers you need, and we deliver a verified, ready-to-use contact list so you can start outreach immediately.',
+    desc: 'Thinksuite provides hyper-targeted lead lists for businesses. Tell us the occupation, city, and industry of the customers you need, and we deliver a verified, ready-to-use contact list so you can start outreach immediately.',
     capabilities: [
       { icon: 'fa-briefcase', label: 'Occupation-Based Filters', desc: 'Target doctors, lawyers, retailers, and any profession you need' },
       { icon: 'fa-location-dot', label: 'City & Location Targeting', desc: 'Filter by city, district, state, or pincode' },

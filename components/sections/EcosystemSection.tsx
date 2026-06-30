@@ -19,10 +19,10 @@ const products = [
     badgeColor: '#f97316',
   },
   {
-    id: 'mythinkai',
+    id: 'Thinksuite',
     emoji: '🤖',
-    logo: '/assets/img/logos/mythinkai.jpeg',
-    name: 'MyThinkAI',
+    logo: '/assets/img/logos/Thinksuite.jpeg',
+    name: 'Thinksuite',
     tagline: 'Your Personal AI Workspace',
     desc: 'Write content, conduct research, and automate repetitive tasks with an AI assistant trained and tailored specifically for your business needs.',
     features: ['AI Content Writing', 'Business Research', 'Task Automation', 'Custom AI Training'],

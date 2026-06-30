@@ -3,6 +3,7 @@ backend/node_modules
 /.next
 /out
 .env*.local
+video-backend/.env
 .vercel
 *.tsbuildinfo
 next-env.d.ts

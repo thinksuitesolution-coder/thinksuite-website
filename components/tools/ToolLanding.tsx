@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react'
 import ToolDemoAnimation from './ToolDemoAnimation'
 import ToolAuthModal from './ToolAuthModal'
+import ToolSubscribeModal from './ToolSubscribeModal'
+import { useAuth } from '@/lib/auth-context'
 
 export const ALL_TOOLS = [
   {
@@ -244,12 +246,47 @@ const FEATURE_QUICK_TIPS: Record<string, Array<{english: string; flow: string[];
   ],
 }
 
+// Tools that require login (live tools)
+const AUTH_REQUIRED_SLUGS = ['content', 'lead-generation']
+
+// Tools that are coming soon (not yet live)
+const COMING_SOON_SLUGS = ['voice', 'imagestudio', 'video']
+
+// Dashboard URLs per tool (null = tool not yet launched)
+const TOOL_DASHBOARD: Record<string, string | null> = {
+  'content': '/dashboard/content',
+  'lead-generation': '/dashboard/lead-generation',
+  'voice': null,
+  'imagestudio': null,
+  'video': null,
+}
+
 export default function ToolLanding({ slug }: { slug: string }) {
   const tool = ALL_TOOLS.find(t => t.slug === slug)
   const [isMobile, setIsMobile] = useState(false)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [openTip, setOpenTip] = useState<number | null>(null)
   const [authOpen, setAuthOpen] = useState(false)
+  const [comingSoonOpen, setComingSoonOpen] = useState(false)
+  const [subscribeOpen, setSubscribeOpen] = useState(false)
+  const [subStatus, setSubStatus] = useState<'checking' | 'none' | 'active' | 'expired'>('checking')
+  const { user, loading } = useAuth()
+
+  const isComingSoon = COMING_SOON_SLUGS.includes(slug)
+
+  const handleCTA = () => {
+    if (isComingSoon) {
+      setComingSoonOpen(true)
+      return
+    }
+    if (!user) { setAuthOpen(true); return }
+    if (subStatus === 'active') {
+      const dashUrl = TOOL_DASHBOARD[slug]
+      if (dashUrl) window.location.href = dashUrl
+      return
+    }
+    setSubscribeOpen(true)
+  }
 
   useEffect(() => {
     const fn = () => setIsMobile(window.innerWidth < 768)
@@ -257,6 +294,30 @@ export default function ToolLanding({ slug }: { slug: string }) {
     window.addEventListener('resize', fn)
     return () => window.removeEventListener('resize', fn)
   }, [])
+
+  // Auto-open auth modal if this tool requires login and user is not signed in
+  useEffect(() => {
+    if (!loading && !user && AUTH_REQUIRED_SLUGS.includes(slug)) {
+      setAuthOpen(true)
+    }
+  }, [loading, user, slug])
+
+  // After login, check subscription status for this tool
+  useEffect(() => {
+    if (!user || loading || !AUTH_REQUIRED_SLUGS.includes(slug)) return
+    fetch('/api/subscription-status', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: user.uid, toolSlug: slug }),
+    })
+      .then(r => r.json())
+      .then(d => {
+        const s = d.status === 'active' ? 'active' : d.status === 'expired' ? 'expired' : 'none'
+        setSubStatus(s)
+        if (s === 'none' || s === 'expired') setSubscribeOpen(true)
+      })
+      .catch(() => setSubStatus('none'))
+  }, [user, loading, slug])
 
   if (!tool) {
     return (
@@ -312,9 +373,13 @@ export default function ToolLanding({ slug }: { slug: string }) {
               </div>
 
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: isMobile ? 'center' : 'flex-start' }}>
-                <button onClick={() => setAuthOpen(true)}
+                <button onClick={handleCTA}
                   style={{ padding: '15px 38px', background: `linear-gradient(135deg, ${tool.color}, ${tool.color}cc)`, border: 'none', borderRadius: 12, color: '#fff', fontSize: 15, fontWeight: 800, cursor: 'pointer', fontFamily: 'inherit', letterSpacing: 0.2, boxShadow: `0 8px 32px ${tool.color}25` }}>
-                  Start Today →
+                  {isComingSoon ? 'Notify Me at Launch →'
+                    : !user ? 'Start Today →'
+                    : subStatus === 'checking' ? 'Loading…'
+                    : subStatus === 'active' ? (TOOL_DASHBOARD[slug] ? 'Access Dashboard →' : 'You\'re Subscribed ✓')
+                    : 'Subscribe Now →'}
                 </button>
                 <a href="/tools"
                   style={{ padding: '15px 28px', background: '#ffffff', border: '1px solid rgba(26,35,126,0.15)', borderRadius: 12, color: '#1a237e', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>
@@ -357,9 +422,12 @@ export default function ToolLanding({ slug }: { slug: string }) {
                       </div>
                     ))}
                   </div>
-                  <button onClick={() => setAuthOpen(true)}
+                  <button onClick={handleCTA}
                     style={{ width: '100%', padding: '13px', background: `${tool.color}10`, border: `1px solid ${tool.color}25`, borderRadius: 12, color: tool.color, fontSize: 13, fontWeight: 800, cursor: 'pointer', fontFamily: 'inherit' }}>
-                    Try for Free →
+                    {isComingSoon ? 'Coming Soon →'
+                      : !user ? 'Get Started →'
+                      : subStatus === 'active' ? 'Access Dashboard →'
+                      : 'Subscribe →'}
                   </button>
                 </div>
               </div>
@@ -431,9 +499,12 @@ export default function ToolLanding({ slug }: { slug: string }) {
                         <div style={{ fontSize: 10, fontWeight: 700, color: '#94a3b8', letterSpacing: 1.2, textTransform: 'uppercase' as const, marginBottom: 7 }}>📖 Detail / Pro Tips</div>
                         <div style={{ fontSize: 13, color: '#64748b', lineHeight: 1.8 }}>{tips.detail}</div>
                       </div>
-                      <button onClick={() => setAuthOpen(true)}
+                      <button onClick={handleCTA}
                         style={{ marginTop: 16, width: '100%', padding: '12px', background: `${tool.color}10`, border: `1px solid ${tool.color}22`, borderRadius: 12, color: tool.color, fontSize: 13, fontWeight: 800, cursor: 'pointer', fontFamily: 'inherit' }}>
-                        Try {tool.label} Free →
+                        {isComingSoon ? 'Notify Me →'
+                : !user ? `Try ${tool.label} Free →`
+                : subStatus === 'active' ? 'Access Dashboard →'
+                : 'Subscribe Now →'}
                       </button>
                     </div>
                   )}
@@ -502,12 +573,19 @@ export default function ToolLanding({ slug }: { slug: string }) {
           </div>
           <div style={{ marginTop: 52, padding: isMobile ? '28px 24px' : '40px 48px', background: `${tool.color}06`, border: `1px solid ${tool.color}15`, borderRadius: 24, display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: 'center', justifyContent: 'space-between', gap: 24, textAlign: isMobile ? 'center' : 'left' }}>
             <div>
-              <div style={{ fontSize: isMobile ? 18 : 22, fontWeight: 900, color: '#0f172a', marginBottom: 8 }}>Ready to try {tool.label}?</div>
-              <div style={{ fontSize: 14, color: '#64748b' }}>Subscribe monthly. No setup fees. Cancel anytime.</div>
+              <div style={{ fontSize: isMobile ? 18 : 22, fontWeight: 900, color: '#0f172a', marginBottom: 8 }}>
+                {isComingSoon ? `${tool.label} – Coming Soon!` : `Ready to try ${tool.label}?`}
+              </div>
+              <div style={{ fontSize: 14, color: '#64748b' }}>
+                {isComingSoon ? 'We\'re working on it. Be the first to know when it launches.' : 'Subscribe monthly. No setup fees. Cancel anytime.'}
+              </div>
             </div>
-            <button onClick={() => setAuthOpen(true)}
+            <button onClick={handleCTA}
               style={{ padding: '15px 40px', background: `linear-gradient(135deg, ${tool.color}, ${tool.color}bb)`, border: 'none', borderRadius: 12, color: '#fff', fontSize: 15, fontWeight: 800, cursor: 'pointer', fontFamily: 'inherit', flexShrink: 0, boxShadow: `0 8px 28px ${tool.color}25` }}>
-              Subscribe Now →
+              {isComingSoon ? 'Notify Me →'
+                : !user ? 'Subscribe Now →'
+                : subStatus === 'active' ? 'Access Dashboard →'
+                : 'Subscribe Now →'}
             </button>
           </div>
         </div>
@@ -542,9 +620,12 @@ export default function ToolLanding({ slug }: { slug: string }) {
               <p style={{ fontSize: isMobile ? 14 : 16, color: 'rgba(255,255,255,0.65)', lineHeight: 1.9, marginBottom: 36, maxWidth: 420, margin: isMobile ? '0 auto 36px' : '0 0 36px' }}>
                 On ThinkSuite AI, you can grow your business risk-free. Every AI tool is backed by our 7-day money-back guarantee so you can create, generate, and scale with total confidence.
               </p>
-              <button onClick={() => setAuthOpen(true)}
+              <button onClick={handleCTA}
                 style={{ padding: '16px 48px', background: '#ffffff', border: 'none', borderRadius: 100, color: '#1a237e', fontSize: 15, fontWeight: 900, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 8px 40px rgba(255,255,255,0.2)' }}>
-                Try now →
+                {isComingSoon ? 'Notify Me →'
+                : !user ? 'Try now →'
+                : subStatus === 'active' ? 'Access Dashboard →'
+                : 'Subscribe Now →'}
               </button>
             </div>
           </div>
@@ -635,7 +716,45 @@ export default function ToolLanding({ slug }: { slug: string }) {
         @keyframes tOrb3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(130px,-110px) scale(1.12)}}
       `}</style>
     </div>
-    <ToolAuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} toolName={tool.label} />
+    <ToolAuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} toolName={tool.label} slug={slug} redirectTo={`/tools/${slug}`} />
+    {user && (
+      <ToolSubscribeModal
+        isOpen={subscribeOpen}
+        onClose={() => setSubscribeOpen(false)}
+        toolSlug={slug}
+        toolName={tool.label}
+        toolColor={tool.color}
+        toolIcon={tool.icon}
+        userId={user.uid}
+        onSubscribed={() => { setSubStatus('active'); setSubscribeOpen(false) }}
+      />
+    )}
+
+    {/* Coming Soon Modal */}
+    {comingSoonOpen && (
+      <div style={{ position: 'fixed', inset: 0, zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(15,23,42,0.6)', backdropFilter: 'blur(6px)' }} onClick={() => setComingSoonOpen(false)} />
+        <div style={{ position: 'relative', background: '#ffffff', borderRadius: 24, padding: isMobile ? '36px 24px' : '48px 40px', maxWidth: 440, width: '100%', boxShadow: '0 32px 80px rgba(0,0,0,0.2)', textAlign: 'center' }}>
+          <button onClick={() => setComingSoonOpen(false)} style={{ position: 'absolute', top: 16, right: 16, background: 'none', border: 'none', cursor: 'pointer', fontSize: 18, color: '#94a3b8', padding: 4 }}>
+            <i className="fa-solid fa-xmark" />
+          </button>
+          <div style={{ width: 72, height: 72, borderRadius: 20, background: `${tool.color}12`, border: `1px solid ${tool.color}25`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32, margin: '0 auto 20px' }}>{tool.icon}</div>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: '#f1f5f9', borderRadius: 100, padding: '5px 14px', marginBottom: 16 }}>
+            <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#f59e0b', display: 'inline-block' }} />
+            <span style={{ fontSize: 11, fontWeight: 800, color: '#64748b', letterSpacing: 1.5, textTransform: 'uppercase' as const }}>Coming Soon</span>
+          </div>
+          <h3 style={{ fontSize: 24, fontWeight: 900, color: '#0f172a', marginBottom: 12, letterSpacing: -0.5 }}>{tool.label}</h3>
+          <p style={{ fontSize: 14, color: '#64748b', lineHeight: 1.7, marginBottom: 28 }}>
+            We&apos;re working hard to bring you {tool.label}. Sign up to get early access and be the first to know when it launches!
+          </p>
+          <button onClick={() => { setComingSoonOpen(false); setAuthOpen(true) }}
+            style={{ width: '100%', padding: '14px', background: `linear-gradient(135deg, ${tool.color}, ${tool.color}cc)`, border: 'none', borderRadius: 12, color: '#fff', fontSize: 14, fontWeight: 800, cursor: 'pointer', fontFamily: 'inherit', boxShadow: `0 8px 24px ${tool.color}25`, marginBottom: 12 }}>
+            Notify Me at Launch →
+          </button>
+          <p style={{ fontSize: 12, color: '#94a3b8' }}>No spam. We&apos;ll email you once and only when it&apos;s live.</p>
+        </div>
+      </div>
+    )}
     </>
   )
 }

@@ -8,6 +8,11 @@ const companyLinks = [
 const legalLinks = [
   { label: 'Privacy Policy', href: '/privacy-policy' },
   { label: 'Terms & Conditions', href: '/terms-and-conditions' },
+  { label: 'Refund & Cancellation', href: '/refund-cancellation' },
+  { label: 'Pricing Policy', href: '/pricing-policy' },
+  { label: 'Shipping Policy', href: '/shipping-policy' },
+  { label: 'Child Safety Policy', href: '/child-safety-policy' },
+  { label: 'Delete Account', href: '/delete-account' },
 ]
 
 export default function Footer() {

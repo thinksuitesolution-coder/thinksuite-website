@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tools Management — ThinkSuite Admin</title>
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    .tool-row { display:flex; align-items:center; gap:16px; background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:18px 22px; margin-bottom:12px; }
+    .tool-icon { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+    .tool-info { flex:1; }
+    .tool-name { font-size:15px; font-weight:700; color:#0f172a; margin-bottom:3px; }
+    .tool-meta { font-size:12px; color:#94a3b8; }
+    .tool-badge { font-size:10px; font-weight:700; padding:3px 9px; border-radius:20px; }
+    .badge-live { background:rgba(34,197,94,0.12); color:#16a34a; border:1px solid rgba(34,197,94,0.25); }
+    .badge-soon { background:rgba(100,116,139,0.1); color:#64748b; border:1px solid rgba(100,116,139,0.2); }
+    .toggle-wrap { display:flex; align-items:center; gap:10px; }
+    .toggle { position:relative; width:46px; height:24px; }
+    .toggle input { opacity:0; width:0; height:0; }
+    .slider { position:absolute; inset:0; background:#cbd5e1; border-radius:24px; cursor:pointer; transition:0.2s; }
+    .slider:before { content:''; position:absolute; width:18px; height:18px; left:3px; top:3px; background:#fff; border-radius:50%; transition:0.2s; box-shadow:0 1px 4px rgba(0,0,0,0.15); }
+    input:checked + .slider { background:#1a237e; }
+    input:checked + .slider:before { transform:translateX(22px); }
+    .save-btn { margin-top:24px; padding:12px 32px; background:linear-gradient(135deg,#1a237e,#3b82f6); color:#fff; border:none; border-radius:10px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit; }
+    .save-btn:hover { opacity:0.9; }
+    .section-title { font-size:13px; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:1.5px; margin:28px 0 14px; }
+    .status-msg { display:none; padding:10px 16px; border-radius:8px; font-size:13px; font-weight:600; margin-top:14px; }
+    .status-msg.success { background:rgba(34,197,94,0.1); color:#16a34a; border:1px solid rgba(34,197,94,0.2); }
+    .status-msg.error { background:rgba(239,68,68,0.1); color:#dc2626; border:1px solid rgba(239,68,68,0.2); }
+    .subscription-note { font-size:12px; color:#94a3b8; margin-top:6px; }
+    .plan-badge { font-size:10px; font-weight:700; padding:2px 8px; border-radius:20px; background:rgba(124,58,237,0.1); color:#7c3aed; border:1px solid rgba(124,58,237,0.2); }
+  </style>
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-logo">ThinkSuite <span>Admin</span></div>
+      <nav class="admin-nav">
+        <a href="dashboard.html"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+        <a href="leads.html"><i class="fa-solid fa-crosshairs"></i> Leads</a>
+        <a href="tools.html" class="active"><i class="fa-solid fa-bolt"></i> AI Tools</a>
+        <a href="subscriptions.html"><i class="fa-solid fa-credit-card"></i> Subscriptions</a>
+        <a href="blogs.html"><i class="fa-solid fa-newspaper"></i> Blog</a>
+        <a href="projects.html"><i class="fa-solid fa-folder"></i> Projects</a>
+        <a href="careers-admin.html"><i class="fa-solid fa-briefcase"></i> Careers</a>
+        <a href="applications.html"><i class="fa-solid fa-file-alt"></i> Applications</a>
+        <a href="login.html" id="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="admin-main">
+      <div class="admin-header">
+        <h1>AI Tools Management</h1>
+        <p style="color:#64748b;font-size:13px;margin-top:4px;">Enable/disable tools, set subscription plans, and control access.</p>
+      </div>
+
+      <div class="admin-card" style="max-width:760px;">
+        <div class="section-title">Live Tools (Login Required)</div>
+
+        <div class="tool-row">
+          <div class="tool-icon" style="background:rgba(26,35,126,0.08);">🎯</div>
+          <div class="tool-info">
+            <div class="tool-name">Lead Generation</div>
+            <div class="tool-meta">/tools/lead-generation &nbsp;·&nbsp; Google Maps, LinkedIn, IndiaMart</div>
+            <div style="margin-top:6px;display:flex;gap:8px;align-items:center;">
+              <span class="tool-badge badge-live">Live</span>
+              <span class="plan-badge">Requires Login</span>
+            </div>
+          </div>
+          <div class="toggle-wrap">
+            <span style="font-size:12px;color:#64748b;">Enabled</span>
+            <label class="toggle">
+              <input type="checkbox" id="toggle-lead-gen" checked onchange="markChanged()" />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="tool-row">
+          <div class="tool-icon" style="background:rgba(124,58,237,0.08);">✍️</div>
+          <div class="tool-info">
+            <div class="tool-name">Content Marketing</div>
+            <div class="tool-meta">/tools/content &nbsp;·&nbsp; Blog, Ads, Email, Social posts</div>
+            <div style="margin-top:6px;display:flex;gap:8px;align-items:center;">
+              <span class="tool-badge badge-live">Live</span>
+              <span class="plan-badge">Requires Login</span>
+            </div>
+          </div>
+          <div class="toggle-wrap">
+            <span style="font-size:12px;color:#64748b;">Enabled</span>
+            <label class="toggle">
+              <input type="checkbox" id="toggle-content" checked onchange="markChanged()" />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="section-title">Coming Soon Tools</div>
+
+        <div class="tool-row">
+          <div class="tool-icon" style="background:rgba(124,58,237,0.08);">🎬</div>
+          <div class="tool-info">
+            <div class="tool-name">Video Studio</div>
+            <div class="tool-meta">/tools/video &nbsp;·&nbsp; Text-to-video, AI avatars, lip sync</div>
+            <div style="margin-top:6px;display:flex;gap:8px;align-items:center;">
+              <span class="tool-badge badge-soon">Coming Soon</span>
+              <span class="plan-badge">Will Require Login</span>
+            </div>
+          </div>
+          <div class="toggle-wrap">
+            <span style="font-size:12px;color:#64748b;">Launch</span>
+            <label class="toggle">
+              <input type="checkbox" id="toggle-video" onchange="markChanged()" />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="tool-row">
+          <div class="tool-icon" style="background:rgba(5,150,105,0.08);">🎙️</div>
+          <div class="tool-info">
+            <div class="tool-name">Voice AI</div>
+            <div class="tool-meta">/tools/voice &nbsp;·&nbsp; 500+ voices, voice clone, 30+ languages</div>
+            <div style="margin-top:6px;display:flex;gap:8px;align-items:center;">
+              <span class="tool-badge badge-soon">Coming Soon</span>
+              <span class="plan-badge">Will Require Login</span>
+            </div>
+          </div>
+          <div class="toggle-wrap">
+            <span style="font-size:12px;color:#64748b;">Launch</span>
+            <label class="toggle">
+              <input type="checkbox" id="toggle-voice" onchange="markChanged()" />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="tool-row">
+          <div class="tool-icon" style="background:rgba(217,119,6,0.08);">✨</div>
+          <div class="tool-info">
+            <div class="tool-name">Image Studio</div>
+            <div class="tool-meta">/tools/imagestudio &nbsp;·&nbsp; BG removal, 4x upscale, DALL-E 3</div>
+            <div style="margin-top:6px;display:flex;gap:8px;align-items:center;">
+              <span class="tool-badge badge-soon">Coming Soon</span>
+              <span class="plan-badge">Will Require Login</span>
+            </div>
+          </div>
+          <div class="toggle-wrap">
+            <span style="font-size:12px;color:#64748b;">Launch</span>
+            <label class="toggle">
+              <input type="checkbox" id="toggle-image" onchange="markChanged()" />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="section-title">Subscription Control</div>
+        <div style="background:#f8faff;border:1px solid rgba(26,35,126,0.09);border-radius:12px;padding:18px 20px;margin-bottom:20px;">
+          <div style="font-size:13px;font-weight:700;color:#0f172a;margin-bottom:10px;">Each tool has its own subscription plan.</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px;color:#334155;">
+              <span>Lead Generation Plan</span>
+              <a href="subscription-editor.html?tool=lead-generation" style="color:#1a237e;font-weight:600;font-size:12px;text-decoration:none;">Edit Plans →</a>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px;color:#334155;">
+              <span>Content Marketing Plan</span>
+              <a href="subscription-editor.html?tool=content" style="color:#1a237e;font-weight:600;font-size:12px;text-decoration:none;">Edit Plans →</a>
+            </div>
+          </div>
+          <div class="subscription-note" style="margin-top:12px;">Subscriptions are managed via Razorpay. Each tool plan is independent — users can subscribe to individual tools.</div>
+        </div>
+
+        <button class="save-btn" id="save-btn" onclick="saveSettings()">
+          <i class="fa-solid fa-floppy-disk" style="margin-right:8px;"></i> Save Tool Settings
+        </button>
+        <div class="status-msg" id="status-msg"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/admin.js"></script>
+  <script>
+    let hasChanges = false;
+
+    function markChanged() {
+      hasChanges = true;
+    }
+
+    async function saveSettings() {
+      const btn = document.getElementById('save-btn');
+      const msg = document.getElementById('status-msg');
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin" style="margin-right:8px;"></i> Saving…';
+
+      const settings = {
+        'lead-generation': { enabled: document.getElementById('toggle-lead-gen').checked },
+        'content':         { enabled: document.getElementById('toggle-content').checked },
+        'video':           { enabled: document.getElementById('toggle-video').checked },
+        'voice':           { enabled: document.getElementById('toggle-voice').checked },
+        'imagestudio':     { enabled: document.getElementById('toggle-image').checked },
+      };
+
+      try {
+        const token = localStorage.getItem('admin_token') || '';
+        const res = await fetch('/api/admin/tool-settings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+          body: JSON.stringify({ settings }),
+        });
+        if (res.ok) {
+          msg.textContent = '✓ Settings saved successfully!';
+          msg.className = 'status-msg success';
+          msg.style.display = 'block';
+          hasChanges = false;
+        } else {
+          throw new Error('Save failed');
+        }
+      } catch {
+        msg.textContent = '✗ Failed to save. Please try again.';
+        msg.className = 'status-msg error';
+        msg.style.display = 'block';
+      }
+
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-floppy-disk" style="margin-right:8px;"></i> Save Tool Settings';
+      setTimeout(() => { msg.style.display = 'none'; }, 3000);
+    }
+
+    // Load current settings on page load
+    async function loadSettings() {
+      try {
+        const token = localStorage.getItem('admin_token') || '';
+        const res = await fetch('/api/admin/tool-settings', {
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data.settings) {
+          const s = data.settings;
+          if (s['lead-generation']) document.getElementById('toggle-lead-gen').checked = s['lead-generation'].enabled;
+          if (s['content'])         document.getElementById('toggle-content').checked  = s['content'].enabled;
+          if (s['video'])           document.getElementById('toggle-video').checked    = s['video'].enabled;
+          if (s['voice'])           document.getElementById('toggle-voice').checked    = s['voice'].enabled;
+          if (s['imagestudio'])     document.getElementById('toggle-image').checked    = s['imagestudio'].enabled;
+        }
+      } catch {}
+    }
+
+    loadSettings();
+  </script>
+</body>
+</html>

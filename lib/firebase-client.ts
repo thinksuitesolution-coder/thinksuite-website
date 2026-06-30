@@ -1,5 +1,15 @@
 import { initializeApp, getApps } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut as firebaseSignOut,
+  onAuthStateChanged,
+  setPersistence,
+  browserLocalPersistence,
+  type User,
+} from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -12,3 +22,24 @@ const firebaseConfig = {
 
 const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+export const auth = getAuth(app);
+
+const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: 'select_account' });
+
+// Persist session across page refreshes
+if (typeof window !== 'undefined') {
+  setPersistence(auth, browserLocalPersistence).catch(console.error);
+}
+
+export async function signInWithGoogle(): Promise<User> {
+  const result = await signInWithPopup(auth, googleProvider);
+  return result.user;
+}
+
+export async function signOut(): Promise<void> {
+  await firebaseSignOut(auth);
+}
+
+export { onAuthStateChanged };
+export type { User };

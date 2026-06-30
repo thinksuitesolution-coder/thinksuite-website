@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS ai_subscribers (
 CREATE TABLE IF NOT EXISTS subscriptions (
   id INT AUTO_INCREMENT PRIMARY KEY,
   subscriber_id INT NOT NULL,
-  tool ENUM('ThinkVirtual','WavCart','Visibility','MyThinkAI') NOT NULL,
+  tool ENUM('ThinkVirtual','WavCart','Visibility','Thinksuite') NOT NULL,
   plan ENUM('monthly','quarterly','annual') DEFAULT 'monthly',
   start_date DATE NOT NULL,
   end_date DATE NOT NULL,

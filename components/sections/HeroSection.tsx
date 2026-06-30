@@ -88,7 +88,7 @@ const BUBBLES: Record<string, { text: string; delay: string }[]> = {
   ],
   saas: [
     { text: 'WavCart',    delay: '0s'   },
-    { text: 'MyThinkAI',  delay: '0.8s' },
+    { text: 'Thinksuite',  delay: '0.8s' },
     { text: 'Visibility', delay: '1.6s' },
     { text: 'Analytics',  delay: '0.4s' },
     { text: 'Dashboard',  delay: '1.2s' },

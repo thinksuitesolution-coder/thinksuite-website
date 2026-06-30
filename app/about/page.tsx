@@ -88,7 +88,7 @@ function StorySection() {
     {
       year: '2023',
       title: 'First In-House Products',
-      desc: 'ThinkVirtual (freelancer-client-influencer network) and MyThinkAI (personal AI workspace) launched as standalone SaaS products.',
+      desc: 'ThinkVirtual (freelancer-client-influencer network) and Thinksuite (personal AI workspace) launched as standalone SaaS products.',
     },
     {
       year: '2024',
@@ -389,13 +389,13 @@ function EcosystemTeaserSection() {
     },
     {
       icon: '✨',
-      logo: '/assets/img/logos/mythinkai.jpeg',
+      logo: '/assets/img/logos/Thinksuite.jpeg',
       tag: 'AI Workspace',
       tagBg: 'rgba(124,58,237,0.10)',
       tagColor: '#7c3aed',
       barColor: '#7c3aed',
       cardBg: '#fdf9ff',
-      name: 'MyThinkAI',
+      name: 'Thinksuite',
       desc: 'Personal AI workspace, write content, research markets, automate tasks, with AI trained on your business.',
       href: '/ecosystem',
       linkLabel: 'Explore Product',
