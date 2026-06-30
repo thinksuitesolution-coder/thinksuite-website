@@ -1,6 +1,6 @@
 'use client'
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
-import { auth, onAuthStateChanged, signInWithGoogle, signOut, type User } from './firebase-client'
+import { getClientAuth, onAuthStateChanged, signInWithGoogle, signOut, type User } from './firebase-client'
 
 interface AuthContextValue {
   user: User | null
@@ -21,7 +21,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (u) => {
+    const unsub = onAuthStateChanged(getClientAuth(), (u) => {
       setUser(u)
       setLoading(false)
     })
