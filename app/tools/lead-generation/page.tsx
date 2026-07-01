@@ -123,6 +123,11 @@ export default function LeadGenerationPage() {
   // After login, check subscription for lead-generation tool
   useEffect(() => {
     if (!user || loading) return
+    // Admin bypass via coupon code
+    if (typeof window !== 'undefined' && localStorage.getItem('ts_admin_bypass') === '1') {
+      setSubStatus('active')
+      return
+    }
     fetch('/api/subscription-status', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

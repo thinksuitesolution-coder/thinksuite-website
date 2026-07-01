@@ -911,6 +911,11 @@ export default function LeadGenPage() {
 
   useEffect(() => {
     if (!user) return;
+    // Admin bypass via coupon code — skip quota fetch and grant unlimited access
+    if (typeof window !== "undefined" && localStorage.getItem("ts_admin_bypass") === "1") {
+      setLeadQuota({ used: 0, remaining: 999999, limit: 999999, planType: "unlimited", unlimited: true });
+      return;
+    }
     user.getIdToken().then(token =>
       fetch("/api/lead-gen/quota", {
         method: "POST",

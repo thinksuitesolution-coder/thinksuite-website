@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { runNewsPipeline } from '@/lib/news/orchestrator';
 
-// Vercel Cron + manual trigger endpoint
-// cron-job.org will call this every 10 minutes
+// Allow up to 5 minutes for the pipeline (requires Vercel Pro/Fluid)
+export const maxDuration = 300;
+
+// Vercel Cron triggers every 2 hours
 export async function GET(req: NextRequest) {
   // Secure with a secret token
   const authHeader = req.headers.get('authorization');

@@ -52,6 +52,47 @@ const EVENT_META: Record<string, { label: string; color: string; icon: string }>
   general:        { label: 'News',            color: '#64748b', icon: '📰' },
 };
 
+// LLM / company filter chips
+const LLM_FILTERS = [
+  { label: 'OpenAI',       value: 'OpenAI' },
+  { label: 'Anthropic',    value: 'Anthropic' },
+  { label: 'Google',       value: 'Google' },
+  { label: 'Meta',         value: 'Meta' },
+  { label: 'Microsoft',    value: 'Microsoft' },
+  { label: 'xAI',         value: 'xAI' },
+  { label: 'Mistral AI',   value: 'Mistral AI' },
+  { label: 'HuggingFace',  value: 'HuggingFace' },
+  { label: 'NVIDIA',       value: 'NVIDIA' },
+  { label: 'DeepSeek',     value: 'DeepSeek' },
+  { label: 'Groq',         value: 'Groq' },
+  { label: 'Amazon',       value: 'Amazon' },
+];
+
+// Industry filter chips
+const INDUSTRY_FILTERS = [
+  { label: '🏥 Healthcare',      value: 'Healthcare' },
+  { label: '💰 Finance',         value: 'Finance' },
+  { label: '🤖 Robotics',        value: 'Robotics' },
+  { label: '⚖️ Legal',           value: 'Legal' },
+  { label: '📚 Education',       value: 'Education' },
+  { label: '🔒 Cybersecurity',   value: 'Cybersecurity' },
+  { label: '🎮 Gaming & XR',     value: 'Gaming & XR' },
+  { label: '🖥️ Hardware & Chips', value: 'Hardware & Chips' },
+  { label: '🎨 Creative AI',     value: 'Creative AI' },
+  { label: '🏢 Enterprise AI',   value: 'Enterprise AI' },
+];
+
+// Event type filter chips
+const EVENT_TYPE_FILTERS = [
+  { label: '🤖 Model Release',  value: 'model_release' },
+  { label: '📄 Research',       value: 'research_paper' },
+  { label: '💰 Funding',        value: 'funding' },
+  { label: '🔓 Open Source',    value: 'open_source' },
+  { label: '⚡ API Release',    value: 'api_release' },
+  { label: '🚀 Product Launch', value: 'product_launch' },
+  { label: '🔴 Breaking',       value: 'breaking_news' },
+];
+
 function timeAgo(dateStr: string): string {
   const diff = Date.now() - new Date(dateStr).getTime();
   const mins = Math.floor(diff / 60000);
@@ -67,18 +108,35 @@ function imageFor(a: BlogArticle) {
   return a.heroImageUrl || `https://picsum.photos/seed/${a.id}/900/600`;
 }
 
+function buildFilterHref(current: Record<string, string | undefined>, key: string, value: string) {
+  const params = new URLSearchParams();
+  Object.entries({ ...current, [key]: value }).forEach(([k, v]) => {
+    if (v) params.set(k, v);
+  });
+  // Toggle off if same value
+  if (current[key] === value) params.delete(key);
+  const qs = params.toString();
+  return `/ai-news${qs ? `?${qs}` : ''}`;
+}
+
 export default async function AINewsPage({
   searchParams,
 }: {
-  searchParams: { tab?: string; category?: string; q?: string };
+  searchParams: { tab?: string; category?: string; q?: string; company?: string; industry?: string; eventType?: string };
 }) {
   const all = await getAllArticles();
   const tab = searchParams.tab === 'popular' || searchParams.tab === 'important' ? searchParams.tab : 'latest';
   const category = searchParams.category;
   const q = searchParams.q?.trim().toLowerCase();
+  const companyFilter = searchParams.company;
+  const industryFilter = searchParams.industry;
+  const eventTypeFilter = searchParams.eventType;
 
   let filtered = all;
   if (category) filtered = filtered.filter(a => a.category === category);
+  if (companyFilter) filtered = filtered.filter(a => a.company === companyFilter);
+  if (industryFilter) filtered = filtered.filter(a => (a as BlogArticle & { industry?: string }).industry === industryFilter);
+  if (eventTypeFilter) filtered = filtered.filter(a => a.eventType === eventTypeFilter);
   if (q) {
     filtered = filtered.filter(a =>
       a.title.toLowerCase().includes(q) ||
@@ -107,7 +165,6 @@ export default async function AINewsPage({
 
   const trending = byScore.slice(0, 5);
 
-  // Company mention leaderboard — derived from real article data, stands in for the "market" widget
   const companyCounts = new Map<string, number>();
   for (const a of all.slice(0, 60)) {
     if (!a.company) continue;
@@ -115,7 +172,6 @@ export default async function AINewsPage({
   }
   const topCompanies = [...companyCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
 
-  // Topic tag cloud — derived from real article tags
   const tagCounts = new Map<string, number>();
   for (const a of all) for (const t of a.tags || []) tagCounts.set(t, (tagCounts.get(t) || 0) + 1);
   const topTags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10).map(([t]) => t);
@@ -139,30 +195,106 @@ export default async function AINewsPage({
     { label: 'Generative AI', href: '/ai-news?q=generative' },
     { label: 'AI Agents', href: '/ai-news?q=agent' },
     { label: 'AI Tools', href: '/ai-news?category=Tools' },
-    { label: 'Robotics', href: '/ai-news?q=robot' },
+    { label: 'Robotics', href: '/ai-news?industry=Robotics' },
     { label: 'AI Research', href: '/ai-news?category=Research' },
-    { label: 'AI Hardware', href: '/ai-news?q=chip' },
+    { label: 'AI Hardware', href: '/ai-news?industry=Hardware+%26+Chips' },
   ].map((t, i) => ({ ...t, color: TOPIC_COLORS[i % TOPIC_COLORS.length] }));
+
+  const currentParams = {
+    tab: searchParams.tab,
+    category,
+    q: searchParams.q,
+    company: companyFilter,
+    industry: industryFilter,
+    eventType: eventTypeFilter,
+  };
+
+  const hasActiveFilter = !!(companyFilter || industryFilter || eventTypeFilter || category || q);
 
   return (
     <PulseShell navLinks={navLinks} topics={sidebarTopics}>
       <div className="pulse-content">
         <div className="pulse-feed">
-          {featuredSlides.length > 0 && <FeaturedCarousel slides={featuredSlides} />}
+          {featuredSlides.length > 0 && !hasActiveFilter && <FeaturedCarousel slides={featuredSlides} />}
+
+          {/* ── LLM / Company Filter ── */}
+          <div className="pulse-filter-section">
+            <div className="pulse-filter-label">🧠 By LLM / Company</div>
+            <div className="pulse-filter-chips">
+              {LLM_FILTERS.map(f => (
+                <Link
+                  key={f.value}
+                  href={buildFilterHref(currentParams, 'company', f.value)}
+                  className={`pulse-chip${companyFilter === f.value ? ' active' : ''}`}
+                >
+                  {f.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Industry Filter ── */}
+          <div className="pulse-filter-section">
+            <div className="pulse-filter-label">🏭 By Industry</div>
+            <div className="pulse-filter-chips">
+              {INDUSTRY_FILTERS.map(f => (
+                <Link
+                  key={f.value}
+                  href={buildFilterHref(currentParams, 'industry', f.value)}
+                  className={`pulse-chip${industryFilter === f.value ? ' active' : ''}`}
+                >
+                  {f.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Event Type Filter ── */}
+          <div className="pulse-filter-section">
+            <div className="pulse-filter-label">📌 By Type</div>
+            <div className="pulse-filter-chips">
+              {EVENT_TYPE_FILTERS.map(f => (
+                <Link
+                  key={f.value}
+                  href={buildFilterHref(currentParams, 'eventType', f.value)}
+                  className={`pulse-chip${eventTypeFilter === f.value ? ' active' : ''}`}
+                >
+                  {f.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Active filter badge */}
+          {hasActiveFilter && (
+            <div className="pulse-active-filter">
+              <span>Filtering: </span>
+              {companyFilter && <span className="pulse-filter-tag">🏢 {companyFilter}</span>}
+              {industryFilter && <span className="pulse-filter-tag">🏭 {industryFilter}</span>}
+              {eventTypeFilter && <span className="pulse-filter-tag">📌 {EVENT_META[eventTypeFilter]?.label || eventTypeFilter}</span>}
+              {category && <span className="pulse-filter-tag">📂 {category}</span>}
+              {q && <span className="pulse-filter-tag">🔍 "{q}"</span>}
+              <Link href="/ai-news" className="pulse-clear-filter">✕ Clear all</Link>
+            </div>
+          )}
 
           <div className="pulse-feed-head">
-            <div className="pulse-feed-title"><i className="fa-solid fa-bolt" />Latest AI News</div>
+            <div className="pulse-feed-title"><i className="fa-solid fa-bolt" />
+              {companyFilter ? `${companyFilter} News` : industryFilter ? `${industryFilter} AI News` : 'Latest AI News'}
+            </div>
             <div className="pulse-tabs">
-              <Link href="/ai-news?tab=latest" className={`pulse-tab${tab === 'latest' ? ' active' : ''}`}>Latest</Link>
-              <Link href="/ai-news?tab=popular" className={`pulse-tab${tab === 'popular' ? ' active' : ''}`}>Popular</Link>
-              <Link href="/ai-news?tab=important" className={`pulse-tab${tab === 'important' ? ' active' : ''}`}>Important</Link>
+              <Link href={`/ai-news?tab=latest${companyFilter ? `&company=${companyFilter}` : ''}${industryFilter ? `&industry=${encodeURIComponent(industryFilter)}` : ''}${eventTypeFilter ? `&eventType=${eventTypeFilter}` : ''}`} className={`pulse-tab${tab === 'latest' ? ' active' : ''}`}>Latest</Link>
+              <Link href={`/ai-news?tab=popular${companyFilter ? `&company=${companyFilter}` : ''}${industryFilter ? `&industry=${encodeURIComponent(industryFilter)}` : ''}${eventTypeFilter ? `&eventType=${eventTypeFilter}` : ''}`} className={`pulse-tab${tab === 'popular' ? ' active' : ''}`}>Popular</Link>
+              <Link href={`/ai-news?tab=important${companyFilter ? `&company=${companyFilter}` : ''}${industryFilter ? `&industry=${encodeURIComponent(industryFilter)}` : ''}${eventTypeFilter ? `&eventType=${eventTypeFilter}` : ''}`} className={`pulse-tab${tab === 'important' ? ' active' : ''}`}>Important</Link>
             </div>
           </div>
 
           {feedList.length === 0 ? (
             <div className="pulse-empty">
               <i className="fa-solid fa-satellite-dish" />
-              AI is collecting the latest news — the pipeline runs every 10 minutes across 100+ sources.
+              {hasActiveFilter
+                ? 'No articles found for this filter yet — the pipeline runs every 2 hours across 100+ sources.'
+                : 'AI is collecting the latest news — the pipeline runs every 2 hours across 100+ sources.'}
             </div>
           ) : (
             feedList.slice(0, 20).map(a => {
@@ -180,10 +312,19 @@ export default async function AINewsPage({
                   <div className="pulse-row-body">
                     <div className="pulse-row-top">
                       <span className="pulse-row-title">{a.title}</span>
-                      <span className="pulse-row-badge" style={{ background: `${meta.color}26`, color: meta.color }}>{meta.label}</span>
+                      <span className="pulse-row-badge" style={{ background: `${meta.color}26`, color: meta.color }}>{meta.icon} {meta.label}</span>
                     </div>
                     <p className="pulse-row-desc">{a.summary}</p>
                     <div className="pulse-row-foot">
+                      {a.company && a.company !== 'AI Industry' && (
+                        <Link
+                          href={`/ai-news?company=${encodeURIComponent(a.company)}`}
+                          className="pulse-company-tag"
+                          onClick={e => e.stopPropagation()}
+                        >
+                          {a.company}
+                        </Link>
+                      )}
                       <span>{a.sourceName}</span>
                       <span>·</span>
                       <span>{timeAgo(a.publishedAt)}</span>
@@ -226,13 +367,13 @@ export default async function AINewsPage({
             <div className="pulse-market-sub">Articles tracked · <span className="pulse-market-up">100+ sources</span></div>
             <div className="pulse-leaders-label">Most covered companies</div>
             {topCompanies.map(([name, count]) => (
-              <div key={name} className="pulse-leader">
+              <Link key={name} href={`/ai-news?company=${encodeURIComponent(name)}`} className="pulse-leader">
                 <span className="pulse-leader-name">
                   <span className="pulse-leader-dot" style={{ background: '#1a237e' }} />
                   {name}
                 </span>
                 <span className="pulse-leader-val">{count} stories</span>
-              </div>
+              </Link>
             ))}
           </div>
 

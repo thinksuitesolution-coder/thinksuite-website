@@ -157,7 +157,7 @@ export async function runNewsPipeline(): Promise<PipelineResult> {
 
   // STEP 2: Score every event (no API cost — pure keyword scoring)
   const scored: ScoredEvent[] = fresh.map(e => scoreEvent(e));
-  const filtered = filterLowImportance(scored, 50); // drop anything below 50
+  const filtered = filterLowImportance(scored, 40); // drop anything below 40
   console.log(`📊 After scoring: ${filtered.length} pass threshold`);
 
   // STEP 3: Deduplicate using Jaccard similarity + URL matching (no API cost)

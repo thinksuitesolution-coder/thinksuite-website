@@ -13,12 +13,13 @@ interface Props {
 }
 
 const MONTHLY_PRICES: Record<string, number> = {
-  'lead-generation': 4999,
   'content': 999,
   'voice': 999,
   'imagestudio': 999,
   'video': 1499,
 }
+
+const ADMIN_COUPON = 'admin@@2026'
 
 declare global {
   interface Window { Razorpay: new (opts: Record<string, unknown>) => { open(): void } }
@@ -41,35 +42,49 @@ export default function ToolSubscribeModal({
   const [selected, setSelected] = useState<'monthly' | 'sixmonth' | 'annual'>('monthly')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [coupon, setCoupon] = useState('')
+  const [couponError, setCouponError] = useState('')
+
+  const isLeadGen = toolSlug === 'lead-generation'
 
   const monthly = MONTHLY_PRICES[toolSlug] ?? 999
   const sixMonth = Math.round(monthly * 6 * 0.8)
   const annual = Math.round(monthly * 12 * 0.67)
 
-  const plans = [
-    {
-      id: 'monthly' as const,
-      label: 'Monthly',
-      price: monthly,
-      per: '/month',
-      desc: 'Full access. Cancel anytime.',
-    },
-    {
-      id: 'sixmonth' as const,
-      label: '6 Months',
-      price: sixMonth,
-      per: 'one-time',
-      desc: `Save 20% — only ₹${Math.round(sixMonth / 6).toLocaleString()}/mo`,
-      badge: 'Popular',
-    },
-    {
-      id: 'annual' as const,
-      label: 'Annual',
-      price: annual,
-      per: 'one-time',
-      desc: `Save 33% — only ₹${Math.round(annual / 12).toLocaleString()}/mo`,
-    },
-  ]
+  const plans = isLeadGen
+    ? [
+        {
+          id: 'monthly' as const,
+          label: '500 Leads / Month',
+          price: 5000,
+          per: '/month',
+          desc: '500 verified leads every month. All sources included.',
+        },
+      ]
+    : [
+        {
+          id: 'monthly' as const,
+          label: 'Monthly',
+          price: monthly,
+          per: '/month',
+          desc: 'Full access. Cancel anytime.',
+        },
+        {
+          id: 'sixmonth' as const,
+          label: '6 Months',
+          price: sixMonth,
+          per: 'one-time',
+          desc: `Save 20% — only ₹${Math.round(sixMonth / 6).toLocaleString()}/mo`,
+          badge: 'Popular',
+        },
+        {
+          id: 'annual' as const,
+          label: 'Annual',
+          price: annual,
+          per: 'one-time',
+          desc: `Save 33% — only ₹${Math.round(annual / 12).toLocaleString()}/mo`,
+        },
+      ]
 
   useEffect(() => {
     if (isOpen) document.body.style.overflow = 'hidden'
@@ -80,6 +95,19 @@ export default function ToolSubscribeModal({
   if (!isOpen) return null
 
   const selectedPlan = plans.find(p => p.id === selected)!
+
+  const handleCoupon = () => {
+    setCouponError('')
+    if (coupon.trim() === ADMIN_COUPON) {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('ts_admin_bypass', '1')
+      }
+      onSubscribed()
+      onClose()
+    } else {
+      setCouponError('Invalid coupon code')
+    }
+  }
 
   const handlePayment = async () => {
     setLoading(true)
@@ -235,10 +263,34 @@ export default function ToolSubscribeModal({
           {loading ? 'Processing…' : `Pay ₹${selectedPlan.price.toLocaleString()} – Activate ${selectedPlan.label} →`}
         </button>
 
-        <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 20 }}>
           {['🔒 Secure Payment', '7-Day Money Back', 'Cancel Anytime'].map(t => (
             <span key={t} style={{ fontSize: 10.5, color: '#94a3b8' }}>{t}</span>
           ))}
+        </div>
+
+        {/* Coupon Code */}
+        <div style={{ borderTop: '1px solid rgba(26,35,126,0.1)', paddingTop: 16 }}>
+          <div style={{ fontSize: 11, color: '#94a3b8', marginBottom: 8, fontWeight: 600 }}>Have a coupon code?</div>
+          <div style={{ display: 'flex', gap: 8 }}>
+            <input
+              type="text"
+              value={coupon}
+              onChange={e => { setCoupon(e.target.value); setCouponError('') }}
+              onKeyDown={e => e.key === 'Enter' && handleCoupon()}
+              placeholder="Enter coupon code"
+              style={{ flex: 1, padding: '10px 12px', border: `1px solid ${couponError ? 'rgba(239,68,68,0.4)' : 'rgba(26,35,126,0.15)'}`, borderRadius: 10, fontSize: 13, color: '#0f172a', background: '#f8faff', outline: 'none', fontFamily: 'inherit' }}
+            />
+            <button
+              onClick={handleCoupon}
+              style={{ padding: '10px 16px', background: 'rgba(26,35,126,0.08)', border: '1px solid rgba(26,35,126,0.15)', borderRadius: 10, fontSize: 13, fontWeight: 700, color: '#1a237e', cursor: 'pointer', fontFamily: 'inherit', whiteSpace: 'nowrap' }}
+            >
+              Apply
+            </button>
+          </div>
+          {couponError && (
+            <div style={{ fontSize: 11.5, color: '#dc2626', marginTop: 6 }}>{couponError}</div>
+          )}
         </div>
       </div>
     </div>

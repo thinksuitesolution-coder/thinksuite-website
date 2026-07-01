@@ -73,9 +73,34 @@ export const NEWS_SOURCES: NewsSource[] = [
   { name: 'Google News - LeCun',       url: 'https://news.google.com/rss/search?q=Yann+LeCun+Meta+AI&hl=en-US&gl=US&ceid=US:en',              type: 'rss', category: 'news' },
   { name: 'Google News - Jensen Huang',url: 'https://news.google.com/rss/search?q=Jensen+Huang+NVIDIA&hl=en-US&gl=US&ceid=US:en',              type: 'rss', category: 'news' },
   { name: 'Google News - Andrew Ng',   url: 'https://news.google.com/rss/search?q=Andrew+Ng+AI&hl=en-US&gl=US&ceid=US:en',                     type: 'rss', category: 'news' },
-  { name: 'Google News - AI India',    url: 'https://news.google.com/rss/search?q=artificial+intelligence+India&hl=en-IN&gl=IN&ceid=IN:en',    type: 'rss', category: 'news' },
-  { name: 'Bing News - AI',            url: 'https://www.bing.com/news/search?q=artificial+intelligence+AI&format=rss',                         type: 'rss', category: 'news' },
-  { name: 'Bing News - LLM',           url: 'https://www.bing.com/news/search?q=LLM+GPT+Claude+Gemini&format=rss',                             type: 'rss', category: 'news' },
+  { name: 'Google News - AI India',         url: 'https://news.google.com/rss/search?q=artificial+intelligence+India&hl=en-IN&gl=IN&ceid=IN:en',                           type: 'rss', category: 'news' },
+  { name: 'Bing News - AI',                 url: 'https://www.bing.com/news/search?q=artificial+intelligence+AI&format=rss',                                                   type: 'rss', category: 'news' },
+  { name: 'Bing News - LLM',               url: 'https://www.bing.com/news/search?q=LLM+GPT+Claude+Gemini&format=rss',                                                        type: 'rss', category: 'news' },
+
+  // ─── LLM-SPECIFIC GOOGLE NEWS FEEDS ──────────────────────────────────────────
+  { name: 'Google News - Anthropic Claude', url: 'https://news.google.com/rss/search?q=Anthropic+Claude+AI+model&hl=en-US&gl=US&ceid=US:en',                                  type: 'rss', category: 'news', company: 'Anthropic' },
+  { name: 'Google News - Meta Llama',       url: 'https://news.google.com/rss/search?q=Meta+AI+Llama+model&hl=en-US&gl=US&ceid=US:en',                                        type: 'rss', category: 'news', company: 'Meta' },
+  { name: 'Google News - Mistral AI',       url: 'https://news.google.com/rss/search?q=Mistral+AI+model+LLM&hl=en-US&gl=US&ceid=US:en',                                       type: 'rss', category: 'news', company: 'Mistral AI' },
+  { name: 'Google News - DeepSeek',         url: 'https://news.google.com/rss/search?q=DeepSeek+AI+model&hl=en-US&gl=US&ceid=US:en',                                          type: 'rss', category: 'news', company: 'DeepSeek' },
+  { name: 'Google News - xAI Grok',         url: 'https://news.google.com/rss/search?q=xAI+Grok+AI+model&hl=en-US&gl=US&ceid=US:en',                                         type: 'rss', category: 'news', company: 'xAI' },
+  { name: 'Google News - HuggingFace',      url: 'https://news.google.com/rss/search?q=HuggingFace+open+source+AI&hl=en-US&gl=US&ceid=US:en',                                 type: 'rss', category: 'news', company: 'HuggingFace' },
+  { name: 'Google News - NVIDIA AI',        url: 'https://news.google.com/rss/search?q=NVIDIA+AI+GPU+model&hl=en-US&gl=US&ceid=US:en',                                        type: 'rss', category: 'news', company: 'NVIDIA' },
+  { name: 'Google News - Microsoft Copilot',url: 'https://news.google.com/rss/search?q=Microsoft+Copilot+AI+Azure&hl=en-US&gl=US&ceid=US:en',                                 type: 'rss', category: 'news', company: 'Microsoft' },
+  { name: 'Google News - Google Gemini',    url: 'https://news.google.com/rss/search?q=Google+Gemini+2+AI+model&hl=en-US&gl=US&ceid=US:en',                                   type: 'rss', category: 'news', company: 'Google' },
+  { name: 'Google News - Open Source LLM',  url: 'https://news.google.com/rss/search?q=open+source+LLM+AI+model+release&hl=en-US&gl=US&ceid=US:en',                          type: 'rss', category: 'news' },
+  { name: 'Google News - AI Agents',        url: 'https://news.google.com/rss/search?q=AI+agent+autonomous+agentic&hl=en-US&gl=US&ceid=US:en',                                type: 'rss', category: 'news' },
+  { name: 'Google News - AI New Features',  url: 'https://news.google.com/rss/search?q=AI+new+feature+launch+release+2025&hl=en-US&gl=US&ceid=US:en',                         type: 'rss', category: 'news' },
+
+  // ─── INDUSTRY-SPECIFIC AI NEWS ────────────────────────────────────────────────
+  { name: 'Google News - AI Healthcare',    url: 'https://news.google.com/rss/search?q=AI+healthcare+medical+clinical&hl=en-US&gl=US&ceid=US:en',                             type: 'rss', category: 'news' },
+  { name: 'Google News - AI Finance',       url: 'https://news.google.com/rss/search?q=AI+finance+fintech+banking+trading&hl=en-US&gl=US&ceid=US:en',                         type: 'rss', category: 'news' },
+  { name: 'Google News - AI Robotics',      url: 'https://news.google.com/rss/search?q=AI+robotics+autonomous+humanoid&hl=en-US&gl=US&ceid=US:en',                            type: 'rss', category: 'news' },
+  { name: 'Google News - AI Legal',         url: 'https://news.google.com/rss/search?q=AI+legal+law+regulation+compliance&hl=en-US&gl=US&ceid=US:en',                         type: 'rss', category: 'news' },
+  { name: 'Google News - AI Education',     url: 'https://news.google.com/rss/search?q=AI+education+learning+edtech&hl=en-US&gl=US&ceid=US:en',                               type: 'rss', category: 'news' },
+  { name: 'Google News - AI Cybersecurity', url: 'https://news.google.com/rss/search?q=AI+cybersecurity+security+threat&hl=en-US&gl=US&ceid=US:en',                           type: 'rss', category: 'news' },
+  { name: 'Google News - AI Chips',         url: 'https://news.google.com/rss/search?q=AI+chip+semiconductor+GPU+TPU&hl=en-US&gl=US&ceid=US:en',                              type: 'rss', category: 'news' },
+  { name: 'Google News - Generative AI',    url: 'https://news.google.com/rss/search?q=generative+AI+image+video+audio&hl=en-US&gl=US&ceid=US:en',                            type: 'rss', category: 'news' },
+  { name: 'Google News - AI Enterprise',    url: 'https://news.google.com/rss/search?q=enterprise+AI+automation+workflow&hl=en-US&gl=US&ceid=US:en',                          type: 'rss', category: 'news' },
 
   // ─── RESEARCH ─────────────────────────────────────────────────────────────
   { name: 'Arxiv CS.AI',          url: 'https://arxiv.org/rss/cs.AI',                                    type: 'rss', category: 'research' },

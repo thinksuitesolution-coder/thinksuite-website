@@ -45,6 +45,7 @@ export interface ScoredEvent extends RawEvent {
   businessImpact: number;
   developerImpact: number;
   company: string;
+  industry: string;
   isDuplicate: boolean;
   duplicateOf?: string;
 }
@@ -68,6 +69,7 @@ export interface BlogArticle {
   tags: string[];
   category: string;
   company: string;
+  industry: string;
   eventType: EventType;
   importanceScore: number;
   heroImageUrl: string;

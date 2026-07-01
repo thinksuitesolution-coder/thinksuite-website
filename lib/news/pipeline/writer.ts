@@ -73,6 +73,7 @@ export async function generateBlogArticle(event: ScoredEvent): Promise<BlogArtic
       tags: data.tags || [],
       category: data.category || 'Industry News',
       company: event.company,
+      industry: event.industry,
       eventType: event.eventType,
       importanceScore: event.importanceScore,
       heroImageUrl: event.imageUrl || `https://picsum.photos/seed/${encodeURIComponent(event.company + event.id)}/1200/630`,
