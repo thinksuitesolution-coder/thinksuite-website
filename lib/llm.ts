@@ -6,11 +6,11 @@ export const groq = new OpenAI({
 });
 
 // Groq model tiers
-export const GROQ_MODEL_HIGH   = 'llama-3.3-70b-versatile'; // 100K TPD
-export const GROQ_MODEL_FAST   = 'llama-3.1-8b-instant';    // 500K TPD
-export const GROQ_MODEL_BACKUP = 'openai/gpt-oss-120b';     // backup, high quality
-export const GROQ_MODEL_BACKUP2 = 'openai/gpt-oss-20b';     // extra backup, separate quota pool
-export const GROQ_MODEL_BACKUP3 = 'qwen/qwen3-32b';          // extra backup, separate quota pool
+export const GROQ_MODEL_HIGH    = 'llama-3.3-70b-versatile';  // 100K TPD
+export const GROQ_MODEL_FAST    = 'llama-3.1-8b-instant';     // 500K TPD
+export const GROQ_MODEL_BACKUP  = 'llama-3.1-70b-versatile';  // separate daily quota pool
+export const GROQ_MODEL_BACKUP2 = 'gemma2-9b-it';             // extra backup, separate quota pool
+export const GROQ_MODEL_BACKUP3 = 'mixtral-8x7b-32768';       // extra backup, separate quota pool
 export const GROQ_MODEL = GROQ_MODEL_HIGH;
 
 // Gemini free tier — separate quota pool from Groq entirely
@@ -45,6 +45,8 @@ async function callGemini(prompt: string, maxTokens: number): Promise<string> {
 }
 
 async function callGroq(model: string, prompt: string, maxTokens: number): Promise<string> {
+  const key = process.env.GROQ_API_KEY;
+  if (!key || key === 'build-placeholder') throw new Error('GROQ_API_KEY not configured — skipping Groq');
   const completion = await groq.chat.completions.create({
     model,
     messages: [{ role: 'user', content: prompt }],

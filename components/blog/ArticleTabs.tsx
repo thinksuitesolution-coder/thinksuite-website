@@ -58,7 +58,7 @@ function ArticleSection({ article }: { article: Partial<BlogArticle> }) {
       {article.whyItMatters && (
         <div className="article-section-card">
           <h3>Why It Matters</h3>
-          <p>{article.whyItMatters}</p>
+          <p>{toStr(article.whyItMatters)}</p>
         </div>
       )}
 
@@ -67,28 +67,28 @@ function ArticleSection({ article }: { article: Partial<BlogArticle> }) {
           <div className="article-analysis-card">
             <div className="article-analysis-icon">📈</div>
             <h4>Market Impact</h4>
-            <p>{article.marketImpact}</p>
+            <p>{toStr(article.marketImpact)}</p>
           </div>
         )}
         {article.developerImpact && (
           <div className="article-analysis-card">
             <div className="article-analysis-icon">💻</div>
             <h4>Developer Impact</h4>
-            <p>{article.developerImpact}</p>
+            <p>{toStr(article.developerImpact)}</p>
           </div>
         )}
         {article.futurePrediction && (
           <div className="article-analysis-card">
             <div className="article-analysis-icon">🔮</div>
             <h4>Future Prediction</h4>
-            <p>{article.futurePrediction}</p>
+            <p>{toStr(article.futurePrediction)}</p>
           </div>
         )}
       </div>
 
       {article.expertAnalysis && (
         <blockquote className="article-expert">
-          <p>{article.expertAnalysis}</p>
+          <p>{toStr(article.expertAnalysis)}</p>
           <cite>ThinkSuite AI Analysis</cite>
         </blockquote>
       )}
@@ -296,6 +296,18 @@ function fmtInline(t: string) {
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     .replace(/`(.+?)`/g, '<code>$1</code>');
+}
+
+// LLM sometimes returns text fields as objects ({30_Day: ..., 90_Day: ...}) — convert safely
+function toStr(val: unknown): string {
+  if (!val) return '';
+  if (typeof val === 'string') return val;
+  if (typeof val === 'object') {
+    return Object.entries(val as Record<string, unknown>)
+      .map(([k, v]) => `${k.replace(/_/g, ' ')}: ${String(v)}`)
+      .join(' | ');
+  }
+  return String(val);
 }
 
 interface TranslatedData {

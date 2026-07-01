@@ -25,7 +25,7 @@ Return ONLY valid JSON (no markdown, no code blocks):
   "expertAnalysis": "Deep analysis — implications, opportunities, risks",
   "marketImpact": "Effect on AI market, competitors, investment landscape",
   "developerImpact": "Impact on developers and technical teams",
-  "futurePrediction": "30, 90, 180 day predictions",
+  "futurePrediction": "One paragraph string with 30/90/180-day predictions. MUST be a plain string, NOT an object.",
   "faqs": [
     {"question": "Q1?", "answer": "A1"},
     {"question": "Q2?", "answer": "A2"},
