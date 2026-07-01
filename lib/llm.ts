@@ -5,12 +5,12 @@ export const groq = new OpenAI({
   baseURL: 'https://api.groq.com/openai/v1',
 });
 
-// Groq model tiers
-export const GROQ_MODEL_HIGH    = 'llama-3.3-70b-versatile';  // 100K TPD
-export const GROQ_MODEL_FAST    = 'llama-3.1-8b-instant';     // 500K TPD
-export const GROQ_MODEL_BACKUP  = 'llama-3.1-70b-versatile';  // separate daily quota pool
-export const GROQ_MODEL_BACKUP2 = 'gemma2-9b-it';             // extra backup, separate quota pool
-export const GROQ_MODEL_BACKUP3 = 'mixtral-8x7b-32768';       // extra backup, separate quota pool
+// Groq model tiers (all valid as of 2025)
+export const GROQ_MODEL_HIGH    = 'llama-3.3-70b-versatile';     // 100K TPD, 6K TPM
+export const GROQ_MODEL_FAST    = 'llama-3.1-8b-instant';        // 500K TPD, 30K TPM
+export const GROQ_MODEL_BACKUP  = 'llama-3.2-90b-text-preview';  // separate quota pool
+export const GROQ_MODEL_BACKUP2 = 'gemma2-9b-it';                // separate quota pool
+export const GROQ_MODEL_BACKUP3 = 'llama3-groq-8b-8192-tool-use-preview'; // separate pool
 export const GROQ_MODEL = GROQ_MODEL_HIGH;
 
 // Gemini free tier — separate quota pool from Groq entirely
@@ -97,7 +97,9 @@ export async function groqJSON<T = Record<string, unknown>>(
       const msg = (err as Error).message || '';
       const isRateLimit = msg.toLowerCase().includes('rate limit') || msg.includes('429')
         || msg.includes('quota') || msg.includes('tokens per day') || msg.includes('exceeded')
-        || msg.includes('RESOURCE_EXHAUSTED');
+        || msg.includes('RESOURCE_EXHAUSTED') || msg.includes('401') || msg.includes('403')
+        || msg.includes('tokens per minute') || msg.includes('TPM') || msg.includes('model_not_found')
+        || msg.toLowerCase().includes('not configured');
       const isTooLarge = msg.includes('413') || msg.toLowerCase().includes('too large')
         || msg.includes('tokens per minute') || msg.includes('TPM');
       const isParseErr = msg.includes('JSON') || msg.includes('parse') || err instanceof SyntaxError;

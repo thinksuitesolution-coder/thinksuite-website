@@ -224,8 +224,8 @@ export async function runNewsPipeline(): Promise<PipelineResult> {
         broadcasted++;
       }
 
-      // Pause between articles to avoid rate limiting
-      await new Promise(r => setTimeout(r, 2000));
+      // Pause between articles to stay within Groq TPM limits
+      await new Promise(r => setTimeout(r, 8000));
     } catch (err) {
       console.error(`Pipeline error for "${event.title}":`, (err as Error).message);
       failed++;
