@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { unstable_cache } from 'next/cache';
 import './pulse.css';
 import { BlogArticle } from '@/lib/news/types';
 import { articlesCol } from '@/lib/firebase-admin';
@@ -16,15 +17,22 @@ export const metadata: Metadata = {
 
 export const revalidate = 300;
 
-async function getAllArticles(): Promise<BlogArticle[]> {
-  try {
-    const snap = await articlesCol().orderBy('publishedAt', 'desc').limit(150).get();
-    return snap.docs.map(d => d.data() as BlogArticle);
-  } catch (e) {
-    console.error('[AINews] getAllArticles error:', e);
-    return [];
-  }
-}
+// searchParams makes this route render dynamically on every request, which bypasses
+// `revalidate` above — so the Firestore read is cached independently to avoid hitting
+// the read quota on every page view.
+const getAllArticles = unstable_cache(
+  async (): Promise<BlogArticle[]> => {
+    try {
+      const snap = await articlesCol().orderBy('publishedAt', 'desc').limit(150).get();
+      return snap.docs.map(d => d.data() as BlogArticle);
+    } catch (e) {
+      console.error('[AINews] getAllArticles error:', e);
+      return [];
+    }
+  },
+  ['ai-news-all-articles'],
+  { revalidate: 300 }
+);
 
 const NAV_CATEGORIES: { label: string; icon: string; href: string }[] = [
   { label: 'Home',       icon: 'fa-house',               href: '/ai-news' },
@@ -164,12 +172,15 @@ export default async function AINewsPage({
   for (const a of all) for (const t of a.tags || []) tagCounts.set(t, (tagCounts.get(t) || 0) + 1);
   const topTags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10).map(([t]) => t);
 
+  const hasActiveFilter = !!(companyFilter || industryFilter || eventTypeFilter || category || q);
+  const activeLabel = companyFilter || industryFilter || (eventTypeFilter ? EVENT_META[eventTypeFilter]?.label : '') || category || '';
+
   const navLinks: PulseNavLink[] = NAV_CATEGORIES.map(n => ({
     label: n.label,
     href: n.href,
     icon: n.icon,
     active:
-      n.label === 'Home'       ? !searchParams.tab && !category :
+      n.label === 'Home'       ? !searchParams.tab && !category && !hasActiveFilter :
       n.label === 'Latest'     ? tab === 'latest' && !category :
       n.label === 'Trending'   ? tab === 'popular' :
       n.label === 'Research'   ? category === 'Research' :
@@ -187,9 +198,6 @@ export default async function AINewsPage({
     { label: 'AI Research',           href: '/ai-news?category=Research' },
     { label: 'AI Hardware',           href: '/ai-news?industry=Hardware+%26+Chips' },
   ].map((t, i) => ({ ...t, color: TOPIC_COLORS[i % TOPIC_COLORS.length] }));
-
-  const hasActiveFilter = !!(companyFilter || industryFilter || eventTypeFilter || category || q);
-  const activeLabel = companyFilter || industryFilter || (eventTypeFilter ? EVENT_META[eventTypeFilter]?.label : '') || category || '';
 
   return (
     <PulseShell navLinks={navLinks} topics={sidebarTopics} filters={SIDEBAR_FILTERS}>

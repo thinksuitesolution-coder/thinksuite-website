@@ -19,9 +19,6 @@ import { processAndPublishEvents, getProcessedUrls } from './pipeline/publisher'
 import { postToTelegram } from '../integrations/telegram';
 import { broadcastToAllChannels } from '../integrations/social';
 import { NEWS_SOURCES } from './sources';
-import { RSS_SOURCES as CRAWLER_RSS_SOURCES, SOURCE_STATS } from '../crawler/sources';
-import { DedupEngine } from '../crawler/dedup-engine';
-import { computeFreshness, detectTrends } from '../crawler/ranking-engine';
 import { RawEvent, ScoredEvent, BlogArticle } from './types';
 
 export interface PipelineResult {

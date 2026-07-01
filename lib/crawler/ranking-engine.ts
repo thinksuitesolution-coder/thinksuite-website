@@ -65,7 +65,6 @@ export function computeCommunitySignal(hnPoints?: number, redditScore?: number):
 }
 
 export function rankArticle(factors: RankingFactors): number {
-  const freshness = computeFreshness(new Date());
   const communitySignal = computeCommunitySignal(factors.communityMentions);
 
   let score = 0;

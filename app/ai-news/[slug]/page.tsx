@@ -81,8 +81,12 @@ function ArticleContent({ content }: { content: string }) {
   return <>{elements}</>;
 }
 
+function escapeHtml(s: string) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 function fmtInline(t: string) {
-  return t
+  return escapeHtml(t)
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     .replace(/`(.+?)`/g, '<code>$1</code>');
