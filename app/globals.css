@@ -1683,3 +1683,184 @@ textarea.form-input{resize:vertical;min-height:130px}
   .blog-featured-body{padding:20px}
   .article-tabs-header{flex-direction:column;align-items:flex-start}
 }
+
+/* ================================================================
+   MOBILE — Comprehensive Responsive Additions
+   Covers all pages. No conflicts with existing rules.
+================================================================ */
+
+/* ── Custom cursor: hide on touch / pointer:coarse devices ─────── */
+@media(hover:none),(pointer:coarse){
+  .ts-dot,.ts-ring{display:none !important}
+}
+
+/* ── Hero section CTA buttons: stack on small phones ──────────── */
+@media(max-width:480px){
+  .hero-btns{flex-direction:column;align-items:stretch}
+  .hero-btns .btn{width:100%;justify-content:center}
+}
+
+/* ── About pillars: 2-col → 1-col on mobile ───────────────────── */
+@media(max-width:600px){
+  .about-pillars{grid-template-columns:1fr}
+}
+
+/* ── Hero V2: extra fine-tuning for very small phones ─────────── */
+@media(max-width:480px){
+  .hero-v2{padding-top:80px;padding-bottom:48px}
+  .hero-v2-eyebrow{font-size:10px;letter-spacing:4px}
+  .hero-v2-pill{padding:8px 14px;font-size:10px;letter-spacing:1px}
+  .hero-v2-pills{gap:6px;padding:0 8px}
+  .hero-v2-scroll{display:none}
+}
+
+/* ── Footer: legal links wrap + socials wrap on tiny screens ──── */
+@media(max-width:480px){
+  .footer-legal{flex-wrap:wrap;justify-content:center;gap:10px}
+  .footer-socials{flex-wrap:wrap}
+}
+
+/* ── Blog hero stats: compact on mobile ───────────────────────── */
+@media(max-width:600px){
+  .blog-hero-desc{font-size:15px}
+  .blog-hero-stats{gap:20px;flex-direction:column;align-items:center}
+  .blog-stat strong{font-size:22px}
+}
+
+/* ── Intelligence hero: compact on small screens ──────────────── */
+@media(max-width:768px){
+  .intel-hero{padding:60px 0 36px}
+  .intel-desc{font-size:14px}
+  .intel-stats-panel{gap:10px}
+}
+@media(max-width:480px){
+  .intel-stat-card{padding:14px 10px}
+  .intel-stat-num{font-size:22px}
+  .intel-breaking-item{flex-direction:column;gap:4px}
+}
+
+/* ── Article bottom CTA: stack on mobile ─────────────────────── */
+@media(max-width:600px){
+  .article-bottom-cta{flex-direction:column;padding:18px;gap:14px}
+  .article-bottom-cta a{width:100%;text-align:center;display:block;padding:12px 16px}
+}
+
+/* ── Chat page: compact suggestions + bubbles on mobile ────────── */
+@media(max-width:600px){
+  .chat-bubble{max-width:90%}
+  .chat-suggestion-btn{font-size:12px;padding:6px 12px}
+  .chat-suggestions-grid{gap:6px}
+  .chat-input-wrap{padding:12px 0}
+}
+
+/* ── Careers: job card button full-width on mobile ────────────── */
+@media(max-width:600px){
+  .job-apply{width:100%}
+  .job-apply .btn{width:100%;justify-content:center}
+}
+
+/* ── SGE section CTA banner: stack on mobile ──────────────────── */
+@media(max-width:480px){
+  .sge-cta-banner{padding:20px 18px;gap:16px}
+  .sge-cta-left{flex-direction:column;align-items:flex-start;gap:10px}
+  .sge-cta-icon{width:42px;height:42px}
+  .sge-cta-text h4{font-size:17px}
+  .sge-no-obligation{justify-content:flex-start}
+}
+
+/* ── Service drawer: tighter padding on tiny phones ───────────── */
+@media(max-width:380px){
+  .sdr-header{padding:18px 14px 14px}
+  .sdr-body{padding:0 14px 18px}
+  .sdr-footer{padding:12px 14px}
+}
+
+/* ── Testi nav: smaller buttons on very small screens ─────────── */
+@media(max-width:480px){
+  .testi-nav{gap:10px;margin-top:20px}
+  .testi-btn{width:38px;height:38px;font-size:13px}
+}
+
+/* ── Label / chip: safe minimum on very small phones ──────────── */
+@media(max-width:380px){
+  .label{font-size:9.5px;letter-spacing:1.5px;padding:4px 8px}
+  .chip{font-size:11px;padding:3px 9px}
+}
+
+/* ── Breadcrumb: wrap on tiny screens ─────────────────────────── */
+@media(max-width:480px){
+  .breadcrumb{flex-wrap:wrap;gap:4px;font-size:10px}
+}
+
+/* ── Company profiles: stack layout below 768px ───────────────── */
+/* Note: already handled at 1024px. This adds a smaller-phone gap fix. */
+@media(max-width:480px){
+  .company-hero-content{gap:16px}
+  .company-logo-placeholder{width:64px;height:64px}
+}
+
+/* ── Pricing grid: 1-col on small phones ─────────────────────── */
+@media(max-width:480px){
+  .pricing-grid{grid-template-columns:1fr;max-width:100%}
+  .pricing-card-highlight{transform:none}
+}
+
+/* ── Team bio section: compact on phones ─────────────────────── */
+@media(max-width:480px){
+  .team-bio-wrap{margin-top:28px;padding:18px 14px;border-radius:14px}
+}
+
+/* ── Intel modules grid: already responsive but fix 380px ─────── */
+@media(max-width:380px){
+  .intel-modules-grid{grid-template-columns:1fr}
+}
+
+/* ── Heatmap overview: always 2x2 on mobile (already), safety ─── */
+@media(max-width:380px){
+  .heatmap-overview{grid-template-columns:1fr}
+  .heatmap-stats{grid-template-columns:1fr 1fr}
+}
+
+/* ── Funding stat: compact on mobile ─────────────────────────── */
+@media(max-width:480px){
+  .funding-hero-stats{gap:16px}
+  .funding-stat strong{font-size:22px}
+}
+
+/* ── Knowledge graph filter hint: hide on small screens ──────── */
+/* Already done at 600px — adding guide grid safety at 480px */
+@media(max-width:480px){
+  .kg-filters{flex-wrap:wrap;gap:6px}
+  .kg-filter-btn{font-size:11px;padding:5px 10px}
+}
+
+/* ── SGE 3-col and 2-col grids collapse on phones ────────────── */
+/* Already in @media(max-width:768px) block — these add fine-tuning */
+@media(max-width:480px){
+  .sge-card{padding:22px 18px 16px}
+  .sge-card-wide{padding:22px 18px !important}
+  .sge-card-title{font-size:17px}
+}
+
+/* ── Process step number: smaller on mobile ───────────────────── */
+@media(max-width:480px){
+  .step-num{font-size:60px;margin-bottom:10px}
+}
+
+/* ── Responsive blog hero v2 stats: wrap on tiny screens ──────── */
+@media(max-width:480px){
+  .blog-hero-stats-v2{flex-direction:column;align-items:stretch;border-radius:12px}
+  .blog-stat-v2{border-right:none;border-bottom:1px solid var(--border)}
+  .blog-stat-v2:last-child{border-bottom:none}
+}
+
+/* ── Ensure service showcase cards min-height on small screens ── */
+@media(max-width:480px){
+  .scw-card{min-height:360px}
+}
+
+/* ── Nav: hamburger tap-target safe size ─────────────────────── */
+@media(max-width:1024px){
+  .hamburger{min-width:44px;min-height:44px;justify-content:center}
+  .mobile-close{width:44px;height:44px}
+}
