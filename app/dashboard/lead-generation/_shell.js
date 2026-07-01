@@ -926,45 +926,6 @@ function Sidebar({ currentSlug, isMobileOpen, isMobile, onClose, features, activ
             {sidebarBottom && (
               <div style={{ padding: "0 10px 4px" }}>{sidebarBottom}</div>
             )}
-
-            {/* Other tools link at bottom */}
-            <div style={{ padding: "8px 10px 16px", borderTop: `1px solid ${T.navBorder}` }}>
-              <button
-                onClick={onSuggest}
-                style={{
-                  width: "100%", textAlign: "left", display: "flex", alignItems: "center", gap: 9,
-                  padding: "9px 10px", marginBottom: 4, borderRadius: 10, cursor: "pointer",
-                  background: "rgba(124,58,237,0.08)", border: "1px solid rgba(124,58,237,0.2)",
-                  color: "#7c3aed", fontSize: 12, fontWeight: 600, fontFamily: "inherit",
-                  transition: "all 0.18s",
-                }}
-                onMouseEnter={e => { e.currentTarget.style.background = "rgba(124,58,237,0.15)"; }}
-                onMouseLeave={e => { e.currentTarget.style.background = "rgba(124,58,237,0.08)"; }}
-              >
-                <span style={{ fontSize: 14 }}>💡</span> Suggest Feature / Tool
-              </button>
-              <button
-                onClick={onFeedback}
-                style={{
-                  width: "100%", textAlign: "left", display: "flex", alignItems: "center", gap: 9,
-                  padding: "9px 10px", marginBottom: 4, borderRadius: 10, cursor: "pointer",
-                  background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)",
-                  color: "rgba(255,255,255,0.55)", fontSize: 12, fontWeight: 600, fontFamily: "inherit",
-                  transition: "all 0.18s",
-                }}
-                onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.07)"; e.currentTarget.style.color = "#fff"; }}
-                onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.03)"; e.currentTarget.style.color = "rgba(255,255,255,0.55)"; }}
-              >
-                <span style={{ fontSize: 14 }}>💬</span> Give Feedback
-              </button>
-              <Link href="/tools"
-                style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px", borderRadius: 10, textDecoration: "none", color: T.textMuted, fontSize: 12, fontWeight: 500, transition: "color 0.18s" }}
-                onMouseEnter={(e) => e.currentTarget.style.color = "#fff"}
-                onMouseLeave={(e) => e.currentTarget.style.color = T.textMuted}
-              >
-                <span>⊞</span> All Tools
-              </Link>
-            </div>
           </>
         )}
 
@@ -1011,44 +972,6 @@ function Sidebar({ currentSlug, isMobileOpen, isMobile, onClose, features, activ
               })}
             </div>
 
-            {/* Footer */}
-            <div style={{ padding: "8px 10px 16px", borderTop: `1px solid ${T.navBorder}` }}>
-              <button
-                onClick={onSuggest}
-                style={{
-                  width: "100%", textAlign: "left", display: "flex", alignItems: "center", gap: 9,
-                  padding: "9px 10px", marginBottom: 4, borderRadius: 10, cursor: "pointer",
-                  background: "rgba(124,58,237,0.08)", border: "1px solid rgba(124,58,237,0.2)",
-                  color: "#7c3aed", fontSize: 12, fontWeight: 600, fontFamily: "inherit",
-                  transition: "all 0.18s",
-                }}
-                onMouseEnter={e => { e.currentTarget.style.background = "rgba(124,58,237,0.15)"; }}
-                onMouseLeave={e => { e.currentTarget.style.background = "rgba(124,58,237,0.08)"; }}
-              >
-                <span style={{ fontSize: 14 }}>💡</span> Suggest Feature / Tool
-              </button>
-              <button
-                onClick={onFeedback}
-                style={{
-                  width: "100%", textAlign: "left", display: "flex", alignItems: "center", gap: 9,
-                  padding: "9px 10px", marginBottom: 4, borderRadius: 10, cursor: "pointer",
-                  background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)",
-                  color: "rgba(255,255,255,0.55)", fontSize: 12, fontWeight: 600, fontFamily: "inherit",
-                  transition: "all 0.18s",
-                }}
-                onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.07)"; e.currentTarget.style.color = "#fff"; }}
-                onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.03)"; e.currentTarget.style.color = "rgba(255,255,255,0.55)"; }}
-              >
-                <span style={{ fontSize: 14 }}>💬</span> Give Feedback
-              </button>
-              <Link href="/tools"
-                style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px", borderRadius: 10, textDecoration: "none", color: T.textMuted, fontSize: 12, fontWeight: 500, transition: "color 0.18s" }}
-                onMouseEnter={(e) => e.currentTarget.style.color = "#fff"}
-                onMouseLeave={(e) => e.currentTarget.style.color = T.textMuted}
-              >
-                <span>↗</span> All Landing Pages
-              </Link>
-            </div>
           </>
         )}
       </aside>
