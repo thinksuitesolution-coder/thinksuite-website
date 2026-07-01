@@ -317,13 +317,9 @@ export default async function AINewsPage({
                     <p className="pulse-row-desc">{a.summary}</p>
                     <div className="pulse-row-foot">
                       {a.company && a.company !== 'AI Industry' && (
-                        <Link
-                          href={`/ai-news?company=${encodeURIComponent(a.company)}`}
-                          className="pulse-company-tag"
-                          onClick={e => e.stopPropagation()}
-                        >
+                        <span className="pulse-company-tag">
                           {a.company}
-                        </Link>
+                        </span>
                       )}
                       <span>{a.sourceName}</span>
                       <span>·</span>
