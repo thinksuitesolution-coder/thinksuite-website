@@ -17,7 +17,7 @@ const products = [
   { label: 'ThinkVirtual', href: '/ecosystem/thinkvirtual', desc: 'Network connecting & project platform', icon: 'fa-diagram-project', color: '#0891b2', iconBg: 'rgba(8,145,178,0.12)' },
   { label: 'WavCart', href: '/ecosystem/wavcart', desc: 'eStore & automation for local vendors', icon: 'fa-cart-shopping', color: '#059669', iconBg: 'rgba(5,150,105,0.12)' },
   { label: 'Visibility', href: '/ecosystem/visibility', desc: 'Rank through GEO & AI search', icon: 'fa-eye', color: '#7c3aed', iconBg: 'rgba(124,58,237,0.12)' },
-  { label: 'Thinksuite', href: '/ecosystem/Thinksuite', desc: 'Targeted leads by occupation & location', icon: 'fa-crosshairs', color: '#d97706', iconBg: 'rgba(217,119,6,0.12)' },
+  { label: 'Thinksuite', href: '/ecosystem/mythinkai', desc: 'Targeted leads by occupation & location', icon: 'fa-crosshairs', color: '#d97706', iconBg: 'rgba(217,119,6,0.12)' },
 ]
 
 const services = [

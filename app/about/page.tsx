@@ -389,7 +389,7 @@ function EcosystemTeaserSection() {
     },
     {
       icon: '✨',
-      logo: '/assets/img/logos/Thinksuite.jpeg',
+      logo: '/assets/img/logos/thinksuite.png',
       tag: 'AI Workspace',
       tagBg: 'rgba(124,58,237,0.10)',
       tagColor: '#7c3aed',

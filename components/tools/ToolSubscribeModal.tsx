@@ -264,7 +264,7 @@ export default function ToolSubscribeModal({
         </button>
 
         <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 20 }}>
-          {['🔒 Secure Payment', '7-Day Money Back', 'Cancel Anytime'].map(t => (
+          {['🔒 Secure Payment', '7'].map(t => (
             <span key={t} style={{ fontSize: 10.5, color: '#94a3b8' }}>{t}</span>
           ))}
         </div>

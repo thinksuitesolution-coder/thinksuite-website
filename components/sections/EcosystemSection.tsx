@@ -21,7 +21,7 @@ const products = [
   {
     id: 'Thinksuite',
     emoji: '🤖',
-    logo: '/assets/img/logos/Thinksuite.jpeg',
+    logo: '/assets/img/logos/thinksuite.png',
     name: 'Thinksuite',
     tagline: 'Your Personal AI Workspace',
     desc: 'Write content, conduct research, and automate repetitive tasks with an AI assistant trained and tailored specifically for your business needs.',

@@ -41,7 +41,7 @@ const products = [
   {
     id: 'Thinksuite',
     emoji: '🤖',
-    logo: '/assets/img/logos/Thinksuite.jpeg',
+    logo: '/assets/img/logos/thinksuite.png',
     name: 'Thinksuite',
     tagline: 'Targeted Leads by Occupation & Location',
     color: '#d97706',
@@ -49,7 +49,7 @@ const products = [
     border: 'rgba(217,119,6,0.14)',
     status: 'coming_soon',
     statusLabel: 'Coming Soon',
-    href: '/ecosystem/Thinksuite',
+    href: '/ecosystem/mythinkai',
     ctaLabel: 'Get Your Lead List',
     desc: 'Thinksuite provides hyper-targeted lead lists for businesses. Tell us the occupation, city, and industry of the customers you need, and we deliver a verified, ready-to-use contact list so you can start outreach immediately.',
     capabilities: [

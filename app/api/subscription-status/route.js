@@ -8,15 +8,7 @@ export async function POST(req) {
       return NextResponse.json({ status: "none", error: "Missing userId or toolSlug" }, { status: 400 });
     }
 
-    const adminModule = await import("@/lib/firebase-admin");
-    const adminApp = adminModule.default();
-
-    if (!adminApp) {
-      console.warn("[subscription-status] Firebase Admin not configured");
-      return NextResponse.json({ status: "none", error: "Firebase Admin not configured" }, { status: 503 });
-    }
-
-    const adminDb = adminApp.firestore();
+    const { adminDb } = await import("@/lib/firebase-admin");
     const doc = await adminDb.collection("users").doc(userId).collection("subscriptions").doc(toolSlug).get();
 
     if (!doc.exists) {
