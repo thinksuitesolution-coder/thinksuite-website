@@ -6,11 +6,13 @@ export const maxDuration = 300;
 
 // Vercel Cron triggers every 2 hours
 export async function GET(req: NextRequest) {
-  // Secure with a secret token
+  // Secure with a secret token (header OR query param)
   const authHeader = req.headers.get('authorization');
+  const querySecret = req.nextUrl.searchParams.get('secret');
   const cronSecret = process.env.CRON_SECRET;
 
-  if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
+  const provided = querySecret || authHeader?.replace('Bearer ', '');
+  if (cronSecret && provided !== cronSecret) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
