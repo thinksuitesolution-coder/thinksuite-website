@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 
 export interface PulseNavLink {
   label: string
@@ -15,16 +16,44 @@ export interface PulseTopic {
   color: string
 }
 
+export interface FilterItem {
+  label: string
+  value: string
+  param: 'company' | 'industry' | 'eventType'
+}
+
 export default function PulseShell({
   navLinks,
   topics,
+  filters,
   children,
 }: {
   navLinks: PulseNavLink[]
   topics: PulseTopic[]
+  filters?: FilterItem[]
   children: React.ReactNode
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const searchParams = useSearchParams()
+
+  const company = searchParams.get('company')
+  const industry = searchParams.get('industry')
+  const eventType = searchParams.get('eventType')
+
+  function filterHref(param: string, value: string) {
+    const p = new URLSearchParams(searchParams.toString())
+    if (p.get(param) === value) {
+      p.delete(param)
+    } else {
+      p.set(param, value)
+    }
+    const qs = p.toString()
+    return `/ai-news${qs ? `?${qs}` : ''}`
+  }
+
+  const llmFilters = filters?.filter(f => f.param === 'company') ?? []
+  const industryFilters = filters?.filter(f => f.param === 'industry') ?? []
+  const typeFilters = filters?.filter(f => f.param === 'eventType') ?? []
 
   return (
     <div className="pulse-app">
@@ -45,6 +74,57 @@ export default function PulseShell({
             {l.label}
           </Link>
         ))}
+
+        {llmFilters.length > 0 && (
+          <>
+            <div className="pulse-sidebar-label">By LLM / Company</div>
+            {llmFilters.map(f => (
+              <Link
+                key={f.value}
+                href={filterHref('company', f.value)}
+                className={`pulse-nav-item${company === f.value ? ' active' : ''}`}
+                onClick={() => setSidebarOpen(false)}
+              >
+                <i className="fa-solid fa-building" />
+                {f.label}
+              </Link>
+            ))}
+          </>
+        )}
+
+        {industryFilters.length > 0 && (
+          <>
+            <div className="pulse-sidebar-label">By Industry</div>
+            {industryFilters.map(f => (
+              <Link
+                key={f.value}
+                href={filterHref('industry', f.value)}
+                className={`pulse-nav-item${industry === f.value ? ' active' : ''}`}
+                onClick={() => setSidebarOpen(false)}
+              >
+                <i className="fa-solid fa-industry" />
+                {f.label}
+              </Link>
+            ))}
+          </>
+        )}
+
+        {typeFilters.length > 0 && (
+          <>
+            <div className="pulse-sidebar-label">By Type</div>
+            {typeFilters.map(f => (
+              <Link
+                key={f.value}
+                href={filterHref('eventType', f.value)}
+                className={`pulse-nav-item${eventType === f.value ? ' active' : ''}`}
+                onClick={() => setSidebarOpen(false)}
+              >
+                <i className="fa-solid fa-tag" />
+                {f.label}
+              </Link>
+            ))}
+          </>
+        )}
 
         <div className="pulse-sidebar-label">Topics</div>
         {topics.map(t => (

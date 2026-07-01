@@ -137,13 +137,7 @@
 .pulse-company-tag{font-size:11px;font-weight:700;color:var(--pulse-accent);background:rgba(26,35,126,0.08);border-radius:5px;padding:2px 7px;white-space:nowrap;flex-shrink:0}
 .pulse-company-tag:hover{background:rgba(26,35,126,0.18)}
 
-/* ── Filter sections ─────────────────────────────────────── */
-.pulse-filter-section{margin-bottom:12px}
-.pulse-filter-label{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--pulse-text3);margin-bottom:8px}
-.pulse-filter-chips{display:flex;flex-wrap:wrap;gap:6px}
-.pulse-chip{font-size:12px;font-weight:600;color:var(--pulse-text2);background:var(--pulse-surface);border:1.5px solid var(--pulse-border);border-radius:100px;padding:5px 12px;transition:all .15s;white-space:nowrap}
-.pulse-chip:hover{color:var(--pulse-accent);border-color:var(--pulse-accent);background:rgba(26,35,126,0.05)}
-.pulse-chip.active{color:#fff;background:var(--pulse-accent);border-color:var(--pulse-accent)}
+/* ── Filter sections (now in sidebar only) ───────────────── */
 
 /* ── Active filter bar ───────────────────────────────────── */
 .pulse-active-filter{display:flex;align-items:center;flex-wrap:wrap;gap:8px;background:rgba(26,35,126,0.06);border:1px solid rgba(26,35,126,0.15);border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:12.5px;color:var(--pulse-text2)}

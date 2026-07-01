@@ -3,7 +3,7 @@ import Link from 'next/link';
 import './pulse.css';
 import { BlogArticle } from '@/lib/news/types';
 import { articlesCol } from '@/lib/firebase-admin';
-import PulseShell, { PulseNavLink, PulseTopic } from '@/components/ai-news/PulseShell';
+import PulseShell, { PulseNavLink, PulseTopic, FilterItem } from '@/components/ai-news/PulseShell';
 import FeaturedCarousel, { FeaturedSlide } from '@/components/ai-news/FeaturedCarousel';
 import NewsletterForm from '@/components/ai-news/NewsletterForm';
 import SafeImg from '@/components/ai-news/SafeImg';
@@ -27,70 +27,65 @@ async function getAllArticles(): Promise<BlogArticle[]> {
 }
 
 const NAV_CATEGORIES: { label: string; icon: string; href: string }[] = [
-  { label: 'Home', icon: 'fa-house', href: '/ai-news' },
-  { label: 'Latest', icon: 'fa-bolt', href: '/ai-news?tab=latest' },
-  { label: 'Trending', icon: 'fa-fire', href: '/ai-news?tab=popular' },
-  { label: 'Research', icon: 'fa-book-open', href: '/ai-news?category=Research' },
-  { label: 'Tools', icon: 'fa-screwdriver-wrench', href: '/ai-news?category=Tools' },
-  { label: 'Funding', icon: 'fa-sack-dollar', href: '/ai-news?category=Funding' },
-  { label: 'Newsletter', icon: 'fa-envelope', href: '#pulse-newsletter' },
+  { label: 'Home',       icon: 'fa-house',               href: '/ai-news' },
+  { label: 'Latest',     icon: 'fa-bolt',                href: '/ai-news?tab=latest' },
+  { label: 'Trending',   icon: 'fa-fire',                href: '/ai-news?tab=popular' },
+  { label: 'Research',   icon: 'fa-book-open',           href: '/ai-news?category=Research' },
+  { label: 'Tools',      icon: 'fa-screwdriver-wrench',  href: '/ai-news?category=Tools' },
+  { label: 'Funding',    icon: 'fa-sack-dollar',         href: '/ai-news?category=Funding' },
+  { label: 'Newsletter', icon: 'fa-envelope',            href: '#pulse-newsletter' },
 ];
 
 const TOPIC_COLORS = ['#1a237e', '#facc15', '#fb923c', '#f97316', '#ef4444', '#0288d1', '#06b6d4', '#22c55e'];
 
-const EVENT_META: Record<string, { label: string; color: string; icon: string }> = {
-  model_release:  { label: 'Model Release',  color: '#1a237e', icon: '🤖' },
-  research_paper: { label: 'Research',       color: '#2563eb', icon: '📄' },
-  funding:        { label: 'Funding',         color: '#d97706', icon: '💰' },
-  acquisition:    { label: 'Acquisition',     color: '#dc2626', icon: '🤝' },
-  open_source:    { label: 'Open Source',     color: '#059669', icon: '🔓' },
-  api_release:    { label: 'API Release',     color: '#0891b2', icon: '⚡' },
-  product_launch: { label: 'Launch',          color: '#2563eb', icon: '🚀' },
-  github_release: { label: 'GitHub',          color: '#1f2937', icon: '🐙' },
-  breaking_news:  { label: 'Breaking',        color: '#dc2626', icon: '🔴' },
-  keynote:        { label: 'Keynote',         color: '#0288d1', icon: '🎤' },
-  general:        { label: 'News',            color: '#64748b', icon: '📰' },
+const EVENT_META: Record<string, { label: string; color: string }> = {
+  model_release:  { label: 'Model Release', color: '#1a237e' },
+  research_paper: { label: 'Research',      color: '#2563eb' },
+  funding:        { label: 'Funding',        color: '#d97706' },
+  acquisition:    { label: 'Acquisition',    color: '#dc2626' },
+  open_source:    { label: 'Open Source',    color: '#059669' },
+  api_release:    { label: 'API Release',    color: '#0891b2' },
+  product_launch: { label: 'Launch',         color: '#2563eb' },
+  github_release: { label: 'GitHub',         color: '#1f2937' },
+  breaking_news:  { label: 'Breaking',       color: '#dc2626' },
+  keynote:        { label: 'Keynote',        color: '#0288d1' },
+  general:        { label: 'News',           color: '#64748b' },
 };
 
-// LLM / company filter chips
-const LLM_FILTERS = [
-  { label: 'OpenAI',       value: 'OpenAI' },
-  { label: 'Anthropic',    value: 'Anthropic' },
-  { label: 'Google',       value: 'Google' },
-  { label: 'Meta',         value: 'Meta' },
-  { label: 'Microsoft',    value: 'Microsoft' },
-  { label: 'xAI',         value: 'xAI' },
-  { label: 'Mistral AI',   value: 'Mistral AI' },
-  { label: 'HuggingFace',  value: 'HuggingFace' },
-  { label: 'NVIDIA',       value: 'NVIDIA' },
-  { label: 'DeepSeek',     value: 'DeepSeek' },
-  { label: 'Groq',         value: 'Groq' },
-  { label: 'Amazon',       value: 'Amazon' },
-];
-
-// Industry filter chips
-const INDUSTRY_FILTERS = [
-  { label: '🏥 Healthcare',      value: 'Healthcare' },
-  { label: '💰 Finance',         value: 'Finance' },
-  { label: '🤖 Robotics',        value: 'Robotics' },
-  { label: '⚖️ Legal',           value: 'Legal' },
-  { label: '📚 Education',       value: 'Education' },
-  { label: '🔒 Cybersecurity',   value: 'Cybersecurity' },
-  { label: '🎮 Gaming & XR',     value: 'Gaming & XR' },
-  { label: '🖥️ Hardware & Chips', value: 'Hardware & Chips' },
-  { label: '🎨 Creative AI',     value: 'Creative AI' },
-  { label: '🏢 Enterprise AI',   value: 'Enterprise AI' },
-];
-
-// Event type filter chips
-const EVENT_TYPE_FILTERS = [
-  { label: '🤖 Model Release',  value: 'model_release' },
-  { label: '📄 Research',       value: 'research_paper' },
-  { label: '💰 Funding',        value: 'funding' },
-  { label: '🔓 Open Source',    value: 'open_source' },
-  { label: '⚡ API Release',    value: 'api_release' },
-  { label: '🚀 Product Launch', value: 'product_launch' },
-  { label: '🔴 Breaking',       value: 'breaking_news' },
+// Sidebar filter definitions — no emojis
+const SIDEBAR_FILTERS: FilterItem[] = [
+  // LLM / Company
+  { label: 'OpenAI',      value: 'OpenAI',      param: 'company' },
+  { label: 'Anthropic',   value: 'Anthropic',   param: 'company' },
+  { label: 'Google',      value: 'Google',      param: 'company' },
+  { label: 'Meta',        value: 'Meta',        param: 'company' },
+  { label: 'Microsoft',   value: 'Microsoft',   param: 'company' },
+  { label: 'xAI',         value: 'xAI',         param: 'company' },
+  { label: 'Mistral AI',  value: 'Mistral AI',  param: 'company' },
+  { label: 'HuggingFace', value: 'HuggingFace', param: 'company' },
+  { label: 'NVIDIA',      value: 'NVIDIA',      param: 'company' },
+  { label: 'DeepSeek',    value: 'DeepSeek',    param: 'company' },
+  { label: 'Groq',        value: 'Groq',        param: 'company' },
+  { label: 'Amazon',      value: 'Amazon',      param: 'company' },
+  // Industry
+  { label: 'Healthcare',      value: 'Healthcare',      param: 'industry' },
+  { label: 'Finance',         value: 'Finance',         param: 'industry' },
+  { label: 'Robotics',        value: 'Robotics',        param: 'industry' },
+  { label: 'Legal',           value: 'Legal',           param: 'industry' },
+  { label: 'Education',       value: 'Education',       param: 'industry' },
+  { label: 'Cybersecurity',   value: 'Cybersecurity',   param: 'industry' },
+  { label: 'Gaming & XR',     value: 'Gaming & XR',     param: 'industry' },
+  { label: 'Hardware & Chips',value: 'Hardware & Chips',param: 'industry' },
+  { label: 'Creative AI',     value: 'Creative AI',     param: 'industry' },
+  { label: 'Enterprise AI',   value: 'Enterprise AI',   param: 'industry' },
+  // Type
+  { label: 'Model Release',  value: 'model_release',  param: 'eventType' },
+  { label: 'Research',       value: 'research_paper', param: 'eventType' },
+  { label: 'Funding',        value: 'funding',        param: 'eventType' },
+  { label: 'Open Source',    value: 'open_source',    param: 'eventType' },
+  { label: 'API Release',    value: 'api_release',    param: 'eventType' },
+  { label: 'Product Launch', value: 'product_launch', param: 'eventType' },
+  { label: 'Breaking',       value: 'breaking_news',  param: 'eventType' },
 ];
 
 function timeAgo(dateStr: string): string {
@@ -108,17 +103,6 @@ function imageFor(a: BlogArticle) {
   return a.heroImageUrl || `https://picsum.photos/seed/${a.id}/900/600`;
 }
 
-function buildFilterHref(current: Record<string, string | undefined>, key: string, value: string) {
-  const params = new URLSearchParams();
-  Object.entries({ ...current, [key]: value }).forEach(([k, v]) => {
-    if (v) params.set(k, v);
-  });
-  // Toggle off if same value
-  if (current[key] === value) params.delete(key);
-  const qs = params.toString();
-  return `/ai-news${qs ? `?${qs}` : ''}`;
-}
-
 export default async function AINewsPage({
   searchParams,
 }: {
@@ -134,8 +118,12 @@ export default async function AINewsPage({
 
   let filtered = all;
   if (category) filtered = filtered.filter(a => a.category === category);
-  if (companyFilter) filtered = filtered.filter(a => a.company === companyFilter);
-  if (industryFilter) filtered = filtered.filter(a => (a as BlogArticle & { industry?: string }).industry === industryFilter);
+  if (companyFilter) filtered = filtered.filter(a =>
+    a.company?.toLowerCase() === companyFilter.toLowerCase()
+  );
+  if (industryFilter) filtered = filtered.filter(a =>
+    ((a as BlogArticle & { industry?: string }).industry ?? '').toLowerCase() === industryFilter.toLowerCase()
+  );
   if (eventTypeFilter) filtered = filtered.filter(a => a.eventType === eventTypeFilter);
   if (q) {
     filtered = filtered.filter(a =>
@@ -147,7 +135,7 @@ export default async function AINewsPage({
   }
 
   const byScore = [...filtered].sort((a, b) => b.importanceScore - a.importanceScore);
-  const byDate = [...filtered].sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt));
+  const byDate  = [...filtered].sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt));
   const important = byScore.filter(a => a.importanceScore >= 75);
 
   const feedList = tab === 'popular' ? byScore : tab === 'important' ? important : byDate;
@@ -156,14 +144,14 @@ export default async function AINewsPage({
     slug: a.slug,
     title: a.title,
     summary: a.summary,
-    image: a.heroImageUrl || `https://picsum.photos/seed/${a.id}/900/600`,
+    image: a.heroImageUrl || imageFor(a),
     fallback: `https://picsum.photos/seed/${a.id}/900/600`,
     badgeLabel: (EVENT_META[a.eventType] || EVENT_META.general).label,
     company: a.company,
     timeAgo: timeAgo(a.publishedAt),
   }));
 
-  const trending = byScore.slice(0, 5);
+  const trending = [...all].sort((a, b) => b.importanceScore - a.importanceScore).slice(0, 5);
 
   const companyCounts = new Map<string, number>();
   for (const a of all.slice(0, 60)) {
@@ -181,111 +169,56 @@ export default async function AINewsPage({
     href: n.href,
     icon: n.icon,
     active:
-      n.label === 'Home' ? !searchParams.tab && !category :
-      n.label === 'Latest' ? tab === 'latest' && !category :
-      n.label === 'Trending' ? tab === 'popular' :
-      n.label === 'Research' ? category === 'Research' :
-      n.label === 'Tools' ? category === 'Tools' :
-      n.label === 'Funding' ? category === 'Funding' :
+      n.label === 'Home'       ? !searchParams.tab && !category :
+      n.label === 'Latest'     ? tab === 'latest' && !category :
+      n.label === 'Trending'   ? tab === 'popular' :
+      n.label === 'Research'   ? category === 'Research' :
+      n.label === 'Tools'      ? category === 'Tools' :
+      n.label === 'Funding'    ? category === 'Funding' :
       false,
   }));
 
   const sidebarTopics: PulseTopic[] = [
     { label: 'Large Language Models', href: '/ai-news?q=LLM' },
-    { label: 'Generative AI', href: '/ai-news?q=generative' },
-    { label: 'AI Agents', href: '/ai-news?q=agent' },
-    { label: 'AI Tools', href: '/ai-news?category=Tools' },
-    { label: 'Robotics', href: '/ai-news?industry=Robotics' },
-    { label: 'AI Research', href: '/ai-news?category=Research' },
-    { label: 'AI Hardware', href: '/ai-news?industry=Hardware+%26+Chips' },
+    { label: 'Generative AI',         href: '/ai-news?q=generative' },
+    { label: 'AI Agents',             href: '/ai-news?q=agent' },
+    { label: 'AI Tools',              href: '/ai-news?category=Tools' },
+    { label: 'Robotics',              href: '/ai-news?industry=Robotics' },
+    { label: 'AI Research',           href: '/ai-news?category=Research' },
+    { label: 'AI Hardware',           href: '/ai-news?industry=Hardware+%26+Chips' },
   ].map((t, i) => ({ ...t, color: TOPIC_COLORS[i % TOPIC_COLORS.length] }));
 
-  const currentParams = {
-    tab: searchParams.tab,
-    category,
-    q: searchParams.q,
-    company: companyFilter,
-    industry: industryFilter,
-    eventType: eventTypeFilter,
-  };
-
   const hasActiveFilter = !!(companyFilter || industryFilter || eventTypeFilter || category || q);
+  const activeLabel = companyFilter || industryFilter || (eventTypeFilter ? EVENT_META[eventTypeFilter]?.label : '') || category || '';
 
   return (
-    <PulseShell navLinks={navLinks} topics={sidebarTopics}>
+    <PulseShell navLinks={navLinks} topics={sidebarTopics} filters={SIDEBAR_FILTERS}>
       <div className="pulse-content">
         <div className="pulse-feed">
           {featuredSlides.length > 0 && !hasActiveFilter && <FeaturedCarousel slides={featuredSlides} />}
 
-          {/* ── LLM / Company Filter ── */}
-          <div className="pulse-filter-section">
-            <div className="pulse-filter-label">🧠 By LLM / Company</div>
-            <div className="pulse-filter-chips">
-              {LLM_FILTERS.map(f => (
-                <Link
-                  key={f.value}
-                  href={buildFilterHref(currentParams, 'company', f.value)}
-                  className={`pulse-chip${companyFilter === f.value ? ' active' : ''}`}
-                >
-                  {f.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* ── Industry Filter ── */}
-          <div className="pulse-filter-section">
-            <div className="pulse-filter-label">🏭 By Industry</div>
-            <div className="pulse-filter-chips">
-              {INDUSTRY_FILTERS.map(f => (
-                <Link
-                  key={f.value}
-                  href={buildFilterHref(currentParams, 'industry', f.value)}
-                  className={`pulse-chip${industryFilter === f.value ? ' active' : ''}`}
-                >
-                  {f.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* ── Event Type Filter ── */}
-          <div className="pulse-filter-section">
-            <div className="pulse-filter-label">📌 By Type</div>
-            <div className="pulse-filter-chips">
-              {EVENT_TYPE_FILTERS.map(f => (
-                <Link
-                  key={f.value}
-                  href={buildFilterHref(currentParams, 'eventType', f.value)}
-                  className={`pulse-chip${eventTypeFilter === f.value ? ' active' : ''}`}
-                >
-                  {f.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Active filter badge */}
+          {/* Active filter bar */}
           {hasActiveFilter && (
             <div className="pulse-active-filter">
-              <span>Filtering: </span>
-              {companyFilter && <span className="pulse-filter-tag">🏢 {companyFilter}</span>}
-              {industryFilter && <span className="pulse-filter-tag">🏭 {industryFilter}</span>}
-              {eventTypeFilter && <span className="pulse-filter-tag">📌 {EVENT_META[eventTypeFilter]?.label || eventTypeFilter}</span>}
-              {category && <span className="pulse-filter-tag">📂 {category}</span>}
-              {q && <span className="pulse-filter-tag">🔍 "{q}"</span>}
-              <Link href="/ai-news" className="pulse-clear-filter">✕ Clear all</Link>
+              <span>Filtering:</span>
+              {companyFilter  && <span className="pulse-filter-tag">{companyFilter}</span>}
+              {industryFilter && <span className="pulse-filter-tag">{industryFilter}</span>}
+              {eventTypeFilter && <span className="pulse-filter-tag">{EVENT_META[eventTypeFilter]?.label ?? eventTypeFilter}</span>}
+              {category && <span className="pulse-filter-tag">{category}</span>}
+              {q && <span className="pulse-filter-tag">"{q}"</span>}
+              <Link href="/ai-news" className="pulse-clear-filter">x Clear all</Link>
             </div>
           )}
 
           <div className="pulse-feed-head">
-            <div className="pulse-feed-title"><i className="fa-solid fa-bolt" />
-              {companyFilter ? `${companyFilter} News` : industryFilter ? `${industryFilter} AI News` : 'Latest AI News'}
+            <div className="pulse-feed-title">
+              <i className="fa-solid fa-bolt" />
+              {activeLabel ? `${activeLabel} News` : 'Latest AI News'}
             </div>
             <div className="pulse-tabs">
-              <Link href={`/ai-news?tab=latest${companyFilter ? `&company=${companyFilter}` : ''}${industryFilter ? `&industry=${encodeURIComponent(industryFilter)}` : ''}${eventTypeFilter ? `&eventType=${eventTypeFilter}` : ''}`} className={`pulse-tab${tab === 'latest' ? ' active' : ''}`}>Latest</Link>
-              <Link href={`/ai-news?tab=popular${companyFilter ? `&company=${companyFilter}` : ''}${industryFilter ? `&industry=${encodeURIComponent(industryFilter)}` : ''}${eventTypeFilter ? `&eventType=${eventTypeFilter}` : ''}`} className={`pulse-tab${tab === 'popular' ? ' active' : ''}`}>Popular</Link>
-              <Link href={`/ai-news?tab=important${companyFilter ? `&company=${companyFilter}` : ''}${industryFilter ? `&industry=${encodeURIComponent(industryFilter)}` : ''}${eventTypeFilter ? `&eventType=${eventTypeFilter}` : ''}`} className={`pulse-tab${tab === 'important' ? ' active' : ''}`}>Important</Link>
+              <Link href="/ai-news?tab=latest"    className={`pulse-tab${tab === 'latest'    ? ' active' : ''}`}>Latest</Link>
+              <Link href="/ai-news?tab=popular"   className={`pulse-tab${tab === 'popular'   ? ' active' : ''}`}>Popular</Link>
+              <Link href="/ai-news?tab=important" className={`pulse-tab${tab === 'important' ? ' active' : ''}`}>Important</Link>
             </div>
           </div>
 
@@ -293,8 +226,8 @@ export default async function AINewsPage({
             <div className="pulse-empty">
               <i className="fa-solid fa-satellite-dish" />
               {hasActiveFilter
-                ? 'No articles found for this filter yet — the pipeline runs every 2 hours across 100+ sources.'
-                : 'AI is collecting the latest news — the pipeline runs every 2 hours across 100+ sources.'}
+                ? 'No articles found for this filter yet — pipeline runs every 2 hours.'
+                : 'Pipeline is collecting latest news — check back soon.'}
             </div>
           ) : (
             feedList.slice(0, 20).map(a => {
@@ -312,14 +245,12 @@ export default async function AINewsPage({
                   <div className="pulse-row-body">
                     <div className="pulse-row-top">
                       <span className="pulse-row-title">{a.title}</span>
-                      <span className="pulse-row-badge" style={{ background: `${meta.color}26`, color: meta.color }}>{meta.icon} {meta.label}</span>
+                      <span className="pulse-row-badge" style={{ background: `${meta.color}26`, color: meta.color }}>{meta.label}</span>
                     </div>
                     <p className="pulse-row-desc">{a.summary}</p>
                     <div className="pulse-row-foot">
                       {a.company && a.company !== 'AI Industry' && (
-                        <span className="pulse-company-tag">
-                          {a.company}
-                        </span>
+                        <span className="pulse-company-tag">{a.company}</span>
                       )}
                       <span>{a.sourceName}</span>
                       <span>·</span>
@@ -327,7 +258,6 @@ export default async function AINewsPage({
                       <div className="pulse-row-actions">
                         <i className="fa-regular fa-bookmark" />
                         <i className="fa-solid fa-arrow-up-from-bracket" />
-                        <i className="fa-solid fa-ellipsis" />
                       </div>
                     </div>
                   </div>
@@ -340,7 +270,7 @@ export default async function AINewsPage({
         <div className="pulse-rail">
           <div className="pulse-card">
             <div className="pulse-card-head">
-              <span className="pulse-card-title">🔥 Trending Now</span>
+              <span className="pulse-card-title">Trending Now</span>
               <Link href="/ai-news?tab=popular" className="pulse-card-link">View all</Link>
             </div>
             {trending.map((a, i) => (
@@ -356,7 +286,7 @@ export default async function AINewsPage({
 
           <div className="pulse-card">
             <div className="pulse-card-head">
-              <span className="pulse-card-title">📊 Coverage Pulse</span>
+              <span className="pulse-card-title">Coverage Pulse</span>
               <Link href="/ai-news" className="pulse-card-link">View full</Link>
             </div>
             <div className="pulse-market-cap">{all.length.toLocaleString()}</div>
@@ -375,7 +305,7 @@ export default async function AINewsPage({
 
           <div className="pulse-card" id="pulse-newsletter">
             <div className="pulse-card-head">
-              <span className="pulse-card-title">📨 Daily AI Newsletter</span>
+              <span className="pulse-card-title">Daily AI Newsletter</span>
             </div>
             <p style={{ fontSize: 12.5, color: 'var(--pulse-text2)', marginBottom: 12, lineHeight: 1.5 }}>
               Join thousands of AI enthusiasts and get the top AI news daily.
@@ -386,7 +316,7 @@ export default async function AINewsPage({
           {topTags.length > 0 && (
             <div className="pulse-card">
               <div className="pulse-card-head">
-                <span className="pulse-card-title">🏷️ Top Topics</span>
+                <span className="pulse-card-title">Top Topics</span>
               </div>
               <div className="pulse-topic-pills">
                 {topTags.map(t => (
