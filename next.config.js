@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    // firebase-admin (via jwks-rsa -> jose) ships an ESM-only build that Next's
+    // webpack bundler mis-resolves as CJS in serverless functions, causing
+    // "ERR_REQUIRE_ESM" at runtime. Excluding it from bundling lets Node load
+    // it natively at runtime, where the ESM/CJS interop works correctly.
+    serverComponentsExternalPackages: ["firebase-admin"],
+  },
   async redirects() {
     const htmlPages = [
       'home', 'about', 'contact', 'service', 'faq', 'team-details',
