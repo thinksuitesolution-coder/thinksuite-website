@@ -388,6 +388,10 @@ Return ONLY valid JSON, no markdown.`;
     }
 
     const { granted, used: quotaUsed, remaining: quotaRemaining, limit: quotaLimit } = await incrementLeadQuota(userId, verifiedLeads.length);
+    // Fail closed: quota/wallet exhausted between check and increment (or quota DB unavailable)
+    if (granted === 0 && verifiedLeads.length > 0) {
+      return NextResponse.json({ quotaExceeded: true, needsTopup: true }, { status: 402 });
+    }
     const finalLeads = verifiedLeads.slice(0, granted);
     await saveLeadHistory(userId, { type: "google-map", niche: searchQuery, location: city, leadCount: finalLeads.length, leads: finalLeads.slice(0, 50) });
     return NextResponse.json({ leads: finalLeads, total: finalLeads.length, ai_insight, cold_email, quotaUsed, quotaRemaining, quotaLimit });

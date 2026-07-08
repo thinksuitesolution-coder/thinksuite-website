@@ -16,6 +16,25 @@ export const GROQ_MODEL = GROQ_MODEL_HIGH;
 // Gemini free tier — separate quota pool from Groq entirely
 const GEMINI_MODEL = 'gemini-2.5-flash';
 
+// Z.ai / Zhipu AI — OpenAI-compatible endpoint, separate quota pool from Groq/Gemini
+export const glm = new OpenAI({
+  apiKey: process.env.ZAI_API_KEY || 'build-placeholder',
+  baseURL: 'https://api.z.ai/api/paas/v4/',
+});
+export const GLM_MODEL = 'glm-5.2';
+
+async function callGLM(prompt: string, maxTokens: number): Promise<string> {
+  const key = process.env.ZAI_API_KEY;
+  if (!key || key === 'build-placeholder') throw new Error('ZAI_API_KEY not configured — skipping GLM');
+  const completion = await glm.chat.completions.create({
+    model: GLM_MODEL,
+    messages: [{ role: 'user', content: prompt }],
+    max_tokens: maxTokens,
+    temperature: 0.7,
+  });
+  return completion.choices[0].message.content || '{}';
+}
+
 async function callGemini(prompt: string, maxTokens: number): Promise<string> {
   const key = process.env.GEMINI_API_KEY || process.env.GOOGLE_AI_API_KEY;
   if (!key) throw new Error('GEMINI_API_KEY missing');
@@ -75,10 +94,11 @@ function buildChain(preferFast: boolean): Provider[] {
   const groqBackup2: Provider = { name: GROQ_MODEL_BACKUP2, call: (p, t) => callGroq(GROQ_MODEL_BACKUP2, p, t) };
   const groqBackup3: Provider = { name: GROQ_MODEL_BACKUP3, call: (p, t) => callGroq(GROQ_MODEL_BACKUP3, p, t) };
   const gemini: Provider = { name: GEMINI_MODEL, call: callGemini };
+  const glmProvider: Provider = { name: GLM_MODEL, call: callGLM };
 
   return preferFast
-    ? [groqFast, gemini, groqBackup2, groqBackup3, groqBackup, groqHigh]
-    : [groqHigh, gemini, groqBackup3, groqFast, groqBackup2, groqBackup];
+    ? [groqFast, glmProvider, gemini, groqBackup2, groqBackup3, groqBackup, groqHigh]
+    : [groqHigh, glmProvider, gemini, groqBackup3, groqFast, groqBackup2, groqBackup];
 }
 
 export async function groqJSON<T = Record<string, unknown>>(

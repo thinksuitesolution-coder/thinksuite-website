@@ -2,7 +2,7 @@
 import { getAdminDb } from "@/lib/firebaseAdmin";
 import { scraperFetch, extractEmails, extractPhones, applyQualityGate, ddgSearch } from "@/lib/scraperUtils";
 import { verifyUser } from "@/lib/authUtils";
-import { saveLeadHistory } from "@/lib/leadGenQuota";
+import { checkLeadQuota, incrementLeadQuota, saveLeadHistory } from "@/lib/leadGenQuota";
 const SCRAPER_KEY = null;
 const FIRECRAWL = null;
 
@@ -112,6 +112,12 @@ export async function POST(request) {
 
     const { product, tradeType, state, city, hsCode, specialInstructions } = await request.json();
     if (!product?.trim()) return Response.json({ error: "Product required" }, { status: 400 });
+
+    // Quota enforcement — same policy as intl-export-import-leads
+    const quota = await checkLeadQuota(userId);
+    if (!quota.ok) {
+      return Response.json({ quotaExceeded: true, walletBalance: quota.walletBalance, walletPerLeadCost: quota.walletPerLeadCost, walletMinTopup: quota.walletMinTopup, needsTopup: quota.needsTopup }, { status: 402 });
+    }
 
     const location    = city ? `${city}${state ? ", " + state : ""}` : (state || "India");
     const typeKeyword = tradeType === "exporter" ? "exporter" : tradeType === "importer" ? "importer" : "exporter importer";
@@ -317,6 +323,13 @@ Rules: only real Indian companies from actual data, no duplicates, NEVER fabrica
       });
     }
 
+    const { granted, used: quotaUsed, remaining: quotaRemaining, limit: quotaLimit } = await incrementLeadQuota(userId, leads.length);
+    // Fail closed: quota/wallet exhausted between check and increment (or quota DB unavailable)
+    if (granted === 0 && leads.length > 0) {
+      return Response.json({ quotaExceeded: true, needsTopup: true }, { status: 402 });
+    }
+    leads = leads.slice(0, granted);
+
     /* ── 6. Save seen names to Firestore ─────────────────────────────── */
     if (userId && seenDocRef && leads.length > 0) {
       try {
@@ -347,6 +360,9 @@ Rules: only real Indian companies from actual data, no duplicates, NEVER fabrica
       leads,
       total_leads:   leads.length,
       total_seen:    seenNames.length + leads.length,
+      quotaUsed,
+      quotaRemaining,
+      quotaLimit,
       sources_used:  ["Google (Serper)", "ImportYeti (US Customs)", "Zauba (India Customs)", "IndiaMart", "TradeIndia"],
       query_summary: `${product} ${typeKeyword} in ${location}`,
     });

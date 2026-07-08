@@ -480,6 +480,10 @@ Return ONLY: {"leads":[{...all fields...}],"queryLabel":"3-4 words"}`,
     } catch {}
 
     const { granted: liGranted, used: quotaUsed, remaining: quotaRemaining, limit: quotaLimit } = await incrementLeadQuota(userId, finalLeads.length);
+    // Fail closed: quota/wallet exhausted between check and increment (or quota DB unavailable)
+    if (liGranted === 0 && finalLeads.length > 0) {
+      return Response.json({ quotaExceeded: true, needsTopup: true }, { status: 402 });
+    }
     const liLeads = finalLeads.slice(0, liGranted);
     await saveLeadHistory(userId, { type: "linkedin", niche, location: usedLocation, leadCount: liLeads.length, leads: liLeads.slice(0, 50) });
     return Response.json({

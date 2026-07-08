@@ -933,7 +933,7 @@ export default function LeadGenPage() {
           needsTopup:        d.needsTopup        || false,
         });
       }
-    }).catch(() => {});
+    }).catch((e) => console.error("[lead-generation] wallet/quota refresh failed:", e.message));
   }, [user]);
 
   async function saveToHistory(toolSlug, toolLabel, query, details = {}, results = []) {
@@ -947,7 +947,9 @@ export default function LeadGenPage() {
       });
       const data = await res.json();
       // history display is on the dashboard page
-    } catch {}
+    } catch (e) {
+      console.error("[lead-generation] saveToHistory failed:", e.message);
+    }
   }
 
   function handleFeatureChange(id) {
@@ -1226,8 +1228,9 @@ export default function LeadGenPage() {
             setAiFilterStats({ matched: filteredLeads.length, total: newLeads.length, requirement: aiFilter });
             newLeads = filteredLeads;
           }
-        } catch {
-          // AI filter failed silently show all leads
+        } catch (e) {
+          // AI filter failed — show all leads unfiltered
+          console.error("[lead-generation] AI filter failed, showing unfiltered leads:", e.message);
         }
       }
 
@@ -1345,6 +1348,7 @@ export default function LeadGenPage() {
     try {
       const res = await leadPost("/api/lead-gen/export-import-leads", user, { product, tradeType, state, city, hsCode, specialInstructions });
       const data = await safeJson(res);
+      if (res.status === 402 || data.quotaExceeded) throw new Error(walletErrMsg(data));
       if (!res.ok || !data.success) throw new Error(data.error || "Could not fetch leads");
       setEximLeads(data.leads || []);
       setEximTotalSeen(data.total_seen || (data.leads || []).length);
@@ -1372,6 +1376,7 @@ export default function LeadGenPage() {
     try {
       const res = await leadPost("/api/lead-gen/export-import-leads", user, { product:eximProduct, tradeType:eximTradeType, state:eximState, city:eximCity, hsCode:eximHsCode });
       const data = await safeJson(res);
+      if (res.status === 402 || data.quotaExceeded) throw new Error(walletErrMsg(data));
       if (!res.ok || !data.success) throw new Error(data.error || "Could not load more leads");
       setEximLeads(prev => [...prev, ...(data.leads || [])]);
       setEximTotalSeen(data.total_seen || 0);
@@ -1406,8 +1411,9 @@ export default function LeadGenPage() {
             setIntlMapAiFilterStats({ matched: filteredLeads.length, total: newLeads.length, requirement: aiFilter });
             newLeads = filteredLeads;
           }
-        } catch {
-          // AI filter failed silently, show all leads
+        } catch (e) {
+          // AI filter failed — show all leads unfiltered
+          console.error("[lead-generation] AI filter failed, showing unfiltered leads:", e.message);
         }
       }
 
@@ -1485,6 +1491,7 @@ export default function LeadGenPage() {
     try {
       const res = await leadPost("/api/lead-gen/intl-export-import-leads", user, { product, tradeType, country, city, hsCode, specialInstructions });
       const data = await safeJson(res);
+      if (res.status === 402 || data.quotaExceeded) throw new Error(walletErrMsg(data));
       if (!res.ok || !data.success) throw new Error(data.error || "Could not fetch leads");
       setIntlEximLeads(data.leads || []);
       setIntlEximTotalSeen(data.total_seen || (data.leads || []).length);
@@ -1501,6 +1508,7 @@ export default function LeadGenPage() {
     try {
       const res = await leadPost("/api/lead-gen/intl-export-import-leads", user, { product: intlEximProduct, tradeType: intlEximTradeType, country: intlEximCountry, city: intlEximCity, hsCode: intlEximHsCode });
       const data = await safeJson(res);
+      if (res.status === 402 || data.quotaExceeded) throw new Error(walletErrMsg(data));
       if (!res.ok || !data.success) throw new Error(data.error || "Could not load more leads");
       setIntlEximLeads(prev => [...prev, ...(data.leads || [])]);
       setIntlEximTotalSeen(data.total_seen || 0);

@@ -63,7 +63,12 @@ export async function POST(request) {
       enriched: true,
     };
 
-    const { used: quotaUsed, remaining: quotaRemaining, limit: quotaLimit } = await incrementLeadQuota(userId, 1);
+    const { granted, used: quotaUsed, remaining: quotaRemaining, limit: quotaLimit } = await incrementLeadQuota(userId, 1);
+
+    // Fail closed: quota/wallet exhausted between check and increment (or quota DB unavailable)
+    if (granted < 1) {
+      return NextResponse.json({ quotaExceeded: true, needsTopup: true }, { status: 402 });
+    }
 
     return NextResponse.json({ ...data, quotaUsed, quotaRemaining, quotaLimit });
   } catch (err) {

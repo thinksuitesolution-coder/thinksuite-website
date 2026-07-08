@@ -295,6 +295,10 @@ Max ${count} leads. PRIORITIZE leads where email_found or phone_found is non-emp
     }
 
     const { granted: sfGranted, used: quotaUsed, remaining: quotaRemaining, limit: quotaLimit } = await incrementLeadQuota(userId, finalLeads.length);
+    // Fail closed: quota/wallet exhausted between check and increment (or quota DB unavailable)
+    if (sfGranted === 0 && finalLeads.length > 0) {
+      return Response.json({ quotaExceeded: true, needsTopup: true }, { status: 402 });
+    }
     finalLeads = finalLeads.slice(0, sfGranted);
     await saveLeadHistory(userId, { type: "startup-founders", niche: service, location: country, leadCount: finalLeads.length, leads: finalLeads.slice(0, 50) });
     return Response.json({

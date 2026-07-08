@@ -85,7 +85,10 @@ async function checkQuota(userId) {
     const snap = await db.collection("groupFinderQuota").doc(userId).get();
     const used = snap.exists ? (snap.data()[currentMonth()] || 0) : 0;
     return { ok: used < MONTHLY_LIMIT, used, remaining: MONTHLY_LIMIT - used };
-  } catch { return { ok: true, used: 0, remaining: MONTHLY_LIMIT }; }
+  } catch (e) {
+    console.error("[group-finder] checkQuota failed, failing closed:", e.message);
+    return { ok: false, used: 0, remaining: 0 };
+  }
 }
 
 // Atomically grants up to `count` slots against the monthly cap inside a single
@@ -111,8 +114,9 @@ async function incrementQuota(userId, count) {
       if (granted > 0) tx.set(ref, { [currentMonth()]: finalUsed }, { merge: true });
     });
     return { granted, used: finalUsed, remaining: Math.max(0, MONTHLY_LIMIT - finalUsed) };
-  } catch {
-    return { granted: count, used: 0, remaining: MONTHLY_LIMIT };
+  } catch (e) {
+    console.error("[group-finder] incrementQuota failed, failing closed:", e.message);
+    return { granted: 0, used: 0, remaining: 0, error: true };
   }
 }
 
@@ -1640,6 +1644,15 @@ export async function POST(req) {
 
     const { granted, used: quotaUsed, remaining: quotaRemaining } = await incrementQuota(userId, final.length);
     const grantedFinal = final.slice(0, granted);
+
+    // Fail closed: quota exhausted mid-request (or quota DB unavailable) —
+    // tell the user instead of silently returning zero results.
+    if (granted === 0 && final.length > 0) {
+      return NextResponse.json(
+        { success: false, quotaExceeded: true, used: quotaUsed, limit: MONTHLY_LIMIT },
+        { status: 402 }
+      );
+    }
 
     await saveLeadHistory(userId, {
       type: "group-finder",

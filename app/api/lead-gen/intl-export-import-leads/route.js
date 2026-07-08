@@ -298,6 +298,10 @@ Rules: only real companies from ${country}, no duplicates, NEVER fabricate conta
     );
 
     const { granted, used: quotaUsed, remaining: quotaRemaining, limit: quotaLimit } = await incrementLeadQuota(userId, leads.length || 1);
+    // Fail closed: quota/wallet exhausted between check and increment (or quota DB unavailable)
+    if (granted === 0 && leads.length > 0) {
+      return Response.json({ quotaExceeded: true, needsTopup: true }, { status: 402 });
+    }
     leads = leads.slice(0, Math.max(granted, 0));
 
     /* ── 6. Save seen names to Firestore ─────────────────────────────────── */

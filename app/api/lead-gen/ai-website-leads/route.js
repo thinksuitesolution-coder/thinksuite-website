@@ -337,6 +337,10 @@ Return ONLY the JSON.`,
     /* ── Save & return ───────────────────────────────────────────────────── */
     const { granted: wsGranted, used: quotaUsed, remaining: quotaRemaining, limit: quotaLimit } = await incrementLeadQuota(userId, finalLeads.length);
     const returnLeads = finalLeads.slice(0, wsGranted);
+    // Fail closed: quota/wallet exhausted between check and increment (or quota DB unavailable)
+    if (wsGranted === 0 && finalLeads.length > 0) {
+      return Response.json({ quotaExceeded: true, needsTopup: true }, { status: 402 });
+    }
     await saveLeadHistory(userId, { type: "website-leads", niche: query, location: country, leadCount: returnLeads.length, leads: returnLeads.slice(0, 50) });
 
     return Response.json({

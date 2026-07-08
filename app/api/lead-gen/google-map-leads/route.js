@@ -115,6 +115,10 @@ export async function POST(request) {
 
     const { granted: gmGranted, used: quotaUsed, remaining: quotaRemaining, limit: quotaLimit } = await incrementLeadQuota(userId, enriched.length);
     const gmLeads = enriched.slice(0, gmGranted);
+    // Fail closed: quota/wallet exhausted between check and increment (or quota DB unavailable)
+    if (gmGranted === 0 && enriched.length > 0) {
+      return NextResponse.json({ quotaExceeded: true, needsTopup: true }, { status: 402 });
+    }
     await saveLeadHistory(userId, { type: "google-map", niche: searchQuery, location: locationStr, leadCount: gmLeads.length, leads: gmLeads.slice(0, 50) });
     return NextResponse.json({
       success:         true,

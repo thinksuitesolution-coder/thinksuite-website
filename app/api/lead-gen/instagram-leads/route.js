@@ -642,6 +642,10 @@ Return ONLY: {"leads":[{...all fields...}],"queryLabel":"3-4 words"}`,
     } catch {}
 
     const { granted: igGranted, used: quotaUsed, remaining: quotaRemaining, limit: quotaLimit } = await incrementLeadQuota(userId, finalLeads.length);
+    // Fail closed: quota/wallet exhausted between check and increment (or quota DB unavailable)
+    if (igGranted === 0 && finalLeads.length > 0) {
+      return Response.json({ quotaExceeded: true, needsTopup: true }, { status: 402 });
+    }
     const igLeads = finalLeads.slice(0, igGranted);
     await saveLeadHistory(userId, { type: "instagram", niche, location: usedLocation, leadCount: igLeads.length, leads: igLeads.slice(0, 50) });
     return Response.json({

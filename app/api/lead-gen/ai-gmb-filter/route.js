@@ -65,13 +65,19 @@ Return ONLY a raw JSON array of matching i values. No explanation, no markdown.`
     const text = message.content[0]?.text?.trim() || "[]";
     // Extract JSON array from response robustly
     const match = text.match(/\[[\s\S]*?\]/);
-    let filteredIndices = [];
+    let filteredIndices;
     if (match) {
       try {
         filteredIndices = JSON.parse(match[0]).filter(n => Number.isInteger(n));
       } catch {
+        console.warn("[ai-gmb-filter] AI returned unparseable array, passing all leads through");
         filteredIndices = leads.map((_, i) => i);
       }
+    } else {
+      // No JSON array found in the AI response — pass all leads through instead of
+      // silently filtering everything out with an empty index list.
+      console.warn("[ai-gmb-filter] no JSON array in AI response, passing all leads through");
+      filteredIndices = leads.map((_, i) => i);
     }
 
     return NextResponse.json({
