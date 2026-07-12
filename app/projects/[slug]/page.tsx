@@ -228,7 +228,13 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
                     {project.socialPosts.map((post, i) => (
                       <div key={i} className={`prj-social-card prj-social-card-${post.type}`}>
                         <div className="prj-social-card-image">
-                          <img src={post.image} alt={post.caption} />
+                          {post.video ? (
+                            <video controls poster={post.image} preload="none">
+                              <source src={post.video} />
+                            </video>
+                          ) : (
+                            <img src={post.image} alt={post.caption} />
+                          )}
                           <span className={`prj-social-badge prj-social-badge-${post.type}`}>
                             <i className={`fa-solid ${post.type === 'reel' ? 'fa-film' : 'fa-image'}`} />
                             {post.type === 'reel' ? 'Reel' : 'Post'}

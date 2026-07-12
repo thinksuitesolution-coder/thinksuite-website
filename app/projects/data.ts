@@ -10,6 +10,7 @@ export interface SocialHandle {
 export interface SocialPost {
   type: 'post' | 'reel'
   image: string
+  video?: string
   caption: string
   likes?: string
   views?: string
