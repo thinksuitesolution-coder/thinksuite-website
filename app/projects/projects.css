@@ -307,6 +307,11 @@
   color: rgba(255,255,255,0.9);
   border: 1px solid rgba(255,255,255,0.18);
 }
+.prj-badge-soon {
+  background: rgba(245,158,11,0.25);
+  border-color: rgba(245,158,11,0.55);
+  color: #fbbf24;
+}
 
 /* Card Body */
 .prj-card-body {

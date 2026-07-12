@@ -36,6 +36,7 @@ export interface Project {
   socialPosts?: SocialPost[]
   logo?: string
   screenshot?: string
+  comingSoon?: boolean
   coverGradient: string
   coverIcon: string
 }
@@ -168,7 +169,7 @@ export const projects: Project[] = [
   },
   {
     id: 'thinkvirtual',
-    cat: ['Social Media'],
+    cat: ['Website', 'Social Media'],
     title: 'ThinkVirtual',
     industry: 'Technology & Digital',
     industryIcon: 'fa-vr-cardboard',
@@ -203,7 +204,7 @@ export const projects: Project[] = [
   },
   {
     id: 'wavcart',
-    cat: ['Social Media'],
+    cat: ['Website', 'Social Media'],
     title: 'WavCart',
     industry: 'E-Commerce',
     industryIcon: 'fa-cart-shopping',
@@ -271,7 +272,7 @@ export const projects: Project[] = [
   },
   {
     id: 'aklr-academy',
-    cat: ['Social Media'],
+    cat: ['Website', 'Social Media'],
     title: 'AKLR Academy',
     industry: 'AI Education & Online Courses',
     industryIcon: 'fa-robot',
@@ -306,7 +307,7 @@ export const projects: Project[] = [
   },
   {
     id: 'aklr-tech',
-    cat: ['Social Media'],
+    cat: ['Website', 'Social Media'],
     title: 'AKLR Tech',
     industry: 'IT Services & Technology',
     industryIcon: 'fa-microchip',
@@ -382,7 +383,7 @@ export const projects: Project[] = [
   },
   {
     id: 'shrisurbhikripa',
-    cat: ['Website'],
+    cat: ['Website', 'Social Media'],
     title: 'Shri Surbhi Kripa',
     industry: 'Organic & Natural Products',
     industryIcon: 'fa-seedling',
@@ -497,6 +498,63 @@ export const projects: Project[] = [
     socialHandles: [],
     coverGradient: 'linear-gradient(135deg, #07091a 0%, #0d2040 50%, #0d47a1 100%)',
     coverIcon: 'fa-solar-panel',
+  },
+  {
+    id: 'mythinkai',
+    cat: ['Website', 'Social Media'],
+    title: 'MyThinkAI',
+    industry: 'AI Lead Generation',
+    industryIcon: 'fa-bullseye',
+    tagline: 'AI-powered lead generation tool that builds targeted contact lists by location, occupation, and category.',
+    desc: 'MyThinkAI is a ThinkSuite product that generates qualified leads based on location, occupation, and other business categories, delivering ready-to-use, targeted contact lists for outreach. We are building both its website and its social media presence.',
+    contribution: 'We are building MyThinkAI\'s website and setting up and running its social media presence from day one, ahead of public launch.',
+    services: [
+      'Website Design & Development',
+      'Social Media Account Setup',
+      'Content Strategy & Creation',
+      'Brand Positioning',
+    ],
+    tech: ['Next.js', 'Tailwind CSS'],
+    colors: [
+      { hex: '#4F46E5', name: 'Indigo' },
+      { hex: '#0F0C29', name: 'Deep Dark' },
+      { hex: '#818CF8', name: 'Soft Indigo' },
+      { hex: '#FFFFFF', name: 'White' },
+    ],
+    liveUrl: '#',
+    socialHandles: [],
+    logo: '/assets/img/logos/mythinkai.jpeg',
+    comingSoon: true,
+    coverGradient: 'linear-gradient(135deg, #07091a 0%, #0f0d2e 50%, #312e81 100%)',
+    coverIcon: 'fa-bullseye',
+  },
+  {
+    id: 'visibility-ai',
+    cat: ['Website'],
+    title: 'Visibility AI',
+    industry: 'AI Search Optimization (GEO)',
+    industryIcon: 'fa-magnifying-glass-chart',
+    tagline: 'AI tool that helps businesses get found and cited by AI search engines like ChatGPT and Perplexity.',
+    desc: 'Visibility AI is a ThinkSuite product built to help businesses rank and get cited in AI-powered search and answer engines, not just traditional Google search. We are building its platform and website.',
+    contribution: 'We are building Visibility AI\'s full website and platform from the ground up, ahead of public launch.',
+    services: [
+      'Website Design & Development',
+      'Platform Build',
+      'Brand Positioning',
+    ],
+    tech: ['Next.js', 'Tailwind CSS'],
+    colors: [
+      { hex: '#00BCD4', name: 'Cyan' },
+      { hex: '#0A1628', name: 'Deep Navy' },
+      { hex: '#E0F7FA', name: 'Light Cyan' },
+      { hex: '#FFFFFF', name: 'White' },
+    ],
+    liveUrl: '#',
+    socialHandles: [],
+    logo: '/assets/img/logos/visibility ai logo.png',
+    comingSoon: true,
+    coverGradient: 'linear-gradient(135deg, #07091a 0%, #071e28 50%, #006e7f 100%)',
+    coverIcon: 'fa-magnifying-glass-chart',
   },
 ]
 

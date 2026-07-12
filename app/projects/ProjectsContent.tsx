@@ -118,6 +118,7 @@ export default function ProjectsContent() {
                         <i className={`fa-solid ${p.coverIcon} prj-card-cover-icon`} />
                       )}
                       <div className="prj-card-badges">
+                        {p.comingSoon && <span className="prj-badge prj-badge-soon">Coming Soon</span>}
                         {p.cat.map(c => (
                           <span key={c} className="prj-badge">{c}</span>
                         ))}

@@ -96,6 +96,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
               </div>
             )}
             <div className="prj-detail-badges">
+              {project.comingSoon && <span className="prj-badge prj-badge-soon">Coming Soon</span>}
               {project.cat.map(c => (
                 <span key={c} className="prj-badge">{c}</span>
               ))}
