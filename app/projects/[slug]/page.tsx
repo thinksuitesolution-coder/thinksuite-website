@@ -221,10 +221,10 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
               )}
 
               {/* Best on Social */}
-              {project.socialPosts && project.socialPosts.length > 0 && (
-                <div className="prj-panel-section">
-                  <div className="prj-panel-section-label">Best on Social</div>
-                  <p className="prj-social-note">Hand-picked by our team, not a live feed.</p>
+              <div className="prj-panel-section">
+                <div className="prj-panel-section-label">Best on Social</div>
+                <p className="prj-social-note">Hand-picked by our team, not a live feed.</p>
+                {project.socialPosts && project.socialPosts.length > 0 ? (
                   <div className="prj-social-grid">
                     {project.socialPosts.map((post, i) => (
                       <div key={i} className={`prj-social-card prj-social-card-${post.type}`}>
@@ -256,7 +256,13 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
                       </div>
                     ))}
                   </div>
-                </div>
+                ) : (
+                  <div className="prj-social-placeholder">
+                    <i className="fa-solid fa-photo-film" />
+                    <span>Social highlights coming soon</span>
+                  </div>
+                )}
+              </div>
               )}
 
               {/* Live Links */}
