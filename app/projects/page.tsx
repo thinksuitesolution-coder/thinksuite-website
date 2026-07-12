@@ -3,7 +3,7 @@ import ProjectsContent from './ProjectsContent'
 
 export const metadata: Metadata = {
   title: 'Projects | ThinkSuite: Real Work, Real Results',
-  description: 'Explore real client projects by ThinkSuite, from e-commerce websites and brand identities to social media growth. Clients include Laghima Jewelry, AKLR Foundation, Bliss Foundation, VibéStyl, Shri Surbhi Kripa, A2Z Graphics, WavCart, and more.',
+  description: 'Explore real client projects by ThinkSuite, from e-commerce websites and brand identities to social media growth. Clients include Laghima Jewelry, AKLR Foundation, Blessings Foundation, VibéStyl, Shri Surbhi Kripa, A2Z Graphics, AMW Solar, WavCart, and more.',
   keywords: [
     'ThinkSuite projects',
     'portfolio',
@@ -13,6 +13,8 @@ export const metadata: Metadata = {
     'brand identity design',
     'Laghima Jewelry website',
     'AKLR Foundation',
+    'Blessings Foundation website',
+    'AMW Solar website',
     'WavCart social media',
     'organic products website',
     'clothing store website',

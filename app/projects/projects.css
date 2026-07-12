@@ -426,133 +426,23 @@
   transform: translateX(3px);
 }
 
-/* =====================
-   Overlay
-   ===================== */
-.prj-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  z-index: 200;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s;
-}
-.prj-overlay.open {
-  opacity: 1;
-  pointer-events: all;
-}
-
-/* =====================
-   Side Panel
-   ===================== */
-.prj-panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: min(500px, 95vw);
-  height: 100vh;
-  background: var(--bg);
-  z-index: 201;
-  transform: translateX(100%);
-  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow-y: auto;
-  box-shadow: -16px 0 60px rgba(0,0,0,0.45);
-  scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
-}
-.prj-panel::-webkit-scrollbar { width: 4px; }
-.prj-panel::-webkit-scrollbar-track { background: transparent; }
-.prj-panel::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-.prj-panel.open {
-  transform: translateX(0);
-}
-
-/* Panel Cover */
-.prj-panel-cover {
-  position: relative;
-  height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-.prj-panel-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.2);
-  color: rgba(255,255,255,0.9);
-  font-size: 15px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  transition: background 0.2s;
-}
-.prj-panel-close:hover {
-  background: rgba(255,255,255,0.2);
-}
-.prj-panel-cover-icon {
-  font-size: 68px;
-  color: rgba(255,255,255,0.18);
+/* Card logo (used instead of cover icon when a real logo image is set) */
+.prj-card-logo {
+  max-width: 96px;
+  max-height: 56px;
+  object-fit: contain;
   position: relative;
   z-index: 1;
+  transition: transform 0.3s var(--ease);
 }
-.prj-panel-cover-badges {
-  position: absolute;
-  bottom: 16px;
-  left: 20px;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  z-index: 2;
+.prj-card:hover .prj-card-logo {
+  transform: scale(1.06);
 }
 
-/* Panel Body */
-.prj-panel-body {
-  padding: 28px 28px 72px;
-}
-.prj-panel-industry {
-  font-size: 11px;
-  color: var(--text2);
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-}
-.prj-panel-industry i {
-  font-size: 10px;
-  color: var(--teal);
-}
-.prj-panel-title {
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: -1px;
-  margin-bottom: 10px;
-  line-height: 1.1;
-  color: var(--text);
-}
-.prj-panel-tagline {
-  font-size: 15px;
-  color: var(--text2);
-  line-height: 1.7;
-}
-
-/* Panel Sections */
+/* =====================
+   Shared Detail Sections
+   (reused by app/projects/[slug]/page.tsx)
+   ===================== */
 .prj-panel-section {
   margin-top: 28px;
   padding-top: 28px;
@@ -766,8 +656,5 @@
 @media (max-width: 480px) {
   .prj-panel-metrics {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .prj-panel-body {
-    padding: 20px 20px 60px;
   }
 }
