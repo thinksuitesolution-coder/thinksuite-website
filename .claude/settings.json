@@ -133,7 +133,8 @@
       "Bash(awk '{sum+=$3} END {print \"total bytes:\", sum}')",
       "Bash(sort -k3 -n -r)",
       "Bash(git rm *)",
-      "Bash(awk '{print $2}')"
+      "Bash(awk '{print $2}')",
+      "Bash(git count-objects *)"
     ]
   }
 }
