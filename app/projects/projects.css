@@ -296,16 +296,16 @@
   z-index: 2;
 }
 .prj-badge {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
-  padding: 3px 9px;
+  padding: 2.5px 8px;
   border-radius: 4px;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0,0,0,0.3);
   backdrop-filter: blur(10px);
-  color: rgba(255,255,255,0.9);
-  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.75);
+  border: 1px solid rgba(255,255,255,0.14);
 }
 .prj-badge-soon {
   background: rgba(245,158,11,0.25);
@@ -322,7 +322,8 @@
 }
 .prj-card-industry {
   font-size: 11px;
-  color: var(--text2);
+  font-weight: 700;
+  color: var(--teal);
   display: flex;
   align-items: center;
   gap: 6px;
