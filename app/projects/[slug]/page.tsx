@@ -263,7 +263,6 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
                   </div>
                 )}
               </div>
-              )}
 
               {/* Live Links */}
               {((project.liveUrl && project.liveUrl !== '#') || (project.socialHandles && project.socialHandles.length > 0)) && (
