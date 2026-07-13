@@ -234,8 +234,8 @@ export default async function AINewsPage({
             <div className="pulse-empty">
               <i className="fa-solid fa-satellite-dish" />
               {hasActiveFilter
-                ? 'No articles found for this filter yet — pipeline runs every 2 hours.'
-                : 'Pipeline is collecting latest news — check back soon.'}
+                ? 'No articles found for this filter yet — our pipeline refreshes every couple of hours, so check back soon.'
+                : "Our news pipeline is refreshing right now — new stories will be live again shortly. Check back in a bit."}
             </div>
           ) : (
             feedList.slice(0, 20).map(a => {
