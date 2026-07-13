@@ -44,7 +44,7 @@ const getAllArticles = unstable_cache(
       return [];
     }
   },
-  ['ai-news-all-articles'],
+  ['ai-news-all-articles-v2'],
   { revalidate: 300 }
 );
 
