@@ -3,8 +3,18 @@ import Link from 'next/link';
 import { BlogArticle } from '@/lib/news/types';
 
 export const metadata: Metadata = {
-  title: 'AI Funding Intelligence | ThinkSuite',
-  description: 'Track every AI startup funding round, valuation, and investor in real time.',
+  title: 'AI Funding Tracker: Startup Rounds & Deals | ThinkSuite',
+  description: 'Track major AI startup funding rounds, valuations, and investors in real time, from seed deals to multi billion dollar raises, curated by ThinkSuite.',
+  keywords: [
+    'AI funding tracker',
+    'AI startup funding news',
+    'AI investment tracker',
+    'venture capital AI deals',
+    'AI valuation tracker',
+    'startup funding rounds AI',
+    'AI investor database',
+    'live AI funding signals',
+  ],
 };
 export const revalidate = 1800;
 
@@ -53,7 +63,7 @@ export default async function FundingPage() {
         <div className="container">
           <div className="chip" style={{ marginBottom: 16 }}>💰 Live Funding Tracker</div>
           <h1 className="page-title" style={{ color: '#fff' }}>AI Funding Intelligence</h1>
-          <p className="page-desc" style={{ color: 'rgba(255,255,255,0.75)' }}>Every AI funding round, investor, and valuation, automatically tracked and analyzed.</p>
+          <p className="page-desc" style={{ color: 'rgba(255,255,255,0.75)' }}>ThinkSuite's Funding Tracker records every major AI funding round, investor, and valuation, updated automatically as new deals are announced.</p>
           <div className="funding-hero-stats">
             <div className="funding-stat"><strong>${totalDetected.toFixed(1)}B+</strong><span>Tracked This Year</span></div>
             <div className="funding-stat"><strong>{NOTABLE_ROUNDS.length}</strong><span>Major Rounds</span></div>

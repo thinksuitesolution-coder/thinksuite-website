@@ -2,9 +2,28 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Shipping Policy | ThinkSuite',
-  description: 'Read ThinkSuite\'s shipping and delivery policy for our digital tools, subscriptions, and project deliverables.',
+  title: 'Shipping Policy | ThinkSuite Digital Agency, Gurgaon',
+  description: 'Read ThinkSuite\'s delivery policy for digital tools, subscriptions, and project deliverables. We are a digital agency and do not ship physical products.',
+  keywords: [
+    'ThinkSuite shipping policy', 'digital delivery policy India', 'no physical shipping digital agency',
+    'subscription activation time India', 'project deliverable timeline agency',
+  ],
 }
+
+const shippingFaqs = [
+  {
+    q: 'Does ThinkSuite ship physical products?',
+    a: 'No. ThinkSuite provides digital services only, so no shipping charges, carriers, or physical delivery timelines apply to any of our services.',
+  },
+  {
+    q: 'How quickly is subscription access activated?',
+    a: 'Access to subscription-based tools is activated immediately upon successful payment. In rare cases of payment verification delays, access is granted within 24 hours.',
+  },
+  {
+    q: 'How are project deliverables sent to me?',
+    a: 'For custom projects such as software, design, or marketing assets, deliverables are shared digitally via email, cloud storage links, or the relevant platform, in line with the timelines agreed in your project proposal.',
+  },
+]
 
 export default function ShippingPolicyPage() {
   return (
@@ -57,6 +76,32 @@ export default function ShippingPolicyPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: shippingFaqs.map((f) => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a },
+              })),
+            }),
+          }}
+        />
+        <div className="container" style={{ maxWidth: 860 }}>
+          <h2 style={{ marginBottom: 24 }}>Frequently Asked Questions</h2>
+          {shippingFaqs.map((faq) => (
+            <div key={faq.q} className="service-card reveal" style={{ padding: '24px 28px', marginBottom: 16 }}>
+              <h3 style={{ fontSize: 17, marginBottom: 10, color: 'var(--white)' }}>{faq.q}</h3>
+              <p style={{ color: 'var(--text2)', lineHeight: 1.85, margin: 0 }}>{faq.a}</p>
+            </div>
+          ))}
         </div>
       </section>
     </>

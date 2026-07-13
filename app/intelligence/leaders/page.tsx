@@ -3,8 +3,17 @@ import Link from 'next/link';
 import { BlogArticle } from '@/lib/news/types';
 
 export const metadata: Metadata = {
-  title: 'AI Leader Profiles | ThinkSuite Intelligence',
-  description: 'Track statements, interviews, predictions, and influence scores of the world\'s top AI leaders.',
+  title: 'AI Industry Leaders: Profiles & Influence | ThinkSuite',
+  description: 'Track statements, predictions, and influence scores for AI industry leaders including Sam Altman, Dario Amodei, Sundar Pichai, and Jensen Huang.',
+  keywords: [
+    'AI industry leaders',
+    'Sam Altman predictions tracker',
+    'AI CEO influence tracker',
+    'Dario Amodei Anthropic news',
+    'AI leader profiles',
+    'tech CEO AI statements tracker',
+    'AI thought leaders database',
+  ],
 };
 export const revalidate = 3600;
 
@@ -87,7 +96,7 @@ export default async function LeadersPage() {
         <div className="container">
           <div className="chip" style={{ marginBottom: 16 }}>🎯 AI Leader Intelligence</div>
           <h1 className="page-title" style={{ color: '#fff' }}>AI Industry Leaders</h1>
-          <p className="page-desc" style={{ color: 'rgba(255,255,255,0.7)' }}>Track every statement, interview, prediction, and influence move from the people shaping the AI industry.</p>
+          <p className="page-desc" style={{ color: 'rgba(255,255,255,0.7)' }}>ThinkSuite's AI Leader Tracker follows statements, predictions, and influence scores from the people shaping the AI industry, from OpenAI's Sam Altman to NVIDIA's Jensen Huang.</p>
         </div>
       </section>
 

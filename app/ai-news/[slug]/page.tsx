@@ -27,18 +27,27 @@ async function getArticle(slug: string): Promise<EnrichedArticle | null> {
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const article = await getArticle(params.slug);
-  if (!article) return { title: 'Article Not Found' };
+  if (!article) {
+    return {
+      title: 'Article Not Found | ThinkSuite AI News',
+      description: 'This AI news story could not be found. Browse the latest AI news, research, and product launches on ThinkSuite AI Pulse.',
+    };
+  }
+  const title = article.metaTitle || `${article.title} | ThinkSuite AI News`;
+  const description = article.metaDescription || article.summary || `Latest AI news from ${article.company || 'the AI industry'}, tracked and analyzed by ThinkSuite AI Pulse.`;
   return {
-    title: article.metaTitle || article.title,
-    description: article.metaDescription || article.summary,
+    title,
+    description,
+    alternates: { canonical: `https://thinksuite.in/ai-news/${article.slug}` },
     openGraph: {
-      title: article.metaTitle || article.title,
-      description: article.metaDescription || article.summary,
-      images: [{ url: article.heroImageUrl, width: 1200, height: 630 }],
+      title,
+      description,
+      images: article.heroImageUrl ? [{ url: article.heroImageUrl, width: 1200, height: 630 }] : undefined,
       type: 'article',
       publishedTime: article.publishedAt,
+      url: `https://thinksuite.in/ai-news/${article.slug}`,
     },
-    twitter: { card: 'summary_large_image', title: article.metaTitle || article.title, description: article.metaDescription || article.summary, images: [article.heroImageUrl] },
+    twitter: { card: 'summary_large_image', title, description, images: article.heroImageUrl ? [article.heroImageUrl] : undefined },
   };
 }
 
@@ -99,11 +108,21 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   const readingTime = article.seo?.readingTimeMinutes || Math.max(1, Math.round((article.content?.split(/\s+/).length || 0) / 200));
 
   const schemaJson = {
-    '@context': 'https://schema.org', '@type': 'Article',
+    '@context': 'https://schema.org', '@type': 'NewsArticle',
     headline: article.title, description: article.summary,
-    image: article.heroImageUrl, datePublished: article.publishedAt,
-    author: { '@type': 'Organization', name: 'ThinkSuite AI' },
-    publisher: { '@type': 'Organization', name: 'ThinkSuite', logo: 'https://thinksuite.in/assets/img/favicon.svg' },
+    image: article.heroImageUrl ? [article.heroImageUrl] : undefined,
+    datePublished: article.publishedAt,
+    dateModified: article.updatedAt || article.publishedAt,
+    author: { '@type': 'Organization', name: 'ThinkSuite AI', url: 'https://thinksuite.in/ai-news' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'ThinkSuite',
+      logo: { '@type': 'ImageObject', url: 'https://thinksuite.in/assets/img/favicon.svg' },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://thinksuite.in/ai-news/${article.slug}` },
+    url: `https://thinksuite.in/ai-news/${article.slug}`,
+    articleSection: article.category || undefined,
+    keywords: article.tags?.length ? article.tags.join(', ') : undefined,
   };
   const faqSchema = article.faqs?.length ? {
     '@context': 'https://schema.org', '@type': 'FAQPage',

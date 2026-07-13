@@ -2,9 +2,32 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Refund & Cancellation Policy | ThinkSuite',
-  description: 'Read ThinkSuite\'s refund and cancellation policy for our subscriptions, tools, and project-based services.',
+  title: 'Refund and Cancellation Policy | ThinkSuite Agency',
+  description: 'Read ThinkSuite\'s refund and cancellation policy for our subscriptions, AI tools, and project-based digital agency services offered out of Gurgaon, India.',
+  keywords: [
+    'ThinkSuite refund policy', 'subscription cancellation policy India', 'digital agency refund eligibility',
+    'how to cancel ThinkSuite subscription', 'project deposit refund policy',
+  ],
 }
+
+const refundFaqs = [
+  {
+    q: 'How do I request a refund?',
+    a: 'Email info@thinksuite.in with your account details, transaction ID, and reason for the request. Refund requests for subscriptions must be raised within 7 days of the charge.',
+  },
+  {
+    q: 'How long does a refund take to process?',
+    a: 'Approved refunds are processed to your original payment method within 7 to 10 business days of approval.',
+  },
+  {
+    q: 'Can I cancel my subscription at any time?',
+    a: 'Yes. You can cancel from your account dashboard at any time. Cancellation stops future billing, but your subscription remains active until the end of the current billing cycle, with no partial refund for unused time.',
+  },
+  {
+    q: 'Are project deposits refundable?',
+    a: 'Generally, deposits for custom projects are non-refundable once work has begun. Refunds for remaining milestones are prorated based on the work completed, as defined in your project agreement.',
+  },
+]
 
 export default function RefundCancellationPage() {
   return (
@@ -61,6 +84,32 @@ export default function RefundCancellationPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: refundFaqs.map((f) => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a },
+              })),
+            }),
+          }}
+        />
+        <div className="container" style={{ maxWidth: 860 }}>
+          <h2 style={{ marginBottom: 24 }}>Frequently Asked Questions</h2>
+          {refundFaqs.map((faq) => (
+            <div key={faq.q} className="service-card reveal" style={{ padding: '24px 28px', marginBottom: 16 }}>
+              <h3 style={{ fontSize: 17, marginBottom: 10, color: 'var(--white)' }}>{faq.q}</h3>
+              <p style={{ color: 'var(--text2)', lineHeight: 1.85, margin: 0 }}>{faq.a}</p>
+            </div>
+          ))}
         </div>
       </section>
     </>

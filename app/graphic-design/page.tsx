@@ -2,13 +2,51 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Graphic Design Services India | ThinkSuite',
+  title: 'Graphic Design Services Agency in Gurgaon | ThinkSuite',
   description: 'Professional graphic design for Indian businesses. Social media graphics, brochures, presentations, packaging, banners, and infographics designed for impact.',
-  keywords: ['graphic design India', 'social media design India', 'brochure design India', 'presentation design', 'infographic design India', 'packaging design India', 'banner design India', 'graphic designer Gurgaon'],
+  keywords: ['graphic design agency Gurgaon', 'social media design India', 'brochure design services India', 'presentation design agency', 'infographic design India', 'packaging design India', 'banner and poster design India', 'graphic designer Gurgaon'],
 }
+
+const FAQS = [
+  {
+    q: 'How fast can you deliver graphic design work?',
+    a: 'Standard turnaround is 24 to 48 hours for single designs. Complex projects like brochures or presentations take 3 to 5 business days. We offer rush delivery when needed.',
+  },
+  {
+    q: 'Do you work with our existing brand guidelines?',
+    a: 'Yes. If you have a brand guide, we follow it precisely. Colors, fonts, logo usage, and tone are all respected. If no guide exists, we infer the style from your existing materials.',
+  },
+  {
+    q: 'What formats do you deliver final files in?',
+    a: 'We deliver in any format you need: PDF, PNG, JPG, SVG, EPS, and editable source files (AI, PSD, or PPTX). Print files include crop marks, bleed, and color profiles.',
+  },
+  {
+    q: 'Can we use your designs commercially and on all platforms?',
+    a: 'Yes. All rights transfer to you on delivery. You can use the designs commercially on any platform, in any market, without restrictions.',
+  },
+  {
+    q: 'Do you offer ongoing monthly design support?',
+    a: 'Yes. Our design retainer packages give you a fixed number of design requests per month at a predictable monthly cost. Ideal for businesses with regular social media and marketing design needs.',
+  },
+]
 
 export default function GraphicDesignPage() {
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((faq) => ({
+              '@type': 'Question',
+              name: faq.q,
+              acceptedAnswer: { '@type': 'Answer', text: faq.a },
+            })),
+          }),
+        }}
+      />
     <ServicePageDeviceShowcase
       breadcrumb="Branding and Design"
       breadcrumbHref="/branding-design"
@@ -111,28 +149,7 @@ export default function GraphicDesignPage() {
           desc: 'Final files in all required formats for web, print, and social. Print-ready files include bleed and color profiles.',
         },
       ]}
-      faqs={[
-        {
-          q: 'How fast can you deliver graphic design work?',
-          a: 'Standard turnaround is 24 to 48 hours for single designs. Complex projects like brochures or presentations take 3 to 5 business days. We offer rush delivery when needed.',
-        },
-        {
-          q: 'Do you work with our existing brand guidelines?',
-          a: 'Yes. If you have a brand guide, we follow it precisely. Colors, fonts, logo usage, and tone are all respected. If no guide exists, we infer the style from your existing materials.',
-        },
-        {
-          q: 'What formats do you deliver final files in?',
-          a: 'We deliver in any format you need: PDF, PNG, JPG, SVG, EPS, and editable source files (AI, PSD, or PPTX). Print files include crop marks, bleed, and color profiles.',
-        },
-        {
-          q: 'Can we use your designs commercially and on all platforms?',
-          a: 'Yes. All rights transfer to you on delivery. You can use the designs commercially on any platform, in any market, without restrictions.',
-        },
-        {
-          q: 'Do you offer ongoing monthly design support?',
-          a: 'Yes. Our design retainer packages give you a fixed number of design requests per month at a predictable monthly cost. Ideal for businesses with regular social media and marketing design needs.',
-        },
-      ]}
+      faqs={FAQS}
       sidebarLinks={[
         { label: 'Brand Identity', href: '/brand-identity' },
         { label: 'UI/UX Design', href: '/ui-ux-design' },
@@ -143,5 +160,6 @@ export default function GraphicDesignPage() {
       ctaTitleHighlight="Makes an Impression"
       ctaDesc="Generic design blends into the noise. Stand-out visuals get attention and build your brand every time someone sees them. Let us create yours."
     />
+    </>
   )
 }

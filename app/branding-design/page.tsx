@@ -2,13 +2,51 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Branding and Design Services India | ThinkSuite',
+  title: 'Branding and Design Agency in Gurgaon, India | ThinkSuite',
   description: 'Professional branding and design services in India: brand identity design, UI/UX design, graphic design, and product design for startups and growing businesses.',
-  keywords: ['branding agency India', 'brand identity design India', 'logo design India', 'UI UX design India', 'graphic design agency', 'product design India', 'brand design Gurgaon', 'visual identity design India'],
+  keywords: ['branding and design agency Gurgaon', 'brand identity design India', 'logo design company India', 'UI UX design agency India', 'graphic design agency Gurgaon', 'product design company India', 'brand design agency Gurgaon', 'visual identity design India', 'creative agency for startups India'],
 }
+
+const FAQS = [
+  {
+    q: 'What is included in a brand identity package?',
+    a: 'A full brand identity package includes logo design (primary and variants), color system, typography selection, icon style, brand voice guidelines, and a comprehensive brand guidelines document. We also provide all source files in AI, SVG, PNG, and PDF formats.',
+  },
+  {
+    q: 'How long does a branding project take?',
+    a: 'A focused brand identity project typically takes 2 to 4 weeks from discovery to final delivery. Comprehensive brand systems including UI design language, marketing collateral templates, and motion guidelines take 5 to 8 weeks.',
+  },
+  {
+    q: 'Will we own the final brand assets?',
+    a: 'Yes, 100%. All final brand assets, source files, and design rights transfer to you upon project completion. There are no licensing restrictions or ongoing usage fees.',
+  },
+  {
+    q: 'Can you redesign or evolve an existing brand?',
+    a: 'Absolutely. Brand evolution is one of our most common engagements, modernizing legacy visual systems while preserving existing brand equity. We audit current brand assets and audience perception before recommending the right level of change.',
+  },
+  {
+    q: 'Do you create assets for both digital and print use?',
+    a: 'Yes. Every brand system we develop is print-ready (CMYK, bleed-safe) and digital-optimized (web-resolution, dark/light variants, accessibility-compliant contrast ratios). One brand, every medium.',
+  },
+]
 
 export default function BrandingDesignPage() {
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((faq) => ({
+              '@type': 'Question',
+              name: faq.q,
+              acceptedAnswer: { '@type': 'Answer', text: faq.a },
+            })),
+          }),
+        }}
+      />
     <ServicePageDeviceShowcase
       breadcrumb="Services"
       breadcrumbHref="/services"
@@ -49,28 +87,7 @@ export default function BrandingDesignPage() {
           desc: 'Full asset delivery in all required formats, plus a comprehensive brand guidelines document ensuring consistent execution across every touchpoint.',
         },
       ]}
-      faqs={[
-        {
-          q: 'What is included in a brand identity package?',
-          a: 'A full brand identity package includes logo design (primary and variants), color system, typography selection, icon style, brand voice guidelines, and a comprehensive brand guidelines document. We also provide all source files in AI, SVG, PNG, and PDF formats.',
-        },
-        {
-          q: 'How long does a branding project take?',
-          a: 'A focused brand identity project typically takes 2,4 weeks from discovery to final delivery. Comprehensive brand systems including UI design language, marketing collateral templates, and motion guidelines take 5,8 weeks.',
-        },
-        {
-          q: 'Will we own the final brand assets?',
-          a: 'Yes, 100%. All final brand assets, source files, and design rights transfer to you upon project completion. There are no licensing restrictions or ongoing usage fees.',
-        },
-        {
-          q: 'Can you redesign or evolve an existing brand?',
-          a: 'Absolutely. Brand evolution is one of our most common engagements, modernizing legacy visual systems while preserving existing brand equity. We audit current brand assets and audience perception before recommending the right level of change.',
-        },
-        {
-          q: 'Do you create assets for both digital and print use?',
-          a: 'Yes. Every brand system we develop is print-ready (CMYK, bleed-safe) and digital-optimized (web-resolution, dark/light variants, accessibility-compliant contrast ratios). One brand, every medium.',
-        },
-      ]}
+      faqs={FAQS}
       sidebarLinks={[
         { label: 'UI/UX Design', href: '/ui-ux-design' },
         { label: 'Brand Identity', href: '/brand-identity' },
@@ -83,5 +100,6 @@ export default function BrandingDesignPage() {
       ctaTitleHighlight="Gets Remembered"
       ctaDesc="Strong design is a business asset. Let our creative team build a visual identity that earns trust, drives recognition, and scales with your growth."
     />
+    </>
   )
 }

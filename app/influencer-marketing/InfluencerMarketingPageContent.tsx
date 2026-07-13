@@ -6,27 +6,28 @@ import CTASection from '@/components/sections/CTASection'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPS = [
-  { icon: 'fa-user-group',  metric: '10k',       title: 'Micro-Influencer Campaigns',    desc: 'Creators with 10,000 to 100,000 followers. Higher engagement rates, more authentic recommendations, and significantly lower cost per impression than celebrities.' },
-  { icon: 'fa-star',        metric: '1M+',        title: 'Celebrity & Macro Partnerships', desc: 'Large-scale reach campaigns with macro influencers and celebrities for product launches, brand awareness, and mass market positioning.' },
-  { icon: 'fa-box-open',    metric: 'UGC',        title: 'Unboxing & Review Campaigns',   desc: 'Product seeding to relevant creators for authentic unboxing and honest review content, the format that drives the highest purchase intent consistently.' },
-  { icon: 'fa-link',        metric: 'ROI',        title: 'Affiliate Marketing Programs',  desc: 'Commission-based influencer programs where creators earn on sales they drive. Pay only for results. Perfect for D2C brands scaling without fixed ad budgets.' },
+  { icon: 'fa-user-group',  metric: 'Authentic', title: 'Micro-Influencer Campaigns',    desc: 'Creators with 10,000 to 100,000 followers. Higher engagement rates, more authentic recommendations, and a noticeably lower cost per impression than celebrities.' },
+  { icon: 'fa-star',        metric: 'Scale',      title: 'Celebrity & Macro Partnerships', desc: 'Large-scale reach campaigns with macro influencers and celebrities for product launches, brand awareness, and mass market positioning.' },
+  { icon: 'fa-box-open',    metric: 'UGC',        title: 'Unboxing & Review Campaigns',   desc: 'Product seeding to relevant creators for authentic unboxing and honest review content, the format that consistently drives the highest purchase intent.' },
+  { icon: 'fa-link',        metric: 'Pay-Per-Sale', title: 'Affiliate Marketing Programs',  desc: 'Commission-based influencer programs where creators earn on sales they drive. You pay only for results, perfect for D2C brands scaling without a fixed ad budget.' },
   { icon: 'fa-camera',      metric: 'Yours',      title: 'UGC Content Collection',        desc: 'Campaigns that encourage customers and followers to create content about your brand. Repurposed for your ads, website, and social media channels.' },
-  { icon: 'fa-handshake',   metric: 'Long-term',  title: 'Brand Ambassador Programs',     desc: 'Long-term partnerships with 3 to 5 creators who become the recurring face of your brand. Builds deep association, trust, and consistent audience reach.' },
+  { icon: 'fa-handshake',   metric: 'Long-term',  title: 'Brand Ambassador Programs',     desc: 'Long-term partnerships with a handful of creators who become the recurring face of your brand. Builds deep association, trust, and consistent audience reach.' },
 ]
 
 const FAQS = [
-  { q: 'How do you find the right influencers for our brand?', a: 'We use a combination of manual vetting and influencer discovery tools to find creators whose audience demographics, engagement patterns, and content style match your brand. We share a shortlist with audience insights before any outreach begins.' },
-  { q: 'Do you work with nano, micro, and macro influencers?', a: 'Yes. The right tier depends on your goals and budget. Nano and micro influencers (1,000 to 100,000 followers) deliver higher engagement and authentic trust. Macro and celebrity partners deliver scale and mass awareness. Most campaigns use a mix.' },
-  { q: 'How long does a typical campaign take to plan and execute?', a: 'From briefing to live content, most campaigns take 3 to 6 weeks. Rush timelines are possible with early planning. Product seeding campaigns can launch faster, sometimes within 2 weeks.' },
-  { q: 'Can we keep the content the influencer creates?', a: 'Yes. We negotiate content usage rights as standard in every campaign. You can repurpose creator content in your ads, website, and social media. White-labeling and paid media whitelisting are also available.' },
-  { q: 'How do you track ROI from influencer campaigns?', a: 'We use unique UTM links, discount codes, and affiliate tracking to measure direct traffic and conversions. We also track reach, impressions, engagement, and earned media value to show the full-funnel impact of every campaign.' },
+  { q: 'How do you find the right influencers for our brand?', a: 'We use a combination of manual vetting and influencer discovery tools to find creators whose audience demographics, engagement patterns, and content style genuinely match your brand. We share a shortlist with audience insights before any outreach begins, so you approve the creators before we approach them.' },
+  { q: 'Do you work with nano, micro, and macro influencers?', a: 'Yes, and the right tier depends on your goals and budget. Nano and micro influencers, roughly 1,000 to 100,000 followers, tend to deliver higher engagement and more authentic trust. Macro and celebrity partners deliver scale and mass awareness instead. Most campaigns end up using a mix of tiers.' },
+  { q: 'How long does a typical campaign take to plan and execute?', a: 'From briefing to live content, most campaigns take 3 to 6 weeks. Rush timelines are possible with early planning, and product seeding campaigns can launch faster, sometimes within 2 weeks, since they need less back and forth negotiation.' },
+  { q: 'Can we keep the content the influencer creates?', a: 'Yes, we negotiate content usage rights as standard in every campaign. You can repurpose creator content in your ads, website, and social media. White-labeling and paid media whitelisting are also available if you want to run the content as an ad from your own handle.' },
+  { q: 'How do you track ROI from influencer campaigns?', a: 'We use unique UTM links, discount codes, and affiliate tracking to measure direct traffic and conversions coming from each creator. We also track reach, impressions, engagement, and earned media value, so you see the full-funnel impact of a campaign, not just the vanity metrics.' },
+  { q: 'How is influencer marketing ROI actually measured for a small budget?', a: 'Even with a modest budget, we assign each creator a unique tracking link or discount code so every sale can be traced back to a specific post. That data tells us honestly which creators and content formats are worth repeating, rather than guessing from likes and comments alone.' },
 ]
 
 const TIERS = [
   {
     name: 'Nano',
-    range: '1K, 10K',
-    engagement: '8,15%',
+    range: '1K to 10K',
+    engagement: 'Highest',
     icon: '🌱',
     color: '#059669',
     bgColor: 'rgba(5,150,105,0.12)',
@@ -34,14 +35,14 @@ const TIERS = [
     tagline: 'Hyper-local trust',
     best: 'Local businesses, niche products, community brands',
     creators: [
-      { handle: '@localfoodie_delhi', niche: 'Food', followers: '6.2K', er: '12.4%' },
-      { handle: '@fitnesswithpriya', niche: 'Fitness', followers: '8.8K', er: '11.1%' },
+      { handle: 'Local Food Creator', niche: 'Food', followers: '~6K', er: 'Highly Engaged' },
+      { handle: 'City Fitness Creator', niche: 'Fitness', followers: '~9K', er: 'Highly Engaged' },
     ],
   },
   {
     name: 'Micro',
-    range: '10K, 100K',
-    engagement: '4,8%',
+    range: '10K to 100K',
+    engagement: 'Strong',
     icon: '⭐',
     color: '#0284c7',
     bgColor: 'rgba(2,132,199,0.12)',
@@ -49,14 +50,14 @@ const TIERS = [
     tagline: 'Best value & reach',
     best: 'D2C brands, fashion, beauty, ed-tech',
     creators: [
-      { handle: '@techreviewsIN', niche: 'Tech', followers: '48K', er: '6.8%' },
-      { handle: '@stylebyneha', niche: 'Fashion', followers: '72K', er: '5.4%' },
+      { handle: 'Tech Review Creator', niche: 'Tech', followers: '~48K', er: 'Strong' },
+      { handle: 'Fashion Styling Creator', niche: 'Fashion', followers: '~72K', er: 'Strong' },
     ],
   },
   {
     name: 'Macro',
-    range: '100K, 1M',
-    engagement: '1,4%',
+    range: '100K to 1M',
+    engagement: 'Moderate',
     icon: '🚀',
     color: '#7c3aed',
     bgColor: 'rgba(124,58,237,0.12)',
@@ -64,14 +65,14 @@ const TIERS = [
     tagline: 'Scale & awareness',
     best: 'Brand launches, app installs, wide reach',
     creators: [
-      { handle: '@travelwithkaran', niche: 'Travel', followers: '420K', er: '3.2%' },
-      { handle: '@chefritasharma', niche: 'Food', followers: '680K', er: '2.8%' },
+      { handle: 'Travel Creator', niche: 'Travel', followers: '~420K', er: 'Moderate' },
+      { handle: 'Food Vlogger', niche: 'Food', followers: '~680K', er: 'Moderate' },
     ],
   },
   {
     name: 'Celebrity',
     range: '1M+',
-    engagement: '0.5,2%',
+    engagement: 'Lower',
     icon: '👑',
     color: '#d97706',
     bgColor: 'rgba(217,119,6,0.12)',
@@ -79,8 +80,8 @@ const TIERS = [
     tagline: 'Mass market impact',
     best: 'National launches, premium brands, IPO buzz',
     creators: [
-      { handle: '@bollywoodstar', niche: 'Lifestyle', followers: '12M', er: '1.2%' },
-      { handle: '@cricketerpro', niche: 'Sports', followers: '8.4M', er: '0.9%' },
+      { handle: 'Film & Lifestyle Star', niche: 'Lifestyle', followers: '12M+', er: 'Mass Reach' },
+      { handle: 'Sports Personality', niche: 'Sports', followers: '8M+', er: 'Mass Reach' },
     ],
   },
 ]
@@ -180,7 +181,7 @@ function TiersVisual() {
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 44 }}>
           <div style={{ background: 'linear-gradient(135deg, #1a237e, #7c3aed, #d97706)', color: '#fff', borderRadius: 100, padding: '14px 40px', fontSize: 14, fontWeight: 700, fontFamily: 'var(--font-h)', letterSpacing: 0.5, boxShadow: '0 8px 32px rgba(0,188,212,0.2)', display: 'flex', alignItems: 'center', gap: 10 }}>
             <i className="fa-solid fa-bolt" style={{ fontSize: 13 }} />
-            500+ Vetted Creators, Any Tier, Any Niche, Any Platform
+            Vetted Creators Across Every Tier, Niche, and Platform
           </div>
         </div>
       </div>
@@ -198,6 +199,20 @@ export default function InfluencerMarketingPageContent() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((f) => ({
+              '@type': 'Question',
+              name: f.q,
+              acceptedAnswer: { '@type': 'Answer', text: f.a },
+            })),
+          }),
+        }}
+      />
       <section className="page-hero">
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="breadcrumb mb-16">
@@ -218,7 +233,7 @@ export default function InfluencerMarketingPageContent() {
           </div>
           <h1 className="mt-8">Influencer <span className="grad-text">Marketing</span></h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            People trust recommendations from creators they follow more than ads from brands they do not know. We find the right creators, manage every detail, and deliver campaigns that drive real results.
+            People trust a recommendation from a creator they already follow far more than an ad from a brand they have never heard of. ThinkSuite is a Gurgaon-based influencer marketing agency that vets creators across nano, micro, macro, and celebrity tiers, handles outreach and contracts, and manages every campaign end to end, so the post your customer sees feels like a genuine recommendation, not a paid script.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">Plan Your Campaign <i className="fa-solid fa-arrow-right" /></Link>
@@ -229,10 +244,10 @@ export default function InfluencerMarketingPageContent() {
 
       <div className={s.statsRow}>
         {[
-          { number: '500+', label: 'Influencer Network' },
-          { number: '4.1x', label: 'Average ROAS'      },
-          { number: '50+',  label: 'Campaigns Managed' },
-          { number: '15M+', label: 'Combined Reach'    },
+          { number: 'In-House', label: 'Creator Vetting Team'   },
+          { number: 'Gurgaon',  label: 'Based, Working Pan-India' },
+          { number: '4',        label: 'Creator Tiers Covered'  },
+          { number: 'Nano-Celeb', label: 'Full Tier Coverage'   },
         ].map((stat, i) => (
           <div key={i} className={s.statItem}>
             <span className={s.statNum}>{stat.number}</span>

@@ -10,15 +10,29 @@ import NewsletterForm from '@/components/ai-news/NewsletterForm';
 import SafeImg from '@/components/ai-news/SafeImg';
 
 export const metadata: Metadata = {
-  title: 'AI Pulse — AI News & Intelligence | ThinkSuite',
-  description: 'Real-time AI news from 100+ sources — OpenAI, Anthropic, Google DeepMind, Meta AI, NVIDIA and more. Auto-detected, fact-checked, analyzed by AI.',
+  title: 'AI Pulse: Latest AI News & Intelligence | ThinkSuite',
+  description: 'Real-time AI news from 100+ sources, including OpenAI, Anthropic, Google DeepMind, Meta AI, and NVIDIA, auto-detected, fact-checked, and analyzed by AI.',
+  keywords: [
+    'AI news India',
+    'latest AI updates',
+    'AI news today',
+    'artificial intelligence news',
+    'AI industry news',
+    'OpenAI news',
+    'Anthropic news',
+    'AI research updates',
+    'AI funding news',
+    'AI product launches',
+    'AI news aggregator',
+    'real-time AI news',
+  ],
   alternates: { canonical: 'https://thinksuite.in/ai-news' },
 };
 
 export const revalidate = 300;
 
 // searchParams makes this route render dynamically on every request, which bypasses
-// `revalidate` above — so the Firestore read is cached independently to avoid hitting
+// `revalidate` above, so the Firestore read is cached independently to avoid hitting
 // the read quota on every page view.
 const getAllArticles = unstable_cache(
   async (): Promise<BlogArticle[]> => {
@@ -60,7 +74,7 @@ const EVENT_META: Record<string, { label: string; color: string }> = {
   general:        { label: 'News',           color: '#64748b' },
 };
 
-// Sidebar filter definitions — no emojis
+// Sidebar filter definitions, no emojis
 const SIDEBAR_FILTERS: FilterItem[] = [
   // LLM / Company
   { label: 'OpenAI',      value: 'OpenAI',      param: 'company' },
@@ -94,6 +108,25 @@ const SIDEBAR_FILTERS: FilterItem[] = [
   { label: 'API Release',    value: 'api_release',    param: 'eventType' },
   { label: 'Product Launch', value: 'product_launch', param: 'eventType' },
   { label: 'Breaking',       value: 'breaking_news',  param: 'eventType' },
+];
+
+const AI_NEWS_FAQS: { question: string; answer: string }[] = [
+  {
+    question: 'How often is AI Pulse updated?',
+    answer: 'New stories are added every couple of hours as they break, so the feed stays current throughout the day.',
+  },
+  {
+    question: 'Where does ThinkSuite source its AI news from?',
+    answer: 'We pull from 100+ sources, including company blogs, research labs, and established tech publications, then fact check and summarize each story before it goes live.',
+  },
+  {
+    question: 'Can I filter the news by company or topic?',
+    answer: 'Yes. Use the sidebar filters to narrow stories down by company (OpenAI, Anthropic, Google, and more), industry, or event type like funding and research.',
+  },
+  {
+    question: 'Is AI Pulse free to use?',
+    answer: 'Yes. AI Pulse is free for anyone who wants to keep up with AI news, no sign up required. The daily newsletter is optional if you want updates in your inbox.',
+  },
 ];
 
 function timeAgo(dateStr: string): string {
@@ -199,7 +232,19 @@ export default async function AINewsPage({
     { label: 'AI Hardware',           href: '/ai-news?industry=Hardware+%26+Chips' },
   ].map((t, i) => ({ ...t, color: TOPIC_COLORS[i % TOPIC_COLORS.length] }));
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: AI_NEWS_FAQS.map(f => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  };
+
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     <PulseShell navLinks={navLinks} topics={sidebarTopics} filters={SIDEBAR_FILTERS}>
       <div className="pulse-content">
         <div className="pulse-feed">
@@ -234,8 +279,8 @@ export default async function AINewsPage({
             <div className="pulse-empty">
               <i className="fa-solid fa-satellite-dish" />
               {hasActiveFilter
-                ? 'No articles found for this filter yet — our pipeline refreshes every couple of hours, so check back soon.'
-                : "Our news pipeline is refreshing right now — new stories will be live again shortly. Check back in a bit."}
+                ? "We don't have any stories matching this filter just yet. New articles come in every couple of hours, so check back soon."
+                : "We're gathering the latest AI news right now. Check back in a few minutes."}
             </div>
           ) : (
             feedList.slice(0, 20).map(a => {
@@ -316,7 +361,7 @@ export default async function AINewsPage({
               <span className="pulse-card-title">Daily AI Newsletter</span>
             </div>
             <p style={{ fontSize: 12.5, color: 'var(--pulse-text2)', marginBottom: 12, lineHeight: 1.5 }}>
-              Join thousands of AI enthusiasts and get the top AI news daily.
+              Get the top AI stories in your inbox once a day, no spam.
             </p>
             <NewsletterForm />
           </div>
@@ -336,5 +381,20 @@ export default async function AINewsPage({
         </div>
       </div>
     </PulseShell>
+
+    <section className="container" style={{ padding: '40px 0 70px', maxWidth: 820, margin: '0 auto' }}>
+      <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 24, fontWeight: 700, color: 'var(--white)', marginBottom: 18 }}>
+        Frequently Asked Questions
+      </h2>
+      <div className="article-faqs" style={{ marginBottom: 0 }}>
+        {AI_NEWS_FAQS.map((faq, i) => (
+          <details key={i} className="article-faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+    </>
   );
 }

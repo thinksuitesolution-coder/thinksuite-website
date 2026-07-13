@@ -7,7 +7,7 @@ export default function VoicePage() {
       label="Voice AI"
       icon="🎙️"
       color="#059669"
-      desc="500+ voices, 30+ languages. Turn any text into natural human-like speech with voice cloning and emotion control."
+      desc="Turn any text into natural, human-like speech with voice cloning and emotion control, choose from 500+ voices across 30+ languages."
       tags={['500+ Voices', '30+ Languages', 'Voice Clone', 'ElevenLabs']}
     />
   )

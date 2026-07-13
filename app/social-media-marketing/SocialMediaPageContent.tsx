@@ -15,20 +15,21 @@ const ORGANIC_CAPS = [
 ]
 
 const PAID_CAPS = [
-  { icon: 'fa-rectangle-ad',   metric: '2.8x',  title: 'Instagram & Facebook Ads',     desc: 'Targeted campaigns with advanced audience segmentation, lookalike audiences, and systematic creative testing to find what converts at the lowest cost.' },
+  { icon: 'fa-rectangle-ad',   metric: 'Targeted', title: 'Instagram & Facebook Ads',     desc: 'Targeted campaigns with advanced audience segmentation, lookalike audiences, and systematic creative testing to find what actually converts at the lowest cost per result.' },
   { icon: 'fa-briefcase',      metric: 'B2B',   title: 'LinkedIn Sponsored Ads',       desc: 'Reach decision-makers, HR professionals, and C-suite by job title, company size, and industry. The most precise B2B targeting available on social media.' },
   { icon: 'fa-video',          metric: 'Video', title: 'YouTube Video Ads',            desc: 'Pre-roll, mid-roll, and Shorts ads on YouTube. Reach audiences based on what they watch, intent-based targeting that complements Google Search.' },
-  { icon: 'fa-rotate-left',    metric: '60%',   title: 'Social Retargeting',           desc: 'Re-engage people who visited your website, watched your videos, or engaged with posts. Keep your brand visible until they are ready to convert.' },
-  { icon: 'fa-users',          metric: 'LAL',   title: 'Lookalike Audiences',          desc: 'Build audiences that mirror your best customers using platform AI. Scale campaigns to thousands of new prospects who behave like your highest-value buyers.' },
-  { icon: 'fa-flask',          metric: 'Weekly', title: 'Creative A/B Testing',        desc: 'Systematic testing of visuals, copy, CTAs, and formats every week. Every iteration makes your campaigns smarter, compound performance month over month.' },
+  { icon: 'fa-rotate-left',    metric: 'Retarget',   title: 'Social Retargeting',           desc: 'Re-engage people who visited your website, watched your videos, or engaged with posts. Keep your brand visible until they are ready to convert.' },
+  { icon: 'fa-users',          metric: 'LAL',   title: 'Lookalike Audiences',          desc: 'Build audiences that mirror your best customers using platform AI. Scale campaigns to new prospects who behave like your highest-value buyers.' },
+  { icon: 'fa-flask',          metric: 'Weekly', title: 'Creative A/B Testing',        desc: 'Systematic testing of visuals, copy, CTAs, and formats every week. Every iteration makes your campaigns smarter, compounding performance month over month.' },
 ]
 
 const FAQS = [
-  { q: 'How many posts do you create per month?', a: 'Our base package includes 12 to 15 posts per month across your chosen platforms. Premium packages include daily posting, reels, stories, and paid campaign management.' },
-  { q: 'Do you create content in-house or do we need to provide photos?', a: 'We create everything in-house including graphics, captions, and video editing. For product-based businesses we request product shots or a photoshoot. We can also coordinate professional photography if needed.' },
-  { q: 'Which platforms do you manage?', a: 'Instagram, Facebook, LinkedIn, YouTube, Twitter/X, and Pinterest. We recommend focusing on 2 to 3 platforms based on where your target audience actually spends time, not just the most popular ones.' },
-  { q: 'How long before we see growth?', a: 'Most clients see measurable engagement improvements within 30 days. Significant follower growth and lead generation typically takes 3 to 6 months of consistent, quality content published on schedule.' },
-  { q: 'Do you handle paid social ads as well?', a: 'Yes. Organic management and paid campaigns are offered together or separately. Organic builds long-term authority and trust. Paid accelerates growth and conversions in the short term. Both together is always more effective.' },
+  { q: 'How many posts do you create per month?', a: 'Our base package includes 12 to 15 posts per month across your chosen platforms. Premium packages include daily posting, reels, stories, and paid campaign management. The exact mix depends on your industry and how competitive your feed needs to look.' },
+  { q: 'Do you create content in-house or do we need to provide photos?', a: 'We create everything in-house, including graphics, captions, and video editing, as a Gurgaon-based team that handles strategy and production under one roof. For product-based businesses we request product shots or a photoshoot, and we can also coordinate professional photography if needed.' },
+  { q: 'Which platforms do you manage?', a: 'We manage Instagram, Facebook, LinkedIn, YouTube, Twitter/X, and Pinterest. We recommend focusing on 2 to 3 platforms based on where your target audience actually spends time, not just the platforms that are trendiest to talk about.' },
+  { q: 'How long before we see growth?', a: 'Most brands notice measurable engagement improvements within the first month of consistent posting. Real follower growth and inbound leads usually build over 3 to 6 months, since social platforms reward accounts that show up reliably rather than in bursts.' },
+  { q: 'Do you handle paid social ads as well?', a: 'Yes. Organic management and paid campaigns are offered together or separately. Organic builds long-term trust and community, while paid accelerates reach and conversions in the short term. Running both together is almost always the stronger strategy.' },
+  { q: 'What does social media management actually cost in India?', a: 'Pricing depends on how many platforms you need covered, how much content you want produced, and whether paid ad management is included. We share a clear monthly quote after understanding your goals, there is no one-size-fits-all number we can quote blind.' },
 ]
 
 function PlatformsVisual() {
@@ -68,8 +69,8 @@ function PlatformsVisual() {
               <i className="fa-brands fa-instagram" style={{ color: '#bc1888', fontSize: 16 }} />
             </div>
             <div style={{ height: 120, background: 'linear-gradient(135deg, #f09433 0%, #e6683c 30%, #dc2743 60%, #bc1888 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 4 }}>
-              <div style={{ fontSize: 26, fontWeight: 900, color: '#fff', fontFamily: 'var(--font-h)' }}>3.2x</div>
-              <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.85)', fontFamily: 'var(--font-m)', letterSpacing: 1 }}>ENGAGEMENT LIFT</div>
+              <div style={{ fontSize: 20, fontWeight: 900, color: '#fff', fontFamily: 'var(--font-h)', textAlign: 'center', padding: '0 10px' }}>Scroll-Stopping</div>
+              <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.85)', fontFamily: 'var(--font-m)', letterSpacing: 1 }}>CONTENT THAT CONVERTS</div>
             </div>
             <div style={{ padding: '10px 14px' }}>
               <div style={{ display: 'flex', gap: 14, marginBottom: 7, fontSize: 15, color: '#262626' }}>
@@ -93,7 +94,7 @@ function PlatformsVisual() {
             </div>
             <div style={{ padding: '12px 16px' }}>
               <div style={{ fontSize: 12.5, color: '#000000cc', lineHeight: 1.65, marginBottom: 10 }}>
-                We helped a B2B SaaS startup go from 200 to 8,400 LinkedIn followers in 90 days, without paid ads.<br /><br />
+                We helped a B2B SaaS founder turn LinkedIn into his busiest inbound channel, without a single rupee of paid ads.<br /><br />
                 <span style={{ color: '#0a66c2' }}>Here is the exact content strategy we used 👇</span>
               </div>
               <div style={{ fontSize: 11, color: '#00000060', borderTop: '1px solid #f3f2ef', paddingTop: 8, display: 'flex', gap: 10, flexWrap: 'wrap' }}>
@@ -114,8 +115,8 @@ function PlatformsVisual() {
             <div style={{ padding: '12px 14px', display: 'flex', gap: 10, alignItems: 'flex-start' }}>
               <div style={{ width: 30, height: 30, borderRadius: '50%', flexShrink: 0, background: 'linear-gradient(135deg, #1a237e, #00bcd4)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, color: '#fff' }}>TS</div>
               <div>
-                <div style={{ fontSize: 12.5, fontWeight: 600, color: '#fff', lineHeight: 1.45 }}>How We Got 320% More Reach in 60 Days (Without Ads)</div>
-                <div style={{ fontSize: 10.5, color: '#aaa', marginTop: 4 }}>ThinkSuite · 12K views · 3 days ago</div>
+                <div style={{ fontSize: 12.5, fontWeight: 600, color: '#fff', lineHeight: 1.45 }}>How We Grew Organic Reach Without Spending on Ads</div>
+                <div style={{ fontSize: 10.5, color: '#aaa', marginTop: 4 }}>ThinkSuite · Trending this week</div>
               </div>
               <i className="fa-brands fa-youtube" style={{ color: '#c4302b', fontSize: 18, marginLeft: 'auto', flexShrink: 0 }} />
             </div>
@@ -230,6 +231,20 @@ export default function SocialMediaPageContent() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((f) => ({
+              '@type': 'Question',
+              name: f.q,
+              acceptedAnswer: { '@type': 'Answer', text: f.a },
+            })),
+          }),
+        }}
+      />
       <section className="page-hero">
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="breadcrumb mb-16">
@@ -251,7 +266,7 @@ export default function SocialMediaPageContent() {
           </div>
           <h1 className="mt-8">Social Media <span className="grad-text">Marketing</span></h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            Your audience is already on social media. The question is whether they are seeing your brand or your competitor&#39;s. We create content that stops the scroll and builds a community that actually buys.
+            Your audience is already scrolling. The only question is whether they stop on your brand or keep swiping past it to a competitor. ThinkSuite is a Gurgaon-based social media marketing agency that plans, shoots, edits, and publishes content for Instagram, LinkedIn, YouTube, and Facebook in-house, and manages the community that grows around it, so your feed feels like a brand people actually want to follow.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">Get Free Strategy Call <i className="fa-solid fa-arrow-right" /></Link>
@@ -262,10 +277,10 @@ export default function SocialMediaPageContent() {
 
       <div className={s.statsRow}>
         {[
-          { number: '3.2x', label: 'Avg Engagement Lift' },
-          { number: '50+',  label: 'Brands Managed'      },
-          { number: '4',    label: 'Platforms Covered'   },
-          { number: '30d',  label: 'Results Timeline'    },
+          { number: 'In-House', label: 'Creative & Strategy Team' },
+          { number: 'Gurgaon',  label: 'Based, Working Pan-India' },
+          { number: '4',        label: 'Platforms Covered'        },
+          { number: '30d',      label: 'Content Planned Ahead'    },
         ].map((stat, i) => (
           <div key={i} className={s.statItem}>
             <span className={s.statNum}>{stat.number}</span>

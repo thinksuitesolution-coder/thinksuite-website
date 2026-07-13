@@ -2,13 +2,62 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Custom AI Tools Development India | ThinkSuite',
-  description: 'Custom AI tool development including NLP, computer vision, recommendation engines, and predictive analytics. AI solutions built for your specific data and business logic.',
-  keywords: ['custom AI development India', 'NLP development India', 'computer vision India', 'recommendation engine India', 'machine learning India', 'AI model development', 'predictive analytics India', 'AI software India'],
+  title: 'Custom AI Tools Development Agency Gurgaon | ThinkSuite',
+  description: 'Custom AI tool development including NLP, computer vision, recommendation engines, and predictive analytics built around your specific data and business logic.',
+  keywords: [
+    'custom AI development India',
+    'AI tools development agency Gurgaon',
+    'NLP development India',
+    'computer vision development India',
+    'recommendation engine development',
+    'machine learning development India',
+    'custom AI model development',
+    'predictive analytics for business India',
+    'AI software development company India',
+    'document intelligence AI India',
+  ],
 }
+
+const faqData = [
+  {
+    q: 'What kind of data do I need to build a custom AI tool?',
+    a: 'It depends on the use case. For most classification or prediction tasks, 500 to 5,000 labeled examples are a good starting point. We evaluate your data in our discovery call and tell you honestly what is possible with what you have.',
+  },
+  {
+    q: 'How accurate will the AI model be?',
+    a: 'Accuracy depends on data quality and the complexity of the problem. We define target accuracy thresholds in the project spec and do not release a model to production unless it meets them.',
+  },
+  {
+    q: 'Can you integrate the AI tool with our existing software?',
+    a: 'Yes. We package every model as a clean API that can be called from your existing app, CRM, ERP, or internal tools. If you have developers, they can integrate it in a day.',
+  },
+  {
+    q: 'Will the model improve over time?',
+    a: 'It can, yes. We can set up continuous learning pipelines where the model improves as it processes new data. This is optional but recommended for high-volume use cases.',
+  },
+  {
+    q: 'What tech stack do you use to build custom AI tools?',
+    a: 'We primarily use Python with scikit-learn, TensorFlow, PyTorch, and HuggingFace depending on the task. Models are deployed via FastAPI or as serverless functions on AWS or GCP.',
+  },
+]
 
 export default function AIToolsDevelopmentPage() {
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqData.map((f) => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: f.a },
+          })),
+        }),
+      }}
+    />
     <ServicePageTerminal
       breadcrumb="AI and Automation"
       breadcrumbHref="/ai-automation"
@@ -111,28 +160,7 @@ export default function AIToolsDevelopmentPage() {
           desc: 'Package the model as an API or embedded tool. Integrate with your existing systems with full documentation and monitoring.',
         },
       ]}
-      faqs={[
-        {
-          q: 'What kind of data do I need to build a custom AI tool?',
-          a: 'It depends on the use case. For most classification or prediction tasks, 500 to 5,000 labeled examples are a good starting point. We evaluate your data in our discovery call and tell you honestly what is possible with what you have.',
-        },
-        {
-          q: 'How accurate will the AI model be?',
-          a: 'Accuracy depends on data quality and the complexity of the problem. We define target accuracy thresholds in the project spec and do not release a model to production unless it meets them.',
-        },
-        {
-          q: 'Can you integrate the AI tool with our existing software?',
-          a: 'Yes. We package every model as a clean API that can be called from your existing app, CRM, ERP, or internal tools. If you have developers, they can integrate it in a day.',
-        },
-        {
-          q: 'Will the model improve over time?',
-          a: 'It can, yes. We can set up continuous learning pipelines where the model improves as it processes new data. This is optional but recommended for high-volume use cases.',
-        },
-        {
-          q: 'What tech stack do you use?',
-          a: 'We primarily use Python with scikit-learn, TensorFlow, PyTorch, and HuggingFace depending on the task. Models are deployed via FastAPI or as serverless functions on AWS or GCP.',
-        },
-      ]}
+      faqs={faqData}
       sidebarLinks={[
         { label: 'Chatbot Solutions', href: '/chatbot-solutions' },
         { label: 'Workflow Automation', href: '/workflow-automation' },
@@ -143,5 +171,6 @@ export default function AIToolsDevelopmentPage() {
       ctaTitleHighlight="Custom AI Tool"
       ctaDesc="Stop forcing generic AI into your specific problem. Let us build an AI tool that works on your data, understands your domain, and integrates with your existing setup."
     />
+    </>
   )
 }

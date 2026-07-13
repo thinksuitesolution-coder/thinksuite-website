@@ -15,47 +15,48 @@ const CAPS = [
 ]
 
 const FAQS = [
-  { q: 'Do you handle production of TV and radio ads as well?', a: 'Yes. We have in-house creative and production capabilities for TV commercials, radio jingles, and digital video. We can take a concept from script to final edit, or work with your existing creative if you already have assets.' },
-  { q: 'What is the minimum budget for a multi-channel media campaign?', a: 'A focused regional campaign can start at Rs 10 to 15 lakh covering radio, regional newspaper, and digital. National TV campaigns require significantly higher budgets. We design plans that make the most of what you have.' },
-  { q: 'How do you negotiate better rates than going directly to media houses?', a: 'Volume aggregation. Because we buy media across multiple clients, we negotiate bulk rates individual brands cannot access alone. Our clients typically save 20 to 35% on CPM versus direct booking.' },
-  { q: 'Can you run campaigns in regional languages?', a: 'Yes. We run campaigns in Hindi, Tamil, Telugu, Kannada, Malayalam, Marathi, Bengali, and Gujarati across regional TV channels, FM stations, and newspapers. Regional language campaigns often deliver far better ROI for brands targeting specific states.' },
+  { q: 'Do you handle production of TV and radio ads as well?', a: 'Yes, we have in-house creative and production capabilities for TV commercials, radio jingles, and digital video. We can take a concept from script to final edit, or work with your existing creative if you already have assets.' },
+  { q: 'What is the minimum budget for a multi-channel media campaign?', a: 'A focused regional campaign can start at around Rs 10 to 15 lakh covering radio, regional newspaper, and digital. National TV campaigns require significantly higher budgets. We design plans that make the most of whatever budget you actually have.' },
+  { q: 'How do you negotiate better rates than going directly to media houses?', a: 'Volume aggregation. Because we buy media across multiple clients, we can negotiate bulk rates that an individual brand booking directly usually cannot access on its own, which typically brings your CPM down compared to a direct booking.' },
+  { q: 'Can you run campaigns in regional languages?', a: 'Yes, we run campaigns in Hindi, Tamil, Telugu, Kannada, Malayalam, Marathi, Bengali, and Gujarati across regional TV channels, FM stations, and newspapers. Regional language campaigns often deliver noticeably better engagement for brands targeting specific states.' },
   { q: 'How do you measure media campaign effectiveness?', a: 'We track GRPs for TV, listenership for radio, circulation and readership data for print, and viewability plus completion rate for digital. We also run brand lift studies to measure awareness and consideration shifts attributable to the campaign.' },
+  { q: 'How much should I budget for traditional media versus digital?', a: 'It depends on what the campaign needs to do: traditional media like TV and print builds broad awareness and credibility, while digital lets you retarget and measure down to the click. Most brands get the best return from splitting budget across both rather than betting everything on one channel.' },
 ]
 
 const CHANNELS = [
   {
-    icon: 'fa-tv', name: 'Television', cpm: '₹80,120',
+    icon: 'fa-tv', name: 'Television', cpm: '₹80 to 120',
     format: '10s / 20s / 30s spots', color: '#0284c7',
     bgColor: 'rgba(2,132,199,0.12)', borderColor: 'rgba(2,132,199,0.3)',
-    reach: '700M+ viewers', best: 'Mass awareness, festive launches, national brands',
+    reach: 'Mass Reach', best: 'Mass awareness, festive launches, national brands',
     formats: ['Prime Time', 'News Breaks', 'Show Sponsorships'],
   },
   {
-    icon: 'fa-radio', name: 'Radio / FM', cpm: '₹25,45',
+    icon: 'fa-radio', name: 'Radio / FM', cpm: '₹25 to 45',
     format: '30s / 60s / RJ mentions', color: '#059669',
     bgColor: 'rgba(5,150,105,0.12)', borderColor: 'rgba(5,150,105,0.3)',
-    reach: '65M+ daily', best: 'City-level targeting, retail, events',
+    reach: 'City-Level Reach', best: 'City-level targeting, retail, events',
     formats: ['Spot Ads', 'RJ Live Reads', 'Show Sponsorships'],
   },
   {
-    icon: 'fa-newspaper', name: 'Print Media', cpm: '₹40,80',
+    icon: 'fa-newspaper', name: 'Print Media', cpm: '₹40 to 80',
     format: 'Full page / half page / inserts', color: '#d97706',
     bgColor: 'rgba(217,119,6,0.12)', borderColor: 'rgba(217,119,6,0.3)',
-    reach: '200M+ readers', best: 'Launches, credibility, senior audiences',
+    reach: 'Wide Readership', best: 'Launches, credibility, senior audiences',
     formats: ['Jacket Ads', 'Half Pages', 'Supplements'],
   },
   {
-    icon: 'fa-video', name: 'OTT / Streaming', cpm: '₹100,200',
+    icon: 'fa-video', name: 'OTT / Streaming', cpm: '₹100 to 200',
     format: 'Pre-roll / mid-roll / CTV', color: '#7c3aed',
     bgColor: 'rgba(124,58,237,0.12)', borderColor: 'rgba(124,58,237,0.3)',
-    reach: '450M+ users', best: 'Urban audience, unskippable impact',
+    reach: 'Growing Urban Reach', best: 'Urban audience, unskippable impact',
     formats: ['Pre-roll', 'Connected TV', 'Branded Content'],
   },
   {
-    icon: 'fa-chart-pie', name: 'Programmatic', cpm: '₹8,25',
+    icon: 'fa-chart-pie', name: 'Programmatic', cpm: '₹8 to 25',
     format: 'Display / native / video', color: '#e11d48',
     bgColor: 'rgba(225,29,72,0.12)', borderColor: 'rgba(225,29,72,0.3)',
-    reach: '500M+ impressions', best: 'Retargeting, audience precision, performance',
+    reach: 'Precision Reach', best: 'Retargeting, audience precision, performance',
     formats: ['Display', 'Native', 'In-app Video'],
   },
 ]
@@ -149,7 +150,7 @@ function ChannelMixVisual() {
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 44 }}>
           <div style={{ background: 'linear-gradient(135deg, #1a237e, #0284c7, #00bcd4)', color: '#fff', borderRadius: 100, padding: '14px 40px', fontSize: 14, fontWeight: 700, fontFamily: 'var(--font-h)', letterSpacing: 0.5, boxShadow: '0 8px 32px rgba(0,188,212,0.2)', display: 'flex', alignItems: 'center', gap: 10 }}>
             <i className="fa-solid fa-bolt" style={{ fontSize: 13 }} />
-            50+ Media Partners, TV, Radio, Print, OTT, Programmatic
+            Media Partners Across TV, Radio, Print, OTT, and Programmatic
           </div>
         </div>
       </div>
@@ -167,6 +168,20 @@ export default function MediaAdvertisingPageContent() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((f) => ({
+              '@type': 'Question',
+              name: f.q,
+              acceptedAnswer: { '@type': 'Answer', text: f.a },
+            })),
+          }),
+        }}
+      />
       <section className="page-hero">
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="breadcrumb mb-16">
@@ -187,7 +202,7 @@ export default function MediaAdvertisingPageContent() {
           </div>
           <h1 className="mt-8">Media <span className="grad-text">Advertising</span></h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            Great brands are built across multiple media touchpoints. We plan, buy, and optimize media across TV, radio, print, OTT, and digital so your budget works harder across every channel your audience uses.
+            Great brands rarely get built on a single channel. ThinkSuite is a Gurgaon-based media advertising agency that plans and buys across TV, radio, print, OTT, and programmatic in-house, negotiating rates through volume buying so your budget stretches further across every channel your audience actually watches, listens to, and reads.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">Get Media Plan <i className="fa-solid fa-arrow-right" /></Link>
@@ -198,10 +213,10 @@ export default function MediaAdvertisingPageContent() {
 
       <div className={s.statsRow}>
         {[
-          { number: '50+',   label: 'Media Partners'       },
-          { number: '25Cr+', label: 'Media Buying/Year'    },
-          { number: '28%',   label: 'Lower CPM vs Direct'  },
-          { number: '360',   label: 'Degree Campaign View' },
+          { number: 'Multi-Channel', label: 'TV, Radio, Print, OTT'   },
+          { number: 'In-House',      label: 'Media Planning Team'     },
+          { number: 'Negotiated',    label: 'Rates via Volume Buying' },
+          { number: '360°',          label: 'Campaign View'           },
         ].map((stat, i) => (
           <div key={i} className={s.statItem}>
             <span className={s.statNum}>{stat.number}</span>
@@ -280,7 +295,7 @@ export default function MediaAdvertisingPageContent() {
               { icon: 'fa-building',      name: 'Real Estate',               useCase: 'Sunday newspaper full-pages during project launch, FM radio geo-targeting near project locations, and OTT video ads targeting investors and home buyer segments.', tags: ['Newspaper Launch', 'FM Geo-targeting', 'OTT Investors'] },
               { icon: 'fa-graduation-cap', name: 'Education and Coaching',   useCase: 'Admission season newspaper inserts, radio reminders around exam periods, and YouTube pre-roll targeting students by interest and location ahead of enrollment.', tags: ['Admission Season', 'Radio Reminders', 'YouTube Students'] },
               { icon: 'fa-hospital',      name: 'Healthcare and Pharma',     useCase: 'OTC product radio campaigns, health publication print placements, and OTT health content targeting reaching caregivers and patients in a relevant media context.', tags: ['OTC Radio', 'Health Publications', 'OTT Health Context'] },
-              { icon: 'fa-car',           name: 'Auto and Mobility',         useCase: 'TV campaigns during sport and business shows targeting male 25-45, digital radio for in-car listening, and programmatic retargeting of car comparison website visitors.', tags: ['TV Sports Shows', 'Digital Radio', 'In-Market Retargeting'] },
+              { icon: 'fa-car',           name: 'Auto and Mobility',         useCase: 'TV campaigns during sport and business shows targeting buyers aged 25 to 45, digital radio for in-car listening, and programmatic retargeting of car comparison website visitors.', tags: ['TV Sports Shows', 'Digital Radio', 'In-Market Retargeting'] },
               { icon: 'fa-mobile-screen', name: 'Telecom and Consumer Tech', useCase: 'Prime time TV for product launches, cricket IPL spots for maximum national reach, OTT connected TV for urban households, and programmatic for performance campaigns.', tags: ['IPL Spots', 'Prime Time Launch', 'Connected TV'] },
             ].map((ind, i) => (
               <div key={i} className={`${s.indCard} reveal`} style={{ transitionDelay: `${i * 0.07}s` }}>

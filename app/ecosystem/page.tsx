@@ -3,8 +3,22 @@ import Link from 'next/link'
 import EcosystemNav from '@/components/ui/EcosystemNav'
 
 export const metadata: Metadata = {
-  title: 'ThinkSuite Ecosystem | ThinkVirtual, WavCart, Visibility & Thinksuite',
-  description: 'Explore the ThinkSuite product ecosystem: ThinkVirtual for professional networking, WavCart for local vendor eStores, Visibility for GEO ranking, and Thinksuite for targeted leads.',
+  title: 'The ThinkSuite Ecosystem: Four AI Products, One Team',
+  description: 'ThinkSuite is more than an agency. Meet ThinkVirtual, WavCart, Visibility, and Thinksuite: four products for networking, e-commerce, AI search, and leads.',
+  keywords: [
+    'ThinkSuite ecosystem',
+    'ThinkVirtual freelancer network',
+    'WavCart e-commerce platform',
+    'Visibility GEO tool',
+    'Thinksuite lead generation',
+    'AI products for small business India',
+    'GEO generative engine optimization platform',
+    'AI powered e-commerce platform India',
+    'freelancer client platform India',
+    'targeted lead lists by occupation',
+    'ThinkSuite products',
+    'get cited by ChatGPT',
+  ],
   alternates: { canonical: 'https://thinksuite.in/ecosystem' },
 }
 
@@ -22,7 +36,7 @@ const products = [
     statusLabel: 'Live',
     href: '/services',
     ctaLabel: 'Explore Services',
-    desc: 'ThinkSuite is your all-in-one digital partner, a full-service agency that covers every angle of your business growth. From custom websites and mobile apps to AI automation and performance marketing, we are your single partner for everything digital.',
+    desc: 'ThinkSuite is a Gurgaon-based digital agency covering every angle of business growth: custom websites and apps, AI automation, and performance marketing. Everything below this section is a product we built ourselves, born out of problems we kept hitting while running client work.',
     capabilities: [
       { icon: 'fa-code', label: 'Software Development', desc: 'Custom websites, apps, SaaS, enterprise software' },
       { icon: 'fa-bullhorn', label: 'Digital Marketing', desc: 'SEO, Google Ads, Meta Ads, social media, content' },
@@ -32,10 +46,10 @@ const products = [
       { icon: 'fa-chart-line', label: 'Consulting & Growth', desc: 'Strategy, startup advisory, market research' },
     ],
     stats: [
-      { num: '150+', label: 'Projects Delivered' },
-      { num: '15+', label: 'Industries Served' },
-      { num: '98%', label: 'Client Satisfaction' },
-      { num: '5+', label: 'Years Experience' },
+      { num: '60+', label: 'Projects Delivered' },
+      { num: '40+', label: 'Happy Clients' },
+      { num: '3', label: 'Service Verticals' },
+      { num: '4+', label: 'Years in Business' },
     ],
   },
   {
@@ -51,7 +65,7 @@ const products = [
     statusLabel: 'Coming Soon',
     href: '/ecosystem/mythinkai',
     ctaLabel: 'Get Your Lead List',
-    desc: 'Thinksuite provides hyper-targeted lead lists for businesses. Tell us the occupation, city, and industry of the customers you need, and we deliver a verified, ready-to-use contact list so you can start outreach immediately.',
+    desc: 'Thinksuite is ThinkSuite\'s lead generation product. Tell it the occupation, city, and industry of the customers you want, and it builds a verified, ready-to-use contact list so your team can start outreach the same day.',
     capabilities: [
       { icon: 'fa-briefcase', label: 'Occupation-Based Filters', desc: 'Target doctors, lawyers, retailers, and any profession you need' },
       { icon: 'fa-location-dot', label: 'City & Location Targeting', desc: 'Filter by city, district, state, or pincode' },
@@ -61,10 +75,10 @@ const products = [
       { icon: 'fa-rotate', label: 'Fresh Daily Data', desc: 'Database updated daily to ensure accuracy' },
     ],
     stats: [
-      { num: '10K+', label: 'Leads Available' },
-      { num: '50+', label: 'Filter Options' },
-      { num: '95%', label: 'Data Accuracy' },
-      { num: 'Daily', label: 'Updated' },
+      { num: 'Occupation', label: 'Filter by Role' },
+      { num: 'City', label: 'Filter by Location' },
+      { num: 'CSV', label: 'Instant Export' },
+      { num: 'Daily', label: 'Data Refresh' },
     ],
   },
   {
@@ -80,7 +94,7 @@ const products = [
     statusLabel: 'Coming Soon',
     href: '/ecosystem/thinkvirtual',
     ctaLabel: 'Join Waitlist',
-    desc: 'ThinkVirtual is a professional network where freelancers, clients, and influencers connect to collaborate. Post projects, browse talent, take assignments, and build lasting professional relationships, all in one platform built for India\'s creative and digital economy.',
+    desc: 'ThinkVirtual is ThinkSuite\'s professional network for freelancers, clients, and influencers. Clients post projects, freelancers apply and get hired, and influencers connect with brands directly, no middlemen, built for India\'s creative and digital economy.',
     capabilities: [
       { icon: 'fa-briefcase', label: 'Post Projects', desc: 'Clients post work, freelancers apply and get hired fast' },
       { icon: 'fa-user-tie', label: 'Freelancer Profiles', desc: 'Showcase your skills, portfolio, and client reviews' },
@@ -90,10 +104,10 @@ const products = [
       { icon: 'fa-globe', label: 'Professional Network', desc: 'LinkedIn-style platform for India\'s gig economy' },
     ],
     stats: [
-      { num: '500+', label: 'Freelancers' },
-      { num: '200+', label: 'Projects Posted' },
-      { num: '50+', label: 'Brands' },
-      { num: '4.8★', label: 'Avg Rating' },
+      { num: 'Freelancers', label: 'Post & Apply' },
+      { num: 'Clients', label: 'Hire Talent' },
+      { num: 'Influencers', label: 'Connect With Brands' },
+      { num: 'Coming Soon', label: 'Status' },
     ],
   },
   {
@@ -109,7 +123,7 @@ const products = [
     statusLabel: 'Coming Soon',
     href: '/ecosystem/visibility',
     ctaLabel: 'Get a GEO Audit',
-    desc: 'Visibility is ThinkSuite\'s GEO (Generative Engine Optimization) platform. When someone asks ChatGPT, Gemini, or Perplexity about businesses in your industry, does your name come up? Visibility makes sure it does, through AI citation strategy, E-E-A-T authority building, and structured data optimization.',
+    desc: 'Visibility is ThinkSuite\'s GEO (Generative Engine Optimization) product. When someone asks ChatGPT, Gemini, or Perplexity about businesses in your industry, does your name come up? Visibility is built to get you cited in those answers, through AI citation strategy, E-E-A-T authority building, and structured data optimization.',
     capabilities: [
       { icon: 'fa-eye', label: 'AI Search Optimization', desc: 'Get cited by ChatGPT, Gemini, and Perplexity when users ask about your industry' },
       { icon: 'fa-shield-halved', label: 'E-E-A-T Authority', desc: 'Build credibility signals that AI models trust and cite' },
@@ -119,10 +133,10 @@ const products = [
       { icon: 'fa-chart-line', label: 'AI Answer Monitoring', desc: 'Track when and how AI engines mention your brand in real time' },
     ],
     stats: [
-      { num: '3×', label: 'AI Visibility' },
-      { num: '120%', label: 'Traffic Increase' },
-      { num: '50+', label: 'Brands Ranked' },
-      { num: 'GPT+', label: 'Gemini & Perplexity' },
+      { num: 'ChatGPT', label: 'AI Citation Target' },
+      { num: 'Gemini', label: 'AI Citation Target' },
+      { num: 'Perplexity', label: 'AI Citation Target' },
+      { num: 'E-E-A-T', label: 'Authority Signals' },
     ],
   },
   {
@@ -138,7 +152,7 @@ const products = [
     statusLabel: 'Coming Soon',
     href: '/ecosystem/wavcart',
     ctaLabel: 'Join Waitlist',
-    desc: 'WavCart is an AI-native e-commerce platform built for modern D2C brands and local vendors. It does not just help you sell, it intelligently manages your listings, automates your marketing, and continuously optimizes for conversions.',
+    desc: 'WavCart is ThinkSuite\'s AI-native e-commerce platform, built for modern D2C brands and local vendors. It does not just help you sell, it writes your listings, runs your marketing, and keeps an eye on inventory and conversions so you do not have to.',
     capabilities: [
       { icon: 'fa-list-check', label: 'Smart Product Listings', desc: 'AI-written titles, descriptions, and SEO tags' },
       { icon: 'fa-bullhorn', label: 'Auto Marketing', desc: 'Campaigns that run and optimize themselves' },
@@ -148,13 +162,46 @@ const products = [
       { icon: 'fa-envelope', label: 'Email & WhatsApp', desc: 'Automated customer journeys across all channels' },
     ],
     stats: [
-      { num: '2.5×', label: 'Average Revenue Lift' },
-      { num: '60%', label: 'Marketing Automated' },
+      { num: 'AI Listings', label: 'Titles & SEO Tags' },
+      { num: 'Auto', label: 'Marketing Campaigns' },
       { num: '< 24h', label: 'Setup Time' },
       { num: 'D2C', label: 'Optimized For' },
     ],
   },
 ]
+
+const ecosystemFaqs = [
+  {
+    q: 'What is the ThinkSuite ecosystem?',
+    a: 'The ThinkSuite ecosystem is the group of in-house AI products ThinkSuite builds alongside its client agency work: ThinkVirtual (a freelancer, client, and influencer network), WavCart (an AI-powered e-commerce platform for local vendors and D2C brands), Visibility (a GEO platform that gets brands cited by AI search engines), and Thinksuite (a targeted lead-generation tool). Each product was built to solve a problem ThinkSuite kept seeing while working with real clients.',
+  },
+  {
+    q: 'Do I have to use every ThinkSuite product together?',
+    a: 'No. Each product in the ThinkSuite ecosystem works on its own and solves a different problem. You can adopt just one, such as Visibility for AI search citations, or combine several, such as WavCart for your store and Thinksuite for lead lists. ThinkSuite\'s team can help you decide which combination fits your business.',
+  },
+  {
+    q: 'Which ThinkSuite ecosystem products are live right now?',
+    a: 'ThinkSuite, the core digital agency, is live today and actively taking on client projects. ThinkVirtual, WavCart, Visibility, and Thinksuite are in active development and currently open for early access and waitlist sign-ups rather than public launch.',
+  },
+  {
+    q: 'How is Visibility different from traditional SEO?',
+    a: 'Traditional SEO is built to rank a page on Google\'s results list. Visibility, ThinkSuite\'s GEO (Generative Engine Optimization) product, is built to get a brand mentioned and cited directly inside answers from ChatGPT, Gemini, and Perplexity. That means restructuring content, building E-E-A-T authority signals, and adding structured data so AI models can quote a business accurately.',
+  },
+  {
+    q: 'What does Thinksuite, the lead-generation product, actually do?',
+    a: 'Thinksuite generates targeted business lead lists filtered by occupation, city or pincode, and industry. A business tells Thinksuite who its ideal customer is, and it returns a verified, exportable contact list built for immediate outreach by phone, email, or WhatsApp.',
+  },
+]
+
+const ecosystemFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: ecosystemFaqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+}
 
 function StatusBadge({ status, label, color }: { status: string; label: string; color: string }) {
   const isLive = status === 'live'
@@ -182,6 +229,7 @@ function StatusBadge({ status, label, color }: { status: string; label: string; 
 export default function EcosystemPage() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ecosystemFaqSchema) }} />
 
       {/* ── Hero ── */}
       <section
@@ -202,9 +250,9 @@ export default function EcosystemPage() {
             <span className="grad-text">Four Powerful Products.</span>
           </h1>
           <p style={{ fontSize: 18, color: 'var(--text2)', maxWidth: 620, margin: '0 auto 40px', lineHeight: 1.8 }}>
-            ThinkSuite is more than a digital agency. We are building a full ecosystem of
-            products that help businesses build, automate, experience, and sell, all
-            powered by cutting-edge AI.
+            ThinkSuite is more than a digital agency. Alongside client work, we build our
+            own AI-powered products, ThinkVirtual, WavCart, Visibility, and Thinksuite,
+            each one solving a problem we saw businesses struggle with again and again.
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/contact" className="btn btn-primary btn-lg">
@@ -352,7 +400,7 @@ export default function EcosystemPage() {
             <span className="grad-text">We Integrate Everything</span>
           </h2>
           <p style={{ fontSize: 17, color: 'var(--text2)', maxWidth: 540, margin: '0 auto 40px', lineHeight: 1.8 }}>
-            Mix and match ThinkSuite ecosystem products to build the perfect digital stack
+            Mix and match ThinkSuite ecosystem products to build the right digital stack
             for your business. Our team handles the strategy, integration, and support.
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -362,6 +410,37 @@ export default function EcosystemPage() {
             <Link href="/intelligence" className="btn btn-outline btn-lg">
               Explore AI Intelligence Hub
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section className="section section-tinted" id="faq">
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <span className="label" style={{ marginBottom: 12, display: 'inline-block' }}>FAQ</span>
+            <h2>Frequently Asked <span className="grad-text">Questions</span></h2>
+          </div>
+          <div style={{ maxWidth: 820, margin: '0 auto' }}>
+            {ecosystemFaqs.map((faq, i) => (
+              <div
+                key={i}
+                style={{
+                  background: 'var(--surface)',
+                  border: '1px solid var(--border)',
+                  borderRadius: 16,
+                  padding: '28px 32px',
+                  marginBottom: 14,
+                  boxShadow: 'var(--shadow)',
+                }}
+              >
+                <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 12, color: 'var(--white)', lineHeight: 1.45, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                  <span style={{ color: 'var(--cyan)', fontSize: 13, fontFamily: 'var(--font-m)', marginTop: 2, flexShrink: 0 }}>Q.</span>
+                  {faq.q}
+                </h3>
+                <p style={{ fontSize: 14, color: 'var(--text2)', lineHeight: 1.85, margin: 0, paddingLeft: 28 }}>{faq.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

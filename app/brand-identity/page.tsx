@@ -2,13 +2,51 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Brand Identity Design India | ThinkSuite',
+  title: 'Brand Identity Design Agency in Gurgaon | ThinkSuite',
   description: 'Professional brand identity design for Indian businesses. Logo design, color systems, typography, brand guidelines, and complete visual identity packages.',
-  keywords: ['brand identity design India', 'logo design India', 'brand guidelines India', 'visual identity India', 'logo designer Gurgaon', 'brand design agency India', 'corporate identity design India'],
+  keywords: ['brand identity design agency Gurgaon', 'logo design company India', 'brand guidelines design India', 'visual identity design India', 'logo designer Gurgaon', 'brand design agency India', 'corporate identity design India', 'startup branding agency India'],
 }
+
+const FAQS = [
+  {
+    q: 'How long does brand identity design take?',
+    a: 'A standard brand identity package takes 2 to 4 weeks from discovery to final delivery. More complex projects with packaging and environmental branding take 5 to 8 weeks.',
+  },
+  {
+    q: 'Do I own the final logo and all brand files?',
+    a: 'Yes. You own 100% of the IP. All source files including AI, EPS, SVG, and PSD are handed over on final payment.',
+  },
+  {
+    q: 'What if I already have a logo but want to refresh the brand?',
+    a: 'We handle brand refreshes and complete rebrands. We can modernize an existing identity while preserving equity or build fresh from scratch. We discuss the right approach in discovery.',
+  },
+  {
+    q: 'Do you design the website as well?',
+    a: 'Yes. Many clients combine brand identity with website design and development. We can handle both so the digital presence perfectly matches the brand we create.',
+  },
+  {
+    q: 'What formats do you deliver the final logo in?',
+    a: 'We deliver in SVG, EPS, AI, PDF, PNG (transparent background), and JPEG. Both light and dark versions, color and black-and-white. Everything your printer, web developer, and social media needs.',
+  },
+]
 
 export default function BrandIdentityPage() {
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((faq) => ({
+              '@type': 'Question',
+              name: faq.q,
+              acceptedAnswer: { '@type': 'Answer', text: faq.a },
+            })),
+          }),
+        }}
+      />
     <ServicePageDeviceShowcase
       breadcrumb="Branding and Design"
       breadcrumbHref="/branding-design"
@@ -111,28 +149,7 @@ export default function BrandIdentityPage() {
           desc: 'Final brand guidelines document, complete asset library, and all file formats handed over with a brand walkthrough session.',
         },
       ]}
-      faqs={[
-        {
-          q: 'How long does brand identity design take?',
-          a: 'A standard brand identity package takes 2 to 4 weeks from discovery to final delivery. More complex projects with packaging and environmental branding take 5 to 8 weeks.',
-        },
-        {
-          q: 'Do I own the final logo and all brand files?',
-          a: 'Yes. You own 100% of the IP. All source files including AI, EPS, SVG, and PSD are handed over on final payment.',
-        },
-        {
-          q: 'What if I already have a logo but want to refresh the brand?',
-          a: 'We handle brand refreshes and complete rebrands. We can modernize an existing identity while preserving equity or build fresh from scratch. We discuss the right approach in discovery.',
-        },
-        {
-          q: 'Do you design the website as well?',
-          a: 'Yes. Many clients combine brand identity with website design and development. We can handle both so the digital presence perfectly matches the brand we create.',
-        },
-        {
-          q: 'What formats do you deliver the final logo in?',
-          a: 'We deliver in SVG, EPS, AI, PDF, PNG (transparent background), and JPEG. Both light and dark versions, color and black-and-white. Everything your printer, web developer, and social media needs.',
-        },
-      ]}
+      faqs={FAQS}
       sidebarLinks={[
         { label: 'Graphic Design', href: '/graphic-design' },
         { label: 'UI/UX Design', href: '/ui-ux-design' },
@@ -143,5 +160,6 @@ export default function BrandIdentityPage() {
       ctaTitleHighlight="Worth Remembering"
       ctaDesc="Your brand is the first thing people judge you by. Make sure it says exactly what you need it to say. Let us build an identity that grows with your business."
     />
+    </>
   )
 }

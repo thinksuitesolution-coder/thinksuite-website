@@ -2,9 +2,32 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Delete Account | ThinkSuite',
-  description: 'Learn how to delete your ThinkSuite account and what happens to your data when you do.',
+  title: 'Delete Your ThinkSuite Account | Account Help Center',
+  description: 'Learn how to delete your ThinkSuite account, what happens to your data afterward, and what to check before requesting permanent deletion.',
+  keywords: [
+    'delete ThinkSuite account', 'how to delete my account', 'ThinkSuite account deletion policy',
+    'cancel subscription before deleting account', 'account data retention policy',
+  ],
 }
+
+const deleteAccountFaqs = [
+  {
+    q: 'How do I delete my ThinkSuite account?',
+    a: 'Email info@thinksuite.in from your registered email address with the subject line "Delete Account Request", including your registered phone number or username so we can verify your identity.',
+  },
+  {
+    q: 'How long does account deletion take?',
+    a: 'Once we verify your request, your account and associated data are permanently deleted within 7 business days, and you will receive a confirmation email once it is complete.',
+  },
+  {
+    q: 'Will deleting my account cancel my subscription?',
+    a: 'No, active subscriptions are not automatically cancelled when you delete your account. Cancel any active subscription separately before requesting deletion to avoid further billing.',
+  },
+  {
+    q: 'What data is retained after deletion?',
+    a: 'Certain information, such as billing records and transaction history, may be retained for a limited period as required by applicable tax, accounting, and legal obligations, even after your account is deleted.',
+  },
+]
 
 export default function DeleteAccountPage() {
   return (
@@ -44,7 +67,7 @@ export default function DeleteAccountPage() {
               },
               {
                 title: '5. Before You Delete',
-                text: 'Account deletion is permanent and cannot be undone. Active subscriptions are not automatically cancelled by deleting your account — please cancel any active subscription separately before requesting deletion to avoid further billing.',
+                text: 'Account deletion is permanent and cannot be undone. Active subscriptions are not automatically cancelled by deleting your account, please cancel any active subscription separately before requesting deletion to avoid further billing.',
               },
               {
                 title: '6. Need Help?',
@@ -57,6 +80,32 @@ export default function DeleteAccountPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: deleteAccountFaqs.map((f) => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a },
+              })),
+            }),
+          }}
+        />
+        <div className="container" style={{ maxWidth: 860 }}>
+          <h2 style={{ marginBottom: 24 }}>Frequently Asked Questions</h2>
+          {deleteAccountFaqs.map((faq) => (
+            <div key={faq.q} className="service-card reveal" style={{ padding: '24px 28px', marginBottom: 16 }}>
+              <h3 style={{ fontSize: 17, marginBottom: 10, color: 'var(--white)' }}>{faq.q}</h3>
+              <p style={{ color: 'var(--text2)', lineHeight: 1.85, margin: 0 }}>{faq.a}</p>
+            </div>
+          ))}
         </div>
       </section>
     </>

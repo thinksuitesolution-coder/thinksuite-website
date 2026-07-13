@@ -46,10 +46,23 @@ const COMPANY_DATA: Record<string, {
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const company = COMPANY_DATA[params.slug];
-  if (!company) return { title: 'Company Not Found' };
+  if (!company) {
+    return {
+      title: 'Company Not Found | ThinkSuite AI News',
+      description: 'This AI company profile could not be found. Browse profiles of OpenAI, Anthropic, Google DeepMind, Meta AI, and more on ThinkSuite AI Pulse.',
+    };
+  }
   return {
     title: `${company.name} | AI Company Profile | ThinkSuite`,
     description: `${company.description} Latest news, models, funding, and analysis.`,
+    keywords: [
+      `${company.name} news`,
+      `${company.name} AI`,
+      `${company.name} models`,
+      `${company.name} funding`,
+      ...company.filterKeys.map(k => `${k} AI news`),
+    ],
+    alternates: { canonical: `https://thinksuite.in/companies/${params.slug}` },
   };
 }
 
@@ -80,8 +93,28 @@ export default async function CompanyProfilePage({ params }: { params: { slug: s
 
   const articles = await getCompanyArticles(company.filterKeys);
 
+  const orgSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: company.name,
+    description: company.description,
+    url: company.website,
+    foundingDate: company.founded,
+    address: company.hq,
+    employee: { '@type': 'Person', name: company.ceo, jobTitle: 'CEO' },
+    numberOfEmployees: { '@type': 'QuantitativeValue', value: company.employees },
+    sameAs: [company.website],
+  };
+  const profileSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    url: `https://thinksuite.in/companies/${params.slug}`,
+    mainEntity: orgSchema,
+  };
+
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profileSchema) }} />
       {/* Company Header */}
       <section className="company-hero" style={{ '--company-color': company.color } as React.CSSProperties}>
         <div className="container">
@@ -126,11 +159,11 @@ export default async function CompanyProfilePage({ params }: { params: { slug: s
                 <h2>Latest News & Analysis ({articles.length})</h2>
               </div>
               {articles.length === 0 ? (
-                <p style={{ color: 'var(--text2)', padding: '20px 0' }}>No recent articles found. The pipeline will pick up new stories as they are published.</p>
+                <p style={{ color: 'var(--text2)', padding: '20px 0' }}>No recent articles about {company.name} yet. We track new stories as they come in, so check back soon.</p>
               ) : (
                 <div className="company-articles">
                   {articles.map(a => (
-                    <Link key={a.id} href={`/blog/${a.slug}`} className="company-article-row">
+                    <Link key={a.id} href={`/ai-news/${a.slug}`} className="company-article-row">
                       <div className="company-article-score" style={{ background: company.color }}>{a.importanceScore}</div>
                       <div className="company-article-body">
                         <h3>{a.title}</h3>

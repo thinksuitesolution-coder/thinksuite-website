@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
 
 Neeche diya gaya AI news article ko natural Hinglish mein translate kar.
 Hinglish matlab: Roman script mein Hindi bolne ka tarika + English technical terms ko as-is rakhna.
-Tone: casual, friendly, knowledgeable — jaise koi smart dost explain kar raha ho.
+Tone: casual, friendly, knowledgeable, jaise koi smart dost explain kar raha ho.
 
 RULES:
 - Technical terms (AI, LLM, GPT, API, model, dataset, etc.) English mein hi rakhna
@@ -23,6 +23,7 @@ RULES:
 - Baaki sab Hinglish mein likhna (Roman script, Hindi words)
 - Markdown formatting (##, ###, -, *) same rakhna
 - FAQs, highlights sab translate karna
+- Never use em dashes (—) or en dashes (–) anywhere in the translated output, use a comma or colon instead
 
 ORIGINAL ARTICLE:
 Title: ${title}

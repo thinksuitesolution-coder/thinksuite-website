@@ -2,9 +2,32 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Our Team | ThinkSuite Digital Agency India',
-  description: 'Meet the ThinkSuite team: developers, designers, marketers, AI engineers, and business strategists building and growing digital businesses across India.',
+  title: 'Our Team | ThinkSuite Digital Agency in Gurgaon, India',
+  description: 'Meet the ThinkSuite team: developers, designers, marketers, and AI engineers building and growing digital businesses from our in-house Gurgaon office.',
+  keywords: [
+    'ThinkSuite team', 'ThinkSuite founder', 'Aakash Upadhyay ThinkSuite', 'digital agency team Gurgaon',
+    'in-house developers and designers India', 'AI engineers Gurgaon', 'meet the ThinkSuite team',
+  ],
 }
+
+const teamFaqs = [
+  {
+    q: 'Who will actually work on my project?',
+    a: 'A dedicated group of full-time ThinkSuite developers, designers, marketers, and AI engineers, not freelancers or subcontractors passed around between agencies. You get direct access to the same team throughout the engagement.',
+  },
+  {
+    q: 'How big is the ThinkSuite team?',
+    a: 'ThinkSuite is a growing in-house team covering frontend and backend development, UI/UX design, AI engineering, and growth marketing. We staff each project with the specific specialists it needs rather than a one-size-fits-all pod.',
+  },
+  {
+    q: 'Do you outsource any part of the work?',
+    a: 'No. Every deliverable, from code to creative to campaigns, is produced by our in-house team in Gurgaon. That keeps quality consistent and means there is always someone accountable for your project.',
+  },
+  {
+    q: 'Is ThinkSuite hiring?',
+    a: 'We are always open to hearing from talented people even when we are not actively hiring for a specific role. Visit our careers page to see current openings or send your resume for future consideration.',
+  },
+]
 
 export default function TeamPage() {
   return (
@@ -85,6 +108,64 @@ export default function TeamPage() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: teamFaqs.map((f) => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a },
+              })),
+            }),
+          }}
+        />
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: 40 }} className="reveal">
+            <span className="label">Common Questions</span>
+            <h2 style={{ marginTop: 12 }}>
+              Frequently Asked <span className="grad-text">Questions</span>
+            </h2>
+          </div>
+          <div style={{ maxWidth: 820, margin: '0 auto' }}>
+            {teamFaqs.map((faq, i) => (
+              <div
+                key={i}
+                className="reveal"
+                style={{
+                  background: 'var(--surface)',
+                  border: '1px solid var(--border)',
+                  borderRadius: 16,
+                  padding: '28px 32px',
+                  marginBottom: 14,
+                  boxShadow: 'var(--shadow)',
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: 17,
+                    fontWeight: 700,
+                    marginBottom: 12,
+                    color: 'var(--white)',
+                    lineHeight: 1.45,
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: 12,
+                  }}
+                >
+                  <span style={{ color: 'var(--cyan)', fontSize: 13, fontFamily: 'var(--font-m)', marginTop: 2, flexShrink: 0 }}>Q.</span>
+                  {faq.q}
+                </h3>
+                <p style={{ fontSize: 14, color: 'var(--text2)', lineHeight: 1.85, margin: 0, paddingLeft: 28 }}>{faq.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

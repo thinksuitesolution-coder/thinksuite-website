@@ -6,27 +6,28 @@ import CTASection from '@/components/sections/CTASection'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPS = [
-  { icon: 'fa-newspaper',      metric: '85% placement',  title: 'Media Relations and Press Coverage',  desc: 'Build genuine relationships with journalists and editors across national, regional, and trade publications. We pitch stories that get placed because we understand what makes news.' },
+  { icon: 'fa-newspaper',      metric: 'Relationship-Led', title: 'Media Relations and Press Coverage',  desc: 'Build genuine relationships with journalists and editors across national, regional, and trade publications. We pitch stories that get placed because we understand what makes news.' },
   { icon: 'fa-file-pen',       metric: 'Publication-ready', title: 'Press Release and Content Writing', desc: 'Compelling press releases, bylined articles, white papers, and opinion pieces written for publication. Content that positions your leadership as credible industry voices.' },
   { icon: 'fa-microphone',     metric: 'Year-round',     title: 'Thought Leadership Programs',         desc: 'Speaking opportunity sourcing at industry conferences, podcast placements, panel nominations, and a consistent editorial calendar that builds founder reputation month over month.' },
-  { icon: 'fa-shield-halved',  metric: '48hr response',  title: 'Crisis Communications',               desc: 'When something goes wrong, speed and message control matter. We provide 48-hour crisis response, media monitoring, holding statement drafting, and spokesperson coaching.' },
-  { icon: 'fa-trophy',         metric: '70%+ shortlisted', title: 'Award and Recognition Programs',    desc: 'Research, identify, and submit applications for industry awards, startup recognitions, and editorial lists that create third-party validation for your brand.' },
+  { icon: 'fa-shield-halved',  metric: '48-Hour SLA',    title: 'Crisis Communications',               desc: 'When something goes wrong, speed and message control matter. We provide 48-hour crisis response, media monitoring, holding statement drafting, and spokesperson coaching.' },
+  { icon: 'fa-trophy',         metric: 'Curated',        title: 'Award and Recognition Programs',      desc: 'Research, identify, and submit applications for industry awards, startup recognitions, and editorial lists that create third-party validation for your brand.' },
   { icon: 'fa-chart-line',     metric: 'Share of voice', title: 'PR Analytics and Reporting',          desc: 'Media value equivalent tracking, share of voice analysis, sentiment monitoring, and monthly coverage reports with tier-wise breakdown of placements.' },
 ]
 
 const FAQS = [
-  { q: 'Can you guarantee media coverage?', a: 'No ethical PR agency can guarantee specific placements, and you should be skeptical of any that do. What we can guarantee is quality pitching, genuine journalist relationships, and an 85% historical placement rate on the stories we take on.' },
-  { q: 'How long does it take to see PR results?', a: 'First placements typically happen within 3 to 4 weeks of onboarding. Building a consistent media presence and share of voice takes 3 to 6 months of sustained effort. PR is a long game that compounds over time.' },
-  { q: 'Which publications do you have relationships with?', a: 'Our network covers business publications including Economic Times, Business Standard, Mint, Forbes India, and Inc42 for startups. We also work with sector-specific trade publications across tech, healthcare, finance, and retail.' },
-  { q: 'Do you handle social media PR as well?', a: 'Yes. We work with your social media and marketing team to amplify earned media coverage, help founders build personal brand presence on LinkedIn, and coordinate influencer collaborations as part of integrated campaigns.' },
-  { q: 'What happens during a PR crisis?', a: 'We activate within 48 hours with a holding statement, media monitoring, and a crisis communications plan. We help you control the narrative, identify the right spokesperson, and manage journalist inquiries so the situation does not spiral.' },
+  { q: 'Can you guarantee media coverage?', a: 'No ethical PR agency can guarantee specific placements, and you should be skeptical of any that do. What we can guarantee is quality pitching, genuine journalist relationships, and honest reporting on every story we take on, whether it lands or not.' },
+  { q: 'How long does it take to see PR results?', a: 'First placements typically happen within 3 to 4 weeks of onboarding. Building a consistent media presence and share of voice takes 3 to 6 months of sustained effort. PR is a long game that compounds over time rather than a one-time spike.' },
+  { q: 'Which publications do you pitch stories to?', a: 'We pitch to business publications such as Economic Times, Business Standard, Mint, Forbes India, and Inc42 for startups, depending on what fits your story. We also work with sector-specific trade publications across tech, healthcare, finance, and retail.' },
+  { q: 'Do you handle social media PR as well?', a: 'Yes, we work with your social media and marketing team to share earned media coverage further, help founders build personal brand presence on LinkedIn, and coordinate influencer collaborations as part of integrated campaigns.' },
+  { q: 'What happens during a PR crisis?', a: 'We activate within 48 hours with a holding statement, media monitoring, and a crisis communications plan. We help you control the narrative, identify the right spokesperson, and manage journalist inquiries so the situation does not spiral further.' },
+  { q: 'Is PR worth it for a small business or early-stage startup?', a: 'Yes, a single credible article can do more for trust than months of paid ads, especially for a startup that needs investors, partners, or early customers to take it seriously. The catch is that PR rewards patience: it builds a reputation over months, not a single press release.' },
 ]
 
 const TIERS = [
   {
     name: 'Tier 1 National', icon: 'fa-newspaper',
     color: '#0284c7', bgColor: 'rgba(2,132,199,0.12)', borderColor: 'rgba(2,132,199,0.3)',
-    audience: '10M+ daily readers', impact: 'Brand credibility, investor trust',
+    audience: 'Large national readership', impact: 'Brand credibility, investor trust',
     pubs: ['Economic Times', 'Hindustan Times', 'Business Standard', 'Mint'],
   },
   {
@@ -64,7 +65,7 @@ function MediaCoverageVisual() {
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <span className="label" style={{ borderColor: 'rgba(0,188,212,0.3)', color: 'var(--cyan)' }}>Media Network</span>
           <h2 style={{ color: '#fff', marginTop: 14, marginBottom: 16 }}>
-            500+ Journalist Relationships.{' '}
+            Genuine Journalist Relationships.{' '}
             <span className="grad-text">Real Placements. Real Reach.</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 520, margin: '0 auto', lineHeight: 1.8, fontSize: 15 }}>
@@ -136,10 +137,10 @@ function MediaCoverageVisual() {
         {/* Coverage stats row */}
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginTop: 44 }}>
           {[
-            { stat: '120+', label: 'Placements/Month', color: '#0284c7' },
-            { stat: '500+', label: 'Journalist Network', color: '#7c3aed' },
-            { stat: '85%',  label: 'Placement Rate',    color: '#059669' },
-            { stat: '48hr', label: 'Crisis Response',   color: '#d97706' },
+            { stat: 'Multi-Tier', label: 'Publication Coverage', color: '#0284c7' },
+            { stat: 'Genuine',   label: 'Journalist Relationships', color: '#7c3aed' },
+            { stat: 'In-House',  label: 'PR & Comms Team',    color: '#059669' },
+            { stat: '48hr',      label: 'Crisis Response',    color: '#d97706' },
           ].map((item, i) => (
             <div key={i} style={{ background: 'rgba(255,255,255,0.05)', border: `1px solid ${item.color}30`, borderRadius: 14, padding: '14px 24px', textAlign: 'center', minWidth: 120 }}>
               <div style={{ fontSize: 22, fontWeight: 900, color: item.color, fontFamily: 'var(--font-h)' }}>{item.stat}</div>
@@ -162,6 +163,20 @@ export default function PRCampaignsPageContent() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((f) => ({
+              '@type': 'Question',
+              name: f.q,
+              acceptedAnswer: { '@type': 'Answer', text: f.a },
+            })),
+          }),
+        }}
+      />
       <section className="page-hero">
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="breadcrumb mb-16">
@@ -182,7 +197,7 @@ export default function PRCampaignsPageContent() {
           </div>
           <h1 className="mt-8">PR <span className="grad-text">Campaigns</span></h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            An article in the right publication does more for brand credibility than a thousand ads. We build PR programs that get your story into the media your customers actually read and trust.
+            An honest article in the right publication does more for your credibility than a thousand ads ever will. ThinkSuite is a Gurgaon-based PR agency that builds genuine journalist relationships, writes the pitch, handles the follow-up, and gets your story into the media your customers already read and trust.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">Start Your PR Program <i className="fa-solid fa-arrow-right" /></Link>
@@ -193,10 +208,10 @@ export default function PRCampaignsPageContent() {
 
       <div className={s.statsRow}>
         {[
-          { number: '120+', label: 'Media Placements/Month' },
-          { number: '500+', label: 'Journalist Network'     },
-          { number: '48hr', label: 'Crisis Response Time'   },
-          { number: '85%',  label: 'Placement Rate'         },
+          { number: 'In-House',   label: 'PR & Comms Team'       },
+          { number: 'Gurgaon',    label: 'Based, Working Pan-India' },
+          { number: '48hr',       label: 'Crisis Response Time'   },
+          { number: 'Multi-Tier', label: 'Publication Coverage'   },
         ].map((stat, i) => (
           <div key={i} className={s.statItem}>
             <span className={s.statNum}>{stat.number}</span>
@@ -300,7 +315,7 @@ export default function PRCampaignsPageContent() {
               { title: 'Brand Story and Message House', desc: 'Define your core narrative, key messages, and the proof points that make your brand story credible and newsworthy to journalists.' },
               { title: 'Media List and Pitch Strategy',  desc: 'Build a targeted media list, develop angle-specific pitches for different publications, and identify the right journalists for each story.' },
               { title: 'Outreach and Follow Through',   desc: 'Pitch, follow up, provide supporting material, coordinate interviews, and manage the publication process through to live coverage.' },
-              { title: 'Track, Amplify, Report',        desc: 'Monitor all coverage, amplify on owned channels, measure media value and sentiment, and report monthly with recommendations.' },
+              { title: 'Track, Share, Report',          desc: 'Monitor all coverage, share it further across owned channels, measure media value and sentiment, and report monthly with recommendations.' },
             ].map((step, i) => (
               <div key={i} className={`${s.processItem} reveal`} style={{ transitionDelay: `${i * 0.1}s` }}>
                 <div className={s.processCircle}>{i + 1}</div>

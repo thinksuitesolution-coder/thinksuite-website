@@ -14,17 +14,11 @@ const CAPABILITIES = [
   { icon: 'fa-headset',               metric: 'SLA-backed', title: 'Dedicated Support',         desc: 'Post-launch support, proactive monitoring, and quarterly roadmap reviews, your software keeps improving after go-live.' },
 ]
 
-const FAQS = [
-  { q: 'How long does custom software development take?',  a: 'Timelines depend on scope. A focused internal tool typically takes 6,10 weeks. A full enterprise platform with multiple modules can take 4,8 months. After a discovery session we\'ll give you a detailed milestone plan with fixed deadlines.' },
-  { q: 'What tech stack do you use?',                      a: 'We\'re stack-agnostic and choose based on your needs. Common choices: Next.js / React for frontend, Node.js or Python for backend, PostgreSQL / MongoDB for data, and AWS or GCP for infrastructure. We can also work within your existing stack.' },
-  { q: 'Do you sign NDAs and handle IP ownership?',        a: 'Yes, NDA signing is standard before any discovery conversation. All IP, source code, and documentation built for your project transfers 100% to you upon final payment.' },
-  { q: 'What happens after the software launches?',        a: 'We offer SLA-backed post-launch support packages covering monitoring, bug fixes, security patches, and feature development. You\'ll also receive complete documentation and handover so you\'re never locked in.' },
-  { q: 'Can you integrate with our existing systems?',     a: 'API and system integration is a core capability. We regularly connect to ERPs, CRMs, payment gateways, third-party SaaS tools, and legacy databases. If it has an API (or even a database we can query), we can integrate it.' },
-]
+import { FAQS } from './faqs'
 
 const SPRINT_PHASES = [
   {
-    week: 'Week 1,2',
+    week: 'Week 1-2',
     phase: 'Discovery',
     color: '#1a237e',
     accent: 'rgba(26,35,126,0.2)',
@@ -33,7 +27,7 @@ const SPRINT_PHASES = [
     tasks: ['Stakeholder interviews', 'Workflow mapping', 'Technical spec doc', 'Architecture review'],
   },
   {
-    week: 'Week 3,4',
+    week: 'Week 3-4',
     phase: 'Architecture',
     color: '#7c3aed',
     accent: 'rgba(124,58,237,0.2)',
@@ -42,7 +36,7 @@ const SPRINT_PHASES = [
     tasks: ['Database schema design', 'API contract definition', 'Tech stack selection', 'Infra planning'],
   },
   {
-    week: 'Week 5,10',
+    week: 'Week 5-10',
     phase: 'Build',
     color: '#00bcd4',
     accent: 'rgba(0,188,212,0.2)',
@@ -51,7 +45,7 @@ const SPRINT_PHASES = [
     tasks: ['Sprint 1: Core modules', 'Sprint 2: Integrations', 'Sprint 3: Admin + roles', 'Weekly demos'],
   },
   {
-    week: 'Week 11,12',
+    week: 'Week 11-12',
     phase: 'QA & Deploy',
     color: '#059669',
     accent: 'rgba(5,150,105,0.2)',

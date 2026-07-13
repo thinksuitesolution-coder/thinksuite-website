@@ -11,4 +11,9 @@ backend/uploads/
 
 .vercel
 
-.vercel
+# Raw/unoptimized source media - only the optimized/ subfolders are used by the site
+/public/assets/img/projects images/*.png
+/public/assets/img/projects images/*.mp4
+/public/assets/img/social media posts/post/*.png
+/public/assets/img/social media posts/post/*.jpeg
+/public/assets/img/social media posts/video/*.mp4

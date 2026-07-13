@@ -2,8 +2,17 @@
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Company Timeline | ThinkSuite Intelligence',
-  description: 'Complete timeline of every major AI event, model release, funding round, and industry milestone from 2020 to present.',
+  title: 'AI Industry Timeline: Milestones Since 2020 | ThinkSuite',
+  description: 'A complete timeline of major AI model releases, funding rounds, acquisitions, and milestones from 2020 to the present, tracked by ThinkSuite.',
+  keywords: [
+    'AI industry timeline',
+    'AI history timeline',
+    'AI model release history',
+    'ChatGPT launch timeline',
+    'AI milestones since 2020',
+    'AI company events tracker',
+    'history of AI development',
+  ],
 };
 
 export const revalidate = 3600;
@@ -80,7 +89,7 @@ export default async function TimelinePage() {
         <div className="container">
           <div className="chip" style={{ marginBottom: 16 }}>📅 AI Industry History</div>
           <h1 className="page-title">AI Timeline</h1>
-          <p className="page-desc">Every major AI model release, funding round, acquisition, and breakthrough since 2020, automatically tracked and analyzed.</p>
+          <p className="page-desc">ThinkSuite's AI Timeline tracks every major model release, funding round, acquisition, and breakthrough in the AI industry since 2020.</p>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 20 }}>
             {Object.entries(TYPE_CONFIG).map(([type, cfg]) => (
               <span key={type} className="timeline-legend-chip" style={{ borderColor: cfg.color + '44', color: cfg.color, background: cfg.color + '0d' }}>

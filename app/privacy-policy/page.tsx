@@ -2,9 +2,32 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | ThinkSuite',
-  description: 'Read ThinkSuite\'s privacy policy to understand how we collect, use, and protect your personal information.',
+  title: 'Privacy Policy | ThinkSuite Digital Agency, Gurgaon',
+  description: 'Read ThinkSuite\'s privacy policy to understand how our Gurgaon-based digital agency collects, uses, stores, and protects your personal data and information.',
+  keywords: [
+    'ThinkSuite privacy policy', 'digital agency data privacy India', 'how ThinkSuite uses your data',
+    'website cookies policy India', 'personal information rights India',
+  ],
 }
+
+const privacyFaqs = [
+  {
+    q: 'What personal information does ThinkSuite collect?',
+    a: 'We collect information you provide directly, such as your name, email, phone number, and project details, along with usage data, analytics, and cookies collected through our website.',
+  },
+  {
+    q: 'Does ThinkSuite sell my data to third parties?',
+    a: 'No. We do not sell, trade, or rent your personal information to third parties. We may share data with trusted service providers who assist our operations, and only under confidentiality agreements.',
+  },
+  {
+    q: 'Can I ask ThinkSuite to delete my personal data?',
+    a: 'Yes. You have the right to access, correct, or delete your personal information, and you can opt out of marketing communications at any time by contacting us at info@thinksuite.in.',
+  },
+  {
+    q: 'How does ThinkSuite protect my information?',
+    a: 'We use industry-standard security measures including SSL encryption, secure servers, and regular security audits to protect your data from unauthorized access, disclosure, or destruction.',
+  },
+]
 
 export default function PrivacyPage() {
   return (
@@ -61,6 +84,32 @@ export default function PrivacyPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: privacyFaqs.map((f) => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a },
+              })),
+            }),
+          }}
+        />
+        <div className="container" style={{ maxWidth: 860 }}>
+          <h2 style={{ marginBottom: 24 }}>Frequently Asked Questions</h2>
+          {privacyFaqs.map((faq) => (
+            <div key={faq.q} className="service-card reveal" style={{ padding: '24px 28px', marginBottom: 16 }}>
+              <h3 style={{ fontSize: 17, marginBottom: 10, color: 'var(--white)' }}>{faq.q}</h3>
+              <p style={{ color: 'var(--text2)', lineHeight: 1.85, margin: 0 }}>{faq.a}</p>
+            </div>
+          ))}
         </div>
       </section>
     </>

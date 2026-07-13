@@ -2,9 +2,32 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Terms and Conditions | ThinkSuite',
-  description: 'Read ThinkSuite\'s terms and conditions governing the use of our services and website.',
+  title: 'Terms and Conditions | ThinkSuite Digital Agency, Gurgaon',
+  description: 'Read ThinkSuite\'s terms and conditions governing the use of our website, project agreements, digital agency services, and in-house AI tools.',
+  keywords: [
+    'ThinkSuite terms and conditions', 'digital agency terms of service India', 'project payment terms agency',
+    'intellectual property digital agency', 'ThinkSuite governing law',
+  ],
 }
+
+const termsFaqs = [
+  {
+    q: 'Who owns the work ThinkSuite delivers?',
+    a: 'Upon full payment, clients receive full ownership of custom deliverables created specifically for their project. ThinkSuite retains the right to showcase completed work in our portfolio unless otherwise agreed.',
+  },
+  {
+    q: 'What are the standard payment terms?',
+    a: 'Payment terms are defined in individual project agreements. Generally, projects require a deposit before work begins, with the remaining balance due upon completion, and invoices are due within 14 days of issue.',
+  },
+  {
+    q: 'Is my business information kept confidential?',
+    a: 'Yes. We treat all client information as strictly confidential and will not disclose your business or project details to third parties without your explicit consent.',
+  },
+  {
+    q: 'Which laws govern these terms?',
+    a: 'These Terms are governed by the laws of India, and any disputes are subject to the exclusive jurisdiction of courts in Gurgaon, India.',
+  },
+]
 
 export default function TermsPage() {
   return (
@@ -67,6 +90,32 @@ export default function TermsPage() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: termsFaqs.map((f) => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a },
+              })),
+            }),
+          }}
+        />
+        <div className="container" style={{ maxWidth: 860 }}>
+          <h2 style={{ marginBottom: 24 }}>Frequently Asked Questions</h2>
+          {termsFaqs.map((faq) => (
+            <div key={faq.q} className="service-card reveal" style={{ padding: '24px 28px', marginBottom: 16 }}>
+              <h3 style={{ fontSize: 17, marginBottom: 10, color: 'var(--white)' }}>{faq.q}</h3>
+              <p style={{ color: 'var(--text2)', lineHeight: 1.85, margin: 0 }}>{faq.a}</p>
+            </div>
+          ))}
         </div>
       </section>
     </>

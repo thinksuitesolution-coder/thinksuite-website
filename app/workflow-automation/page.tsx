@@ -2,13 +2,62 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Workflow Automation Services India | ThinkSuite',
-  description: 'Business workflow automation for Indian companies: CRM automation, invoice processing, marketing automation, and data sync across your existing tools and platforms.',
-  keywords: ['workflow automation India', 'business process automation', 'CRM automation India', 'Zapier Make n8n India', 'marketing automation India', 'invoice automation', 'no-code automation India', 'automation agency Gurgaon'],
+  title: 'Workflow Automation Services Agency Gurgaon | ThinkSuite',
+  description: 'Business workflow automation for Indian companies: CRM automation, invoice processing, marketing automation, and data sync across your existing tools.',
+  keywords: [
+    'workflow automation agency Gurgaon',
+    'workflow automation India',
+    'business process automation India',
+    'CRM automation India',
+    'Zapier Make n8n automation India',
+    'marketing automation for small business India',
+    'invoice automation India',
+    'no-code automation agency India',
+    'automate Excel workflows to software',
+    'HR onboarding automation India',
+  ],
 }
+
+const faqData = [
+  {
+    q: 'Which tools do you integrate with for workflow automation?',
+    a: 'We work with 200+ tools including HubSpot, Zoho CRM, Salesforce, Google Workspace, QuickBooks, Tally, WhatsApp Business, Slack, Notion, Airtable, and most platforms that have an API or webhook support.',
+  },
+  {
+    q: 'Do I need technical staff to maintain the automations?',
+    a: 'No. We build automations your team can monitor and manage without developers. We provide full documentation and a training session after launch.',
+  },
+  {
+    q: 'How do you handle errors or failures in automation?',
+    a: 'Every automation includes error handling with instant alerts. If something fails, you get notified right away. We also build fallback paths for critical workflows so business does not stop.',
+  },
+  {
+    q: 'What is the typical ROI on workflow automation?',
+    a: 'Most clients recover their project cost within 2 to 3 months through time saved and error reduction. A common outcome is 15 to 40 hours saved per week per team, though it depends on how many manual processes you currently run.',
+  },
+  {
+    q: 'Can you automate processes that currently live in Excel sheets?',
+    a: 'Yes, absolutely. Moving spreadsheet-based workflows to automated systems is one of the most common projects we handle. We also replace manual reports with live dashboards.',
+  },
+]
 
 export default function WorkflowAutomationPage() {
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqData.map((f) => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: f.a },
+          })),
+        }),
+      }}
+    />
     <ServicePageTerminal
       breadcrumb="AI and Automation"
       breadcrumbHref="/ai-automation"
@@ -18,10 +67,10 @@ export default function WorkflowAutomationPage() {
       tagline="Every business has repetitive work eating into productive hours. Data entry, follow-up emails, invoice generation, lead distribution. We map your existing processes and automate them end to end."
       animationType="flow"
       stats={[
-        { number: '40hrs', label: 'Saved per Week' },
-        { number: '100+', label: 'Workflows Built' },
+        { number: 'Hours', label: 'Saved Every Week' },
         { number: '200+', label: 'Tools We Integrate' },
-        { number: '0', label: 'Manual Errors' },
+        { number: 'Built-In', label: 'Error Alerts' },
+        { number: 'In-House', label: 'Gurgaon Team' },
       ]}
       highlights={[
         {
@@ -111,28 +160,7 @@ export default function WorkflowAutomationPage() {
           desc: 'Run the automation with real data, validate edge cases, and hand over with full documentation and a live monitoring setup.',
         },
       ]}
-      faqs={[
-        {
-          q: 'Which tools do you integrate with?',
-          a: 'We work with 200+ tools including HubSpot, Zoho CRM, Salesforce, Google Workspace, QuickBooks, Tally, WhatsApp Business, Slack, Notion, Airtable, and most platforms that have an API or webhook support.',
-        },
-        {
-          q: 'Do I need technical staff to maintain the automations?',
-          a: 'No. We build automations your team can monitor and manage without developers. We provide full documentation and a training session after launch.',
-        },
-        {
-          q: 'How do you handle errors or failures in automation?',
-          a: 'Every automation includes error handling with instant alerts. If something fails, you get notified right away. We also build fallback paths for critical workflows so business does not stop.',
-        },
-        {
-          q: 'What is the typical ROI on workflow automation?',
-          a: 'Most clients recover their project cost within 2 to 3 months through time saved and error reduction. A common outcome is 15 to 40 hours saved per week per team.',
-        },
-        {
-          q: 'Can you automate processes that currently live in Excel sheets?',
-          a: 'Absolutely. Moving spreadsheet-based workflows to automated systems is one of the most common projects we handle. We also replace manual reports with live dashboards.',
-        },
-      ]}
+      faqs={faqData}
       sidebarLinks={[
         { label: 'Chatbot Solutions', href: '/chatbot-solutions' },
         { label: 'AI Tools Development', href: '/ai-tools-development' },
@@ -143,5 +171,6 @@ export default function WorkflowAutomationPage() {
       ctaTitleHighlight="Business Operations"
       ctaDesc="Hours spent on manual tasks add up to weeks lost every quarter. Let us map your processes and automate what does not need human hands."
     />
+    </>
   )
 }

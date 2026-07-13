@@ -2,13 +2,51 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Product Design Services India | ThinkSuite',
-  description: 'End-to-end product design in India: discovery, wireframing, Figma prototyping, design systems, and developer handoff for web and mobile products.',
-  keywords: ['product design India', 'UX product design', 'Figma prototyping India', 'design system India', 'SaaS product design', 'wireframing India', 'mobile product design', 'product designer Gurgaon'],
+  title: 'Product Design Services Company in Gurgaon | ThinkSuite',
+  description: 'End-to-end product design in Gurgaon: discovery, wireframing, Figma prototyping, design systems, and developer handoff for web and mobile products, in-house.',
+  keywords: ['product design company Gurgaon', 'UX product design India', 'Figma prototyping agency India', 'design system development India', 'SaaS product design company', '0 to 1 product design', 'mobile product design India', 'product designer Gurgaon'],
 }
+
+const FAQS = [
+  {
+    q: 'What is the difference between Product Design and UI/UX Design?',
+    a: 'UI/UX focuses on screens and interactions. Product Design is broader, it includes strategy, roadmap definition, business model alignment, and end-to-end ownership of the product experience from concept to launch.',
+  },
+  {
+    q: 'Do you help with 0-to-1 product development?',
+    a: 'Yes, this is our speciality. We work with founders and teams to go from an idea to a validated, investor-ready prototype or MVP. We cover discovery, design, and design-to-dev handoff.',
+  },
+  {
+    q: 'How long does a product design engagement take?',
+    a: 'Discovery and definition typically takes 2 to 3 weeks. Full design work, including wireframes, high-fidelity screens, and a design system, takes 6 to 12 weeks depending on scope and number of user roles.',
+  },
+  {
+    q: 'What deliverables do we get?',
+    a: 'You receive Figma files (editable), a component library, interactive prototypes, user flow diagrams, and a handoff package with all specs and assets ready for developers.',
+  },
+  {
+    q: 'Can you work alongside our in-house team?',
+    a: 'Absolutely. We embed as design partners, collaborating in your Figma workspace, attending sprints, and syncing with your product managers and engineers throughout the engagement.',
+  },
+]
 
 export default function ProductDesignPage() {
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((faq) => ({
+              '@type': 'Question',
+              name: faq.q,
+              acceptedAnswer: { '@type': 'Answer', text: faq.a },
+            })),
+          }),
+        }}
+      />
     <ServicePageDeviceShowcase
       breadcrumb="Branding & Design"
       breadcrumbHref="/branding-design"
@@ -73,28 +111,7 @@ export default function ProductDesignPage() {
           desc: 'Developer handoff with full specs, assets, and ongoing design support through implementation.',
         },
       ]}
-      faqs={[
-        {
-          q: 'What is the difference between Product Design and UI/UX Design?',
-          a: 'UI/UX focuses on screens and interactions. Product Design is broader, it includes strategy, roadmap definition, business model alignment, and end-to-end ownership of the product experience from concept to launch.',
-        },
-        {
-          q: 'Do you help with 0-to-1 product development?',
-          a: 'Yes, this is our speciality. We work with founders and teams to go from an idea to a validated, investor-ready prototype or MVP. We cover discovery, design, and design-to-dev handoff.',
-        },
-        {
-          q: 'How long does a product design engagement take?',
-          a: 'Discovery and definition typically takes 2,3 weeks. Full design (wireframes + high-fidelity + design system) takes 6,12 weeks depending on scope and number of user roles.',
-        },
-        {
-          q: 'What deliverables do we get?',
-          a: 'You receive Figma files (editable), a component library, interactive prototypes, user flow diagrams, and a handoff package with all specs and assets ready for developers.',
-        },
-        {
-          q: 'Can you work alongside our in-house team?',
-          a: 'Absolutely. We embed as design partners, collaborating in your Figma workspace, attending sprints, and syncing with your product managers and engineers throughout the engagement.',
-        },
-      ]}
+      faqs={FAQS}
       sidebarLinks={[
         { label: 'UI/UX Design', href: '/ui-ux-design' },
         { label: 'Brand Identity', href: '/brand-identity' },
@@ -143,5 +160,6 @@ export default function ProductDesignPage() {
       ctaTitleHighlight="People Love"
       ctaDesc="From MVP to enterprise product, our design team creates products that users adopt, recommend, and keep coming back to."
     />
+    </>
   )
 }

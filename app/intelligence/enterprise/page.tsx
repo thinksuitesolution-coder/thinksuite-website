@@ -2,8 +2,18 @@
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Enterprise AI Intelligence | ThinkSuite',
-  description: 'Private AI monitoring, competitor intelligence, and custom reports for enterprise teams. Real-time alerts, white-label reports, and API access.',
+  title: 'Enterprise AI Intelligence Monitoring | ThinkSuite',
+  description: 'Private AI monitoring, real time alerts, white label reports, and API access for enterprise teams tracking the AI industry, built by ThinkSuite.',
+  keywords: [
+    'enterprise AI monitoring',
+    'competitor AI intelligence platform',
+    'AI industry alerts for teams',
+    'white label AI reports',
+    'AI intelligence API access',
+    'private AI news monitoring',
+    'AI market intelligence for enterprise',
+    'custom AI competitor tracking',
+  ],
 };
 
 const PLANS = [
@@ -128,7 +138,7 @@ export default function EnterprisePage() {
           <div className="chip" style={{ marginBottom: 16 }}>🏢 Enterprise Intelligence</div>
           <h1 className="page-title" style={{ color: '#fff' }}>AI Intelligence for Teams</h1>
           <p className="page-desc" style={{ color: 'rgba(255,255,255,0.75)' }}>
-            Private monitoring, custom reports, competitor intelligence, and API access, built for companies that need to stay ahead of AI.
+            ThinkSuite Enterprise AI Intelligence gives teams private competitor monitoring, custom branded reports, real time alerts, and API access to stay ahead of the AI industry.
           </p>
           <div style={{ display: 'flex', gap: 12, marginTop: 24 }}>
             <Link href="#pricing" className="btn-primary">View Pricing</Link>

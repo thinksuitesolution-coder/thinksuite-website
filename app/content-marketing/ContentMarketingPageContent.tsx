@@ -6,20 +6,21 @@ import CTASection from '@/components/sections/CTASection'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPS = [
-  { icon: 'fa-pen-nib',     metric: '3x',         title: 'SEO Blog Content',               desc: 'Long-form articles targeting high-volume, high-intent keywords. Properly researched, well-structured, and optimized for ranking without ever sounding robotic.' },
+  { icon: 'fa-pen-nib',     metric: 'Long-Form',  title: 'SEO Blog Content',               desc: 'Long-form articles targeting high-volume, high-intent keywords. Properly researched, well-structured, and optimized for ranking without ever sounding robotic.' },
   { icon: 'fa-video',       metric: 'Scripts',     title: 'Video & Reel Scripts',           desc: 'Short-form and long-form video scripts for YouTube, Instagram Reels, and LinkedIn. Ideas, structure, and hooks that keep viewers watching all the way through.' },
-  { icon: 'fa-file-lines',  metric: 'Trust',       title: 'Case Studies',                   desc: 'Documented client success stories with real numbers. Before-and-after structure that shows prospects exactly how you solve their specific problem.' },
+  { icon: 'fa-file-lines',  metric: 'Trust',       title: 'Case Studies',                   desc: 'Documented client success stories with real detail. Before-and-after structure that shows prospects exactly how you solve their specific problem.' },
   { icon: 'fa-file-pdf',    metric: 'Authority',   title: 'Whitepapers & Reports',          desc: 'In-depth reports that establish your brand as the authority in your field. Used for lead generation, PR coverage, and sales enablement collateral.' },
-  { icon: 'fa-envelope',    metric: '42%',         title: 'Email Newsletters',              desc: 'Weekly or monthly newsletters that keep your audience warm and coming back. Educational content that converts passive subscribers into active buyers over time.' },
+  { icon: 'fa-envelope',    metric: 'Nurture',     title: 'Email Newsletters',              desc: 'Weekly or monthly newsletters that keep your audience warm and coming back. Educational content that converts passive subscribers into active buyers over time.' },
   { icon: 'fa-laptop',      metric: 'Conversions', title: 'Website & Landing Page Copy',   desc: 'Persuasive, benefit-focused copy for homepages, service pages, and landing pages. Written to convert visitors who are already interested in what you offer.' },
 ]
 
 const FAQS = [
-  { q: 'How many pieces of content do you produce per month?', a: 'Our standard content package includes 4 to 8 SEO articles per month. We scale up based on budget and goals. Some clients run 12 to 16 articles per month plus newsletter and social distribution.' },
-  { q: 'Do you write the content yourselves or use AI tools?', a: 'Our content is written by human writers with domain expertise in your industry. We use AI tools for research assistance and outline generation but every final piece is human-written, fact-checked, and edited before delivery.' },
-  { q: 'How long before content starts ranking on Google?', a: 'New content can rank within 4 to 12 weeks for less competitive keywords. For competitive terms, it takes 4 to 8 months of consistent publishing and link building. We focus on quick wins first while building long-term authority.' },
-  { q: 'Do you handle publishing on our website or do we do it?', a: 'Either way works. We can publish directly to your CMS (WordPress, Webflow, etc.) or provide ready-to-publish content files for your team to upload. Most clients prefer we handle it end-to-end.' },
-  { q: 'How do you measure content marketing success?', a: 'We track organic traffic, keyword rankings, time on page, leads from content, and revenue attribution. Monthly reporting shows exactly how each piece is performing and what we are doing to improve it.' },
+  { q: 'How many pieces of content do you produce per month?', a: 'Our standard content package includes 4 to 8 SEO articles per month. We scale this up based on budget and goals, and some clients run 12 to 16 articles a month alongside newsletter and social distribution.' },
+  { q: 'Do you write the content yourselves or use AI tools?', a: 'Our content is written by human writers with real domain expertise in your industry, working out of our Gurgaon office. We use AI tools for research assistance and outline generation, but every final piece is human written, fact checked, and edited before it reaches you.' },
+  { q: 'How long before content starts ranking on Google?', a: 'New content can start ranking within 4 to 12 weeks for less competitive keywords. Competitive terms usually need several months of consistent publishing and link building before they move up meaningfully. We focus on realistic quick wins first while building the long-term authority that compounds later.' },
+  { q: 'Do you handle publishing on our website or do we do it?', a: 'Either way works for us. We can publish directly to your CMS, whether that is WordPress, Webflow, or something custom, or hand over ready-to-publish files for your own team to upload. Most clients end up preferring that we handle it end to end.' },
+  { q: 'How do you measure content marketing success?', a: 'We track organic traffic, keyword rankings, time on page, leads generated from content, and where possible, revenue attribution. Monthly reporting shows exactly how each piece is performing and what changes we are making to improve it.' },
+  { q: 'Is content marketing worth it for a small business in India?', a: 'Yes, especially because content keeps working long after you stop paying for a single ad click. A well-ranked blog post or guide can bring in inquiries for years, which makes it one of the few marketing investments that compounds instead of resetting to zero every month.' },
 ]
 
 const FUNNEL_STAGES = [
@@ -32,8 +33,8 @@ const FUNNEL_STAGES = [
     border: 'rgba(59,130,246,0.3)',
     icon: 'fa-eye',
     types: ['SEO Blog Articles', 'YouTube Videos', 'Instagram Reels', 'Infographics'],
-    metric: '120%',
-    metricLabel: 'more organic traffic',
+    metric: 'Grows',
+    metricLabel: 'organic search visibility',
   },
   {
     stage: '02',
@@ -44,8 +45,8 @@ const FUNNEL_STAGES = [
     border: 'rgba(139,92,246,0.3)',
     icon: 'fa-book-open',
     types: ['Case Studies', 'How-To Guides', 'Email Newsletters', 'Comparison Pages'],
-    metric: '65%',
-    metricLabel: 'of leads touch content',
+    metric: 'Builds',
+    metricLabel: 'trust before the sales call',
   },
   {
     stage: '03',
@@ -56,8 +57,8 @@ const FUNNEL_STAGES = [
     border: 'rgba(245,158,11,0.3)',
     icon: 'fa-scale-balanced',
     types: ['Whitepapers', 'Testimonials', 'ROI Calculators', 'Landing Pages'],
-    metric: '3x',
-    metricLabel: 'higher close rate',
+    metric: 'Wins',
+    metricLabel: 'the final comparison',
   },
   {
     stage: '04',
@@ -68,8 +69,8 @@ const FUNNEL_STAGES = [
     border: 'rgba(16,185,129,0.3)',
     icon: 'fa-circle-check',
     types: ['Email Sequences', 'Onboarding Docs', 'Proposals', 'Follow-up Content'],
-    metric: '42%',
-    metricLabel: 'email open rate',
+    metric: 'Nurtures',
+    metricLabel: 'new customers post-purchase',
   },
 ]
 
@@ -151,10 +152,10 @@ function ContentFunnelVisual() {
               <span style={{ background: 'rgba(0,188,212,0.08)', border: '1px solid rgba(0,188,212,0.2)', borderRadius: 6, padding: '3px 10px', fontSize: 10.5, fontWeight: 700, color: '#0284c7', fontFamily: 'var(--font-m)' }}>Content Strategy</span>
             </div>
             <h3 style={{ fontSize: 20, fontWeight: 800, color: '#0f172a', lineHeight: 1.3, marginBottom: 10, fontFamily: 'var(--font-h)' }}>
-              How to Grow Organic Traffic by 120% in 6 Months (India Case Study)
+              How to Grow Organic Traffic Without Spending on Ads (India Playbook)
             </h3>
             <p style={{ fontSize: 13, color: '#64748b', lineHeight: 1.7, marginBottom: 16 }}>
-              Most Indian businesses treat content as an afterthought. Here is the exact content strategy we used to take a B2B SaaS company from 800 to 18,000 monthly visitors without spending a rupee on paid ads...
+              Most Indian businesses treat content as an afterthought. Here is the exact content strategy we use to help B2B SaaS companies turn steady organic traffic into a real pipeline of inbound leads...
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
@@ -166,7 +167,7 @@ function ContentFunnelVisual() {
               <span style={{ fontSize: 11, color: '#94a3b8' }}>·</span>
               <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                 <i className="fa-brands fa-google" style={{ fontSize: 10, color: '#4285F4' }} />
-                <span style={{ fontSize: 11, color: '#059669', fontWeight: 600 }}>#1 on Google</span>
+                <span style={{ fontSize: 11, color: '#059669', fontWeight: 600 }}>Ranking on Google</span>
               </div>
             </div>
           </div>
@@ -193,6 +194,20 @@ export default function ContentMarketingPageContent() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((f) => ({
+              '@type': 'Question',
+              name: f.q,
+              acceptedAnswer: { '@type': 'Answer', text: f.a },
+            })),
+          }),
+        }}
+      />
       <section className="page-hero">
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="breadcrumb mb-16">
@@ -213,7 +228,7 @@ export default function ContentMarketingPageContent() {
           </div>
           <h1 className="mt-8">Content <span className="grad-text">Marketing</span></h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            Content is how your audience finds you when they are not yet ready to buy. Good content answers real questions, builds trust, and makes your brand the obvious choice when they finally are.
+            Content is how your audience finds you long before they are ready to buy. ThinkSuite is a Gurgaon-based content marketing agency with an in-house team of writers and strategists who research, write, and edit every blog, script, case study, and newsletter we publish, so your brand answers real questions and earns trust before the sales conversation even starts.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">Get Free Content Audit <i className="fa-solid fa-arrow-right" /></Link>
@@ -224,10 +239,10 @@ export default function ContentMarketingPageContent() {
 
       <div className={s.statsRow}>
         {[
-          { number: '3.2x', label: 'More Organic Traffic'   },
-          { number: '65%',  label: 'Leads Touch Content'    },
-          { number: '6mo',  label: 'To Ranking Momentum'    },
-          { number: 'SEO',  label: 'Every Piece Optimized'  },
+          { number: 'In-House', label: 'Writers & Strategists'   },
+          { number: 'Gurgaon',  label: 'Based, Working Pan-India' },
+          { number: 'Human',    label: 'Written, Never Robotic'  },
+          { number: 'SEO',      label: 'Every Piece Optimized'   },
         ].map((stat, i) => (
           <div key={i} className={s.statItem}>
             <span className={s.statNum}>{stat.number}</span>

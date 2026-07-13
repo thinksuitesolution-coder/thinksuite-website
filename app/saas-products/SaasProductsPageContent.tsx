@@ -23,13 +23,7 @@ const INDUSTRIES = [
   { icon: 'fa-landmark',      name: 'Finance',             use: 'Expense management SaaS, loan origination platforms, portfolio management, and compliance reporting.' },
 ]
 
-const FAQS = [
-  { q: 'How long does it take to build a SaaS product?',          a: 'A focused MVP with core features takes 6,10 weeks. A full-featured product with billing, roles, integrations, and admin dashboard typically takes 12,20 weeks. We share a detailed milestone plan after discovery.' },
-  { q: 'What tech stack do you use for SaaS development?',        a: 'We primarily build with Next.js for the frontend, Node.js or Python for the backend, PostgreSQL for data, and AWS or Vercel for infrastructure. We adapt to your existing stack if needed.' },
-  { q: 'Can you help with the pricing and monetization model?',   a: 'Yes. We have built SaaS products across subscription, usage-based, freemium, and lifetime deal models. We advise on what works for your market and implement the billing infrastructure accordingly.' },
-  { q: 'What happens after the MVP launches?',                    a: 'We offer ongoing sprint-based development for new features, performance optimization, and integrations. We also offer managed hosting and SLA-backed support so you\'re never alone after launch.' },
-  { q: 'Who owns the source code?',                              a: 'You own 100% of the source code, IP, and infrastructure. Everything we build is transferred upon project completion. We can also hand over to your internal developers at any stage.' },
-]
+import { FAQS } from './faqs'
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const MRR_DATA = [12, 18, 24, 31, 38, 42, 55, 63, 71, 82, 91, 100]
@@ -190,7 +184,7 @@ function SaasDashboardVisual() {
             display: 'flex', alignItems: 'center', gap: 10,
           }}>
             <i className="fa-solid fa-rocket" style={{ fontSize: 13 }} />
-            MVP in 6,10 Weeks · 99.9% Uptime · Scale-Ready Architecture
+            MVP in 6 to 10 Weeks · 99.9% Uptime · Scale-Ready Architecture
           </div>
         </div>
       </div>

@@ -2,9 +2,21 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Thinksuite: Targeted Lead Lists by Occupation and Location | ThinkSuite',
-  description: 'Thinksuite provides hyper-targeted business lead lists filtered by occupation, location, and industry. Get verified contacts ready for outreach.',
-  alternates: { canonical: 'https://thinksuite.in/ecosystem/Thinksuite' },
+  title: 'MyThinkAI: Targeted Lead Lists by Occupation & City',
+  description: 'MyThinkAI delivers verified, ready-to-use lead lists filtered by occupation, city, and industry, so your outreach team can start calling real prospects today.',
+  keywords: [
+    'MyThinkAI lead generation',
+    'targeted lead lists',
+    'business leads by occupation',
+    'business leads by city',
+    'verified contact lists India',
+    'B2B lead list provider',
+    'lead list by industry',
+    'CSV lead export',
+    'local business lead generation',
+    'cold outreach contact list',
+  ],
+  alternates: { canonical: 'https://thinksuite.in/ecosystem/mythinkai' },
 }
 
 const COLOR = '#d97706'
@@ -21,10 +33,10 @@ const features = [
 ]
 
 const stats = [
-  { num: '10K+', label: 'Leads Available' },
-  { num: '50+', label: 'Filter Options' },
-  { num: '95%', label: 'Data Accuracy' },
-  { num: 'Daily', label: 'Updated' },
+  { num: 'Occupation', label: 'Filter by Role' },
+  { num: 'City', label: 'Filter by Location' },
+  { num: 'CSV', label: 'Instant Export' },
+  { num: 'Daily', label: 'Data Refresh' },
 ]
 
 const steps = [
@@ -33,9 +45,39 @@ const steps = [
   { n: '03', title: 'Download & Outreach', desc: 'Get your list in CSV format and start calling, emailing, or WhatsApp campaigns immediately.' },
 ]
 
-export default function ThinksuitePage() {
+const faqs = [
+  {
+    q: 'What is MyThinkAI used for?',
+    a: 'MyThinkAI is used to build targeted business lead lists. Instead of buying a generic database, you tell MyThinkAI the occupation, city, and industry of the customer you want to reach, and it returns a verified, exportable contact list ready for outreach.',
+  },
+  {
+    q: 'Is MyThinkAI only for large businesses?',
+    a: 'No. MyThinkAI is built for any business that needs to reach a specific type of customer, from a single sales rep doing local outreach to a marketing team running a multi-city campaign. Lists can be filtered as narrowly as one profession in one city.',
+  },
+  {
+    q: 'What information does a MyThinkAI lead list include?',
+    a: 'Each verified contact includes name, phone number, email, and business address where available. Lists can be exported instantly in CSV or Excel format so they drop straight into a CRM or dialer.',
+  },
+  {
+    q: 'How is MyThinkAI different from a generic bought contact list?',
+    a: 'A generic list is usually broad and unfiltered. MyThinkAI is built around occupation, location, and industry filters from the start, so every contact in the list actually matches the customer profile a business is trying to reach.',
+  },
+]
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+}
+
+export default function MyThinkAIPage() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <section style={{
         background: 'linear-gradient(135deg, #07091a 0%, #1a1000 50%, #120b00 100%)',
         padding: '130px 0 80px', textAlign: 'center', position: 'relative', overflow: 'hidden',
@@ -50,10 +92,10 @@ export default function ThinksuitePage() {
             <i className="fa-solid fa-crosshairs" style={{ color: COLOR, fontSize: 32 }} />
           </div>
           <span className="label" style={{ marginBottom: 16, display: 'inline-block', color: COLOR }}>THINKSUITE ECOSYSTEM</span>
-          <h1 style={{ fontSize: 'clamp(36px,5vw,64px)', fontWeight: 900, color: '#fff', marginBottom: 14, lineHeight: 1.1 }}>Thinksuite</h1>
+          <h1 style={{ fontSize: 'clamp(36px,5vw,64px)', fontWeight: 900, color: '#fff', marginBottom: 14, lineHeight: 1.1 }}>MyThinkAI</h1>
           <p style={{ fontSize: 20, fontWeight: 600, color: COLOR, marginBottom: 20 }}>Targeted Lead Lists by Occupation &amp; Location</p>
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.65)', maxWidth: 580, margin: '0 auto 40px', lineHeight: 1.85 }}>
-            Tell us what kind of customers you need, their profession, city, and industry, and we deliver a verified, ready-to-use lead list so you can start your outreach immediately.
+            Tell us what kind of customers you need: their profession, city, and industry, and MyThinkAI delivers a verified, ready-to-use lead list so you can start your outreach the same day.
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/contact" className="btn btn-primary btn-lg">Get Your Lead List <i className="fa-solid fa-arrow-right" /></Link>
@@ -125,6 +167,26 @@ export default function ThinksuitePage() {
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/contact" className="btn btn-primary btn-lg">Get Your Lead List <i className="fa-solid fa-arrow-right" /></Link>
             <Link href="/ecosystem" className="btn btn-outline btn-lg">Explore All Products</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ background: 'var(--bg)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <span className="label" style={{ marginBottom: 12, display: 'inline-block' }}>FAQ</span>
+            <h2>Frequently Asked <span className="grad-text">Questions</span></h2>
+          </div>
+          <div style={{ maxWidth: 780, margin: '0 auto' }}>
+            {faqs.map((faq, i) => (
+              <div key={i} style={{ background: 'var(--surface)', border: `1px solid ${BORDER}`, borderRadius: 16, padding: '24px 28px', marginBottom: 14 }}>
+                <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 10, color: 'var(--white)', lineHeight: 1.45, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                  <span style={{ color: COLOR, fontSize: 13, fontFamily: 'var(--font-m)', marginTop: 2, flexShrink: 0 }}>Q.</span>
+                  {faq.q}
+                </h3>
+                <p style={{ fontSize: 13.5, color: 'var(--text2)', lineHeight: 1.7, margin: 0, paddingLeft: 26 }}>{faq.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

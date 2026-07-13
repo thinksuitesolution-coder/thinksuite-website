@@ -2,8 +2,22 @@
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Intelligence Dashboard | ThinkSuite',
-  description: 'Real-time AI industry intelligence: competitor analysis, trend predictions, startup opportunities, funding tracker, and market insights.',
+  title: 'AI Intelligence Hub: Live AI News & Trends | ThinkSuite',
+  description: 'Track AI industry news, funding rounds, model launches, and market trends in real time on ThinkSuite AI Intelligence Hub, free to use, no login required.',
+  keywords: [
+    'AI news intelligence platform',
+    'AI industry trend tracker',
+    'AI funding tracker',
+    'AI knowledge graph',
+    'AI company intelligence dashboard',
+    'AI market intelligence India',
+    'real time AI news feed',
+    'AI leaders influence tracker',
+    'AI research paper tracker',
+    'AI trend predictions tool',
+    'competitor AI monitoring',
+    'AI industry timeline',
+  ],
   alternates: { canonical: 'https://thinksuite.in/intelligence' },
 };
 
@@ -25,6 +39,29 @@ async function getDashboardData() {
     return { articles: [], trends: null };
   }
 }
+
+const INTEL_FAQS = [
+  {
+    q: 'What is the ThinkSuite AI Intelligence Hub?',
+    a: 'The ThinkSuite AI Intelligence Hub is a free, real time command center that tracks AI industry news, funding rounds, model releases, research papers, and market trends across major AI companies including OpenAI, Anthropic, Google, Meta, Microsoft, NVIDIA, xAI, and Mistral AI.',
+  },
+  {
+    q: 'Is the AI news feed free to use?',
+    a: 'Yes. Every module in the Intelligence Hub, including the news feed, trend predictions, funding tracker, and knowledge graph, is free to explore and does not require a login.',
+  },
+  {
+    q: 'How often is the intelligence data updated?',
+    a: 'The dashboard refreshes automatically about every 10 minutes, pulling from 50+ monitored sources including RSS feeds, GitHub, ArXiv, and major news outlets.',
+  },
+  {
+    q: 'What AI companies does ThinkSuite track?',
+    a: 'ThinkSuite tracks activity from OpenAI, Anthropic, Google DeepMind, Meta AI, Microsoft, NVIDIA, xAI, and Mistral AI, along with emerging startups covered in the funding tracker and news feed.',
+  },
+  {
+    q: 'Can I generate a custom AI industry report?',
+    a: 'Yes. The Report Generator module lets you create a one click, analyst style AI industry report for daily, weekly, monthly, or quarterly periods and download it in a PDF ready format.',
+  },
+];
 
 const AI_COMPANIES = [
   { name: 'OpenAI', slug: 'openai', color: '#10a37f', emoji: '🟢' },
@@ -83,7 +120,7 @@ export default async function IntelligenceDashboard() {
             <div>
               <div className="intel-live-badge"><span className="live-dot" />Live Intelligence Feed</div>
               <h1 className="intel-title">AI Intelligence<br /><span className="gradient-text">Command Center</span></h1>
-              <p className="intel-desc">Monitor every major AI move globally, model releases, funding, research, competitive shifts, and market opportunities in real time.</p>
+              <p className="intel-desc">The ThinkSuite AI Intelligence Hub tracks every major move in the AI industry, model releases, funding rounds, research breakthroughs, and competitive shifts, updated automatically in real time.</p>
             </div>
             <div className="intel-stats-panel">
               <div className="intel-stat-card">
@@ -391,6 +428,47 @@ export default async function IntelligenceDashboard() {
                 <p className="intel-module-desc">{m.desc}</p>
                 <span className="intel-module-cta">Explore →</span>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section className="section">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: INTEL_FAQS.map(f => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a },
+              })),
+            }),
+          }}
+        />
+        <div className="container">
+          <div className="title-block center reveal">
+            <span className="label">FAQ</span>
+            <h2 style={{ marginTop: 12 }}>Frequently Asked Questions</h2>
+          </div>
+          <div style={{ maxWidth: 820, margin: '0 auto' }}>
+            {INTEL_FAQS.map((faq, i) => (
+              <div
+                key={i}
+                style={{
+                  background: 'var(--surface)',
+                  border: '1px solid var(--border)',
+                  borderRadius: 16,
+                  padding: '28px 32px',
+                  marginBottom: 14,
+                }}
+              >
+                <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 12, lineHeight: 1.45 }}>{faq.q}</h3>
+                <p style={{ fontSize: 14, color: 'var(--text2)', lineHeight: 1.85, margin: 0 }}>{faq.a}</p>
+              </div>
             ))}
           </div>
         </div>

@@ -6,20 +6,21 @@ import CTASection from '@/components/sections/CTASection'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPS = [
-  { icon: 'fa-rectangle-ad',       metric: '500+ sites',     title: 'Billboard and Hoarding Campaigns', desc: 'Strategic site selection, negotiation, design brief, print coordination, and live monitoring. We manage the full campaign lifecycle from brief to display.' },
-  { icon: 'fa-bus',                metric: '50k+ vehicles',  title: 'Transit and Mobile Advertising',   desc: 'Bus wraps, auto-rickshaw branding, metro panels, and cab advertising that moves with your audience through the city throughout the day.' },
+  { icon: 'fa-rectangle-ad',       metric: 'Full-Service',   title: 'Billboard and Hoarding Campaigns', desc: 'Strategic site selection, negotiation, design brief, print coordination, and live monitoring. We manage the full campaign lifecycle from brief to display.' },
+  { icon: 'fa-bus',                metric: 'City-Wide',      title: 'Transit and Mobile Advertising',   desc: 'Bus wraps, auto-rickshaw branding, metro panels, and cab advertising that moves with your audience through the city throughout the day.' },
   { icon: 'fa-map-location-dot',   metric: 'Data-backed',    title: 'Location Strategy and GeoPlanning', desc: 'Data-driven site selection using footfall analytics, competitor proximity, catchment area demographics, and traffic flow mapping for maximum impact per rupee.' },
   { icon: 'fa-lightbulb',          metric: 'Dynamic updates', title: 'Digital Out-of-Home (DOOH)',       desc: 'LED screen campaigns with time-of-day scheduling, weather-triggered creatives, and real-time campaign changes without costly reprints.' },
-  { icon: 'fa-palette',            metric: '3-second test',  title: 'OOH Creative and Design',          desc: 'Billboard-optimized creative with 3-second readability testing. We design for distance, speed, and ambient light so your message lands every time.' },
+  { icon: 'fa-palette',            metric: 'Readability',    title: 'OOH Creative and Design',          desc: 'Billboard-optimized creative built around the three-second glance a driver actually gets. We design for distance, speed, and ambient light so your message lands every time.' },
   { icon: 'fa-chart-bar',          metric: 'Attribution',    title: 'Campaign Measurement',             desc: 'Mobile foot traffic analysis, brand lift surveys, QR code scan tracking, and correlation with online search volume spikes to quantify outdoor campaign impact.' },
 ]
 
 const FAQS = [
-  { q: 'Which cities do you operate in?', a: 'We currently manage outdoor campaigns across 15+ cities including Mumbai, Delhi, Bangalore, Hyderabad, Pune, Chennai, Ahmedabad, and Jaipur. For tier-2 cities, we work with our vendor network to source and manage sites.' },
-  { q: 'What is the minimum budget for an outdoor campaign?', a: 'A meaningful outdoor campaign typically starts at Rs 2 to 3 lakh for a single city over one month. This covers 3 to 5 premium sites, creative, and printing. Smaller budgets are possible with transit advertising or digital OOH formats.' },
-  { q: 'How long does it take to go live?', a: 'From final brief to hoarding going up is typically 10 to 14 days. This includes site confirmation, creative finalization, printing, and mounting. Rush timelines of 7 days are possible with a surcharge.' },
-  { q: 'Can you combine outdoor with digital campaigns?', a: 'Yes, and we strongly recommend it. Outdoor builds awareness at scale while digital retargets people who have been exposed. We run integrated OOH plus digital campaigns that improve conversion rates significantly.' },
+  { q: 'Which cities do you operate in?', a: 'We manage outdoor campaigns across major Indian cities including Mumbai, Delhi NCR, Bangalore, Hyderabad, Pune, and Chennai. For smaller cities, we work with our vendor network to source and manage sites on your behalf.' },
+  { q: 'What is the minimum budget for an outdoor campaign?', a: 'A meaningful outdoor campaign typically starts at around Rs 2 to 3 lakh for a single city over one month. This usually covers a handful of premium sites, creative, and printing. Smaller budgets are possible with transit advertising or digital OOH formats instead of large hoardings.' },
+  { q: 'How long does it take to go live?', a: 'From final brief to the hoarding going up is typically 10 to 14 days. This includes site confirmation, creative finalization, printing, and mounting. Rush timelines closer to a week are possible with a surcharge when the site is already available.' },
+  { q: 'Can you combine outdoor with digital campaigns?', a: 'Yes, and we strongly recommend it. Outdoor builds awareness at scale, while digital retargets the people who have already seen your hoarding but have not yet acted. Running integrated OOH plus digital campaigns together consistently outperforms running either alone.' },
   { q: 'How do you measure the impact of outdoor advertising?', a: 'We use a combination of mobile footfall data around site locations, brand lift surveys, QR code or landing page tracking on the creative, and monitoring spikes in branded search volume during the campaign period.' },
+  { q: 'What makes outdoor advertising effective in India?', a: 'Outdoor advertising works because it cannot be skipped, muted, or scrolled past, a billboard on a busy junction reaches everyone who passes it, day after day. It also carries a sense of scale and permanence that builds brand trust in a way a phone ad rarely does, especially in markets where word of mouth still drives purchase decisions.' },
 ]
 
 const FORMATS = [
@@ -27,13 +28,13 @@ const FORMATS = [
     icon: 'fa-rectangle-ad', name: 'Billboards & Hoardings', size: '20×10 ft to 40×20 ft',
     color: '#0284c7', bgColor: 'rgba(2,132,199,0.12)', borderColor: 'rgba(2,132,199,0.3)',
     placement: 'Arterial roads, highways, junctions', advantage: 'Maximum visibility, brand stature',
-    stat: '65% brand recall', formats: ['Flex Hoardings', 'Backlit Panels', 'Gantry Boards'],
+    stat: 'High Recall', formats: ['Flex Hoardings', 'Backlit Panels', 'Gantry Boards'],
   },
   {
     icon: 'fa-bus', name: 'Transit & Mobile OOH', size: 'Bus / Auto / Metro / Cab',
     color: '#059669', bgColor: 'rgba(5,150,105,0.12)', borderColor: 'rgba(5,150,105,0.3)',
     placement: 'Moving through city routes all day', advantage: 'City-wide mobile coverage',
-    stat: '50k+ vehicles', formats: ['Bus Wraps', 'Auto Branding', 'Cab Advertising'],
+    stat: 'City-Wide', formats: ['Bus Wraps', 'Auto Branding', 'Cab Advertising'],
   },
   {
     icon: 'fa-display', name: 'Digital OOH (DOOH)', size: 'LED screens, 10×6 ft+',
@@ -45,17 +46,17 @@ const FORMATS = [
     icon: 'fa-train-subway', name: 'Metro & Station Ads', size: 'Platform panels, concourses',
     color: '#d97706', bgColor: 'rgba(217,119,6,0.12)', borderColor: 'rgba(217,119,6,0.3)',
     placement: 'Platform, concourse, entry gates', advantage: 'Captive commuter audience daily',
-    stat: '4.5x dwell time', formats: ['Platform Panels', 'Pillar Wraps', 'Gate Branding'],
+    stat: 'Longer Dwell Time', formats: ['Platform Panels', 'Pillar Wraps', 'Gate Branding'],
   },
 ]
 
 const CITIES = [
-  { name: 'Mumbai', sites: '120+', icon: 'fa-city' },
-  { name: 'Delhi NCR', sites: '95+', icon: 'fa-city' },
-  { name: 'Bangalore', sites: '80+', icon: 'fa-city' },
-  { name: 'Hyderabad', sites: '65+', icon: 'fa-city' },
-  { name: 'Pune', sites: '55+', icon: 'fa-city' },
-  { name: 'Chennai', sites: '50+', icon: 'fa-city' },
+  { name: 'Mumbai', sites: 'Prime', icon: 'fa-city' },
+  { name: 'Delhi NCR', sites: 'Prime', icon: 'fa-city' },
+  { name: 'Bangalore', sites: 'Growing', icon: 'fa-city' },
+  { name: 'Hyderabad', sites: 'Growing', icon: 'fa-city' },
+  { name: 'Pune', sites: 'Active', icon: 'fa-city' },
+  { name: 'Chennai', sites: 'Active', icon: 'fa-city' },
 ]
 
 function OOHFormatsVisual() {
@@ -117,7 +118,7 @@ function OOHFormatsVisual() {
         {/* City coverage */}
         <div style={{ maxWidth: 860, margin: '56px auto 0' }}>
           <div style={{ textAlign: 'center', marginBottom: 28 }}>
-            <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-m)', letterSpacing: 2, textTransform: 'uppercase' }}>Pan-India Coverage, 15+ Cities</div>
+            <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-m)', letterSpacing: 2, textTransform: 'uppercase' }}>Coverage Across Major Indian Cities</div>
           </div>
           <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
             {CITIES.map((city, i) => (
@@ -133,7 +134,7 @@ function OOHFormatsVisual() {
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 44 }}>
           <div style={{ background: 'linear-gradient(135deg, #1a237e, #0284c7, #d97706)', color: '#fff', borderRadius: 100, padding: '14px 40px', fontSize: 14, fontWeight: 700, fontFamily: 'var(--font-h)', letterSpacing: 0.5, boxShadow: '0 8px 32px rgba(0,188,212,0.2)', display: 'flex', alignItems: 'center', gap: 10 }}>
             <i className="fa-solid fa-location-dot" style={{ fontSize: 13 }} />
-            500+ Premium Sites Managed Across India
+            Premium Sites Sourced and Managed Across India
           </div>
         </div>
       </div>
@@ -151,6 +152,20 @@ export default function OutdoorAdvertisingPageContent() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((f) => ({
+              '@type': 'Question',
+              name: f.q,
+              acceptedAnswer: { '@type': 'Answer', text: f.a },
+            })),
+          }),
+        }}
+      />
       <section className="page-hero">
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="breadcrumb mb-16">
@@ -171,7 +186,7 @@ export default function OutdoorAdvertisingPageContent() {
           </div>
           <h1 className="mt-8">Outdoor <span className="grad-text">Advertising</span></h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            A well-placed hoarding still stops people in their tracks. Combined with digital tracking and smart location planning, outdoor advertising delivers brand recall no screen can match.
+            There is a particular kind of pride in driving past a billboard with your own brand on it, the kind an Instagram ad never quite gives you. ThinkSuite is a Gurgaon-based outdoor advertising agency handling site selection, hoarding design, transit branding, and digital OOH across major Indian cities, with data behind every location we recommend, not just whatever inventory happened to be free.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">Book OOH Campaign <i className="fa-solid fa-arrow-right" /></Link>
@@ -182,10 +197,10 @@ export default function OutdoorAdvertisingPageContent() {
 
       <div className={s.statsRow}>
         {[
-          { number: '500+', label: 'Sites Managed'      },
-          { number: '15+',  label: 'Cities Pan-India'   },
-          { number: '65%',  label: 'Brand Recall Lift'  },
-          { number: '3x',   label: 'Footfall Correlation' },
+          { number: 'Full-Service', label: 'Site Sourcing & Booking'   },
+          { number: 'Multi-City',   label: 'Coverage Across India'     },
+          { number: 'Data-Backed',  label: 'Site Selection'            },
+          { number: 'Integrated',   label: 'OOH + Digital Tracking'    },
         ].map((stat, i) => (
           <div key={i} className={s.statItem}>
             <span className={s.statNum}>{stat.number}</span>

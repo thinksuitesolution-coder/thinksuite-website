@@ -2,9 +2,28 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Child Safety Policy | ThinkSuite',
-  description: 'Read ThinkSuite\'s child safety policy, our commitment to preventing child sexual abuse and exploitation across our platforms.',
+  title: 'Our Child Safety Policy | ThinkSuite Digital Agency',
+  description: 'Read ThinkSuite\'s child safety policy, our zero-tolerance commitment to preventing child sexual abuse and exploitation across our platforms and tools.',
+  keywords: [
+    'ThinkSuite child safety policy', 'CSAE prevention policy', 'child sexual abuse material reporting',
+    'platform child safety commitment', 'age restriction policy India',
+  ],
 }
+
+const childSafetyFaqs = [
+  {
+    q: 'What is ThinkSuite\'s policy on child safety?',
+    a: 'ThinkSuite has a zero-tolerance policy toward child sexual abuse and exploitation in any form. We are committed to ensuring our platforms, tools, and services are never used to harm, exploit, or endanger minors.',
+  },
+  {
+    q: 'How do I report a concern?',
+    a: 'Report any content or behavior you believe violates this policy immediately to info@thinksuite.in with relevant details. We treat all such reports with urgency and confidentiality.',
+  },
+  {
+    q: 'What happens after a report is received?',
+    a: 'Upon identifying or receiving a credible report of CSAE-related activity, we immediately suspend the associated account, preserve relevant evidence, and take appropriate enforcement action, cooperating fully with law enforcement where required.',
+  },
+]
 
 export default function ChildSafetyPolicyPage() {
   return (
@@ -61,6 +80,32 @@ export default function ChildSafetyPolicyPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: childSafetyFaqs.map((f) => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a },
+              })),
+            }),
+          }}
+        />
+        <div className="container" style={{ maxWidth: 860 }}>
+          <h2 style={{ marginBottom: 24 }}>Frequently Asked Questions</h2>
+          {childSafetyFaqs.map((faq) => (
+            <div key={faq.q} className="service-card reveal" style={{ padding: '24px 28px', marginBottom: 16 }}>
+              <h3 style={{ fontSize: 17, marginBottom: 10, color: 'var(--white)' }}>{faq.q}</h3>
+              <p style={{ color: 'var(--text2)', lineHeight: 1.85, margin: 0 }}>{faq.a}</p>
+            </div>
+          ))}
         </div>
       </section>
     </>

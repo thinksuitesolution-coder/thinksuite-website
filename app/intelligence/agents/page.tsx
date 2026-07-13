@@ -2,8 +2,20 @@
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Agents Marketplace | ThinkSuite',
-  description: 'Discover, use, and publish custom AI agents for news monitoring, research, competitor tracking, and more.',
+  title: 'Free AI Agents Marketplace | ThinkSuite Intelligence',
+  description: 'Discover and deploy free AI agents that monitor competitors, track funding, summarize research, and auto publish AI industry updates, no code required.',
+  keywords: [
+    'AI agents marketplace',
+    'AI agent for competitor monitoring',
+    'AI funding alert agent',
+    'AI research digest tool',
+    'AI social media automation agent',
+    'no code AI agents',
+    'AI agent deployment platform',
+    'AI industry monitoring agents',
+    'free AI agents India',
+    'custom AI agent builder',
+  ],
 };
 
 const FEATURED_AGENTS = [
@@ -124,7 +136,7 @@ export default function AgentsPage() {
           <div className="chip" style={{ marginBottom: 16 }}>🤖 AI Agents Marketplace</div>
           <h1 className="page-title" style={{ color: '#fff' }}>AI Agents for Intelligence Work</h1>
           <p className="page-desc" style={{ color: 'rgba(255,255,255,0.75)' }}>
-            Ready-to-use AI agents for monitoring, research, publishing, and analysis. Deploy in one click, no code required.
+            ThinkSuite's AI Agents Marketplace offers ready-to-deploy agents for monitoring competitors, tracking funding, summarizing research, and publishing AI industry content. Launch any agent in one click, no code required.
           </p>
           <div style={{ display: 'flex', gap: 8, marginTop: 24, flexWrap: 'wrap' }}>
             <div className="agents-hero-stat"><strong>{FEATURED_AGENTS.length}</strong> Active Agents</div>

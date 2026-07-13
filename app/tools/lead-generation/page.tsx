@@ -85,7 +85,7 @@ const WHO_CAN_USE = [
   },
   {
     role: 'Freelancer /\nSolo Consultant',
-    desc: 'Find potential clients in your niche and reach out directly with ready-made cold emails — no salesperson needed.',
+    desc: 'Find potential clients in your niche and reach out directly with ready-made cold emails, no salesperson needed.',
     bullets: ['Find Niche Clients', 'Ready-to-Send Emails', 'No Sales Experience Needed'],
   },
   {
@@ -95,18 +95,18 @@ const WHO_CAN_USE = [
   },
   {
     role: 'Insurance /\nFinance Sales',
-    desc: 'Build a list of local businesses — CA firms, clinics, retail shops — and pitch them your services.',
+    desc: 'Build a list of local businesses, CA firms, clinics, retail shops, and pitch them your services.',
     bullets: ['Build Local Business Lists', 'Find Relevant Businesses', 'Pitch & Close More Deals'],
   },
 ]
 
 const FAQS = [
-  { q: 'How does the lead discovery work?', a: 'We use Vibe Prospecting AI to search verified business databases and find companies matching your niche, location, and size filters — delivering 100+ leads per search.' },
-  { q: 'Are the leads real or fake?', a: '100% real — sourced directly from verified business databases. Only businesses with confirmed phone numbers, websites, and ratings appear in your results.' },
+  { q: 'How does the lead discovery work?', a: 'We use Vibe Prospecting AI to search verified business databases and find companies matching your niche, location, and size filters, delivering 100+ leads per search.' },
+  { q: 'Are the leads real or fake?', a: '100% real, sourced directly from verified business databases. Only businesses with confirmed phone numbers, websites, and ratings appear in your results.' },
   { q: 'How many leads do I get per search?', a: 'Each search returns up to 100+ leads. You can expand your list by searching across different cities or niches. Paid plans unlock unlimited searches.' },
-  { q: 'Can I send cold emails from my own Gmail account?', a: 'Yes! We integrate with Gmail via MCP so cold emails are sent from your own address — improving deliverability and keeping replies in your inbox.' },
-  { q: 'What data is included in the CSV export?', a: 'Business name, phone number, website, address, rating, total reviews, category, LinkedIn URL, and Maps link — all in one clean, CRM-ready file.' },
-  { q: 'Can I add a custom city or niche?', a: 'Yes! You can type any city and any business category — there are no restrictions on location or niche. The AI will find matching leads from across the country.' },
+  { q: 'Can I send cold emails from my own Gmail account?', a: 'Yes! We integrate with Gmail via MCP so cold emails are sent from your own address, improving deliverability and keeping replies in your inbox.' },
+  { q: 'What data is included in the CSV export?', a: 'Business name, phone number, website, address, rating, total reviews, category, LinkedIn URL, and Maps link, all in one clean, CRM-ready file.' },
+  { q: 'Can I add a custom city or niche?', a: 'Yes! You can type any city and any business category, there are no restrictions on location or niche. The AI will find matching leads from across the country.' },
 ]
 
 export default function LeadGenerationPage() {
@@ -377,7 +377,7 @@ export default function LeadGenerationPage() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14, background: '#ffffff', border: '1px solid rgba(26,35,126,0.09)', borderRadius: 16, padding: '18px 28px', maxWidth: 640, margin: '40px auto 0', boxShadow: '0 2px 12px rgba(26,35,126,0.05)' }}>
               <span style={{ fontSize: 28 }}>🚀</span>
               <p style={{ fontSize: 15, color: '#64748b', lineHeight: 1.6, margin: 0 }}>
-                That&apos;s it! You get <span style={{ color: '#1a237e', fontWeight: 700 }}>verified leads</span> with phone numbers, websites, ratings and more &mdash; ready to export.
+                That&apos;s it! You get <span style={{ color: '#1a237e', fontWeight: 700 }}>verified leads</span> with phone numbers, websites, ratings and more, ready to export.
               </p>
             </div>
           </div>
@@ -541,7 +541,7 @@ export default function LeadGenerationPage() {
                 </span>
               </h2>
               <p style={{ color: '#64748b', fontSize: 16, maxWidth: 560, margin: '0 auto' }}>
-                Whether you&apos;re an agency, freelancer, salesperson, or founder &mdash; this tool helps you{' '}
+                Whether you&apos;re an agency, freelancer, salesperson, or founder, this tool helps you{' '}
                 <span style={{ color: '#1a237e' }}>find</span>,{' '}
                 <span style={{ color: '#7c3aed' }}>connect</span>, and{' '}
                 <span style={{ color: '#22c55e' }}>grow</span> with the right leads.

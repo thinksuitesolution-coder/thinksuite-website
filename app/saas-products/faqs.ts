@@ -1,0 +1,7 @@
+export const FAQS = [
+  { q: 'How long does it take to build a SaaS product?',          a: 'A focused MVP with core features takes 6 to 10 weeks. A full-featured product with billing, roles, integrations, and an admin dashboard typically takes 12 to 20 weeks. We share a detailed milestone plan after discovery, so you always know where the project stands.' },
+  { q: 'What tech stack do you use for SaaS development?',        a: 'We primarily build with Next.js for the frontend, Node.js or Python for the backend, PostgreSQL for data, and AWS or Vercel for infrastructure. We adapt to your existing stack if needed.' },
+  { q: 'Can you help with the pricing and monetization model?',   a: 'Yes. We have built SaaS products across subscription, usage-based, freemium, and lifetime deal models. We advise on what works for your market and implement the billing infrastructure accordingly.' },
+  { q: 'What happens after the MVP launches?',                    a: 'We offer ongoing sprint-based development for new features, performance optimization, and integrations. We also offer managed hosting and SLA-backed support so you\'re never alone after launch.' },
+  { q: 'Who owns the source code?',                              a: 'You own 100% of the source code, IP, and infrastructure. Everything we build is transferred upon project completion. We can also hand over to your internal developers at any stage.' },
+]

@@ -110,12 +110,24 @@ export default function ProjectsContent() {
                     style={{ animationDelay: `${(i % 2) * 0.08}s` }}
                   >
                     {/* Cover */}
-                    <div className="prj-card-cover" style={{ background: p.coverGradient }}>
-                      <div className="prj-card-cover-pattern" />
-                      {p.logo ? (
-                        <img src={p.logo} alt={`${p.title} logo`} className="prj-card-logo" />
+                    <div className="prj-card-cover" style={p.screenshot ? undefined : { background: p.coverGradient }}>
+                      {p.screenshot ? (
+                        <>
+                          <img src={p.screenshot} alt={`${p.title} website preview`} className="prj-card-cover-shot" />
+                          <div className="prj-card-cover-scrim" />
+                          {p.logo && (
+                            <img src={p.logo} alt={`${p.title} logo`} className="prj-card-logo prj-card-logo-sm" />
+                          )}
+                        </>
                       ) : (
-                        <i className={`fa-solid ${p.coverIcon} prj-card-cover-icon`} />
+                        <>
+                          <div className="prj-card-cover-pattern" />
+                          {p.logo ? (
+                            <img src={p.logo} alt={`${p.title} logo`} className="prj-card-logo" />
+                          ) : (
+                            <i className={`fa-solid ${p.coverIcon} prj-card-cover-icon`} />
+                          )}
+                        </>
                       )}
                       <div className="prj-card-badges">
                         {p.comingSoon && <span className="prj-badge prj-badge-soon">Coming Soon</span>}

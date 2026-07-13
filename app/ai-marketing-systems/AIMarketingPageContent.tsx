@@ -6,20 +6,20 @@ import CTASection from '@/components/sections/CTASection'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPS = [
-  { icon: 'fa-robot',              metric: '10x',       title: 'AI Content at Scale',           desc: 'Generate blog posts, ad copy, email subjects, and social captions at scale in your brand voice. 10x content output without building a large team.' },
-  { icon: 'fa-filter',             metric: '87%',       title: 'Predictive Lead Scoring',       desc: 'AI scores every incoming lead based on behavior, source, and fit. Your sales team calls only the people most likely to convert, no more cold chasing.' },
-  { icon: 'fa-envelope-open-text', metric: '4.2x',      title: 'Email Personalization Engine',  desc: 'Personalized email sequences triggered by user actions. Subject lines, content, and timing adjusted to individual behavior for higher open and click rates.' },
-  { icon: 'fa-rectangle-ad',       metric: '-30%',      title: 'AI Ad Optimization',            desc: 'AI continuously adjusts bids, pauses underperforming creatives, and shifts budget toward what is working. Less waste, better ROAS month over month.' },
+  { icon: 'fa-robot',              metric: 'Scale',     title: 'AI Content at Scale',           desc: 'Generate blog posts, ad copy, email subjects, and social captions at scale in your brand voice. Higher content output without building a large team.' },
+  { icon: 'fa-filter',             metric: 'Predictive', title: 'Predictive Lead Scoring',      desc: 'AI scores every incoming lead based on behavior, source, and fit. Your sales team calls the people most likely to convert first, no more cold chasing.' },
+  { icon: 'fa-envelope-open-text', metric: 'Adaptive',  title: 'Email Personalization Engine',  desc: 'Personalized email sequences triggered by user actions. Subject lines, content, and timing adjusted to individual behavior for higher open and click rates.' },
+  { icon: 'fa-rectangle-ad',       metric: 'Optimized', title: 'AI Ad Optimization',            desc: 'AI continuously adjusts bids, pauses underperforming creatives, and shifts budget toward what is working. Less waste, better return over time.' },
   { icon: 'fa-face-smile',         metric: 'Live',      title: 'Brand Sentiment Monitoring',    desc: 'Track brand mentions and customer sentiment across social media and reviews in real time. Respond to reputation risks before they escalate.' },
-  { icon: 'fa-chart-line',         metric: '2x+',       title: 'Campaign ROI Compounding',      desc: 'AI-powered A/B testing, multi-touch attribution, and simultaneous campaign optimization. Every channel gets smarter the more data it accumulates.' },
+  { icon: 'fa-chart-line',         metric: 'Compounding', title: 'Campaign ROI Compounding',    desc: 'AI-powered A/B testing, multi-touch attribution, and simultaneous campaign optimization. Every channel gets smarter the more data it accumulates.' },
 ]
 
 const FAQS = [
-  { q: 'How is AI marketing different from regular marketing automation?', a: 'Standard automation follows fixed rules you set. AI marketing adapts on its own based on patterns it finds in your data. It discovers which audience segment responds to which message without you manually defining every rule, and it keeps improving.' },
-  { q: 'Which tools do you integrate with?', a: 'We integrate with HubSpot, Mailchimp, Klaviyo, Google Ads, Meta Ads, Zoho, Salesforce, Shopify, WooCommerce, and most tools that have an API. We also build custom integrations where needed.' },
-  { q: 'How long before we see results?', a: 'Automation improvements like reduced manual work and faster follow-ups are visible in the first 2 weeks. ROI improvements from AI optimization typically show in 4 to 8 weeks as the system accumulates enough data to learn from.' },
-  { q: 'Do we need a large customer database to start?', a: 'Not necessarily. Even with 1,000 to 5,000 contacts, AI systems can identify patterns and improve campaign performance. The system gets smarter as your database grows, starting early means compounding advantage.' },
-  { q: 'What if we already have a marketing team in place?', a: 'AI marketing systems work alongside your existing team, not replace them. Your team focuses on strategy and creative while the system handles execution, testing, and optimization, making your team significantly more productive.' },
+  { q: 'How is AI marketing different from regular marketing automation?', a: 'Standard automation follows fixed rules you set. AI marketing adapts on its own based on patterns it finds in your data. It discovers which audience segment responds to which message without you manually defining every rule, and it keeps improving as it learns.' },
+  { q: 'Which marketing tools do you integrate AI systems with?', a: 'We integrate with HubSpot, Mailchimp, Klaviyo, Google Ads, Meta Ads, Zoho, Salesforce, Shopify, WooCommerce, and most tools that have an API. We also build custom integrations where needed.' },
+  { q: 'How long before we see results from AI marketing?', a: 'Automation improvements like reduced manual work and faster follow-ups are visible in the first 2 weeks. Results from AI optimization typically build over 4 to 8 weeks as the system accumulates enough data to learn from.' },
+  { q: 'Do we need a large customer database to start with AI marketing?', a: 'Not necessarily. Even with 1,000 to 5,000 contacts, AI systems can identify patterns and improve campaign performance. The system gets smarter as your database grows, so starting early means a compounding advantage later.' },
+  { q: 'What if we already have a marketing team in place?', a: 'AI marketing systems work alongside your existing team, not replace them. Your team focuses on strategy and creative while the system handles execution, testing, and optimization, making your team meaningfully more productive.' },
 ]
 
 const PIPELINE_INPUTS = [
@@ -30,10 +30,10 @@ const PIPELINE_INPUTS = [
 ]
 
 const PIPELINE_OUTPUTS = [
-  { icon: 'fa-filter',          label: 'Lead Scoring',        color: '#60a5fa', metric: '87% accuracy' },
-  { icon: 'fa-envelope-open-text', label: 'Personalized Email', color: '#a78bfa', metric: '4.2x open rate' },
-  { icon: 'fa-rectangle-ad',   label: 'Ad Optimization',     color: '#34d399', metric: '-30% wasted spend' },
-  { icon: 'fa-robot',           label: 'Content at Scale',    color: '#fbbf24', metric: '10x output' },
+  { icon: 'fa-filter',          label: 'Lead Scoring',        color: '#60a5fa', metric: 'behavior-based scoring' },
+  { icon: 'fa-envelope-open-text', label: 'Personalized Email', color: '#a78bfa', metric: 'higher open rates' },
+  { icon: 'fa-rectangle-ad',   label: 'Ad Optimization',     color: '#34d399', metric: 'less wasted spend' },
+  { icon: 'fa-robot',           label: 'Content at Scale',    color: '#fbbf24', metric: 'faster output' },
 ]
 
 function AIPipelineVisual() {
@@ -184,6 +184,20 @@ export default function AIMarketingPageContent() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((f) => ({
+              '@type': 'Question',
+              name: f.q,
+              acceptedAnswer: { '@type': 'Answer', text: f.a },
+            })),
+          }),
+        }}
+      />
       <section className="page-hero">
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="breadcrumb mb-16">
@@ -215,10 +229,10 @@ export default function AIMarketingPageContent() {
 
       <div className={s.statsRow}>
         {[
-          { number: '3x',        label: 'Higher Conversion Rates' },
-          { number: '210%',      label: 'Average ROAS Lift'       },
-          { number: '87%',       label: 'Lead Scoring Accuracy'   },
-          { number: 'Real-time', label: 'Campaign Optimization'   },
+          { number: 'Predictive', label: 'Lead Scoring'          },
+          { number: 'Adaptive',   label: 'Ad Spend Optimization' },
+          { number: 'Real-time',  label: 'Campaign Optimization' },
+          { number: 'In-House',   label: 'Gurgaon AI Team'       },
         ].map((stat, i) => (
           <div key={i} className={s.statItem}>
             <span className={s.statNum}>{stat.number}</span>

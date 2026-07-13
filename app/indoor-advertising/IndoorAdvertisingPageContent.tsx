@@ -6,8 +6,8 @@ import CTASection from '@/components/sections/CTASection'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPS = [
-  { icon: 'fa-store',    metric: '4.5x dwell',    title: 'Mall and Retail Space Advertising', desc: 'Food court panels, escalator branding, elevator wraps, floor graphics, and in-store digital screens that engage shoppers at the highest intent moments in their purchase journey.' },
-  { icon: 'fa-plane',    metric: 'High NHI',       title: 'Airport and Transit Hub Branding',  desc: 'Departure lounge lightboxes, boarding gate panels, baggage belt branding, and aerobridge wraps targeting high-income frequent travelers with extended dwell time.' },
+  { icon: 'fa-store',    metric: 'Long Dwell',    title: 'Mall and Retail Space Advertising', desc: 'Food court panels, escalator branding, elevator wraps, floor graphics, and in-store digital screens that engage shoppers at the highest intent moments in their purchase journey.' },
+  { icon: 'fa-plane',    metric: 'High Income',   title: 'Airport and Transit Hub Branding',  desc: 'Departure lounge lightboxes, boarding gate panels, baggage belt branding, and aerobridge wraps targeting high-income frequent travelers with extended dwell time.' },
   { icon: 'fa-building', metric: 'B2B targeting',  title: 'Corporate and Office Park Media',   desc: 'Elevator panels, lobby digital screens, cafe advertising, and reception area branding in tech parks and corporate campuses targeting decision-makers at work.' },
   { icon: 'fa-hospital', metric: 'Captive context', title: 'Healthcare Venue Advertising',     desc: 'Waiting room screens, clinic corridor panels, pharmacy counter displays, and diagnostic lab advertising targeting patients and caregivers in a high-attention environment.' },
   { icon: 'fa-star',     metric: 'Trial & social', title: 'Experiential and In-Store Activations', desc: 'Brand zones, product sampling stations, interactive kiosks, and live experience counters inside high-footfall retail environments that drive trial and social sharing.' },
@@ -15,27 +15,28 @@ const CAPS = [
 ]
 
 const FAQS = [
-  { q: 'What types of indoor venues do you cover?', a: 'Malls, airports, metro stations, corporate parks, hospitals, clinics, gyms, cinemas, coworking spaces, colleges, and restaurants. We can source inventory across any high-footfall indoor environment where your audience is present.' },
-  { q: 'Is indoor advertising more expensive than outdoor?', a: 'Cost per exposure is often lower for indoor because dwell times are much longer. A shopper spends 90 minutes in a mall versus a few seconds seeing a hoarding on the road. Your brand gets multiple exposures per visit.' },
-  { q: 'Can you run campaigns in multiple cities simultaneously?', a: 'Yes. We manage multi-city indoor campaigns through our vendor network across 15+ cities. All campaign management, creative distribution, and reporting is centralized through our team.' },
-  { q: 'Do you offer digital indoor screens?', a: 'Yes. We have access to digital screen networks in malls, airports, and corporate parks that allow you to run dynamic content, schedule ads by time of day, and update creatives without reprinting.' },
-  { q: 'How far in advance do I need to book indoor advertising?', a: 'For premium venues like airports and top-tier malls, 3 to 4 weeks advance booking is advisable. For other venues, 10 to 14 days is usually sufficient. Festival seasons and January can book up quickly.' },
+  { q: 'What types of indoor venues do you cover?', a: 'We cover malls, airports, metro stations, corporate parks, hospitals, clinics, gyms, cinemas, coworking spaces, colleges, and restaurants. We can source inventory across any high-footfall indoor environment where your audience actually spends time.' },
+  { q: 'Is indoor advertising more expensive than outdoor?', a: 'Cost per exposure is often lower for indoor because dwell times are much longer. A shopper spends a good stretch of time inside a mall compared to a few seconds glancing at a hoarding from the road, so your brand gets multiple exposures per visit instead of one quick glance.' },
+  { q: 'Can you run campaigns in multiple cities simultaneously?', a: 'Yes, we manage multi-city indoor campaigns through our vendor network across major Indian cities. All campaign management, creative distribution, and reporting is centralized through our Gurgaon team so you get one point of contact regardless of how many cities are running.' },
+  { q: 'Do you offer digital indoor screens?', a: 'Yes, we have access to digital screen networks in malls, airports, and corporate parks that let you run dynamic content, schedule ads by time of day, and update creatives without reprinting anything.' },
+  { q: 'How far in advance do I need to book indoor advertising?', a: 'For premium venues like airports and top-tier malls, 3 to 4 weeks advance booking is advisable. For other venues, 10 to 14 days is usually sufficient, though festival seasons and the start of the year can book up quickly.' },
+  { q: 'Why would a brand choose indoor advertising over a billboard?', a: 'Indoor advertising puts your brand in front of someone who is standing still, waiting, or moving slowly through a space, which means they actually have time to read your message rather than glimpse it for a second at a traffic signal. It also lets you show up closer to the actual moment of purchase, inside the mall or store where the decision gets made.' },
 ]
 
 const VENUES = [
   {
-    icon: 'fa-store', name: 'Shopping Malls', dwell: '60,90 min',
+    icon: 'fa-store', name: 'Shopping Malls', dwell: '60 to 90 min',
     color: '#0284c7', bgColor: 'rgba(2,132,199,0.12)', borderColor: 'rgba(2,132,199,0.3)',
     audience: 'Urban shoppers, families, millennials',
     formats: ['Food Court Panels', 'Escalator Branding', 'Floor Graphics', 'Digital Screens'],
-    stat: '300+ malls nationwide',
+    stat: 'Malls Nationwide',
   },
   {
-    icon: 'fa-plane', name: 'Airports & Lounges', dwell: '45,75 min',
+    icon: 'fa-plane', name: 'Airports & Lounges', dwell: '45 to 75 min',
     color: '#7c3aed', bgColor: 'rgba(124,58,237,0.12)', borderColor: 'rgba(124,58,237,0.3)',
-    audience: 'High NHI travelers, business class',
+    audience: 'Frequent flyers, business class',
     formats: ['Departure Lightboxes', 'Boarding Gate Panels', 'Aerobridge Wraps', 'Baggage Belt'],
-    stat: '25+ airports covered',
+    stat: 'Major Airports Covered',
   },
   {
     icon: 'fa-building', name: 'Corporate Parks & Offices', dwell: '8 hrs/day',
@@ -45,18 +46,18 @@ const VENUES = [
     stat: 'Targeting C-suite to managers',
   },
   {
-    icon: 'fa-hospital', name: 'Healthcare Facilities', dwell: '20,40 min',
+    icon: 'fa-hospital', name: 'Healthcare Facilities', dwell: '20 to 40 min',
     color: '#d97706', bgColor: 'rgba(217,119,6,0.12)', borderColor: 'rgba(217,119,6,0.3)',
     audience: 'Patients, caregivers, doctors',
     formats: ['Waiting Room Screens', 'Corridor Panels', 'Pharmacy Counters', 'Clinic Posters'],
     stat: 'Captive, receptive audience',
   },
   {
-    icon: 'fa-dumbbell', name: 'Gyms & Fitness Centers', dwell: '60,90 min',
+    icon: 'fa-dumbbell', name: 'Gyms & Fitness Centers', dwell: '60 to 90 min',
     color: '#e11d48', bgColor: 'rgba(225,29,72,0.12)', borderColor: 'rgba(225,29,72,0.3)',
-    audience: 'Health-conscious 20,45 age group',
+    audience: 'Health-conscious, age 20 to 45',
     formats: ['Locker Room Panels', 'Reception Branding', 'Studio Screens', 'Changing Room Ads'],
-    stat: '2,000+ fitness centers',
+    stat: 'Fitness Centers Nationwide',
   },
 ]
 
@@ -79,7 +80,7 @@ function VenueDwellVisual() {
             <span className="grad-text">Spends Their Time.</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 520, margin: '0 auto', lineHeight: 1.8, fontSize: 15 }}>
-            Indoor advertising works because of dwell time. When your audience is already inside, they actually read what is in front of them. We place your brand at those exact moments across 300+ venue categories.
+            Indoor advertising works because of dwell time. When your audience is already inside, they actually read what is in front of them. We place your brand at those exact moments across every major venue category.
           </p>
         </div>
 
@@ -144,7 +145,7 @@ function VenueDwellVisual() {
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 44 }}>
           <div style={{ background: 'linear-gradient(135deg, #1a237e, #7c3aed, #0284c7)', color: '#fff', borderRadius: 100, padding: '14px 40px', fontSize: 14, fontWeight: 700, fontFamily: 'var(--font-h)', letterSpacing: 0.5, boxShadow: '0 8px 32px rgba(0,188,212,0.2)', display: 'flex', alignItems: 'center', gap: 10 }}>
             <i className="fa-solid fa-building" style={{ fontSize: 13 }} />
-            300+ Venues, Malls, Airports, Offices, Clinics, Gyms
+            Venues Across Malls, Airports, Offices, Clinics, and Gyms
           </div>
         </div>
       </div>
@@ -162,6 +163,20 @@ export default function IndoorAdvertisingPageContent() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((f) => ({
+              '@type': 'Question',
+              name: f.q,
+              acceptedAnswer: { '@type': 'Answer', text: f.a },
+            })),
+          }),
+        }}
+      />
       <section className="page-hero">
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="breadcrumb mb-16">
@@ -182,7 +197,7 @@ export default function IndoorAdvertisingPageContent() {
           </div>
           <h1 className="mt-8">Indoor <span className="grad-text">Advertising</span></h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            Indoor spaces are where purchase decisions happen. A brand that shows up well at the point of decision, inside the mall, clinic waiting room, or office lobby, converts browsers into buyers.
+            Indoor spaces are where purchase decisions actually happen. ThinkSuite is a Gurgaon-based indoor advertising agency that places your brand inside malls, airports, corporate parks, and clinics, exactly where someone is standing still with time to notice you, so a browser becomes a buyer before they even walk out the door.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">Explore Indoor Options <i className="fa-solid fa-arrow-right" /></Link>
@@ -193,10 +208,10 @@ export default function IndoorAdvertisingPageContent() {
 
       <div className={s.statsRow}>
         {[
-          { number: '300+', label: 'Venues Activated'   },
-          { number: '20+',  label: 'Format Types'       },
-          { number: '78%',  label: 'In-Store Sales Lift' },
-          { number: '4.5x', label: 'Dwell Time Exposure' },
+          { number: 'Multi-Venue', label: 'Malls to Corporate Parks' },
+          { number: 'In-House',    label: 'Site Sourcing Team'       },
+          { number: 'High-Intent', label: 'Point-of-Purchase Placement' },
+          { number: 'Long',        label: 'Dwell Time Exposure'      },
         ].map((stat, i) => (
           <div key={i} className={s.statItem}>
             <span className={s.statNum}>{stat.number}</span>

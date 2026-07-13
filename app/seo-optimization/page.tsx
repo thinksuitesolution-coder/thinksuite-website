@@ -2,9 +2,22 @@ import SeoGeoPageContent from './SeoGeoPageContent'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'SEO and GEO Services India | Rank on Google and AI | ThinkSuite',
-  description: 'SEO and Generative Engine Optimization for Indian businesses. Rank on Google and get cited by AI tools like ChatGPT and Gemini through structured content strategy.',
-  keywords: 'SEO services India, GEO optimization India, generative engine optimization, AI search optimization, ChatGPT citation strategy, SEO agency India, rank on Google and AI, ThinkSuite SEO',
+  title: 'SEO and GEO Optimization Agency Gurgaon | ThinkSuite',
+  description: 'SEO and Generative Engine Optimization for Indian businesses. Rank on Google and get cited by ChatGPT, Gemini, and Perplexity with structured content strategy.',
+  keywords: [
+    'SEO agency Gurgaon',
+    'SEO services India',
+    'GEO optimization India',
+    'Generative Engine Optimization agency',
+    'AEO answer engine optimization India',
+    'AI search optimization for business',
+    'ChatGPT citation strategy',
+    'how to rank in ChatGPT and Gemini answers',
+    'get cited by AI search engines',
+    'GEO vs SEO difference',
+    'local SEO agency Gurgaon',
+    'technical SEO audit India',
+  ],
 }
 
 export default function SeoPage() {

@@ -106,7 +106,7 @@ export default function AIChat() {
           <div className="chat-avatar">🤖</div>
           <div>
             <h1 className="chat-title">ThinkSuite AI Intelligence</h1>
-            <div className="chat-status"><span className="live-dot" />Always up-to-date on AI industry</div>
+            <div className="chat-status"><span className="live-dot" />Live AI industry knowledge, refreshed continuously</div>
           </div>
           <div style={{ marginLeft: 'auto', display: 'flex', gap: 10 }}>
             <a href="/intelligence" className="chat-back-btn">← Dashboard</a>

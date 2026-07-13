@@ -2,13 +2,51 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'UI/UX Design Services India | ThinkSuite',
+  title: 'UI/UX Design Services in Gurgaon, India | ThinkSuite',
   description: 'Professional UI/UX design in India: user research, wireframing, Figma prototyping, and conversion-focused interface design for web and mobile products.',
-  keywords: ['UI UX design India', 'user experience design India', 'Figma design India', 'product design agency', 'app UX design India', 'interface design India', 'UX research India', 'mobile UX design'],
+  keywords: ['UI UX design company Gurgaon', 'user experience design India', 'Figma design agency India', 'product design agency Gurgaon', 'app UX design India', 'interface design India', 'UX research and testing India', 'mobile app UX design', 'website UX audit services'],
 }
+
+const FAQS = [
+  {
+    q: 'What is the difference between UI and UX design?',
+    a: 'UX (User Experience) covers the overall feel, user flows, and how easy something is to use. UI (User Interface) is the visual design, colors, typography, components, and polish. We do both as an integrated process.',
+  },
+  {
+    q: 'Do you design in Figma?',
+    a: 'Yes, Figma is our primary design tool. You get full access to the design files, component library, and prototype links throughout the project.',
+  },
+  {
+    q: 'How long does a UI/UX project take?',
+    a: 'A typical web product design takes 4 to 8 weeks. This covers research, wireframes, high-fidelity designs, and the design system. Timeline varies based on the number of screens and complexity.',
+  },
+  {
+    q: 'Can you redesign an existing product?',
+    a: 'Yes, we do full UX audits and redesigns. We start by identifying pain points in your current design and prioritize improvements based on business impact.',
+  },
+  {
+    q: 'Do you work with our development team?',
+    a: 'Absolutely. We provide detailed handoff documentation, respond to developer questions throughout implementation, and review the live build to ensure design fidelity.',
+  },
+]
 
 export default function UiUxPage() {
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((faq) => ({
+              '@type': 'Question',
+              name: faq.q,
+              acceptedAnswer: { '@type': 'Answer', text: faq.a },
+            })),
+          }),
+        }}
+      />
     <ServicePageDeviceShowcase
       breadcrumb="Branding & Design"
       breadcrumbHref="/branding-design"
@@ -73,28 +111,7 @@ export default function UiUxPage() {
           desc: 'Developer-ready specs, assets, and prototype links with full annotation.',
         },
       ]}
-      faqs={[
-        {
-          q: 'What is the difference between UI and UX design?',
-          a: 'UX (User Experience) covers the overall feel, user flows, and how easy something is to use. UI (User Interface) is the visual design, colors, typography, components, and polish. We do both as an integrated process.',
-        },
-        {
-          q: 'Do you design in Figma?',
-          a: 'Yes, Figma is our primary design tool. You get full access to the design files, component library, and prototype links throughout the project.',
-        },
-        {
-          q: 'How long does a UI/UX project take?',
-          a: 'A typical web product design takes 4,8 weeks. This covers research, wireframes, high-fidelity designs, and the design system. Timeline varies based on the number of screens and complexity.',
-        },
-        {
-          q: 'Can you redesign an existing product?',
-          a: 'Yes, we do full UX audits and redesigns. We start by identifying pain points in your current design and prioritize improvements based on business impact.',
-        },
-        {
-          q: 'Do you work with our development team?',
-          a: 'Absolutely. We provide detailed handoff documentation, respond to developer questions throughout implementation, and review the live build to ensure design fidelity.',
-        },
-      ]}
+      faqs={FAQS}
       sidebarLinks={[
         { label: 'Product Design', href: '/product-design' },
         { label: 'Brand Identity', href: '/brand-identity' },
@@ -143,5 +160,6 @@ export default function UiUxPage() {
       ctaTitleHighlight="Users Love"
       ctaDesc="Invest in UX that pays back. Great design reduces churn, increases conversions, and makes your product the one users recommend."
     />
+    </>
   )
 }

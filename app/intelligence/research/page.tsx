@@ -3,8 +3,17 @@ import Link from 'next/link';
 import { BlogArticle } from '@/lib/news/types';
 
 export const metadata: Metadata = {
-  title: 'AI Research Intelligence | ThinkSuite',
-  description: 'Track the latest AI research papers, breakthroughs, and academic developments from Arxiv, MIT, Stanford, CMU, and top AI labs.',
+  title: 'AI Research Tracker: Papers & Breakthroughs | ThinkSuite',
+  description: 'Track the latest AI research papers and breakthroughs from ArXiv, MIT, Stanford, CMU, and top AI labs, explained in plain English with business impact.',
+  keywords: [
+    'AI research paper tracker',
+    'ArXiv AI papers tracker',
+    'AI research breakthroughs',
+    'landmark AI papers explained',
+    'AI academic research tracker',
+    'AI papers plain English summary',
+    'AI research organizations tracker',
+  ],
 };
 export const revalidate = 3600;
 
@@ -57,7 +66,7 @@ export default async function ResearchPage() {
         <div className="container">
           <div className="chip" style={{ marginBottom: 16 }}>🧪 Research Intelligence</div>
           <h1 className="page-title" style={{ color: '#fff' }}>AI Research Tracker</h1>
-          <p className="page-desc" style={{ color: 'rgba(255,255,255,0.75)' }}>Every important AI paper explained in plain language, with business implications, who should care, and what changes next.</p>
+          <p className="page-desc" style={{ color: 'rgba(255,255,255,0.75)' }}>ThinkSuite's AI Research Tracker explains every important AI paper in plain language, covering business implications, who should care, and what changes next.</p>
         </div>
       </section>
 

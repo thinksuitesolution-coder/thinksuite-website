@@ -3,7 +3,16 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'AI Market Heatmap | Global AI Activity | ThinkSuite',
-  description: 'Interactive global heatmap showing AI investment, research, and company activity by country and region.',
+  description: 'Interactive global heatmap showing AI investment, research activity, and company presence by country and region, from the United States to India.',
+  keywords: [
+    'global AI heatmap',
+    'AI investment by country',
+    'AI market activity map',
+    'AI industry growth by region',
+    'AI research hubs worldwide',
+    'country AI ranking',
+    'global AI ecosystem map',
+  ],
 };
 
 const REGIONS = [
@@ -63,7 +72,7 @@ export default function HeatmapPage() {
         <div className="container">
           <div className="chip" style={{ marginBottom: 16 }}>🌍 Geographic Intelligence</div>
           <h1 className="page-title" style={{ color: '#fff' }}>AI Market Heatmap</h1>
-          <p className="page-desc" style={{ color: 'rgba(255,255,255,0.7)' }}>Where AI is growing fastest, track investment, research, companies, and policy by country and region.</p>
+          <p className="page-desc" style={{ color: 'rgba(255,255,255,0.7)' }}>ThinkSuite's AI Market Heatmap shows where AI is growing fastest, tracking investment, research activity, companies, and policy by country and region.</p>
         </div>
       </section>
 

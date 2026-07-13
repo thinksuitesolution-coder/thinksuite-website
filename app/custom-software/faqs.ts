@@ -1,0 +1,7 @@
+export const FAQS = [
+  { q: 'How long does custom software development take?',  a: 'Timelines depend entirely on scope. A focused internal tool typically takes 6 to 10 weeks. A full enterprise platform with multiple modules can take 4 to 8 months. After a discovery session, we give you a detailed milestone plan with fixed deadlines, not vague estimates.' },
+  { q: 'What tech stack do you use?',                      a: 'We\'re stack-agnostic and choose based on your needs. Common choices: Next.js / React for frontend, Node.js or Python for backend, PostgreSQL / MongoDB for data, and AWS or GCP for infrastructure. We can also work within your existing stack.' },
+  { q: 'Do you sign NDAs and handle IP ownership?',        a: 'Yes, NDA signing is standard before any discovery conversation. All IP, source code, and documentation built for your project transfers 100% to you upon final payment.' },
+  { q: 'What happens after the software launches?',        a: 'We offer SLA-backed post-launch support packages covering monitoring, bug fixes, security patches, and feature development. You\'ll also receive complete documentation and handover so you\'re never locked in.' },
+  { q: 'Can you integrate with our existing systems?',     a: 'API and system integration is a core capability. We regularly connect to ERPs, CRMs, payment gateways, third-party SaaS tools, and legacy databases. If it has an API (or even a database we can query), we can integrate it.' },
+]

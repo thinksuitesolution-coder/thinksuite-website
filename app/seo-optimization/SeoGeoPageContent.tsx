@@ -6,12 +6,12 @@ import CTASection from '@/components/sections/CTASection'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const SEO_CAPS = [
-  { icon: 'fa-code',             metric: '98/100',  title: 'Technical SEO Audit',    desc: 'Deep crawl fixing site speed, Core Web Vitals, crawlability, structured data, and indexing issues.' },
-  { icon: 'fa-file-lines',       metric: '3x CTR',  title: 'On-Page Optimization',   desc: 'Keyword research, meta optimization, content structure, H1,H6 hierarchy, and internal linking strategy.' },
-  { icon: 'fa-link',             metric: 'DA 60+',  title: 'Link Building',          desc: 'High-authority backlinks via digital PR, guest posting, and white-hat outreach, zero spam, zero risk.' },
-  { icon: 'fa-map-location-dot', metric: '#1 Map',  title: 'Local SEO',             desc: 'Google Business Profile optimization, local citations, review strategy, and map pack domination.' },
-  { icon: 'fa-pen-to-square',    metric: '4x Traffic', title: 'SEO Content Strategy', desc: 'Keyword-driven content calendars that capture search intent at every stage of the funnel.' },
-  { icon: 'fa-chart-line',       metric: 'Monthly', title: 'Rank Tracking & Reports', desc: 'Detailed monthly rank reports, traffic analytics, and competitor benchmarking, full visibility.' },
+  { icon: 'fa-code',             metric: 'Core Web Vitals', title: 'Technical SEO Audit',    desc: 'Deep crawl fixing site speed, Core Web Vitals, crawlability, structured data, and indexing issues.' },
+  { icon: 'fa-file-lines',       metric: 'Intent-Matched',  title: 'On-Page Optimization',   desc: 'Keyword research, meta optimization, content structure, heading hierarchy, and internal linking strategy.' },
+  { icon: 'fa-link',             metric: 'White-Hat',       title: 'Link Building',          desc: 'High-authority backlinks via digital PR, guest posting, and white-hat outreach, zero spam, zero risk.' },
+  { icon: 'fa-map-location-dot', metric: 'Map Pack',        title: 'Local SEO',              desc: 'Google Business Profile optimization, local citations, review strategy, and map pack visibility.' },
+  { icon: 'fa-pen-to-square',    metric: 'Intent-Driven',   title: 'SEO Content Strategy',   desc: 'Keyword-driven content calendars that capture search intent at every stage of the funnel.' },
+  { icon: 'fa-chart-line',       metric: 'Monthly',         title: 'Rank Tracking & Reports', desc: 'Detailed monthly rank reports, traffic analytics, and competitor benchmarking, full visibility.' },
 ]
 
 const GEO_CAPS = [
@@ -24,12 +24,12 @@ const GEO_CAPS = [
 ]
 
 const FAQS = [
-  { q: 'What is GEO and how is it different from SEO?', a: 'GEO (Generative Engine Optimization) focuses on making your brand appear in AI-generated answers from tools like ChatGPT, Gemini, and Perplexity. Traditional SEO targets Google\'s blue-link results. Both are now essential, about 30% of searches are shifting toward AI assistants, meaning your brand needs visibility in both.' },
-  { q: 'Do I need both SEO and GEO, or can I choose one?', a: 'Both. SEO and GEO reach different moments in the customer journey. Google searches happen when people are ready to compare and buy. AI assistants are used for research and recommendations. Missing either means handing customers to competitors who show up everywhere.' },
-  { q: 'How long does SEO take to show results?', a: 'SEO results typically start becoming visible in 3,4 months, with significant traffic growth in 6,12 months. GEO visibility can emerge faster (1,3 months) since AI models update more frequently, though it depends on your brand\'s existing authority.' },
-  { q: 'How do you optimize for ChatGPT, Gemini, and Perplexity?', a: 'GEO involves creating authoritative, well-structured content that AI engines can understand and trust. We focus on E-E-A-T signals, structured data, brand mention campaigns, high-quality citations, and ensuring your content is indexed by sources AI models draw from, like Wikipedia, Reddit, and major publications.' },
-  { q: 'Can you guarantee first-page rankings or AI citations?', a: 'No ethical agency can guarantee specific rankings, search and AI algorithms change constantly. What we guarantee is a proven methodology, full transparency, and measurable improvement in your Google rankings, traffic, and AI brand visibility over time.' },
-  { q: 'How much do your SEO + GEO packages cost?', a: 'Our combined SEO + GEO packages start from ₹20,000/month, depending on industry competitiveness, website size, and goals. Contact us for a free audit and custom quote tailored to your business.' },
+  { q: 'What is GEO and how is it different from SEO?', a: 'GEO, Generative Engine Optimization, is the practice of structuring your brand\'s content and data so AI tools like ChatGPT, Gemini, and Perplexity cite you directly in their answers. Traditional SEO targets Google\'s blue-link results instead. A fast-growing share of searches now happen through AI assistants rather than a search bar, so a brand invisible to GEO is invisible to that entire audience.' },
+  { q: 'Do I need both SEO and GEO, or can I choose one?', a: 'You need both. SEO and GEO reach different moments in the customer journey. Google searches happen when people are ready to compare and buy, while AI assistants get used earlier, for research and recommendations. Missing either channel means handing those customers straight to a competitor who shows up in both places.' },
+  { q: 'How long does SEO take to show results?', a: 'SEO results typically start becoming visible in 3 to 4 months, with more significant traffic growth building over 6 to 12 months. GEO visibility can emerge faster, often in 1 to 3 months, since AI models refresh their training and retrieval sources more frequently, though the exact timeline depends on your brand\'s existing authority online.' },
+  { q: 'How do you optimize a website for ChatGPT, Gemini, and Perplexity?', a: 'GEO involves creating authoritative, well-structured content that AI engines can understand and trust. We focus on E-E-A-T signals (Experience, Expertise, Authoritativeness, Trustworthiness), structured data markup, brand mention campaigns, and making sure your content is discoverable on the sources AI models draw from, like Wikipedia, Reddit, and major publications.' },
+  { q: 'Can you guarantee first-page rankings or AI citations?', a: 'No ethical agency can guarantee specific rankings, because search and AI algorithms change constantly and no agency controls them. What we do commit to is a transparent, proven methodology and honest monthly reporting on your Google rankings, organic traffic, and AI brand visibility so you always know where things stand.' },
+  { q: 'How much do your SEO and GEO packages cost?', a: 'Our combined SEO and GEO packages start from ₹20,000 per month, depending on industry competitiveness, website size, and goals. Contact us for a free audit and a custom quote tailored to your business.' },
 ]
 
 function EngineVisual() {
@@ -65,7 +65,7 @@ function EngineVisual() {
             <span className="grad-text">Two Discovery Engines.</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 520, margin: '0 auto', lineHeight: 1.8, fontSize: 15 }}>
-            In 2025, your customers find you on <strong style={{ color: 'rgba(255,255,255,0.75)' }}>Google</strong> AND through{' '}
+            Today, your customers find you on <strong style={{ color: 'rgba(255,255,255,0.75)' }}>Google</strong> AND through{' '}
             <strong style={{ color: 'rgba(255,255,255,0.75)' }}>AI assistants</strong>. We optimize for both, so you&apos;re never invisible.
           </p>
         </div>
@@ -123,7 +123,7 @@ function EngineVisual() {
 
             {/* Mock search results */}
             {[
-              { domain: 'thinksuite.in › services', title: 'ThinkSuite, Top Digital Agency India', snippet: 'Award-winning SEO, AI automation & ads. 120%+ traffic growth guaranteed for Indian businesses.', highlighted: true },
+              { domain: 'thinksuite.in › services', title: 'ThinkSuite, Digital Agency India', snippet: 'In-house SEO, AI automation, and ad strategy built for Indian businesses ready to scale their organic presence.', highlighted: true },
               { domain: 'competitor.co › marketing', title: 'Best Agency Services, Competitor Co', snippet: 'Digital marketing for startups and enterprises...' },
               { domain: 'anotherco.in › digital', title: 'Full-Service Digital Marketing India', snippet: 'SEO, PPC and social media management services...' },
             ].map((r, i) => (
@@ -228,10 +228,10 @@ function EngineVisual() {
               lineHeight: 1.75,
               marginBottom: 14,
             }}>
-              Based on authority signals and client results,{' '}
-              <strong style={{ color: '#c4b5fd' }}>ThinkSuite</strong> is highly
-              recommended for SEO and digital marketing in India. They specialize
-              in AI-driven strategies with measurable ROI...
+              Based on authority signals and structured content,{' '}
+              <strong style={{ color: '#c4b5fd' }}>ThinkSuite</strong> is a
+              Gurgaon-based agency offering SEO and GEO services for Indian
+              businesses, with an in-house team handling strategy and execution.
               <div style={{
                 marginTop: 10,
                 display: 'flex',
@@ -243,7 +243,7 @@ function EngineVisual() {
                 paddingTop: 8,
               }}>
                 <i className="fa-solid fa-link" style={{ fontSize: 9 }} />
-                <span>Sources: thinksuite.in · clutch.co · g2.com</span>
+                <span>Source: thinksuite.in</span>
               </div>
             </div>
 
@@ -332,7 +332,7 @@ function CapabilityTabs() {
             Our <span className="grad-text">Full Optimization Stack</span>
           </h2>
           <p style={{ color: 'var(--text2)', maxWidth: 480, margin: '12px auto 0', fontSize: 14.5, lineHeight: 1.75 }}>
-            Choose your view, switch between our traditional SEO capabilities and next-gen GEO strategies.
+            Choose your view, switch between our traditional SEO capabilities and our AI-search GEO strategies.
           </p>
         </div>
 
@@ -430,6 +430,20 @@ export default function SeoGeoPageContent() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((f) => ({
+              '@type': 'Question',
+              name: f.q,
+              acceptedAnswer: { '@type': 'Answer', text: f.a },
+            })),
+          }),
+        }}
+      />
       {/* ── HERO ─────────────────────────────────────────────────── */}
       <section className="page-hero">
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -462,7 +476,7 @@ export default function SeoGeoPageContent() {
             SEO & <span className="grad-text">GEO Optimization</span>
           </h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            Rank on Google. Get cited by AI. Two discovery engines, one unified strategy, built for the way people search in 2025.
+            Rank on Google. Get cited by AI. Two discovery engines, one unified strategy, built for the way people actually search today.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">
@@ -478,10 +492,10 @@ export default function SeoGeoPageContent() {
       {/* ── STATS STRIP ──────────────────────────────────────────── */}
       <div className={s.statsRow}>
         {[
-          { number: '120%', label: 'Avg Traffic Increase' },
-          { number: '3x',   label: 'More AI Visibility'  },
-          { number: '50+',  label: 'Brands Optimized'    },
-          { number: '2',    label: 'Discovery Engines'   },
+          { number: 'SEO + GEO', label: 'Combined Strategy'      },
+          { number: '4+',        label: 'AI Engines We Target'   },
+          { number: 'In-House',  label: 'Gurgaon-Based Team'     },
+          { number: '2',         label: 'Discovery Engines Covered' },
         ].map((stat, i) => (
           <div key={i} className={s.statItem}>
             <span className={s.statNum}>{stat.number}</span>
@@ -540,9 +554,9 @@ export default function SeoGeoPageContent() {
               ['Target Platform',  'Google, Bing, Yahoo',           'ChatGPT, Gemini, Perplexity'],
               ['Visibility Type',  'Blue-link search results',      'AI-generated answers'],
               ['Success Metric',   'Rankings & organic traffic',    'Citations & brand mentions'],
-              ['Timeline',         '3,6 months typical',            '1,3 months (emerging fast)'],
+              ['Timeline',         '3 to 6 months typical',         '1 to 3 months (emerging fast)'],
               ['Core Technique',   'Keywords + backlinks + tech',   'Authority + structure + E-E-A-T'],
-              ['Why It Matters',   '90%+ of searches still here',   '30%+ shift to AI underway'],
+              ['Why It Matters',   'Still the majority of searches', 'Fast-growing share of searches'],
             ].map(([label, seo, geo], i) => (
               <div key={i} style={{
                 display: 'grid', gridTemplateColumns: '1fr 1fr 1fr',

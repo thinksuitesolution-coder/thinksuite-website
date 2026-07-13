@@ -53,13 +53,7 @@ const TECH_LAYERS = [
   },
 ]
 
-const FAQS = [
-  { q: 'What technologies does your team use?',                  a: 'Our primary stack is Next.js, React, TypeScript, and Node.js for web platforms; Flutter and React Native for mobile. Backend infrastructure runs on PostgreSQL, Redis, and cloud providers (AWS, GCP, Vercel) selected per project requirements.' },
-  { q: 'How do you handle project management and communication?', a: 'We run two-week sprints with weekly video standups, shared project dashboards, and async Slack channels. You receive a working demo at the end of every sprint and can reprioritize features at sprint boundaries.' },
-  { q: 'What does your testing process look like?',              a: 'Every feature is covered by automated unit and integration tests before reaching staging. We then run manual QA, accessibility checks, and performance benchmarking. Security-sensitive applications receive a dedicated penetration testing review before launch.' },
-  { q: 'Do you provide post-launch support?',                    a: 'Yes. All projects include a 30-day post-launch support window at no additional cost. Beyond that, we offer monthly retainer agreements for ongoing maintenance, feature development, and infrastructure monitoring.' },
-  { q: 'Can you take over and modernize an existing codebase?',  a: 'Absolutely. We conduct a full code audit first, identify technical debt and security risks, then propose a phased modernization roadmap. We maintain existing functionality throughout the refactor with zero customer-facing downtime.' },
-]
+import { FAQS } from './faqs'
 
 function ArchitectureVisual() {
   return (

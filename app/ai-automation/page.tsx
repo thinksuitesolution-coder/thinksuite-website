@@ -2,13 +2,64 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'AI Tool Integration and Automation Services | ThinkSuite',
-  description: 'Custom AI tool integration and workflow automation for businesses in India. RAG systems, LLM-powered chatbots, and intelligent automation that reduces manual work.',
-  keywords: ['AI automation India', 'AI tool integration', 'workflow automation India', 'RAG systems India', 'LLM development India', 'business process automation', 'chatbot development India', 'AI agency Gurgaon', 'custom AI solutions India'],
+  title: 'AI Automation and Workflow Agency Gurgaon | ThinkSuite',
+  description: 'Custom AI tool integration and workflow automation for Indian businesses. RAG systems, LLM chatbots, and automation that cuts manual work fast, every week.',
+  keywords: [
+    'AI automation agency Gurgaon',
+    'AI automation India',
+    'AI tool integration services',
+    'workflow automation India',
+    'RAG systems for business India',
+    'LLM development India',
+    'business process automation India',
+    'custom AI automation for small business',
+    'chatbot development India',
+    'AI agency Gurgaon',
+    'custom AI solutions India',
+    'reduce manual work with AI',
+  ],
 }
+
+const faqData = [
+  {
+    q: 'What business processes can be automated with AI?',
+    a: 'Almost any repetitive, rule-based, or data-intensive task is a candidate. Customer support routing, invoice processing, lead scoring, document parsing, inventory alerts, onboarding workflows, and internal knowledge retrieval are the most common starting points.',
+  },
+  {
+    q: 'How long does an automation deployment take?',
+    a: 'Scope determines timeline. A focused single-process automation, like a customer support chatbot, can go live in 2 to 4 weeks. A full enterprise AI integration spanning multiple departments typically takes 6 to 12 weeks from audit to production.',
+  },
+  {
+    q: 'Is AI automation secure for enterprise-sensitive data?',
+    a: 'Yes. We implement role-based access controls, encrypted data pipelines, and on-premises or private-cloud LLM options for organisations with strict data residency requirements. Every system is built with security as a first-class requirement, not an afterthought.',
+  },
+  {
+    q: 'What ROI can we realistically expect?',
+    a: 'Most clients see a positive return within 3 to 6 months. Savings come from reduced headcount on repetitive tasks, faster processing cycles, and lower error rates. The exact number depends on your process volume and current manual overhead, and we walk through the math with you before you commit.',
+  },
+  {
+    q: 'Do we need in-house technical staff to manage the systems?',
+    a: 'No. We build and hand over systems with intuitive dashboards, admin controls, and full documentation. We also offer ongoing managed services for organisations that prefer a fully handled automation environment.',
+  },
+]
 
 export default function AiAutomationPage() {
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqData.map((f) => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: f.a },
+          })),
+        }),
+      }}
+    />
     <ServicePageTerminal
       breadcrumb="Services"
       breadcrumbHref="/services"
@@ -18,10 +69,10 @@ export default function AiAutomationPage() {
       tagline="Too much manual work slows your team down. We find the bottlenecks in your operations and replace them with custom AI tools and automated systems that keep delivering better results over time."
       animationType="network"
       stats={[
-        { number: '60%', label: 'Reduction in Manual Overhead' },
-        { number: '3x', label: 'Faster Processing Speed' },
+        { number: 'Up to 60%', label: 'Less Manual Overhead' },
+        { number: 'Faster', label: 'Processing Speed' },
         { number: '24/7', label: 'Autonomous Operations' },
-        { number: '90%', label: 'Task Accuracy Rate' },
+        { number: 'In-House', label: 'Gurgaon AI Team' },
       ]}
       highlights={[
         { icon: 'fa-book-open', title: 'Intelligent RAG Systems', desc: 'A private knowledge base built from your company data. Your team gets accurate answers instantly without digging through folders or waiting on colleagues.' },
@@ -87,28 +138,7 @@ export default function AiAutomationPage() {
           desc: 'Post-launch we monitor system performance metrics, retrain models as needed, and continuously expand automation coverage for compounding ROI.',
         },
       ]}
-      faqs={[
-        {
-          q: 'What business processes can be automated with AI?',
-          a: 'Almost any repetitive, rule-based, or data-intensive task is a candidate, customer support routing, invoice processing, lead scoring, document parsing, inventory alerts, onboarding workflows, and internal knowledge retrieval are the most common starting points.',
-        },
-        {
-          q: 'How long does an automation deployment take?',
-          a: 'Scope determines timeline. A focused single-process automation (e.g., a customer support chatbot) can go live in 2,4 weeks. A full enterprise AI integration spanning multiple departments typically takes 6,12 weeks from audit to production.',
-        },
-        {
-          q: 'Is AI automation secure for enterprise-sensitive data?',
-          a: 'Yes. We implement role-based access controls, encrypted data pipelines, and on-premises or private-cloud LLM options for organisations with strict data residency requirements. Every system is built with SOC 2-aligned security practices.',
-        },
-        {
-          q: 'What ROI can we realistically expect?',
-          a: 'Most clients see a positive ROI within 3,6 months. Savings come from reduced headcount on repetitive tasks, faster processing cycles, and lower error rates. Average documented savings across our deployments sit at 30,60% of the automated process cost.',
-        },
-        {
-          q: 'Do we need in-house technical staff to manage the systems?',
-          a: 'No. We build and hand over systems with intuitive dashboards, admin controls, and full documentation. We also offer ongoing managed services for organisations that prefer a fully handled automation environment.',
-        },
-      ]}
+      faqs={faqData}
       sidebarLinks={[
         { label: 'AI Tools Development', href: '/ai-tools-development' },
         { label: 'Chatbot Solutions', href: '/chatbot-solutions' },
@@ -121,5 +151,6 @@ export default function AiAutomationPage() {
       ctaTitleHighlight="Accelerate at Scale"
       ctaDesc="Let AI take over the repetitive work that is slowing your team down. We build automation systems that keep running and improving long after launch."
     />
+    </>
   )
 }

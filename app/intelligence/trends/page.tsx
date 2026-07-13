@@ -2,8 +2,17 @@
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI Trend Predictions | ThinkSuite Intelligence',
-  description: '30, 90 and 180-day AI technology trend predictions. Which models, tools, and companies will grow fastest.',
+  title: 'AI Trend Predictions: 30/90/180 Day Outlook | ThinkSuite',
+  description: 'ThinkSuite AI Trend Predictions forecast which AI models, tools, and companies will grow fastest over the next 30, 90, and 180 days, based on live signals.',
+  keywords: [
+    'AI trend predictions',
+    'AI technology growth forecast',
+    '90 day AI trend forecast',
+    'AI investment recommendation tool',
+    'emerging AI technology tracker',
+    'AI momentum tracker',
+    'AI market trend analysis',
+  ],
 };
 export const revalidate = 3600;
 
@@ -41,7 +50,7 @@ export default async function TrendsPage() {
           <div className="chip" style={{ marginBottom: 16 }}>📈 Trend Predictions</div>
           <h1 className="page-title" style={{ color: '#fff' }}>AI Trend Predictions</h1>
           <p className="page-desc" style={{ color: 'rgba(255,255,255,0.75)' }}>
-            AI analyzes signal frequency, funding flow, GitHub activity, and paper citations to predict which technologies will grow in the next 30,180 days.
+            ThinkSuite's Trend Predictions engine analyzes signal frequency, funding flow, GitHub activity, and paper citations to forecast which technologies will grow in the next 30,180 days.
           </p>
           <div style={{ display: 'flex', gap: 8, marginTop: 20, flexWrap: 'wrap' }}>
             {HORIZONS.map(h => (

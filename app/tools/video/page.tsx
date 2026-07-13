@@ -7,7 +7,7 @@ export default function VideoPage() {
       label="AI Video Studio"
       icon="🎬"
       color="#7c3aed"
-      desc="Create stunning videos from text, images, or scripts. AI avatars, lip sync, and studio-quality output — no camera needed."
+      desc="Create videos from text, images, or scripts, with AI avatars, lip sync, and studio quality output, no camera needed."
       tags={['Text to Video', 'AI Avatars', 'Lip Sync', '4K Output']}
     />
   )

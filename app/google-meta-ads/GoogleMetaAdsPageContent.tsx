@@ -15,21 +15,21 @@ const GOOGLE_CAPS = [
 ]
 
 const META_CAPS = [
-  { icon: 'fa-f',                  metric: '2.4x',   title: 'Facebook Ads',               desc: 'Detailed demographic and interest targeting on the world\'s largest social network. Reach decision-makers, homeowners, and niche audiences with precision.' },
+  { icon: 'fa-f',                  metric: 'Precise',   title: 'Facebook Ads',               desc: 'Detailed demographic and interest targeting on the world\'s largest social network. Reach decision-makers, homeowners, and niche audiences with precision.' },
   { icon: 'fa-instagram',          metric: 'Visual', title: 'Instagram Ads',              desc: 'High-impact image and carousel ads in feed and explore. Visual-first format ideal for fashion, lifestyle, food, real estate, and premium brands.' },
-  { icon: 'fa-film',               metric: 'Engage', title: 'Reels & Story Ads',          desc: 'Full-screen vertical video ads in Reels and Stories, the highest-engagement placements on Meta with native feel that doesn\'t look like an ad.' },
+  { icon: 'fa-film',               metric: 'Engage', title: 'Reels & Story Ads',          desc: 'Full-screen vertical video ads in Reels and Stories, the highest-engagement placements on Meta with a native feel that doesn\'t look like an ad.' },
   { icon: 'fa-users',              metric: 'LAL',    title: 'Lookalike Audiences',        desc: 'Build audiences that mirror your best customers using Meta\'s AI. Scale campaigns to new prospects who behave like your highest-value buyers.' },
-  { icon: 'fa-rotate-left',        metric: '60%',    title: 'Retargeting',                desc: 'Re-engage website visitors, video viewers, and catalog browsers with personalized sequences. Capture the 97% who don\'t convert first visit.' },
+  { icon: 'fa-rotate-left',        metric: 'Retarget',    title: 'Retargeting',                desc: 'Re-engage website visitors, video viewers, and catalog browsers with personalized sequences. Keep your brand visible until the people who did not convert on their first visit come back ready to buy.' },
   { icon: 'fa-flask',              metric: 'Weekly', title: 'Creative Testing',           desc: 'Systematic A/B testing of headlines, visuals, CTAs, and formats. Weekly iteration so your creatives compound in performance every month.' },
 ]
 
 const FAQS = [
-  { q: 'What is the minimum monthly ad budget you recommend?', a: 'For Google Search Ads in most Indian cities, we recommend a minimum of ₹20,000,30,000/month to get statistically meaningful data. For Meta Ads, ₹15,000 is a workable starting point. These are ad spends, separate from our management fees.' },
-  { q: 'How long before we see results from Google Ads?', a: 'Google Search Ads can generate leads within the first week if your landing page and offer are solid. Optimization takes 2,4 weeks to show compounding improvements as we accumulate conversion data.' },
-  { q: 'What is the difference between Google Ads and Meta Ads?', a: 'Google captures demand, your ads appear when someone is actively searching for what you offer. Meta creates demand, your ads interrupt the scroll and build awareness. Together they cover the full marketing funnel: from first discovery to final decision.' },
-  { q: 'Do you manage both Google and Meta Ads or just one?', a: 'We manage both. Running both is almost always more effective because they work at different funnel stages. Google closes buyers who are ready. Meta creates the intent that drives future Google searches.' },
-  { q: 'Who owns the ad accounts?', a: 'You always own your Google Ads and Meta Business Manager accounts. We get admin access. If you stop working with us, your full history, audiences, and conversion data stays in your accounts, no lock-in.' },
-  { q: 'How do you report results?', a: 'You get a live Looker Studio dashboard connected to both accounts, check anytime. We also send a weekly written report with spend, impressions, clicks, leads, CPA, and ROAS plus analysis and next week\'s plan.' },
+  { q: 'What is the minimum monthly ad budget you recommend?', a: 'For Google Search Ads in most Indian cities, we recommend a minimum of ₹20,000 to ₹30,000 a month to get statistically meaningful data. For Meta Ads, ₹15,000 a month is a workable starting point. These figures are ad spend, separate from our management fees.' },
+  { q: 'How long before we see results from Google Ads?', a: 'Google Search Ads can generate leads within the first week if your landing page and offer are solid. Optimization typically takes 2 to 4 weeks to show compounding improvements as we accumulate real conversion data and refine targeting.' },
+  { q: 'What is the difference between Google Ads and Meta Ads?', a: 'Google captures demand: your ads appear when someone is actively searching for what you offer. Meta creates demand: your ads interrupt the scroll and build awareness before someone even knows they need you. Together they cover the full marketing funnel, from first discovery to final decision.' },
+  { q: 'Do you manage both Google and Meta Ads or just one?', a: 'We manage both, and running both together is almost always more effective because the two platforms work at different funnel stages. Google closes buyers who are already looking. Meta builds the interest that eventually turns into a Google search.' },
+  { q: 'Who owns the ad accounts?', a: 'You always own your Google Ads and Meta Business Manager accounts, we simply request admin access to run campaigns. If you ever stop working with us, your full history, audiences, and conversion data stay in your accounts. There is no lock-in.' },
+  { q: 'How do you report results?', a: 'You get a live dashboard connected to both accounts that you can check any time you want. We also send a weekly written report covering spend, impressions, clicks, leads, cost per acquisition, and return on ad spend, along with our analysis and next week\'s plan.' },
 ]
 
 function PlatformVisual() {
@@ -125,7 +125,7 @@ function PlatformVisual() {
 
             {/* Sponsored Results */}
             {[
-              { domain: 'thinksuite.in › ads', title: 'ThinkSuite, Google Certified PPC Agency', snippet: '4.8x Average ROAS. Free campaign audit. 120+ campaigns managed across India.', sponsored: true, highlight: true },
+              { domain: 'thinksuite.in › ads', title: 'ThinkSuite, Google Certified PPC Agency', snippet: 'In-house Gurgaon team managing Google and Meta Ads for brands across India. Free campaign audit.', sponsored: true, highlight: true },
               { domain: 'competitor.co › ppc',  title: 'PPC Management Services, Competitor Co', snippet: 'Run Google Ads campaigns for your business...', sponsored: true, highlight: false },
               { domain: 'anotherco.in › ads',   title: 'Google Ads Management, AnotherCo',      snippet: 'Expert paid search campaigns for startups...', sponsored: false, highlight: false },
             ].map((r, i) => (
@@ -222,7 +222,7 @@ function PlatformVisual() {
 
               {/* Ad copy */}
               <div style={{ padding: '10px 14px 10px', fontSize: 12.5, color: 'rgba(255,255,255,0.75)', lineHeight: 1.6 }}>
-                Stop wasting your ad budget. Our PPC specialists deliver <strong style={{ color: '#fff' }}>4.8x ROAS</strong> on Google & Meta, guaranteed transparency. 🚀
+                Stop wasting your ad budget. Our PPC specialists build <strong style={{ color: '#fff' }}>Google & Meta</strong> campaigns with full spend transparency. 🚀
               </div>
 
               {/* Ad creative placeholder */}
@@ -231,7 +231,7 @@ function PlatformVisual() {
                 height: 100, display: 'flex', alignItems: 'center', justifyContent: 'center',
                 flexDirection: 'column', gap: 4,
               }}>
-                <div style={{ fontSize: 18, fontWeight: 900, color: '#fff', fontFamily: 'var(--font-h)' }}>4.8x ROAS</div>
+                <div style={{ fontSize: 18, fontWeight: 900, color: '#fff', fontFamily: 'var(--font-h)' }}>Every Rupee, Tracked</div>
                 <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.7)', fontFamily: 'var(--font-m)', letterSpacing: 1 }}>GOOGLE · META · CERTIFIED</div>
               </div>
 
@@ -255,7 +255,7 @@ function PlatformVisual() {
             <div style={{
               display: 'flex', gap: 5, flexWrap: 'wrap', marginBottom: 12,
             }}>
-              {['25,45 yrs', 'Business Owners', 'India', 'Lookalike'].map(tag => (
+              {['Age 25 to 45', 'Business Owners', 'India', 'Lookalike'].map(tag => (
                 <span key={tag} style={{
                   background: 'rgba(24,119,242,0.15)', border: '1px solid rgba(24,119,242,0.25)',
                   borderRadius: 6, padding: '3px 9px', fontSize: 10, color: 'rgba(255,255,255,0.7)',
@@ -405,6 +405,20 @@ export default function GoogleMetaAdsPageContent() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((f) => ({
+              '@type': 'Question',
+              name: f.q,
+              acceptedAnswer: { '@type': 'Answer', text: f.a },
+            })),
+          }),
+        }}
+      />
       {/* ── HERO ─────────────────────────────────────────────────── */}
       <section className="page-hero">
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -437,7 +451,7 @@ export default function GoogleMetaAdsPageContent() {
             Google & <span className="grad-text">Meta Ads Management</span>
           </h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            Most ad budgets are wasted on poor targeting, weak creative, and zero optimization. Our certified PPC specialists build full-funnel campaigns across Google and Meta that generate qualified leads at a measurable return on every rupee.
+            You know the feeling: watching the ad spend tick down in real time while the leads column stays empty. Most budgets get burned on poor targeting, weak creative, and campaigns nobody is actually watching. ThinkSuite is a Gurgaon-based, Google certified PPC agency that builds and manages full-funnel campaigns across Google and Meta in-house, so every rupee you spend is working toward a lead you can actually follow up on.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">
@@ -453,10 +467,10 @@ export default function GoogleMetaAdsPageContent() {
       {/* ── STATS STRIP ──────────────────────────────────────────── */}
       <div className={s.statsRow}>
         {[
-          { number: '4.8x',    label: 'Average ROAS'       },
-          { number: '-35%',    label: 'Cost Per Lead'      },
-          { number: '120+',    label: 'Campaigns Managed'  },
-          { number: 'Google',  label: 'Certified Partner'  },
+          { number: 'In-House', label: 'PPC Specialist Team'  },
+          { number: 'Gurgaon',  label: 'Based, Working Pan-India' },
+          { number: 'Full',     label: 'Funnel Coverage'      },
+          { number: 'Google',   label: 'Certified Partner'    },
         ].map((stat, i) => (
           <div key={i} className={s.statItem}>
             <span className={s.statNum}>{stat.number}</span>
@@ -507,7 +521,7 @@ export default function GoogleMetaAdsPageContent() {
               ['Ad Formats',       'Text, Display, Video, Shopping',    'Image, Video, Reels, Stories, Carousel'],
               ['Audience Method',  'Keyword & intent-based',            'Interest, demographic & behaviour'],
               ['Best Funnel Stage','Bottom-funnel (ready to buy)',      'Top & mid-funnel (awareness → interest)'],
-              ['Result Timeline',  'Leads within days',                 'Brand impact in 1,3 weeks'],
+              ['Result Timeline',  'Leads within days',                 'Brand impact in 1 to 3 weeks'],
               ['Min Budget',       '₹20,000/month (recommended)',       '₹15,000/month (workable start)'],
             ].map(([label, google, meta], i) => (
               <div key={i} style={{

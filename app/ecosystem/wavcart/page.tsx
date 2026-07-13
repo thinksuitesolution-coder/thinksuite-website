@@ -2,8 +2,20 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'WavCart: eStore and Automation Platform for Local Vendors | ThinkSuite',
-  description: 'WavCart is an AI-powered eStore and automation platform built for local vendors and D2C brands. Smart listings, auto marketing, and inventory intelligence.',
+  title: 'WavCart: AI eStore & Automation Platform for Local Vendors',
+  description: 'WavCart is ThinkSuite\'s AI-powered eStore and automation platform for local vendors and D2C brands, handling listings, marketing, and inventory in one place.',
+  keywords: [
+    'WavCart eStore platform',
+    'AI eStore for local vendors',
+    'automated online store India',
+    'inventory automation for small business',
+    'AI product listing generator',
+    'D2C e-commerce automation platform',
+    'WhatsApp store automation',
+    'small vendor online store builder',
+    'marketing automation for local shops',
+    'AI e-commerce platform India',
+  ],
   alternates: { canonical: 'https://thinksuite.in/ecosystem/wavcart' },
 }
 
@@ -21,10 +33,10 @@ const features = [
 ]
 
 const stats = [
-  { num: '2.5×', label: 'Avg Revenue Lift' },
-  { num: '60%', label: 'Marketing Automated' },
   { num: '< 24h', label: 'Setup Time' },
-  { num: '500+', label: 'Local Vendors' },
+  { num: 'AI-Written', label: 'Product Listings' },
+  { num: 'WhatsApp', label: 'Order Channel' },
+  { num: 'Coming Soon', label: 'Status' },
 ]
 
 const steps = [
@@ -33,9 +45,39 @@ const steps = [
   { n: '03', title: 'Track & Scale', desc: 'Monitor sales in real time and let the AI continuously optimize for more conversions.' },
 ]
 
+const faqs = [
+  {
+    q: 'What is WavCart used for?',
+    a: 'WavCart is used by local vendors and D2C brands to run an online store without hiring a separate tech or marketing team. It writes product listings, runs marketing campaigns, and manages inventory automatically, so a shop owner can focus on the product instead of the software.',
+  },
+  {
+    q: 'Do I need any technical skills to use WavCart?',
+    a: 'No. WavCart is built for vendors who have never run an online store before. You add your products, and the AI handles the listing copy, SEO tags, and marketing setup, so there is no coding or design work required on your end.',
+  },
+  {
+    q: 'Can WavCart handle marketing on WhatsApp and email too?',
+    a: 'Yes. WavCart automates customer journeys across WhatsApp, email, and SMS, so order confirmations, follow-ups, and offers go out without any manual sending.',
+  },
+  {
+    q: 'When can I start selling on WavCart?',
+    a: 'WavCart is currently in early access. Vendors and D2C brands can join the waitlist now to be among the first onboarded when the platform opens up.',
+  },
+]
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+}
+
 export default function WavCartPage() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <section style={{
         background: 'linear-gradient(135deg, #07091a 0%, #071a10 50%, #061208 100%)',
         padding: '130px 0 80px', textAlign: 'center', position: 'relative', overflow: 'hidden',
@@ -120,11 +162,31 @@ export default function WavCartPage() {
         <div className="container">
           <h2 style={{ marginBottom: 16 }}>Start Selling with <span className="grad-text">WavCart</span></h2>
           <p style={{ color: 'var(--text2)', fontSize: 17, maxWidth: 480, margin: '0 auto 36px', lineHeight: 1.7 }}>
-            Join hundreds of local vendors already using WavCart to automate their sales and marketing.
+            Be among the first local vendors to run your store on WavCart. Join the waitlist and we will reach out when your spot opens up.
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/contact" className="btn btn-primary btn-lg">Join Waitlist <i className="fa-solid fa-arrow-right" /></Link>
             <Link href="/ecosystem" className="btn btn-outline btn-lg">Explore All Products</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ background: 'var(--bg)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <span className="label" style={{ marginBottom: 12, display: 'inline-block' }}>FAQ</span>
+            <h2>Frequently Asked <span className="grad-text">Questions</span></h2>
+          </div>
+          <div style={{ maxWidth: 780, margin: '0 auto' }}>
+            {faqs.map((faq, i) => (
+              <div key={i} style={{ background: 'var(--surface)', border: `1px solid ${BORDER}`, borderRadius: 16, padding: '24px 28px', marginBottom: 14 }}>
+                <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 10, color: 'var(--white)', lineHeight: 1.45, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                  <span style={{ color: COLOR, fontSize: 13, fontFamily: 'var(--font-m)', marginTop: 2, flexShrink: 0 }}>Q.</span>
+                  {faq.q}
+                </h3>
+                <p style={{ fontSize: 13.5, color: 'var(--text2)', lineHeight: 1.7, margin: 0, paddingLeft: 26 }}>{faq.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

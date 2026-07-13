@@ -2,8 +2,20 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'ThinkVirtual: Network Connecting and Project Platform | ThinkSuite',
-  description: 'ThinkVirtual connects freelancers, clients, and influencers to collaborate on projects. Post work, find talent, and build your professional network in India.',
+  title: 'ThinkVirtual: Freelancer, Client & Influencer Network',
+  description: 'ThinkVirtual is ThinkSuite\'s professional network where freelancers, clients, and influencers post projects, hire talent, and collaborate, built for India.',
+  keywords: [
+    'ThinkVirtual freelancer network',
+    'freelancer client platform India',
+    'post freelance projects online',
+    'hire freelancers India',
+    'influencer brand collaboration platform',
+    'gig economy platform India',
+    'freelance marketplace India',
+    'professional networking platform India',
+    'find freelance work online',
+    'influencer marketing network',
+  ],
   alternates: { canonical: 'https://thinksuite.in/ecosystem/thinkvirtual' },
 }
 
@@ -21,10 +33,10 @@ const features = [
 ]
 
 const stats = [
-  { num: '500+', label: 'Freelancers' },
-  { num: '200+', label: 'Projects Posted' },
-  { num: '50+', label: 'Partner Brands' },
-  { num: '4.8★', label: 'Avg Rating' },
+  { num: 'Freelancers', label: 'Post & Apply' },
+  { num: 'Clients', label: 'Hire Talent' },
+  { num: 'Influencers', label: 'Connect With Brands' },
+  { num: 'Coming Soon', label: 'Status' },
 ]
 
 const steps = [
@@ -33,9 +45,39 @@ const steps = [
   { n: '03', title: 'Collaborate & Grow', desc: 'Work together, get paid, collect reviews, and build your reputation.' },
 ]
 
+const faqs = [
+  {
+    q: 'What is ThinkVirtual used for?',
+    a: 'ThinkVirtual is used to connect freelancers, clients, and influencers on one platform. Clients post projects and hire talent directly, freelancers build a profile and apply for work, and influencers connect with brands for paid campaigns, all without a middleman taking a cut.',
+  },
+  {
+    q: 'Who can join ThinkVirtual?',
+    a: 'ThinkVirtual is open to three kinds of users: clients who need work done, freelancers offering a skill or service, and influencers looking to collaborate with brands. India\'s creative and digital economy is the primary community it is built for.',
+  },
+  {
+    q: 'How is ThinkVirtual different from a general freelance marketplace?',
+    a: 'ThinkVirtual combines freelance hiring and influencer collaboration in a single professional network, rather than treating them as separate markets. Profiles carry portfolios and client reviews, so reputation is visible and follows a freelancer or influencer across every project.',
+  },
+  {
+    q: 'Is ThinkVirtual only for full-time freelancers?',
+    a: 'No. ThinkVirtual works for full-time freelancers, part-time creators, and influencers who take on brand collaborations alongside other work. Anyone building a professional reputation in India\'s gig or creative economy can create a profile.',
+  },
+]
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+}
+
 export default function ThinkVirtualPage() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <section style={{
         background: 'linear-gradient(135deg, #07091a 0%, #0c1a2e 50%, #061620 100%)',
         padding: '130px 0 80px', textAlign: 'center', position: 'relative', overflow: 'hidden',
@@ -53,7 +95,7 @@ export default function ThinkVirtualPage() {
           <h1 style={{ fontSize: 'clamp(36px,5vw,64px)', fontWeight: 900, color: '#fff', marginBottom: 14, lineHeight: 1.1 }}>ThinkVirtual</h1>
           <p style={{ fontSize: 20, fontWeight: 600, color: COLOR, marginBottom: 20 }}>Network Connecting &amp; Project Platform</p>
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.65)', maxWidth: 560, margin: '0 auto 40px', lineHeight: 1.85 }}>
-            A professional network where freelancers, clients, and influencers connect, post projects, and collaborate. Built for India&apos;s creative and digital economy.
+            ThinkVirtual is a professional network where freelancers, clients, and influencers connect, post projects, and collaborate directly, no middlemen. Built for India&apos;s creative and digital economy.
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/contact" className="btn btn-primary btn-lg">Join Waitlist <i className="fa-solid fa-arrow-right" /></Link>
@@ -125,6 +167,26 @@ export default function ThinkVirtualPage() {
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/contact" className="btn btn-primary btn-lg">Join Waitlist <i className="fa-solid fa-arrow-right" /></Link>
             <Link href="/ecosystem" className="btn btn-outline btn-lg">Explore All Products</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ background: 'var(--bg)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <span className="label" style={{ marginBottom: 12, display: 'inline-block' }}>FAQ</span>
+            <h2>Frequently Asked <span className="grad-text">Questions</span></h2>
+          </div>
+          <div style={{ maxWidth: 780, margin: '0 auto' }}>
+            {faqs.map((faq, i) => (
+              <div key={i} style={{ background: 'var(--surface)', border: `1px solid ${BORDER}`, borderRadius: 16, padding: '24px 28px', marginBottom: 14 }}>
+                <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 10, color: 'var(--white)', lineHeight: 1.45, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                  <span style={{ color: COLOR, fontSize: 13, fontFamily: 'var(--font-m)', marginTop: 2, flexShrink: 0 }}>Q.</span>
+                  {faq.q}
+                </h3>
+                <p style={{ fontSize: 13.5, color: 'var(--text2)', lineHeight: 1.7, margin: 0, paddingLeft: 26 }}>{faq.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

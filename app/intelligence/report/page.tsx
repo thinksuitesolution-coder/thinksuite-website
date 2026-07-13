@@ -49,7 +49,7 @@ export default function ReportPage() {
           <div className="chip" style={{ marginBottom: 16 }}>📊 AI Intelligence Reports</div>
           <h1 className="page-title" style={{ color: '#fff' }}>AI Industry Report Generator</h1>
           <p className="page-desc" style={{ color: 'rgba(255,255,255,0.75)' }}>
-            Generate comprehensive, analyst-grade AI industry reports powered by GPT-4o, covering top stories, trends, funding, research, and 90-day predictions.
+            ThinkSuite's Report Generator writes a full AI industry report powered by GPT-4o in one click, covering top stories, trends, funding, research, and 90-day predictions.
           </p>
         </div>
       </section>

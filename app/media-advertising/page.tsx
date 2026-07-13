@@ -2,9 +2,20 @@ import MediaAdvertisingPageContent from './MediaAdvertisingPageContent'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Media Advertising India | TV, Radio, Print and OTT | ThinkSuite',
-  description: 'Media advertising services in India: TV, radio, print, OTT, and digital media buying for regional and national campaigns. Cross-channel planning and media optimization.',
-  keywords: ['media advertising India', 'TV advertising India', 'radio advertising India', 'print media advertising', 'OTT advertising India', 'programmatic advertising India', 'media buying agency India', 'integrated media planning', 'cross-channel advertising'],
+  title: 'Media Advertising Agency: TV, Radio & OTT | ThinkSuite',
+  description: 'Media advertising from ThinkSuite\'s Gurgaon team: TV, radio, print, OTT, and programmatic buying with cross-channel planning for regional and national ads.',
+  keywords: [
+    'media advertising agency India',
+    'TV advertising agency India',
+    'radio advertising agency India',
+    'print media advertising agency',
+    'OTT advertising agency India',
+    'programmatic advertising agency India',
+    'media buying agency Gurgaon',
+    'integrated media planning agency',
+    'cross-channel advertising agency India',
+    'regional language advertising India',
+  ],
 }
 
 export default function MediaAdvertisingPage() {

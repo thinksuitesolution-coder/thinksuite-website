@@ -1,12 +1,41 @@
 ﻿import SaasProductsPageContent from './SaasProductsPageContent'
+import { FAQS } from './faqs'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'SaaS Product Development India | ThinkSuite',
-  description: 'SaaS product development for startups in India. We build MVPs and scale them to production with multi-tenancy, subscription billing, and cloud architecture.',
-  keywords: 'SaaS product development India, SaaS MVP development, multi-tenant SaaS India, subscription billing integration, SaaS startup India',
+  title: 'SaaS Product Development Company Gurgaon | ThinkSuite',
+  description: 'SaaS product development in Gurgaon. ThinkSuite builds MVPs and scales them with multi-tenancy, subscription billing, and cloud-native architecture, in-house.',
+  keywords: [
+    'SaaS product development company India',
+    'SaaS MVP development for startups',
+    'multi-tenant SaaS architecture development',
+    'subscription billing integration for SaaS',
+    'SaaS application development Gurgaon',
+    'cloud native SaaS development company',
+    'SaaS platform development for startups India',
+    'build a SaaS product from scratch',
+    'SaaS software development company',
+  ],
 }
 
 export default function SaaSProductsPage() {
-  return <SaasProductsPageContent />
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map((faq) => ({
+              '@type': 'Question',
+              name: faq.q,
+              acceptedAnswer: { '@type': 'Answer', text: faq.a },
+            })),
+          }),
+        }}
+      />
+      <SaasProductsPageContent />
+    </>
+  )
 }

@@ -2,8 +2,20 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Visibility: GEO and AI Search Ranking Platform | ThinkSuite',
-  description: 'Visibility helps businesses rank on Google and get cited by ChatGPT, Gemini, and Perplexity through GEO (Generative Engine Optimization) strategies.',
+  title: 'Visibility: GEO Platform to Get Cited by AI Search',
+  description: 'Visibility is ThinkSuite\'s GEO product, built to get your business cited by ChatGPT, Gemini, and Perplexity, through E-E-A-T authority and structured data.',
+  keywords: [
+    'Visibility GEO platform',
+    'generative engine optimization',
+    'get cited by ChatGPT',
+    'AI search visibility',
+    'rank in AI Overviews',
+    'E-E-A-T authority building',
+    'AI search optimization service',
+    'GEO vs SEO',
+    'brand mentions in AI answers',
+    'Perplexity AI citation strategy',
+  ],
   alternates: { canonical: 'https://thinksuite.in/ecosystem/visibility' },
 }
 
@@ -33,9 +45,39 @@ const steps = [
   { n: '03', title: 'Monitor & Grow Citations', desc: 'We track AI mentions of your brand monthly and continuously grow your citations across all platforms.' },
 ]
 
+const faqs = [
+  {
+    q: 'What is Visibility used for?',
+    a: 'Visibility is used to get a business cited and recommended by AI search tools like ChatGPT, Gemini, and Perplexity, not just ranked on Google. It audits how a brand currently appears across these engines, then builds the authority signals and structured data needed to get mentioned in AI-generated answers.',
+  },
+  {
+    q: 'How is GEO different from traditional SEO?',
+    a: 'Traditional SEO optimizes a page to rank in a list of blue links. GEO optimizes content so an AI model can confidently lift a fact, a quote, or a recommendation from it and cite the brand by name in its answer. Visibility runs both, since most buyers still use both Google and AI tools during research.',
+  },
+  {
+    q: 'Do I need Visibility if I already do SEO?',
+    a: 'SEO and GEO overlap but reward different things: SEO rewards backlinks and keyword structure, GEO rewards clear, well-sourced, citable statements and strong E-E-A-T signals. A site can rank well on Google and still be invisible to ChatGPT, which is the gap Visibility is built to close.',
+  },
+  {
+    q: 'How long does it take to see AI citations improve?',
+    a: 'It depends on how much authority content and structured data already exists on a site. Visibility starts with an audit to set a realistic baseline, then tracks AI mentions monthly so the improvement is measured, not guessed at.',
+  },
+]
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+}
+
 export default function VisibilityPage() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <section style={{
         background: 'linear-gradient(135deg, #07091a 0%, #100720 50%, #0a0614 100%)',
         padding: '130px 0 80px', textAlign: 'center', position: 'relative', overflow: 'hidden',
@@ -125,6 +167,26 @@ export default function VisibilityPage() {
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/contact" className="btn btn-primary btn-lg">Book Free GEO Audit <i className="fa-solid fa-arrow-right" /></Link>
             <Link href="/seo-optimization" className="btn btn-outline btn-lg">SEO &amp; GEO Services</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ background: 'var(--bg)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <span className="label" style={{ marginBottom: 12, display: 'inline-block' }}>FAQ</span>
+            <h2>Frequently Asked <span className="grad-text">Questions</span></h2>
+          </div>
+          <div style={{ maxWidth: 780, margin: '0 auto' }}>
+            {faqs.map((faq, i) => (
+              <div key={i} style={{ background: 'var(--surface)', border: `1px solid ${BORDER}`, borderRadius: 16, padding: '24px 28px', marginBottom: 14 }}>
+                <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 10, color: 'var(--white)', lineHeight: 1.45, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                  <span style={{ color: COLOR, fontSize: 13, fontFamily: 'var(--font-m)', marginTop: 2, flexShrink: 0 }}>Q.</span>
+                  {faq.q}
+                </h3>
+                <p style={{ fontSize: 13.5, color: 'var(--text2)', lineHeight: 1.7, margin: 0, paddingLeft: 26 }}>{faq.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

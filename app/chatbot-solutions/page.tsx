@@ -2,13 +2,62 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'AI Chatbot Development India | ThinkSuite',
-  description: 'Custom AI chatbot solutions for WhatsApp, websites, and CRM platforms. Customer support bots, lead generation bots, and appointment booking bots built for Indian businesses.',
-  keywords: ['AI chatbot India', 'WhatsApp chatbot India', 'customer support bot India', 'lead generation chatbot', 'chatbot development India', 'appointment booking bot', 'conversational AI India', 'chatbot agency Gurgaon'],
+  title: 'AI Chatbot Development Agency Gurgaon | ThinkSuite',
+  description: 'Custom AI chatbot solutions for WhatsApp, websites, and CRM platforms. Support bots, lead qualification bots, and booking bots built for Indian businesses.',
+  keywords: [
+    'AI chatbot development India',
+    'chatbot agency Gurgaon',
+    'WhatsApp chatbot India',
+    'WhatsApp Business API chatbot for small business',
+    'customer support bot India',
+    'lead generation chatbot India',
+    'custom AI chatbot development for small business India',
+    'appointment booking bot India',
+    'conversational AI development India',
+    'multilingual chatbot Hindi English',
+  ],
 }
+
+const faqData = [
+  {
+    q: 'How long does it take to build a chatbot?',
+    a: 'A basic FAQ bot on your website can go live in 5 to 7 days. A full multi-platform bot with lead qualification, CRM integration, and custom flows typically takes 3 to 6 weeks depending on scope.',
+  },
+  {
+    q: 'Can the bot handle Hindi and regional languages?',
+    a: 'Yes. We build bots that handle Hindi, English, and regional languages like Tamil, Telugu, Marathi, and Bengali. Language can be set based on user preference or auto-detected from the message.',
+  },
+  {
+    q: 'Which platforms do you deploy chatbots on?',
+    a: 'We deploy on websites through a chat widget, WhatsApp Business API, Telegram, Facebook Messenger, and Instagram DMs, and integrate with HubSpot, Salesforce, Zoho, or your custom CRM.',
+  },
+  {
+    q: 'What happens when a customer asks something the bot cannot answer?',
+    a: 'Every bot includes a graceful handoff mechanism. When a query is outside scope, the bot collects contact details and escalates to your human team with full conversation context included.',
+  },
+  {
+    q: 'Is my business and customer data safe with an AI chatbot?',
+    a: 'All conversations are encrypted in transit and at rest. We do not use your customer data to train any shared AI models. We follow privacy-first practices and can sign data processing agreements on request.',
+  },
+]
 
 export default function ChatbotSolutionsPage() {
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqData.map((f) => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: f.a },
+          })),
+        }),
+      }}
+    />
     <ServicePageTerminal
       breadcrumb="AI and Automation"
       breadcrumbHref="/ai-automation"
@@ -111,28 +160,7 @@ export default function ChatbotSolutionsPage() {
           desc: 'Go live, monitor conversation quality weekly, and continuously improve accuracy based on real interactions.',
         },
       ]}
-      faqs={[
-        {
-          q: 'How long does it take to build a chatbot?',
-          a: 'A basic FAQ bot on your website can go live in 5 to 7 days. A full multi-platform bot with lead qualification, CRM integration, and custom flows typically takes 3 to 6 weeks depending on scope.',
-        },
-        {
-          q: 'Can the bot handle Hindi and regional languages?',
-          a: 'Yes. We build bots that handle Hindi, English, and regional languages like Tamil, Telugu, Marathi, and Bengali. Language can be set based on user preference or auto-detected from the message.',
-        },
-        {
-          q: 'Which platforms do you deploy chatbots on?',
-          a: 'We deploy on websites (chat widget), WhatsApp Business API, Telegram, Facebook Messenger, Instagram DMs, and integrate with HubSpot, Salesforce, Zoho, or your custom CRM.',
-        },
-        {
-          q: 'What happens when a customer asks something the bot cannot answer?',
-          a: 'Every bot includes a graceful handoff mechanism. When a query is outside scope, the bot collects contact details and escalates to your human team with full conversation context included.',
-        },
-        {
-          q: 'Is my business and customer data safe?',
-          a: 'All conversations are encrypted in transit and at rest. We do not use your customer data to train any shared AI models. We follow GDPR-aligned practices and can sign data processing agreements on request.',
-        },
-      ]}
+      faqs={faqData}
       sidebarLinks={[
         { label: 'Workflow Automation', href: '/workflow-automation' },
         { label: 'AI Tools Development', href: '/ai-tools-development' },
@@ -143,5 +171,6 @@ export default function ChatbotSolutionsPage() {
       ctaTitleHighlight="AI Chatbot"
       ctaDesc="Your team should not spend hours answering the same 20 questions every day. Let a trained AI chatbot handle them so your people can focus on work that actually needs human judgment."
     />
+    </>
   )
 }

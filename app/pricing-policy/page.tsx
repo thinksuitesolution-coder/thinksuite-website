@@ -2,9 +2,32 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Pricing Policy | ThinkSuite',
-  description: 'Read ThinkSuite\'s pricing policy covering our subscription plans, billing, taxes, and custom project quotes.',
+  title: 'Pricing Policy | ThinkSuite Digital Agency, Gurgaon',
+  description: 'Read ThinkSuite\'s pricing policy covering subscription plans, billing cycles, applicable taxes, price changes, and custom project quotes for our services.',
+  keywords: [
+    'ThinkSuite pricing policy', 'digital agency pricing India', 'subscription billing policy',
+    'custom project quote policy', 'ThinkSuite GST and taxes',
+  ],
 }
+
+const pricingFaqs = [
+  {
+    q: 'How is ThinkSuite subscription pricing structured?',
+    a: 'Subscription pricing for our tools is listed directly on our website and tool pages. Custom project work, such as software development or marketing campaigns, is priced individually through a formal proposal based on scope.',
+  },
+  {
+    q: 'Will I be notified before a subscription price changes?',
+    a: 'Yes. Existing subscribers are notified at least 15 days before any price change takes effect, and the new pricing applies starting from the next billing cycle.',
+  },
+  {
+    q: 'Are taxes included in the listed prices?',
+    a: 'All prices are listed in Indian Rupees, and applicable taxes including GST are added at checkout in accordance with Indian law.',
+  },
+  {
+    q: 'Who do I contact for a custom quote?',
+    a: 'Email info@thinksuite.in or call +91 93118 21726, and our team will prepare a formal proposal based on your project scope, timeline, and deliverables.',
+  },
+]
 
 export default function PricingPolicyPage() {
   return (
@@ -61,6 +84,32 @@ export default function PricingPolicyPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: pricingFaqs.map((f) => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a },
+              })),
+            }),
+          }}
+        />
+        <div className="container" style={{ maxWidth: 860 }}>
+          <h2 style={{ marginBottom: 24 }}>Frequently Asked Questions</h2>
+          {pricingFaqs.map((faq) => (
+            <div key={faq.q} className="service-card reveal" style={{ padding: '24px 28px', marginBottom: 16 }}>
+              <h3 style={{ fontSize: 17, marginBottom: 10, color: 'var(--white)' }}>{faq.q}</h3>
+              <p style={{ color: 'var(--text2)', lineHeight: 1.85, margin: 0 }}>{faq.a}</p>
+            </div>
+          ))}
         </div>
       </section>
     </>

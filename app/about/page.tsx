@@ -5,8 +5,8 @@ import './about.css'
 
 export const metadata: Metadata = {
   title: 'About ThinkSuite | Digital Agency Based in Gurgaon, India',
-  description: 'ThinkSuite is a full-service digital agency founded in Gurgaon in 2020. We help businesses grow through website development, digital marketing, AI automation, and brand design. Over 120 projects delivered for 50+ clients across India.',
-  keywords: ['about ThinkSuite', 'digital agency Gurgaon', 'full service digital agency India', 'web development agency Gurgaon', 'marketing agency India', 'AI agency Gurgaon', 'ThinkSuite team', 'digital agency founded 2020'],
+  description: 'ThinkSuite is a full-service digital agency founded in Gurgaon in 2020, helping businesses grow through web development, marketing, AI automation, and design.',
+  keywords: ['about ThinkSuite', 'digital agency Gurgaon', 'full service digital agency India', 'web development agency Gurgaon', 'marketing agency India', 'AI agency Gurgaon', 'ThinkSuite founder story', 'in-house digital agency team India'],
 }
 
 // ── HERO ─────────────────────────────────────────────────────────────────────
@@ -841,6 +841,95 @@ function IndustriesSection() {
   )
 }
 
+// ── FAQ ───────────────────────────────────────────────────────────────────────
+
+const aboutFaqs = [
+  {
+    q: 'Who is behind ThinkSuite?',
+    a: 'ThinkSuite was founded in 2020 by Aakash Upadhyay and is run today by an in-house team of developers, designers, marketers, AI engineers, and strategists based in Gurgaon. Every project is delivered by full-time ThinkSuite staff, not outsourced freelancers or subcontractors.',
+  },
+  {
+    q: 'When was ThinkSuite founded and where is it based?',
+    a: 'ThinkSuite was founded in Gurgaon, India in 2020 as a small web studio and has since grown into a full-stack digital agency and AI product company. Our team and operations remain based in Gurgaon, serving clients across India and beyond.',
+  },
+  {
+    q: 'What makes ThinkSuite different from other digital agencies?',
+    a: 'ThinkSuite brings web development, marketing, branding, and AI automation together under one in-house team instead of making you coordinate multiple vendors. That means one point of contact, one shared strategy, and no finger-pointing when something needs to move fast.',
+  },
+  {
+    q: 'Does ThinkSuite only work with large companies?',
+    a: 'No, we work with businesses at every stage, from early founders building their first MVP to established companies running large-scale campaigns. We tailor engagement models and pricing to fit the size and budget of the business we are working with.',
+  },
+  {
+    q: 'Does ThinkSuite build its own products, or only client projects?',
+    a: 'Both. Alongside client work, ThinkSuite has built its own in-house products including ThinkVirtual, WavCart, and our AI workspace tools. Building our own products keeps our team hands-on with the same technology we recommend to clients.',
+  },
+]
+
+function AboutFaqSection() {
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: aboutFaqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  }
+
+  return (
+    <section className="section">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <div className="container">
+        <div style={{ textAlign: 'center', marginBottom: 40 }} className="reveal">
+          <span className="ab-story-eyebrow">
+            <i className="fa-solid fa-circle-question" /> Common Questions
+          </span>
+          <h2 className="ab-story-h2" style={{ marginTop: 12 }}>
+            Frequently Asked <span className="grad-text">Questions</span>
+          </h2>
+        </div>
+        <div style={{ maxWidth: 820, margin: '0 auto' }}>
+          {aboutFaqs.map((faq, i) => (
+            <div
+              key={i}
+              className="reveal"
+              style={{
+                background: 'var(--surface)',
+                border: '1px solid var(--border)',
+                borderRadius: 16,
+                padding: '28px 32px',
+                marginBottom: 14,
+                boxShadow: 'var(--shadow)',
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: 17,
+                  fontWeight: 700,
+                  marginBottom: 12,
+                  color: 'var(--white)',
+                  lineHeight: 1.45,
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: 12,
+                }}
+              >
+                <span style={{ color: 'var(--cyan)', fontSize: 13, fontFamily: 'var(--font-m)', marginTop: 2, flexShrink: 0 }}>Q.</span>
+                {faq.q}
+              </h3>
+              <p style={{ fontSize: 14, color: 'var(--text2)', lineHeight: 1.85, margin: 0, paddingLeft: 28 }}>{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // ── PAGE ──────────────────────────────────────────────────────────────────────
 
 export default function AboutPage() {
@@ -855,6 +944,7 @@ export default function AboutPage() {
       <WhyThinkSuiteSection />
       <TeamTeaserSection />
       <IndustriesSection />
+      <AboutFaqSection />
       <CTASection
         eyebrow="Ready to Work Together?"
         title="Let's Build Something"
