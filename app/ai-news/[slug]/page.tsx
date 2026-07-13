@@ -7,6 +7,7 @@ import { CompetitorAnalysis } from '@/lib/news/pipeline/competitor-intel';
 import { PersonalizedVersion } from '@/lib/news/pipeline/personalized-versions';
 import ArticleTabs from '@/components/blog/ArticleTabs';
 import { articlesCol } from '@/lib/firebase-admin';
+import { getArchivedArticleBySlug } from '@/lib/news/archive-db';
 
 export const revalidate = 3600;
 
@@ -20,8 +21,12 @@ interface EnrichedArticle extends BlogArticle {
 async function getArticle(slug: string): Promise<EnrichedArticle | null> {
   try {
     const snap = await articlesCol().where('slug', '==', slug).limit(1).get();
-    if (snap.empty) return null;
-    return snap.docs[0].data() as EnrichedArticle;
+    if (!snap.empty) return snap.docs[0].data() as EnrichedArticle;
+  } catch { /* fall through to archive */ }
+
+  // Not in the last 14 days of Firestore — check the Turso archive (14 days–3 months).
+  try {
+    return await getArchivedArticleBySlug(slug) as EnrichedArticle | null;
   } catch { return null; }
 }
 

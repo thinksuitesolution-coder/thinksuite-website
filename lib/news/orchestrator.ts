@@ -6,7 +6,7 @@ import { fetchDataForSEONews } from './collectors/dataforseo';
 import { fetchSerperNews } from './collectors/serper';
 import { fetchTwitterViaSearch } from './collectors/twitter';
 import { scoreEvent, filterLowImportance } from './pipeline/detector';
-import { deduplicateEvents, filterAlreadyProcessed } from './pipeline/deduplicator';
+import { deduplicateEvents } from './pipeline/deduplicator';
 import { factCheckEvent, shouldPublish } from './pipeline/fact-checker';
 import { generateBlogArticle } from './pipeline/writer';
 import { generateSEOPackage } from './pipeline/seo';
@@ -15,7 +15,7 @@ import { generateCompetitorIntelligence } from './pipeline/competitor-intel';
 import { generatePersonalizedVersions } from './pipeline/personalized-versions';
 import { generateImages } from './pipeline/image-generator';
 import { translateArticleToAllLanguages } from './pipeline/multilang';
-import { processAndPublishEvents, getProcessedUrls } from './pipeline/publisher';
+import { processAndPublishEvents, filterAlreadyProcessedByUrl, urlDocId } from './pipeline/publisher';
 import { postToTelegram } from '../integrations/telegram';
 import { broadcastToAllChannels } from '../integrations/social';
 import { NEWS_SOURCES } from './sources';
@@ -116,7 +116,7 @@ async function enrichAndPublishArticle(article: BlogArticle, event: ScoredEvent)
   });
 
   await processedUrlsCol()
-    .doc(Buffer.from(article.originalUrl).toString('base64').slice(0, 100))
+    .doc(urlDocId(article.originalUrl))
     .set({ url: article.originalUrl, articleId: article.id, processedAt: new Date().toISOString() });
 }
 
@@ -161,9 +161,9 @@ export async function runNewsPipeline(): Promise<PipelineResult> {
   const deduplicated = deduplicateEvents(filtered);
   console.log(`🔁 After dedup: ${deduplicated.length} unique`);
 
-  // STEP 4: Filter URLs already processed in Firebase (no API cost)
-  const processedUrls = await getProcessedUrls();
-  const newEvents = filterAlreadyProcessed(deduplicated, processedUrls);
+  // STEP 4: Filter URLs already processed in Firebase — checks only this run's
+  // URLs individually instead of scanning up to 2000 arbitrary docs
+  const newEvents = await filterAlreadyProcessedByUrl(deduplicated);
   console.log(`✨ New events to process: ${newEvents.length}`);
 
   if (newEvents.length === 0) {
