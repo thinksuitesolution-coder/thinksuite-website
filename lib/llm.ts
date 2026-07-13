@@ -5,12 +5,11 @@ export const groq = new OpenAI({
   baseURL: 'https://api.groq.com/openai/v1',
 });
 
-// Groq model tiers (all valid as of 2025)
-export const GROQ_MODEL_HIGH    = 'llama-3.3-70b-versatile';     // 100K TPD, 6K TPM
-export const GROQ_MODEL_FAST    = 'llama-3.1-8b-instant';        // 500K TPD, 30K TPM
-export const GROQ_MODEL_BACKUP  = 'llama-3.2-90b-text-preview';  // separate quota pool
-export const GROQ_MODEL_BACKUP2 = 'gemma2-9b-it';                // separate quota pool
-export const GROQ_MODEL_BACKUP3 = 'llama3-groq-8b-8192-tool-use-preview'; // separate pool
+// Groq model tiers — llama-3.2-90b-text-preview, gemma2-9b-it, and
+// llama3-groq-8b-8192-tool-use-preview were removed from the chain below:
+// Groq decommissioned all three, they only ever return 400s.
+export const GROQ_MODEL_HIGH = 'llama-3.3-70b-versatile'; // 100K TPD, 6K TPM
+export const GROQ_MODEL_FAST = 'llama-3.1-8b-instant';    // 500K TPD, 30K TPM
 export const GROQ_MODEL = GROQ_MODEL_HIGH;
 
 // Gemini free tier — separate quota pool from Groq entirely
@@ -23,11 +22,32 @@ export const glm = new OpenAI({
 });
 export const GLM_MODEL = 'glm-5.2';
 
+// OpenAI — paid, last resort fallback so a free-tier quota wipeout across
+// Groq/Gemini/GLM doesn't stall the whole pipeline (this happened 2026-07-13:
+// all free providers were rate-limited/decommissioned at the same time and
+// zero articles published for the day).
+export const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY || 'build-placeholder',
+});
+export const OPENAI_MODEL = 'gpt-4o-mini';
+
 async function callGLM(prompt: string, maxTokens: number): Promise<string> {
   const key = process.env.ZAI_API_KEY;
   if (!key || key === 'build-placeholder') throw new Error('ZAI_API_KEY not configured — skipping GLM');
   const completion = await glm.chat.completions.create({
     model: GLM_MODEL,
+    messages: [{ role: 'user', content: prompt }],
+    max_tokens: maxTokens,
+    temperature: 0.7,
+  });
+  return completion.choices[0].message.content || '{}';
+}
+
+async function callOpenAI(prompt: string, maxTokens: number): Promise<string> {
+  const key = process.env.OPENAI_API_KEY;
+  if (!key || key === 'build-placeholder') throw new Error('OPENAI_API_KEY not configured — skipping OpenAI');
+  const completion = await openai.chat.completions.create({
+    model: OPENAI_MODEL,
     messages: [{ role: 'user', content: prompt }],
     max_tokens: maxTokens,
     temperature: 0.7,
@@ -81,24 +101,21 @@ function extractJSON<T>(raw: string): T {
   return JSON.parse(match ? match[0] : cleaned) as T;
 }
 
-// Free-tier fallback chain across two independent providers (Groq + Gemini)
-// so one provider's daily quota exhaustion doesn't stall the whole pipeline.
+// Fallback chain across independent free-tier providers (Groq, Gemini, GLM),
+// with paid OpenAI last so one shared free-quota wipeout doesn't stall the
+// whole pipeline the way it did on 2026-07-13.
 type Provider = { name: string; call: (prompt: string, maxTokens: number) => Promise<string> };
 
-// openai/gpt-oss-120b has only an 8000 TPM cap on Groq — too small for big writer
-// prompts, so it goes last in the high-maxTokens chain but stays early for fast calls.
 function buildChain(preferFast: boolean): Provider[] {
   const groqHigh: Provider = { name: GROQ_MODEL_HIGH, call: (p, t) => callGroq(GROQ_MODEL_HIGH, p, t) };
   const groqFast: Provider = { name: GROQ_MODEL_FAST, call: (p, t) => callGroq(GROQ_MODEL_FAST, p, t) };
-  const groqBackup: Provider = { name: GROQ_MODEL_BACKUP, call: (p, t) => callGroq(GROQ_MODEL_BACKUP, p, t) };
-  const groqBackup2: Provider = { name: GROQ_MODEL_BACKUP2, call: (p, t) => callGroq(GROQ_MODEL_BACKUP2, p, t) };
-  const groqBackup3: Provider = { name: GROQ_MODEL_BACKUP3, call: (p, t) => callGroq(GROQ_MODEL_BACKUP3, p, t) };
   const gemini: Provider = { name: GEMINI_MODEL, call: callGemini };
   const glmProvider: Provider = { name: GLM_MODEL, call: callGLM };
+  const openaiProvider: Provider = { name: OPENAI_MODEL, call: callOpenAI };
 
   return preferFast
-    ? [groqFast, glmProvider, gemini, groqBackup2, groqBackup3, groqBackup, groqHigh]
-    : [groqHigh, glmProvider, gemini, groqBackup3, groqFast, groqBackup2, groqBackup];
+    ? [groqFast, glmProvider, gemini, groqHigh, openaiProvider]
+    : [groqHigh, glmProvider, gemini, groqFast, openaiProvider];
 }
 
 export async function groqJSON<T = Record<string, unknown>>(
