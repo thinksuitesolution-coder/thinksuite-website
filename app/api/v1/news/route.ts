@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { articlesCol } from '@/lib/firebase-admin';
+import { getArchivedArticles } from '@/lib/news/archive-db';
 
 /**
  * ThinkSuite Public AI News API v1
@@ -14,16 +15,21 @@ export async function GET(req: NextRequest) {
   const company  = p.get('company');
 
   try {
-    let query = articlesCol()
-      .where('status', '==', 'published')
-      .orderBy('publishedAt', 'desc');
+    // Firestore (recent, 0-14 days) + Turso archive (14 days-3 months), so
+    // pagination isn't limited to whatever's currently live in Firestore.
+    const [snap, archived] = await Promise.all([
+      articlesCol().where('status', '==', 'published').orderBy('publishedAt', 'desc').limit(500).get(),
+      getArchivedArticles(500).catch(() => []),
+    ]);
 
-    if (category) query = query.where('category', '==', category) as typeof query;
-    if (company)  query = query.where('company', '==', company)   as typeof query;
+    const recent = snap.docs.map(d => d.data());
+    const seenIds = new Set(recent.map((a: { id?: string }) => a.id));
+    const combinedDocs = [...recent, ...archived.filter(a => !seenIds.has(a.id))] as unknown as Record<string, unknown>[];
+    combinedDocs.sort((a, b) =>
+      +new Date((b.publishedAt as string) || 0) - +new Date((a.publishedAt as string) || 0)
+    );
 
-    const snap = await query.limit(limit * page).get();
-    const all = snap.docs.map(d => {
-      const data = d.data();
+    let all = combinedDocs.map((data) => {
       return {
         id: data.id,
         slug: data.slug,
@@ -40,6 +46,9 @@ export async function GET(req: NextRequest) {
         url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${data.slug}`,
       };
     });
+
+    if (category) all = all.filter(a => a.category === category);
+    if (company)  all = all.filter(a => a.company === company);
 
     const paginated = all.slice((page - 1) * limit, page * limit);
 
