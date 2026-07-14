@@ -67,6 +67,18 @@ export async function archiveArticles(articles: Record<string, unknown>[]): Prom
   return articles.length;
 }
 
+// Lists archived articles, most recent first — used to extend the listing/
+// pagination pages past the 14-day Firestore window.
+export async function getArchivedArticles(limit = 500): Promise<BlogArticle[]> {
+  await ensureSchema();
+  const client = getClient();
+  const result = await client.execute({
+    sql: `SELECT data FROM archived_articles ORDER BY published_at DESC LIMIT ?`,
+    args: [limit],
+  });
+  return result.rows.map(row => JSON.parse(row.data as string) as BlogArticle);
+}
+
 export async function getArchivedArticleBySlug(slug: string): Promise<BlogArticle | null> {
   await ensureSchema();
   const client = getClient();

@@ -4,6 +4,7 @@ import { unstable_cache } from 'next/cache';
 import './pulse.css';
 import { BlogArticle } from '@/lib/news/types';
 import { articlesCol } from '@/lib/firebase-admin';
+import { getArchivedArticles } from '@/lib/news/archive-db';
 import PulseShell, { PulseNavLink, PulseTopic, FilterItem } from '@/components/ai-news/PulseShell';
 import FeaturedCarousel, { FeaturedSlide } from '@/components/ai-news/FeaturedCarousel';
 import NewsletterForm from '@/components/ai-news/NewsletterForm';
@@ -47,6 +48,25 @@ const getAllArticles = unstable_cache(
   ['ai-news-all-articles-v2'],
   { revalidate: 300 }
 );
+
+// Archived (14 days - 3 months old) articles, kept separately cached with a
+// longer window since the archive only changes once a day (cleanup cron).
+// Combined with getAllArticles() so listing/pagination isn't limited to the
+// last 14 days that live in Firestore.
+const getArchivedArticlesCached = unstable_cache(
+  async (): Promise<BlogArticle[]> => {
+    try {
+      return await getArchivedArticles(500);
+    } catch (e) {
+      console.error('[AINews] getArchivedArticlesCached error:', e);
+      return [];
+    }
+  },
+  ['ai-news-archived-articles'],
+  { revalidate: 3600 }
+);
+
+const PAGE_SIZE = 20;
 
 const NAV_CATEGORIES: { label: string; icon: string; href: string }[] = [
   { label: 'Home',       icon: 'fa-house',               href: '/ai-news' },
@@ -147,17 +167,25 @@ function imageFor(a: BlogArticle) {
 export default async function AINewsPage({
   searchParams,
 }: {
-  searchParams: { tab?: string; category?: string; q?: string; company?: string; industry?: string; eventType?: string };
+  searchParams: { tab?: string; category?: string; q?: string; company?: string; industry?: string; eventType?: string; page?: string };
 }) {
-  const all = await getAllArticles();
+  const [all, archived] = await Promise.all([getAllArticles(), getArchivedArticlesCached()]);
+
+  // Firestore (recent, 0-14 days) + Turso archive (14 days-3 months), deduped
+  // by id so the feed/pagination spans the full retention window, not just
+  // whatever's currently live in Firestore.
+  const seenIds = new Set(all.map(a => a.id));
+  const combined = [...all, ...archived.filter(a => !seenIds.has(a.id))];
+
   const tab = searchParams.tab === 'popular' || searchParams.tab === 'important' ? searchParams.tab : 'latest';
   const category = searchParams.category;
   const q = searchParams.q?.trim().toLowerCase();
   const companyFilter = searchParams.company;
   const industryFilter = searchParams.industry;
   const eventTypeFilter = searchParams.eventType;
+  const requestedPage = Math.max(1, parseInt(searchParams.page || '1', 10) || 1);
 
-  let filtered = all;
+  let filtered = combined;
   if (category) filtered = filtered.filter(a => a.category === category);
   if (companyFilter) filtered = filtered.filter(a =>
     a.company?.toLowerCase() === companyFilter.toLowerCase()
@@ -180,6 +208,23 @@ export default async function AINewsPage({
   const important = byScore.filter(a => a.importanceScore >= 75);
 
   const feedList = tab === 'popular' ? byScore : tab === 'important' ? important : byDate;
+
+  const totalPages = Math.max(1, Math.ceil(feedList.length / PAGE_SIZE));
+  const currentPage = Math.min(requestedPage, totalPages);
+  const pagedList = feedList.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+  const buildPageHref = (pageNum: number) => {
+    const params = new URLSearchParams();
+    if (searchParams.tab) params.set('tab', searchParams.tab);
+    if (category) params.set('category', category);
+    if (searchParams.q) params.set('q', searchParams.q);
+    if (companyFilter) params.set('company', companyFilter);
+    if (industryFilter) params.set('industry', industryFilter);
+    if (eventTypeFilter) params.set('eventType', eventTypeFilter);
+    if (pageNum > 1) params.set('page', String(pageNum));
+    const qs = params.toString();
+    return `/ai-news${qs ? `?${qs}` : ''}`;
+  };
 
   const featuredSlides: FeaturedSlide[] = byScore.slice(0, 5).map(a => ({
     slug: a.slug,
@@ -283,7 +328,7 @@ export default async function AINewsPage({
                 : "We're gathering the latest AI news right now. Check back in a few minutes."}
             </div>
           ) : (
-            feedList.slice(0, 20).map(a => {
+            pagedList.map(a => {
               const meta = EVENT_META[a.eventType] || EVENT_META.general;
               return (
                 <Link key={a.id} href={`/ai-news/${a.slug}`} className="pulse-row">
@@ -318,6 +363,25 @@ export default async function AINewsPage({
               );
             })
           )}
+
+          {feedList.length > 0 && totalPages > 1 && (
+            <div className="pulse-pagination" style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 24, flexWrap: 'wrap' }}>
+              {currentPage > 1 && (
+                <Link href={buildPageHref(currentPage - 1)} className="pulse-tab">← Prev</Link>
+              )}
+              {Array.from({ length: totalPages }, (_, i) => i + 1)
+                .filter(p => p === 1 || p === totalPages || Math.abs(p - currentPage) <= 2)
+                .map((p, i, arr) => (
+                  <span key={p} style={{ display: 'flex', gap: 8 }}>
+                    {i > 0 && arr[i - 1] !== p - 1 && <span style={{ padding: '0 4px', color: 'var(--pulse-text2)' }}>…</span>}
+                    <Link href={buildPageHref(p)} className={`pulse-tab${p === currentPage ? ' active' : ''}`}>{p}</Link>
+                  </span>
+                ))}
+              {currentPage < totalPages && (
+                <Link href={buildPageHref(currentPage + 1)} className="pulse-tab">Next →</Link>
+              )}
+            </div>
+          )}
         </div>
 
         <div className="pulse-rail">
@@ -342,7 +406,7 @@ export default async function AINewsPage({
               <span className="pulse-card-title">Coverage Pulse</span>
               <Link href="/ai-news" className="pulse-card-link">View full</Link>
             </div>
-            <div className="pulse-market-cap">{all.length.toLocaleString()}</div>
+            <div className="pulse-market-cap">{combined.length.toLocaleString()}</div>
             <div className="pulse-market-sub">Articles tracked · <span className="pulse-market-up">100+ sources</span></div>
             <div className="pulse-leaders-label">Most covered companies</div>
             {topCompanies.map(([name, count]) => (
