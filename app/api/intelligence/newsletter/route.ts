@@ -17,14 +17,14 @@ export async function POST(req: NextRequest) {
       Date.now() - (edition === 'daily' ? 864e5 : 864e5 * 7)
     ).toISOString();
 
-    const snap = await articlesCol()
-      .where('status', '==', 'published')
-      .where('publishedAt', '>=', cutoff)
-      .orderBy('publishedAt', 'desc')
-      .limit(30)
-      .get();
-
-    const articles = snap.docs.map(d => d.data() as BlogArticle);
+    // Single-field where, cutoff/sort/limit applied in JS — avoids needing a
+    // composite Firestore index for (status ==, publishedAt >=, publishedAt orderBy).
+    const snap = await articlesCol().where('status', '==', 'published').limit(300).get();
+    const articles = snap.docs
+      .map(d => d.data() as BlogArticle)
+      .filter(a => a.publishedAt >= cutoff)
+      .sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt))
+      .slice(0, 30);
     const newsletter = await generateNewsletter(articles, edition as NewsletterEdition, role as NewsletterRole);
 
     return NextResponse.json(newsletter);

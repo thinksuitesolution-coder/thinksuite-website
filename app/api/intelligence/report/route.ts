@@ -167,14 +167,14 @@ export async function POST(req: NextRequest) {
 
   try {
     const cutoff = new Date(Date.now() - days * 864e5).toISOString();
-    const snap = await articlesCol()
-      .where('status', '==', 'published')
-      .where('publishedAt', '>=', cutoff)
-      .orderBy('publishedAt', 'desc')
-      .limit(100)
-      .get();
-
-    const articles = snap.docs.map(d => d.data() as BlogArticle);
+    // Single-field where, cutoff/sort/limit applied in JS — avoids needing a
+    // composite Firestore index for (status ==, publishedAt >=, publishedAt orderBy).
+    const snap = await articlesCol().where('status', '==', 'published').limit(500).get();
+    const articles = snap.docs
+      .map(d => d.data() as BlogArticle)
+      .filter(a => a.publishedAt >= cutoff)
+      .sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt))
+      .slice(0, 100);
     if (articles.length === 0) {
       return NextResponse.json({ error: 'No articles found for this period' }, { status: 404 });
     }

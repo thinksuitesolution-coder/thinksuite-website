@@ -6,13 +6,14 @@ export async function GET(req: NextRequest) {
   const horizon = (req.nextUrl.searchParams.get('horizon') || '90d') as '30d' | '90d' | '180d';
 
   try {
-    const snap = await articlesCol()
-      .where('status', '==', 'published')
-      .orderBy('publishedAt', 'desc')
-      .limit(50)
-      .get();
-
-    const titles = snap.docs.map(d => d.data().title as string).filter(Boolean);
+    // Single-field where, sorted/limited in JS — avoids needing a composite
+    // Firestore index for (status ==, publishedAt orderBy).
+    const snap = await articlesCol().where('status', '==', 'published').limit(300).get();
+    const sorted = snap.docs
+      .map(d => d.data())
+      .sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt))
+      .slice(0, 50);
+    const titles = sorted.map(a => a.title as string).filter(Boolean);
     const report = await generateTrendReport(titles, horizon);
 
     return NextResponse.json(report);

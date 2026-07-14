@@ -8,17 +8,15 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    // Fetch recent articles and do client-side text search
-    // (Firestore doesn't have native full-text search)
-    const snap = await articlesCol()
-      .where('status', '==', 'published')
-      .orderBy('publishedAt', 'desc')
-      .limit(200)
-      .get();
+    // Fetch recent articles and do client-side text search + sort
+    // (Firestore doesn't have native full-text search; single-field where
+    // avoids needing a composite index for status == + publishedAt orderBy)
+    const snap = await articlesCol().where('status', '==', 'published').limit(300).get();
 
     const qLower = q.toLowerCase();
     const results = snap.docs
       .map(d => d.data())
+      .sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt))
       .filter(a =>
         a.title?.toLowerCase().includes(qLower) ||
         a.summary?.toLowerCase().includes(qLower) ||

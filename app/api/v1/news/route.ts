@@ -17,8 +17,10 @@ export async function GET(req: NextRequest) {
   try {
     // Firestore (recent, 0-14 days) + Turso archive (14 days-3 months), so
     // pagination isn't limited to whatever's currently live in Firestore.
+    // Single-field where (sorted in JS below) avoids needing a composite
+    // Firestore index for (status ==, publishedAt orderBy).
     const [snap, archived] = await Promise.all([
-      articlesCol().where('status', '==', 'published').orderBy('publishedAt', 'desc').limit(500).get(),
+      articlesCol().where('status', '==', 'published').limit(500).get(),
       getArchivedArticles(500).catch(() => []),
     ]);
 
