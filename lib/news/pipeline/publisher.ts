@@ -2,8 +2,11 @@ import { adminDb, articlesCol, processedUrlsCol } from '../../firebase-admin';
 import { BlogArticle, ScoredEvent } from '../types';
 import { generateBlogArticle } from './writer';
 
+// base64url (not plain base64) — plain base64's `/` character is a path
+// separator to Firestore and makes `.doc()` throw for any URL whose hash
+// happens to contain one.
 export function urlDocId(url: string): string {
-  return Buffer.from(url).toString('base64').slice(0, 100);
+  return Buffer.from(url).toString('base64url').slice(0, 100);
 }
 
 export async function publishArticle(article: BlogArticle): Promise<string> {
@@ -30,8 +33,14 @@ export async function publishArticle(article: BlogArticle): Promise<string> {
 // scanning up to 2000 arbitrary processedUrls docs on every run — that scan was
 // the single biggest Firestore read-cost driver in this pipeline.
 export async function filterAlreadyProcessedByUrl<T extends ScoredEvent>(events: T[]): Promise<T[]> {
+  // One malformed/empty URL throwing here must not take down the whole run —
+  // treat it as "not yet processed" (worst case: a rare duplicate) rather
+  // than failing every event in the batch.
   const flags = await Promise.all(
-    events.map(e => processedUrlsCol().doc(urlDocId(e.url)).get())
+    events.map(e => {
+      if (!e.url) return Promise.resolve({ exists: false });
+      return processedUrlsCol().doc(urlDocId(e.url)).get().catch(() => ({ exists: false }));
+    })
   );
   return events.filter((_, i) => !flags[i].exists);
 }
