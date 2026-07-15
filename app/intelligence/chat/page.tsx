@@ -56,12 +56,16 @@ export default function AIChat() {
       });
 
       const data = await res.json();
+      if (!res.ok || !data.response) {
+        console.error('Intelligence chat request failed:', data.error || res.statusText);
+      }
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: data.response || 'Sorry, I could not process that request.',
+        content: data.response || `Sorry, I could not process that request.${data.error ? ` (${data.error})` : ''}`,
         timestamp: new Date(),
       }]);
-    } catch {
+    } catch (err) {
+      console.error('Intelligence chat network error:', err);
       setMessages(prev => [...prev, {
         role: 'assistant',
         content: 'Connection error. Please try again.',

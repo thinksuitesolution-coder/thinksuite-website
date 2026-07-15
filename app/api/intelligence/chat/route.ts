@@ -27,6 +27,11 @@ When unsure, you say so clearly.
 
 Context: You're embedded in ThinkSuite's AI Intelligence Platform, a real-time AI news and analysis service.`;
 
+  if (!process.env.OPENAI_API_KEY) {
+    console.error('[intelligence/chat] OPENAI_API_KEY is not set');
+    return NextResponse.json({ error: 'AI Intelligence chat is not configured on this server.' }, { status: 500 });
+  }
+
   try {
     const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
       { role: 'system', content: systemPrompt },
@@ -48,6 +53,7 @@ Context: You're embedded in ThinkSuite's AI Intelligence Platform, a real-time A
       usage: completion.usage,
     });
   } catch (err) {
-    return NextResponse.json({ error: (err as Error).message }, { status: 500 });
+    console.error('[intelligence/chat] OpenAI request failed:', err);
+    return NextResponse.json({ error: (err as Error).message || 'AI request failed' }, { status: 500 });
   }
 }
