@@ -3,6 +3,12 @@
    Design: Clean Modern | Card Shadows | Animated
    ================================================================ */
 
+@keyframes ts-loading-bar {
+  0%   { transform: scaleX(0); }
+  50%  { transform: scaleX(0.6); }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
 :root {
   /* ── Backgrounds ─────────────────────────────────── */
   --bg:          #f0f8ff;
