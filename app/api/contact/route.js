@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 const OWNER_EMAILS = ["thinksuitesolution@gmail.com", "info@Thinksuite.in", "subscriptionaakash@gmail.com"];
 
 async function verifyAdmin(idToken) {
-  const adminModule = await import("@/lib/firebase-admin");
+  const adminModule = await import("@/lib/firebaseAdmin");
   const adminApp = adminModule.default();
   const decoded = await adminApp.auth().verifyIdToken(idToken);
   const email = decoded.email?.toLowerCase();
@@ -51,7 +51,7 @@ export async function POST(req) {
       return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
     }
 
-    const adminModule = await import("@/lib/firebase-admin");
+    const adminModule = await import("@/lib/firebaseAdmin");
     const adminApp = adminModule.default();
     await adminApp.firestore().collection("contacts").add({
       name: name.trim(),

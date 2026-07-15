@@ -45,7 +45,7 @@ const DEFAULT_PRICING = {
 };
 
 async function verifyAdmin(idToken) {
-  const adminModule = await import("@/lib/firebase-admin");
+  const adminModule = await import("@/lib/firebaseAdmin");
   const adminApp = adminModule.default();
   if (!adminApp) throw new Error("Firebase Admin not configured");
   const decoded = await adminApp.auth().verifyIdToken(idToken);

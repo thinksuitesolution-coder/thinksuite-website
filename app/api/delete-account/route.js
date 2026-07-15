@@ -9,7 +9,7 @@ export async function POST(req) {
 
     // Log deletion request to Firestore
     try {
-      const adminModule = await import("@/lib/firebase-admin");
+      const adminModule = await import("@/lib/firebaseAdmin");
       const adminApp = adminModule.default();
       if (adminApp) {
         const db = adminApp.firestore();

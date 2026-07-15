@@ -7,7 +7,7 @@ const DEFAULT_PRICING = { monthlyPrice: 999, leadGenPrice: 5000, trialEnabled: f
 
 async function getPricing() {
   try {
-    const adminModule = await import("@/lib/firebase-admin");
+    const adminModule = await import("@/lib/firebaseAdmin");
     const adminApp = adminModule.default();
     if (!adminApp) return DEFAULT_PRICING;
     const snap = await adminApp.firestore().doc(PRICING_DOC).get();

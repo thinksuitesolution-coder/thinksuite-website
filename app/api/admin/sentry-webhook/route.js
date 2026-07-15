@@ -11,7 +11,7 @@ const WEBHOOK_SECRET = process.env.SENTRY_WEBHOOK_SECRET;
 const AUTO_APPROVE_MS = 20 * 60 * 1000; // 20 minutes
 
 async function getAdminApp() {
-  const mod = await import("@/lib/firebase-admin");
+  const mod = await import("@/lib/firebaseAdmin");
   const app = mod.default();
   if (!app) throw new Error("Firebase Admin not configured");
   return app;

@@ -65,7 +65,7 @@ export async function POST(req) {
 
     if (!idToken) return NextResponse.json({ error: "idToken required" }, { status: 401 });
 
-    const adminModule = await import("@/lib/firebase-admin");
+    const adminModule = await import("@/lib/firebaseAdmin");
     const adminApp = adminModule.default();
     if (!adminApp) return NextResponse.json({ error: "Firebase not configured" }, { status: 500 });
 

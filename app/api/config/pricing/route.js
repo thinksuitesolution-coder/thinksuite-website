@@ -44,7 +44,7 @@ function buildDefaults() {
 
 export async function GET() {
   try {
-    const adminModule = await import("@/lib/firebase-admin");
+    const adminModule = await import("@/lib/firebaseAdmin");
     const adminApp = adminModule.default();
     if (!adminApp) return NextResponse.json(buildDefaults());
     const snap   = await adminApp.firestore().doc(PRICING_DOC).get();

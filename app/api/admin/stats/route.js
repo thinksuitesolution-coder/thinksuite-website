@@ -4,7 +4,7 @@ const OWNER_EMAILS = ["thinksuitesolution@gmail.com", "info@Thinksuite.in", "sub
 const CONFIG_DOC = "config/admins";
 
 async function verifyAdmin(idToken) {
-  const adminModule = await import("@/lib/firebase-admin");
+  const adminModule = await import("@/lib/firebaseAdmin");
   const adminApp = adminModule.default();
   if (!adminApp) throw new Error("Firebase Admin not configured");
   const decoded = await adminApp.auth().verifyIdToken(idToken);

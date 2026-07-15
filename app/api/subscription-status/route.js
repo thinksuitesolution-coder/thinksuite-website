@@ -8,8 +8,8 @@ export async function POST(req) {
       return NextResponse.json({ status: "none", error: "Missing userId or toolSlug" }, { status: 400 });
     }
 
-    const { adminDb } = await import("@/lib/firebase-admin");
-    const doc = await adminDb.collection("users").doc(userId).collection("subscriptions").doc(toolSlug).get();
+    const { getAdminDb } = await import("@/lib/firebaseAdmin");
+    const doc = await getAdminDb().collection("users").doc(userId).collection("subscriptions").doc(toolSlug).get();
 
     if (!doc.exists) {
       return NextResponse.json({ status: "none" });

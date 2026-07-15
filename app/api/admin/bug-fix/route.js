@@ -10,7 +10,7 @@ const GITHUB_REPO  = process.env.GITHUB_REPO  || "thinksuite-marketing";
 const OWNER_EMAILS = ["thinksuitesolution@gmail.com", "info@Thinksuite.in", "subscriptionaakash@gmail.com"];
 
 async function getAdminApp() {
-  const mod = await import("@/lib/firebase-admin");
+  const mod = await import("@/lib/firebaseAdmin");
   const app = mod.default();
   if (!app) throw new Error("Firebase Admin not configured");
   return app;

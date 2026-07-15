@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 async function getAdminApp() {
-  const adminModule = await import("@/lib/firebase-admin");
+  const adminModule = await import("@/lib/firebaseAdmin");
   const adminApp = adminModule.default();
   if (!adminApp) throw new Error("Firebase Admin not configured");
   return adminApp;

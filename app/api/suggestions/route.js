@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 const OWNER_EMAILS = ["thinksuitesolution@gmail.com", "info@Thinksuite.in", "subscriptionaakash@gmail.com"];
 
 async function getAdminApp() {
-  const m = await import("@/lib/firebase-admin");
+  const m = await import("@/lib/firebaseAdmin");
   const app = m.default();
   if (!app) throw new Error("Firebase Admin not configured");
   return app;

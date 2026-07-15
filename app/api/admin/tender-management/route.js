@@ -6,7 +6,7 @@ export const maxDuration = 300;
 const OWNER_EMAILS = ["thinksuitesolution@gmail.com", "info@Thinksuite.in", "subscriptionaakash@gmail.com"];
 
 async function getAdminApp() {
-  const adminModule = await import("@/lib/firebase-admin");
+  const adminModule = await import("@/lib/firebaseAdmin");
   const adminApp = adminModule.default();
   if (!adminApp) throw new Error("Firebase Admin not configured");
   return adminApp;

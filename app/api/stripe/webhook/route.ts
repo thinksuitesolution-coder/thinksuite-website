@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { getStripe } from '@/lib/stripe';
-import { adminDb } from '@/lib/firebase-admin';
+import { getAdminDb } from '@/lib/firebaseAdmin';
 import { notifyNewSubscription } from '@/lib/adminNotifier';
 
 export const runtime = 'nodejs';
@@ -16,6 +16,7 @@ async function activateSubscription(opts: {
   isSubscription: boolean;
 }) {
   const { userId, toolSlug, planType, leadPlanType, paymentId, amountUsd, isSubscription } = opts;
+  const adminDb = getAdminDb();
 
   const subRef = adminDb.collection('users').doc(userId).collection('subscriptions').doc(toolSlug);
   const existing = await subRef.get();
@@ -74,6 +75,8 @@ export async function POST(req: NextRequest) {
     console.error('Stripe webhook signature verification failed:', err);
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
   }
+
+  const adminDb = getAdminDb();
 
   try {
     switch (event.type) {

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getStripe } from '@/lib/stripe';
-import { adminDb } from '@/lib/firebase-admin';
+import { getAdminDb } from '@/lib/firebaseAdmin';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://thinksuite.in';
 
@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
 
     const stripe = getStripe();
 
-    const pricingSnap = await adminDb.doc('config/pricing').get();
+    const pricingSnap = await getAdminDb().doc('config/pricing').get();
     const tp = pricingSnap.exists ? pricingSnap.data()?.tools?.[toolSlug] : null;
 
     const usdMonthly = tp?.usdMonthly ?? fallbackUsdMonthly(toolSlug);

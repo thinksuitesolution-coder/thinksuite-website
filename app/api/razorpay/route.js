@@ -39,7 +39,7 @@ export async function POST(req) {
       const razorpay = getRazorpay();
 
       // Fetch per-tool pricing from Firestore
-      const adminMod = await import("@/lib/firebase-admin");
+      const adminMod = await import("@/lib/firebaseAdmin");
       const adminApp = adminMod.default();
       let tp = null;
       if (adminApp) {
@@ -67,7 +67,7 @@ export async function POST(req) {
       const razorpay = getRazorpay();
 
       // Fetch per-tool monthly price from Firestore (admin-configurable)
-      const adminMod2 = await import("@/lib/firebase-admin");
+      const adminMod2 = await import("@/lib/firebaseAdmin");
       const adminApp2 = adminMod2.default();
       let baseMonthly = toolSlug === "lead-generation" ? 5000 : 999;
       if (adminApp2) {
@@ -153,7 +153,7 @@ export async function POST(req) {
 
       const status = "active";
 
-      const adminModule = await import("@/lib/firebase-admin");
+      const adminModule = await import("@/lib/firebaseAdmin");
       const adminApp = adminModule.default();
 
       if (!adminApp) {
@@ -261,7 +261,7 @@ export async function POST(req) {
         return NextResponse.json({ success: false, error: "Signature mismatch" }, { status: 400 });
       }
 
-      const adminModule3 = await import("@/lib/firebase-admin");
+      const adminModule3 = await import("@/lib/firebaseAdmin");
       const adminApp3 = adminModule3.default();
 
       if (!adminApp3) {
@@ -319,7 +319,7 @@ export async function POST(req) {
 
     /* ── Get subscription status ── */
     if (action === "get_status") {
-      const adminModule2 = await import("@/lib/firebase-admin");
+      const adminModule2 = await import("@/lib/firebaseAdmin");
       const adminApp2 = adminModule2.default();
       if (!adminApp2) {
         console.warn("[get_status] Firebase Admin not configured");
@@ -392,7 +392,7 @@ export async function POST(req) {
       // Look up actual user email for admin notification
       let creditUserEmail = userId;
       try {
-        const credAdminMod = await import("@/lib/firebase-admin");
+        const credAdminMod = await import("@/lib/firebaseAdmin");
         const credAdminApp = credAdminMod.default();
         if (credAdminApp) {
           const userSnap = await credAdminApp.firestore().collection("users").doc(userId).get();

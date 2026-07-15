@@ -32,7 +32,7 @@ export async function POST(req) {
     }
 
     /* 2 -Create a Firebase custom token using Admin SDK */
-    const admin = (await import("@/lib/firebase-admin")).default();
+    const admin = (await import("@/lib/firebaseAdmin")).default();
     if (!admin) {
       return NextResponse.json(
         { error: "Firebase Admin not configured -add FIREBASE_SERVICE_ACCOUNT_KEY" },
