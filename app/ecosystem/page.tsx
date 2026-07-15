@@ -36,7 +36,7 @@ const products = [
     statusLabel: 'Live',
     href: '/services',
     ctaLabel: 'Explore Services',
-    desc: 'ThinkSuite is a Gurgaon-based digital agency covering every angle of business growth: custom websites and apps, AI automation, and performance marketing. Everything below this section is a product we built ourselves, born out of problems we kept hitting while running client work.',
+    desc: 'ThinkSuite is an in-house digital agency covering every angle of business growth: custom websites and apps, AI automation, and performance marketing. Everything below this section is a product we built ourselves, born out of problems we kept hitting while running client work.',
     capabilities: [
       { icon: 'fa-code', label: 'Software Development', desc: 'Custom websites, apps, SaaS, enterprise software' },
       { icon: 'fa-bullhorn', label: 'Digital Marketing', desc: 'SEO, Google Ads, Meta Ads, social media, content' },

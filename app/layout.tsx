@@ -33,34 +33,39 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://thinksuite.in'),
   title: {
-    default: 'ThinkSuite: Digital Agency & AI Automation, Gurgaon',
+    default: 'ThinkSuite: Digital Agency & AI Automation for Global Businesses',
     template: '%s | ThinkSuite Digital Agency',
   },
-  description: 'ThinkSuite is a Gurgaon-based digital agency and AI product company. We build websites, run SEO campaigns, and create AI automation tools for businesses.',
+  description: 'ThinkSuite is a digital agency and AI product company serving clients worldwide. We build websites, run SEO campaigns, and create AI automation tools for businesses of every size.',
   keywords: [
-    'digital agency Gurgaon', 'AI automation company India', 'web development agency India',
-    'digital marketing agency Gurgaon', 'custom software development company', 'SEO services India',
-    'AI chatbot development India', 'full service digital agency', 'branding and design agency Gurgaon',
-    'SaaS product development company', 'business consulting Gurgaon', 'GEO and AI search optimization agency',
-    'custom SaaS platform development company India', 'AI powered marketing agency India', 'web and mobile app development Gurgaon',
+    'digital agency', 'AI automation company', 'web development agency', 'international digital marketing agency',
+    'custom software development company', 'SEO services', 'AI chatbot development', 'full service digital agency',
+    'branding and design agency', 'SaaS product development company', 'business consulting',
+    'GEO and AI search optimization agency', 'custom SaaS platform development company',
+    'AI powered marketing agency', 'web and mobile app development agency',
+    'digital agency India', 'AI automation company India', 'digital agency Gurgaon',
   ],
   authors: [{ name: 'ThinkSuite', url: 'https://thinksuite.in' }],
   creator: 'ThinkSuite',
   publisher: 'ThinkSuite',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
-    locale: 'en_IN',
+    locale: 'en_US',
     url: 'https://thinksuite.in',
     siteName: 'ThinkSuite',
-    title: 'ThinkSuite | Digital Agency for Web, Marketing & AI, India',
-    description: 'ThinkSuite is a Gurgaon-based digital agency. We build websites and apps, run SEO and paid ad campaigns, and set up AI automation for businesses.',
-    images: [{ url: '/assets/img/og-image.jpg', width: 1200, height: 630, alt: 'ThinkSuite Digital Agency India' }],
+    title: 'ThinkSuite | Digital Agency for Web, Marketing & AI, Worldwide',
+    description: 'ThinkSuite is a full-stack digital agency. We build websites and apps, run SEO and paid ad campaigns, and set up AI automation for businesses around the world.',
+    images: [{ url: '/assets/img/og-image.jpg', width: 1200, height: 630, alt: 'ThinkSuite Digital Agency' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ThinkSuite, Full-Stack Digital Agency in Gurgaon',
-    description: 'AI-powered software development, digital marketing, and branding agency based in Gurgaon, India, serving businesses across every industry.',
+    title: 'ThinkSuite, Full-Stack Digital Agency for Global Businesses',
+    description: 'AI-powered software development, digital marketing, and branding agency serving businesses across every industry, worldwide.',
     images: ['/assets/img/og-image.jpg'],
   },
   robots: {
@@ -69,6 +74,13 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   },
   icons: { icon: '/assets/img/fevicon.svg' },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: {
+      ...(process.env.BING_SITE_VERIFICATION && { 'msvalidate.01': process.env.BING_SITE_VERIFICATION }),
+      ...(process.env.YANDEX_SITE_VERIFICATION && { 'yandex-verification': process.env.YANDEX_SITE_VERIFICATION }),
+    },
+  },
 }
 
 const organizationSchema = {
@@ -77,7 +89,7 @@ const organizationSchema = {
   name: 'ThinkSuite',
   url: 'https://thinksuite.in',
   logo: 'https://thinksuite.in/assets/img/fevicon.svg',
-  description: 'Full-stack digital agency in Gurgaon, India offering AI software development, digital marketing, branding and design, and business consulting, delivered by one in-house team.',
+  description: 'Full-stack digital agency offering AI software development, digital marketing, branding and design, and business consulting to clients worldwide, delivered by one in-house team.',
   foundingDate: '2020',
   contactPoint: {
     '@type': 'ContactPoint',
@@ -85,12 +97,17 @@ const organizationSchema = {
     telephone: '+91-93118-21726',
     email: 'info@thinksuite.in',
     availableLanguage: ['English', 'Hindi'],
+    areaServed: 'Worldwide',
   },
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Gurgaon',
     addressRegion: 'Haryana',
     addressCountry: 'IN',
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Worldwide',
   },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',

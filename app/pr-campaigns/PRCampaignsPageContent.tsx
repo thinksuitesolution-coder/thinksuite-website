@@ -69,7 +69,7 @@ function MediaCoverageVisual() {
             <span className="grad-text">Real Placements. Real Reach.</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 520, margin: '0 auto', lineHeight: 1.8, fontSize: 15 }}>
-            Earned media is the most credible form of marketing. We have spent years building genuine relationships with journalists and editors across every major publication tier in India.
+            Earned media is the most credible form of marketing. We have spent years building genuine relationships with journalists and editors across every major publication tier in India, and we're extending that network internationally as we take on clients worldwide.
           </p>
         </div>
 
@@ -197,7 +197,7 @@ export default function PRCampaignsPageContent() {
           </div>
           <h1 className="mt-8">PR <span className="grad-text">Campaigns</span></h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            An honest article in the right publication does more for your credibility than a thousand ads ever will. ThinkSuite is a Gurgaon-based PR agency that builds genuine journalist relationships, writes the pitch, handles the follow-up, and gets your story into the media your customers already read and trust.
+            An honest article in the right publication does more for your credibility than a thousand ads ever will. ThinkSuite is an in-house PR agency that builds genuine journalist relationships, writes the pitch, handles the follow-up, and gets your story into the media your customers already read and trust.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">Start Your PR Program <i className="fa-solid fa-arrow-right" /></Link>
@@ -209,7 +209,7 @@ export default function PRCampaignsPageContent() {
       <div className={s.statsRow}>
         {[
           { number: 'In-House',   label: 'PR & Comms Team'       },
-          { number: 'Gurgaon',    label: 'Based, Working Pan-India' },
+          { number: 'Worldwide',  label: 'Media Relationships'   },
           { number: '48hr',       label: 'Crisis Response Time'   },
           { number: 'Multi-Tier', label: 'Publication Coverage'   },
         ].map((stat, i) => (
@@ -247,7 +247,7 @@ export default function PRCampaignsPageContent() {
             <span className="label">Who We Work With</span>
             <h2 style={{ marginTop: 12 }}>Any Industry. Any Scale. <span className="grad-text">Any Need.</span></h2>
             <p style={{ color: 'var(--text2)', marginTop: 12, maxWidth: 640, margin: '12px auto 0', lineHeight: 1.85, fontSize: 15 }}>
-              From a local business to a pan-India brand, from a bootstrapped startup to an established enterprise -
+              From a local business to a global brand, from a bootstrapped startup to an established enterprise -
               we adapt completely to your goals, market, and budget. If you have customers, we can build for you.
             </p>
           </div>

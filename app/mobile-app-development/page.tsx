@@ -3,8 +3,8 @@ import { FAQS } from './faqs'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Mobile App Development Company Gurgaon | ThinkSuite',
-  description: 'iOS and Android app development in Gurgaon. ThinkSuite builds native Swift, Kotlin, React Native, and Flutter apps for startups and growing businesses.',
+  title: 'Mobile App Development Company | ThinkSuite',
+  description: 'iOS and Android app development for startups and growing businesses worldwide. ThinkSuite builds native Swift, Kotlin, React Native, and Flutter apps.',
   keywords: [
     'mobile app development company Gurgaon',
     'iOS app development India',
@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     'app development company near me',
     'native mobile app development India',
     'mobile app maintenance and support',
+    'mobile app development company',
+    'iOS app development agency worldwide',
+    'Android app development company',
   ],
 }
 

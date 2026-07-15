@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Outdoor Advertising & Billboard Agency | ThinkSuite',
-  description: 'Outdoor advertising from ThinkSuite\'s in-house Gurgaon team: billboard booking, hoarding design, transit ads, and digital OOH across major Indian cities.',
+  description: 'Outdoor advertising from ThinkSuite\'s in-house team: billboard booking, hoarding design, transit ads, and digital OOH across major Indian cities.',
   keywords: [
     'outdoor advertising agency India',
     'billboard advertising agency India',

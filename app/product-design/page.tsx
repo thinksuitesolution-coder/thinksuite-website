@@ -2,9 +2,9 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Product Design Services Company in Gurgaon | ThinkSuite',
-  description: 'End-to-end product design in Gurgaon: discovery, wireframing, Figma prototyping, design systems, and developer handoff for web and mobile products, in-house.',
-  keywords: ['product design company Gurgaon', 'UX product design India', 'Figma prototyping agency India', 'design system development India', 'SaaS product design company', '0 to 1 product design', 'mobile product design India', 'product designer Gurgaon'],
+  title: 'Product Design Services Company | ThinkSuite',
+  description: 'End-to-end product design for businesses worldwide: discovery, wireframing, Figma prototyping, design systems, and developer handoff for web and mobile products, in-house.',
+  keywords: ['product design company Gurgaon', 'UX product design India', 'Figma prototyping agency India', 'design system development India', 'SaaS product design company', '0 to 1 product design', 'mobile product design India', 'product designer Gurgaon', 'product design company', 'UX product design agency worldwide', 'Figma prototyping agency'],
 }
 
 const FAQS = [

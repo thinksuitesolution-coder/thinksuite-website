@@ -3,10 +3,10 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Refund and Cancellation Policy | ThinkSuite Agency',
-  description: 'Read ThinkSuite\'s refund and cancellation policy for our subscriptions, AI tools, and project-based digital agency services offered out of Gurgaon, India.',
+  description: 'Read ThinkSuite\'s refund and cancellation policy for our subscriptions, AI tools, and project-based digital agency services, for customers worldwide.',
   keywords: [
-    'ThinkSuite refund policy', 'subscription cancellation policy India', 'digital agency refund eligibility',
-    'how to cancel ThinkSuite subscription', 'project deposit refund policy',
+    'ThinkSuite refund policy', 'subscription cancellation policy', 'digital agency refund eligibility',
+    'how to cancel ThinkSuite subscription', 'project deposit refund policy', 'subscription cancellation policy India',
   ],
 }
 
@@ -74,7 +74,11 @@ export default function RefundCancellationPage() {
                 text: 'For custom projects (software development, design, marketing), cancellation and refund terms are defined in the individual project agreement. Generally, deposits are non-refundable once work has begun, and refunds for remaining milestones are prorated based on work completed.',
               },
               {
-                title: '7. Contact Us',
+                title: '7. International Payments',
+                text: 'For customers billed in USD through our international payment processor, refunds follow the same eligibility rules above and are returned to the original payment method within 7-10 business days. If you are located in the EEA, UK, or another jurisdiction with a statutory withdrawal right for digital purchases, please see the "International Customers & Currency" section of our Terms and Conditions.',
+              },
+              {
+                title: '8. Contact Us',
                 text: 'For questions about cancellations or refunds, contact us at info@thinksuite.in or call +91 93118 21726.',
               },
             ].map((section) => (

@@ -2,8 +2,8 @@ import PRCampaignsPageContent from './PRCampaignsPageContent'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'PR & Media Relations Agency in Gurgaon | ThinkSuite',
-  description: 'PR campaigns from ThinkSuite\'s Gurgaon team: media coverage, press releases, journalist outreach, crisis communications, and thought leadership programs.',
+  title: 'PR & Media Relations Agency | ThinkSuite',
+  description: 'PR campaigns from ThinkSuite\'s in-house team: media coverage, press releases, journalist outreach, crisis communications, and thought leadership programs for brands worldwide.',
   keywords: [
     'PR agency Gurgaon',
     'public relations agency India',
@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     'journalist outreach agency India',
     'brand reputation management agency',
     'startup PR agency India',
+    'PR agency',
+    'public relations agency worldwide',
+    'media relations agency',
   ],
 }
 

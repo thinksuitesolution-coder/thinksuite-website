@@ -17,7 +17,7 @@ const CAPS = [
 const FAQS = [
   { q: 'What types of indoor venues do you cover?', a: 'We cover malls, airports, metro stations, corporate parks, hospitals, clinics, gyms, cinemas, coworking spaces, colleges, and restaurants. We can source inventory across any high-footfall indoor environment where your audience actually spends time.' },
   { q: 'Is indoor advertising more expensive than outdoor?', a: 'Cost per exposure is often lower for indoor because dwell times are much longer. A shopper spends a good stretch of time inside a mall compared to a few seconds glancing at a hoarding from the road, so your brand gets multiple exposures per visit instead of one quick glance.' },
-  { q: 'Can you run campaigns in multiple cities simultaneously?', a: 'Yes, we manage multi-city indoor campaigns through our vendor network across major Indian cities. All campaign management, creative distribution, and reporting is centralized through our Gurgaon team so you get one point of contact regardless of how many cities are running.' },
+  { q: 'Can you run campaigns in multiple cities simultaneously?', a: 'Yes, we manage multi-city indoor campaigns through our vendor network across major Indian cities. All campaign management, creative distribution, and reporting is centralized through our team so you get one point of contact regardless of how many cities are running.' },
   { q: 'Do you offer digital indoor screens?', a: 'Yes, we have access to digital screen networks in malls, airports, and corporate parks that let you run dynamic content, schedule ads by time of day, and update creatives without reprinting anything.' },
   { q: 'How far in advance do I need to book indoor advertising?', a: 'For premium venues like airports and top-tier malls, 3 to 4 weeks advance booking is advisable. For other venues, 10 to 14 days is usually sufficient, though festival seasons and the start of the year can book up quickly.' },
   { q: 'Why would a brand choose indoor advertising over a billboard?', a: 'Indoor advertising puts your brand in front of someone who is standing still, waiting, or moving slowly through a space, which means they actually have time to read your message rather than glimpse it for a second at a traffic signal. It also lets you show up closer to the actual moment of purchase, inside the mall or store where the decision gets made.' },
@@ -197,7 +197,7 @@ export default function IndoorAdvertisingPageContent() {
           </div>
           <h1 className="mt-8">Indoor <span className="grad-text">Advertising</span></h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            Indoor spaces are where purchase decisions actually happen. ThinkSuite is a Gurgaon-based indoor advertising agency that places your brand inside malls, airports, corporate parks, and clinics, exactly where someone is standing still with time to notice you, so a browser becomes a buyer before they even walk out the door.
+            Indoor spaces are where purchase decisions actually happen. ThinkSuite is an in-house indoor advertising agency that places your brand inside malls, airports, corporate parks, and clinics, exactly where someone is standing still with time to notice you, so a browser becomes a buyer before they even walk out the door.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">Explore Indoor Options <i className="fa-solid fa-arrow-right" /></Link>

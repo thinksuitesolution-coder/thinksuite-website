@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'ThinkVirtual: Freelancer, Client & Influencer Network',
-  description: 'ThinkVirtual is ThinkSuite\'s professional network where freelancers, clients, and influencers post projects, hire talent, and collaborate, built for India.',
+  description: 'ThinkVirtual is ThinkSuite\'s professional network where freelancers, clients, and influencers post projects, hire talent, and collaborate, starting with India\'s gig economy.',
   keywords: [
     'ThinkVirtual freelancer network',
     'freelancer client platform India',
@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     'professional networking platform India',
     'find freelance work online',
     'influencer marketing network',
+    'freelancer client platform',
+    'hire freelancers online worldwide',
+    'freelance marketplace',
   ],
   alternates: { canonical: 'https://thinksuite.in/ecosystem/thinkvirtual' },
 }

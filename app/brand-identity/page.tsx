@@ -2,9 +2,9 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Brand Identity Design Agency in Gurgaon | ThinkSuite',
-  description: 'Professional brand identity design for Indian businesses. Logo design, color systems, typography, brand guidelines, and complete visual identity packages.',
-  keywords: ['brand identity design agency Gurgaon', 'logo design company India', 'brand guidelines design India', 'visual identity design India', 'logo designer Gurgaon', 'brand design agency India', 'corporate identity design India', 'startup branding agency India'],
+  title: 'Brand Identity Design Agency | ThinkSuite',
+  description: 'Professional brand identity design for businesses worldwide. Logo design, color systems, typography, brand guidelines, and complete visual identity packages.',
+  keywords: ['brand identity design agency Gurgaon', 'logo design company India', 'brand guidelines design India', 'visual identity design India', 'logo designer Gurgaon', 'brand design agency India', 'corporate identity design India', 'startup branding agency India', 'brand identity design agency', 'logo design company worldwide', 'brand design agency'],
 }
 
 const FAQS = [

@@ -19,6 +19,14 @@ const MONTHLY_PRICES: Record<string, number> = {
   'video': 1499,
 }
 
+// Rough USD parity — kept in sync with the fallback in app/api/stripe/checkout/route.ts.
+const MONTHLY_PRICES_USD: Record<string, number> = {
+  'content': 12,
+  'voice': 12,
+  'imagestudio': 12,
+  'video': 18,
+}
+
 const ADMIN_COUPON = 'admin@@2026'
 
 declare global {
@@ -46,10 +54,22 @@ export default function ToolSubscribeModal({
   const [couponError, setCouponError] = useState('')
 
   const isLeadGen = toolSlug === 'lead-generation'
+  // Lead-generation runs on India-only data sources (GeM tenders, MCA registry),
+  // so it's INR/Razorpay-only — no international currency option for it.
+  const [currency, setCurrency] = useState<'inr' | 'usd'>('inr')
 
   const monthly = MONTHLY_PRICES[toolSlug] ?? 999
   const sixMonth = Math.round(monthly * 6 * 0.8)
   const annual = Math.round(monthly * 12 * 0.67)
+
+  const monthlyUsd = MONTHLY_PRICES_USD[toolSlug] ?? 12
+  const sixMonthUsd = Math.round(monthlyUsd * 6 * 0.8)
+  const annualUsd = Math.round(monthlyUsd * 12 * 0.67)
+
+  const symbol = currency === 'usd' ? '$' : '₹'
+  const curMonthly = currency === 'usd' ? monthlyUsd : monthly
+  const curSixMonth = currency === 'usd' ? sixMonthUsd : sixMonth
+  const curAnnual = currency === 'usd' ? annualUsd : annual
 
   const plans = isLeadGen
     ? [
@@ -65,24 +85,24 @@ export default function ToolSubscribeModal({
         {
           id: 'monthly' as const,
           label: 'Monthly',
-          price: monthly,
+          price: curMonthly,
           per: '/month',
           desc: 'Full access. Cancel anytime.',
         },
         {
           id: 'sixmonth' as const,
           label: '6 Months',
-          price: sixMonth,
+          price: curSixMonth,
           per: 'one-time',
-          desc: `Save 20% — only ₹${Math.round(sixMonth / 6).toLocaleString()}/mo`,
+          desc: `Save 20% — only ${symbol}${Math.round(curSixMonth / 6).toLocaleString()}/mo`,
           badge: 'Popular',
         },
         {
           id: 'annual' as const,
           label: 'Annual',
-          price: annual,
+          price: curAnnual,
           per: 'one-time',
-          desc: `Save 33% — only ₹${Math.round(annual / 12).toLocaleString()}/mo`,
+          desc: `Save 33% — only ${symbol}${Math.round(curAnnual / 12).toLocaleString()}/mo`,
         },
       ]
 
@@ -109,7 +129,27 @@ export default function ToolSubscribeModal({
     }
   }
 
+  const handleStripeCheckout = async () => {
+    setLoading(true)
+    setError('')
+    try {
+      const r = await fetch('/api/stripe/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ toolSlug, planType: selected, userId }),
+      })
+      const d = await r.json()
+      if (!d.url) throw new Error(d.error || 'Failed to start checkout')
+      window.location.href = d.url
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : 'Payment failed. Please try again.')
+      setLoading(false)
+    }
+  }
+
   const handlePayment = async () => {
+    if (currency === 'usd') { await handleStripeCheckout(); return }
+
     setLoading(true)
     setError('')
     try {
@@ -214,6 +254,23 @@ export default function ToolSubscribeModal({
           <p style={{ fontSize: 13, color: '#64748b', margin: 0 }}>Choose a plan to get full access</p>
         </div>
 
+        {/* Currency toggle (India vs International) */}
+        {!isLeadGen && (
+          <div style={{ display: 'flex', gap: 4, background: '#f1f5f9', borderRadius: 10, padding: 4, marginBottom: 16 }}>
+            {([['inr', '🇮🇳 India (₹)'], ['usd', '🌍 International ($)']] as const).map(([id, label]) => (
+              <button key={id} onClick={() => setCurrency(id)}
+                style={{
+                  flex: 1, padding: '8px 10px', borderRadius: 8, border: 'none', cursor: 'pointer',
+                  fontSize: 12.5, fontWeight: 700, fontFamily: 'inherit',
+                  background: currency === id ? '#fff' : 'transparent',
+                  color: currency === id ? '#0f172a' : '#64748b',
+                  boxShadow: currency === id ? '0 1px 4px rgba(0,0,0,0.1)' : 'none',
+                  transition: 'all 0.15s',
+                }}>{label}</button>
+            ))}
+          </div>
+        )}
+
         {/* Plans */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 20 }}>
           {plans.map(plan => (
@@ -243,7 +300,7 @@ export default function ToolSubscribeModal({
                 <div style={{ fontSize: 11.5, color: '#64748b' }}>{plan.desc}</div>
               </div>
               <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                <div style={{ fontSize: 18, fontWeight: 900, color: toolColor }}>₹{plan.price.toLocaleString()}</div>
+                <div style={{ fontSize: 18, fontWeight: 900, color: toolColor }}>{symbol}{plan.price.toLocaleString()}</div>
                 <div style={{ fontSize: 10, color: '#94a3b8', fontWeight: 600 }}>{plan.per}</div>
               </div>
             </button>
@@ -260,8 +317,13 @@ export default function ToolSubscribeModal({
         {/* CTA */}
         <button onClick={handlePayment} disabled={loading}
           style={{ width: '100%', padding: 14, background: `linear-gradient(135deg,${toolColor},${toolColor}cc)`, border: 'none', borderRadius: 12, color: '#fff', fontSize: 15, fontWeight: 800, cursor: loading ? 'not-allowed' : 'pointer', fontFamily: 'inherit', opacity: loading ? 0.7 : 1, marginBottom: 12 }}>
-          {loading ? 'Processing…' : `Pay ₹${selectedPlan.price.toLocaleString()} – Activate ${selectedPlan.label} →`}
+          {loading ? 'Processing…' : `Pay ${symbol}${selectedPlan.price.toLocaleString()} – Activate ${selectedPlan.label} →`}
         </button>
+        {currency === 'usd' && (
+          <p style={{ fontSize: 10.5, color: '#94a3b8', textAlign: 'center', margin: '-6px 0 12px' }}>
+            + applicable tax, calculated at checkout based on your country
+          </p>
+        )}
 
         <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 20 }}>
           {['🔒 Secure Payment', '7'].map(t => (

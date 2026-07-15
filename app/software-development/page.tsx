@@ -3,8 +3,8 @@ import { FAQS } from './faqs'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Software Development Company in Gurgaon | ThinkSuite',
-  description: 'Full-stack software development in Gurgaon: SaaS platforms, mobile apps, custom enterprise systems, and cloud-native web applications, built in-house.',
+  title: 'Software Development Company | ThinkSuite',
+  description: 'Full-stack software development for businesses worldwide: SaaS platforms, mobile apps, custom enterprise systems, and cloud-native web applications, built in-house.',
   keywords: [
     'software development company Gurgaon',
     'full stack software development India',
@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     'Next.js and Node.js development company',
     'enterprise software engineering India',
     'software development agency Gurgaon',
+    'software development company worldwide',
+    'full stack software development agency',
+    'enterprise software engineering company',
   ],
 }
 

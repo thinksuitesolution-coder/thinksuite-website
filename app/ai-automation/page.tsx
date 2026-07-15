@@ -2,8 +2,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'AI Automation and Workflow Agency Gurgaon | ThinkSuite',
-  description: 'Custom AI tool integration and workflow automation for Indian businesses. RAG systems, LLM chatbots, and automation that cuts manual work fast, every week.',
+  title: 'AI Automation and Workflow Agency | ThinkSuite',
+  description: 'Custom AI tool integration and workflow automation for businesses worldwide. RAG systems, LLM chatbots, and automation that cuts manual work fast, every week.',
   keywords: [
     'AI automation agency Gurgaon',
     'AI automation India',
@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     'AI agency Gurgaon',
     'custom AI solutions India',
     'reduce manual work with AI',
+    'AI automation agency',
+    'AI agency worldwide',
+    'custom AI solutions company',
   ],
 }
 
@@ -72,7 +75,7 @@ export default function AiAutomationPage() {
         { number: 'Up to 60%', label: 'Less Manual Overhead' },
         { number: 'Faster', label: 'Processing Speed' },
         { number: '24/7', label: 'Autonomous Operations' },
-        { number: 'In-House', label: 'Gurgaon AI Team' },
+        { number: 'In-House', label: 'AI Team' },
       ]}
       highlights={[
         { icon: 'fa-book-open', title: 'Intelligent RAG Systems', desc: 'A private knowledge base built from your company data. Your team gets accurate answers instantly without digging through folders or waiting on colleagues.' },

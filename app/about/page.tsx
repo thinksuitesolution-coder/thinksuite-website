@@ -4,9 +4,9 @@ import CTASection from '@/components/sections/CTASection'
 import './about.css'
 
 export const metadata: Metadata = {
-  title: 'About ThinkSuite | Digital Agency Based in Gurgaon, India',
-  description: 'ThinkSuite is a full-service digital agency founded in Gurgaon in 2020, helping businesses grow through web development, marketing, AI automation, and design.',
-  keywords: ['about ThinkSuite', 'digital agency Gurgaon', 'full service digital agency India', 'web development agency Gurgaon', 'marketing agency India', 'AI agency Gurgaon', 'ThinkSuite founder story', 'in-house digital agency team India'],
+  title: 'About ThinkSuite | Digital Agency',
+  description: 'ThinkSuite is a full-service digital agency founded in India in 2020, helping businesses worldwide grow through web development, marketing, AI automation, and design.',
+  keywords: ['about ThinkSuite', 'digital agency Gurgaon', 'full service digital agency India', 'web development agency Gurgaon', 'marketing agency India', 'AI agency Gurgaon', 'ThinkSuite founder story', 'in-house digital agency team India', 'full service digital agency worldwide', 'web development agency', 'marketing agency'],
 }
 
 // ── HERO ─────────────────────────────────────────────────────────────────────
@@ -24,7 +24,7 @@ function HeroSection() {
     <section className="ab-hero">
       <div className="ab-hero-inner container">
         <span className="ab-hero-eyebrow reveal">
-          <i className="fa-solid fa-bolt" /> AI-First Digital Agency, Gurgaon
+          <i className="fa-solid fa-bolt" /> AI-First Digital Agency, Worldwide
         </span>
         <h1 className="ab-hero-h1 reveal">
           We Think.<br />
@@ -168,7 +168,7 @@ function ValuesSection() {
       iconBg: 'rgba(0,188,212,0.15)',
       iconColor: '#00bcd4',
       title: 'Our Vision',
-      body: "Build India's first truly full-stack AI-powered digital ecosystem, where businesses don't just get services, they get a permanent partner invested in their growth.",
+      body: "Build a truly full-stack AI-powered digital ecosystem, starting in India, for businesses everywhere, where businesses don't just get services, they get a permanent partner invested in their growth.",
       points: ['4 in-house products and growing', 'AI-first from day one', 'Global reach, Indian roots'],
     },
     {

@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Business Consulting & Growth Advisory | ThinkSuite',
-  description: 'Gurgaon-based business consulting for Indian companies who want a strategic partner, not just a report. Growth advisory, operations, and leadership guidance.',
+  description: 'Business consulting for companies worldwide who want a strategic partner, not just a report. Growth advisory, operations, and leadership guidance.',
   keywords: [
     'business consulting India',
     'growth advisory India',
@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     'leadership consulting for startups',
     'fundraising advisory India',
     'business consultant for SMEs',
+    'business consulting worldwide',
+    'growth advisory agency',
+    'business growth consultant',
   ],
 }
 
@@ -39,7 +42,7 @@ const faqs = [
   },
   {
     q: 'Can you help with fundraising?',
-    a: 'Yes, though we work as strategic advisors rather than investment bankers. We help with investor positioning, financial model preparation, pitch narrative, and due diligence readiness, and we are well-connected with angel networks and early-stage investors across India.',
+    a: 'Yes, though we work as strategic advisors rather than investment bankers. We help with investor positioning, financial model preparation, pitch narrative, and due diligence readiness, and we are well-connected with angel networks and early-stage investors across India and internationally.',
   },
 ]
 
@@ -68,7 +71,7 @@ export default function ConsultingGrowthPage() {
           { number: 'Founder-Led', label: 'Advice Built Around How You Work' },
           { number: 'Cross-Functional', label: 'Product, Marketing, Finance, Tech' },
           { number: '2 Engagement Modes', label: 'Diagnostic Project or Ongoing Retainer' },
-          { number: 'India-Grounded', label: 'Advice Built for Local Market Reality' },
+          { number: 'Market-Grounded', label: 'Advice Built for Real-World Business Reality' },
         ]}
         whyUs={[
           {
@@ -78,8 +81,8 @@ export default function ConsultingGrowthPage() {
           },
           {
             icon: 'fa-indian-rupee-sign',
-            title: 'Built for Indian Business Reality',
-            desc: 'From GST and compliance to vendor negotiations and talent retention, our advice is grounded in how Indian markets actually work, not what a textbook case study says should happen.',
+            title: 'Built for Real Business Reality',
+            desc: 'From compliance and regulatory nuance (including India\'s GST) to vendor negotiations and talent retention, our advice is grounded in how markets actually work, not what a textbook case study says should happen.',
           },
           {
             icon: 'fa-people-group',

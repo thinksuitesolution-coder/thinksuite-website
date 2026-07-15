@@ -186,7 +186,7 @@ export default function OutdoorAdvertisingPageContent() {
           </div>
           <h1 className="mt-8">Outdoor <span className="grad-text">Advertising</span></h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            There is a particular kind of pride in driving past a billboard with your own brand on it, the kind an Instagram ad never quite gives you. ThinkSuite is a Gurgaon-based outdoor advertising agency handling site selection, hoarding design, transit branding, and digital OOH across major Indian cities, with data behind every location we recommend, not just whatever inventory happened to be free.
+            There is a particular kind of pride in driving past a billboard with your own brand on it, the kind an Instagram ad never quite gives you. ThinkSuite is an in-house outdoor advertising agency handling site selection, hoarding design, transit branding, and digital OOH across major Indian cities, with data behind every location we recommend, not just whatever inventory happened to be free.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">Book OOH Campaign <i className="fa-solid fa-arrow-right" /></Link>

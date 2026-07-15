@@ -2,11 +2,12 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | ThinkSuite Digital Agency, Gurgaon',
-  description: 'Read ThinkSuite\'s privacy policy to understand how our Gurgaon-based digital agency collects, uses, stores, and protects your personal data and information.',
+  title: 'Privacy Policy | ThinkSuite Digital Agency',
+  description: 'Read ThinkSuite\'s privacy policy to understand how we collect, use, store, and protect your personal data, including GDPR and CCPA rights for international customers.',
   keywords: [
-    'ThinkSuite privacy policy', 'digital agency data privacy India', 'how ThinkSuite uses your data',
-    'website cookies policy India', 'personal information rights India',
+    'ThinkSuite privacy policy', 'digital agency data privacy', 'how ThinkSuite uses your data',
+    'website cookies policy', 'personal information rights', 'GDPR rights ThinkSuite', 'CCPA rights ThinkSuite',
+    'digital agency data privacy India', 'personal information rights India',
   ],
 }
 
@@ -74,7 +75,11 @@ export default function PrivacyPage() {
                 text: 'You have the right to access, correct, or delete your personal information. You may also opt out of marketing communications at any time. Contact us at info@thinksuite.in to exercise these rights.',
               },
               {
-                title: '7. Contact Us',
+                title: '7. International Users — GDPR & CCPA Rights',
+                text: 'If you are located in the EEA, UK, or Switzerland, you have additional rights under the GDPR: the right to access, rectify, erase, or port your data, restrict or object to processing, and lodge a complaint with your local data protection authority. If you are a California resident, you have rights under the CCPA/CPRA to know what personal information we collect, request deletion, and opt out of its sale (we do not sell personal information). Where we transfer data outside your region, we use reasonable contractual and technical safeguards. To exercise any of these rights, contact us at info@thinksuite.in — we respond to all verified requests regardless of where you are located.',
+              },
+              {
+                title: '8. Contact Us',
                 text: 'If you have questions about this Privacy Policy, please contact us at info@thinksuite.in or write to us at our registered office in Gurgaon, India.',
               },
             ].map((section) => (

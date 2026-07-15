@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Indoor Advertising Agency for Malls & Airports | ThinkSuite',
-  description: 'Indoor advertising from ThinkSuite\'s Gurgaon team: mall, airport, office, and healthcare venue branding, digital screens, and experiential setups across India.',
+  description: 'Indoor advertising from ThinkSuite\'s in-house team: mall, airport, office, and healthcare venue branding, digital screens, and experiential setups across India.',
   keywords: [
     'indoor advertising agency India',
     'mall advertising agency India',

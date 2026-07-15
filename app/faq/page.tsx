@@ -4,11 +4,12 @@ import FAQSection from '@/components/sections/FAQSection'
 
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions | ThinkSuite Digital Agency',
-  description: 'Answers to common questions about ThinkSuite\'s services, pricing, timelines, and process, straight from our Gurgaon-based digital agency and AI product team.',
+  description: 'Answers to common questions about ThinkSuite\'s services, pricing, timelines, and process, straight from our digital agency and AI product team.',
   keywords: [
     'ThinkSuite FAQ', 'digital agency questions India', 'how much does a website cost India',
     'digital agency pricing Gurgaon', 'how long does app development take', 'AI development company questions',
     'digital marketing agency FAQ', 'ThinkSuite services explained',
+    'digital agency questions', 'how much does a website cost', 'digital agency pricing',
   ],
 }
 

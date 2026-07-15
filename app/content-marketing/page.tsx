@@ -2,8 +2,8 @@ import ContentMarketingPageContent from './ContentMarketingPageContent'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Content Marketing Services Agency in Gurgaon | ThinkSuite',
-  description: 'Content marketing from ThinkSuite\'s in-house Gurgaon team: SEO blog writing, video scripts, case studies, newsletters, and website copy built to earn trust.',
+  title: 'Content Marketing Services Agency | ThinkSuite',
+  description: 'Content marketing from ThinkSuite\'s in-house team: SEO blog writing, video scripts, case studies, newsletters, and website copy built to earn trust, worldwide.',
   keywords: [
     'content marketing agency Gurgaon',
     'content marketing agency India',
@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     'website copywriting agency India',
     'content marketing for D2C brands',
     'thought leadership content agency',
+    'content marketing agency',
+    'SEO blog writing services worldwide',
+    'website copywriting agency',
   ],
 }
 

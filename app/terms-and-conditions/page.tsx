@@ -2,11 +2,11 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Terms and Conditions | ThinkSuite Digital Agency, Gurgaon',
-  description: 'Read ThinkSuite\'s terms and conditions governing the use of our website, project agreements, digital agency services, and in-house AI tools.',
+  title: 'Terms and Conditions | ThinkSuite Digital Agency',
+  description: 'Read ThinkSuite\'s terms and conditions governing the use of our website, project agreements, digital agency services, and in-house AI tools, for customers worldwide.',
   keywords: [
-    'ThinkSuite terms and conditions', 'digital agency terms of service India', 'project payment terms agency',
-    'intellectual property digital agency', 'ThinkSuite governing law',
+    'ThinkSuite terms and conditions', 'digital agency terms of service', 'project payment terms agency',
+    'intellectual property digital agency', 'ThinkSuite governing law', 'digital agency terms of service India',
   ],
 }
 
@@ -74,8 +74,12 @@ export default function TermsPage() {
                 text: 'ThinkSuite\'s liability is limited to the total amount paid for the specific service in question. We are not liable for indirect, consequential, or incidental damages arising from the use of our services.',
               },
               {
-                title: '7. Governing Law',
-                text: 'These Terms are governed by the laws of India. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of courts in Gurgaon, India.',
+                title: '7. International Customers & Currency',
+                text: 'ThinkSuite serves customers worldwide. Customers outside India are billed in USD through our international payment processor, which calculates and collects any applicable VAT, GST, or sales tax for your country at checkout. If you are located in the EEA, UK, or another jurisdiction with a statutory right of withdrawal for digital purchases, you acknowledge that by completing payment and gaining immediate access to a subscription or digital tool, you expressly request immediate performance and waive that withdrawal right, to the extent permitted by applicable law.',
+              },
+              {
+                title: '8. Governing Law',
+                text: 'These Terms are governed by the laws of India, regardless of the customer\'s location. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of courts in Gurgaon, India.',
               },
             ].map((section) => (
               <div key={section.title} style={{ marginBottom: 32 }}>

@@ -20,13 +20,15 @@ const TechStackSection           = dynamic(() => import('@/components/sections/T
 const TestimonialsSection        = dynamic(() => import('@/components/sections/TestimonialsSection'))
 
 export const metadata: Metadata = {
-  title: 'Web Development, Marketing and AI Agency in Gurgaon',
-  description: 'ThinkSuite is a full-stack digital agency in Gurgaon offering web development, digital marketing, AI automation, branding, and consulting for growing companies.',
+  title: 'Web Development, Marketing and AI Agency | ThinkSuite',
+  description: 'ThinkSuite is a full-stack digital agency offering web development, digital marketing, AI automation, branding, and consulting for growing companies worldwide.',
   keywords: [
     'digital agency in Gurgaon', 'website development company India', 'AI automation for business India',
     'digital marketing agency near me', 'software development company Gurgaon', 'branding and design studio India',
     'SEO and paid ads agency India', 'full stack digital agency India', 'AI chatbot and workflow automation',
     'custom web application development', 'growth marketing agency India',
+    'digital agency', 'website development company', 'AI automation for business',
+    'full stack digital agency worldwide', 'growth marketing agency',
   ],
   alternates: { canonical: 'https://thinksuite.in' },
 }

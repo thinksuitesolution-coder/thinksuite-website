@@ -2,8 +2,8 @@ import ServicePageSplitStory from '@/components/pages/ServicePageSplitStory'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Business Strategy Consulting in Gurgaon | ThinkSuite',
-  description: 'ThinkSuite helps Indian founders and enterprises build clear growth roadmaps, backed by competitive audits, revenue architecture, and in-house execution.',
+  title: 'Business Strategy Consulting | ThinkSuite',
+  description: 'ThinkSuite helps founders and enterprises worldwide build clear growth roadmaps, backed by competitive audits, revenue architecture, and in-house execution.',
   keywords: [
     'business strategy consulting India',
     'business strategy consultant Gurgaon',
@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     'go-to-market strategy for enterprises',
     'business consulting firm Gurgaon',
     'strategic planning for scaling companies',
+    'business strategy consulting',
+    'business strategy consultant worldwide',
+    'growth consulting agency',
   ],
 }
 
@@ -68,7 +71,7 @@ export default function BusinessStrategyPage() {
           { number: 'In-House', label: 'Strategy and Engineering, One Team' },
           { number: 'Audit-First', label: 'Every Roadmap Starts With Real Data' },
           { number: 'Milestone-Led', label: 'Execution Tied to KPIs, Not Opinions' },
-          { number: 'Gurgaon HQ', label: 'Serving Founders and Enterprises Pan-India' },
+          { number: 'Gurgaon HQ', label: 'Serving Founders and Enterprises Worldwide' },
         ]}
         whyUs={[
           {

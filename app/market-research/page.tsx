@@ -2,8 +2,8 @@ import ServicePageDashboard from '@/components/pages/ServicePageDashboard'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Market Research Services for Indian Businesses | ThinkSuite',
-  description: 'ThinkSuite runs primary and secondary market research for Indian businesses: consumer surveys, competitor analysis, market sizing, and focus group studies.',
+  title: 'Market Research Services | ThinkSuite',
+  description: 'ThinkSuite runs primary and secondary market research for businesses worldwide: consumer surveys, competitor analysis, market sizing, and focus group studies.',
   keywords: [
     'market research India',
     'consumer research India',
@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     'primary and secondary market research India',
     'market research for investor pitch decks',
     'consumer survey research company India',
+    'market research agency worldwide',
+    'consumer research company',
+    'competitor analysis agency',
   ],
 }
 
@@ -31,7 +34,7 @@ const faqs = [
   },
   {
     q: 'Can you research markets outside India?',
-    a: 'Yes. We conduct research across Southeast Asia, the Middle East, and other markets where Indian businesses are expanding. Our methodology adapts to whatever local research infrastructure is available in that market.',
+    a: 'Yes. We conduct primary and secondary research across Southeast Asia, the Middle East, Europe, and North America for clients based anywhere, including Indian businesses expanding abroad. Our methodology adapts to whatever local research infrastructure is available in that market.',
   },
   {
     q: 'What format do the research reports come in?',

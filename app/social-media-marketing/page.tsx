@@ -2,8 +2,8 @@ import SocialMediaPageContent from './SocialMediaPageContent'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Social Media Marketing Agency in Gurgaon | ThinkSuite',
-  description: 'Social media marketing from ThinkSuite\'s in-house Gurgaon team: Instagram, LinkedIn, YouTube, and Facebook content, community management, and paid social ads.',
+  title: 'Social Media Marketing Agency | ThinkSuite',
+  description: 'Social media marketing from ThinkSuite\'s in-house team: Instagram, LinkedIn, YouTube, and Facebook content, community management, and paid social ads for brands worldwide.',
   keywords: [
     'social media marketing agency Gurgaon',
     'social media marketing agency India',
@@ -18,6 +18,9 @@ export const metadata: Metadata = {
     'Facebook and Instagram ads agency',
     'YouTube video ads management India',
     'social media marketing for D2C brands',
+    'social media marketing agency',
+    'Instagram marketing agency',
+    'social media management company worldwide',
   ],
 }
 

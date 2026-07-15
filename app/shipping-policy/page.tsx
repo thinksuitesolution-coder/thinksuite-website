@@ -2,11 +2,11 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Shipping Policy | ThinkSuite Digital Agency, Gurgaon',
-  description: 'Read ThinkSuite\'s delivery policy for digital tools, subscriptions, and project deliverables. We are a digital agency and do not ship physical products.',
+  title: 'Shipping Policy | ThinkSuite Digital Agency',
+  description: 'Read ThinkSuite\'s delivery policy for digital tools, subscriptions, and project deliverables. We are a digital agency and do not ship physical products, serving customers worldwide.',
   keywords: [
-    'ThinkSuite shipping policy', 'digital delivery policy India', 'no physical shipping digital agency',
-    'subscription activation time India', 'project deliverable timeline agency',
+    'ThinkSuite shipping policy', 'digital delivery policy', 'no physical shipping digital agency',
+    'subscription activation time', 'project deliverable timeline agency', 'digital delivery policy India',
   ],
 }
 

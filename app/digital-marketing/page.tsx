@@ -2,8 +2,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Digital Marketing Agency Gurgaon | SEO, Ads, GEO | ThinkSuite',
-  description: 'Full-stack digital marketing for Indian businesses: SEO, Google Ads, Meta Ads, social media, content, and Generative Engine Optimization for AI search.',
+  title: 'Digital Marketing Agency | SEO, Ads, GEO | ThinkSuite',
+  description: 'Full-stack digital marketing for businesses worldwide: SEO, Google Ads, Meta Ads, social media, content, and Generative Engine Optimization for AI search.',
   keywords: [
     'digital marketing agency Gurgaon',
     'digital marketing agency India',
@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     'content marketing agency India',
     'performance marketing agency India',
     'full-stack digital marketing company',
+    'digital marketing agency',
+    'SEO agency worldwide',
+    'performance marketing agency',
   ],
 }
 
@@ -68,7 +71,7 @@ export default function DigitalMarketingPage() {
       stats={[
         { number: 'SEO + GEO', label: 'Combined Strategy' },
         { number: 'Lower CAC', label: 'Ad Spend Efficiency' },
-        { number: 'In-House', label: 'Gurgaon-Based Team' },
+        { number: 'In-House', label: 'Team, Serving Clients Worldwide' },
         { number: '2', label: 'Discovery Engines Covered' },
       ]}
       chartTitle="Organic Traffic and GEO Citation Growth"

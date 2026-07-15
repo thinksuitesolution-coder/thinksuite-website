@@ -25,11 +25,11 @@ const PAID_CAPS = [
 
 const FAQS = [
   { q: 'How many posts do you create per month?', a: 'Our base package includes 12 to 15 posts per month across your chosen platforms. Premium packages include daily posting, reels, stories, and paid campaign management. The exact mix depends on your industry and how competitive your feed needs to look.' },
-  { q: 'Do you create content in-house or do we need to provide photos?', a: 'We create everything in-house, including graphics, captions, and video editing, as a Gurgaon-based team that handles strategy and production under one roof. For product-based businesses we request product shots or a photoshoot, and we can also coordinate professional photography if needed.' },
+  { q: 'Do you create content in-house or do we need to provide photos?', a: 'We create everything in-house, including graphics, captions, and video editing, as a team that handles strategy and production under one roof. For product-based businesses we request product shots or a photoshoot, and we can also coordinate professional photography if needed.' },
   { q: 'Which platforms do you manage?', a: 'We manage Instagram, Facebook, LinkedIn, YouTube, Twitter/X, and Pinterest. We recommend focusing on 2 to 3 platforms based on where your target audience actually spends time, not just the platforms that are trendiest to talk about.' },
   { q: 'How long before we see growth?', a: 'Most brands notice measurable engagement improvements within the first month of consistent posting. Real follower growth and inbound leads usually build over 3 to 6 months, since social platforms reward accounts that show up reliably rather than in bursts.' },
   { q: 'Do you handle paid social ads as well?', a: 'Yes. Organic management and paid campaigns are offered together or separately. Organic builds long-term trust and community, while paid accelerates reach and conversions in the short term. Running both together is almost always the stronger strategy.' },
-  { q: 'What does social media management actually cost in India?', a: 'Pricing depends on how many platforms you need covered, how much content you want produced, and whether paid ad management is included. We share a clear monthly quote after understanding your goals, there is no one-size-fits-all number we can quote blind.' },
+  { q: 'What does social media management actually cost?', a: 'Pricing depends on how many platforms you need covered, how much content you want produced, and whether paid ad management is included. We share a clear monthly quote after understanding your goals, there is no one-size-fits-all number we can quote blind.' },
 ]
 
 function PlatformsVisual() {
@@ -266,7 +266,7 @@ export default function SocialMediaPageContent() {
           </div>
           <h1 className="mt-8">Social Media <span className="grad-text">Marketing</span></h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            Your audience is already scrolling. The only question is whether they stop on your brand or keep swiping past it to a competitor. ThinkSuite is a Gurgaon-based social media marketing agency that plans, shoots, edits, and publishes content for Instagram, LinkedIn, YouTube, and Facebook in-house, and manages the community that grows around it, so your feed feels like a brand people actually want to follow.
+            Your audience is already scrolling. The only question is whether they stop on your brand or keep swiping past it to a competitor. ThinkSuite is an in-house social media marketing agency that plans, shoots, edits, and publishes content for Instagram, LinkedIn, YouTube, and Facebook, and manages the community that grows around it, so your feed feels like a brand people actually want to follow.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">Get Free Strategy Call <i className="fa-solid fa-arrow-right" /></Link>
@@ -278,7 +278,7 @@ export default function SocialMediaPageContent() {
       <div className={s.statsRow}>
         {[
           { number: 'In-House', label: 'Creative & Strategy Team' },
-          { number: 'Gurgaon',  label: 'Based, Working Pan-India' },
+          { number: 'Worldwide', label: 'Brands, Managed In-House' },
           { number: '4',        label: 'Platforms Covered'        },
           { number: '30d',      label: 'Content Planned Ahead'    },
         ].map((stat, i) => (
@@ -298,7 +298,7 @@ export default function SocialMediaPageContent() {
             <span className="label">Who We Work With</span>
             <h2 style={{ marginTop: 12 }}>Any Industry. Any Scale. <span className="grad-text">Any Need.</span></h2>
             <p style={{ color: 'var(--text2)', marginTop: 12, maxWidth: 640, margin: '12px auto 0', lineHeight: 1.85, fontSize: 15 }}>
-              From a local business to a pan-India brand, from a bootstrapped startup to an established enterprise -
+              From a local business to a global brand, from a bootstrapped startup to an established enterprise -
               we adapt completely to your goals, market, and budget. If you have customers, we can build for you.
             </p>
           </div>

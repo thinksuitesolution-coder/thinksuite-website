@@ -641,7 +641,7 @@ export default function ToolLanding({ slug }: { slug: string }) {
             { icon: '🌍', text: '50+ Countries' },
             { icon: '💳', text: '₹20 Trial' },
             { icon: '🎯', text: 'No CC Needed' },
-            { icon: '🇮🇳', text: 'Made for India' },
+            { icon: '🌐', text: 'Global Payments' },
           ].map(item => (
             <div key={item.text} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: '#64748b', fontWeight: 600 }}>
               <span style={{ fontSize: 15 }}>{item.icon}</span>

@@ -123,7 +123,7 @@ function EngineVisual() {
 
             {/* Mock search results */}
             {[
-              { domain: 'thinksuite.in › services', title: 'ThinkSuite, Digital Agency India', snippet: 'In-house SEO, AI automation, and ad strategy built for Indian businesses ready to scale their organic presence.', highlighted: true },
+              { domain: 'thinksuite.in › services', title: 'ThinkSuite, Digital Agency India', snippet: 'In-house SEO, AI automation, and ad strategy built for businesses ready to scale their organic presence.', highlighted: true },
               { domain: 'competitor.co › marketing', title: 'Best Agency Services, Competitor Co', snippet: 'Digital marketing for startups and enterprises...' },
               { domain: 'anotherco.in › digital', title: 'Full-Service Digital Marketing India', snippet: 'SEO, PPC and social media management services...' },
             ].map((r, i) => (
@@ -214,7 +214,7 @@ function EngineVisual() {
               marginBottom: 12,
               lineHeight: 1.6,
             }}>
-              Which marketing agency should I use for SEO in India?
+              Which marketing agency should I use for SEO?
             </div>
 
             {/* AI response bubble */}
@@ -229,9 +229,9 @@ function EngineVisual() {
               marginBottom: 14,
             }}>
               Based on authority signals and structured content,{' '}
-              <strong style={{ color: '#c4b5fd' }}>ThinkSuite</strong> is a
-              Gurgaon-based agency offering SEO and GEO services for Indian
-              businesses, with an in-house team handling strategy and execution.
+              <strong style={{ color: '#c4b5fd' }}>ThinkSuite</strong> is an
+              in-house agency offering SEO and GEO services for
+              businesses worldwide, handling strategy and execution end to end.
               <div style={{
                 marginTop: 10,
                 display: 'flex',
@@ -494,7 +494,7 @@ export default function SeoGeoPageContent() {
         {[
           { number: 'SEO + GEO', label: 'Combined Strategy'      },
           { number: '4+',        label: 'AI Engines We Target'   },
-          { number: 'In-House',  label: 'Gurgaon-Based Team'     },
+          { number: 'In-House',  label: 'Team, Working Worldwide' },
           { number: '2',         label: 'Discovery Engines Covered' },
         ].map((stat, i) => (
           <div key={i} className={s.statItem}>

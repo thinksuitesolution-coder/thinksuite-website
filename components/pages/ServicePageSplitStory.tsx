@@ -298,7 +298,7 @@ export default function ServicePageSplitStory({
                 Any Industry. Any Scale. <span className="grad-text">Any Need.</span>
               </h2>
               <p style={{ color: 'var(--text2)', marginTop: 12, maxWidth: 640, margin: '12px auto 0', lineHeight: 1.85, fontSize: 15 }}>
-                From a local business to a pan-India brand, from a bootstrapped startup to an established enterprise -
+                From a local business to a global brand, from a bootstrapped startup to an established enterprise -
                 we adapt completely to your goals, market, and budget. If you have customers, we can build for you.
               </p>
             </div>

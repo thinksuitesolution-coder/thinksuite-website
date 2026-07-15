@@ -2,11 +2,12 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Our Team | ThinkSuite Digital Agency in Gurgaon, India',
-  description: 'Meet the ThinkSuite team: developers, designers, marketers, and AI engineers building and growing digital businesses from our in-house Gurgaon office.',
+  title: 'Our Team | ThinkSuite Digital Agency',
+  description: 'Meet the ThinkSuite team: developers, designers, marketers, and AI engineers building and growing digital businesses for clients worldwide, from our in-house office.',
   keywords: [
     'ThinkSuite team', 'ThinkSuite founder', 'Aakash Upadhyay ThinkSuite', 'digital agency team Gurgaon',
     'in-house developers and designers India', 'AI engineers Gurgaon', 'meet the ThinkSuite team',
+    'digital agency team', 'in-house developers and designers worldwide',
   ],
 }
 
@@ -21,7 +22,7 @@ const teamFaqs = [
   },
   {
     q: 'Do you outsource any part of the work?',
-    a: 'No. Every deliverable, from code to creative to campaigns, is produced by our in-house team in Gurgaon. That keeps quality consistent and means there is always someone accountable for your project.',
+    a: 'No. Every deliverable, from code to creative to campaigns, is produced by our in-house team. That keeps quality consistent and means there is always someone accountable for your project.',
   },
   {
     q: 'Is ThinkSuite hiring?',

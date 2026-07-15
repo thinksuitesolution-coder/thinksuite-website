@@ -202,7 +202,7 @@ export default function MediaAdvertisingPageContent() {
           </div>
           <h1 className="mt-8">Media <span className="grad-text">Advertising</span></h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            Great brands rarely get built on a single channel. ThinkSuite is a Gurgaon-based media advertising agency that plans and buys across TV, radio, print, OTT, and programmatic in-house, negotiating rates through volume buying so your budget stretches further across every channel your audience actually watches, listens to, and reads.
+            Great brands rarely get built on a single channel. ThinkSuite is an in-house media advertising agency that plans and buys across TV, radio, print, OTT, and programmatic, negotiating rates through volume buying so your budget stretches further across every channel your audience actually watches, listens to, and reads.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">Get Media Plan <i className="fa-solid fa-arrow-right" /></Link>

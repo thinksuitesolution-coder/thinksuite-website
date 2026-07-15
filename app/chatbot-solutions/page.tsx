@@ -2,8 +2,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'AI Chatbot Development Agency Gurgaon | ThinkSuite',
-  description: 'Custom AI chatbot solutions for WhatsApp, websites, and CRM platforms. Support bots, lead qualification bots, and booking bots built for Indian businesses.',
+  title: 'AI Chatbot Development Agency | ThinkSuite',
+  description: 'Custom AI chatbot solutions for WhatsApp, websites, and CRM platforms. Support bots, lead qualification bots, and booking bots built for businesses worldwide.',
   keywords: [
     'AI chatbot development India',
     'chatbot agency Gurgaon',
@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     'appointment booking bot India',
     'conversational AI development India',
     'multilingual chatbot Hindi English',
+    'AI chatbot development agency',
+    'chatbot agency',
+    'conversational AI development company',
   ],
 }
 

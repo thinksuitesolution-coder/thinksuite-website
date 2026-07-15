@@ -2,8 +2,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Workflow Automation Services Agency Gurgaon | ThinkSuite',
-  description: 'Business workflow automation for Indian companies: CRM automation, invoice processing, marketing automation, and data sync across your existing tools.',
+  title: 'Workflow Automation Services Agency | ThinkSuite',
+  description: 'Business workflow automation for companies worldwide: CRM automation, invoice processing, marketing automation, and data sync across your existing tools.',
   keywords: [
     'workflow automation agency Gurgaon',
     'workflow automation India',
@@ -15,6 +15,10 @@ export const metadata: Metadata = {
     'no-code automation agency India',
     'automate Excel workflows to software',
     'HR onboarding automation India',
+    'workflow automation agency',
+    'business process automation company',
+    'CRM automation services worldwide',
+    'no-code automation agency for global businesses',
   ],
 }
 
@@ -70,7 +74,7 @@ export default function WorkflowAutomationPage() {
         { number: 'Hours', label: 'Saved Every Week' },
         { number: '200+', label: 'Tools We Integrate' },
         { number: 'Built-In', label: 'Error Alerts' },
-        { number: 'In-House', label: 'Gurgaon Team' },
+        { number: 'In-House', label: 'Automation Team' },
       ]}
       highlights={[
         {

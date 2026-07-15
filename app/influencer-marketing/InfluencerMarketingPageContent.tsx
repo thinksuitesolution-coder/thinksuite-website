@@ -233,7 +233,7 @@ export default function InfluencerMarketingPageContent() {
           </div>
           <h1 className="mt-8">Influencer <span className="grad-text">Marketing</span></h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            People trust a recommendation from a creator they already follow far more than an ad from a brand they have never heard of. ThinkSuite is a Gurgaon-based influencer marketing agency that vets creators across nano, micro, macro, and celebrity tiers, handles outreach and contracts, and manages every campaign end to end, so the post your customer sees feels like a genuine recommendation, not a paid script.
+            People trust a recommendation from a creator they already follow far more than an ad from a brand they have never heard of. ThinkSuite is an in-house influencer marketing agency that vets creators across nano, micro, macro, and celebrity tiers, handles outreach and contracts, and manages every campaign end to end, so the post your customer sees feels like a genuine recommendation, not a paid script.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">Plan Your Campaign <i className="fa-solid fa-arrow-right" /></Link>
@@ -245,7 +245,7 @@ export default function InfluencerMarketingPageContent() {
       <div className={s.statsRow}>
         {[
           { number: 'In-House', label: 'Creator Vetting Team'   },
-          { number: 'Gurgaon',  label: 'Based, Working Pan-India' },
+          { number: 'Global',   label: 'Reach, In-House Team' },
           { number: '4',        label: 'Creator Tiers Covered'  },
           { number: 'Nano-Celeb', label: 'Full Tier Coverage'   },
         ].map((stat, i) => (
@@ -283,7 +283,7 @@ export default function InfluencerMarketingPageContent() {
             <span className="label">Who We Work With</span>
             <h2 style={{ marginTop: 12 }}>Any Industry. Any Scale. <span className="grad-text">Any Need.</span></h2>
             <p style={{ color: 'var(--text2)', marginTop: 12, maxWidth: 640, margin: '12px auto 0', lineHeight: 1.85, fontSize: 15 }}>
-              From a local business to a pan-India brand, from a bootstrapped startup to an established enterprise -
+              From a local business to a global brand, from a bootstrapped startup to an established enterprise -
               we adapt completely to your goals, market, and budget. If you have customers, we can build for you.
             </p>
           </div>

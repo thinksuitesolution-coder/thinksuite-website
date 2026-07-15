@@ -42,9 +42,9 @@ export default function AboutSection() {
               We Turn Ideas Into <span className="text-accent">Digital Reality</span>
             </h2>
             <p className="mt-16">
-              ThinkSuite is a full-stack digital agency in India where innovation meets flawless execution.
+              ThinkSuite is a full-stack digital agency where innovation meets flawless execution.
               We combine cutting-edge AI technology, world-class design, and growth-driven marketing
-              to help startups and enterprises achieve their most ambitious goals, faster and smarter.
+              to help startups and enterprises worldwide achieve their most ambitious goals, faster and smarter.
             </p>
             <p>
               Our multidisciplinary in-house team of developers, designers, marketers, AI engineers,

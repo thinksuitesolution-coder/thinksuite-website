@@ -2,8 +2,8 @@ import ServicePageSplitStory from '@/components/pages/ServicePageSplitStory'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Startup Consulting for Indian Founders | ThinkSuite',
-  description: 'ThinkSuite helps early-stage founders validate ideas, build go-to-market plans, and raise funding, backed by a Gurgaon-based team that builds the product too.',
+  title: 'Startup Consulting for Founders | ThinkSuite',
+  description: 'ThinkSuite helps early-stage founders worldwide validate ideas, build go-to-market plans, and raise funding, backed by an in-house team that builds the product too.',
   keywords: [
     'startup consulting India',
     'startup advisor Gurgaon',
@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     'startup GTM strategy consultant',
     'founder advisory Gurgaon',
     'startup strategy consulting for first-time founders',
+    'startup consulting for founders worldwide',
+    'startup advisor',
+    'founder advisory services',
   ],
 }
 
@@ -84,7 +87,7 @@ export default function StartupConsultingPage() {
           {
             icon: 'fa-people-group',
             title: 'A Network That Opens Doors',
-            desc: 'Years spent working alongside founders, investors, and accelerators across India mean we can introduce you to the right people when you actually need them, warm introductions instead of cold emails into the void.',
+            desc: 'Years spent working alongside founders, investors, and accelerators across India and internationally mean we can introduce you to the right people when you actually need them, warm introductions instead of cold emails into the void.',
           },
         ]}
         capabilities={[

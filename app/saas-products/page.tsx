@@ -3,8 +3,8 @@ import { FAQS } from './faqs'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'SaaS Product Development Company Gurgaon | ThinkSuite',
-  description: 'SaaS product development in Gurgaon. ThinkSuite builds MVPs and scales them with multi-tenancy, subscription billing, and cloud-native architecture, in-house.',
+  title: 'SaaS Product Development Company | ThinkSuite',
+  description: 'SaaS product development for businesses worldwide. ThinkSuite builds MVPs and scales them with multi-tenancy, subscription billing, and cloud-native architecture, in-house.',
   keywords: [
     'SaaS product development company India',
     'SaaS MVP development for startups',
@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     'SaaS platform development for startups India',
     'build a SaaS product from scratch',
     'SaaS software development company',
+    'SaaS product development company',
+    'SaaS platform development for startups worldwide',
+    'SaaS application development agency',
   ],
 }
 

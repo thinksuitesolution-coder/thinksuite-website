@@ -5,7 +5,7 @@ import ServicesGrid from './ServicesGrid'
 const servicesFaqs = [
   {
     q: 'What services does ThinkSuite offer?',
-    a: 'ThinkSuite offers six core service verticals: software development, digital marketing, branding and design, AI automation, media and advertising, and business consulting. All six are delivered by our own in-house team in Gurgaon, so you never have to juggle separate vendors for each one.',
+    a: 'ThinkSuite offers six core service verticals: software development, digital marketing, branding and design, AI automation, media and advertising, and business consulting. All six are delivered by our own in-house team, so you never have to juggle separate vendors for each one.',
   },
   {
     q: 'Can I hire ThinkSuite for just one service?',

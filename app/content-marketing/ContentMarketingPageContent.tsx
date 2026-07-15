@@ -16,11 +16,11 @@ const CAPS = [
 
 const FAQS = [
   { q: 'How many pieces of content do you produce per month?', a: 'Our standard content package includes 4 to 8 SEO articles per month. We scale this up based on budget and goals, and some clients run 12 to 16 articles a month alongside newsletter and social distribution.' },
-  { q: 'Do you write the content yourselves or use AI tools?', a: 'Our content is written by human writers with real domain expertise in your industry, working out of our Gurgaon office. We use AI tools for research assistance and outline generation, but every final piece is human written, fact checked, and edited before it reaches you.' },
+  { q: 'Do you write the content yourselves or use AI tools?', a: 'Our content is written by human writers with real domain expertise in your industry, working out of our in-house studio. We use AI tools for research assistance and outline generation, but every final piece is human written, fact checked, and edited before it reaches you.' },
   { q: 'How long before content starts ranking on Google?', a: 'New content can start ranking within 4 to 12 weeks for less competitive keywords. Competitive terms usually need several months of consistent publishing and link building before they move up meaningfully. We focus on realistic quick wins first while building the long-term authority that compounds later.' },
   { q: 'Do you handle publishing on our website or do we do it?', a: 'Either way works for us. We can publish directly to your CMS, whether that is WordPress, Webflow, or something custom, or hand over ready-to-publish files for your own team to upload. Most clients end up preferring that we handle it end to end.' },
   { q: 'How do you measure content marketing success?', a: 'We track organic traffic, keyword rankings, time on page, leads generated from content, and where possible, revenue attribution. Monthly reporting shows exactly how each piece is performing and what changes we are making to improve it.' },
-  { q: 'Is content marketing worth it for a small business in India?', a: 'Yes, especially because content keeps working long after you stop paying for a single ad click. A well-ranked blog post or guide can bring in inquiries for years, which makes it one of the few marketing investments that compounds instead of resetting to zero every month.' },
+  { q: 'Is content marketing worth it for a small business?', a: 'Yes, especially because content keeps working long after you stop paying for a single ad click. A well-ranked blog post or guide can bring in inquiries for years, which makes it one of the few marketing investments that compounds instead of resetting to zero every month.' },
 ]
 
 const FUNNEL_STAGES = [
@@ -152,10 +152,10 @@ function ContentFunnelVisual() {
               <span style={{ background: 'rgba(0,188,212,0.08)', border: '1px solid rgba(0,188,212,0.2)', borderRadius: 6, padding: '3px 10px', fontSize: 10.5, fontWeight: 700, color: '#0284c7', fontFamily: 'var(--font-m)' }}>Content Strategy</span>
             </div>
             <h3 style={{ fontSize: 20, fontWeight: 800, color: '#0f172a', lineHeight: 1.3, marginBottom: 10, fontFamily: 'var(--font-h)' }}>
-              How to Grow Organic Traffic Without Spending on Ads (India Playbook)
+              How to Grow Organic Traffic Without Spending on Ads (A Practical Playbook)
             </h3>
             <p style={{ fontSize: 13, color: '#64748b', lineHeight: 1.7, marginBottom: 16 }}>
-              Most Indian businesses treat content as an afterthought. Here is the exact content strategy we use to help B2B SaaS companies turn steady organic traffic into a real pipeline of inbound leads...
+              Most businesses treat content as an afterthought. Here is the exact content strategy we use to help B2B SaaS companies turn steady organic traffic into a real pipeline of inbound leads...
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
@@ -228,7 +228,7 @@ export default function ContentMarketingPageContent() {
           </div>
           <h1 className="mt-8">Content <span className="grad-text">Marketing</span></h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            Content is how your audience finds you long before they are ready to buy. ThinkSuite is a Gurgaon-based content marketing agency with an in-house team of writers and strategists who research, write, and edit every blog, script, case study, and newsletter we publish, so your brand answers real questions and earns trust before the sales conversation even starts.
+            Content is how your audience finds you long before they are ready to buy. ThinkSuite is an in-house content marketing agency with a team of writers and strategists who research, write, and edit every blog, script, case study, and newsletter we publish, so your brand answers real questions and earns trust before the sales conversation even starts.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">Get Free Content Audit <i className="fa-solid fa-arrow-right" /></Link>
@@ -240,7 +240,7 @@ export default function ContentMarketingPageContent() {
       <div className={s.statsRow}>
         {[
           { number: 'In-House', label: 'Writers & Strategists'   },
-          { number: 'Gurgaon',  label: 'Based, Working Pan-India' },
+          { number: 'Worldwide', label: 'Clients, In-House Team' },
           { number: 'Human',    label: 'Written, Never Robotic'  },
           { number: 'SEO',      label: 'Every Piece Optimized'   },
         ].map((stat, i) => (
@@ -278,7 +278,7 @@ export default function ContentMarketingPageContent() {
             <span className="label">Who We Work With</span>
             <h2 style={{ marginTop: 12 }}>Any Industry. Any Scale. <span className="grad-text">Any Need.</span></h2>
             <p style={{ color: 'var(--text2)', marginTop: 12, maxWidth: 640, margin: '12px auto 0', lineHeight: 1.85, fontSize: 15 }}>
-              From a local business to a pan-India brand, from a bootstrapped startup to an established enterprise -
+              From a local business to a global brand, from a bootstrapped startup to an established enterprise -
               we adapt completely to your goals, market, and budget. If you have customers, we can build for you.
             </p>
           </div>

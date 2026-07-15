@@ -305,7 +305,7 @@ const CT = [
     lines:['India\'s startup ecosystem is booming, and AI tools are the secret weapon that top founders are using to grow 10x faster than their competitors…','1. ThinkSuite AI – The all-in-one platform combining content, SEO, voice, video, and lead generation in a single subscription.','2. AI-powered lead generation finds 100+ targeted B2B leads in seconds complete with contact details, company insights, and pain points.','Conclusion: The future belongs to startups that leverage AI intelligently. Get started today.'],
     meta:'2,400 words · SEO optimized · H1/H2 structure included' },
   { type:'📢 Ad Copy', c:'#f59e0b', title:'Facebook Ad – AI Lead Gen Tool',
-    lines:['🔥 HEADLINE: "Stop Paying ₹50,000/month for 10 Tools – Get All AI Tools in One!"','BODY: Tired of juggling multiple platforms? ThinkSuite gives you AI tools – voice, image, content, video, lead gen – all in one place.','CTA 1: "Get Started Free" | CTA 2: "No Credit Card Required"','Social Proof: 5,000+ Indian businesses are already growing faster with ThinkSuite AI Tools.'],
+    lines:['🔥 HEADLINE: "Stop Paying ₹50,000/month for 10 Tools – Get All AI Tools in One!"','BODY: Tired of juggling multiple platforms? ThinkSuite gives you AI tools – voice, image, content, video, lead gen – all in one place.','CTA 1: "Get Started Free" | CTA 2: "No Credit Card Required"','Social Proof: 5,000+ businesses worldwide are already growing faster with ThinkSuite AI Tools.'],
     meta:'3 A/B variants · Platform-optimized · Psychological triggers' },
   { type:'📱 Social Caption', c:'#7c3aed', title:'Instagram Caption + 30 Hashtags',
     lines:['✨ From raw idea to viral content in under 30 seconds. This is what AI-powered marketing looks like in 2025. 🚀','💡 Whether you\'re a startup founder, freelancer, or digital marketer – you need tools that work as fast as your ideas.','#AIMarketing #ThinkSuite #DigitalMarketing #IndianStartup #ContentCreation #BusinessGrowth','#AITools #MarketingAutomation #StartupIndia #LeadGeneration #ContentMarketing #SocialMediaTips'],
@@ -368,7 +368,7 @@ function ContentDemo({ color }: { color: string }) {
 }
 
 const VS_SCRIPTS = [
-  'Introducing ThinkSuite AI Tools – the only platform where Indian businesses can create professional marketing content, generate leads, and automate outreach all in one place.',
+  'Introducing ThinkSuite AI Tools – the only platform where businesses worldwide can create professional marketing content, generate leads, and automate outreach all in one place.',
   'Are you still paying for 10 different tools? ThinkSuite gives you Voice AI, Image Studio, Content Generator, Video Studio and Lead Gen all in one place.',
 ]
 

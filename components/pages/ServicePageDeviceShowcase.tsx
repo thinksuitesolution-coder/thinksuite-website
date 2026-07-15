@@ -521,7 +521,7 @@ export default function ServicePageDeviceShowcase({
             <div className={`${s.promiseCard} reveal`} style={{ transitionDelay: '0.08s' }}>
               <div className={s.promiseIcon}><i className="fa-solid fa-shuffle" /></div>
               <h4>Any Combination</h4>
-              <p>Salon in Delhi. Clothing brand shipping pan-India. Tech startup in Pune. D2C label going global. We adapt to you, not the other way around.</p>
+              <p>Salon in Delhi. Clothing brand shipping pan-India. SaaS startup in Austin. D2C label going global. We adapt to you, not the other way around.</p>
             </div>
             <div className={`${s.promiseCard} reveal`} style={{ transitionDelay: '0.16s' }}>
               <div className={s.promiseIcon}><i className="fa-solid fa-hand-holding-heart" /></div>

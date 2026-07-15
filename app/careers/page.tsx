@@ -2,11 +2,12 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Careers at ThinkSuite | Join Our Team in Gurgaon, India',
-  description: 'Explore opportunities at ThinkSuite. We work at the intersection of AI, software, and marketing from Gurgaon. Send your resume and we will reach out.',
+  title: 'Careers at ThinkSuite | Join Our Team',
+  description: 'Explore opportunities at ThinkSuite. We work at the intersection of AI, software, and marketing, with remote and hybrid roles. Send your resume and we will reach out.',
   keywords: [
     'ThinkSuite careers', 'jobs in Gurgaon', 'digital marketing jobs India', 'AI jobs India',
     'software developer jobs Gurgaon', 'work at ThinkSuite', 'UI UX design jobs India', 'AI engineer jobs Gurgaon',
+    'remote digital marketing jobs', 'remote software developer jobs', 'work at ThinkSuite remote',
   ],
 }
 

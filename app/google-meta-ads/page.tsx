@@ -2,8 +2,8 @@ import GoogleMetaAdsPageContent from './GoogleMetaAdsPageContent'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Google & Meta Ads Management Agency Gurgaon | ThinkSuite',
-  description: 'Google Ads and Meta Ads management from ThinkSuite\'s in-house Gurgaon team: search, shopping, display, Facebook, and Instagram campaigns built for real ROI.',
+  title: 'Google & Meta Ads Management Agency | ThinkSuite',
+  description: 'Google Ads and Meta Ads management from ThinkSuite\'s in-house team: search, shopping, display, Facebook, and Instagram campaigns built for real ROI, worldwide.',
   keywords: [
     'Google Ads management agency India',
     'Meta Ads management agency Gurgaon',
@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     'Google certified PPC agency',
     'lead generation ads for real estate India',
     'ROI focused paid ads agency',
+    'Google Ads management agency',
+    'Meta Ads management agency worldwide',
+    'PPC management company',
   ],
 }
 

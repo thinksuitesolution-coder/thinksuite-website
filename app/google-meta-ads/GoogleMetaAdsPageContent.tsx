@@ -24,7 +24,7 @@ const META_CAPS = [
 ]
 
 const FAQS = [
-  { q: 'What is the minimum monthly ad budget you recommend?', a: 'For Google Search Ads in most Indian cities, we recommend a minimum of ₹20,000 to ₹30,000 a month to get statistically meaningful data. For Meta Ads, ₹15,000 a month is a workable starting point. These figures are ad spend, separate from our management fees.' },
+  { q: 'What is the minimum monthly ad budget you recommend?', a: 'For Google Search Ads in India, we recommend a minimum of ₹20,000 to ₹30,000 a month to get statistically meaningful data. For Meta Ads, ₹15,000 a month is a workable starting point. These figures are ad spend, separate from our management fees, and we adjust the recommended minimum based on your market and platform costs if you are advertising outside India.' },
   { q: 'How long before we see results from Google Ads?', a: 'Google Search Ads can generate leads within the first week if your landing page and offer are solid. Optimization typically takes 2 to 4 weeks to show compounding improvements as we accumulate real conversion data and refine targeting.' },
   { q: 'What is the difference between Google Ads and Meta Ads?', a: 'Google captures demand: your ads appear when someone is actively searching for what you offer. Meta creates demand: your ads interrupt the scroll and build awareness before someone even knows they need you. Together they cover the full marketing funnel, from first discovery to final decision.' },
   { q: 'Do you manage both Google and Meta Ads or just one?', a: 'We manage both, and running both together is almost always more effective because the two platforms work at different funnel stages. Google closes buyers who are already looking. Meta builds the interest that eventually turns into a Google search.' },
@@ -125,7 +125,7 @@ function PlatformVisual() {
 
             {/* Sponsored Results */}
             {[
-              { domain: 'thinksuite.in › ads', title: 'ThinkSuite, Google Certified PPC Agency', snippet: 'In-house Gurgaon team managing Google and Meta Ads for brands across India. Free campaign audit.', sponsored: true, highlight: true },
+              { domain: 'thinksuite.in › ads', title: 'ThinkSuite, Google Certified PPC Agency', snippet: 'In-house team managing Google and Meta Ads for brands worldwide. Free campaign audit.', sponsored: true, highlight: true },
               { domain: 'competitor.co › ppc',  title: 'PPC Management Services, Competitor Co', snippet: 'Run Google Ads campaigns for your business...', sponsored: true, highlight: false },
               { domain: 'anotherco.in › ads',   title: 'Google Ads Management, AnotherCo',      snippet: 'Expert paid search campaigns for startups...', sponsored: false, highlight: false },
             ].map((r, i) => (
@@ -451,7 +451,7 @@ export default function GoogleMetaAdsPageContent() {
             Google & <span className="grad-text">Meta Ads Management</span>
           </h1>
           <p style={{ fontSize: '1.05rem', color: 'var(--text2)', marginTop: 18, maxWidth: 560, lineHeight: 1.78 }}>
-            You know the feeling: watching the ad spend tick down in real time while the leads column stays empty. Most budgets get burned on poor targeting, weak creative, and campaigns nobody is actually watching. ThinkSuite is a Gurgaon-based, Google certified PPC agency that builds and manages full-funnel campaigns across Google and Meta in-house, so every rupee you spend is working toward a lead you can actually follow up on.
+            You know the feeling: watching the ad spend tick down in real time while the leads column stays empty. Most budgets get burned on poor targeting, weak creative, and campaigns nobody is actually watching. ThinkSuite is an in-house, Google certified PPC agency that builds and manages full-funnel campaigns across Google and Meta, so every dollar you spend is working toward a lead you can actually follow up on.
           </p>
           <div className={s.heroCtas}>
             <Link href="/contact" className="btn btn-primary">
@@ -468,7 +468,7 @@ export default function GoogleMetaAdsPageContent() {
       <div className={s.statsRow}>
         {[
           { number: 'In-House', label: 'PPC Specialist Team'  },
-          { number: 'Gurgaon',  label: 'Based, Working Pan-India' },
+          { number: 'Worldwide', label: 'Campaigns, Managed In-House' },
           { number: 'Full',     label: 'Funnel Coverage'      },
           { number: 'Google',   label: 'Certified Partner'    },
         ].map((stat, i) => (
@@ -545,7 +545,7 @@ export default function GoogleMetaAdsPageContent() {
             <span className="label">Who We Work With</span>
             <h2 style={{ marginTop: 12 }}>Any Industry. Any Scale. <span className="grad-text">Any Need.</span></h2>
             <p style={{ color: 'var(--text2)', marginTop: 12, maxWidth: 640, margin: '12px auto 0', lineHeight: 1.85, fontSize: 15 }}>
-              From a local business to a pan-India brand, from a bootstrapped startup to an established enterprise -
+              From a local business to a global brand, from a bootstrapped startup to an established enterprise -
               we adapt completely to your goals, market, and budget. If you have customers, we can build for you.
             </p>
           </div>
