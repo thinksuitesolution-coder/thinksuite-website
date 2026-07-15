@@ -18,6 +18,10 @@ export const metadata: Metadata = {
     'AI marketing systems',
     'AI marketing agency worldwide',
     'marketing automation agency',
+    'AI powered marketing agency',
+    'AI marketing automation services',
+    'AI marketing systems for small business',
+    'AI marketing tools implementation',
   ],
 }
 

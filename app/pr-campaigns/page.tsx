@@ -18,6 +18,10 @@ export const metadata: Metadata = {
     'PR agency',
     'public relations agency worldwide',
     'media relations agency',
+    'public relations agency',
+    'startup PR agency',
+    'product launch PR campaign',
+    'PR agency for small business',
   ],
 }
 

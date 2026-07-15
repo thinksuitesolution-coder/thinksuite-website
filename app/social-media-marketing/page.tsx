@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     'social media marketing agency',
     'Instagram marketing agency',
     'social media management company worldwide',
+    'social media marketing company',
+    'social media management services',
+    'social media marketing for small business',
   ],
 }
 

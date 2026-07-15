@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import CTASection from '@/components/sections/CTASection'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPS = [
@@ -21,6 +22,11 @@ const FAQS = [
   { q: 'Do you handle publishing on our website or do we do it?', a: 'Either way works for us. We can publish directly to your CMS, whether that is WordPress, Webflow, or something custom, or hand over ready-to-publish files for your own team to upload. Most clients end up preferring that we handle it end to end.' },
   { q: 'How do you measure content marketing success?', a: 'We track organic traffic, keyword rankings, time on page, leads generated from content, and where possible, revenue attribution. Monthly reporting shows exactly how each piece is performing and what changes we are making to improve it.' },
   { q: 'Is content marketing worth it for a small business?', a: 'Yes, especially because content keeps working long after you stop paying for a single ad click. A well-ranked blog post or guide can bring in inquiries for years, which makes it one of the few marketing investments that compounds instead of resetting to zero every month.' },
+  { q: "What's included in your blog content writing service?", a: "Every article includes keyword research, an outline aligned to search intent, a full draft from a writer with relevant industry background, an editorial pass, and on-page SEO formatting, headers, meta description, internal links, before it reaches you. We don't just hand over a wall of text and call it done." },
+  { q: 'How is content marketing different for B2B companies compared to consumer brands?', a: 'B2B content marketing leans heavier on depth over volume, whitepapers, case studies, and LinkedIn thought leadership that build trust with a buying committee rather than a single impulse purchaser. Sales cycles are longer, so content needs to nurture a prospect across multiple touchpoints instead of driving an immediate click-to-buy.' },
+  { q: 'How much does content marketing cost per month?', a: 'Pricing depends on volume and format, a standard package of 4 to 8 SEO articles a month typically starts in the ₹25,000 to ₹50,000 range, scaling up with newsletter, video script, or higher article-count add-ons. We quote a specific number once we know your content goals rather than a blanket rate card.' },
+  { q: 'How often should a business publish blog content?', a: 'Consistency beats sporadic bursts, publishing 2 to 4 well-researched articles a month on a predictable schedule tends to outperform 10 articles dumped in one month followed by silence for the next three. The right cadence also depends on your industry\'s search volume and how much topical ground you need to cover to build authority.' },
+  { q: 'Does content marketing actually help SEO?', a: "Yes, content is one of the strongest SEO levers available, every well-optimized article is a new page that can rank, build topical authority, and earn backlinks. Content alone isn't enough though, it needs proper keyword targeting, on-page optimization, and technical SEO health working alongside it to actually show up in search results." },
 ]
 
 const FUNNEL_STAGES = [
@@ -206,6 +212,20 @@ export default function ContentMarketingPageContent() {
               acceptedAnswer: { '@type': 'Answer', text: f.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildServiceSchema({
+              name: 'Content Marketing',
+              description: "Content marketing from ThinkSuite's in-house team: SEO blog writing, video scripts, case studies, newsletters, and website copy built to earn trust, worldwide.",
+              url: 'https://thinksuite.in/content-marketing',
+              serviceType: 'Content Marketing',
+              keywords: ['content marketing agency', 'content marketing services', 'SEO content writing agency'],
+            })
+          ),
         }}
       />
       <section className="page-hero">

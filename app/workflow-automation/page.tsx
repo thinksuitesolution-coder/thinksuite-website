@@ -1,4 +1,5 @@
 ﻿import ServicePageTerminal from '@/components/pages/ServicePageTerminal'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -19,6 +20,12 @@ export const metadata: Metadata = {
     'business process automation company',
     'CRM automation services worldwide',
     'no-code automation agency for global businesses',
+    'workflow automation services',
+    'business workflow automation company',
+    'workflow automation consulting',
+    'Zapier alternative custom automation',
+    'workflow automation for small business',
+    'automate repetitive business tasks',
   ],
 }
 
@@ -43,6 +50,26 @@ const faqData = [
     q: 'Can you automate processes that currently live in Excel sheets?',
     a: 'Yes, absolutely. Moving spreadsheet-based workflows to automated systems is one of the most common projects we handle. We also replace manual reports with live dashboards.',
   },
+  {
+    q: 'Are you a Zapier alternative for custom automation needs?',
+    a: 'We use Zapier, Make, and n8n where they fit, but we are not limited to their pre-built integrations. When a workflow needs custom logic, an obscure API, or conditional branching those platforms cannot handle, we write custom automation code instead, so you are never stuck waiting on a third-party app connector.',
+  },
+  {
+    q: 'Do you build workflow automation for small businesses?',
+    a: 'Yes. Small businesses are often where automation has the fastest payback, since a single person is usually doing manual data entry, invoicing, and follow-ups by hand. We scope small projects around one or two high-friction processes rather than requiring a full enterprise rollout.',
+  },
+  {
+    q: 'What tasks should a business automate first?',
+    a: 'Start with tasks that are repetitive, rule-based, and happen frequently, like lead assignment, invoice generation, or status update emails. These give the fastest, most measurable time savings and build confidence before automating more complex, judgment-heavy processes.',
+  },
+  {
+    q: 'How much time can workflow automation actually save?',
+    a: 'It depends on how much manual work you currently run, but teams typically recover 15 to 40 hours per week once their core processes are automated. The biggest time savings usually come from eliminating manual data entry and status update emails, not from any single flashy feature.',
+  },
+  {
+    q: 'What is the difference between workflow automation and RPA?',
+    a: 'Workflow automation connects your existing tools through APIs and webhooks so data flows between them automatically, for example when a new lead in your form triggers a CRM update and a Slack alert. RPA (robotic process automation) instead mimics human clicks on a screen, useful for legacy systems with no API. We default to API-based workflow automation wherever possible since it is faster and far more reliable long-term.',
+  },
 ]
 
 export default function WorkflowAutomationPage() {
@@ -60,6 +87,20 @@ export default function WorkflowAutomationPage() {
             acceptedAnswer: { '@type': 'Answer', text: f.a },
           })),
         }),
+      }}
+    />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(
+          buildServiceSchema({
+            name: 'Workflow Automation',
+            description: 'Business workflow automation for companies worldwide, including CRM automation, invoice processing, marketing automation, and data sync across your existing tools.',
+            url: 'https://thinksuite.in/workflow-automation',
+            serviceType: 'Workflow Automation',
+            keywords: ['workflow automation services', 'business workflow automation company', 'workflow automation consulting'],
+          })
+        ),
       }}
     />
     <ServicePageTerminal

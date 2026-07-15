@@ -1,4 +1,5 @@
 import ServicePageDashboard from '@/components/pages/ServicePageDashboard'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -20,6 +21,11 @@ export const metadata: Metadata = {
     'market research agency worldwide',
     'consumer research company',
     'competitor analysis agency',
+    'market research agency',
+    'market research services',
+    'market research consulting',
+    'competitor analysis services',
+    'customer research agency',
   ],
 }
 
@@ -44,6 +50,26 @@ const faqs = [
     q: 'Can research findings be used in investor presentations?',
     a: 'Yes. Our research follows a documented methodology and is sourced and attributed properly, which is exactly what investors want to see. Many clients use our findings directly in pitch decks, information memorandums, and board presentations.',
   },
+  {
+    q: 'What does your competitor analysis actually include?',
+    a: "We look at competitors' positioning, pricing, marketing channels, customer reviews and complaints, and where their offering has visible gaps. The output isn't just a feature comparison table, it's a clear read on where you can realistically win against them, not just where you're different.",
+  },
+  {
+    q: 'Does market research make sense before a startup has even built its product?',
+    a: "Yes, that's often the most valuable time to do it. Pre-build research on willingness to pay, problem validation, and competitive gaps can save months of building something the market doesn't actually want. We scope pre-launch research leaner and faster than a full enterprise study, since speed matters more than exhaustiveness at that stage.",
+  },
+  {
+    q: "What's the difference between customer research and a customer satisfaction survey?",
+    a: "A satisfaction survey checks how happy existing customers are with what you already offer. Customer research goes deeper and earlier, understanding needs, decision criteria, and unmet problems, often with people who aren't customers yet, to shape a product or campaign before it launches rather than just measuring after the fact.",
+  },
+  {
+    q: 'How much does market research cost?',
+    a: 'Pricing depends heavily on method and sample size. A focused consumer survey with a modest sample can start around ₹75,000 to ₹1,50,000, while a comprehensive study combining primary research, focus groups, and market sizing runs higher. We scope cost against your specific research questions rather than quoting a flat package price.',
+  },
+  {
+    q: 'How do I validate a business idea before building it?',
+    a: "The fastest way is talking to a representative sample of your target customers before writing a line of code, testing whether the problem you're solving is one they actually feel and would pay to fix, not just one that sounds reasonable in a pitch deck. We combine quick qualitative interviews with willingness-to-pay questions in a structured survey to get a real signal, not just polite encouragement from friends and family.",
+  },
 ]
 
 const faqSchema = {
@@ -56,10 +82,19 @@ const faqSchema = {
   })),
 }
 
+const serviceSchema = buildServiceSchema({
+  name: 'Market Research Services',
+  description: 'ThinkSuite runs primary and secondary market research for businesses worldwide: consumer surveys, competitor analysis, market sizing, and focus group studies.',
+  url: 'https://thinksuite.in/market-research',
+  serviceType: 'Market Research',
+  keywords: ['market research agency', 'market research services', 'market research consulting'],
+})
+
 export default function MarketResearchPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <ServicePageDashboard
         breadcrumb="Consulting and Growth"
         breadcrumbHref="/consulting-growth"

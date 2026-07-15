@@ -1,4 +1,5 @@
 import ServicePageSplitStory from '@/components/pages/ServicePageSplitStory'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -20,6 +21,12 @@ export const metadata: Metadata = {
     'business consulting worldwide',
     'growth advisory agency',
     'business growth consultant',
+    'growth consulting agency',
+    'business growth consulting',
+    'growth strategy consultants',
+    'startup growth consulting',
+    'growth consulting for SaaS',
+    'revenue growth consulting agency',
   ],
 }
 
@@ -44,6 +51,18 @@ const faqs = [
     q: 'Can you help with fundraising?',
     a: 'Yes, though we work as strategic advisors rather than investment bankers. We help with investor positioning, financial model preparation, pitch narrative, and due diligence readiness, and we are well-connected with angel networks and early-stage investors across India and internationally.',
   },
+  {
+    q: 'What does a growth consultant actually do?',
+    a: 'A growth consultant audits your current acquisition, retention, and revenue numbers, then builds a prioritized plan to move the metrics that matter most. At ThinkSuite that means we diagnose the bottleneck, whether it is positioning, funnel conversion, or operations, and then help you execute the fix instead of just naming it.',
+  },
+  {
+    q: 'How much does growth consulting cost?',
+    a: 'It depends on scope. A fixed diagnostic and strategy project is typically a one-time fee, while ongoing growth advisory runs as a monthly retainer. We scope pricing after understanding your stage and goals in an initial call rather than quoting a flat number upfront.',
+  },
+  {
+    q: 'When should a startup hire a growth consultant?',
+    a: 'The right time is usually once you have product-market fit signals and need to figure out which channels and levers to scale, not before you have any customer traction. Hiring too early, before there is real data to work with, tends to waste the engagement.',
+  },
 ]
 
 const faqSchema = {
@@ -56,10 +75,19 @@ const faqSchema = {
   })),
 }
 
+const serviceSchema = buildServiceSchema({
+  name: 'Business Consulting and Growth Advisory',
+  description: 'Strategic growth advisory for companies worldwide, covering business strategy, operations, digital transformation, and leadership guidance.',
+  url: 'https://thinksuite.in/consulting-growth',
+  serviceType: 'Growth Consulting',
+  keywords: ['growth consulting agency', 'business growth consulting', 'growth strategy consultants'],
+})
+
 export default function ConsultingGrowthPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <ServicePageSplitStory
         breadcrumb="Services"
         breadcrumbHref="/#services"

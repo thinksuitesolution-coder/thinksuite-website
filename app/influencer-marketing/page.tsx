@@ -19,6 +19,10 @@ export const metadata: Metadata = {
     'influencer marketing agency',
     'micro influencer marketing agency worldwide',
     'UGC content creation agency global',
+    'influencer marketing services',
+    'influencer marketing agency for startups',
+    'Instagram influencer marketing agency',
+    'influencer marketing campaign management',
   ],
 }
 

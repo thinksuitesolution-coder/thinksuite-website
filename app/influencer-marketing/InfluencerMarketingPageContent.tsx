@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import CTASection from '@/components/sections/CTASection'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPS = [
@@ -21,6 +22,11 @@ const FAQS = [
   { q: 'Can we keep the content the influencer creates?', a: 'Yes, we negotiate content usage rights as standard in every campaign. You can repurpose creator content in your ads, website, and social media. White-labeling and paid media whitelisting are also available if you want to run the content as an ad from your own handle.' },
   { q: 'How do you track ROI from influencer campaigns?', a: 'We use unique UTM links, discount codes, and affiliate tracking to measure direct traffic and conversions coming from each creator. We also track reach, impressions, engagement, and earned media value, so you see the full-funnel impact of a campaign, not just the vanity metrics.' },
   { q: 'How is influencer marketing ROI actually measured for a small budget?', a: 'Even with a modest budget, we assign each creator a unique tracking link or discount code so every sale can be traced back to a specific post. That data tells us honestly which creators and content formats are worth repeating, rather than guessing from likes and comments alone.' },
+  { q: 'Do you work with startups on influencer marketing, or mainly larger brands?', a: 'We work with both, but a good share of our influencer campaigns are for startups with lean budgets. For startups we typically lean toward nano and micro-influencer tiers and affiliate-style, pay-per-sale structures, since they deliver strong ROI without requiring the large upfront spend a celebrity partnership needs.' },
+  { q: 'Which platform do you focus on most for influencer campaigns?', a: 'Instagram is where most of our influencer campaigns run, reels, stories, and feed posts, because it has the deepest creator ecosystem and the best discovery tools for finding niche-fit creators. We also run YouTube and, for B2B or professional services brands, LinkedIn creator partnerships when that is where the target audience actually is.' },
+  { q: 'What does full influencer campaign management include?', a: 'Full management covers creator discovery and vetting, outreach and negotiation, briefing and content approval, posting schedule coordination, and performance tracking with UTM links or discount codes. You approve the creator shortlist and final content, we handle everything in between.' },
+  { q: 'How much do influencers charge per post?', a: 'Rates vary widely by tier, nano-influencers (1K-10K followers) often work for product plus a modest fee or even product alone, while micro-influencers (10K-100K) typically charge anywhere from a few thousand to tens of thousands of rupees per post depending on niche and engagement. Macro and celebrity partners can run into lakhs per post. We negotiate rates as part of every campaign so you are never paying inflated card rates.' },
+  { q: 'Is influencer marketing worth it for a small business?', a: 'Yes, particularly through nano and micro-influencers, since their lower rates and higher engagement often deliver a better cost per result than a small business would get from broad paid ads. The affiliate, pay-per-sale model also makes it accessible even on a tight budget, since you are only paying for results rather than upfront placement fees.' },
 ]
 
 const TIERS = [
@@ -211,6 +217,20 @@ export default function InfluencerMarketingPageContent() {
               acceptedAnswer: { '@type': 'Answer', text: f.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildServiceSchema({
+              name: 'Influencer Marketing',
+              description: "Influencer marketing from ThinkSuite's in-house team: micro-influencer and celebrity campaigns, UGC content, and affiliate programs for brands worldwide.",
+              url: 'https://thinksuite.in/influencer-marketing',
+              serviceType: 'Influencer Marketing',
+              keywords: ['influencer marketing agency', 'influencer marketing services', 'micro influencer marketing agency'],
+            })
+          ),
         }}
       />
       <section className="page-hero">

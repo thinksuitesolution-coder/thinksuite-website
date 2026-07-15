@@ -1,5 +1,6 @@
 import SoftwareDevPageContent from './SoftwareDevPageContent'
 import { FAQS } from './faqs'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -18,6 +19,12 @@ export const metadata: Metadata = {
     'software development company worldwide',
     'full stack software development agency',
     'enterprise software engineering company',
+    'software development company',
+    'custom software development',
+    'full-stack software development',
+    'enterprise software development services',
+    'cloud-native software development',
+    'SaaS development company',
   ],
 }
 
@@ -36,6 +43,20 @@ export default function SoftwareDevelopmentPage() {
               acceptedAnswer: { '@type': 'Answer', text: faq.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildServiceSchema({
+              name: 'Software Development',
+              description: 'Full-stack software development for businesses worldwide, including SaaS platforms, mobile apps, custom enterprise systems, and cloud-native web applications.',
+              url: 'https://thinksuite.in/software-development',
+              serviceType: 'Software Development',
+              keywords: ['software development company', 'custom software development', 'full-stack software development'],
+            })
+          ),
         }}
       />
       <SoftwareDevPageContent />

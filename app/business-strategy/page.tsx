@@ -1,4 +1,5 @@
 import ServicePageSplitStory from '@/components/pages/ServicePageSplitStory'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -20,6 +21,11 @@ export const metadata: Metadata = {
     'business strategy consulting',
     'business strategy consultant worldwide',
     'growth consulting agency',
+    'business strategy consultants',
+    'strategy consulting firm',
+    'business strategy consulting for startups',
+    'competitive strategy consulting',
+    'business strategy agency India',
   ],
 }
 
@@ -44,6 +50,18 @@ const faqs = [
     q: 'Do you work with early-stage startups or only established enterprises?',
     a: 'Both. We run dedicated tracks for early-stage founders who need a go-to-market blueprint and for established enterprises that need a transformation strategy. The depth and pace of the engagement is calibrated to whichever stage you are actually at.',
   },
+  {
+    q: 'What is business strategy consulting?',
+    a: 'Business strategy consulting is the process of working with an outside team to define where your business should compete, how you win against competitors, and what sequence of moves gets you there. Our version starts with an operational audit, not a generic framework, so the strategy reflects your actual numbers and market position.',
+  },
+  {
+    q: 'How much does a strategy consultant cost?',
+    a: 'Costs vary with scope: a focused audit and roadmap engagement is priced as a fixed project, while ongoing strategic advisory runs as a monthly retainer. We give you a specific number after the initial audit call once we understand the size and complexity of the engagement.',
+  },
+  {
+    q: 'Do small businesses actually need a strategy consultant?',
+    a: 'Not always, but small businesses that are about to make an expensive decision, like entering a new market, changing their pricing model, or scaling their team, benefit the most. If the business is stable and the founder already has clarity on the next move, a consultant adds less value.',
+  },
 ]
 
 const faqSchema = {
@@ -56,10 +74,19 @@ const faqSchema = {
   })),
 }
 
+const serviceSchema = buildServiceSchema({
+  name: 'Business Strategy Consulting',
+  description: 'Strategic roadmaps for founders and enterprises worldwide, backed by competitive audits, revenue architecture, and in-house execution.',
+  url: 'https://thinksuite.in/business-strategy',
+  serviceType: 'Business Strategy Consulting',
+  keywords: ['business strategy consulting', 'business strategy consultants', 'strategy consulting firm'],
+})
+
 export default function BusinessStrategyPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <ServicePageSplitStory
         breadcrumb="Consulting and Growth"
         breadcrumbHref="/consulting-growth"

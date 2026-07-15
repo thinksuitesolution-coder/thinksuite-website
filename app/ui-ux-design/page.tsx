@@ -1,10 +1,11 @@
 ﻿import ServicePageDeviceShowcase from '@/components/pages/ServicePageDeviceShowcase'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'UI/UX Design Services | ThinkSuite',
   description: 'Professional UI/UX design for businesses worldwide: user research, wireframing, Figma prototyping, and conversion-focused interface design for web and mobile products.',
-  keywords: ['UI UX design company Gurgaon', 'user experience design India', 'Figma design agency India', 'product design agency Gurgaon', 'app UX design India', 'interface design India', 'UX research and testing India', 'mobile app UX design', 'website UX audit services', 'UI UX design company', 'user experience design agency worldwide', 'Figma design agency', 'product design agency'],
+  keywords: ['UI UX design company Gurgaon', 'user experience design India', 'Figma design agency India', 'product design agency Gurgaon', 'app UX design India', 'interface design India', 'UX research and testing India', 'mobile app UX design', 'website UX audit services', 'UI UX design company', 'user experience design agency worldwide', 'Figma design agency', 'product design agency', 'UI/UX design agency', 'UI UX design services', 'UX design company', 'SaaS UI/UX design agency', 'website UX design services'],
 }
 
 const FAQS = [
@@ -28,6 +29,26 @@ const FAQS = [
     q: 'Do you work with our development team?',
     a: 'Absolutely. We provide detailed handoff documentation, respond to developer questions throughout implementation, and review the live build to ensure design fidelity.',
   },
+  {
+    q: 'How much does UI/UX design cost?',
+    a: 'A typical web product design engagement, research, wireframes, high-fidelity screens, and a design system, runs 4 to 8 weeks and is priced as a fixed project fee based on screen count and complexity, not billed hourly. Redesigns and audits of an existing product are scoped separately and usually cost less than a ground-up build.',
+  },
+  {
+    q: 'Why is UX design important for a startup?',
+    a: "For an early-stage product, UX is often the difference between a user who converts and one who bounces on day one, there's no brand loyalty yet to cover for a confusing flow. Getting the core experience right before scaling also avoids expensive rebuilds later, once thousands of users are already relying on a flawed flow.",
+  },
+  {
+    q: 'Do you offer a UI/UX design agency service specialized for SaaS products?',
+    a: "Yes, SaaS is a significant part of our UI/UX work. As a SaaS UI/UX design agency, we're comfortable designing for multi-role dashboards, complex data tables, and onboarding flows that need to make a non-trivial product feel simple within the first few minutes of use.",
+  },
+  {
+    q: 'Do you design mobile app UI/UX, or only web products?',
+    a: 'We design UI/UX for native and cross-platform mobile apps alongside web products, following iOS and Android platform conventions where it matters rather than forcing one design language onto both. Mobile-specific concerns, like thumb reach and offline states, are part of the process from wireframes onward.',
+  },
+  {
+    q: 'Do you offer website UX design services for marketing sites, not just products?',
+    a: 'Yes. Beyond product dashboards, we provide website UX design services focused on conversion, information architecture, and page-level user flows, useful for marketing sites, e-commerce, and content-heavy sites where the goal is guiding a visitor to a specific action rather than daily active use.',
+  },
 ]
 
 export default function UiUxPage() {
@@ -45,6 +66,20 @@ export default function UiUxPage() {
               acceptedAnswer: { '@type': 'Answer', text: faq.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildServiceSchema({
+              name: 'UI/UX Design',
+              description: 'Professional UI/UX design for businesses worldwide: user research, wireframing, Figma prototyping, and conversion-focused interface design for web and mobile products.',
+              url: 'https://thinksuite.in/ui-ux-design',
+              serviceType: 'UI/UX Design',
+              keywords: ['UI/UX design agency', 'UI UX design services', 'UX design company'],
+            })
+          ),
         }}
       />
     <ServicePageDeviceShowcase

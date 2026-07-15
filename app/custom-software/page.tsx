@@ -1,5 +1,6 @@
 import CustomSoftwarePageContent from './CustomSoftwarePageContent'
 import { FAQS } from './faqs'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -19,6 +20,12 @@ export const metadata: Metadata = {
     'custom software development company',
     'bespoke software development agency worldwide',
     'enterprise software development company',
+    'custom software development',
+    'bespoke software solutions',
+    'tailored software development',
+    'custom software for small business',
+    'custom enterprise software',
+    'custom software vs off-the-shelf',
   ],
 }
 
@@ -37,6 +44,20 @@ export default function CustomSoftwarePage() {
               acceptedAnswer: { '@type': 'Answer', text: faq.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildServiceSchema({
+              name: 'Custom Software Development',
+              description: 'Custom software development for businesses worldwide, including ERP systems, CRM platforms, automation tools, and enterprise applications engineered around your exact workflows.',
+              url: 'https://thinksuite.in/custom-software',
+              serviceType: 'Custom Software Development',
+              keywords: ['custom software development', 'bespoke software solutions', 'tailored software development'],
+            })
+          ),
         }}
       />
       <CustomSoftwarePageContent />

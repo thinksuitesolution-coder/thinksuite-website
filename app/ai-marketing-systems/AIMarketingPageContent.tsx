@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import CTASection from '@/components/sections/CTASection'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPS = [
@@ -20,6 +21,11 @@ const FAQS = [
   { q: 'How long before we see results from AI marketing?', a: 'Automation improvements like reduced manual work and faster follow-ups are visible in the first 2 weeks. Results from AI optimization typically build over 4 to 8 weeks as the system accumulates enough data to learn from.' },
   { q: 'Do we need a large customer database to start with AI marketing?', a: 'Not necessarily. Even with 1,000 to 5,000 contacts, AI systems can identify patterns and improve campaign performance. The system gets smarter as your database grows, so starting early means a compounding advantage later.' },
   { q: 'What if we already have a marketing team in place?', a: 'AI marketing systems work alongside your existing team, not replace them. Your team focuses on strategy and creative while the system handles execution, testing, and optimization, making your team meaningfully more productive.' },
+  { q: 'Do AI marketing systems make sense for a small business, or only larger companies?', a: "They make sense for small businesses too, in fact smaller teams often benefit more since AI systems replace tasks that would otherwise require additional hires. Predictive lead scoring and email personalization, for instance, work with a database as small as 1,000 to 5,000 contacts, so you don't need enterprise scale to see value." },
+  { q: 'How much of our content will actually be AI-generated?', a: 'AI generates first drafts and scales output for formats like ad copy variations, email subject lines, and social captions, but nothing publishes without human review for brand voice and accuracy. For long-form content like blog articles, AI assists with research and outlines while a human writer produces the final piece.' },
+  { q: 'How long does it take to implement AI marketing tools into our existing stack?', a: 'Most implementations connect within 2 to 3 weeks if you are already using common tools like HubSpot, Mailchimp, or Salesforce, since we build on existing integrations rather than ripping out your stack. Custom integrations for less common tools can take longer, but we scope that timeline upfront before starting.' },
+  { q: 'How is AI changing digital marketing?', a: "AI is shifting marketing from manually-set rules to systems that adapt on their own, scoring leads by actual behavior instead of static criteria, personalizing emails per recipient instead of per segment, and continuously reallocating ad budget toward what's working in real time. Teams that adapt fastest are seeing meaningfully lower acquisition costs than those still running everything manually." },
+  { q: 'What AI tools should a marketing agency use in 2026?', a: "The right stack depends on what you're solving for, but a solid foundation includes a CRM with built-in lead scoring, an email platform with AI-driven send-time and content personalization, and an ad platform that supports automated bid optimization like Google's Performance Max. Tool choice matters less than having clean, connected data across them, since AI systems are only as good as the data they are learning from." },
 ]
 
 const PIPELINE_INPUTS = [
@@ -196,6 +202,20 @@ export default function AIMarketingPageContent() {
               acceptedAnswer: { '@type': 'Answer', text: f.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildServiceSchema({
+              name: 'AI Marketing Systems',
+              description: 'AI-powered marketing automation for businesses worldwide: automated lead nurturing, predictive lead scoring, personalized email, and AI content generation.',
+              url: 'https://thinksuite.in/ai-marketing-systems',
+              serviceType: 'AI Marketing Automation',
+              keywords: ['AI marketing agency', 'AI powered marketing agency', 'AI marketing automation services'],
+            })
+          ),
         }}
       />
       <section className="page-hero">

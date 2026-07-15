@@ -1,4 +1,5 @@
 ﻿import ServicePageTerminal from '@/components/pages/ServicePageTerminal'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -18,6 +19,12 @@ export const metadata: Metadata = {
     'AI chatbot development agency',
     'chatbot agency',
     'conversational AI development company',
+    'AI chatbot development company',
+    'custom chatbot development',
+    'AI chatbot for business',
+    'LLM chatbot development',
+    'customer service chatbot development',
+    'WhatsApp AI chatbot development',
   ],
 }
 
@@ -42,6 +49,26 @@ const faqData = [
     q: 'Is my business and customer data safe with an AI chatbot?',
     a: 'All conversations are encrypted in transit and at rest. We do not use your customer data to train any shared AI models. We follow privacy-first practices and can sign data processing agreements on request.',
   },
+  {
+    q: 'Do you build LLM chatbots, or rule-based bots with fixed scripts?',
+    a: 'We build LLM-powered chatbots by default, which understand natural language instead of matching rigid keyword scripts. Rule-based flows are still used for compliance-sensitive steps like KYC or booking confirmations, where a scripted, predictable path is actually safer than free-form AI responses.',
+  },
+  {
+    q: 'What does customer service chatbot development typically include?',
+    a: 'A full build covers conversation design, integration with your CRM or helpdesk, a knowledge base trained on your actual policies and FAQs, and a fallback path to a human agent when the bot cannot help. We scope exactly which support tickets the bot should own during the audit phase.',
+  },
+  {
+    q: 'Can you build a WhatsApp AI chatbot for my business?',
+    a: 'Yes, WhatsApp Business API is one of our most requested deployments. We handle the API setup, message templates, and approval process, then connect the bot to your CRM so every WhatsApp conversation shows up in your existing sales or support pipeline.',
+  },
+  {
+    q: 'How much does it cost to build an AI chatbot?',
+    a: 'A basic FAQ bot on your website typically costs $1,500 to $3,000. A multi-platform bot with lead qualification, CRM integration, and custom conversation flows usually runs $5,000 to $12,000 depending on scope. We quote a fixed price after understanding what the bot needs to handle.',
+  },
+  {
+    q: 'What is the difference between a chatbot and an AI agent?',
+    a: 'A chatbot answers questions and follows conversation flows within a defined scope, like support FAQs or lead capture. An AI agent goes further: it can take multi-step actions on its own, like checking a database, updating a CRM record, and sending a follow-up, without a human triggering each step. Most businesses start with a chatbot and add agent-like capabilities as needs grow.',
+  },
 ]
 
 export default function ChatbotSolutionsPage() {
@@ -59,6 +86,20 @@ export default function ChatbotSolutionsPage() {
             acceptedAnswer: { '@type': 'Answer', text: f.a },
           })),
         }),
+      }}
+    />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(
+          buildServiceSchema({
+            name: 'Chatbot Solutions',
+            description: 'Custom AI chatbot solutions for WhatsApp, websites, and CRM platforms, including support bots, lead qualification bots, and booking bots built for businesses worldwide.',
+            url: 'https://thinksuite.in/chatbot-solutions',
+            serviceType: 'AI Chatbot Development',
+            keywords: ['AI chatbot development company', 'custom chatbot development', 'AI chatbot for business'],
+          })
+        ),
       }}
     />
     <ServicePageTerminal

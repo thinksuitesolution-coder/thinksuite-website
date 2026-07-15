@@ -1,10 +1,11 @@
 ﻿import ServicePageDeviceShowcase from '@/components/pages/ServicePageDeviceShowcase'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Graphic Design Services Agency | ThinkSuite',
   description: 'Professional graphic design for businesses worldwide. Social media graphics, brochures, presentations, packaging, banners, and infographics designed for impact.',
-  keywords: ['graphic design agency Gurgaon', 'social media design India', 'brochure design services India', 'presentation design agency', 'infographic design India', 'packaging design India', 'banner and poster design India', 'graphic designer Gurgaon', 'graphic design agency', 'brochure design services worldwide', 'packaging design agency'],
+  keywords: ['graphic design agency Gurgaon', 'social media design India', 'brochure design services India', 'presentation design agency', 'infographic design India', 'packaging design India', 'banner and poster design India', 'graphic designer Gurgaon', 'graphic design agency', 'brochure design services worldwide', 'packaging design agency', 'graphic design services', 'graphic design company', 'graphic design agency for small business', 'social media graphic design service', 'print graphic design agency'],
 }
 
 const FAQS = [
@@ -28,6 +29,26 @@ const FAQS = [
     q: 'Do you offer ongoing monthly design support?',
     a: 'Yes. Our design retainer packages give you a fixed number of design requests per month at a predictable monthly cost. Ideal for businesses with regular social media and marketing design needs.',
   },
+  {
+    q: 'How much does graphic design cost?',
+    a: 'Single design pieces run on a 24 to 48 hour turnaround at a per-piece rate, while ongoing needs are better served by a monthly design retainer at a fixed cost for a set number of requests. Pricing depends on complexity, from a social post to a full packaging system with die-lines, so we quote after understanding what actually needs to be designed.',
+  },
+  {
+    q: 'How do I hire a graphic designer for my business?',
+    a: 'You can hire a freelancer, build an in-house team, or work with a graphic design agency like ours that gives you a full bench of skills (social, print, packaging, motion) without the overhead of separate hires. For most growing businesses, a retainer with an agency covers more ground at a lower total cost than one in-house designer.',
+  },
+  {
+    q: 'In-house designer vs graphic design agency, which is better?',
+    a: 'An in-house designer makes sense once your design volume is high and consistent enough to justify a full-time salary. Below that threshold, a graphic design agency gives access to a broader skill set at a fraction of the cost, with no hiring risk or single point of failure if someone leaves.',
+  },
+  {
+    q: 'Do you work with small businesses, or only larger brands?',
+    a: "Yes, we're a graphic design agency for small businesses as much as for larger brands. Our retainer packages give a small business a professional design output, social graphics, flyers, presentations, without needing to hire in-house, and scale up as the business grows.",
+  },
+  {
+    q: 'Do you offer social media graphic design as an ongoing service, and do you handle print work too?',
+    a: "Yes to both. As a social media graphic design service, we run monthly retainers covering feed posts, stories, and reel thumbnails on a fixed cadence. We're just as much a print graphic design agency for brochures, packaging, and event materials, so one team can cover a campaign end to end, online and off.",
+  },
 ]
 
 export default function GraphicDesignPage() {
@@ -45,6 +66,20 @@ export default function GraphicDesignPage() {
               acceptedAnswer: { '@type': 'Answer', text: faq.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildServiceSchema({
+              name: 'Graphic Design',
+              description: 'Professional graphic design for businesses worldwide: social media graphics, brochures, presentations, packaging, banners, and infographics designed for impact.',
+              url: 'https://thinksuite.in/graphic-design',
+              serviceType: 'Graphic Design',
+              keywords: ['graphic design agency', 'graphic design services', 'graphic design company'],
+            })
+          ),
         }}
       />
     <ServicePageDeviceShowcase

@@ -20,6 +20,12 @@ export const metadata: Metadata = {
     'Google Ads management agency',
     'Meta Ads management agency worldwide',
     'PPC management company',
+    'Google Ads agency',
+    'Meta ads agency',
+    'Google and Facebook ads management',
+    'PPC management agency',
+    'Google Ads management for small business',
+    'Facebook ads agency pricing',
   ],
 }
 

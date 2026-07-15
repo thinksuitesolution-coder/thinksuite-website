@@ -1,10 +1,11 @@
 ﻿import ServicePageDeviceShowcase from '@/components/pages/ServicePageDeviceShowcase'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Brand Identity Design Agency | ThinkSuite',
   description: 'Professional brand identity design for businesses worldwide. Logo design, color systems, typography, brand guidelines, and complete visual identity packages.',
-  keywords: ['brand identity design agency Gurgaon', 'logo design company India', 'brand guidelines design India', 'visual identity design India', 'logo designer Gurgaon', 'brand design agency India', 'corporate identity design India', 'startup branding agency India', 'brand identity design agency', 'logo design company worldwide', 'brand design agency'],
+  keywords: ['brand identity design agency Gurgaon', 'logo design company India', 'brand guidelines design India', 'visual identity design India', 'logo designer Gurgaon', 'brand design agency India', 'corporate identity design India', 'startup branding agency India', 'brand identity design agency', 'logo design company worldwide', 'brand design agency', 'brand identity design services', 'visual identity design agency', 'logo and brand identity design', 'brand identity design for startups', 'brand identity guidelines design'],
 }
 
 const FAQS = [
@@ -28,6 +29,26 @@ const FAQS = [
     q: 'What formats do you deliver the final logo in?',
     a: 'We deliver in SVG, EPS, AI, PDF, PNG (transparent background), and JPEG. Both light and dark versions, color and black-and-white. Everything your printer, web developer, and social media needs.',
   },
+  {
+    q: 'What is included in a brand identity package?',
+    a: 'A brand identity package includes logo design (primary and variants), a color and typography system, an icon style, and a full brand guidelines document. We also build out logo and brand identity design touchpoints like stationery, social templates, and a brand asset library so day-one usage is covered.',
+  },
+  {
+    q: 'How much does a brand identity cost?',
+    a: "Cost depends on package depth: a standard identity (logo, color, typography, guidelines) is priced differently than a full system with packaging, environmental branding, and a complete asset library. Share your scope and stage and we'll quote a fixed project price rather than an hourly estimate.",
+  },
+  {
+    q: "What's the difference between logo design and brand identity?",
+    a: "A logo is one asset, a mark. Brand identity is the full system built around it: color palette, typography, imagery style, tone of voice, and the guidelines that keep all of it consistent everywhere it's used. Buying logo design alone gets you a symbol; brand identity gets you a usable visual language.",
+  },
+  {
+    q: 'Do you offer brand identity design for startups specifically?',
+    a: "Yes. Startups make up a large share of our brand identity work, and we scope packages to match an early-stage budget: logo, core color and type system, and a lean guidelines doc rather than a full enterprise-scale brand system. It's investor-ready without the enterprise price tag.",
+  },
+  {
+    q: 'How detailed are your brand identity guidelines?',
+    a: "Our brand identity guidelines design covers logo usage and clear space, color codes across HEX, RGB, CMYK, and Pantone, typography hierarchy, do's and don'ts, and real applied examples across digital and print. It's built as a reference document your team, or any future vendor, can follow without needing us in the room.",
+  },
 ]
 
 export default function BrandIdentityPage() {
@@ -45,6 +66,20 @@ export default function BrandIdentityPage() {
               acceptedAnswer: { '@type': 'Answer', text: faq.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildServiceSchema({
+              name: 'Brand Identity Design',
+              description: 'Professional brand identity design for businesses worldwide: logo design, color systems, typography, brand guidelines, and complete visual identity packages.',
+              url: 'https://thinksuite.in/brand-identity',
+              serviceType: 'Brand Identity Design',
+              keywords: ['brand identity design agency', 'brand identity design services', 'visual identity design agency'],
+            })
+          ),
         }}
       />
     <ServicePageDeviceShowcase

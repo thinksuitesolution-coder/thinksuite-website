@@ -1,4 +1,5 @@
 import ServicePageSplitStory from '@/components/pages/ServicePageSplitStory'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -20,6 +21,11 @@ export const metadata: Metadata = {
     'startup consulting for founders worldwide',
     'startup advisor',
     'founder advisory services',
+    'startup consulting firm',
+    'startup consultants',
+    'startup advisory services',
+    'startup consulting for fundraising',
+    'startup growth advisory',
   ],
 }
 
@@ -44,6 +50,18 @@ const faqs = [
     q: 'Do you help with investor introductions?',
     a: 'Yes. For clients we work with on fundraising preparation, we provide warm introductions to relevant angel networks, family offices, and early-stage investors once the materials are actually ready to be shown.',
   },
+  {
+    q: 'How much does startup consulting cost?',
+    a: 'Project-based engagements like a pitch deck or GTM strategy are priced as a fixed fee, typically scoped after our discovery workshop. Ongoing advisory retainers are billed monthly with a 90-day minimum. We do not have a one-size-fits-all number since pre-seed and Series A engagements differ significantly in depth.',
+  },
+  {
+    q: 'What does a startup consultant actually do?',
+    a: 'A startup consultant helps you validate your idea, build a go-to-market plan, get investor-ready, and avoid the expensive mistakes founders make when nobody is checking their assumptions. At ThinkSuite, that also extends to introductions and, if you need it, building the actual product.',
+  },
+  {
+    q: 'Do I need a consultant before raising a funding round?',
+    a: 'Not always, but it helps if your pitch deck, financial model, or business case have gaps that investors will notice immediately. Founders who come to us before a raise usually walk into investor meetings with sharper positioning and fewer unanswered questions.',
+  },
 ]
 
 const faqSchema = {
@@ -56,10 +74,19 @@ const faqSchema = {
   })),
 }
 
+const serviceSchema = buildServiceSchema({
+  name: 'Startup Consulting',
+  description: 'Startup advisory for early-stage founders worldwide, covering idea validation, go-to-market strategy, fundraising, and MVP planning.',
+  url: 'https://thinksuite.in/startup-consulting',
+  serviceType: 'Startup Consulting',
+  keywords: ['startup consulting firm', 'startup consultants', 'startup advisory services'],
+})
+
 export default function StartupConsultingPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <ServicePageSplitStory
         breadcrumb="Consulting and Growth"
         breadcrumbHref="/consulting-growth"

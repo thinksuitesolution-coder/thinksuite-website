@@ -21,6 +21,11 @@ export const metadata: Metadata = {
     'SEO services worldwide',
     'GEO optimization agency',
     'technical SEO audit company',
+    'SEO services',
+    'SEO and GEO optimization agency',
+    'technical SEO services',
+    'local SEO agency',
+    'SEO agency for startups',
   ],
 }
 

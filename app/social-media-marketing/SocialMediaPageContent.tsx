@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import CTASection from '@/components/sections/CTASection'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const ORGANIC_CAPS = [
@@ -30,6 +31,11 @@ const FAQS = [
   { q: 'How long before we see growth?', a: 'Most brands notice measurable engagement improvements within the first month of consistent posting. Real follower growth and inbound leads usually build over 3 to 6 months, since social platforms reward accounts that show up reliably rather than in bursts.' },
   { q: 'Do you handle paid social ads as well?', a: 'Yes. Organic management and paid campaigns are offered together or separately. Organic builds long-term trust and community, while paid accelerates reach and conversions in the short term. Running both together is almost always the stronger strategy.' },
   { q: 'What does social media management actually cost?', a: 'Pricing depends on how many platforms you need covered, how much content you want produced, and whether paid ad management is included. We share a clear monthly quote after understanding your goals, there is no one-size-fits-all number we can quote blind.' },
+  { q: 'Do you specialize in Instagram marketing, or manage it as part of a broader package?', a: 'Instagram is core to nearly every package we run, reels, carousels, stories, and paid ads, since it consistently drives the highest engagement of any platform we manage. We also treat it as part of a broader cross-platform strategy rather than in isolation, so your Instagram content and, say, LinkedIn presence reinforce the same brand story instead of feeling disconnected.' },
+  { q: 'Do you run LinkedIn marketing for B2B companies?', a: 'Yes, LinkedIn is one of our core platforms and it is usually the highest-ROI channel for B2B brands. We combine organic thought-leadership content from founders and executives with LinkedIn Sponsored Ads that target decision-makers by job title, company size, and industry, precision that platforms like Instagram simply cannot match for B2B.' },
+  { q: 'Is social media marketing structured differently for a small business than a large brand?', a: 'Yes. Small businesses usually need a leaner platform focus, 1 to 2 platforms done well rather than five done thinly, and content built around limited internal resources like founder-led video or product shots rather than large studio productions. We scale the strategy to match the budget instead of applying an enterprise playbook to a small account.' },
+  { q: 'How often should a business post on social media?', a: 'Consistency matters more than raw volume. Our base package runs 12 to 15 posts a month across chosen platforms, enough to stay visible in the algorithm without burning out your content pipeline. Businesses chasing faster growth often move to daily posting plus reels, but sporadic bursts of activity followed by silence perform worse than a lower, steady cadence.' },
+  { q: 'Is social media marketing worth it for a small business?', a: 'For most small businesses, yes, especially because social platforms are often the first place a potential customer checks before deciding to trust you. The return depends on execution though: thin, inconsistent posting rarely moves the needle, while a focused strategy on 2 to 3 right-fit platforms usually pays back in inbound inquiries within a few months.' },
 ]
 
 function PlatformsVisual() {
@@ -243,6 +249,20 @@ export default function SocialMediaPageContent() {
               acceptedAnswer: { '@type': 'Answer', text: f.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildServiceSchema({
+              name: 'Social Media Marketing',
+              description: "Social media marketing from ThinkSuite's in-house team: Instagram, LinkedIn, YouTube, and Facebook content, community management, and paid social ads for brands worldwide.",
+              url: 'https://thinksuite.in/social-media-marketing',
+              serviceType: 'Social Media Marketing',
+              keywords: ['social media marketing agency', 'social media management services', 'social media marketing company'],
+            })
+          ),
         }}
       />
       <section className="page-hero">

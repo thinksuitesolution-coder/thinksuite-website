@@ -19,6 +19,11 @@ export const metadata: Metadata = {
     'content marketing agency',
     'SEO blog writing services worldwide',
     'website copywriting agency',
+    'content marketing services',
+    'SEO content writing agency',
+    'blog content writing service',
+    'content marketing for B2B',
+    'content marketing agency pricing',
   ],
 }
 

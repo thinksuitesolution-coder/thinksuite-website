@@ -1,10 +1,11 @@
 ﻿import ServicePageDeviceShowcase from '@/components/pages/ServicePageDeviceShowcase'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Branding and Design Agency | ThinkSuite',
   description: 'Professional branding and design services worldwide: brand identity design, UI/UX design, graphic design, and product design for startups and growing businesses.',
-  keywords: ['branding and design agency Gurgaon', 'brand identity design India', 'logo design company India', 'UI UX design agency India', 'graphic design agency Gurgaon', 'product design company India', 'brand design agency Gurgaon', 'visual identity design India', 'creative agency for startups India', 'branding and design agency', 'brand identity design worldwide', 'creative agency for startups'],
+  keywords: ['branding and design agency Gurgaon', 'brand identity design India', 'logo design company India', 'UI UX design agency India', 'graphic design agency Gurgaon', 'product design company India', 'brand design agency Gurgaon', 'visual identity design India', 'creative agency for startups India', 'branding and design agency', 'brand identity design worldwide', 'creative agency for startups', 'branding agency', 'brand design agency', 'brand strategy agency', 'rebranding agency', 'branding agency for startups'],
 }
 
 const FAQS = [
@@ -28,6 +29,26 @@ const FAQS = [
     q: 'Do you create assets for both digital and print use?',
     a: 'Yes. Every brand system we develop is print-ready (CMYK, bleed-safe) and digital-optimized (web-resolution, dark/light variants, accessibility-compliant contrast ratios). One brand, every medium.',
   },
+  {
+    q: 'How much does branding cost?',
+    a: 'Branding investment depends on scope: a focused identity project is priced differently than a comprehensive system with UI direction, packaging, and marketing templates. We scope cost against the deliverables you actually need rather than selling a flat package. Share your requirements and we will send back a clear, itemized quote.',
+  },
+  {
+    q: 'What is included in a branding package?',
+    a: 'A full branding package starts with strategy and positioning work, then moves into logo and visual identity, a color and typography system, and a brand guidelines document. Depending on scope, we add UI direction, packaging, marketing templates, and motion guidelines. Every package ends with full source files and complete ownership of the assets.',
+  },
+  {
+    q: 'How long does a rebrand take?',
+    a: 'A focused rebrand covering logo, color, and typography typically takes 2 to 4 weeks, the same timeline as our standard branding projects. If it also touches packaging, signage, and a full brand guidelines refresh, plan for 5 to 8 weeks. As a rebranding agency, we front-load a brand audit on every project so the new direction respects any equity worth preserving.',
+  },
+  {
+    q: 'Do you offer brand strategy, or only visual design?',
+    a: 'Strategy comes first. Before any logo or color exploration begins, we run a discovery phase covering positioning, audience, and competitive landscape, the same work a dedicated brand strategy agency would do, then carry that thinking straight into the visual identity so every design decision has a rationale behind it.',
+  },
+  {
+    q: 'Do you work with early-stage startups on branding?',
+    a: 'Yes, startups are a large part of our client base. As a branding agency for startups, we scope engagements to match an early-stage budget and timeline, prioritizing the assets a startup actually needs at launch, logo, core identity, and a lean style guide, over an exhaustive system built for a company five times the size.',
+  },
 ]
 
 export default function BrandingDesignPage() {
@@ -45,6 +66,20 @@ export default function BrandingDesignPage() {
               acceptedAnswer: { '@type': 'Answer', text: faq.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildServiceSchema({
+              name: 'Branding and Design',
+              description: 'Professional branding and design services worldwide: brand identity design, UI/UX design, graphic design, and product design for startups and growing businesses.',
+              url: 'https://thinksuite.in/branding-design',
+              serviceType: 'Branding & Design',
+              keywords: ['branding agency', 'brand design agency', 'branding and design agency'],
+            })
+          ),
         }}
       />
     <ServicePageDeviceShowcase

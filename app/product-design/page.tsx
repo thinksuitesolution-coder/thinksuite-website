@@ -1,10 +1,11 @@
 ﻿import ServicePageDeviceShowcase from '@/components/pages/ServicePageDeviceShowcase'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Product Design Services Company | ThinkSuite',
   description: 'End-to-end product design for businesses worldwide: discovery, wireframing, Figma prototyping, design systems, and developer handoff for web and mobile products, in-house.',
-  keywords: ['product design company Gurgaon', 'UX product design India', 'Figma prototyping agency India', 'design system development India', 'SaaS product design company', '0 to 1 product design', 'mobile product design India', 'product designer Gurgaon', 'product design company', 'UX product design agency worldwide', 'Figma prototyping agency'],
+  keywords: ['product design company Gurgaon', 'UX product design India', 'Figma prototyping agency India', 'design system development India', 'SaaS product design company', '0 to 1 product design', 'mobile product design India', 'product designer Gurgaon', 'product design company', 'UX product design agency worldwide', 'Figma prototyping agency', 'product design agency', 'product design services', 'UI product design agency', 'SaaS product design agency', 'digital product design company', 'product design consulting'],
 }
 
 const FAQS = [
@@ -28,6 +29,26 @@ const FAQS = [
     q: 'Can you work alongside our in-house team?',
     a: 'Absolutely. We embed as design partners, collaborating in your Figma workspace, attending sprints, and syncing with your product managers and engineers throughout the engagement.',
   },
+  {
+    q: 'What does a product design agency actually do?',
+    a: "A product design agency owns the full path from a business problem to a working, tested interface: user research, roadmap and information architecture, wireframes, high-fidelity UI, a design system, and developer handoff. It's broader than making things look good, we're accountable for whether the product is usable and whether people actually adopt it.",
+  },
+  {
+    q: 'How much does product design cost?',
+    a: 'Cost scales with scope: a 2 to 3 week discovery phase is priced separately from the full design build, which runs 6 to 12 weeks depending on the number of user roles and screens. We quote as a fixed project price once we understand what needs to be designed, not by the hour.',
+  },
+  {
+    q: 'Do you specialize in SaaS product design?',
+    a: "SaaS is one of our most common project types. As a SaaS product design agency, we're used to designing for multiple user roles, complex permission structures, and dashboards that need to stay usable as feature count grows, not just a marketing site with a signup form attached.",
+  },
+  {
+    q: 'Are you a digital product design company for both web and mobile?',
+    a: 'Yes. We work as a single digital product design company across web, mobile, and cross-platform products, so the design language stays consistent whether someone is on a phone or a desktop dashboard. Most engagements involve both from day one.',
+  },
+  {
+    q: 'Do you offer product design consulting, or only full execution?',
+    a: "Both. Some clients bring us in for product design consulting, a focused audit or roadmap review before committing to a full build, while others want us to own design execution end-to-end alongside their team. We scope either based on what stage you're at.",
+  },
 ]
 
 export default function ProductDesignPage() {
@@ -45,6 +66,20 @@ export default function ProductDesignPage() {
               acceptedAnswer: { '@type': 'Answer', text: faq.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildServiceSchema({
+              name: 'Product Design',
+              description: 'End-to-end product design for businesses worldwide: discovery, wireframing, Figma prototyping, design systems, and developer handoff for web and mobile products.',
+              url: 'https://thinksuite.in/product-design',
+              serviceType: 'Product Design',
+              keywords: ['product design agency', 'product design services', 'UI product design agency'],
+            })
+          ),
         }}
       />
     <ServicePageDeviceShowcase

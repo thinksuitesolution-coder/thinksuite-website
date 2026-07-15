@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import CTASection from '@/components/sections/CTASection'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPS = [
@@ -21,6 +22,11 @@ const FAQS = [
   { q: 'Do you handle social media PR as well?', a: 'Yes, we work with your social media and marketing team to share earned media coverage further, help founders build personal brand presence on LinkedIn, and coordinate influencer collaborations as part of integrated campaigns.' },
   { q: 'What happens during a PR crisis?', a: 'We activate within 48 hours with a holding statement, media monitoring, and a crisis communications plan. We help you control the narrative, identify the right spokesperson, and manage journalist inquiries so the situation does not spiral further.' },
   { q: 'Is PR worth it for a small business or early-stage startup?', a: 'Yes, a single credible article can do more for trust than months of paid ads, especially for a startup that needs investors, partners, or early customers to take it seriously. The catch is that PR rewards patience: it builds a reputation over months, not a single press release.' },
+  { q: 'Do you work specifically with early-stage startups, or mainly established companies?', a: 'We work with both, and a meaningful share of our PR clients are early-stage startups building credibility from scratch. For startups we usually prioritize founder-story angles and product-launch news first, since those are the easiest hooks for journalists when there is not yet a long track record to point to.' },
+  { q: 'How do you run PR for a product launch specifically?', a: 'Product launch PR is built around a tight embargo timeline. We brief select journalists ahead of the public date under embargo, coordinate the press release, founder interviews, and any launch-day assets, and time everything to a single coordinated moment rather than a slow trickle of coverage. We also line up follow-on angles, reviews, use cases, milestones, so the story does not die after launch day.' },
+  { q: 'Is hiring a PR agency realistic for a small, non-startup business?', a: 'Yes, though the strategy looks different than for a funded startup. Small businesses often get more traction from regional and trade publication coverage, local business awards, and founder thought-leadership than chasing national tech press, and the retainer scope adjusts to match a smaller, steadier drumbeat of coverage rather than a big launch push.' },
+  { q: 'How much does a PR agency cost?', a: 'PR retainers in India typically range from ₹40,000 to ₹1,50,000+ a month depending on scope, media relations only versus a full program with thought leadership and crisis readiness, and how competitive your industry\'s press coverage is. We share an exact quote after understanding your goals and the publications you are aiming for.' },
+  { q: 'How do I get press coverage for my startup?', a: "Start with a genuinely newsworthy angle, a funding round, a meaningful product launch, or a data point journalists haven't seen, rather than a generic company announcement. Build relationships with a handful of relevant journalists before you need them, and be ready to respond fast when a reporter shows interest, since news cycles move in hours, not weeks." },
 ]
 
 const TIERS = [
@@ -175,6 +181,20 @@ export default function PRCampaignsPageContent() {
               acceptedAnswer: { '@type': 'Answer', text: f.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildServiceSchema({
+              name: 'PR & Media Relations',
+              description: "PR campaigns from ThinkSuite's in-house team: media coverage, press releases, journalist outreach, crisis communications, and thought leadership programs for brands worldwide.",
+              url: 'https://thinksuite.in/pr-campaigns',
+              serviceType: 'Public Relations',
+              keywords: ['PR agency', 'public relations agency', 'media relations agency'],
+            })
+          ),
         }}
       />
       <section className="page-hero">

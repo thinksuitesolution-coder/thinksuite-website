@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import CTASection from '@/components/sections/CTASection'
 import s from '@/components/pages/ServicePageDashboard.module.css'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 
 const CAPS = [
   { icon: 'fa-store',    metric: 'Long Dwell',    title: 'Mall and Retail Space Advertising', desc: 'Food court panels, escalator branding, elevator wraps, floor graphics, and in-store digital screens that engage shoppers at the highest intent moments in their purchase journey.' },
@@ -21,6 +22,11 @@ const FAQS = [
   { q: 'Do you offer digital indoor screens?', a: 'Yes, we have access to digital screen networks in malls, airports, and corporate parks that let you run dynamic content, schedule ads by time of day, and update creatives without reprinting anything.' },
   { q: 'How far in advance do I need to book indoor advertising?', a: 'For premium venues like airports and top-tier malls, 3 to 4 weeks advance booking is advisable. For other venues, 10 to 14 days is usually sufficient, though festival seasons and the start of the year can book up quickly.' },
   { q: 'Why would a brand choose indoor advertising over a billboard?', a: 'Indoor advertising puts your brand in front of someone who is standing still, waiting, or moving slowly through a space, which means they actually have time to read your message rather than glimpse it for a second at a traffic signal. It also lets you show up closer to the actual moment of purchase, inside the mall or store where the decision gets made.' },
+  { q: 'How much does mall advertising cost in India?', a: 'Mall advertising in India typically ranges from ₹25,000 to ₹2,00,000+ per month depending on the venue tier, placement (food court panel vs elevator wrap vs digital screen network), and city. Premium malls in metro cities command a higher rate than tier-2 city malls, and digital screen slots are usually priced per rotation rather than a flat monthly fee.' },
+  { q: 'What is indoor advertising?', a: 'Indoor advertising is any paid brand placement inside an enclosed, high-footfall venue, malls, airports, corporate parks, hospitals, and similar spaces, as opposed to outdoor hoardings and billboards. It typically takes the form of static panels, digital screens, wraps, or experiential brand zones placed where people naturally spend extended time.' },
+  { q: 'What are the best indoor advertising locations for brand visibility?', a: 'Malls and airports generally deliver the best visibility because of long dwell times and a captive, high-intent audience, malls for retail and FMCG brands, airports for premium and B2B brands targeting frequent travelers. Corporate parks work well for B2B and SaaS brands trying to reach decision-makers directly at their workplace.' },
+  { q: 'Do you handle indoor advertising in airports?', a: 'Yes. We source inventory across departure lounges, boarding gates, baggage belts, and aerobridges, giving you access to a high-income, frequent-traveler audience with extended dwell time compared to most other indoor venues.' },
+  { q: 'Can indoor advertising be combined with outdoor or digital campaigns?', a: 'Yes, and we recommend it. Pairing indoor placements with outdoor hoardings and digital retargeting creates multiple touchpoints across a customer\'s day, someone might see your billboard on the commute, then your mall panel while shopping, reinforcing recall far more than any single channel alone.' },
 ]
 
 const VENUES = [
@@ -175,6 +181,18 @@ export default function IndoorAdvertisingPageContent() {
               acceptedAnswer: { '@type': 'Answer', text: f.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(buildServiceSchema({
+            name: 'Indoor Advertising',
+            description: 'Mall, airport, corporate park, and healthcare venue advertising across India, static panels, digital screens, and experiential activations.',
+            url: 'https://thinksuite.in/indoor-advertising',
+            serviceType: 'Indoor Advertising',
+            keywords: ['indoor advertising agency', 'mall advertising agency', 'indoor media advertising India'],
+          })),
         }}
       />
       <section className="page-hero">

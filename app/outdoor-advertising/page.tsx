@@ -15,6 +15,12 @@ export const metadata: Metadata = {
     'metro station advertising India',
     'outdoor media buying agency',
     'billboard advertising for real estate India',
+    'outdoor advertising agency',
+    'OOH advertising agency',
+    'billboard advertising agency India',
+    'hoarding advertising agency',
+    'transit advertising agency',
+    'outdoor advertising agency for startups',
   ],
 }
 

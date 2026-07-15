@@ -1,4 +1,5 @@
 ﻿import ServicePageTerminal from '@/components/pages/ServicePageTerminal'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -20,6 +21,11 @@ export const metadata: Metadata = {
     'AI automation agency',
     'AI agency worldwide',
     'custom AI solutions company',
+    'AI workflow automation company',
+    'business process automation with AI',
+    'AI automation for small business',
+    'AI automation consulting',
+    'custom AI automation solutions',
   ],
 }
 
@@ -44,6 +50,26 @@ const faqData = [
     q: 'Do we need in-house technical staff to manage the systems?',
     a: 'No. We build and hand over systems with intuitive dashboards, admin controls, and full documentation. We also offer ongoing managed services for organisations that prefer a fully handled automation environment.',
   },
+  {
+    q: 'Do you offer AI automation for small businesses, or only large enterprises?',
+    a: 'Both. Small businesses typically start with a single high-friction process, like customer support or lead intake, while enterprises usually run multi-department rollouts. Scope and pricing are matched to your size, not a fixed enterprise package.',
+  },
+  {
+    q: 'Do you provide AI automation consulting, or only implementation?',
+    a: 'We do both. If you are unsure where to start, our audit phase functions as a standalone consulting engagement that maps your highest-impact automation opportunities, and you can take that roadmap to build with us or hand it to your own team.',
+  },
+  {
+    q: 'How does AI automation actually save businesses money?',
+    a: 'Savings come from three places: fewer hours spent on repetitive manual tasks, lower error rates that would otherwise cost money to fix, and faster processing cycles that reduce operational overhead. Most clients see a positive return within 3 to 6 months once these compound.',
+  },
+  {
+    q: 'How do I identify which processes to automate first with AI?',
+    a: 'Start with tasks that are high-volume, rule-based, and currently eating the most staff hours, like support ticket triage, invoice processing, or lead routing. Our audit phase maps these systematically so you automate the highest-impact process first instead of guessing.',
+  },
+  {
+    q: 'Is AI automation worth it for a small business?',
+    a: 'Yes, if the process you are automating is genuinely repetitive and high-volume. A small business automating one bottleneck, like customer inquiries or order processing, often sees a return faster than an enterprise rolling out automation across many departments at once, simply because the scope is smaller and faster to deploy.',
+  },
 ]
 
 export default function AiAutomationPage() {
@@ -61,6 +87,20 @@ export default function AiAutomationPage() {
             acceptedAnswer: { '@type': 'Answer', text: f.a },
           })),
         }),
+      }}
+    />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(
+          buildServiceSchema({
+            name: 'AI Automation',
+            description: 'Custom AI tool integration and workflow automation for businesses worldwide, including RAG systems, LLM chatbots, and automation that cuts manual work every week.',
+            url: 'https://thinksuite.in/ai-automation',
+            serviceType: 'AI Automation',
+            keywords: ['AI automation agency', 'AI workflow automation company', 'business process automation with AI'],
+          })
+        ),
       }}
     />
     <ServicePageTerminal

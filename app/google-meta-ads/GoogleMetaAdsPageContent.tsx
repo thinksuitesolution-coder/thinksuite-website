@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import CTASection from '@/components/sections/CTASection'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const GOOGLE_CAPS = [
@@ -30,6 +31,11 @@ const FAQS = [
   { q: 'Do you manage both Google and Meta Ads or just one?', a: 'We manage both, and running both together is almost always more effective because the two platforms work at different funnel stages. Google closes buyers who are already looking. Meta builds the interest that eventually turns into a Google search.' },
   { q: 'Who owns the ad accounts?', a: 'You always own your Google Ads and Meta Business Manager accounts, we simply request admin access to run campaigns. If you ever stop working with us, your full history, audiences, and conversion data stay in your accounts. There is no lock-in.' },
   { q: 'How do you report results?', a: 'You get a live dashboard connected to both accounts that you can check any time you want. We also send a weekly written report covering spend, impressions, clicks, leads, cost per acquisition, and return on ad spend, along with our analysis and next week\'s plan.' },
+  { q: "What's included in your PPC management service?", a: "Our PPC management covers campaign structure and keyword strategy, ad copywriting and creative, bid strategy and budget pacing, conversion tracking setup, negative keyword maintenance, and weekly performance reporting. It's a full management service, not just bid adjustments, we own the account's performance end to end." },
+  { q: 'How is Google Ads management different for a small business versus a large enterprise?', a: 'Small business accounts need tighter budget discipline since every rupee of wasted spend matters more proportionally. We focus on narrower, higher-intent keyword sets and stricter negative keyword lists rather than broad-match campaigns built for enterprise budgets that can afford to test wide before narrowing down.' },
+  { q: 'How is your management fee structured for Facebook and Instagram ads?', a: 'We quote management fees separately from your ad spend, usually a flat monthly retainer or a percentage of managed spend depending on account size. Your ad budget goes entirely into the platform, we never take a hidden markup on media spend, and we share the exact fee structure after understanding your target budget.' },
+  { q: 'What is a good ROAS for Meta ads?', a: 'It depends entirely on your margins, a 2x ROAS might be excellent for a low-margin FMCG brand and unprofitable for a premium product with thin unit economics. As a general benchmark, most e-commerce brands target 3x to 4x ROAS to cover product cost, ad spend, and operations, but we calculate your specific breakeven ROAS before setting any target.' },
+  { q: 'Google Ads vs Facebook Ads, which is better for lead generation?', a: "Google Ads generally wins for lead generation because it captures people already searching with intent, someone typing 'best CRM for small business' is closer to converting than someone scrolling Instagram. Meta ads can still generate leads well through lead forms and retargeting, but they usually work best as a complement that builds the awareness Google Search later converts." },
 ]
 
 function PlatformVisual() {
@@ -417,6 +423,20 @@ export default function GoogleMetaAdsPageContent() {
               acceptedAnswer: { '@type': 'Answer', text: f.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildServiceSchema({
+              name: 'Google & Meta Ads Management',
+              description: "Google Ads and Meta Ads management from ThinkSuite's in-house team: search, shopping, display, Facebook, and Instagram campaigns built for real ROI, worldwide.",
+              url: 'https://thinksuite.in/google-meta-ads',
+              serviceType: 'PPC Advertising',
+              keywords: ['Google Ads agency', 'Meta ads agency', 'Google and Facebook ads management'],
+            })
+          ),
         }}
       />
       {/* ── HERO ─────────────────────────────────────────────────── */}

@@ -1,4 +1,5 @@
 import ServicePageSplitStory from '@/components/pages/ServicePageSplitStory'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -17,6 +18,12 @@ export const metadata: Metadata = {
     'growth consultant for scaling businesses',
     'revenue growth planning services India',
     'growth strategy for e-commerce and SaaS',
+    'growth planning services',
+    'business growth planning',
+    'strategic growth planning consultants',
+    'growth planning for startups',
+    'revenue growth planning',
+    'growth planning workshop',
   ],
 }
 
@@ -41,6 +48,18 @@ const faqs = [
     q: 'How do you measure whether the growth plan is working?',
     a: 'We set up a KPI dashboard at the start, built around your north star metric, weekly leading indicators, and monthly lagging indicators. You always know whether you are on track instead of finding out at the end of the quarter.',
   },
+  {
+    q: 'What is a growth plan for a business?',
+    a: 'A growth plan is a document that lays out where your revenue, customers, and market position are today, where you want them to be, and the specific, prioritized moves that will close that gap. Ours are anchored to your real numbers and broken into 90-day sprints so the plan gets executed, not filed away.',
+  },
+  {
+    q: 'How do I create a business growth plan?',
+    a: 'Start with an honest audit of your current revenue, channels, and unit economics, then pick the handful of growth levers most likely to move the needle for your specific business rather than copying a generic list. We run this as a structured process: current state audit, growth model, prioritization, then a 90-day sprint plan.',
+  },
+  {
+    q: "What's the difference between a growth plan and a business plan?",
+    a: 'A business plan usually covers the full picture of a company, including its model, funding needs, and long-term vision, often written once for investors. A growth plan is narrower and more operational: it focuses specifically on how you acquire, retain, and grow revenue from where you are right now, and it gets revisited every quarter.',
+  },
 ]
 
 const faqSchema = {
@@ -53,10 +72,19 @@ const faqSchema = {
   })),
 }
 
+const serviceSchema = buildServiceSchema({
+  name: 'Growth Planning Services',
+  description: 'Growth plans anchored to real business numbers, covering revenue strategy, customer acquisition, and 90-day execution sprints.',
+  url: 'https://thinksuite.in/growth-planning',
+  serviceType: 'Growth Planning',
+  keywords: ['growth planning services', 'business growth planning', 'strategic growth planning consultants'],
+})
+
 export default function GrowthPlanningPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <ServicePageSplitStory
         breadcrumb="Consulting and Growth"
         breadcrumbHref="/consulting-growth"

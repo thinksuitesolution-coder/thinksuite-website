@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import CTASection from '@/components/sections/CTASection'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const SEO_CAPS = [
@@ -30,6 +31,11 @@ const FAQS = [
   { q: 'How do you optimize a website for ChatGPT, Gemini, and Perplexity?', a: 'GEO involves creating authoritative, well-structured content that AI engines can understand and trust. We focus on E-E-A-T signals (Experience, Expertise, Authoritativeness, Trustworthiness), structured data markup, brand mention campaigns, and making sure your content is discoverable on the sources AI models draw from, like Wikipedia, Reddit, and major publications.' },
   { q: 'Can you guarantee first-page rankings or AI citations?', a: 'No ethical agency can guarantee specific rankings, because search and AI algorithms change constantly and no agency controls them. What we do commit to is a transparent, proven methodology and honest monthly reporting on your Google rankings, organic traffic, and AI brand visibility so you always know where things stand.' },
   { q: 'How much do your SEO and GEO packages cost?', a: 'Our combined SEO and GEO packages start from ₹20,000 per month, depending on industry competitiveness, website size, and goals. Contact us for a free audit and a custom quote tailored to your business.' },
+  { q: 'What does a technical SEO audit actually check?', a: 'A technical SEO audit checks Core Web Vitals and page speed, crawlability and indexing status, mobile usability, structured data and schema markup, XML sitemaps, and internal linking structure. We flag every issue by priority so you know exactly what is costing you rankings versus what is a minor cleanup.' },
+  { q: 'Do you handle local SEO for businesses with a physical location?', a: 'Yes. Local SEO is one of our core SEO capabilities: Google Business Profile optimization, local citation building, review strategy, and map pack visibility. It is especially valuable for service businesses and multi-location brands competing for "near me" searches.' },
+  { q: 'Is GEO a replacement for SEO, or does it work alongside it?', a: "GEO doesn't replace SEO, it works alongside it. SEO earns you visibility on Google's search results page, while GEO earns you citations inside ChatGPT, Gemini, and Perplexity answers. Both rely on overlapping fundamentals, quality content, structured data, and topical authority, but success in one doesn't automatically transfer to the other, which is why we run them as parallel workstreams." },
+  { q: 'How long does SEO take to work?', a: 'It depends heavily on your starting point. A brand with zero online history takes longer than one refreshing an already-indexed, reasonably authoritative site. As a rule of thumb, expect initial movement in 6 to 10 weeks for easier keywords, with the bulk of ranking gains landing in the 3 to 6 month range once backlinks and content depth build up.' },
+  { q: 'Do you work with early-stage startups on SEO?', a: 'Yes, a good share of our SEO and GEO clients are early-stage startups building organic visibility from scratch. We prioritize differently for a startup than for an established brand: quicker-win, lower-competition keywords first, alongside GEO groundwork so the brand starts appearing in AI answers even before Google rankings mature.' },
 ]
 
 function EngineVisual() {
@@ -442,6 +448,20 @@ export default function SeoGeoPageContent() {
               acceptedAnswer: { '@type': 'Answer', text: f.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildServiceSchema({
+              name: 'SEO and GEO Optimization',
+              description: 'SEO and Generative Engine Optimization for businesses worldwide, ranking on Google and getting cited by ChatGPT, Gemini, and Perplexity.',
+              url: 'https://thinksuite.in/seo-optimization',
+              serviceType: 'SEO Agency',
+              keywords: ['SEO agency', 'SEO services', 'SEO and GEO optimization agency'],
+            })
+          ),
         }}
       />
       {/* ── HERO ─────────────────────────────────────────────────── */}

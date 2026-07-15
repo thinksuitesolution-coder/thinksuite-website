@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import CTASection from '@/components/sections/CTASection'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPS = [
@@ -21,6 +22,11 @@ const FAQS = [
   { q: 'Can you run campaigns in regional languages?', a: 'Yes, we run campaigns in Hindi, Tamil, Telugu, Kannada, Malayalam, Marathi, Bengali, and Gujarati across regional TV channels, FM stations, and newspapers. Regional language campaigns often deliver noticeably better engagement for brands targeting specific states.' },
   { q: 'How do you measure media campaign effectiveness?', a: 'We track GRPs for TV, listenership for radio, circulation and readership data for print, and viewability plus completion rate for digital. We also run brand lift studies to measure awareness and consideration shifts attributable to the campaign.' },
   { q: 'How much should I budget for traditional media versus digital?', a: 'It depends on what the campaign needs to do: traditional media like TV and print builds broad awareness and credibility, while digital lets you retarget and measure down to the click. Most brands get the best return from splitting budget across both rather than betting everything on one channel.' },
+  { q: 'What is the difference between ATL and BTL advertising?', a: "ATL (Above The Line) covers mass-reach channels like TV, radio, and print that build broad awareness without targeting individuals. BTL (Below The Line) covers targeted, measurable activity like activations, in-store promotions, and direct digital campaigns. As an ATL BTL advertising agency, we plan both together so mass awareness and targeted conversion work off the same campaign idea instead of two disconnected efforts." },
+  { q: 'How much does TV advertising cost in India?', a: 'TV spot rates run roughly ₹80 to ₹120 CPM depending on channel and time slot, with prime time and national campaigns costing significantly more than off-peak or regional ones. A meaningful multi-channel regional campaign, radio plus regional newspaper plus digital, can start around Rs 10 to 15 lakh, while national TV requires a considerably larger budget.' },
+  { q: 'How do I plan a media advertising budget?', a: "Start with the objective: mass awareness needs a different budget split than a targeted, measurable push. We build a channel mix, TV, radio, print, OTT, programmatic, around your audience's actual media habits and available budget, then shift spend mid-campaign toward whichever channel is proven to move the number you care about." },
+  { q: 'Do you handle both TV and radio advertising, or just one?', a: 'Both, and usually together. As a TV and radio advertising agency in India, we plan TV for mass reach and radio for city-level, cost-efficient frequency, sequencing the two so radio reinforces a message TV already put in front of the same audience.' },
+  { q: 'What does a media planning and buying agency actually do for a brand?', a: 'A media planning and buying agency decides where your budget should go, planning, and then negotiates and executes the actual bookings, buying, using volume across multiple clients to get rates an individual brand usually cannot access booking direct. We handle both ends so you get one accountable partner instead of managing five vendor relationships.' },
 ]
 
 const CHANNELS = [
@@ -180,6 +186,20 @@ export default function MediaAdvertisingPageContent() {
               acceptedAnswer: { '@type': 'Answer', text: f.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildServiceSchema({
+              name: 'Media Advertising',
+              description: "Media advertising from ThinkSuite's in-house team: TV, radio, print, OTT, and programmatic buying with cross-channel planning for regional and national ads.",
+              url: 'https://thinksuite.in/media-advertising',
+              serviceType: 'Media Advertising',
+              keywords: ['media advertising agency', 'media buying agency', 'ATL BTL advertising agency'],
+            })
+          ),
         }}
       />
       <section className="page-hero">

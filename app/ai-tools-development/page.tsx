@@ -1,4 +1,5 @@
 ﻿import ServicePageTerminal from '@/components/pages/ServicePageTerminal'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -18,6 +19,12 @@ export const metadata: Metadata = {
     'custom AI development company',
     'AI tools development agency worldwide',
     'AI software development company',
+    'AI tools development company',
+    'custom AI tool development',
+    'AI software development services',
+    'AI integration for business',
+    'LLM application development',
+    'RAG system development company',
   ],
 }
 
@@ -42,6 +49,26 @@ const faqData = [
     q: 'What tech stack do you use to build custom AI tools?',
     a: 'We primarily use Python with scikit-learn, TensorFlow, PyTorch, and HuggingFace depending on the task. Models are deployed via FastAPI or as serverless functions on AWS or GCP.',
   },
+  {
+    q: 'Do you handle AI integration for business beyond building the model itself?',
+    a: 'Yes. Building the model is only part of the job, we also handle deployment, monitoring, and wiring the tool into your existing software so it fits your team\'s daily workflow instead of sitting as a standalone demo.',
+  },
+  {
+    q: 'Do you build LLM applications, or only traditional machine learning models?',
+    a: 'Both. Alongside classic ML models for classification and prediction, we build LLM-based applications for document Q&A, summarization, and structured data extraction, choosing the right approach based on your actual problem rather than defaulting to whatever is trending.',
+  },
+  {
+    q: 'How much does it cost to build a custom AI tool?',
+    a: 'Most custom AI tools fall between $10,000 and $30,000 depending on data readiness, model complexity, and integration scope. Projects that need heavier data collection or continuous learning pipelines run higher, and we give you a fixed number after reviewing your data in the discovery call.',
+  },
+  {
+    q: 'What is a RAG system used for?',
+    a: 'A RAG (retrieval-augmented generation) system lets an AI tool pull accurate answers from your own documents, databases, or knowledge base instead of relying only on what a general model was trained on. It is the standard approach for internal knowledge assistants, support tools, and document Q&A where factual accuracy on your specific content matters.',
+  },
+  {
+    q: 'How do I add AI features to my existing software without rebuilding it?',
+    a: 'In most cases we package the AI capability as a standalone API and connect it to your existing app through a documented endpoint, so your current codebase barely changes. This lets you ship AI features incrementally, one workflow at a time, instead of a risky full rebuild.',
+  },
 ]
 
 export default function AIToolsDevelopmentPage() {
@@ -59,6 +86,20 @@ export default function AIToolsDevelopmentPage() {
             acceptedAnswer: { '@type': 'Answer', text: f.a },
           })),
         }),
+      }}
+    />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(
+          buildServiceSchema({
+            name: 'AI Tools Development',
+            description: 'Custom AI tool development for businesses worldwide, including NLP, computer vision, recommendation engines, and predictive analytics built around your specific data and business logic.',
+            url: 'https://thinksuite.in/ai-tools-development',
+            serviceType: 'AI Tools Development',
+            keywords: ['AI tools development company', 'custom AI tool development', 'AI software development services'],
+          })
+        ),
       }}
     />
     <ServicePageTerminal

@@ -15,6 +15,11 @@ export const metadata: Metadata = {
     'integrated media planning agency',
     'cross-channel advertising agency India',
     'regional language advertising India',
+    'media advertising agency',
+    'media buying agency',
+    'ATL BTL advertising agency',
+    'TV and radio advertising agency India',
+    'media planning and buying agency',
   ],
 }
 

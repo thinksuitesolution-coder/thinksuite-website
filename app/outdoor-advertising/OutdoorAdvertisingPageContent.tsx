@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import CTASection from '@/components/sections/CTASection'
 import s from '@/components/pages/ServicePageDashboard.module.css'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 
 const CAPS = [
   { icon: 'fa-rectangle-ad',       metric: 'Full-Service',   title: 'Billboard and Hoarding Campaigns', desc: 'Strategic site selection, negotiation, design brief, print coordination, and live monitoring. We manage the full campaign lifecycle from brief to display.' },
@@ -21,6 +22,11 @@ const FAQS = [
   { q: 'Can you combine outdoor with digital campaigns?', a: 'Yes, and we strongly recommend it. Outdoor builds awareness at scale, while digital retargets the people who have already seen your hoarding but have not yet acted. Running integrated OOH plus digital campaigns together consistently outperforms running either alone.' },
   { q: 'How do you measure the impact of outdoor advertising?', a: 'We use a combination of mobile footfall data around site locations, brand lift surveys, QR code or landing page tracking on the creative, and monitoring spikes in branded search volume during the campaign period.' },
   { q: 'What makes outdoor advertising effective in India?', a: 'Outdoor advertising works because it cannot be skipped, muted, or scrolled past, a billboard on a busy junction reaches everyone who passes it, day after day. It also carries a sense of scale and permanence that builds brand trust in a way a phone ad rarely does, especially in markets where word of mouth still drives purchase decisions.' },
+  { q: 'How much does a billboard cost in India?', a: 'A single billboard in a major Indian city typically costs anywhere from Rs 40,000 to Rs 3 lakh+ per month depending on the location, size, and traffic volume, prime junctions in metro cities command the highest rates. Tier-2 city hoardings and non-premium sites can cost significantly less.' },
+  { q: 'What is OOH (out-of-home) advertising?', a: 'OOH advertising covers any paid brand placement seen outside the home, billboards, hoardings, transit ads, and digital screens on streets, highways, and public spaces, as opposed to indoor venue advertising or digital ads on a screen. Digital OOH (DOOH) is the LED-screen variant that lets you update creative remotely.' },
+  { q: 'Is outdoor advertising still effective in 2026?', a: 'Yes, if anything it has become more valuable as digital ad costs and ad-blocking have risen. Outdoor cannot be skipped or blocked, and pairing it with digital retargeting for people who saw the hoarding consistently outperforms running either channel alone.' },
+  { q: 'Do you handle hoarding design as well as booking?', a: 'Yes, we handle the full lifecycle, site selection, creative design built for a three-second glance at speed, print coordination, and mounting, so you don\'t need a separate design vendor for outdoor-specific creative.' },
+  { q: 'Is outdoor advertising a good fit for a startup with a limited budget?', a: 'Yes, with the right format. Transit advertising (auto-rickshaw, bus branding) and small-format digital OOH slots cost a fraction of a premium billboard and still deliver strong local visibility, making them a practical entry point for startups before scaling to larger hoarding campaigns.' },
 ]
 
 const FORMATS = [
@@ -164,6 +170,18 @@ export default function OutdoorAdvertisingPageContent() {
               acceptedAnswer: { '@type': 'Answer', text: f.a },
             })),
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(buildServiceSchema({
+            name: 'Outdoor Advertising',
+            description: 'Billboard, hoarding, transit, and digital OOH advertising across major Indian cities, from site selection to creative and live monitoring.',
+            url: 'https://thinksuite.in/outdoor-advertising',
+            serviceType: 'Outdoor Advertising',
+            keywords: ['outdoor advertising agency', 'OOH advertising agency', 'billboard advertising agency India'],
+          })),
         }}
       />
       <section className="page-hero">

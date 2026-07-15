@@ -1,4 +1,5 @@
 ﻿import ServicePageDashboard from '@/components/pages/ServicePageDashboard'
+import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -18,6 +19,10 @@ export const metadata: Metadata = {
     'digital marketing agency',
     'SEO agency worldwide',
     'performance marketing agency',
+    'full service digital marketing agency',
+    'digital marketing services',
+    'digital marketing agency for startups',
+    'digital marketing agency for small business',
   ],
 }
 
@@ -42,6 +47,26 @@ const faqData = [
     q: "Can GEO work for my industry even if it's competitive?",
     a: 'Especially in competitive verticals. The more saturated a space is with generic SEO content, the greater the GEO advantage, since AI models tend to prefer authoritative, structured, entity-rich sources over keyword-stuffed pages.',
   },
+  {
+    q: 'How much should a small business spend on digital marketing?',
+    a: "There's no universal number, it depends on your industry, competition, and whether you need fast paid-ad results or long-term organic growth. A workable starting point for most small businesses is enough budget to run both a modest paid campaign and consistent SEO/content work, since relying on paid ads alone means growth stops the moment you pause spending. We build a specific monthly number after auditing your market and goals.",
+  },
+  {
+    q: 'What does a digital marketing agency actually do?',
+    a: 'A full-service digital marketing agency plans and executes everything that gets your brand found and chosen online: SEO and GEO for organic and AI-answer visibility, Google and Meta ad management, social media, content, and the analytics that tie all of it back to revenue. Instead of hiring and coordinating five separate specialists, you get one team working toward the same growth number.',
+  },
+  {
+    q: 'How long does digital marketing take to show results?',
+    a: 'Paid ads can start generating leads within the first week or two, since campaigns are essentially instant once they go live. Organic channels, SEO, GEO, content, and social, build more gradually, with the first meaningful movement in 6 to 10 weeks and compounding gains over 4 to 6 months. Running both together gets you quick wins from ads while the organic engine builds underneath.',
+  },
+  {
+    q: 'What should a startup look for in a digital marketing agency?',
+    a: 'Startups should look for an agency comfortable with lean budgets and fast iteration, not a large-retainer shop built for enterprise clients. Look for a team that can move quickly between paid ads for immediate traction and SEO/GEO for the organic growth that eventually replaces paid spend, and one that reports honestly on what is and is not working.',
+  },
+  {
+    q: 'How is a performance marketing agency different from a general digital marketing agency?',
+    a: 'A performance marketing agency focuses narrowly on paid channels, judged purely on measurable outcomes like cost per lead and ROAS. A full-service digital marketing agency runs performance marketing as one piece of a bigger system that also includes SEO, GEO, content, and social, so paid spend and organic growth reinforce each other instead of operating in separate silos.',
+  },
 ]
 
 export default function DigitalMarketingPage() {
@@ -59,6 +84,20 @@ export default function DigitalMarketingPage() {
             acceptedAnswer: { '@type': 'Answer', text: f.a },
           })),
         }),
+      }}
+    />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(
+          buildServiceSchema({
+            name: 'Digital Marketing Agency',
+            description: 'Full-stack digital marketing for businesses worldwide: SEO, Google Ads, Meta Ads, social media, content, and Generative Engine Optimization for AI search.',
+            url: 'https://thinksuite.in/digital-marketing',
+            serviceType: 'Digital Marketing',
+            keywords: ['digital marketing agency', 'full service digital marketing agency', 'digital marketing services'],
+          })
+        ),
       }}
     />
     <ServicePageDashboard

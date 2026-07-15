@@ -15,6 +15,11 @@ export const metadata: Metadata = {
     'experiential marketing agency India',
     'digital indoor screen advertising',
     'hospital and clinic advertising India',
+    'indoor advertising agency',
+    'mall advertising agency',
+    'indoor media advertising India',
+    'indoor branding agency',
+    'retail indoor advertising',
   ],
 }
 
