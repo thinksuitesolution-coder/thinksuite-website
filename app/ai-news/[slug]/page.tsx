@@ -8,6 +8,8 @@ import { PersonalizedVersion } from '@/lib/news/pipeline/personalized-versions';
 import ArticleTabs from '@/components/blog/ArticleTabs';
 import { articlesCol } from '@/lib/firebase-admin';
 import { getArchivedArticleBySlug } from '@/lib/news/archive-db';
+import { categoryToSlug, CATEGORY_SERVICE_LINK, NewsCategory } from '@/lib/news/categories';
+import { LANGUAGE_CONFIG } from '@/lib/news/pipeline/multilang';
 
 export const revalidate = 3600;
 
@@ -40,16 +42,26 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
   const title = article.metaTitle || `${article.title} | ThinkSuite AI News`;
   const description = article.metaDescription || article.summary || `Latest AI news from ${article.company || 'the AI industry'}, tracked and analyzed by ThinkSuite AI Pulse.`;
+
+  const languages: Record<string, string> = {};
+  for (const t of article.translations || []) {
+    languages[t.lang] = `https://thinksuite.in/ai-news/${article.slug}/${t.lang}`;
+  }
+
   return {
     title,
     description,
-    alternates: { canonical: `https://thinksuite.in/ai-news/${article.slug}` },
+    alternates: {
+      canonical: `https://thinksuite.in/ai-news/${article.slug}`,
+      ...(Object.keys(languages).length ? { languages } : {}),
+    },
     openGraph: {
       title,
       description,
       images: article.heroImageUrl ? [{ url: article.heroImageUrl, width: 1200, height: 630 }] : undefined,
       type: 'article',
       publishedTime: article.publishedAt,
+      modifiedTime: article.updatedAt || article.publishedAt,
       url: `https://thinksuite.in/ai-news/${article.slug}`,
     },
     twitter: { card: 'summary_large_image', title, description, images: article.heroImageUrl ? [article.heroImageUrl] : undefined },
@@ -159,8 +171,19 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 <header className="article-header">
                   <div className="article-header-meta">
                     <Link href={`/companies/${article.company?.toLowerCase().replace(/\s/g, '-')}`} className="article-company-chip">{article.company}</Link>
-                    <span className="article-category-chip">{article.category}</span>
+                    {article.category && (
+                      <Link href={`/ai-news/category/${categoryToSlug(article.category)}`} className="article-category-chip">{article.category}</Link>
+                    )}
                     <span className="article-score">Impact: {article.importanceScore}/100</span>
+                    {article.factCheck && (
+                      <span
+                        className="article-category-chip"
+                        title={`Verification: ${article.factCheck.verificationStatus}`}
+                        style={{ background: 'rgba(34,197,94,0.12)', color: '#16a34a' }}
+                      >
+                        ✓ Fact-checked · {article.factCheck.confidenceScore}% confidence
+                      </span>
+                    )}
                   </div>
                   <h1 className="article-title">{article.title}</h1>
                   <p className="article-summary">{article.summary}</p>
@@ -227,9 +250,20 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
                 <div className="article-tags">
                   {article.tags?.map(tag => (
-                    <Link key={tag} href={`/ai-news?tag=${encodeURIComponent(tag)}`} className="blog-tag">#{tag}</Link>
+                    <Link key={tag} href={`/ai-news?q=${encodeURIComponent(tag)}`} className="blog-tag">#{tag}</Link>
                   ))}
                 </div>
+
+                {article.translations?.length ? (
+                  <div className="article-tags" style={{ marginTop: 8 }}>
+                    <span style={{ fontSize: 12, color: 'var(--text2)', marginRight: 6 }}>Also available in:</span>
+                    {article.translations.map(t => (
+                      <Link key={t.lang} href={`/ai-news/${article.slug}/${t.lang}`} className="blog-tag">
+                        {LANGUAGE_CONFIG[t.lang]?.nativeName || t.langName}
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
 
                 <div className="article-sources">
                   <h4>Sources</h4>
@@ -256,15 +290,35 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                     {[
                       { label: 'Source', value: article.sourceName },
                       { label: 'Company', value: article.company },
-                      { label: 'Category', value: article.category },
+                      { label: 'Category', value: article.category, href: article.category ? `/ai-news/category/${categoryToSlug(article.category)}` : undefined },
                       { label: 'Impact', value: `${article.importanceScore}/100` },
                       { label: 'Read time', value: `${readingTime} min` },
                       { label: 'Published', value: timeAgo(article.publishedAt) },
                     ].map(item => (
-                      <div key={item.label}><span>{item.label}</span><span className={item.label === 'Impact' ? 'score-pill' : ''} style={item.label === 'Impact' ? { color: '#fff' } : undefined}>{item.value}</span></div>
+                      <div key={item.label}>
+                        <span>{item.label}</span>
+                        {item.href ? (
+                          <Link href={item.href} className={item.label === 'Impact' ? 'score-pill' : ''}>{item.value}</Link>
+                        ) : (
+                          <span className={item.label === 'Impact' ? 'score-pill' : ''} style={item.label === 'Impact' ? { color: '#fff' } : undefined}>{item.value}</span>
+                        )}
+                      </div>
                     ))}
                   </div>
                 </div>
+
+                {/* Related ThinkSuite service */}
+                {article.category && CATEGORY_SERVICE_LINK[article.category as NewsCategory] && (
+                  <div className="sidebar-card">
+                    <h4>Need This Built?</h4>
+                    <p style={{ fontSize: 13, color: 'var(--text2)', marginBottom: 12 }}>
+                      If {article.category.toLowerCase()} news like this matters to your business, ThinkSuite can help you act on it.
+                    </p>
+                    <Link href={CATEGORY_SERVICE_LINK[article.category as NewsCategory].href} className="btn-secondary" style={{ display: 'block', textAlign: 'center' }}>
+                      {CATEGORY_SERVICE_LINK[article.category as NewsCategory].label} →
+                    </Link>
+                  </div>
+                )}
 
                 {/* Opportunities teaser */}
                 {article.opportunities?.topOpportunity && (

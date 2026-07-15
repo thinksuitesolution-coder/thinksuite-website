@@ -1,0 +1,24 @@
+# ThinkSuite
+
+> ThinkSuite is a full-stack digital agency and AI product company serving businesses worldwide. We build websites and software, run digital marketing and paid ads, provide branding and design, and build AI automation tools — plus we run ThinkSuite AI Pulse, a real-time, fact-checked AI industry news service.
+
+## Company
+
+- [About ThinkSuite](https://thinksuite.in/about): who we are and what we do
+- [Services](https://thinksuite.in/services): full list of services (software development, digital marketing, branding & design, AI automation, media advertising, consulting)
+- [Contact](https://thinksuite.in/contact): get in touch
+
+## AI Pulse — AI Industry News
+
+ThinkSuite AI Pulse collects, fact-checks, scores, and publishes AI industry news continuously (every 2 hours) from 100+ sources including OpenAI, Anthropic, Google DeepMind, Meta AI, and NVIDIA.
+
+- [AI Pulse home](https://thinksuite.in/ai-news): latest AI news, filterable by category, company, and event type
+- [RSS feed](https://thinksuite.in/rss.xml): machine-readable feed of the latest articles
+- [Public news API](https://thinksuite.in/api/v1/news): `GET /api/v1/news?limit=10&page=1&category=&company=&from=&to=` — JSON, free, no auth required
+- Category hubs: [AI Models](https://thinksuite.in/ai-news/category/ai-models), [Research](https://thinksuite.in/ai-news/category/research), [Funding](https://thinksuite.in/ai-news/category/funding), [Open Source](https://thinksuite.in/ai-news/category/open-source), [Tools](https://thinksuite.in/ai-news/category/tools), [Policy](https://thinksuite.in/ai-news/category/policy), [Industry News](https://thinksuite.in/ai-news/category/industry-news)
+
+Each article includes a fact-check confidence score, cited original source, and (for high-importance stories) translations into Hindi, Spanish, and French.
+
+## Sitemap
+
+- [Full sitemap](https://thinksuite.in/sitemap.xml): every page and article on the site

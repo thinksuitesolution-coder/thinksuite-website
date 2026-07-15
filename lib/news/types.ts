@@ -37,6 +37,12 @@ export interface NewsSource {
   company?: string;
 }
 
+export interface FactCheckSummary {
+  confidenceScore: number;
+  verificationStatus: 'verified' | 'unverified' | 'disputed' | 'fake';
+  isVerified: boolean;
+}
+
 export interface ScoredEvent extends RawEvent {
   eventType: EventType;
   importanceScore: number;
@@ -48,6 +54,7 @@ export interface ScoredEvent extends RawEvent {
   industry: string;
   isDuplicate: boolean;
   duplicateOf?: string;
+  factCheck?: FactCheckSummary;
 }
 
 export interface BlogArticle {
@@ -81,5 +88,7 @@ export interface BlogArticle {
   publishedAt: string;
   createdAt: string;
   updatedAt: string;
+  factCheck?: FactCheckSummary | null;
+  translations?: import('./pipeline/multilang').TranslatedArticle[];
 }
 

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
-import { articlesCol } from '@/lib/firebase-admin';
-import { getArchivedArticles } from '@/lib/news/archive-db';
+import { getCombinedArticles } from '@/lib/news/combined';
+import { NEWS_CATEGORIES, categoryToSlug } from '@/lib/news/categories';
 import { projects } from './projects/data';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://thinksuite.in';
@@ -31,6 +31,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === '' ? 1 : 0.7,
   }));
 
+  const categoryEntries: MetadataRoute.Sitemap = NEWS_CATEGORIES.map((c) => ({
+    url: `${SITE_URL}/ai-news/category/${categoryToSlug(c)}`,
+    lastModified: new Date(),
+    changeFrequency: 'daily',
+    priority: 0.6,
+  }));
+
   const projectEntries: MetadataRoute.Sitemap = projects.map((p) => ({
     url: `${SITE_URL}/projects/${p.id}`,
     lastModified: new Date(),
@@ -40,19 +47,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   let newsEntries: MetadataRoute.Sitemap = [];
   try {
-    const [snap, archived] = await Promise.all([
-      articlesCol().where('status', '==', 'published').limit(500).get(),
-      getArchivedArticles(500).catch(() => []),
-    ]);
-    const recent = snap.docs.map((d) => d.data());
-    const seenIds = new Set(recent.map((a: { id?: string }) => a.id));
-    const combined = [...recent, ...archived.filter((a) => !seenIds.has(a.id))] as unknown as Record<string, unknown>[];
-
+    const combined = await getCombinedArticles(500);
     newsEntries = combined
       .filter((a) => a.slug)
       .map((a) => ({
         url: `${SITE_URL}/ai-news/${a.slug}`,
-        lastModified: a.publishedAt ? new Date(a.publishedAt as string) : new Date(),
+        lastModified: a.publishedAt ? new Date(a.publishedAt) : new Date(),
         changeFrequency: 'monthly' as const,
         priority: 0.5,
       }));
@@ -60,5 +60,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     newsEntries = [];
   }
 
-  return [...staticEntries, ...projectEntries, ...newsEntries];
+  return [...staticEntries, ...categoryEntries, ...projectEntries, ...newsEntries];
 }

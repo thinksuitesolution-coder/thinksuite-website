@@ -91,7 +91,7 @@ async function enrichAndPublishArticle(article: BlogArticle, event: ScoredEvent)
     score >= 80 ? generateCompetitorIntelligence(event).catch(() => null) : Promise.resolve(null),
     score >= 80 ? generatePersonalizedVersions(article).catch(() => []) : Promise.resolve([]),
     score >= 55 ? generateImages(article, event).catch(() => null) : Promise.resolve(null),
-    score >= 85 ? translateArticleToAllLanguages(article).catch(() => ({})) : Promise.resolve({}),
+    score >= 85 ? translateArticleToAllLanguages(article).catch(() => []) : Promise.resolve([]),
   ]);
 
   // Image priority: RSS original → DALL-E/Unsplash from image-generator
@@ -112,7 +112,8 @@ async function enrichAndPublishArticle(article: BlogArticle, event: ScoredEvent)
     competitorIntel: competitorIntel || null,
     personalizedVersions: personalizedVersions || [],
     images: images || null,
-    translations: translations || {},
+    translations: translations || [],
+    factCheck: event.factCheck || null,
   });
 
   await processedUrlsCol()
@@ -185,6 +186,13 @@ export async function runNewsPipeline(): Promise<PipelineResult> {
   for (const event of topEvents) {
     const factCheck = await factCheckEvent(event).catch(() => null);
     if (!factCheck || shouldPublish(factCheck)) {
+      if (factCheck) {
+        event.factCheck = {
+          confidenceScore: factCheck.confidenceScore,
+          verificationStatus: factCheck.verificationStatus,
+          isVerified: factCheck.isVerified,
+        };
+      }
       factCheckedEvents.push(event);
     } else {
       console.log(`❌ Fact-check rejected: "${event.title}"`);
