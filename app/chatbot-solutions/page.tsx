@@ -110,6 +110,8 @@ export default function ChatbotSolutionsPage() {
       titleHighlight="Solutions"
       tagline="Most businesses lose inquiries every night. When your team is offline, customers are asking questions and no one replies. An AI chatbot handles real queries, books appointments, and qualifies leads around the clock."
       animationType="chat"
+      capabilitiesHeading={<>What an <span className="grad-text">AI Chatbot Development Company</span> Builds</>}
+      processHeading={<>Our <span className="grad-text">Custom Chatbot Development</span> Process</>}
       stats={[
         { number: 'Tier-1', label: 'Queries Handled' },
         { number: '24/7', label: 'Always Online' },
@@ -120,7 +122,7 @@ export default function ChatbotSolutionsPage() {
         {
           icon: 'fa-headset',
           title: 'Customer Support Bot',
-          desc: 'Handle tier-1 support tickets automatically. FAQs, order status, refund requests, and policy queries resolved without any human involvement.',
+          desc: 'Our customer service chatbot development handles tier-1 support tickets automatically. FAQs, order status, refund requests, and policy queries resolved without any human involvement.',
         },
         {
           icon: 'fa-comment-dots',
@@ -130,7 +132,7 @@ export default function ChatbotSolutionsPage() {
         {
           icon: 'fa-user-check',
           title: 'Lead Qualification Bot',
-          desc: 'Capture, qualify, and score leads through conversation. Ask the right questions and book sales meetings automatically while you sleep.',
+          desc: 'Capture, qualify, and score leads through conversation, powered by LLM chatbot development that asks the right questions and books sales meetings automatically while you sleep.',
         },
         {
           icon: 'fa-calendar-check',

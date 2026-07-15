@@ -99,9 +99,9 @@ export const ALL_TOOLS = [
     description: 'Generate high-converting copy for blogs, social media, email campaigns, and ads instantly. Trained on thousands of top-performing marketing pieces across industries.',
     features: [
       { icon: '📝', title: 'Blog & Article Writing', desc: 'SEO-optimized long-form content (1000-5000 words) in minutes' },
-      { icon: '📣', title: 'Ad Copy & Headlines', desc: 'High-converting copy for Facebook, Google, Instagram, and LinkedIn ads' },
+      { icon: '📣', title: 'Ad Copy & Headlines', desc: 'Our AI ad copy generator writes high-converting copy for Facebook, Google, Instagram, and LinkedIn ads' },
       { icon: '📧', title: 'Email Campaigns', desc: 'Subject lines, body copy, and CTAs that increase open rates by 3x' },
-      { icon: '📲', title: 'Social Media Captions', desc: 'Viral-ready posts with hashtags for Instagram, LinkedIn, Twitter, YouTube' },
+      { icon: '📲', title: 'Social Media Captions', desc: 'Our AI social media caption generator creates viral-ready posts with hashtags for Instagram, LinkedIn, Twitter, YouTube' },
     ],
     stats: [
       { value: '50+', label: 'Content Types' },

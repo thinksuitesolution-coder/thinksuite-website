@@ -7,12 +7,12 @@ import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPS = [
-  { icon: 'fa-tv',               metric: 'TRP-optimized',  title: 'TV Commercial Planning and Buying', desc: 'Channel selection, prime time vs off-peak scheduling, TRP analysis, regional vs national mix, and ad spot negotiation for the most competitive rates in the market.' },
+  { icon: 'fa-tv',               metric: 'TRP-optimized',  title: 'TV Commercial Planning and Buying', desc: 'Channel selection, prime time vs off-peak scheduling, TRP analysis, and regional vs national mix, the core of any TV and radio advertising agency in India, plus ad spot negotiation for the most competitive rates in the market.' },
   { icon: 'fa-radio',            metric: 'City-level',     title: 'Radio Advertising',                 desc: 'FM station selection, RJ endorsement programs, jingle production, and geo-targeted campaigns that work for local retail, events, and city-specific launches.' },
   { icon: 'fa-newspaper',        metric: 'Print + Mag',    title: 'Print Media Advertising',           desc: 'National and regional newspaper insertions, magazine placements, supplements, and classifieds. Full-page impact for launches, half-page for recall.' },
   { icon: 'fa-video',            metric: 'Unskippable',    title: 'OTT and Streaming Advertising',     desc: 'Pre-roll, mid-roll, and connected TV placements on JioCinema, Hotstar, and YouTube. Demographic and interest targeting at scale with unskippable formats.' },
   { icon: 'fa-chart-pie',        metric: 'Audience-first', title: 'Programmatic and Display Media',    desc: 'Audience-first media buying through DSPs, behavioral targeting, contextual placements, and retargeting across the premium web inventory your audience browses daily.' },
-  { icon: 'fa-arrows-to-circle', metric: 'Unified view',   title: 'Integrated Media Planning',         desc: 'Cross-channel media plans with reach and frequency optimization, sequenced storytelling across screens, and a single view of budget allocation, delivery, and ROI.' },
+  { icon: 'fa-arrows-to-circle', metric: 'Unified view',   title: 'Integrated Media Planning',         desc: 'Cross-channel media plans with reach and frequency optimization, sequenced storytelling across screens, and the single view of budget allocation, delivery, and ROI you would expect from a dedicated media planning and buying agency.' },
 ]
 
 const FAQS = [
@@ -83,7 +83,7 @@ function ChannelMixVisual() {
           <span className="label" style={{ borderColor: 'rgba(0,188,212,0.3)', color: 'var(--cyan)' }}>Media Mix Planning</span>
           <h2 style={{ color: '#fff', marginTop: 14, marginBottom: 16 }}>
             Five Channels.{' '}
-            <span className="grad-text">One Unified Strategy.</span>
+            <span className="grad-text">One Media Buying Agency.</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 520, margin: '0 auto', lineHeight: 1.8, fontSize: 15 }}>
             We plan and buy across every medium your audience uses, with negotiated rates individual brands cannot access and cross-channel measurement that ties every rupee to results.
@@ -270,7 +270,7 @@ export default function MediaAdvertisingPageContent() {
         <div className="container">
           <div className="title-block center reveal">
             <span className="label">Who We Work With</span>
-            <h2 style={{ marginTop: 12 }}>Any Industry. Any Scale. <span className="grad-text">Any Need.</span></h2>
+            <h2 style={{ marginTop: 12 }}>Any Industry. Any Scale. <span className="grad-text">Any Media Advertising Need.</span></h2>
             <p style={{ color: 'var(--text2)', marginTop: 12, maxWidth: 640, margin: '12px auto 0', lineHeight: 1.85, fontSize: 15 }}>
               From a local business to a pan-India brand, from a bootstrapped startup to an established enterprise -
               we adapt completely to your goals, market, and budget. If you have customers, we can build for you.

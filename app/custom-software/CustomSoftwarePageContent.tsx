@@ -6,11 +6,11 @@ import CTASection from '@/components/sections/CTASection'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPABILITIES = [
-  { icon: 'fa-magnifying-glass-chart', metric: 'Deep Dive',  title: 'Requirements Analysis',   desc: 'Discovery sessions to map workflows, uncover edge cases, and define technical specifications before a line of code is written.' },
+  { icon: 'fa-magnifying-glass-chart', metric: 'Deep Dive',  title: 'Requirements Analysis',   desc: 'Discovery sessions to map workflows, uncover edge cases, and define technical specifications, whether you need custom software for small business or a larger enterprise rollout, before a line of code is written.' },
   { icon: 'fa-diagram-project',        metric: 'API-First',  title: 'Custom Architecture',      desc: 'We design the data model, system components, API surface, and infrastructure plan, reviewed with you before development.' },
   { icon: 'fa-plug',                   metric: '60%',        title: 'API & System Integration', desc: 'Connect your existing tools, third-party services, and databases into a unified system that eliminates data silos.' },
   { icon: 'fa-vial-circle-check',      metric: '100%',       title: 'QA & Automated Testing',   desc: 'Unit, integration, and end-to-end tests ship alongside every feature. Bugs caught in staging, not production.' },
-  { icon: 'fa-server',                 metric: 'Auto-scale', title: 'Scalable Infrastructure',  desc: 'Cloud-native deployments with auto-scaling, zero-downtime deploys, monitoring dashboards, and automated backups.' },
+  { icon: 'fa-server',                 metric: 'Auto-scale', title: 'Scalable Infrastructure',  desc: 'Cloud-native deployments with auto-scaling, zero-downtime deploys, monitoring dashboards, and automated backups, the infrastructure custom enterprise software needs to run reliably at scale.' },
   { icon: 'fa-headset',               metric: 'SLA-backed', title: 'Dedicated Support',         desc: 'Post-launch support, proactive monitoring, and quarterly roadmap reviews, your software keeps improving after go-live.' },
 ]
 
@@ -273,7 +273,7 @@ export default function CustomSoftwarePageContent() {
           <div className="title-block center reveal">
             <span className="label">What We Deliver</span>
             <h2 style={{ marginTop: 12 }}>
-              Our <span className="grad-text">Engineering Capabilities</span>
+              Our <span className="grad-text">Bespoke Software Solutions</span>
             </h2>
             <p style={{ color: 'var(--text2)', maxWidth: 480, margin: '12px auto 0', fontSize: 14.5, lineHeight: 1.75 }}>
               Every capability you need to go from idea to production-ready software, under one roof.
@@ -298,7 +298,7 @@ export default function CustomSoftwarePageContent() {
           <div className="title-block center reveal">
             <span className="label">How We Work</span>
             <h2 style={{ marginTop: 12 }}>
-              Our <span className="grad-text">Development Process</span>
+              Our <span className="grad-text">Tailored Software Development Process</span>
             </h2>
           </div>
           <div className={s.processRow}>

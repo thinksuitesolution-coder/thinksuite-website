@@ -7,8 +7,8 @@ import s from '@/components/pages/ServicePageDashboard.module.css'
 import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 
 const CAPS = [
-  { icon: 'fa-rectangle-ad',       metric: 'Full-Service',   title: 'Billboard and Hoarding Campaigns', desc: 'Strategic site selection, negotiation, design brief, print coordination, and live monitoring. We manage the full campaign lifecycle from brief to display.' },
-  { icon: 'fa-bus',                metric: 'City-Wide',      title: 'Transit and Mobile Advertising',   desc: 'Bus wraps, auto-rickshaw branding, metro panels, and cab advertising that moves with your audience through the city throughout the day.' },
+  { icon: 'fa-rectangle-ad',       metric: 'Full-Service',   title: 'Billboard and Hoarding Campaigns', desc: 'Strategic site selection, negotiation, design brief, print coordination, and live monitoring, the full campaign lifecycle a hoarding advertising agency should manage from brief to display.' },
+  { icon: 'fa-bus',                metric: 'City-Wide',      title: 'Transit and Mobile Advertising',   desc: 'Bus wraps, auto-rickshaw branding, metro panels, and cab advertising, the kind of city-wide reach a transit advertising agency builds, moving with your audience through the city throughout the day.' },
   { icon: 'fa-map-location-dot',   metric: 'Data-backed',    title: 'Location Strategy and GeoPlanning', desc: 'Data-driven site selection using footfall analytics, competitor proximity, catchment area demographics, and traffic flow mapping for maximum impact per rupee.' },
   { icon: 'fa-lightbulb',          metric: 'Dynamic updates', title: 'Digital Out-of-Home (DOOH)',       desc: 'LED screen campaigns with time-of-day scheduling, weather-triggered creatives, and real-time campaign changes without costly reprints.' },
   { icon: 'fa-palette',            metric: 'Readability',    title: 'OOH Creative and Design',          desc: 'Billboard-optimized creative built around the three-second glance a driver actually gets. We design for distance, speed, and ambient light so your message lands every time.' },
@@ -80,8 +80,8 @@ function OOHFormatsVisual() {
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <span className="label" style={{ borderColor: 'rgba(0,188,212,0.3)', color: 'var(--cyan)' }}>OOH Format Types</span>
           <h2 style={{ color: '#fff', marginTop: 14, marginBottom: 16 }}>
-            Every Surface.{' '}
-            <span className="grad-text">Every Audience. Covered.</span>
+            Every Surface. Every Audience.{' '}
+            <span className="grad-text">One OOH Advertising Agency.</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 520, margin: '0 auto', lineHeight: 1.8, fontSize: 15 }}>
             From highway hoardings to metro panels to DOOH screens, we select the formats that match your audience, location, and brand impact goals, not whatever inventory is cheapest.
@@ -252,7 +252,7 @@ export default function OutdoorAdvertisingPageContent() {
         <div className="container">
           <div className="title-block center reveal">
             <span className="label">Who We Work With</span>
-            <h2 style={{ marginTop: 12 }}>Any Industry. Any Scale. <span className="grad-text">Any Need.</span></h2>
+            <h2 style={{ marginTop: 12 }}>Any Industry. Any Scale. <span className="grad-text">Any Billboard Advertising Need.</span></h2>
             <p style={{ color: 'var(--text2)', marginTop: 12, maxWidth: 640, margin: '12px auto 0', lineHeight: 1.85, fontSize: 15 }}>
               From a local business to a pan-India brand, from a bootstrapped startup to an established enterprise -
               we adapt completely to your goals, market, and budget. If you have customers, we can build for you.

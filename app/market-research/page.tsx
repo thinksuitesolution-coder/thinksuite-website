@@ -134,13 +134,13 @@ export default function MarketResearchPage() {
             icon: 'fa-magnifying-glass-chart',
             metric: 'Competitive',
             title: 'Competitor Benchmarking',
-            desc: 'A close analysis of what competitors are actually doing, what is working for them, and where they are weak. We help you find the gap you can profitably fill.',
+            desc: 'As one of our most requested competitor analysis services, we take a close look at what competitors are actually doing, what is working for them, and where they are weak, then help you find the gap you can profitably fill.',
           },
           {
             icon: 'fa-chart-pie',
             metric: 'TAM/SAM/SOM',
             title: 'Market Sizing',
-            desc: 'Bottom-up and top-down market size calculations from credible sources, so you know the real opportunity before pitching investors or setting internal targets.',
+            desc: 'Bottom-up and top-down market size calculations from credible sources, the backbone of market research for startups preparing investor pitches, so you know the real opportunity before setting internal targets.',
           },
           {
             icon: 'fa-arrow-trend-up',
@@ -218,8 +218,8 @@ export default function MarketResearchPage() {
           { label: 'AI Marketing Systems', href: '/ai-marketing-systems' },
           { label: 'Business Strategy', href: '/business-strategy' },
         ]}
-        ctaTitle="Make Your Next"
-        ctaTitleHighlight="Decision with Data"
+        ctaTitle="Make Your Next Decision With a"
+        ctaTitleHighlight="Market Research Agency You Trust"
         ctaDesc="The cost of bad market assumptions far exceeds the cost of good research. Let us gather the real data you need to make decisions with confidence."
       />
     </>

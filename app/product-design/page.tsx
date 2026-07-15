@@ -100,7 +100,7 @@ export default function ProductDesignPage() {
         {
           icon: 'fa-magnifying-glass',
           title: 'Product Discovery',
-          desc: 'User research, competitive analysis, and problem framing to define exactly the right product to build.',
+          desc: 'User research, competitive analysis, and problem framing, the groundwork any SaaS product design agency starts with, to define exactly the right product to build.',
         },
         {
           icon: 'fa-diagram-project',
@@ -115,7 +115,7 @@ export default function ProductDesignPage() {
         {
           icon: 'fa-swatchbook',
           title: 'Design Systems',
-          desc: 'Scalable component libraries that keep every screen consistent and cut development time significantly.',
+          desc: 'Scalable component libraries that keep every screen consistent, cut development time significantly, and reflect how a digital product design company builds for scale.',
         },
         {
           icon: 'fa-code',
@@ -191,7 +191,7 @@ export default function ProductDesignPage() {
           tags: ['Internal Tools', 'Multi-Tenant SaaS', 'Ops Dashboards'],
         },
       ]}
-      ctaTitle="Design Products"
+      ctaTitle="Choose the Product Design Agency Behind Products"
       ctaTitleHighlight="People Love"
       ctaDesc="From MVP to enterprise product, our design team creates products that users adopt, recommend, and keep coming back to."
     />

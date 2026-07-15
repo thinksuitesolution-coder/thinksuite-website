@@ -6,12 +6,12 @@ import CTASection from '@/components/sections/CTASection'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPABILITIES = [
-  { icon: 'fa-layer-group',    metric: 'Multi-tenant', title: 'Multi-Tenant Architecture',    desc: 'Proper data isolation between tenants from day one, shared database or separate schemas, architected for security and scale.' },
+  { icon: 'fa-layer-group',    metric: 'Multi-tenant', title: 'Multi-Tenant Architecture',    desc: 'Proper data isolation between tenants from day one, the core discipline of multi-tenant SaaS development, whether shared database or separate schemas, architected for security and scale.' },
   { icon: 'fa-credit-card',   metric: 'Stripe/RazorPay', title: 'Subscription Billing',      desc: 'Plan management, trial periods, proration, invoicing, and dunning for failed payments, fully automated from day one.' },
   { icon: 'fa-users-gear',    metric: 'Granular',    title: 'User Roles & Permissions',       desc: 'Role-based access control so admins, managers, and team members see and do only what their role allows.' },
   { icon: 'fa-gauge-high',    metric: 'Real-time',   title: 'Admin Dashboard & Analytics',    desc: 'Usage analytics, revenue metrics, customer health scores, and system monitoring built in from launch.' },
   { icon: 'fa-puzzle-piece',  metric: 'API + Zapier', title: 'Third-Party Integrations',      desc: 'Native integrations with popular tools, webhooks, and a public API so your SaaS fits into any customer workflow.' },
-  { icon: 'fa-circle-check',  metric: 'Fast', title: 'Onboarding & Activation Flows',        desc: 'Guided onboarding that takes new users from signup to their first value moment quickly, reducing churn from day one.' },
+  { icon: 'fa-circle-check',  metric: 'Fast', title: 'Onboarding & Activation Flows',        desc: 'Guided onboarding that takes new users from signup to their first value moment quickly, a step many teams doing SaaS product development for startups skip, reducing churn from day one.' },
 ]
 
 const INDUSTRIES = [
@@ -256,7 +256,7 @@ export default function SaasProductsPageContent() {
           <div className="title-block center reveal">
             <span className="label">What We Build</span>
             <h2 style={{ marginTop: 12 }}>
-              Our <span className="grad-text">SaaS Engineering Stack</span>
+              Our <span className="grad-text">Custom SaaS Development Stack</span>
             </h2>
             <p style={{ color: 'var(--text2)', maxWidth: 480, margin: '12px auto 0', fontSize: 14.5, lineHeight: 1.75 }}>
               Every infrastructure layer your SaaS needs, from multi-tenancy to billing to onboarding, built to production grade from day one.
@@ -347,7 +347,7 @@ export default function SaasProductsPageContent() {
           <div className="title-block center reveal">
             <span className="label">How We Work</span>
             <h2 style={{ marginTop: 12 }}>
-              Our <span className="grad-text">SaaS Build Process</span>
+              Our <span className="grad-text">SaaS MVP Development Process</span>
             </h2>
           </div>
           <div className={s.processRow}>

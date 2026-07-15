@@ -7,8 +7,8 @@ import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPABILITIES = [
   { icon: 'fa-apple',       metric: '4.8★',     title: 'iOS App Development',     desc: 'Native Swift apps optimized for iPhone and iPad with full App Store submission and deployment support.' },
-  { icon: 'fa-android',     metric: 'Play Store', title: 'Android App Development', desc: 'Native Kotlin apps for the Android ecosystem with Google Play publishing and device optimization.' },
-  { icon: 'fa-layer-group', metric: '1 Codebase', title: 'Cross-Platform Apps',     desc: 'React Native and Flutter apps that work beautifully on both iOS and Android from a single codebase.' },
+  { icon: 'fa-android',     metric: 'Play Store', title: 'Android App Development', desc: 'Native Kotlin apps for the Android ecosystem with Google Play publishing, device optimization, and cross-platform app development available when you need both platforms fast.' },
+  { icon: 'fa-layer-group', metric: '1 Codebase', title: 'Cross-Platform Apps',     desc: 'As a React Native app development company, we build Flutter and React Native apps that work beautifully on both iOS and Android from a single codebase.' },
   { icon: 'fa-chart-bar',   metric: 'Built-in',   title: 'Analytics & Optimization', desc: 'Built-in analytics, crash reporting, and A/B testing for data-driven continuous improvement.' },
   { icon: 'fa-bell',        metric: '40%',        title: 'Push & Engagement',       desc: 'Smart notification systems, deep linking, and re-engagement campaigns that bring users back.' },
   { icon: 'fa-rotate',      metric: 'SLA-backed', title: 'Maintenance & Updates',   desc: 'Ongoing support, OS compatibility updates, and feature additions to keep your app competitive.' },
@@ -171,8 +171,8 @@ function PhoneShowcase() {
         <div style={{ textAlign: 'center', marginBottom: 52 }}>
           <span className="label" style={{ borderColor: 'rgba(0,188,212,0.3)', color: 'var(--cyan)' }}>One Codebase. Two Platforms.</span>
           <h2 style={{ color: '#fff', marginTop: 14, marginBottom: 16 }}>
-            Built for{' '}
-            <span className="grad-text">iOS & Android.</span>
+            Expert{' '}
+            <span className="grad-text">iOS and Android App Development.</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 500, margin: '0 auto', lineHeight: 1.8, fontSize: 15 }}>
             React Native apps that feel native on both platforms, same sprint, same quality, half the cost. Click to preview different screens.
@@ -369,7 +369,7 @@ export default function MobileAppPageContent() {
           <div className="title-block center reveal">
             <span className="label">What We Build</span>
             <h2 style={{ marginTop: 12 }}>
-              Our <span className="grad-text">Mobile Development Services</span>
+              Our <span className="grad-text">Custom Mobile App Development Services</span>
             </h2>
           </div>
           <div className={s.capGrid}>
@@ -391,7 +391,7 @@ export default function MobileAppPageContent() {
           <div className="title-block center reveal">
             <span className="label">How We Work</span>
             <h2 style={{ marginTop: 12 }}>
-              Our <span className="grad-text">App Development Process</span>
+              How a <span className="grad-text">Mobile App Development Company</span> Works
             </h2>
           </div>
           <div className={s.processRow}>

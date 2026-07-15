@@ -101,6 +101,9 @@ export default function ConsultingGrowthPage() {
           { number: '2 Engagement Modes', label: 'Diagnostic Project or Ongoing Retainer' },
           { number: 'Market-Grounded', label: 'Advice Built for Real-World Business Reality' },
         ]}
+        whyUsHeading={{ lead: 'Why Choose a', highlight: 'Growth Consulting Agency' }}
+        capabilitiesHeading={{ lead: 'What Our', highlight: 'Business Growth Consulting Delivers' }}
+        processHeading={{ lead: 'How Our', highlight: 'Growth Strategy Consultants Work' }}
         whyUs={[
           {
             icon: 'fa-compass',
@@ -122,13 +125,13 @@ export default function ConsultingGrowthPage() {
           {
             icon: 'fa-chess',
             title: 'Business Strategy and Positioning',
-            desc: 'Define what you stand for, who you serve best, and how you win against competition. Work that results in clear choices, not just a vision statement nobody can act on.',
+            desc: 'Define what you stand for, who you serve best, and how you win against competition, whether you need startup growth consulting in year one or a repositioning ten years in. Work that results in clear choices, not just a vision statement nobody can act on.',
             tags: ['Positioning', 'Competitive Strategy', 'Business Model'],
           },
           {
             icon: 'fa-microchip',
             title: 'Digital Transformation Advisory',
-            desc: 'Move from spreadsheets and WhatsApp groups to integrated digital operations. Technology selection, process redesign, and change management for teams of any size.',
+            desc: 'Move from spreadsheets and WhatsApp groups to integrated digital operations, the kind of groundwork we bring to growth consulting for SaaS teams and traditional businesses alike. Technology selection, process redesign, and change management for teams of any size.',
             tags: ['Tech Selection', 'Process Design', 'Change Management'],
           },
           {

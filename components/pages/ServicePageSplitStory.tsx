@@ -13,6 +13,8 @@ interface ProcessItem { title: string; desc: string }
 interface IndustryItem { icon: string; name: string; useCase: string; tags: string[] }
 interface FaqItem { q: string; a: string }
 
+interface HeadingOverride { lead: string; highlight: string }
+
 interface Props {
   breadcrumb: string
   breadcrumbHref: string
@@ -32,6 +34,9 @@ interface Props {
   ctaTitle: string
   ctaTitleHighlight: string
   ctaDesc: string
+  whyUsHeading?: HeadingOverride
+  capabilitiesHeading?: HeadingOverride
+  processHeading?: HeadingOverride
 }
 
 const ordinals = ['01', '02', '03', '04', '05', '06']
@@ -152,6 +157,9 @@ export default function ServicePageSplitStory({
   visualType,
   stats, whyUs, capabilities, testimonial, process: steps, faqs, industries, sidebarLinks,
   ctaTitle, ctaTitleHighlight, ctaDesc,
+  whyUsHeading = { lead: 'Built for', highlight: 'Serious Outcomes' },
+  capabilitiesHeading = { lead: 'What We', highlight: 'Deliver' },
+  processHeading = { lead: 'Our', highlight: 'Delivery Process' },
 }: Props) {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
@@ -235,7 +243,7 @@ export default function ServicePageSplitStory({
           <div className="title-block center reveal">
             <span className="label">Why ThinkSuite</span>
             <h2 style={{ marginTop: 12 }}>
-              Built for <span className="grad-text">Serious Outcomes</span>
+              {whyUsHeading.lead} <span className="grad-text">{whyUsHeading.highlight}</span>
             </h2>
           </div>
           <div className={s.whyGrid}>
@@ -259,7 +267,7 @@ export default function ServicePageSplitStory({
           <div className="title-block center reveal">
             <span className="label">Capabilities</span>
             <h2 style={{ marginTop: 12 }}>
-              What We <span className="grad-text">Deliver</span>
+              {capabilitiesHeading.lead} <span className="grad-text">{capabilitiesHeading.highlight}</span>
             </h2>
           </div>
           <div className={s.capGrid}>
@@ -390,7 +398,7 @@ export default function ServicePageSplitStory({
           <div className="title-block center reveal">
             <span className="label">How We Work</span>
             <h2 style={{ marginTop: 12 }}>
-              Our <span className="grad-text">Delivery Process</span>
+              {processHeading.lead} <span className="grad-text">{processHeading.highlight}</span>
             </h2>
           </div>
           <div className={s.timeline}>

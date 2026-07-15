@@ -9,7 +9,7 @@ import s from '@/components/pages/ServicePageDashboard.module.css'
 const ORGANIC_CAPS = [
   { icon: 'fa-calendar-days',  metric: '30d',   title: 'Content Calendar & Strategy',  desc: 'Monthly content plans with trending topics, brand voice, and platform-specific formats planned and approved 30 days in advance, no last-minute scrambling.' },
   { icon: 'fa-image',          metric: 'Daily',  title: 'Creative Content Production',  desc: 'Professional graphics, reels, carousels, and video content produced in-house. Platform-native formats designed to stop the scroll on every feed.' },
-  { icon: 'fa-film',           metric: '#1',     title: 'Reels & Short-Form Video',     desc: 'The highest-reach format on every platform. We script, shoot, edit, and publish reels aligned to trending sounds and formats for maximum organic reach.' },
+  { icon: 'fa-film',           metric: '#1',     title: 'Reels & Short-Form Video',     desc: 'As an Instagram marketing agency at heart, we script, shoot, edit, and publish reels aligned to trending sounds and formats, still the highest-reach format on any platform.' },
   { icon: 'fa-comments',       metric: '2hr',    title: 'Community Management',         desc: 'Daily engagement, comment replies, DM management, and audience relationship building. Response time under 2 hours on business days, every business day.' },
   { icon: 'fa-hashtag',        metric: 'Trend',  title: 'Hashtag & Trend Strategy',     desc: 'Research-backed hashtag sets updated monthly. We identify and tap trending moments relevant to your brand before they peak so you ride waves, not miss them.' },
   { icon: 'fa-chart-simple',   metric: 'Weekly', title: 'Analytics & Reporting',        desc: 'Reach, engagement, follower growth, and conversion tracking with detailed weekly reports. No vanity metrics, only numbers that connect to business outcomes.' },
@@ -17,7 +17,7 @@ const ORGANIC_CAPS = [
 
 const PAID_CAPS = [
   { icon: 'fa-rectangle-ad',   metric: 'Targeted', title: 'Instagram & Facebook Ads',     desc: 'Targeted campaigns with advanced audience segmentation, lookalike audiences, and systematic creative testing to find what actually converts at the lowest cost per result.' },
-  { icon: 'fa-briefcase',      metric: 'B2B',   title: 'LinkedIn Sponsored Ads',       desc: 'Reach decision-makers, HR professionals, and C-suite by job title, company size, and industry. The most precise B2B targeting available on social media.' },
+  { icon: 'fa-briefcase',      metric: 'B2B',   title: 'LinkedIn Sponsored Ads',       desc: 'As a LinkedIn marketing agency for B2B brands, we reach decision-makers, HR professionals, and C-suite by job title, company size, and industry, the most precise B2B targeting available on social media.' },
   { icon: 'fa-video',          metric: 'Video', title: 'YouTube Video Ads',            desc: 'Pre-roll, mid-roll, and Shorts ads on YouTube. Reach audiences based on what they watch, intent-based targeting that complements Google Search.' },
   { icon: 'fa-rotate-left',    metric: 'Retarget',   title: 'Social Retargeting',           desc: 'Re-engage people who visited your website, watched your videos, or engaged with posts. Keep your brand visible until they are ready to convert.' },
   { icon: 'fa-users',          metric: 'LAL',   title: 'Lookalike Audiences',          desc: 'Build audiences that mirror your best customers using platform AI. Scale campaigns to new prospects who behave like your highest-value buyers.' },
@@ -53,7 +53,7 @@ function PlatformsVisual() {
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <span className="label" style={{ borderColor: 'rgba(0,188,212,0.3)', color: 'var(--cyan)' }}>Where We Grow You</span>
           <h2 style={{ color: '#fff', marginTop: 14, marginBottom: 16 }}>
-            4 Platforms.{' '}
+            Your Social Media Marketing Agency.{' '}
             <span className="grad-text">One Unified Strategy.</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 500, margin: '0 auto', lineHeight: 1.8, fontSize: 15 }}>
@@ -178,7 +178,7 @@ function CapabilityTabs() {
       <div className="container">
         <div className="title-block center">
           <span className="label">What We Offer</span>
-          <h2 style={{ marginTop: 12 }}>Our <span className="grad-text">Full Social Media Stack</span></h2>
+          <h2 style={{ marginTop: 12 }}>Our <span className="grad-text">Social Media Management Services</span></h2>
           <p style={{ color: 'var(--text2)', maxWidth: 480, margin: '12px auto 0', fontSize: 14.5, lineHeight: 1.75 }}>
             Switch views, explore our organic content services and paid social capabilities.
           </p>
@@ -428,7 +428,7 @@ export default function SocialMediaPageContent() {
         </div>
       </section>
 
-      <CTASection eyebrow="Let's Work Together" title="Grow Your" titleHighlight="Social Presence" subtitle="Social media that actually drives business requires consistency, creativity, and strategy. Let us manage yours so you can focus on running the business." />
+      <CTASection eyebrow="Let's Work Together" title="Partner With a Social Media Marketing Company to" titleHighlight="Grow Your Social Presence" subtitle="Social media that actually drives business requires consistency, creativity, and strategy. Let us manage yours so you can focus on running the business." />
     </>
   )
 }

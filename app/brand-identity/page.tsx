@@ -100,7 +100,7 @@ export default function BrandIdentityPage() {
         {
           icon: 'fa-star',
           title: 'Logo Design',
-          desc: 'Primary logo, secondary variations, and icon-only versions in all required formats. SVG, PNG, PDF, and EPS delivered in light and dark variants.',
+          desc: 'Primary logo, secondary variations, and icon-only versions, the foundation of logo and brand identity design, delivered in all required formats: SVG, PNG, PDF, and EPS in light and dark variants.',
         },
         {
           icon: 'fa-droplet',
@@ -120,7 +120,7 @@ export default function BrandIdentityPage() {
         {
           icon: 'fa-id-card',
           title: 'Stationery and Templates',
-          desc: 'Business cards, letterheads, email signatures, presentation templates, and social media profile templates. Everything your team needs from day one.',
+          desc: 'Business cards, letterheads, email signatures, presentation templates, and social media profile templates, the day-one essentials we prioritize in brand identity design for startups moving fast after launch.',
         },
         {
           icon: 'fa-boxes-stacked',
@@ -191,8 +191,8 @@ export default function BrandIdentityPage() {
         { label: 'Product Design', href: '/product-design' },
         { label: 'Web Development', href: '/web-development' },
       ]}
-      ctaTitle="Build a Brand"
-      ctaTitleHighlight="Worth Remembering"
+      ctaTitle="Choose a Brand Identity Design Agency That Builds"
+      ctaTitleHighlight="Brands Worth Remembering"
       ctaDesc="Your brand is the first thing people judge you by. Make sure it says exactly what you need it to say. Let us build an identity that grows with your business."
     />
     </>

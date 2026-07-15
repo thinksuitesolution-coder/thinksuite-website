@@ -7,10 +7,10 @@ import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const SEO_CAPS = [
-  { icon: 'fa-code',             metric: 'Core Web Vitals', title: 'Technical SEO Audit',    desc: 'Deep crawl fixing site speed, Core Web Vitals, crawlability, structured data, and indexing issues.' },
+  { icon: 'fa-code',             metric: 'Core Web Vitals', title: 'Technical SEO Audit',    desc: 'Our technical SEO services start with a deep crawl that fixes site speed, Core Web Vitals, crawlability, structured data, and indexing issues.' },
   { icon: 'fa-file-lines',       metric: 'Intent-Matched',  title: 'On-Page Optimization',   desc: 'Keyword research, meta optimization, content structure, heading hierarchy, and internal linking strategy.' },
   { icon: 'fa-link',             metric: 'White-Hat',       title: 'Link Building',          desc: 'High-authority backlinks via digital PR, guest posting, and white-hat outreach, zero spam, zero risk.' },
-  { icon: 'fa-map-location-dot', metric: 'Map Pack',        title: 'Local SEO',              desc: 'Google Business Profile optimization, local citations, review strategy, and map pack visibility.' },
+  { icon: 'fa-map-location-dot', metric: 'Map Pack',        title: 'Local SEO',              desc: 'Google Business Profile optimization, local citations, review strategy, and map pack visibility, the core toolkit of a hands-on local SEO agency.' },
   { icon: 'fa-pen-to-square',    metric: 'Intent-Driven',   title: 'SEO Content Strategy',   desc: 'Keyword-driven content calendars that capture search intent at every stage of the funnel.' },
   { icon: 'fa-chart-line',       metric: 'Monthly',         title: 'Rank Tracking & Reports', desc: 'Detailed monthly rank reports, traffic analytics, and competitor benchmarking, full visibility.' },
 ]
@@ -67,8 +67,8 @@ function EngineVisual() {
             How It Works
           </span>
           <h2 style={{ color: '#fff', marginTop: 14, marginBottom: 16 }}>
-            One Goal.{' '}
-            <span className="grad-text">Two Discovery Engines.</span>
+            Your SEO Agency,{' '}
+            <span className="grad-text">Built for Two Discovery Engines.</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 520, margin: '0 auto', lineHeight: 1.8, fontSize: 15 }}>
             Today, your customers find you on <strong style={{ color: 'rgba(255,255,255,0.75)' }}>Google</strong> AND through{' '}
@@ -335,7 +335,7 @@ function CapabilityTabs() {
         <div className="title-block center">
           <span className="label">What We Offer</span>
           <h2 style={{ marginTop: 12 }}>
-            Our <span className="grad-text">Full Optimization Stack</span>
+            Our <span className="grad-text">SEO Services Stack</span>
           </h2>
           <p style={{ color: 'var(--text2)', maxWidth: 480, margin: '12px auto 0', fontSize: 14.5, lineHeight: 1.75 }}>
             Choose your view, switch between our traditional SEO capabilities and our AI-search GEO strategies.
@@ -673,8 +673,8 @@ export default function SeoGeoPageContent() {
 
       <CTASection
         eyebrow="Let's Work Together"
-        title="Dominate Google"
-        titleHighlight="& AI Search"
+        title="Your SEO and GEO Optimization Agency for"
+        titleHighlight="Google & AI Search"
         subtitle="Stop being invisible, on Google and in AI answers. Our SEO + GEO strategy puts your brand in front of customers wherever they search."
       />
     </>

@@ -100,12 +100,12 @@ export default function GraphicDesignPage() {
         {
           icon: 'fa-image',
           title: 'Social Media Graphics',
-          desc: 'Feed posts, stories, carousel designs, and reel thumbnails. Consistent templates your team can update easily for ongoing use.',
+          desc: 'Feed posts, stories, carousel designs, and reel thumbnails from an ongoing social media graphic design service, with consistent templates your team can update easily.',
         },
         {
           icon: 'fa-file-pdf',
           title: 'Brochure and Flyer Design',
-          desc: 'Print-ready brochures, product flyers, and sales collateral designed for both digital sharing and physical printing.',
+          desc: 'Print-ready brochures, product flyers, and sales collateral, the kind of everyday work a graphic design agency for small business handles most often, designed for both digital sharing and physical printing.',
         },
         {
           icon: 'fa-display',
@@ -191,7 +191,7 @@ export default function GraphicDesignPage() {
         { label: 'Social Media Marketing', href: '/social-media-marketing' },
         { label: 'Content Marketing', href: '/content-marketing' },
       ]}
-      ctaTitle="Design That"
+      ctaTitle="Work With a Graphic Design Agency That"
       ctaTitleHighlight="Makes an Impression"
       ctaDesc="Generic design blends into the noise. Stand-out visuals get attention and build your brand every time someone sees them. Let us create yours."
     />

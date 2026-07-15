@@ -99,6 +99,9 @@ export default function GrowthPlanningPage() {
           { number: 'CAC + LTV', label: 'Tracked From Day One' },
           { number: 'Numbers-First', label: 'Plans Built On Your Actual Data' },
         ]}
+        whyUsHeading={{ lead: 'Why Choose Our', highlight: 'Growth Planning Services' }}
+        capabilitiesHeading={{ lead: 'What Our', highlight: 'Business Growth Planning Delivers' }}
+        processHeading={{ lead: 'How Our', highlight: 'Strategic Growth Planning Consultants Work' }}
         whyUs={[
           {
             icon: 'fa-chart-line',
@@ -120,13 +123,13 @@ export default function GrowthPlanningPage() {
           {
             icon: 'fa-chart-line',
             title: 'Revenue Growth Strategy',
-            desc: 'Model different growth scenarios, identify the revenue levers that matter most, and build a 12-month revenue plan with clear milestones and honest assumptions.',
+            desc: 'Model different growth scenarios, identify the revenue levers that matter most, and build a 12-month revenue growth planning roadmap with clear milestones and honest assumptions.',
             tags: ['Revenue Model', 'Scenario Planning', 'Milestones'],
           },
           {
             icon: 'fa-user-plus',
             title: 'Customer Acquisition Planning',
-            desc: 'Define your most efficient acquisition channels, set CAC targets by channel, and build a budget allocation model across paid and organic.',
+            desc: 'Define your most efficient acquisition channels, set CAC targets by channel, and build a budget allocation model across paid and organic, a core piece of growth planning for startups managing limited budgets.',
             tags: ['CAC Analysis', 'Channel Mix', 'Budget Allocation'],
           },
           {

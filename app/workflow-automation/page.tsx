@@ -111,6 +111,8 @@ export default function WorkflowAutomationPage() {
       titleHighlight="Automation"
       tagline="Every business has repetitive work eating into productive hours. Data entry, follow-up emails, invoice generation, lead distribution. We map your existing processes and automate them end to end."
       animationType="flow"
+      capabilitiesHeading={<>What a <span className="grad-text">Business Workflow Automation Company</span> Builds</>}
+      processHeading={<>Our <span className="grad-text">Workflow Automation Consulting</span> Process</>}
       stats={[
         { number: 'Hours', label: 'Saved Every Week' },
         { number: '200+', label: 'Tools We Integrate' },
@@ -121,7 +123,7 @@ export default function WorkflowAutomationPage() {
         {
           icon: 'fa-funnel-dollar',
           title: 'CRM and Sales Automation',
-          desc: 'Auto-assign leads, trigger follow-up sequences, update deal stages, and send status notifications. Your CRM stays accurate without anyone manually updating it.',
+          desc: 'Auto-assign leads, trigger follow-up sequences, update deal stages, and send status notifications, the kind of workflow automation for small business sales teams rely on daily. Your CRM stays accurate without anyone manually updating it.',
         },
         {
           icon: 'fa-file-invoice-dollar',
@@ -141,7 +143,7 @@ export default function WorkflowAutomationPage() {
         {
           icon: 'fa-plug',
           title: 'Data Sync Across Tools',
-          desc: 'Connect your CRM, accounting software, project management tool, and dashboards so data flows between them without anyone copy-pasting.',
+          desc: 'Connect your CRM, accounting software, project management tool, and dashboards using Zapier alternative custom automation where pre-built connectors fall short, so data flows between them without anyone copy-pasting.',
         },
         {
           icon: 'fa-chart-bar',

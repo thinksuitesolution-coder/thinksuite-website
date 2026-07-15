@@ -7,10 +7,10 @@ import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPS = [
-  { icon: 'fa-pen-nib',     metric: 'Long-Form',  title: 'SEO Blog Content',               desc: 'Long-form articles targeting high-volume, high-intent keywords. Properly researched, well-structured, and optimized for ranking without ever sounding robotic.' },
+  { icon: 'fa-pen-nib',     metric: 'Long-Form',  title: 'SEO Blog Content',               desc: 'As a blog content writing service, we produce long-form articles targeting high-volume, high-intent keywords, properly researched, well-structured, and optimized for ranking without ever sounding robotic.' },
   { icon: 'fa-video',       metric: 'Scripts',     title: 'Video & Reel Scripts',           desc: 'Short-form and long-form video scripts for YouTube, Instagram Reels, and LinkedIn. Ideas, structure, and hooks that keep viewers watching all the way through.' },
   { icon: 'fa-file-lines',  metric: 'Trust',       title: 'Case Studies',                   desc: 'Documented client success stories with real detail. Before-and-after structure that shows prospects exactly how you solve their specific problem.' },
-  { icon: 'fa-file-pdf',    metric: 'Authority',   title: 'Whitepapers & Reports',          desc: 'In-depth reports that establish your brand as the authority in your field. Used for lead generation, PR coverage, and sales enablement collateral.' },
+  { icon: 'fa-file-pdf',    metric: 'Authority',   title: 'Whitepapers & Reports',          desc: 'In-depth reports that establish your brand as the authority in your field, a staple of content marketing for B2B companies selling to a buying committee. Used for lead generation, PR coverage, and sales enablement collateral.' },
   { icon: 'fa-envelope',    metric: 'Nurture',     title: 'Email Newsletters',              desc: 'Weekly or monthly newsletters that keep your audience warm and coming back. Educational content that converts passive subscribers into active buyers over time.' },
   { icon: 'fa-laptop',      metric: 'Conversions', title: 'Website & Landing Page Copy',   desc: 'Persuasive, benefit-focused copy for homepages, service pages, and landing pages. Written to convert visitors who are already interested in what you offer.' },
 ]
@@ -95,7 +95,7 @@ function ContentFunnelVisual() {
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <span className="label" style={{ borderColor: 'rgba(0,188,212,0.3)', color: 'var(--cyan)' }}>The Content Funnel</span>
           <h2 style={{ color: '#fff', marginTop: 14, marginBottom: 16 }}>
-            Right Content.{' '}
+            Your Content Marketing Agency.{' '}
             <span className="grad-text">Right Moment. Every Stage.</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 520, margin: '0 auto', lineHeight: 1.8, fontSize: 15 }}>
@@ -277,7 +277,7 @@ export default function ContentMarketingPageContent() {
         <div className="container">
           <div className="title-block center reveal">
             <span className="label">What We Offer</span>
-            <h2 style={{ marginTop: 12 }}>Our <span className="grad-text">Content Marketing Capabilities</span></h2>
+            <h2 style={{ marginTop: 12 }}>Our <span className="grad-text">Content Marketing Services</span></h2>
           </div>
           <div className={s.capGrid}>
             {CAPS.map((cap, i) => (
@@ -408,7 +408,7 @@ export default function ContentMarketingPageContent() {
         </div>
       </section>
 
-      <CTASection eyebrow="Let's Work Together" title="Build Content That" titleHighlight="Brings Customers" subtitle="Content that ranks and converts is a long-term asset, not an expense. Start building yours today and own your organic traffic for years to come." />
+      <CTASection eyebrow="Let's Work Together" title="Your SEO Content Writing Agency" titleHighlight="Brings You Customers" subtitle="Content that ranks and converts is a long-term asset, not an expense. Start building yours today and own your organic traffic for years to come." />
     </>
   )
 }

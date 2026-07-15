@@ -133,7 +133,7 @@ export default function DigitalMarketingPage() {
           icon: 'fa-rectangle-ad',
           metric: 'Lowest CAC',
           title: 'ROI-Driven Ad Campaigns',
-          desc: 'Google and Meta ad campaigns focused on bringing in real customers at the lowest possible cost, not just clicks or impressions that do not convert.',
+          desc: 'As a performance marketing agency at heart, we run Google and Meta ad campaigns focused on bringing in real customers at the lowest possible cost, not just clicks or impressions that do not convert.',
         },
         {
           icon: 'fa-hashtag',
@@ -145,7 +145,7 @@ export default function DigitalMarketingPage() {
           icon: 'fa-file-pen',
           metric: 'Intent-Driven',
           title: 'Content Marketing',
-          desc: 'SEO content and blog strategy that builds your authority on topics your customers search for, driving steady organic traffic month after month.',
+          desc: 'SEO content and blog strategy that builds your authority on topics your customers search for, the kind of steady groundwork a digital marketing agency for startups relies on to drive organic traffic month after month.',
         },
         {
           icon: 'fa-envelope-open-text',
@@ -187,7 +187,7 @@ export default function DigitalMarketingPage() {
         { label: 'AI Marketing Systems', href: '/ai-marketing-systems' },
         { label: 'Business Strategy', href: '/business-strategy' },
       ]}
-      ctaTitle="Dominate Search With"
+      ctaTitle="Your Full-Service Digital Marketing Agency Built for"
       ctaTitleHighlight="GEO Precision"
       ctaDesc="Position your brand as a trusted answer across ChatGPT, Gemini, and Perplexity, alongside strong Google rankings. Our semantic infrastructure connects AI citations to qualified revenue."
     />

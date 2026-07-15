@@ -97,12 +97,12 @@ export default function BrandingDesignPage() {
         { number: '100%', label: 'Brand Guidelines Included' },
       ]}
       highlights={[
-        { icon: 'fa-palette', title: 'Brand Identity Design', desc: 'Logo, color palette, typography, and brand system designed to make people recognize and trust your business at first glance.' },
+        { icon: 'fa-palette', title: 'Brand Identity Design', desc: 'Logo, color palette, typography, and brand system, the core work of any brand strategy agency, designed to make people recognize and trust your business at first glance.' },
         { icon: 'fa-desktop', title: 'UI/UX Design', desc: 'Interface design for web and mobile that makes it simple and enjoyable for visitors to take the next step and become paying customers.' },
         { icon: 'fa-pen-ruler', title: 'Graphic Design', desc: 'Print and digital graphics, marketing materials, presentations, and social content designed to look professional and work hard for your brand.' },
         { icon: 'fa-layer-group', title: 'Product Design', desc: 'Full product design from early wireframes to polished, interactive prototypes, tested with real users before a single line of code is written.' },
         { icon: 'fa-wand-magic-sparkles', title: 'Motion and Animation', desc: 'Micro-animations, explainer videos, and motion graphics that grab attention and make your brand more memorable across any platform.' },
-        { icon: 'fa-book-open', title: 'Brand Guidelines', desc: 'A clear brand book and style guide so your visual identity stays consistent whether it appears on a business card, a website, or a billboard.' },
+        { icon: 'fa-book-open', title: 'Brand Guidelines', desc: 'A clear brand book and style guide so your visual identity stays consistent whether it appears on a business card, a website, or a billboard, and hands any future rebranding agency a clean foundation to build from.' },
       ]}
       process={[
         {
@@ -131,7 +131,7 @@ export default function BrandingDesignPage() {
         { label: 'Web Development', href: '/web-development' },
         { label: 'Digital Marketing', href: '/digital-marketing' },
       ]}
-      ctaTitle="Build a Brand That"
+      ctaTitle="Choose the Branding Agency That"
       ctaTitleHighlight="Gets Remembered"
       ctaDesc="Strong design is a business asset. Let our creative team build a visual identity that earns trust, drives recognition, and scales with your growth."
     />

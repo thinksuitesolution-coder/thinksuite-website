@@ -100,6 +100,9 @@ export default function StartupConsultingPage() {
           { number: 'Warm Intros', label: 'Founders, Investors and Accelerators' },
           { number: 'Decision-Ready', label: 'Strategy You Can Act On Monday' },
         ]}
+        whyUsHeading={{ lead: 'Why Choose a', highlight: 'Startup Consulting Firm' }}
+        capabilitiesHeading={{ lead: 'What Our', highlight: 'Startup Advisory Services Deliver' }}
+        processHeading={{ lead: 'How Our', highlight: 'Startup Consultants Work' }}
         whyUs={[
           {
             icon: 'fa-flask',
@@ -121,7 +124,7 @@ export default function StartupConsultingPage() {
           {
             icon: 'fa-flask',
             title: 'Idea and Market Validation',
-            desc: 'Problem interviews, customer discovery surveys, and competitive landscape analysis to confirm there is a real market before you invest heavily.',
+            desc: 'Problem interviews, customer discovery surveys, and competitive landscape analysis, the first step in any early stage startup consulting engagement, to confirm there is a real market before you invest heavily.',
             tags: ['Customer Interviews', 'Market Sizing', 'Competitor Analysis'],
           },
           {
@@ -139,7 +142,7 @@ export default function StartupConsultingPage() {
           {
             icon: 'fa-chart-line',
             title: 'Pitch Deck and Fundraising',
-            desc: 'Investor-ready pitch decks, financial models, data room preparation, and warm introductions to relevant angels and VCs.',
+            desc: 'Investor-ready pitch decks, financial models, data room preparation, and warm introductions to relevant angels and VCs, the full stack of startup consulting for fundraising in one engagement.',
             tags: ['Pitch Deck', 'Financial Model', 'Investor Intros'],
           },
           {

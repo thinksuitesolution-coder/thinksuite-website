@@ -6,10 +6,10 @@ import CTASection from '@/components/sections/CTASection'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPABILITIES = [
-  { icon: 'fa-laptop-code',  metric: '50+',    title: 'Corporate Websites',         desc: 'Professional business websites that establish credibility, generate leads, and reflect your brand with precision.' },
-  { icon: 'fa-cart-shopping', metric: '4.9★',  title: 'E-Commerce Platforms',       desc: 'Feature-rich online stores with secure payments, inventory management, and analytics, ready to scale.' },
+  { icon: 'fa-laptop-code',  metric: '50+',    title: 'Corporate Websites',         desc: 'Professional corporate website design that establishes credibility, generates leads, and reflects your brand with precision.' },
+  { icon: 'fa-cart-shopping', metric: '4.9★',  title: 'E-Commerce Platforms',       desc: 'Feature-rich e-commerce website development with secure payments, inventory management, and analytics, ready to scale.' },
   { icon: 'fa-gauge-high',   metric: '<2s',    title: 'Landing Pages',              desc: 'Conversion-optimized landing pages designed to maximize campaign ROI and capture qualified leads.' },
-  { icon: 'fa-puzzle-piece', metric: 'Live',   title: 'Web Applications',           desc: 'Interactive web apps with real-time features, dashboards, and complex functionality, performant at any scale.' },
+  { icon: 'fa-puzzle-piece', metric: 'Live',   title: 'Web Applications',           desc: 'Interactive React web application development with real-time features, dashboards, and complex functionality, performant at any scale.' },
   { icon: 'fa-file-code',    metric: 'CMS',    title: 'CMS Development',            desc: 'WordPress, Webflow, and headless CMS solutions for seamless content management and editorial workflows.' },
   { icon: 'fa-bolt',         metric: '98/100', title: 'Performance Optimization',   desc: 'Speed audits, Core Web Vitals tuning, and CDN configuration for blazing-fast load times and top Lighthouse scores.' },
 ]
@@ -269,7 +269,7 @@ export default function WebDevPageContent() {
           <div className="title-block center reveal">
             <span className="label">What We Offer</span>
             <h2 style={{ marginTop: 12 }}>
-              Our <span className="grad-text">Web Development Services</span>
+              Our <span className="grad-text">Custom Website Development Services</span>
             </h2>
           </div>
           <div className={s.capGrid}>
@@ -291,7 +291,7 @@ export default function WebDevPageContent() {
           <div className="title-block center reveal">
             <span className="label">How We Work</span>
             <h2 style={{ marginTop: 12 }}>
-              Our <span className="grad-text">Development Process</span>
+              Our <span className="grad-text">Next.js Development Process</span>
             </h2>
           </div>
           <div className={s.processRow}>

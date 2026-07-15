@@ -7,11 +7,11 @@ import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPS = [
-  { icon: 'fa-user-group',  metric: 'Authentic', title: 'Micro-Influencer Campaigns',    desc: 'Creators with 10,000 to 100,000 followers. Higher engagement rates, more authentic recommendations, and a noticeably lower cost per impression than celebrities.' },
+  { icon: 'fa-user-group',  metric: 'Authentic', title: 'Micro-Influencer Campaigns',    desc: 'Creators with 10,000 to 100,000 followers, the sweet spot for an influencer marketing agency for startups working with lean budgets. Higher engagement rates, more authentic recommendations, and a noticeably lower cost per impression than celebrities.' },
   { icon: 'fa-star',        metric: 'Scale',      title: 'Celebrity & Macro Partnerships', desc: 'Large-scale reach campaigns with macro influencers and celebrities for product launches, brand awareness, and mass market positioning.' },
   { icon: 'fa-box-open',    metric: 'UGC',        title: 'Unboxing & Review Campaigns',   desc: 'Product seeding to relevant creators for authentic unboxing and honest review content, the format that consistently drives the highest purchase intent.' },
   { icon: 'fa-link',        metric: 'Pay-Per-Sale', title: 'Affiliate Marketing Programs',  desc: 'Commission-based influencer programs where creators earn on sales they drive. You pay only for results, perfect for D2C brands scaling without a fixed ad budget.' },
-  { icon: 'fa-camera',      metric: 'Yours',      title: 'UGC Content Collection',        desc: 'Campaigns that encourage customers and followers to create content about your brand. Repurposed for your ads, website, and social media channels.' },
+  { icon: 'fa-camera',      metric: 'Yours',      title: 'UGC Content Collection',        desc: 'Campaigns that encourage customers and followers to create content about your brand, the kind of organic proof an Instagram influencer marketing agency approach thrives on. Repurposed for your ads, website, and social media channels.' },
   { icon: 'fa-handshake',   metric: 'Long-term',  title: 'Brand Ambassador Programs',     desc: 'Long-term partnerships with a handful of creators who become the recurring face of your brand. Builds deep association, trust, and consistent audience reach.' },
 ]
 
@@ -107,7 +107,7 @@ function TiersVisual() {
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <span className="label" style={{ borderColor: 'rgba(0,188,212,0.3)', color: 'var(--cyan)' }}>The Influencer Tier System</span>
           <h2 style={{ color: '#fff', marginTop: 14, marginBottom: 16 }}>
-            Right Creator.{' '}
+            Your Influencer Marketing Agency.{' '}
             <span className="grad-text">Right Audience. Right Results.</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 520, margin: '0 auto', lineHeight: 1.8, fontSize: 15 }}>
@@ -282,7 +282,7 @@ export default function InfluencerMarketingPageContent() {
         <div className="container">
           <div className="title-block center reveal">
             <span className="label">What We Offer</span>
-            <h2 style={{ marginTop: 12 }}>Our <span className="grad-text">Influencer Marketing Capabilities</span></h2>
+            <h2 style={{ marginTop: 12 }}>Our <span className="grad-text">Influencer Marketing Services</span></h2>
           </div>
           <div className={s.capGrid}>
             {CAPS.map((cap, i) => (
@@ -413,7 +413,7 @@ export default function InfluencerMarketingPageContent() {
         </div>
       </section>
 
-      <CTASection eyebrow="Let's Work Together" title="Reach New Audiences" titleHighlight="Through Creators" subtitle="The right influencer partnership introduces your brand to thousands of perfectly targeted customers. Let us find the creators and manage everything from start to finish." />
+      <CTASection eyebrow="Let's Work Together" title="Your Micro Influencer Marketing Agency" titleHighlight="Reaches New Audiences" subtitle="The right influencer partnership introduces your brand to thousands of perfectly targeted customers. Let us find the creators and manage everything from start to finish." />
     </>
   )
 }

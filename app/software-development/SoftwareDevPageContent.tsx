@@ -6,9 +6,9 @@ import CTASection from '@/components/sections/CTASection'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPABILITIES = [
-  { icon: 'fa-cloud',          metric: '40%',       title: 'SaaS Product Architecture',  desc: 'Multi-tenant cloud-native applications built on resilient backend frameworks to capture recurring market share safely.' },
-  { icon: 'fa-database',       metric: 'Real-time', title: 'Database Architecture',       desc: 'Relational and NoSQL database designs engineered for real-time updates, instant querying velocity, and zero data loss.' },
-  { icon: 'fa-arrows-spin',    metric: '200x',      title: 'System Modernization',        desc: 'Refactoring outdated code into flexible microservices that scale without structural friction or downtime.' },
+  { icon: 'fa-cloud',          metric: '40%',       title: 'SaaS Product Architecture',  desc: 'Multi-tenant cloud-native applications built on resilient backend frameworks, from a SaaS development company that knows how to capture recurring market share safely.' },
+  { icon: 'fa-database',       metric: 'Real-time', title: 'Database Architecture',       desc: 'Relational and NoSQL database designs, a core part of cloud-native software development, engineered for real-time updates, instant querying velocity, and zero data loss.' },
+  { icon: 'fa-arrows-spin',    metric: '200x',      title: 'System Modernization',        desc: 'Refactoring outdated code into flexible microservices, backed by enterprise software development services that scale without structural friction or downtime.' },
   { icon: 'fa-mobile-screen',  metric: 'iOS+Droid', title: 'Mobile App Development',      desc: 'Native and cross-platform mobile apps for iOS and Android engineered for enterprise performance and conversion depth.' },
   { icon: 'fa-plug',           metric: '60%',       title: 'API Development',             desc: 'RESTful and GraphQL APIs that connect your systems and power your digital ecosystem at operational velocity.' },
   { icon: 'fa-shield-halved',  metric: '99.9%',     title: 'Security & Performance',      desc: 'Built-in security practices, performance optimization, and compliance-ready architecture for global deployments.' },
@@ -206,7 +206,7 @@ export default function SoftwareDevPageContent() {
           <div className="title-block center reveal">
             <span className="label">What We Build</span>
             <h2 style={{ marginTop: 12 }}>
-              Our <span className="grad-text">Engineering Capabilities</span>
+              Our <span className="grad-text">Full-Stack Software Development Capabilities</span>
             </h2>
             <p style={{ color: 'var(--text2)', maxWidth: 480, margin: '12px auto 0', fontSize: 14.5, lineHeight: 1.75 }}>
               From architecture through deployment, every service your engineering roadmap needs, delivered by one team.
@@ -231,7 +231,7 @@ export default function SoftwareDevPageContent() {
           <div className="title-block center reveal">
             <span className="label">How We Work</span>
             <h2 style={{ marginTop: 12 }}>
-              Our <span className="grad-text">Engineering Process</span>
+              Our <span className="grad-text">Custom Software Development Process</span>
             </h2>
           </div>
           <div className={s.processRow}>

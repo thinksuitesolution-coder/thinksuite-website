@@ -111,6 +111,8 @@ export default function AiAutomationPage() {
       titleHighlight="Put Operations On Autopilot."
       tagline="Too much manual work slows your team down. We find the bottlenecks in your operations and replace them with custom AI tools and automated systems that keep delivering better results over time."
       animationType="network"
+      capabilitiesHeading={<>What Our <span className="grad-text">AI Automation Agency</span> Builds</>}
+      processHeading={<>How We Deliver <span className="grad-text">Business Process Automation With AI</span></>}
       stats={[
         { number: 'Up to 60%', label: 'Less Manual Overhead' },
         { number: 'Faster', label: 'Processing Speed' },
@@ -118,12 +120,12 @@ export default function AiAutomationPage() {
         { number: 'In-House', label: 'AI Team' },
       ]}
       highlights={[
-        { icon: 'fa-book-open', title: 'Intelligent RAG Systems', desc: 'A private knowledge base built from your company data. Your team gets accurate answers instantly without digging through folders or waiting on colleagues.' },
+        { icon: 'fa-book-open', title: 'Intelligent RAG Systems', desc: 'A private knowledge base built from your company data, part of our broader AI automation consulting approach. Your team gets accurate answers instantly without digging through folders or waiting on colleagues.' },
         { icon: 'fa-gears', title: 'Autonomous Backend Microservices', desc: 'Automated data pipelines that handle repetitive background tasks and sync your systems, cutting manual work by up to 60%.' },
         { icon: 'fa-robot', title: 'Custom LLM Toolsets', desc: 'Custom AI tools trained on your business data that assist with customer communication, lead nurturing, and sales workflows while keeping full conversation history.' },
         { icon: 'fa-comments', title: 'Chatbot Solutions', desc: 'Intelligent conversational AI for customer support, lead generation, and internal knowledge management at enterprise scale.' },
         { icon: 'fa-brain', title: 'Machine Learning Models', desc: 'Custom ML models for prediction, classification, recommendation, and real-time anomaly detection across business systems.' },
-        { icon: 'fa-database', title: 'Data Pipeline Automation', desc: 'Automated data ingestion, transformation, and reporting for real-time business intelligence and predictive decision support.' },
+        { icon: 'fa-database', title: 'Data Pipeline Automation', desc: 'Automated data ingestion, transformation, and reporting for real-time business intelligence and predictive decision support, an accessible AI automation for small business option that does not require an enterprise budget.' },
       ]}
       industries={[
         {

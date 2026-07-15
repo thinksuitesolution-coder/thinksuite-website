@@ -8,8 +8,8 @@ import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 
 const CAPS = [
   { icon: 'fa-store',    metric: 'Long Dwell',    title: 'Mall and Retail Space Advertising', desc: 'Food court panels, escalator branding, elevator wraps, floor graphics, and in-store digital screens that engage shoppers at the highest intent moments in their purchase journey.' },
-  { icon: 'fa-plane',    metric: 'High Income',   title: 'Airport and Transit Hub Branding',  desc: 'Departure lounge lightboxes, boarding gate panels, baggage belt branding, and aerobridge wraps targeting high-income frequent travelers with extended dwell time.' },
-  { icon: 'fa-building', metric: 'B2B targeting',  title: 'Corporate and Office Park Media',   desc: 'Elevator panels, lobby digital screens, cafe advertising, and reception area branding in tech parks and corporate campuses targeting decision-makers at work.' },
+  { icon: 'fa-plane',    metric: 'High Income',   title: 'Airport and Transit Hub Branding',  desc: 'Departure lounge lightboxes, boarding gate panels, baggage belt branding, and aerobridge wraps, the full playbook of an airport advertising agency in India, targeting high-income frequent travelers with extended dwell time.' },
+  { icon: 'fa-building', metric: 'B2B targeting',  title: 'Corporate and Office Park Media',   desc: 'Elevator panels, lobby digital screens, cafe advertising, and reception area branding, exactly the mix an indoor branding agency builds for tech parks and corporate campuses targeting decision-makers at work.' },
   { icon: 'fa-hospital', metric: 'Captive context', title: 'Healthcare Venue Advertising',     desc: 'Waiting room screens, clinic corridor panels, pharmacy counter displays, and diagnostic lab advertising targeting patients and caregivers in a high-attention environment.' },
   { icon: 'fa-star',     metric: 'Trial & social', title: 'Experiential and In-Store Activations', desc: 'Brand zones, product sampling stations, interactive kiosks, and live experience counters inside high-footfall retail environments that drive trial and social sharing.' },
   { icon: 'fa-display',  metric: 'Remote scheduling', title: 'Digital In-Store Display Networks', desc: 'Manage content across distributed screen networks in retail chains or franchise locations. Schedule promotions, update pricing, and run seasonal campaigns remotely.' },
@@ -82,8 +82,8 @@ function VenueDwellVisual() {
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <span className="label" style={{ borderColor: 'rgba(0,188,212,0.3)', color: 'var(--cyan)' }}>Venue Categories</span>
           <h2 style={{ color: '#fff', marginTop: 14, marginBottom: 16 }}>
-            Where Your Audience{' '}
-            <span className="grad-text">Spends Their Time.</span>
+            Where a Mall Advertising Agency{' '}
+            <span className="grad-text">Finds Your Audience.</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 520, margin: '0 auto', lineHeight: 1.8, fontSize: 15 }}>
             Indoor advertising works because of dwell time. When your audience is already inside, they actually read what is in front of them. We place your brand at those exact moments across every major venue category.
@@ -263,7 +263,7 @@ export default function IndoorAdvertisingPageContent() {
         <div className="container">
           <div className="title-block center reveal">
             <span className="label">Who We Work With</span>
-            <h2 style={{ marginTop: 12 }}>Any Industry. Any Scale. <span className="grad-text">Any Need.</span></h2>
+            <h2 style={{ marginTop: 12 }}>Any Industry. Any Scale. <span className="grad-text">Any Indoor Advertising Need.</span></h2>
             <p style={{ color: 'var(--text2)', marginTop: 12, maxWidth: 640, margin: '12px auto 0', lineHeight: 1.85, fontSize: 15 }}>
               From a local business to a pan-India brand, from a bootstrapped startup to an established enterprise -
               we adapt completely to your goals, market, and budget. If you have customers, we can build for you.

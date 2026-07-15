@@ -100,6 +100,9 @@ export default function BusinessStrategyPage() {
           { number: 'Milestone-Led', label: 'Execution Tied to KPIs, Not Opinions' },
           { number: 'Gurgaon HQ', label: 'Serving Founders and Enterprises Worldwide' },
         ]}
+        whyUsHeading={{ lead: 'Why Choose a', highlight: 'Strategy Consulting Firm' }}
+        capabilitiesHeading={{ lead: 'What Our', highlight: 'Business Strategy Consulting Delivers' }}
+        processHeading={{ lead: 'How Our', highlight: 'Business Strategy Consultants Work' }}
         whyUs={[
           {
             icon: 'fa-magnifying-glass-chart',
@@ -121,13 +124,13 @@ export default function BusinessStrategyPage() {
           {
             icon: 'fa-chess-king',
             title: 'Competitive Positioning',
-            desc: 'A close look at your market and your closest competitors, so you know exactly where the gap to market leadership is and what it will take to close it.',
+            desc: 'A close look at your market and your closest competitors, the core of any competitive strategy consulting engagement, so you know exactly where the gap to market leadership is and what it will take to close it.',
             tags: ['Ecosystem Audit', 'Differentiation', 'Market Gap Analysis'],
           },
           {
             icon: 'fa-map',
             title: 'Strategic Roadmapping',
-            desc: 'Multi-year plans with real milestones, resource allocation, and scaling thresholds you can hold your team accountable to.',
+            desc: 'Multi-year plans with real milestones, resource allocation, and scaling thresholds you can hold your team accountable to, from business strategy consulting for startups through late-stage scale-ups.',
             tags: ['Multi-Year Plan', 'Milestones', 'Resource Allocation'],
           },
           {

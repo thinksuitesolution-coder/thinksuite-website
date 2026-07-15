@@ -7,11 +7,11 @@ import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const GOOGLE_CAPS = [
-  { icon: 'fa-magnifying-glass',   metric: '#1',     title: 'Search Ads',                desc: 'High-intent keyword campaigns that capture buyers the moment they search. Negative keyword lists, match types, and Quality Score optimization.' },
+  { icon: 'fa-magnifying-glass',   metric: '#1',     title: 'Search Ads',                desc: 'High-intent keyword campaigns that capture buyers the moment they search, built with the tight-budget discipline that Google Ads management for small business accounts needs. Negative keyword lists, match types, and Quality Score optimization.' },
   { icon: 'fa-display',            metric: 'Reach',  title: 'Display & YouTube',          desc: 'Visual brand campaigns across Google Display Network and YouTube pre-roll. Reach customers who match your ideal buyer profile.' },
   { icon: 'fa-bag-shopping',       metric: 'ROAS',   title: 'Shopping Ads',               desc: 'Product feed optimization and Smart Shopping campaigns for e-commerce brands. Show your products to buyers with purchase intent.' },
   { icon: 'fa-bolt',               metric: 'AI',     title: 'Performance Max',            desc: "Google's AI-driven campaign type that automatically serves ads across Search, Display, YouTube, Gmail and Maps from one campaign." },
-  { icon: 'fa-sliders',            metric: 'Live',   title: 'Bid Optimization',           desc: 'Real-time Smart Bidding strategies, Target CPA, Target ROAS, Maximize Conversions, aligned to your specific business goal.' },
+  { icon: 'fa-sliders',            metric: 'Live',   title: 'Bid Optimization',           desc: 'As a full-service PPC management agency, we run real-time Smart Bidding strategies, Target CPA, Target ROAS, and Maximize Conversions, aligned to your specific business goal.' },
   { icon: 'fa-chart-column',       metric: 'Full',   title: 'Conversion Tracking',        desc: 'Pixel setup, GA4 integration, call tracking, and goal verification so every rupee of spend is attributed to a real business outcome.' },
 ]
 
@@ -67,7 +67,7 @@ function PlatformVisual() {
             How It Works
           </span>
           <h2 style={{ color: '#fff', marginTop: 14, marginBottom: 16 }}>
-            One Strategy.{' '}
+            Your Google Ads Agency,{' '}
             <span className="grad-text">Two Powerful Platforms.</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 540, margin: '0 auto', lineHeight: 1.8, fontSize: 15 }}>
@@ -320,7 +320,7 @@ function CapabilityTabs() {
         <div className="title-block center">
           <span className="label">What We Offer</span>
           <h2 style={{ marginTop: 12 }}>
-            Our <span className="grad-text">Full Ads Management Stack</span>
+            Our <span className="grad-text">Google and Facebook Ads Management</span> Stack
           </h2>
           <p style={{ color: 'var(--text2)', maxWidth: 480, margin: '12px auto 0', fontSize: 14.5, lineHeight: 1.75 }}>
             Switch platforms to explore every capability, from search to social.
@@ -723,8 +723,8 @@ export default function GoogleMetaAdsPageContent() {
 
       <CTASection
         eyebrow="Let's Work Together"
-        title="Stop Wasting"
-        titleHighlight="Your Ad Budget"
+        title="Your Meta Ads Agency Stops"
+        titleHighlight="Wasting Your Ad Budget"
         subtitle="Every rupee your ads waste is a rupee that didn't buy a customer. Let our certified PPC specialists build campaigns that generate qualified leads and measurable revenue."
       />
     </>

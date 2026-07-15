@@ -100,7 +100,7 @@ export default function UiUxPage() {
         {
           icon: 'fa-users',
           title: 'User Research & Personas',
-          desc: 'In-depth interviews, surveys, and analytics analysis to deeply understand your users and their goals.',
+          desc: 'In-depth interviews, surveys, and analytics analysis, the same research rigor a SaaS UI/UX design agency applies to complex user bases, to deeply understand your users and their goals.',
         },
         {
           icon: 'fa-sitemap',
@@ -115,7 +115,7 @@ export default function UiUxPage() {
         {
           icon: 'fa-object-group',
           title: 'High-Fidelity Prototypes',
-          desc: 'Interactive Figma prototypes that feel like the real product, ready for stakeholder review and user testing.',
+          desc: 'Interactive Figma prototypes that feel like the real product, whether it is a web dashboard or mobile app UI/UX design, ready for stakeholder review and user testing.',
         },
         {
           icon: 'fa-swatchbook',
@@ -191,7 +191,7 @@ export default function UiUxPage() {
           tags: ['Listing UX', 'Virtual Tours', 'Lead Capture'],
         },
       ]}
-      ctaTitle="Design Experiences"
+      ctaTitle="Work With a UI/UX Design Agency Behind Experiences"
       ctaTitleHighlight="Users Love"
       ctaDesc="Invest in UX that pays back. Great design reduces churn, increases conversions, and makes your product the one users recommend."
     />

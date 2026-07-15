@@ -110,6 +110,8 @@ export default function AIToolsDevelopmentPage() {
       titleHighlight="Development"
       tagline="Off-the-shelf AI tools are designed for everyone, which means they fit no one perfectly. We build AI tools shaped around your specific data, industry rules, and business logic."
       animationType="network"
+      capabilitiesHeading={<>What an <span className="grad-text">AI Tools Development Company</span> Delivers</>}
+      processHeading={<>Our <span className="grad-text">Custom AI Tool Development</span> Process</>}
       stats={[
         { number: 'Custom', label: 'Every Tool Built' },
         { number: 'Python', label: 'Core Stack' },
@@ -120,7 +122,7 @@ export default function AIToolsDevelopmentPage() {
         {
           icon: 'fa-language',
           title: 'NLP and Text AI Tools',
-          desc: 'Text classification, sentiment analysis, entity extraction, document summarization. Trained on your industry terminology and specific data.',
+          desc: 'Text classification, sentiment analysis, entity extraction, document summarization, powered by modern LLM application development and trained on your industry terminology and specific data.',
         },
         {
           icon: 'fa-eye',
@@ -145,7 +147,7 @@ export default function AIToolsDevelopmentPage() {
         {
           icon: 'fa-code',
           title: 'Custom AI APIs',
-          desc: 'Package your AI model as a production-ready API. Integrate with your app, website, or internal tools via clean, documented endpoints.',
+          desc: 'Package your AI model as a production-ready API designed for smooth AI integration for business, connecting to your app, website, or internal tools via clean, documented endpoints.',
         },
       ]}
       industries={[

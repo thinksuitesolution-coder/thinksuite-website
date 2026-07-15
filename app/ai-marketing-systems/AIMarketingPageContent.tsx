@@ -7,8 +7,8 @@ import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPS = [
-  { icon: 'fa-robot',              metric: 'Scale',     title: 'AI Content at Scale',           desc: 'Generate blog posts, ad copy, email subjects, and social captions at scale in your brand voice. Higher content output without building a large team.' },
-  { icon: 'fa-filter',             metric: 'Predictive', title: 'Predictive Lead Scoring',      desc: 'AI scores every incoming lead based on behavior, source, and fit. Your sales team calls the people most likely to convert first, no more cold chasing.' },
+  { icon: 'fa-robot',              metric: 'Scale',     title: 'AI Content at Scale',           desc: 'AI content generation for marketing that produces blog posts, ad copy, email subjects, and social captions at scale in your brand voice. Higher content output without building a large team.' },
+  { icon: 'fa-filter',             metric: 'Predictive', title: 'Predictive Lead Scoring',      desc: 'AI scores every incoming lead based on behavior, source, and fit, the kind of leverage AI marketing systems for small business teams need most since they cannot just hire more sales reps. Your sales team calls the people most likely to convert first, no more cold chasing.' },
   { icon: 'fa-envelope-open-text', metric: 'Adaptive',  title: 'Email Personalization Engine',  desc: 'Personalized email sequences triggered by user actions. Subject lines, content, and timing adjusted to individual behavior for higher open and click rates.' },
   { icon: 'fa-rectangle-ad',       metric: 'Optimized', title: 'AI Ad Optimization',            desc: 'AI continuously adjusts bids, pauses underperforming creatives, and shifts budget toward what is working. Less waste, better return over time.' },
   { icon: 'fa-face-smile',         metric: 'Live',      title: 'Brand Sentiment Monitoring',    desc: 'Track brand mentions and customer sentiment across social media and reviews in real time. Respond to reputation risks before they escalate.' },
@@ -57,7 +57,7 @@ function AIPipelineVisual() {
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <span className="label" style={{ borderColor: 'rgba(0,188,212,0.3)', color: 'var(--cyan)' }}>How AI Marketing Works</span>
           <h2 style={{ color: '#fff', marginTop: 14, marginBottom: 16 }}>
-            Your Data In.{' '}
+            Your AI Powered Marketing Agency.{' '}
             <span className="grad-text">Smarter Marketing Out.</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 520, margin: '0 auto', lineHeight: 1.8, fontSize: 15 }}>
@@ -267,7 +267,7 @@ export default function AIMarketingPageContent() {
         <div className="container">
           <div className="title-block center reveal">
             <span className="label">What We Offer</span>
-            <h2 style={{ marginTop: 12 }}>Our <span className="grad-text">AI Marketing Capabilities</span></h2>
+            <h2 style={{ marginTop: 12 }}>Our <span className="grad-text">AI Marketing Automation Services</span></h2>
           </div>
           <div className={s.capGrid}>
             {CAPS.map((cap, i) => (
@@ -398,7 +398,7 @@ export default function AIMarketingPageContent() {
         </div>
       </section>
 
-      <CTASection eyebrow="Let's Work Together" title="Build Your" titleHighlight="AI Marketing System" subtitle="Your marketing should get smarter every week. Let us build a system that learns your audience, personalizes every touchpoint, and keeps improving without manual effort." />
+      <CTASection eyebrow="Let's Work Together" title="Build Your AI Marketing System With an" titleHighlight="AI Marketing Agency You Trust" subtitle="Your marketing should get smarter every week. Let us build a system that learns your audience, personalizes every touchpoint, and keeps improving without manual effort." />
     </>
   )
 }

@@ -28,6 +28,8 @@ interface Props {
   ctaTitle: string
   ctaTitleHighlight: string
   ctaDesc: string
+  capabilitiesHeading?: React.ReactNode
+  processHeading?: React.ReactNode
 }
 
 function ChatVisual() {
@@ -270,6 +272,8 @@ export default function ServicePageTerminal({
   animationType = 'chat',
   stats, highlights, industries, process: steps, faqs, sidebarLinks,
   ctaTitle, ctaTitleHighlight, ctaDesc,
+  capabilitiesHeading = <>Every <span className="grad-text">{titleHighlight}</span> We Deliver</>,
+  processHeading = <>Our <span className="grad-text">{steps.length}-Step Process</span></>,
 }: Props) {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
@@ -332,7 +336,7 @@ export default function ServicePageTerminal({
           <div className="title-block center reveal">
             <span className="label">What&apos;s Included</span>
             <h2 style={{ marginTop: 12 }}>
-              Every <span className="grad-text">{titleHighlight}</span> We Deliver
+              {capabilitiesHeading}
             </h2>
           </div>
           <div className={s.hlGrid}>
@@ -441,7 +445,7 @@ export default function ServicePageTerminal({
           <div className="title-block center reveal">
             <span className="label">How We Work</span>
             <h2 style={{ marginTop: 12 }}>
-              Our <span className="grad-text">{steps.length}-Step Process</span>
+              {processHeading}
             </h2>
           </div>
           <div className={s.processRow}>

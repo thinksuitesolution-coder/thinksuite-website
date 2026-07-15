@@ -7,8 +7,8 @@ import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import s from '@/components/pages/ServicePageDashboard.module.css'
 
 const CAPS = [
-  { icon: 'fa-newspaper',      metric: 'Relationship-Led', title: 'Media Relations and Press Coverage',  desc: 'Build genuine relationships with journalists and editors across national, regional, and trade publications. We pitch stories that get placed because we understand what makes news.' },
-  { icon: 'fa-file-pen',       metric: 'Publication-ready', title: 'Press Release and Content Writing', desc: 'Compelling press releases, bylined articles, white papers, and opinion pieces written for publication. Content that positions your leadership as credible industry voices.' },
+  { icon: 'fa-newspaper',      metric: 'Relationship-Led', title: 'Media Relations and Press Coverage',  desc: 'As a startup PR agency at our core, we build genuine relationships with journalists and editors across national, regional, and trade publications. We pitch stories that get placed because we understand what makes news.' },
+  { icon: 'fa-file-pen',       metric: 'Publication-ready', title: 'Press Release and Content Writing', desc: 'Compelling press releases, bylined articles, white papers, and opinion pieces written for publication, exactly the toolkit a product launch PR campaign leans on hardest. Content that positions your leadership as credible industry voices.' },
   { icon: 'fa-microphone',     metric: 'Year-round',     title: 'Thought Leadership Programs',         desc: 'Speaking opportunity sourcing at industry conferences, podcast placements, panel nominations, and a consistent editorial calendar that builds founder reputation month over month.' },
   { icon: 'fa-shield-halved',  metric: '48-Hour SLA',    title: 'Crisis Communications',               desc: 'When something goes wrong, speed and message control matter. We provide 48-hour crisis response, media monitoring, holding statement drafting, and spokesperson coaching.' },
   { icon: 'fa-trophy',         metric: 'Curated',        title: 'Award and Recognition Programs',      desc: 'Research, identify, and submit applications for industry awards, startup recognitions, and editorial lists that create third-party validation for your brand.' },
@@ -71,7 +71,7 @@ function MediaCoverageVisual() {
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <span className="label" style={{ borderColor: 'rgba(0,188,212,0.3)', color: 'var(--cyan)' }}>Media Network</span>
           <h2 style={{ color: '#fff', marginTop: 14, marginBottom: 16 }}>
-            Genuine Journalist Relationships.{' '}
+            Your Media Relations Agency.{' '}
             <span className="grad-text">Real Placements. Real Reach.</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 520, margin: '0 auto', lineHeight: 1.8, fontSize: 15 }}>
@@ -246,7 +246,7 @@ export default function PRCampaignsPageContent() {
         <div className="container">
           <div className="title-block center reveal">
             <span className="label">What We Offer</span>
-            <h2 style={{ marginTop: 12 }}>Our <span className="grad-text">PR and Communications Capabilities</span></h2>
+            <h2 style={{ marginTop: 12 }}>Our <span className="grad-text">Public Relations Agency</span> Capabilities</h2>
           </div>
           <div className={s.capGrid}>
             {CAPS.map((cap, i) => (
@@ -379,8 +379,8 @@ export default function PRCampaignsPageContent() {
 
       <CTASection
         eyebrow="Let's Work Together"
-        title="Get Your Story"
-        titleHighlight="in the News"
+        title="Your PR Agency Gets"
+        titleHighlight="Your Story in the News"
         subtitle="Your brand has a story worth telling. We make sure the right people read it in the publications they trust."
       />
     </>
