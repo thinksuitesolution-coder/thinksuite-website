@@ -1,4 +1,5 @@
-﻿import ServicePageTerminal from '@/components/pages/ServicePageTerminal'
+﻿import Link from 'next/link'
+import ServicePageTerminal from '@/components/pages/ServicePageTerminal'
 import { buildServiceSchema } from '@/lib/seo/serviceSchema'
 import type { Metadata } from 'next'
 
@@ -196,6 +197,41 @@ export default function AiAutomationPage() {
       ctaTitleHighlight="Accelerate at Scale"
       ctaDesc="Let AI take over the repetitive work that is slowing your team down. We build automation systems that keep running and improving long after launch."
     />
+    <section className="section section-tinted">
+      <div className="container">
+        <div className="title-block center reveal">
+          <span className="label">Proof, Not Just Promises</span>
+          <h2 style={{ marginTop: 12 }}>
+            We Run <span className="grad-text">Our Own AI Automation</span> in Production
+          </h2>
+          <p style={{ color: 'var(--text2)', maxWidth: 560, margin: '12px auto 0', lineHeight: 1.8, fontSize: 14.5 }}>
+            We don&apos;t just build automation for clients, we run it ourselves, live, every day.
+          </p>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20, marginTop: 40 }}>
+          <Link href="/ai-news" className="reveal" style={{
+            display: 'block', borderRadius: 16, padding: '28px 24px', border: '1px solid var(--border)',
+            background: 'var(--surface)', textDecoration: 'none', boxShadow: 'var(--shadow)',
+          }}>
+            <i className="fa-solid fa-satellite-dish" style={{ fontSize: 22, color: 'var(--cyan)', marginBottom: 14 }} />
+            <div style={{ fontFamily: 'var(--font-h)', fontSize: 16, fontWeight: 700, color: 'var(--white)', marginBottom: 8 }}>ThinkSuite AI Pulse</div>
+            <p style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.7 }}>
+              A fully autonomous pipeline that collects, fact-checks, scores, and publishes AI industry news from 100+ sources, every 2 hours, with zero manual intervention. See it live →
+            </p>
+          </Link>
+          <Link href="/tools/lead-generation" className="reveal" style={{
+            display: 'block', borderRadius: 16, padding: '28px 24px', border: '1px solid var(--border)',
+            background: 'var(--surface)', textDecoration: 'none', boxShadow: 'var(--shadow)',
+          }}>
+            <i className="fa-solid fa-magnifying-glass-chart" style={{ fontSize: 22, color: 'var(--cyan)', marginBottom: 14 }} />
+            <div style={{ fontFamily: 'var(--font-h)', fontSize: 16, fontWeight: 700, color: 'var(--white)', marginBottom: 8 }}>AI Lead Generation Engine</div>
+            <p style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.7 }}>
+              An AI system that finds, verifies, and enriches 100+ business leads per search, then drafts personalized outreach automatically. Try it →
+            </p>
+          </Link>
+        </div>
+      </div>
+    </section>
     </>
   )
 }

@@ -311,6 +311,51 @@ export default function WebDevPageContent() {
         </div>
       </section>
 
+      {/* ── RECENT WORK ────────────────────────────────────────────── */}
+      <section className="section">
+        <div className="container">
+          <div className="title-block center reveal">
+            <span className="label">Recent Work</span>
+            <h2 style={{ marginTop: 12 }}>
+              Websites We&apos;ve <span className="grad-text">Actually Shipped</span>
+            </h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20, marginTop: 40 }}>
+            {[
+              { id: 'laghima-jewelry', title: 'Laghima Jewelry', tagline: 'Full digital presence for a premium jewelry brand', screenshot: '/assets/img/projects images/optimized/laghima-jewelry.webp', gradient: 'linear-gradient(135deg, #07091a 0%, #0d1435 50%, #1a237e 100%)', metrics: [{ val: '3x', key: 'Traffic Growth' }] },
+              { id: 'wavcart', title: 'WavCart', tagline: 'Conversion-focused e-commerce build', screenshot: '/assets/img/projects images/optimized/wavcart.webp', gradient: 'linear-gradient(135deg, #07091a 0%, #071e28 50%, #006e7f 100%)', metrics: [{ val: '2x', key: 'Reach Growth' }] },
+              { id: 'vibestyl', title: 'VibéStyl', tagline: 'Full e-commerce build with AI virtual try-on', screenshot: null, gradient: 'linear-gradient(135deg, #07091a 0%, #0c1030 50%, #1a237e 100%)', metrics: [{ val: '<1.2s', key: 'Page Load' }] },
+            ].map((p) => (
+              <Link key={p.id} href={`/projects/${p.id}`} className="reveal" style={{
+                display: 'block', borderRadius: 16, overflow: 'hidden', border: '1px solid var(--border)',
+                background: 'var(--surface)', textDecoration: 'none', transition: 'all 0.3s', boxShadow: 'var(--shadow)',
+              }}>
+                <div style={{ height: 160, background: p.gradient, position: 'relative', overflow: 'hidden' }}>
+                  {p.screenshot && (
+                    <img src={p.screenshot} alt={`${p.title} website`} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }} />
+                  )}
+                </div>
+                <div style={{ padding: '18px 20px' }}>
+                  <div style={{ fontFamily: 'var(--font-h)', fontSize: 16, fontWeight: 700, color: 'var(--white)', marginBottom: 6 }}>{p.title}</div>
+                  <p style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, marginBottom: 14 }}>{p.tagline}</p>
+                  <div style={{ display: 'flex', gap: 16 }}>
+                    {p.metrics.map((m) => (
+                      <div key={m.key}>
+                        <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--cyan)' }}>{m.val}</div>
+                        <div style={{ fontSize: 11, color: 'var(--text2)' }}>{m.key}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: 32 }}>
+            <Link href="/projects" className="btn btn-outline btn-sm">See All Our Work →</Link>
+          </div>
+        </div>
+      </section>
+
       {/* ── FAQ ────────────────────────────────────────────────────── */}
       <section className="section section-tinted">
         <div className="container">

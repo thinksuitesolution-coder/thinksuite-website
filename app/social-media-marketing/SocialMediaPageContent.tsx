@@ -401,6 +401,44 @@ export default function SocialMediaPageContent() {
       <section className="section">
         <div className="container">
           <div className="title-block center reveal">
+            <span className="label">Recent Work</span>
+            <h2 style={{ marginTop: 12 }}>Real Accounts We&apos;ve <span className="grad-text">Grown</span></h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20, marginTop: 40 }}>
+            {[
+              { id: 'laghima-jewelry', title: 'Laghima Jewelry', tagline: 'Instagram growth for a premium jewelry brand', gradient: 'linear-gradient(135deg, #07091a 0%, #0d1435 50%, #1a237e 100%)', metrics: [{ val: '3x', key: 'Instagram Growth' }, { val: '5K+', key: 'Followers' }] },
+              { id: 'wavcart', title: 'WavCart', tagline: 'Social growth and conversion content for e-commerce', gradient: 'linear-gradient(135deg, #07091a 0%, #071e28 50%, #006e7f 100%)', metrics: [{ val: '8K+', key: 'Followers Gained' }, { val: '4.2%', key: 'Engagement' }] },
+              { id: 'rewa-education', title: 'Rewa Education', tagline: 'Parent-focused content for a kids learning centre', gradient: 'linear-gradient(135deg, #07091a 0%, #0d1435 50%, #1565c0 100%)', metrics: [{ val: '1.2K+', key: 'Followers' }, { val: '7%', key: 'Engagement' }] },
+            ].map((p) => (
+              <Link key={p.id} href={`/projects/${p.id}`} className="reveal" style={{
+                display: 'block', borderRadius: 16, overflow: 'hidden', border: '1px solid var(--border)',
+                background: 'var(--surface)', textDecoration: 'none', transition: 'all 0.3s', boxShadow: 'var(--shadow)',
+              }}>
+                <div style={{ height: 120, background: p.gradient }} />
+                <div style={{ padding: '18px 20px' }}>
+                  <div style={{ fontFamily: 'var(--font-h)', fontSize: 16, fontWeight: 700, color: 'var(--white)', marginBottom: 6 }}>{p.title}</div>
+                  <p style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, marginBottom: 14 }}>{p.tagline}</p>
+                  <div style={{ display: 'flex', gap: 16 }}>
+                    {p.metrics.map((m) => (
+                      <div key={m.key}>
+                        <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--cyan)' }}>{m.val}</div>
+                        <div style={{ fontSize: 11, color: 'var(--text2)' }}>{m.key}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: 32 }}>
+            <Link href="/projects" className="btn btn-outline btn-sm">See All Our Work →</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="title-block center reveal">
             <span className="label">Common Questions</span>
             <h2 style={{ marginTop: 12 }}>Frequently Asked <span className="grad-text">Questions</span></h2>
           </div>
