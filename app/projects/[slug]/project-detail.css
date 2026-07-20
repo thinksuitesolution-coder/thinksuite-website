@@ -172,17 +172,30 @@
   font-size: 13px;
   color: var(--text2);
 }
-.prj-social-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+.prj-social-subhead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text2);
+  margin: 22px 0 12px;
+}
+.prj-social-subhead:first-child {
+  margin-top: 0;
+}
+.prj-social-subhead i {
+  color: var(--teal);
+  font-size: 11px;
 }
 .prj-social-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
-  transition: transform 0.24s var(--ease), box-shadow 0.24s var(--ease);
+  transition: transform 0.24s var(--ease), box-shadow 0.24s var(--ease), opacity 0.6s var(--ease);
 }
 .prj-social-card:hover {
   transform: translateY(-4px);
@@ -190,19 +203,147 @@
 }
 .prj-social-card-image {
   position: relative;
-  aspect-ratio: 4 / 5;
   overflow: hidden;
+  background: #0b1220;
 }
-.prj-social-card-reel .prj-social-card-image {
-  aspect-ratio: 9 / 16;
-}
-.prj-social-card-image img,
 .prj-social-card-image video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   background: #000;
+}
+/* Post graphics keep their native proportions — a blurred backdrop of the
+   same image fills the frame so nothing gets cropped or letterboxed. */
+.prj-social-img-bg {
+  position: absolute;
+  inset: -12%;
+  width: 124%;
+  height: 124%;
+  object-fit: cover;
+  filter: blur(24px) brightness(0.55) saturate(1.3);
+}
+.prj-social-img-fg {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Posts — single showcase row */
+.prj-social-row {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 4px 4px 12px;
+  margin: -4px -4px 0;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+}
+.prj-social-row::-webkit-scrollbar {
+  height: 6px;
+}
+.prj-social-row::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}
+.prj-social-row .prj-social-card {
+  flex: 0 0 auto;
+  width: 210px;
+  scroll-snap-align: start;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.prj-social-row.visible .prj-social-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+.prj-social-row.visible .prj-social-card:nth-child(1) { transition-delay: .05s; }
+.prj-social-row.visible .prj-social-card:nth-child(2) { transition-delay: .12s; }
+.prj-social-row.visible .prj-social-card:nth-child(3) { transition-delay: .19s; }
+.prj-social-row.visible .prj-social-card:nth-child(4) { transition-delay: .26s; }
+.prj-social-row.visible .prj-social-card:nth-child(5) { transition-delay: .33s; }
+.prj-social-row.visible .prj-social-card:nth-child(6) { transition-delay: .40s; }
+.prj-social-row .prj-social-card-image {
+  aspect-ratio: 4 / 5;
+}
+
+/* Reels — swipeable carousel, one slide at a time */
+.prj-reel-carousel {
+  position: relative;
+  max-width: 260px;
+  margin: 0 auto;
+}
+.prj-reel-viewport {
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 50px rgba(15,23,42,0.16);
+  background: var(--surface);
+}
+.prj-reel-track {
+  display: flex;
+  transition: transform 0.55s var(--spring);
+}
+.prj-reel-slide {
+  flex: 0 0 100%;
+  width: 100%;
+}
+.prj-reel-slide .prj-social-card-image {
+  aspect-ratio: 9 / 16;
+}
+.prj-reel-arrow {
+  position: absolute;
+  top: 38%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.16);
+  transition: all 0.25s var(--ease);
+  z-index: 2;
+  font-size: 12px;
+}
+.prj-reel-arrow:hover {
+  background: var(--teal);
+  color: #fff;
+  border-color: var(--teal);
+}
+.prj-reel-arrow-prev {
+  left: -14px;
+}
+.prj-reel-arrow-next {
+  right: -14px;
+}
+.prj-reel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+}
+.prj-reel-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s var(--ease);
+}
+.prj-reel-dot.active {
+  width: 20px;
+  border-radius: 4px;
+  background: var(--teal);
 }
 .prj-social-badge {
   position: absolute;
@@ -354,7 +495,16 @@
   .prj-detail-layout {
     padding-top: 32px;
   }
-  .prj-social-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  .prj-social-row .prj-social-card {
+    width: 168px;
+  }
+  .prj-reel-carousel {
+    max-width: 220px;
+  }
+  .prj-reel-arrow-prev {
+    left: -8px;
+  }
+  .prj-reel-arrow-next {
+    right: -8px;
   }
 }
