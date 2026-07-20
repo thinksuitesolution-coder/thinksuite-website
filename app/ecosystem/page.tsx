@@ -26,7 +26,7 @@ const products = [
   {
     id: 'thinksuite',
     emoji: '🏢',
-    logo: '/assets/img/logos/thinksuite.png',
+    logo: '/assets/img/logos/thinksuite%20logo.png',
     name: 'ThinkSuite',
     tagline: 'Full-Service Digital Agency',
     color: '#1a237e',
@@ -55,7 +55,7 @@ const products = [
   {
     id: 'Thinksuite',
     emoji: '🤖',
-    logo: '/assets/img/logos/thinksuite.png',
+    logo: '/assets/img/logos/thinksuite%20logo.png',
     name: 'Thinksuite',
     tagline: 'Targeted Leads by Occupation & Location',
     color: '#d97706',
@@ -84,7 +84,7 @@ const products = [
   {
     id: 'thinkvirtual',
     emoji: '🌐',
-    logo: '/assets/img/logos/thinkvirtual.png',
+    logo: '/assets/img/logos/thinkvirtual%20logo.png',
     name: 'ThinkVirtual',
     tagline: 'Freelancer & Client Network',
     color: '#0891b2',
@@ -142,7 +142,7 @@ const products = [
   {
     id: 'wavcart',
     emoji: '🛒',
-    logo: '/assets/img/logos/wavcart.png',
+    logo: '/assets/img/logos/wavcart%20logo.png',
     name: 'WavCart',
     tagline: 'AI-Powered E-Commerce Platform',
     color: '#059669',

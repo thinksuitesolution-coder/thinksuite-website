@@ -361,7 +361,7 @@ function EcosystemTeaserSection() {
   const products = [
     {
       icon: '🧠',
-      logo: '/assets/img/logos/thinksuite.png',
+      logo: '/assets/img/logos/thinksuite%20logo.png',
       tag: 'Agency',
       tagBg: 'rgba(79,70,229,0.10)',
       tagColor: '#4f46e5',
@@ -375,7 +375,7 @@ function EcosystemTeaserSection() {
     },
     {
       icon: '🤝',
-      logo: '/assets/img/logos/thinkvirtual.png',
+      logo: '/assets/img/logos/thinkvirtual%20logo.png',
       tag: 'NETWORK',
       tagBg: 'rgba(8,145,178,0.10)',
       tagColor: '#0891b2',
@@ -389,7 +389,7 @@ function EcosystemTeaserSection() {
     },
     {
       icon: '✨',
-      logo: '/assets/img/logos/thinksuite.png',
+      logo: '/assets/img/logos/thinksuite%20logo.png',
       tag: 'AI Workspace',
       tagBg: 'rgba(124,58,237,0.10)',
       tagColor: '#7c3aed',
@@ -403,7 +403,7 @@ function EcosystemTeaserSection() {
     },
     {
       icon: '🛒',
-      logo: '/assets/img/logos/wavcart.png',
+      logo: '/assets/img/logos/wavcart%20logo.png',
       tag: 'E-Commerce',
       tagBg: 'rgba(217,119,6,0.10)',
       tagColor: '#d97706',
