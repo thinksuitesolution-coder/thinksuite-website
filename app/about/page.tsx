@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from 'next'
 import Link from 'next/link'
 import CTASection from '@/components/sections/CTASection'
+import HeroParticles from './HeroParticles'
 import './about.css'
 
 export const metadata: Metadata = {
@@ -12,54 +13,111 @@ export const metadata: Metadata = {
 // ── HERO ─────────────────────────────────────────────────────────────────────
 
 function HeroSection() {
-  const stats = [
-    { num: '2020', suffix: '',  label: 'Year Founded',       isCounter: false },
-    { num: '120',  suffix: '+', label: 'Projects Delivered', isCounter: true  },
-    { num: '50',   suffix: '+', label: 'Clients Served',     isCounter: true  },
-    { num: '24',   suffix: '',  label: 'Services Offered',   isCounter: true  },
-    { num: '4',    suffix: '',  label: 'Products Built',     isCounter: true  },
-  ]
+  const avatarInitials = ['TS', 'TV', 'MA', 'WC']
 
   return (
     <section className="ab-hero">
+      <HeroParticles />
       <div className="ab-hero-inner container">
-        <span className="ab-hero-eyebrow reveal">
-          <i className="fa-solid fa-bolt" /> AI-First Digital Agency, Worldwide
-        </span>
-        <h1 className="ab-hero-h1 reveal">
-          We Think.<br />
-          We Build.<br />
-          <span className="grad-text">We Grow You.</span>
-        </h1>
-        <p className="ab-hero-sub reveal">
-          Founded in 2020, ThinkSuite is a full-service digital partner, websites, marketing,
-          AI automation, and digital products, all delivered by one in-house team.
-        </p>
-        <div className="ab-hero-btns reveal">
-          <Link href="/contact" className="btn btn-primary btn-lg">
-            <i className="fa-solid fa-calendar-check" /> Get Free Strategy Call
-          </Link>
-          <Link href="/services" className="btn btn-outline btn-lg">
-            Explore Our Services <i className="fa-solid fa-arrow-right" />
-          </Link>
-        </div>
-        <div className="ab-stat-strip reveal">
-          {stats.map((s) => (
-            <div key={s.label} className="ab-stat-item">
-              {s.isCounter ? (
-                <span
-                  className="ab-stat-num counter"
-                  data-target={s.num}
-                  data-suffix={s.suffix}
-                >
-                  {s.num}{s.suffix}
-                </span>
-              ) : (
-                <span className="ab-stat-num">{s.num}</span>
-              )}
-              <span className="ab-stat-label">{s.label}</span>
+        <div className="ab-hero-grid">
+          {/* Left: copy */}
+          <div className="ab-hero-left">
+            <span className="ab-hero-eyebrow reveal">
+              <i className="fa-solid fa-bolt" /> AI-First Digital Agency, Worldwide
+            </span>
+            <h1 className="ab-hero-h1 reveal">
+              We Think.<br />
+              We Build.<br />
+              <span className="grad-text">We Grow You.</span>
+            </h1>
+            <p className="ab-hero-sub reveal">
+              Founded in 2020, ThinkSuite is a full-service digital partner, websites, marketing,
+              AI automation, and digital products, all delivered by one in-house team.
+            </p>
+            <div className="ab-hero-btns reveal">
+              <Link href="/contact" className="btn btn-primary btn-lg">
+                <i className="fa-solid fa-calendar-check" /> Get Free Strategy Call
+              </Link>
+              <Link href="/services" className="btn btn-outline btn-lg">
+                Explore Our Services <i className="fa-solid fa-arrow-right" />
+              </Link>
             </div>
-          ))}
+            <div className="ab-hero-trust reveal">
+              <div className="ab-hero-trust-avatars">
+                {avatarInitials.map((a) => (
+                  <span key={a} className="ab-hero-avatar">{a}</span>
+                ))}
+              </div>
+              <span className="ab-hero-trust-text">
+                <strong>50+ businesses</strong> trust ThinkSuite as their digital partner
+              </span>
+            </div>
+          </div>
+
+          {/* Right: floating growth-dashboard visual */}
+          <div className="ab-hero-visual reveal">
+            <div className="ab-hero-card ab-hero-card-main">
+              <div className="ab-hero-card-head">
+                <span>Growth Snapshot</span>
+                <span className="ab-hero-card-badge">
+                  <i className="fa-solid fa-arrow-trend-up" /> +18% QoQ
+                </span>
+              </div>
+              <svg viewBox="0 0 240 88" className="ab-hero-chart" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="heroChartFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#00bcd4" stopOpacity="0.35" />
+                    <stop offset="100%" stopColor="#00bcd4" stopOpacity="0" />
+                  </linearGradient>
+                  <linearGradient id="heroChartLine" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#1a237e" />
+                    <stop offset="100%" stopColor="#00bcd4" />
+                  </linearGradient>
+                </defs>
+                <path d="M0,70 L34,58 L68,63 L102,38 L136,44 L170,22 L204,26 L240,8 L240,88 L0,88 Z" fill="url(#heroChartFill)" />
+                <path d="M0,70 L34,58 L68,63 L102,38 L136,44 L170,22 L204,26 L240,8" fill="none" stroke="url(#heroChartLine)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="240" cy="8" r="5" fill="#00bcd4" />
+              </svg>
+              <div className="ab-hero-card-stats">
+                <div>
+                  <strong className="counter" data-target="120" data-suffix="+">120+</strong>
+                  <span>Projects</span>
+                </div>
+                <div>
+                  <strong className="counter" data-target="50" data-suffix="+">50+</strong>
+                  <span>Clients</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="ab-hero-chip ab-hero-chip-1">
+              <span className="ab-hero-chip-icon">🧠</span>
+              <div>
+                <strong>AI-First</strong>
+                <span>Every solution</span>
+              </div>
+            </div>
+
+            <div className="ab-hero-chip ab-hero-chip-2">
+              <span className="ab-hero-chip-icon ab-hero-chip-icon-fa">
+                <i className="fa-solid fa-layer-group" />
+              </span>
+              <div>
+                <strong className="counter" data-target="24" data-suffix="">24</strong>
+                <span>Services</span>
+              </div>
+            </div>
+
+            <div className="ab-hero-chip ab-hero-chip-3">
+              <span className="ab-hero-chip-icon ab-hero-chip-icon-fa">
+                <i className="fa-solid fa-flag" />
+              </span>
+              <div>
+                <strong>2020</strong>
+                <span>Founded</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
