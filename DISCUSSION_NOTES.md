@@ -962,4 +962,99 @@ Backend deploy karne ke liye:
 5. Environment variables set karo (se .env file dekho)
 6. Deploy hoga automatically
 
+---
+
+## Session 2026-07-20 — Project Detail Pages Redesign + Social Media Asset Integration
+
+### Full Chat (Summarized, Word-for-Word Key Asks)
+
+---
+
+**USER:**
+ab ek professional animator or ui designer jaisa soch or loic lga ki har project save nhi hot h or na same chiz daal skte h as it kuch to har project ke page me alg hona chiahye kisi me webiste h bss kisi me social media or kisi me dono to sab me same formet or vohi plain ui kitni borin lgegai kuc g craetive soch or bta tu hoan to kaisa hota har ek page
+
+**ASSISTANT:**
+Recommended 3 distinct layout modes driven by the existing `cat` field on each project (Website / Social Media / Branding): browser-chrome mockup for website-only projects, phone/Instagram mockup for social-only projects, tab/split view for dual-presence projects, plus a "Brand Reveal" strip for projects tagged Branding.
+
+---
+
+**USER:**
+ha animation effect ache se daal liyo proejct s me sari craetivity dikah diyo koi bi chiz simple nhi or keywords usse wervise or project ki industrey se relareted sab chiahye
+
+**ASSISTANT:**
+Implemented in `app/projects/[slug]/page.tsx` and `project-detail.css`:
+- Conditional hero/showcase: browser-chrome frame (website projects) vs phone-frame (social-only projects) vs both, driven by `project.cat`
+- "Best on Social" section now only renders when `cat` includes 'Social Media' — no more empty "coming soon" placeholders for pure-website projects
+- Floating industry-icon particle backdrop in hero (uses each project's own `coverIcon`)
+- Keyword cloud — auto-derived from industry + services + tech, floating pill chips under the tagline
+- Staggered reveal animations on services list, tech tags, color swatches, metrics cards, animations list, related-projects grid
+- Metrics converted to animated count-up counters (parses "5K+", "40%", "3x" style values, skips non-numeric ones like "<1s", "A+")
+- Section-label underline sweep, hover-lift on Live Links buttons
+- Verified via build + dev server HTML checks across a website-only, social-only, and dual-presence project
+
+---
+
+**USER:**
+creative h kuch bi sttaic to nhi ot keywowrds jaise bolte the sare daalne h or koi image ya video alg se chiahye to mujhe ban diyo bnana shuru krde
+
+**ASSISTANT:**
+Removed the 9-keyword cap (now shows all unique industry+services+tech keywords). Added `reveal` animation to the remaining static blocks (About, Contribution, Live Links). Flagged missing visual assets: ThinkVirtual (no social posts), VibéStyl (no screenshot), WavCart + AKLR Tech (no social posts).
+
+---
+
+**USER:**
+web ke screeen to sabke h or ek haj hi h sabke thinkstyiye ka h or vibestyle ka bi h ha scoial proof nhi h thinkvirtual ke or wavcart ke aklr tech ke wavcart ko chord ke baki ke add kr dungi group me
+
+*(→ user then confirmed she'd already added the media directly into the project's public/assets folders)*
+
+**ASSISTANT:**
+Found a large batch of newly added raw media in `public/assets/img/`:
+- Images: AKLR Tech (5), MyThinkAI (8), ThinkVirtual (6) — raw PNGs in per-company subfolders under `post/`
+- Videos: AKLR Tech (3), MyThinkAI (1), ThinkVirtual (3, misplaced in the `posters/` folder), VibéStyl (7), plus extra reels for Laghima (3) and AKLR Foundation (4)
+
+Viewed every new image individually to write real, content-accurate captions. Batch-converted all PNGs to optimized `.webp` (ffmpeg, resized to match site convention). Batch-compressed all raw `.mp4` videos (scale to 720px width, CRF 27, `libx264`/`aac`) — originals were up to 20-30MB, compressed down to a few MB matching the rest of the site — and generated poster thumbnails for each. Wired all of it into `app/projects/data.ts`:
+- New `socialPosts` arrays for `aklr-tech`, `mythinkai`, `thinkvirtual`
+- VibéStyl: added `socialPosts` (7 reels) **and** added `'Social Media'` to its `cat` array (it was Website+Branding only before) plus a "Social Media Content & Reels" service line
+- Appended extra reels to existing `laghima-jewelry` and `aklr-foundation` entries
+- Archived all raw/original source files into a new `_raw-originals/` folder instead of deleting them (repo has no way to recover a hard delete otherwise)
+- Verified via `npm run build` + dev-server HTML checks (all new sections render, all asset URLs resolve 200)
+
+---
+
+**USER:**
+for events ka hi h tune iska proejct sahi add kiya h kya isko bi kr add proejct me or deploy kr sab or discussion me ni notes ban ky kya liya h
+
+**ASSISTANT:**
+Initially wired the leftover `for events intro.mp4` as an extra AKLR Foundation reel (wrong guess).
+
+---
+
+**USER (correction):**
+for event bi ek comapny jsiki hume wesvite or social media handle kiya tha isliye naam ke sath maine companies ki videos or post rakhi h taki koi confusion na ho
+
+*(→ then, after being asked whether "For Events" was the same as the already-unwired `venture-conclave` assets:)* ha kyuki ye alg company h
+
+*(→ then, when asked for the company's exact name/details via a question tool, user pushed back:)* maine sab bta rakhi or fiolder me har company ke proejct ke naam bi likha hua h jitne logo h mtlb sab ek ek company h or unke ke naam se socil media post bi h
+
+**ASSISTANT:**
+Reverted the wrong AKLR Foundation edit. Found the real company name by checking `public/assets/img/logos/` — `Forevents logo.jpeg` ("F.O.R Events", an event management company) and `Venture conclave logo.png` (a separate, already-branded ThinkSuite-owned event brand: "Venture Conclave — Connect | Collaborate | Grow"). Added both as brand-new project entries in `data.ts`:
+- **F.O.R Events** (`id: 'for-events'`, `cat: ['Social Media']`) — logo + 1 intro reel, no website screenshot found
+- **Venture Conclave** (`id: 'venture-conclave'`, `cat: ['Website', 'Social Media', 'Branding']`) — this is ThinkSuite's own event brand ("THINKSUITE PRESENTS"), already had a ready screenshot + promo video + logo sitting unwired in the project folder
+- Verified both new `/projects/[slug]` pages statically generate correctly with the right layout variant (phone-frame for F.O.R Events, browser-frame + Best-on-Social for Venture Conclave)
+
+---
+
+## Files Changed in This Session (2026-07-20 — Project Pages Redesign + Media Integration)
+
+| File | Change |
+|---|---|
+| `app/projects/[slug]/page.tsx` | Added `parseMetric`/`getDomain`/`buildKeywords` helpers; conditional website/social/dual showcase (browser-chrome frame vs phone-frame); keyword cloud; floating icon backdrop; `reveal` animations across all panel sections; animated counters on metrics; "Best on Social" gated on `cat.includes('Social Media')` |
+| `app/projects/[slug]/project-detail.css` | New styles: `.prj-icon-field`/`.prj-float-icon` (industry-icon backdrop), `.prj-keyword-cloud`/`.prj-keyword-chip`, `.prj-browser-frame` (browser-chrome mockup, hover scroll-pan), `.prj-phone-frame` (phone mockup), `.prj-fallback-pulse-icon`, section-label underline sweep, stagger-reveal rules for services/tech/colors/metrics/animations/related-grid |
+| `app/projects/projects.css` | Hover-lift added to `.prj-live-btn` / `.prj-social-btn` |
+| `app/projects/data.ts` | Added extra reels to `laghima-jewelry` (+3) and `aklr-foundation` (+4); added full `socialPosts` to `aklr-tech`, `mythinkai`, `thinkvirtual`, `vibestyl` (+ `cat` and services update for vibestyl); added two brand-new projects: `for-events` and `venture-conclave` |
+| `public/assets/img/social media posts/post/optimized/*.webp` | 19 new optimized post images (AKLR Tech ×5, MyThinkAI ×8, ThinkVirtual ×6) |
+| `public/assets/img/social media posts/video/optimized/*.mp4` + `video/posters/*.webp` | 21 new compressed reels + poster thumbnails (Laghima, AKLR Foundation, AKLR Tech, MyThinkAI, ThinkVirtual, VibéStyl, F.O.R Events) |
+| `public/assets/img/social media posts/_raw-originals/` | New — archived raw/unoptimized source PNGs and MP4s (not deleted, this repo has no local recovery path) |
+| `DISCUSSION_NOTES.md` | This session appended |
+
 Admin URL hoga: `https://your-app.railway.app/admin/login.html`

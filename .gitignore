@@ -17,3 +17,4 @@ backend/uploads/
 /public/assets/img/social media posts/post/*.png
 /public/assets/img/social media posts/post/*.jpeg
 /public/assets/img/social media posts/video/*.mp4
+/public/assets/img/social media posts/_raw-originals/
