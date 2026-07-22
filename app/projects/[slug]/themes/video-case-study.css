@@ -1,0 +1,139 @@
+/* Video Case Study theme — reel/video as the hero itself, credits sidebar alongside */
+
+.vc-hero {
+  padding: 130px 0 70px;
+}
+.vc-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 36px;
+  align-items: start;
+}
+.vc-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vc-media .prj-reel-carousel {
+  max-width: 340px;
+  margin: 0;
+}
+.vc-media .prj-reel-viewport {
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+}
+.vc-media-image {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+}
+.vc-media-image img {
+  width: 100%;
+  display: block;
+}
+.vc-media-fallback {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 9 / 16;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vc-media-fallback i {
+  font-size: 60px;
+  color: rgba(255,255,255,0.28);
+}
+
+.vc-sidebar {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 26px;
+  position: sticky;
+  top: 100px;
+}
+.vc-sidebar-kicker {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.vc-sidebar-title {
+  color: #fff;
+  font-size: 24px;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  line-height: 1.15;
+}
+.vc-sidebar-tagline {
+  color: rgba(255,255,255,0.6);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+.vc-sidebar-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  font-weight: 700;
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+.vc-sidebar-value {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+.vc-sidebar-services {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.vc-sidebar-services li {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.75);
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.4;
+}
+.vc-sidebar-services li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+.vc-sidebar-connect .prj-panel-section {
+  border-top-color: rgba(255,255,255,0.12);
+}
+.vc-sidebar-connect .prj-panel-section-label {
+  color: var(--teal);
+}
+
+@media (max-width: 900px) {
+  .vc-layout {
+    grid-template-columns: 1fr;
+  }
+  .vc-sidebar {
+    position: static;
+  }
+  .vc-media .prj-reel-carousel {
+    margin: 0 auto;
+  }
+}
+@media (max-width: 640px) {
+  .vc-hero { padding-top: 108px; }
+}

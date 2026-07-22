@@ -1,0 +1,140 @@
+/* Oversized Type theme — giant overlapping display word crossing the hero image */
+
+.ot-hero {
+  padding: 130px 0 80px;
+  overflow: hidden;
+}
+.ot-hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.ot-kicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ot-kicker i { color: var(--teal); }
+.ot-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.ot-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.ot-title {
+  color: #fff;
+  font-size: clamp(34px, 5vw, 56px);
+  letter-spacing: -1.5px;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+.ot-tagline {
+  color: rgba(255,255,255,0.68);
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 440px;
+  margin-bottom: 26px;
+}
+.ot-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+.ot-quote {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 14px;
+  padding: 14px 18px;
+  max-width: 400px;
+}
+.ot-quote-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.ot-quote-avatar i { color: #fff; font-size: 15px; }
+.ot-quote-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ot-quote-body strong {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+}
+.ot-quote-body span {
+  color: rgba(255,255,255,0.55);
+  font-size: 11.5px;
+}
+
+.ot-hero-right {
+  position: relative;
+  padding-bottom: 44px;
+}
+.ot-hero-image {
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 26px 64px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ot-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ot-hero-image i {
+  font-size: 64px;
+  color: rgba(255,255,255,0.28);
+}
+.ot-giant-word {
+  position: absolute;
+  left: -6px;
+  bottom: 0;
+  font-size: clamp(36px, 7vw, 92px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 6px 30px rgba(0,0,0,0.45);
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (max-width: 860px) {
+  .ot-hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .ot-hero-right {
+    order: -1;
+    padding-bottom: 30px;
+  }
+}
+@media (max-width: 640px) {
+  .ot-hero { padding-top: 108px; }
+  .ot-giant-word { font-size: clamp(30px, 12vw, 60px); }
+}

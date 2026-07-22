@@ -17,9 +17,18 @@ export interface SocialPost {
   postUrl?: string
 }
 
+export type ProjectTheme =
+  | 'noir-editorial'
+  | 'mac-window'
+  | 'oversized-type'
+  | 'gallery-grid'
+  | 'stats-editorial'
+  | 'video-case-study'
+
 export interface Project {
   id: string
   cat: string[]
+  theme?: ProjectTheme
   title: string
   industry: string
   industryIcon: string
@@ -44,6 +53,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 'laghima-jewelry',
+    theme: 'noir-editorial',
     cat: ['Website', 'Social Media', 'Branding'],
     title: 'Laghima Jewelry',
     industry: 'Jewelry & Accessories',
@@ -96,6 +106,7 @@ export const projects: Project[] = [
   },
   {
     id: 'aklr-foundation',
+    theme: 'stats-editorial',
     cat: ['Website', 'Social Media'],
     title: 'AKLR Foundation',
     industry: 'NGO & Event Services',
@@ -134,10 +145,6 @@ export const projects: Project[] = [
     logo: '/assets/img/logos/AKLR Foundation Logo.png',
     screenshot: '/assets/img/projects images/optimized/aklr-foundation.webp',
     socialPosts: [
-      { type: 'post', image: '/assets/img/social media posts/post/optimized/aklr-foundation-events-products.webp', caption: 'Event furniture rental range' },
-      { type: 'post', image: '/assets/img/social media posts/post/optimized/aklr-foundation-events-services.webp', caption: 'Corporate event services' },
-      { type: 'reel', image: '/assets/img/social media posts/video/posters/aklr-foundation-events-furniture.webp', video: '/assets/img/social media posts/video/optimized/aklr-foundation-events-furniture.mp4', caption: 'Furniture setup in action' },
-      { type: 'reel', image: '/assets/img/social media posts/video/posters/aklr-foundation-events-sfx.webp', video: '/assets/img/social media posts/video/optimized/aklr-foundation-events-sfx.mp4', caption: 'SFX collection walkthrough' },
       { type: 'reel', image: '/assets/img/social media posts/video/posters/aklr-foundation-environmental-concern.webp', video: '/assets/img/social media posts/video/optimized/aklr-foundation-environmental-concern.mp4', caption: 'Environmental concern awareness reel' },
       { type: 'reel', image: '/assets/img/social media posts/video/posters/aklr-foundation-healthier-tomorrow.webp', video: '/assets/img/social media posts/video/optimized/aklr-foundation-healthier-tomorrow.mp4', caption: 'Creating awareness for a healthier tomorrow' },
       { type: 'reel', image: '/assets/img/social media posts/video/posters/aklr-foundation-education-reel.webp', video: '/assets/img/social media posts/video/optimized/aklr-foundation-education-reel.mp4', caption: 'Conservation education reel' },
@@ -148,6 +155,7 @@ export const projects: Project[] = [
   },
   {
     id: 'blessings-foundation',
+    theme: 'mac-window',
     cat: ['Website'],
     title: 'Blessings Foundation',
     industry: 'Healthcare & Wellness',
@@ -189,6 +197,7 @@ export const projects: Project[] = [
   },
   {
     id: 'thinkvirtual',
+    theme: 'gallery-grid',
     cat: ['Website', 'Social Media'],
     title: 'ThinkVirtual',
     industry: 'Technology & Digital',
@@ -235,6 +244,7 @@ export const projects: Project[] = [
   },
   {
     id: 'wavcart',
+    theme: 'oversized-type',
     cat: ['Website', 'Social Media'],
     title: 'WavCart',
     industry: 'E-Commerce',
@@ -269,6 +279,7 @@ export const projects: Project[] = [
   },
   {
     id: 'rewa-education',
+    theme: 'video-case-study',
     cat: ['Social Media'],
     title: 'Rewa Education',
     industry: 'K-5 Education',
@@ -312,6 +323,7 @@ export const projects: Project[] = [
   },
   {
     id: 'aklr-academy',
+    theme: 'gallery-grid',
     cat: ['Website', 'Social Media'],
     title: 'AKLR Academy',
     industry: 'AI Education & Online Courses',
@@ -352,6 +364,7 @@ export const projects: Project[] = [
   },
   {
     id: 'aklr-tech',
+    theme: 'gallery-grid',
     cat: ['Website', 'Social Media'],
     title: 'AKLR Tech',
     industry: 'IT Services & Technology',
@@ -397,6 +410,7 @@ export const projects: Project[] = [
   },
   {
     id: 'vibestyl',
+    theme: 'oversized-type',
     cat: ['Website', 'Social Media', 'Branding'],
     title: 'VibéStyl',
     industry: 'Fashion & Clothing',
@@ -448,6 +462,7 @@ export const projects: Project[] = [
   },
   {
     id: 'shrisurbhikripa',
+    theme: 'mac-window',
     cat: ['Website', 'Social Media'],
     title: 'Shri Surbhi Kripa',
     industry: 'Organic & Natural Products',
@@ -486,18 +501,19 @@ export const projects: Project[] = [
     logo: '/assets/img/logos/Shree_Shurbhi_Kirpa_logo.png',
     screenshot: '/assets/img/projects images/optimized/shrisurbhikripa.webp',
     socialPosts: [
-      { type: 'post', image: '/assets/img/social media posts/post/optimized/ssk-amla-chavanprash.webp', caption: 'Amla Chavanprash product feature' },
-      { type: 'post', image: '/assets/img/social media posts/post/optimized/ssk-chandan-ke-gunn.webp', caption: 'Benefits of Chandan (Sandalwood)' },
-      { type: 'post', image: '/assets/img/social media posts/post/optimized/ssk-juice-comparison.webp', caption: 'Juice range comparison' },
+      { type: 'post', image: '/assets/img/social media posts/post/optimized/shrisurbhikripa-amla-chavanprash.webp', caption: 'Amla Chavanprash product feature' },
+      { type: 'post', image: '/assets/img/social media posts/post/optimized/shrisurbhikripa-chandan-ke-gunn.webp', caption: 'Benefits of Chandan (Sandalwood)' },
+      { type: 'post', image: '/assets/img/social media posts/post/optimized/shrisurbhikripa-juice-comparison.webp', caption: 'Juice range comparison' },
       { type: 'post', image: '/assets/img/social media posts/post/optimized/ssk-trifala-churan.webp', caption: 'Trifala Churan product feature' },
-      { type: 'reel', image: '/assets/img/social media posts/video/posters/ssk-candy-ad.webp', video: '/assets/img/social media posts/video/optimized/ssk-candy-ad.mp4', caption: 'Candy product ad reel' },
-      { type: 'reel', image: '/assets/img/social media posts/video/posters/ssk-rudraksha-mala-reel.webp', video: '/assets/img/social media posts/video/optimized/ssk-rudraksha-mala-reel.mp4', caption: 'Rudraksha Mala showcase reel' },
+      { type: 'reel', image: '/assets/img/social media posts/video/posters/shrisubhikripa-candy-ad.webp', video: '/assets/img/social media posts/video/optimized/shrisubhikripa-candy-ad.mp4', caption: 'Candy product ad reel' },
+      { type: 'reel', image: '/assets/img/social media posts/video/posters/shrisubhikripa-rudraksha-mala-reel.webp', video: '/assets/img/social media posts/video/optimized/shrisubhikripa-rudraksha-mala-reel.mp4', caption: 'Rudraksha Mala showcase reel' },
     ],
     coverGradient: 'linear-gradient(135deg, #07091a 0%, #071c30 50%, #00607a 100%)',
     coverIcon: 'fa-seedling',
   },
   {
     id: 'a2z-graphics',
+    theme: 'mac-window',
     cat: ['Website'],
     title: 'A2Z Graphics & Computer',
     industry: 'Printing & Design Services',
@@ -539,6 +555,7 @@ export const projects: Project[] = [
   },
   {
     id: 'amw-solar',
+    theme: 'mac-window',
     cat: ['Website'],
     title: 'AMW Solar',
     industry: 'Renewable Energy & Solar Products',
@@ -578,6 +595,7 @@ export const projects: Project[] = [
   },
   {
     id: 'mythinkai',
+    theme: 'video-case-study',
     cat: ['Website', 'Social Media'],
     title: 'MyThinkAI',
     industry: 'AI Lead Generation',
@@ -648,6 +666,7 @@ export const projects: Project[] = [
   },
   {
     id: 'for-events',
+    theme: 'stats-editorial',
     cat: ['Social Media'],
     title: 'F.O.R Events',
     industry: 'Event Management & Services',
@@ -667,6 +686,10 @@ export const projects: Project[] = [
     socialHandles: [],
     logo: '/assets/img/logos/Forevents logo.jpeg',
     socialPosts: [
+      { type: 'post', image: '/assets/img/social media posts/post/optimized/forevents-products-furniture.webp', caption: 'Event furniture rental range' },
+      { type: 'post', image: '/assets/img/social media posts/post/optimized/forevents-services.webp', caption: 'Corporate event services' },
+      { type: 'reel', image: '/assets/img/social media posts/video/posters/forevents-furniture-collection.webp', video: '/assets/img/social media posts/video/optimized/forvevents-events-furniture-collections.mp4', caption: 'Furniture setup in action' },
+      { type: 'reel', image: '/assets/img/social media posts/video/posters/forevents-events-sfx- collections.webp', video: '/assets/img/social media posts/video/optimized/forevents-sfx-collections.mp4', caption: 'SFX collection walkthrough' },
       { type: 'reel', image: '/assets/img/social media posts/video/posters/for-events-intro.webp', video: '/assets/img/social media posts/video/optimized/for-events-intro.mp4', caption: 'Event brand introduction reel' },
     ],
     coverGradient: 'linear-gradient(135deg, #07091a 0%, #0a1830 50%, #0d2a52 100%)',
@@ -674,11 +697,12 @@ export const projects: Project[] = [
   },
   {
     id: 'venture-conclave',
+    theme: 'noir-editorial',
     cat: ['Website', 'Social Media', 'Branding'],
     title: 'Venture Conclave',
     industry: 'Business Events & Networking',
     industryIcon: 'fa-handshake',
-    tagline: 'An exclusive networking event for founders and investors — a ThinkSuite original.',
+    tagline: 'An exclusive networking event for founders and investors, a ThinkSuite original.',
     desc: 'Venture Conclave is ThinkSuite\'s own curated networking event connecting serious founders and investors. We built the complete brand identity, event website, and promotional video content for this invite-only gathering focused on meaningful connections and real opportunities.',
     contribution: 'We designed and built Venture Conclave from the ground up: the brand identity (gold-and-black premium aesthetic), the event website, and the promotional video content used to drive registrations.',
     services: [
