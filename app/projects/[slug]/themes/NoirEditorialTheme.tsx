@@ -8,11 +8,12 @@ import MetricsGrid from '../blocks/MetricsGrid'
 import AnimationsList from '../blocks/AnimationsList'
 import SocialShowcase from '../blocks/SocialShowcase'
 import LiveLinks from '../blocks/LiveLinks'
+import { hasWebsite } from '../utils'
 import './noir-editorial.css'
 
 export default function NoirEditorialTheme({ project }: { project: Project }) {
   const isSocial = project.cat.includes('Social Media')
-  const primaryImage = project.screenshot || project.socialPosts?.[0]?.image || null
+  const primaryImage = (hasWebsite(project) && project.screenshot) || project.socialPosts?.[0]?.image || null
   const sideItems = (project.socialPosts || []).slice(0, 3)
 
   return (

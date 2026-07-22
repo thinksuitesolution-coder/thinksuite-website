@@ -110,8 +110,8 @@ export default function ProjectsContent() {
                     style={{ animationDelay: `${(i % 2) * 0.08}s` }}
                   >
                     {/* Cover */}
-                    <div className="prj-card-cover" style={p.screenshot ? undefined : { background: p.coverGradient }}>
-                      {p.screenshot ? (
+                    <div className="prj-card-cover" style={p.screenshot && p.cat.includes('Website') ? undefined : { background: p.coverGradient }}>
+                      {p.screenshot && p.cat.includes('Website') ? (
                         <>
                           <img src={p.screenshot} alt={`${p.title} website preview`} className="prj-card-cover-shot" />
                           <div className="prj-card-cover-scrim" />

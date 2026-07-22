@@ -8,12 +8,13 @@ import MetricsGrid from '../blocks/MetricsGrid'
 import AnimationsList from '../blocks/AnimationsList'
 import SocialShowcase from '../blocks/SocialShowcase'
 import LiveLinks from '../blocks/LiveLinks'
+import { hasWebsite } from '../utils'
 import './gallery-grid.css'
 
 export default function GalleryGridTheme({ project }: { project: Project }) {
   const isSocial = project.cat.includes('Social Media')
   const mosaicItems: { image: string; caption: string }[] = [
-    ...(project.screenshot ? [{ image: project.screenshot, caption: `${project.title} overview` }] : []),
+    ...(project.screenshot && hasWebsite(project) ? [{ image: project.screenshot, caption: `${project.title} overview` }] : []),
     ...(project.socialPosts || []).map(p => ({ image: p.image, caption: p.caption })),
   ].slice(0, 6)
 

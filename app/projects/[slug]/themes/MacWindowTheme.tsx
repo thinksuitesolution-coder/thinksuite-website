@@ -1,5 +1,5 @@
 import type { Project } from '../../data'
-import { getDomain } from '../utils'
+import { getDomain, hasWebsite } from '../utils'
 import TechStack from '../blocks/TechStack'
 import ColorPalette from '../blocks/ColorPalette'
 import MetricsGrid from '../blocks/MetricsGrid'
@@ -11,7 +11,7 @@ import './mac-window.css'
 export default function MacWindowTheme({ project }: { project: Project }) {
   const isSocial = project.cat.includes('Social Media')
   const domain = getDomain(project.liveUrl)
-  const showcaseImage = project.screenshot || project.logo || null
+  const showcaseImage = (hasWebsite(project) && project.screenshot) || project.logo || null
 
   return (
     <>
