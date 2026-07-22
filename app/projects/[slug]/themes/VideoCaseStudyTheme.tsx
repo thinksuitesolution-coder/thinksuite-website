@@ -6,6 +6,7 @@ import MetricsGrid from '../blocks/MetricsGrid'
 import TechStack from '../blocks/TechStack'
 import AnimationsList from '../blocks/AnimationsList'
 import SocialShowcase from '../blocks/SocialShowcase'
+import WebsitePreview from '../blocks/WebsitePreview'
 import LiveLinks from '../blocks/LiveLinks'
 import './video-case-study.css'
 
@@ -58,6 +59,7 @@ export default function VideoCaseStudyTheme({ project }: { project: Project }) {
         <div className="prj-detail-layout">
           <div className="prj-detail-main">
             <AboutContribution project={project} />
+            <WebsitePreview project={project} />
             <ColorPalette project={project} />
             <MetricsGrid project={project} />
             <TechStack project={project} />

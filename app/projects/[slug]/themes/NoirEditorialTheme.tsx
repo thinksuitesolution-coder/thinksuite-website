@@ -64,7 +64,10 @@ export default function NoirEditorialTheme({ project }: { project: Project }) {
             <div className="noir-gallery-side">
               {sideItems.map((item, i) => (
                 <div key={i} className="noir-gallery-side-item">
-                  <img src={item.image} alt={item.caption} />
+                  <div className="noir-gallery-side-item-image">
+                    <img className="prj-social-img-bg" src={item.image} alt="" aria-hidden="true" />
+                    <img className="prj-social-img-fg" src={item.image} alt={item.caption} />
+                  </div>
                   <span>{item.caption}</span>
                 </div>
               ))}

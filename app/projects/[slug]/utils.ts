@@ -10,6 +10,10 @@ export function parseMetric(val: string): { target: number; suffix: string; deci
   return { target, suffix, decimals }
 }
 
+export function hasWebsite(project: Project): boolean {
+  return project.cat.includes('Website')
+}
+
 export function getDomain(url?: string): string | null {
   if (!url || url === '#') return null
   try {

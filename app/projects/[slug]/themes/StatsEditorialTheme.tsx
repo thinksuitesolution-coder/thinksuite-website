@@ -6,6 +6,7 @@ import ColorPalette from '../blocks/ColorPalette'
 import MetricsGrid from '../blocks/MetricsGrid'
 import AnimationsList from '../blocks/AnimationsList'
 import SocialShowcase from '../blocks/SocialShowcase'
+import WebsitePreview from '../blocks/WebsitePreview'
 import LiveLinks from '../blocks/LiveLinks'
 import './stats-editorial.css'
 
@@ -65,6 +66,7 @@ export default function StatsEditorialTheme({ project }: { project: Project }) {
           <div className="prj-detail-main">
             <AboutContribution project={project} />
             <ServicesList project={project} />
+            <WebsitePreview project={project} />
             <ColorPalette project={project} />
             <AnimationsList project={project} />
             {isSocial && <SocialShowcase project={project} />}

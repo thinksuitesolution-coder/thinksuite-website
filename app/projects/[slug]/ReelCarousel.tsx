@@ -35,6 +35,7 @@ export default function ReelCarousel({ reels }: { reels: SocialPost[] }) {
           {reels.map((post, i) => (
             <div className="prj-reel-slide" key={i} aria-hidden={i !== active}>
               <div className="prj-social-card-image">
+                <img className="prj-reel-bg" src={post.image} alt="" aria-hidden="true" />
                 <video
                   ref={el => { videoRefs.current[i] = el }}
                   controls

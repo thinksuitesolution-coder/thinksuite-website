@@ -1,6 +1,6 @@
 # ThinkSuite Website — Planning & Discussion Notes
 
-**Last Updated:** 2026-06-27  
+**Last Updated:** 2026-07-22  
 **Project:** thinksuite.in (Next.js 14, TypeScript, Vercel)
 
 ---
@@ -1058,3 +1058,98 @@ Reverted the wrong AKLR Foundation edit. Found the real company name by checking
 | `DISCUSSION_NOTES.md` | This session appended |
 
 Admin URL hoga: `https://your-app.railway.app/admin/login.html`
+
+---
+
+## Session 2026-07-22 — Per-Project Unique Case Study Themes + Asset Cleanup + Reels Marquee
+
+### Full Chat (Summarized, Word-for-Word Key Asks)
+
+---
+
+**USER:**
+*(Screenshot share kiya — Rewa Education "Every Child Blooms" social post mockup, thunder/lightning emoji icons dikh rahe the side mein)*
+jab rewa ki koi webiste hi nhih to ye kyu add kr rakha h sahi nhih bilkul bi or aise ye thunder se emoj i knhi bi nhi chiahye mujhe or na emdashes
+
+**ASSISTANT:**
+Checked `app/projects/data.ts` — Rewa Education entry has no `liveUrl`, aur detail page pe website button/browser-frame us project ke liye already conditional hai (sirf phone-frame dikhta hai, kyunki `cat` mein sirf 'Social Media' hai). Code mein koi galat website claim nahi mili. Lightning-bolt/thunder emoji aur em dash — dono ko future content ke liye ek standing preference maan liya (memory mein save kiya): kabhi bhi generated copy ya design mein use nahi karna.
+
+---
+
+**USER:**
+or tune projects ke pages ko statics hi rakha h kuc craetive design bola tha jaise prost or reels di huyi vo same sahi ki to nhi hogi usse hi kuch dymanic or har proejct ki wk new ui band skti h tune bss sare saman daal diyah par preseatation bhot simple h. main kcuh auo ke reference se rhi hu unko multiways me har project ka unique ui hona chaoye . sab images ko ach se angalush krke decide kr kis proejct par kosi theme sahi rahegi
+*(7 reference screenshots share kiye: Noir Refuge, WalletNook, Ashley Homestore, Inovus Design, Tonelli design, ek stats-heavy dark/red agency page, Adidas "Feel the Future" video case study)*
+
+**ASSISTANT:**
+Plan mode mein gaya — ek theme system design kiya: 6 distinct case-study layouts, har ek ek reference se inspired, project ke content-type (screenshot vs reels vs stats) ke hisaab se assign kiye:
+- `noir-editorial` (oversized wordmark hero + marquee + gallery strip) → Laghima Jewelry, Venture Conclave
+- `mac-window` (macOS window mockup + services/summary meta row) → Blessings Foundation, A2Z Graphics, AMW Solar, Shri Surbhi Kripa
+- `oversized-type` (giant overlapping word crossing hero image) → VibéStyl, WavCart
+- `gallery-grid` (quiet hero + image mosaic + dark at-a-glance panel) → ThinkVirtual, AKLR Tech, AKLR Academy
+- `stats-editorial` (bold hero + prominent stat-card grid) → AKLR Foundation, F.O.R Events
+- `video-case-study` (reel as hero + credits sidebar) → Rewa Education, MyThinkAI
+- Visibility AI → purana default template hi rakha (coming-soon, dikhane ko kuch nahi)
+
+Architecture: `Project.theme` field add kiya `data.ts` mein; shared content blocks (`Services`, `TechStack`, `ColorPalette`, `MetricsGrid`, `AnimationsList`, `SocialShowcase`, `LiveLinks`, `AboutContribution`) `blocks/` folder mein extract kiye taaki har theme same logic reuse kare; 6 theme components + apni CSS files `themes/` folder mein; `page.tsx` ek dispatcher ban gaya jo `project.theme` se sahi component pick karta hai. Drive-by fixes: Venture Conclave tagline ka em dash hataya, "Animations & Features" list ka `fa-bolt` icon hata ke `fa-wand-magic-sparkles` kiya. Verify `npm run build` (clean compile, 259/259 pages) + dev-server HTML checks se kiya (har theme ka signature markup sahi project pe render ho raha tha).
+
+---
+
+**USER:**
+nhi unko bi add kr bhyi vo tune naam sahi nhi likha th ato durse project me show ho rahe the isliye maine naam sahi kiya taki direct sahi preojcts me show ho or deplor krde
+*(referring to pre-existing uncommitted renamed asset files jo `git status` mein dikhe the: aklr-foundation-events-* → forevents-*, ssk-* → shrisurbhikripa-*)*
+
+**ASSISTANT:**
+`data.ts` ke stale references fix kiye — AKLR Foundation se events furniture/services posts hata ke F.O.R Events mein sahi jagah wire kiye (in dono ka koi lena dena nahi tha, purani galti thi), Shri Surbhi Kripa ke product posts naye filenames pe point kiye. Commit + push kiya `origin/master` (Vercel auto-deploy trigger hota hai).
+
+---
+
+**USER:**
+check every social media have their company name mandatory to connect to the pages direct and no condsuinion will there
+
+**ASSISTANT:**
+Script se poore `data.ts` ka har asset path cross-check kiya har project ke against. Result: koi bhi asset path do projects ke beech shared/duplicate nahi mila — zero cross-project confusion confirmed. 3 chhoti naming inconsistencies mili (functionally theek, bas cosmetic): `ssk-trifala-churan.webp` (purana abbreviation reh gaya tha), do `shrisubhikripa-*` files (missing 'r' typo), aur ek `forvevents-*` video (typo). Plus WavCart tagged 'Social Media' but koi `socialPosts` hi nahi the.
+
+---
+
+**USER:**
+ek chiz clear krni this jo ssk h vo shrisurbhikripa ko hi denote kiya h to sahi krna dena
+rename if onlye koi confsuion creative na ho proepr defind ho kis proehct h h kya keywords add krne h file name me bi to hi remain kr
+
+**ASSISTANT:**
+`ssk-` confirm ho gaya = Shri Surbhi Kripa hi hai. Teeno typo'd files `git mv` se properly renamed (`shrisurbhikripa-trifala-churan.webp`, `shrisurbhikripa-candy-ad.*`, `shrisurbhikripa-rudraksha-mala-reel.*`, `forevents-furniture-collection.mp4`), `data.ts` ke references update kiye match karne ke liye.
+
+---
+
+**USER:**
+*(Screenshot share kiya — ThinkVirtual case study page, Posts section scrollable row mein dikh rahe the, Reels section neeche single-slide carousel with prev/next arrows)*
+tujhe bola har apge jisme scoial media h jaise post daal rakhi slide wale way me wale hi reel bi aani chiaye slide wale way me
+
+**ASSISTANT:**
+`SocialShowcase.tsx` (shared block, saare themes use karte hain) mein Reels section ko `ReelCarousel` (ek-ek slide) se switch kiya static horizontal-scroll row mein — Posts jaisi hi `.prj-social-row` layout, per-card 9:16 aspect ratio video ke saath.
+
+---
+
+**USER:**
+nhi be ye pure me nhi chal raha h slider me ek hi slide ho rahi h pure section side me chalise rhen choahye aisa bola tha tujhe slider met o phele ye but dono side right or left me to bhot khali hogy ah isliye sari reel chalit firsti rehna chaihye
+
+**ASSISTANT:**
+Static scroll row se aage badh ke ek continuous auto-scrolling marquee banaya — reels list duplicate karke track ko `translateX(-50%)` se infinite loop kiya (speed reel-count ke hisaab se scale hoti hai), taaki 1-2 reels wale project mein bhi khaali space na dikhe, hamesha kuch move ho raha ho. Hover/keyboard-focus pe animation pause ho jaati hai taaki video play/controls click karna motion se fight na kare.
+
+---
+
+## Files Changed in This Session (2026-07-22 — Case Study Themes + Asset Cleanup + Reels Marquee)
+
+| File | Change |
+|---|---|
+| `app/projects/data.ts` | Added `ProjectTheme` type + `theme` field, assigned to 15 of 16 projects; fixed em dash in Venture Conclave tagline; fixed misattributed AKLR Foundation ↔ F.O.R Events social assets; fixed Shri Surbhi Kripa asset filenames (`ssk-`/`shrisubhikripa-` → `shrisurbhikripa-`) and F.O.R Events `forvevents-` typo |
+| `app/projects/[slug]/utils.ts` | New — `parseMetric`/`getDomain`/`buildKeywords` moved here from `page.tsx`, shared across all themes |
+| `app/projects/[slug]/blocks/*.tsx` | New — `ServicesList`, `TechStack`, `ColorPalette`, `MetricsGrid`, `AnimationsList`, `SocialShowcase`, `LiveLinks`, `AboutContribution` — shared content sections reused across every theme |
+| `app/projects/[slug]/themes/*.tsx` + `*.css` | New — `DefaultTheme`, `NoirEditorialTheme`, `MacWindowTheme`, `OversizedTypeTheme`, `GalleryGridTheme`, `StatsEditorialTheme`, `VideoCaseStudyTheme`, each with its own CSS |
+| `app/projects/[slug]/page.tsx` | Rewritten as a theme dispatcher — shared SEO/schema/breadcrumb/related-projects/bottom-CTA stay here, picks theme component via `project.theme` |
+| `app/projects/projects.css` | `.prj-panel-animations li .fa-bolt` → `.fa-wand-magic-sparkles` |
+| `app/projects/[slug]/blocks/SocialShowcase.tsx` | Reels rendering switched from single-slide `ReelCarousel` to a continuous auto-scrolling marquee (duplicated track, `translateX(-50%)` loop, pauses on hover/focus) |
+| `app/projects/[slug]/project-detail.css` | New `.prj-reel-marquee`/`.prj-reel-marquee-track`/`.prj-social-card-reel` styles; `.prj-reel-carousel` kept only for the video-case-study theme's single hero reel |
+| `public/assets/img/social media posts/**` | Renamed: `aklr-foundation-events-*` → `forevents-*`, `ssk-*`/`shrisubhikripa-*` → `shrisurbhikripa-*`, `forvevents-*` → `forevents-*` |
+| `DISCUSSION_NOTES.md` | This session appended |
+
+Deploy: `git push origin master` (Vercel auto-deploy via GitHub integration).

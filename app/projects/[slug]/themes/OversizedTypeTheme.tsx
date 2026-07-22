@@ -31,6 +31,9 @@ export default function OversizedTypeTheme({ project }: { project: Project }) {
           </div>
           <div className="ot-hero-grid">
             <div className="ot-hero-left reveal reveal-d1">
+              {project.logo && (
+                <img src={project.logo} alt={`${project.title} logo`} className="ot-logo" />
+              )}
               <h1 className="ot-title">{project.title}</h1>
               <p className="ot-tagline">{project.tagline}</p>
               <div className="ot-cta">
@@ -54,7 +57,7 @@ export default function OversizedTypeTheme({ project }: { project: Project }) {
             <div className="ot-hero-right reveal reveal-d1">
               <div className="ot-hero-image">
                 {heroImage ? (
-                  <img src={heroImage} alt={`${project.title} showcase`} />
+                  <img src={heroImage} alt={`${project.title} showcase`} style={{ objectFit: project.screenshotFit || 'cover' }} />
                 ) : (
                   <i className={`fa-solid ${project.coverIcon}`} />
                 )}

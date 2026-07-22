@@ -45,6 +45,7 @@ export interface Project {
   socialPosts?: SocialPost[]
   logo?: string
   screenshot?: string
+  screenshotFit?: 'cover' | 'contain'
   comingSoon?: boolean
   coverGradient: string
   coverIcon: string
@@ -274,6 +275,7 @@ export const projects: Project[] = [
     socialHandles: [],
     logo: '/assets/img/logos/wavcart logo.png',
     screenshot: '/assets/img/projects images/optimized/wavcart.webp',
+    screenshotFit: 'contain',
     coverGradient: 'linear-gradient(135deg, #07091a 0%, #071e28 50%, #006e7f 100%)',
     coverIcon: 'fa-cart-shopping',
   },
@@ -313,8 +315,8 @@ export const projects: Project[] = [
       { type: 'post', image: '/assets/img/social media posts/post/optimized/rewa-education-confidence.webp', caption: 'Confidence Starts With Speaking Up' },
       { type: 'post', image: '/assets/img/social media posts/post/optimized/rewa-education-science-4.webp', caption: 'Hands-on science learning' },
       { type: 'post', image: '/assets/img/social media posts/post/optimized/rewa-education-big-discoveries.webp', caption: 'Big discoveries start small' },
-      { type: 'reel', image: '/assets/img/social media posts/video/posters/rewa-education-summer-learning.webp', video: '/assets/img/social media posts/video/optimized/rewa-education-summer-learning.mp4', caption: 'REWA Summer Learning Program' },
       { type: 'reel', image: '/assets/img/social media posts/video/posters/rewa-education-chocolate-day.webp', video: '/assets/img/social media posts/video/optimized/rewa-education-chocolate-day.mp4', caption: 'Chocolate Day classroom fun' },
+      { type: 'reel', image: '/assets/img/social media posts/video/posters/rewa-education-summer-learning.webp', video: '/assets/img/social media posts/video/optimized/rewa-education-summer-learning.mp4', caption: 'REWA Summer Learning Program' },
       { type: 'reel', image: '/assets/img/social media posts/video/posters/rewa-education-guess-the-mistake.webp', video: '/assets/img/social media posts/video/optimized/rewa-education-guess-the-mistake.mp4', caption: 'Guess the Mistake challenge' },
       { type: 'reel', image: '/assets/img/social media posts/video/posters/rewa-education-guess-colour-challenge.webp', video: '/assets/img/social media posts/video/optimized/rewa-education-guess-colour-challenge.mp4', caption: 'Guess the Colour challenge' },
     ],
@@ -448,6 +450,7 @@ export const projects: Project[] = [
     socialHandles: [],
     logo: '/assets/img/logos/vibestyl logo.png',
     screenshot: '/assets/img/social media posts/video/posters/vibestyl-mobile-ui.webp',
+    screenshotFit: 'contain',
     socialPosts: [
       { type: 'reel', image: '/assets/img/social media posts/video/posters/vibestyl-new-collections.webp', video: '/assets/img/social media posts/video/optimized/vibestyl-new-collections.mp4', caption: 'New collection reel' },
       { type: 'reel', image: '/assets/img/social media posts/video/posters/vibestyl-western-wear.webp', video: '/assets/img/social media posts/video/optimized/vibestyl-western-wear.mp4', caption: 'Western wear collection reel' },

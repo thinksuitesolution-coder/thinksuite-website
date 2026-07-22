@@ -147,12 +147,14 @@
   display: flex;
   flex-direction: column;
 }
-.noir-gallery-side-item img {
+.noir-gallery-side-item-image {
+  position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
+  overflow: hidden;
   border-radius: 14px;
   box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+  background: #12141c;
 }
 .noir-gallery-side-item span {
   font-size: 11.5px;
