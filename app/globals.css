@@ -273,9 +273,9 @@ p{color:var(--text);line-height:1.8}
 .soi-node-name{position:absolute;bottom:-24px;left:50%;transform:translateX(-50%);font-family:var(--font-b);font-size:9px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--text2);white-space:nowrap;transition:color .25s}
 .soi-node:hover{transform:translate(-50%,-50%) scale(1.14);box-shadow:0 8px 24px rgba(0,0,0,0.12)}
 .soi-node:hover i{transform:scale(1.1)}
-.soi-node-active{border:2.5px solid var(--nc);transform:translate(-50%,-50%) scale(1.18);filter:drop-shadow(0 0 10px var(--nc));background:#fff}
-.soi-node-active i{transform:scale(1.1)}
-.soi-node-active .soi-node-name{color:var(--nc);font-weight:800}
+.soi-node.soi-node-active{border:2.5px solid var(--nc);transform:translate(-50%,-50%) scale(1.18);filter:drop-shadow(0 0 10px var(--nc));background:#fff}
+.soi-node.soi-node-active i{transform:scale(1.1)}
+.soi-node.soi-node-active .soi-node-name{color:var(--nc);font-weight:800}
 
 /* Mobile strip (hidden on desktop) */
 .soi-mobile-strip{display:none;gap:10px;overflow-x:auto;padding:4px 0 16px;-webkit-overflow-scrolling:touch;scrollbar-width:none;grid-column:1/-1}
