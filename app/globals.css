@@ -278,7 +278,7 @@ p{color:var(--text);line-height:1.8}
 .soi-node.soi-node-active .soi-node-name{color:var(--nc);font-weight:800}
 
 /* Mobile strip (hidden on desktop) */
-.soi-mobile-strip{display:none;gap:10px;overflow-x:auto;padding:4px 0 16px;-webkit-overflow-scrolling:touch;scrollbar-width:none;grid-column:1/-1}
+.soi-mobile-strip{display:none;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;padding:4px 0 16px;-webkit-overflow-scrolling:touch;scrollbar-width:none;grid-column:1/-1}
 .soi-mobile-strip::-webkit-scrollbar{display:none}
 .soi-mobile-node{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:70px;padding:12px 8px;border-radius:14px;border:1.5px solid var(--border);background:#fff;cursor:pointer;transition:all .25s var(--ease);flex-shrink:0;outline:none}
 .soi-mobile-node i{font-size:20px;color:var(--nc,#1a237e)}
@@ -299,6 +299,7 @@ p{color:var(--text);line-height:1.8}
   .soi-desc{max-width:100%}
   .soi-main-desc{max-width:100%}
   .soi-section{padding:72px 0 80px}
+  .soi-mobile-strip{margin-top:22px;padding-top:0}
 }
 
 /* Process */

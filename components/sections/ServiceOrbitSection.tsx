@@ -120,14 +120,18 @@ export default function ServiceOrbitSection() {
   const userPausedRef = useRef(false)
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const mobileNodeRefs = useRef<(HTMLButtonElement | null)[]>([])
+  const mobileStripRef = useRef<HTMLDivElement>(null)
 
-  // Keep the active mobile-strip icon fully in view as it auto-rotates
+  // Keep the active mobile-strip icon in view by scrolling only the strip
+  // itself (never scrollIntoView — it can drag the whole page sideways).
   useEffect(() => {
-    mobileNodeRefs.current[activeIdx]?.scrollIntoView({
-      behavior: 'smooth',
-      inline: 'center',
-      block: 'nearest',
-    })
+    const btn = mobileNodeRefs.current[activeIdx]
+    const strip = mobileStripRef.current
+    if (!btn || !strip) return
+    const btnRect = btn.getBoundingClientRect()
+    const stripRect = strip.getBoundingClientRect()
+    const target = strip.scrollLeft + (btnRect.left - stripRect.left) - (strip.clientWidth - btn.offsetWidth) / 2
+    strip.scrollTo({ left: Math.max(0, target), behavior: 'smooth' })
   }, [activeIdx])
 
   const advance = useCallback((toIdx?: number) => {
@@ -261,7 +265,7 @@ export default function ServiceOrbitSection() {
         </div>
 
         {/* Mobile: horizontal icon strip */}
-        <div className="soi-mobile-strip">
+        <div className="soi-mobile-strip" ref={mobileStripRef}>
           {services.map((s, idx) => (
             <button
               key={s.id}
