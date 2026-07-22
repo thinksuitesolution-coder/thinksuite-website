@@ -8,11 +8,12 @@ import MetricsGrid from '../blocks/MetricsGrid'
 import AnimationsList from '../blocks/AnimationsList'
 import SocialShowcase from '../blocks/SocialShowcase'
 import LiveLinks from '../blocks/LiveLinks'
+import { hasWebsite } from '../utils'
 import './oversized-type.css'
 
 export default function OversizedTypeTheme({ project }: { project: Project }) {
   const isSocial = project.cat.includes('Social Media')
-  const heroImage = project.screenshot || project.logo || null
+  const heroImage = (hasWebsite(project) && project.screenshot) || project.logo || null
   const giantWord = project.industry.split(/\s+/)[0]
   const highlightMetric = project.metrics?.[0]
 
