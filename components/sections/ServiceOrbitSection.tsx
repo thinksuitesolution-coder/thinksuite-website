@@ -119,6 +119,16 @@ export default function ServiceOrbitSection() {
   const transitioningRef = useRef(false)
   const userPausedRef = useRef(false)
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const mobileNodeRefs = useRef<(HTMLButtonElement | null)[]>([])
+
+  // Keep the active mobile-strip icon fully in view as it auto-rotates
+  useEffect(() => {
+    mobileNodeRefs.current[activeIdx]?.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'center',
+      block: 'nearest',
+    })
+  }, [activeIdx])
 
   const advance = useCallback((toIdx?: number) => {
     if (transitioningRef.current) return
@@ -255,6 +265,7 @@ export default function ServiceOrbitSection() {
           {services.map((s, idx) => (
             <button
               key={s.id}
+              ref={el => { mobileNodeRefs.current[idx] = el }}
               className={`soi-mobile-node${idx === activeIdx ? ' soi-node-active' : ''}`}
               style={{ '--nc': s.color } as React.CSSProperties}
               onClick={() => handleSelect(idx)}
