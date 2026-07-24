@@ -105,7 +105,7 @@ async function enrichAndPublishArticle(article: BlogArticle, event: ScoredEvent)
     article.heroImageSourceUrl = images.heroImageSourceUrl;
   }
 
-  await articlesCol().doc(article.id).set({
+  const fullArticle = {
     ...article,
     seo: seoPackage || {},
     opportunities: opportunities || null,
@@ -114,11 +114,24 @@ async function enrichAndPublishArticle(article: BlogArticle, event: ScoredEvent)
     images: images || null,
     translations: translations || [],
     factCheck: event.factCheck || null,
-  });
+  };
+
+  await articlesCol().doc(article.id).set(fullArticle);
 
   await processedUrlsCol()
     .doc(urlDocId(article.originalUrl))
     .set({ url: article.originalUrl, articleId: article.id, processedAt: new Date().toISOString() });
+
+  // Mirror into the Turso archive immediately (not just at the 14-day cutoff).
+  // This makes Turso a real-time superset of Firestore, so if Firestore reads
+  // get throttled later the same day (free-tier quota exhausted), the ai-news
+  // page's archive fallback already has today's articles too — it doesn't
+  // silently drop back to only 14+ day old content. Best-effort: Turso being
+  // briefly unavailable must not fail the publish.
+  const { archiveArticles } = await import('./archive-db');
+  await archiveArticles([fullArticle]).catch(e =>
+    console.error('[Pipeline] Turso mirror failed for', article.id, ':', (e as Error).message)
+  );
 }
 
 // ─── MAIN PIPELINE ────────────────────────────────────────────────────────────

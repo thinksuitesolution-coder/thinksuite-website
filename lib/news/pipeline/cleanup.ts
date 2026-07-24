@@ -4,14 +4,24 @@ import { archiveArticles, purgeArchivedOlderThan } from '../archive-db';
 const FIRESTORE_RETENTION_DAYS = 14;
 const ARCHIVE_RETENTION_DAYS = 90;
 
+// Caps how many 500-doc batches a single cron run will churn through. Without
+// this, a large backlog (e.g. processedUrls that built up before cleanup was
+// running reliably) gets read+deleted in one shot — easily thousands of reads
+// and deletes in a single invocation, which can burn the whole free-tier daily
+// Firestore quota (and starve the rest of the day's fetch-news/page reads) in
+// one 3am run. Capping means a big backlog just drains gradually over several
+// days instead of spiking.
+const MAX_BATCHES_PER_RUN = 10;
+
 async function deleteDocsOlderThan(
   col: ReturnType<typeof processedUrlsCol>,
   dateField: string,
   cutoffIso: string
 ): Promise<number> {
   let deleted = 0;
-  // Firestore batch delete caps at 500 ops — loop until nothing old is left.
-  for (;;) {
+  // Firestore batch delete caps at 500 ops — loop until nothing old is left
+  // (or we hit the per-run cap, see MAX_BATCHES_PER_RUN above).
+  for (let i = 0; i < MAX_BATCHES_PER_RUN; i++) {
     const snap = await col.where(dateField, '<', cutoffIso).limit(500).get();
     if (snap.empty) break;
 
@@ -31,7 +41,7 @@ async function deleteDocsOlderThan(
 async function archiveOldArticles(cutoffIso: string): Promise<number> {
   const col = articlesCol();
   let moved = 0;
-  for (;;) {
+  for (let i = 0; i < MAX_BATCHES_PER_RUN; i++) {
     const snap = await col.where('publishedAt', '<', cutoffIso).limit(500).get();
     if (snap.empty) break;
 
