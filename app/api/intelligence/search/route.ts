@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { articlesCol } from '@/lib/firebase-admin';
+import { getPublishedArticles } from '@/lib/news/db';
 
 export async function GET(req: NextRequest) {
   const q = req.nextUrl.searchParams.get('q')?.trim();
@@ -8,15 +8,12 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    // Fetch recent articles and do client-side text search + sort
-    // (Firestore doesn't have native full-text search; single-field where
-    // avoids needing a composite index for status == + publishedAt orderBy)
-    const snap = await articlesCol().where('status', '==', 'published').limit(300).get();
+    // No native full-text search — fetch recent published articles and
+    // filter in JS.
+    const articles = await getPublishedArticles({ limit: 300 });
 
     const qLower = q.toLowerCase();
-    const results = snap.docs
-      .map(d => d.data())
-      .sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt))
+    const results = articles
       .filter(a =>
         a.title?.toLowerCase().includes(qLower) ||
         a.summary?.toLowerCase().includes(qLower) ||

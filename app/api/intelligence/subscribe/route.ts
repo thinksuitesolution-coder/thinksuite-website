@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { adminDb } from '@/lib/firebase-admin';
+import { getSubscriber, addSubscriber } from '@/lib/news/db';
 
 export async function POST(req: NextRequest) {
   const { email, role = 'general', edition = 'daily' } = await req.json();
@@ -9,20 +9,12 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const subscribersCol = adminDb.collection('newsletter_subscribers');
-    const existing = await subscribersCol.where('email', '==', email).limit(1).get();
-
-    if (!existing.empty) {
+    const existing = await getSubscriber(email);
+    if (existing) {
       return NextResponse.json({ message: 'Already subscribed!' });
     }
 
-    await subscribersCol.add({
-      email,
-      role,
-      edition,
-      subscribedAt: new Date().toISOString(),
-      active: true,
-    });
+    await addSubscriber(email, role, edition);
 
     return NextResponse.json({ success: true, message: 'Subscribed successfully!' });
   } catch (err) {

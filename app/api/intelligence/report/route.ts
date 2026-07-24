@@ -1,6 +1,6 @@
 ﻿import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
-import { articlesCol } from '@/lib/firebase-admin';
+import { getPublishedArticles } from '@/lib/news/db';
 import { generateTrendReport } from '@/lib/news/pipeline/trends';
 import { BlogArticle } from '@/lib/news/types';
 
@@ -167,13 +167,8 @@ export async function POST(req: NextRequest) {
 
   try {
     const cutoff = new Date(Date.now() - days * 864e5).toISOString();
-    // Single-field where, cutoff/sort/limit applied in JS — avoids needing a
-    // composite Firestore index for (status ==, publishedAt >=, publishedAt orderBy).
-    const snap = await articlesCol().where('status', '==', 'published').limit(500).get();
-    const articles = snap.docs
-      .map(d => d.data() as BlogArticle)
+    const articles = (await getPublishedArticles({ limit: 500 }))
       .filter(a => a.publishedAt >= cutoff)
-      .sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt))
       .slice(0, 100);
     if (articles.length === 0) {
       return NextResponse.json({ error: 'No articles found for this period' }, { status: 404 });

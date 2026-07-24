@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { unstable_cache } from 'next/cache';
 import './pulse.css';
 import { BlogArticle } from '@/lib/news/types';
-import { articlesCol } from '@/lib/firebase-admin';
-import { getArchivedArticles } from '@/lib/news/archive-db';
+import { getPublishedArticles } from '@/lib/news/db';
 import PulseShell, { PulseNavLink, PulseTopic, FilterItem } from '@/components/ai-news/PulseShell';
 import FeaturedCarousel, { FeaturedSlide } from '@/components/ai-news/FeaturedCarousel';
 import NewsletterForm from '@/components/ai-news/NewsletterForm';
@@ -33,37 +32,22 @@ export const metadata: Metadata = {
 export const revalidate = 300;
 
 // searchParams makes this route render dynamically on every request, which bypasses
-// `revalidate` above, so the Firestore read is cached independently to avoid hitting
-// the read quota on every page view.
+// `revalidate` above, so the Turso read is cached independently to avoid hitting
+// it on every page view.
 //
-// IMPORTANT: errors are intentionally NOT caught inside these unstable_cache
-// callbacks. If a transient error (e.g. a Firestore hiccup) were caught here
-// and turned into a "successful" empty array, Next.js's Data Cache would
-// store that empty result as valid for the full revalidate window — and in
-// practice that window doesn't reliably self-heal on the next request, so
-// the page can get stuck showing "no articles" long after the underlying
-// issue is gone. Letting the fetch throw means a failed attempt isn't
-// cached at all — the very next request just retries for real. Errors are
-// caught once, outside the cache, at the call site below.
+// IMPORTANT: errors are intentionally NOT caught inside this unstable_cache
+// callback. If a transient error were caught here and turned into a
+// "successful" empty array, Next.js's Data Cache would store that empty
+// result as valid for the full revalidate window — and in practice that
+// window doesn't reliably self-heal on the next request, so the page can
+// get stuck showing "no articles" long after the underlying issue is gone.
+// Letting the fetch throw means a failed attempt isn't cached at all — the
+// very next request just retries for real. Errors are caught once, outside
+// the cache, at the call site below.
 const getAllArticles = unstable_cache(
-  async (): Promise<BlogArticle[]> => {
-    const snap = await articlesCol().orderBy('publishedAt', 'desc').limit(150).get();
-    return snap.docs.map(d => d.data() as BlogArticle);
-  },
-  ['ai-news-all-articles-v3'],
+  async (): Promise<BlogArticle[]> => getPublishedArticles({ limit: 500 }),
+  ['ai-news-all-articles-v4'],
   { revalidate: 300 }
-);
-
-// Archived (14 days - 3 months old) articles, kept separately cached with a
-// longer window since the archive only changes once a day (cleanup cron).
-// Combined with getAllArticles() so listing/pagination isn't limited to the
-// last 14 days that live in Firestore. See error-handling note above.
-const getArchivedArticlesCached = unstable_cache(
-  async (): Promise<BlogArticle[]> => {
-    return await getArchivedArticles(500);
-  },
-  ['ai-news-archived-articles'],
-  { revalidate: 3600 }
 );
 
 const PAGE_SIZE = 20;
@@ -169,16 +153,8 @@ export default async function AINewsPage({
 }: {
   searchParams: { tab?: string; category?: string; q?: string; company?: string; industry?: string; eventType?: string; page?: string };
 }) {
-  const [all, archived] = await Promise.all([
-    getAllArticles().catch(e => { console.error('[AINews] getAllArticles error:', e); return []; }),
-    getArchivedArticlesCached().catch(e => { console.error('[AINews] getArchivedArticlesCached error:', e); return []; }),
-  ]);
-
-  // Firestore (recent, 0-14 days) + Turso archive (14 days-3 months), deduped
-  // by id so the feed/pagination spans the full retention window, not just
-  // whatever's currently live in Firestore.
-  const seenIds = new Set(all.map(a => a.id));
-  const combined = [...all, ...archived.filter(a => !seenIds.has(a.id))];
+  const all = await getAllArticles().catch(e => { console.error('[AINews] getAllArticles error:', e); return []; });
+  const combined = all;
 
   const tab = searchParams.tab === 'popular' || searchParams.tab === 'important' ? searchParams.tab : 'latest';
   const category = searchParams.category;

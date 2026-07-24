@@ -2,8 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { BlogArticle } from '@/lib/news/types';
-import { articlesCol } from '@/lib/firebase-admin';
-import { getArchivedArticleBySlug } from '@/lib/news/archive-db';
+import { getArticleBySlug } from '@/lib/news/db';
 import { LANGUAGE_CONFIG, SupportedLanguage, TranslatedArticle } from '@/lib/news/pipeline/multilang';
 
 export const revalidate = 3600;
@@ -12,14 +11,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://thinksuite.in';
 
 async function getArticleWithTranslation(slug: string, lang: string): Promise<{ article: BlogArticle; translation: TranslatedArticle } | null> {
   let article: BlogArticle | null = null;
-  try {
-    const snap = await articlesCol().where('slug', '==', slug).limit(1).get();
-    if (!snap.empty) article = snap.docs[0].data() as BlogArticle;
-  } catch { /* fall through to archive */ }
-
-  if (!article) {
-    try { article = await getArchivedArticleBySlug(slug) as BlogArticle | null; } catch { article = null; }
-  }
+  try { article = await getArticleBySlug(slug) as BlogArticle | null; } catch { article = null; }
   if (!article) return null;
 
   const translation = article.translations?.find((t) => t.lang === lang);

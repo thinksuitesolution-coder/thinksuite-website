@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { waitUntil } from '@vercel/functions';
-import { adminDb, articlesCol } from '@/lib/firebase-admin';
+import { getPublishedArticles, getActiveSubscribers } from '@/lib/news/db';
 import { generateNewsletter, NewsletterEdition, NewsletterRole } from '@/lib/news/newsletter';
 import { sendNewsletterEmail } from '@/lib/newsletterMailer';
 import { BlogArticle } from '@/lib/news/types';
@@ -10,11 +10,8 @@ export const maxDuration = 300;
 
 async function getRecentArticles(edition: NewsletterEdition): Promise<BlogArticle[]> {
   const cutoff = new Date(Date.now() - (edition === 'daily' ? 864e5 : 864e5 * 7)).toISOString();
-  const snap = await articlesCol().where('status', '==', 'published').limit(300).get();
-  return snap.docs
-    .map((d) => d.data() as BlogArticle)
+  return (await getPublishedArticles({ limit: 300 }))
     .filter((a) => a.publishedAt >= cutoff)
-    .sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt))
     .slice(0, 30);
 }
 
@@ -23,8 +20,7 @@ async function sendAllNewsletters() {
   // cron fires. Both share one cron trigger to stay within a single daily job.
   const editions: NewsletterEdition[] = new Date().getUTCDay() === 1 ? ['daily', 'weekly'] : ['daily'];
 
-  const subsSnap = await adminDb.collection('newsletter_subscribers').where('active', '==', true).get();
-  const subscribers = subsSnap.docs.map((d) => d.data() as { email: string; role?: NewsletterRole; edition?: NewsletterEdition });
+  const subscribers = (await getActiveSubscribers()) as { email: string; role?: NewsletterRole; edition?: NewsletterEdition }[];
 
   let sent = 0;
   let failed = 0;

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { adminDb } from '@/lib/firebase-admin';
+import { deactivateSubscriber } from '@/lib/news/db';
 import { unsubscribeToken } from '@/lib/newsletterMailer';
 
 export async function GET(req: NextRequest) {
@@ -10,8 +10,7 @@ export async function GET(req: NextRequest) {
     return new NextResponse('Invalid or expired unsubscribe link.', { status: 400 });
   }
 
-  const snap = await adminDb.collection('newsletter_subscribers').where('email', '==', email).get();
-  await Promise.all(snap.docs.map((d) => d.ref.set({ active: false }, { merge: true })));
+  await deactivateSubscriber(email);
 
   return new NextResponse(
     `<!DOCTYPE html><html><body style="font-family:sans-serif;text-align:center;padding:60px 20px">

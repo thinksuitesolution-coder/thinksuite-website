@@ -1,25 +1,17 @@
-// One-time backfill: mirrors every article currently live in Firestore
-// (ai_articles — the 0-14 day window that hasn't hit the cleanup cron's
-// archive cutoff yet) into the Turso archive, same as the real-time mirror
-// added in lib/news/orchestrator.ts now does on every new publish.
+// One-time backfill: copies every article still sitting in the (now retired)
+// news Firestore project's `ai_articles` collection into Turso's `articles`
+// table. The real-time mirror added earlier only covers articles published
+// AFTER that fix went in — everything published before it never made it to
+// Turso. Now that Firestore is fully removed from the app, those older
+// articles need this backfill or they stay invisible on the site.
 //
-// Why this is needed: that real-time mirror only covers articles published
-// AFTER the fix went in. Anything published before it — i.e. everything sitting
-// in Firestore right now — was never copied to Turso. If Firestore's free-tier
-// quota gets exhausted again before those articles individually age past 14
-// days (and get moved by the normal cleanup cron), they'd still vanish from
-// the site the same way today's articles did. Run this once to close that gap
-// for the existing backlog; going forward the real-time mirror keeps Turso caught up.
-//
-// Safe to run more than once — upserts by slug (ON CONFLICT DO UPDATE), same
-// as the normal archive path.
+// Safe to run more than once — upserts by slug (ON CONFLICT DO UPDATE).
 //
 // Usage: node scripts/backfill-turso-mirror.mjs
 // Requires NEWS_FIREBASE_SERVICE_ACCOUNT_KEY + TURSO_DATABASE_URL + TURSO_AUTH_TOKEN
 // (reads them from .env.local if not already in the environment).
 // NOTE: this reads the full ai_articles collection, which costs Firestore
-// reads — don't run this while quota is still exhausted for the day, wait
-// for the daily reset (midnight Pacific).
+// reads — don't run this while quota is still exhausted for the day.
 
 import fs from 'fs';
 import { initializeApp, cert } from 'firebase-admin/app';
@@ -47,7 +39,7 @@ const turso = createClient({
 });
 
 await turso.execute(`
-  CREATE TABLE IF NOT EXISTS archived_articles (
+  CREATE TABLE IF NOT EXISTS articles (
     id TEXT PRIMARY KEY,
     slug TEXT UNIQUE NOT NULL,
     title TEXT NOT NULL,
@@ -77,9 +69,9 @@ async function main() {
     const batch = snap.docs.map(doc => {
       const a = doc.data();
       return {
-        sql: `INSERT INTO archived_articles (id, slug, title, company, category, event_type, importance_score, status, published_at, archived_at, data)
+        sql: `INSERT INTO articles (id, slug, title, company, category, event_type, importance_score, status, published_at, archived_at, data)
               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-              ON CONFLICT(slug) DO UPDATE SET data = excluded.data`,
+              ON CONFLICT(slug) DO UPDATE SET data = excluded.data, status = excluded.status`,
         args: [
           String(a.id ?? ''),
           String(a.slug ?? ''),

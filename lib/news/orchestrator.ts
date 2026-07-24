@@ -15,7 +15,7 @@ import { generateCompetitorIntelligence } from './pipeline/competitor-intel';
 import { generatePersonalizedVersions } from './pipeline/personalized-versions';
 import { generateImages } from './pipeline/image-generator';
 import { translateArticleToAllLanguages } from './pipeline/multilang';
-import { processAndPublishEvents, filterAlreadyProcessedByUrl, urlDocId } from './pipeline/publisher';
+import { filterAlreadyProcessedByUrl } from './pipeline/publisher';
 import { postToTelegram } from '../integrations/telegram';
 import { broadcastToAllChannels } from '../integrations/social';
 import { NEWS_SOURCES } from './sources';
@@ -71,7 +71,7 @@ async function enrichWithFirecrawl(event: ScoredEvent): Promise<string> {
 
 // ─── PUBLISH ENRICHED ARTICLE ────────────────────────────────────────────────
 async function enrichAndPublishArticle(article: BlogArticle, event: ScoredEvent): Promise<void> {
-  const { articlesCol, processedUrlsCol } = await import('../firebase-admin');
+  const { upsertArticle, markUrlProcessed } = await import('./db');
 
   // SEO package
   const seoPackage = await generateSEOPackage(article).catch(() => null);
@@ -116,22 +116,8 @@ async function enrichAndPublishArticle(article: BlogArticle, event: ScoredEvent)
     factCheck: event.factCheck || null,
   };
 
-  await articlesCol().doc(article.id).set(fullArticle);
-
-  await processedUrlsCol()
-    .doc(urlDocId(article.originalUrl))
-    .set({ url: article.originalUrl, articleId: article.id, processedAt: new Date().toISOString() });
-
-  // Mirror into the Turso archive immediately (not just at the 14-day cutoff).
-  // This makes Turso a real-time superset of Firestore, so if Firestore reads
-  // get throttled later the same day (free-tier quota exhausted), the ai-news
-  // page's archive fallback already has today's articles too — it doesn't
-  // silently drop back to only 14+ day old content. Best-effort: Turso being
-  // briefly unavailable must not fail the publish.
-  const { archiveArticles } = await import('./archive-db');
-  await archiveArticles([fullArticle]).catch(e =>
-    console.error('[Pipeline] Turso mirror failed for', article.id, ':', (e as Error).message)
-  );
+  await upsertArticle(fullArticle);
+  await markUrlProcessed(article.originalUrl, article.id);
 }
 
 // ─── MAIN PIPELINE ────────────────────────────────────────────────────────────
@@ -175,8 +161,7 @@ export async function runNewsPipeline(): Promise<PipelineResult> {
   const deduplicated = deduplicateEvents(filtered);
   console.log(`🔁 After dedup: ${deduplicated.length} unique`);
 
-  // STEP 4: Filter URLs already processed in Firebase — checks only this run's
-  // URLs individually instead of scanning up to 2000 arbitrary docs
+  // STEP 4: Filter out URLs already processed (Turso dedup table)
   const newEvents = await filterAlreadyProcessedByUrl(deduplicated);
   console.log(`✨ New events to process: ${newEvents.length}`);
 

@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { articlesCol } from '@/lib/firebase-admin';
-import { getArchivedArticles } from '@/lib/news/archive-db';
+import { getPublishedArticles } from '@/lib/news/db';
 
 /**
  * ThinkSuite Public AI News API v1
@@ -15,21 +14,7 @@ export async function GET(req: NextRequest) {
   const company  = p.get('company');
 
   try {
-    // Firestore (recent, 0-14 days) + Turso archive (14 days-3 months), so
-    // pagination isn't limited to whatever's currently live in Firestore.
-    // Single-field where (sorted in JS below) avoids needing a composite
-    // Firestore index for (status ==, publishedAt orderBy).
-    const [snap, archived] = await Promise.all([
-      articlesCol().where('status', '==', 'published').limit(500).get(),
-      getArchivedArticles(500).catch(() => []),
-    ]);
-
-    const recent = snap.docs.map(d => d.data());
-    const seenIds = new Set(recent.map((a: { id?: string }) => a.id));
-    const combinedDocs = [...recent, ...archived.filter(a => !seenIds.has(a.id))] as unknown as Record<string, unknown>[];
-    combinedDocs.sort((a, b) =>
-      +new Date((b.publishedAt as string) || 0) - +new Date((a.publishedAt as string) || 0)
-    );
+    const combinedDocs = await getPublishedArticles({ limit: 500 }) as unknown as Record<string, unknown>[];
 
     let all = combinedDocs.map((data) => {
       return {
