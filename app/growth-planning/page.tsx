@@ -5,6 +5,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Growth Planning Services for Businesses | ThinkSuite',
   description: 'ThinkSuite builds growth plans anchored to your real numbers, not industry averages. Revenue strategy, customer acquisition, and 90-day execution sprints.',
+  alternates: { canonical: 'https://thinksuite.in/growth-planning' },
   keywords: [
     'growth planning India',
     'revenue growth strategy India',

@@ -8,6 +8,7 @@ export const metadata: Metadata = {
     'ThinkSuite child safety policy', 'CSAE prevention policy', 'child sexual abuse material reporting',
     'platform child safety commitment', 'age restriction policy India',
   ],
+  alternates: { canonical: 'https://thinksuite.in/child-safety-policy' },
 }
 
 const childSafetyFaqs = [

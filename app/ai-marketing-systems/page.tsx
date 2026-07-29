@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'AI Marketing Systems Agency | ThinkSuite',
   description: 'AI-powered marketing automation for businesses worldwide. Automated lead nurturing, predictive lead scoring, personalized email, and AI content generation daily.',
+  alternates: { canonical: 'https://thinksuite.in/ai-marketing-systems' },
   keywords: [
     'AI marketing systems India',
     'AI marketing agency Gurgaon',

@@ -5,10 +5,11 @@ export const metadata: Metadata = {
   title: 'Our Team | ThinkSuite Digital Agency',
   description: 'Meet the ThinkSuite team: developers, designers, marketers, and AI engineers building and growing digital businesses for clients worldwide, from our in-house office.',
   keywords: [
-    'ThinkSuite team', 'ThinkSuite founder', 'Aakash Upadhyay ThinkSuite', 'digital agency team Gurgaon',
+    'ThinkSuite team', 'digital agency team Gurgaon',
     'in-house developers and designers India', 'AI engineers Gurgaon', 'meet the ThinkSuite team',
     'digital agency team', 'in-house developers and designers worldwide',
   ],
+  alternates: { canonical: 'https://thinksuite.in/team' },
 }
 
 const teamFaqs = [
@@ -50,53 +51,20 @@ export default function TeamPage() {
 
       <section className="section">
         <div className="container">
-          <div className="grid-3">
-            <div className="team-card reveal">
-              <div className="team-img" style={{ background: 'linear-gradient(135deg, #004767, #00d4ff)', fontSize: 72, color: 'rgba(255,255,255,0.25)', alignItems: 'center', justifyContent: 'center', display: 'flex', fontFamily: 'var(--font-h)', fontWeight: 900 }}>
-                AU
-              </div>
-              <div className="team-info">
-                <div className="team-name">Aakash Upadhyay</div>
-                <div className="team-role">Founder & CEO</div>
-                <p className="team-bio">
-                  Visionary entrepreneur and full-stack technologist with expertise in AI, software architecture,
-                  and digital strategy. Leading ThinkSuite&apos;s mission to deliver next-generation digital solutions.
-                </p>
-                <div className="tag-list mb-16">
-                  {['AI & ML', 'Full-Stack Dev', 'Product Strategy', 'Growth Hacking'].map((s) => (
-                    <span key={s} className="chip" style={{ fontSize: 11 }}>{s}</span>
-                  ))}
-                </div>
-                <div className="team-socials">
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="team-social" aria-label="LinkedIn">
-                    <i className="fa-brands fa-linkedin-in" />
-                  </a>
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="team-social" aria-label="Twitter">
-                    <i className="fa-brands fa-x-twitter" />
-                  </a>
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="team-social" aria-label="GitHub">
-                    <i className="fa-brands fa-github" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Bio section */}
-          <div className="team-bio-wrap reveal mt-48">
+          <div className="team-bio-wrap reveal">
             <div className="team-bio-grid">
               <div>
-                <span className="label">Founder Story</span>
-                <h2 className="mt-16">Aakash <span className="text-cyan">Upadhyay</span></h2>
+                <span className="label">Who We Are</span>
+                <h2 className="mt-16">In-House, <span className="text-cyan">End to End</span></h2>
                 <p className="mt-16 mb-16" style={{ color: 'var(--text2)', lineHeight: 1.85 }}>
-                  Aakash Upadhyay is the visionary founder and CEO of ThinkSuite, bringing together expertise
-                  in artificial intelligence, software engineering, and digital marketing strategy to create
-                  a truly full-stack digital agency.
+                  ThinkSuite is built around a full-time, in-house team of developers, designers, marketers,
+                  and AI engineers working together under one roof in Gurgaon, rather than a network of
+                  freelancers or subcontractors.
                 </p>
                 <p style={{ color: 'var(--text2)', lineHeight: 1.85 }}>
-                  With years of experience building products for startups and enterprises alike, Aakash founded
-                  ThinkSuite with a clear mission: to give every business access to enterprise-grade digital
-                  capabilities that actually drive growth.
+                  That structure means every project is handled by people who know the codebase, the brand,
+                  and the client relationship end to end, giving businesses access to enterprise-grade
+                  digital capabilities that actually drive growth.
                 </p>
               </div>
               <div>

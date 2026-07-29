@@ -8,6 +8,7 @@ export const metadata: Metadata = {
     'ThinkSuite refund policy', 'subscription cancellation policy', 'digital agency refund eligibility',
     'how to cancel ThinkSuite subscription', 'project deposit refund policy', 'subscription cancellation policy India',
   ],
+  alternates: { canonical: 'https://thinksuite.in/refund-cancellation' },
 }
 
 const refundFaqs = [

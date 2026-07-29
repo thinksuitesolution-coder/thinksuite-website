@@ -5,6 +5,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Workflow Automation Services Agency | ThinkSuite',
   description: 'Business workflow automation for companies worldwide: CRM automation, invoice processing, marketing automation, and data sync across your existing tools.',
+  alternates: { canonical: 'https://thinksuite.in/workflow-automation' },
   keywords: [
     'workflow automation agency Gurgaon',
     'workflow automation India',

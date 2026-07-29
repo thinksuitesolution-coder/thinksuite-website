@@ -6,6 +6,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'AI Automation and Workflow Agency | ThinkSuite',
   description: 'Custom AI tool integration and workflow automation for businesses worldwide. RAG systems, LLM chatbots, and automation that cuts manual work fast, every week.',
+  alternates: { canonical: 'https://thinksuite.in/ai-automation' },
   keywords: [
     'AI automation agency Gurgaon',
     'AI automation India',

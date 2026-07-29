@@ -8,6 +8,7 @@ export const metadata: Metadata = {
     'ThinkSuite terms and conditions', 'digital agency terms of service', 'project payment terms agency',
     'intellectual property digital agency', 'ThinkSuite governing law', 'digital agency terms of service India',
   ],
+  alternates: { canonical: 'https://thinksuite.in/terms-and-conditions' },
 }
 
 const termsFaqs = [

@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'SEO and GEO Optimization Agency | ThinkSuite',
   description: 'SEO and Generative Engine Optimization for businesses worldwide. Rank on Google and get cited by ChatGPT, Gemini, and Perplexity with structured content strategy.',
+  alternates: { canonical: 'https://thinksuite.in/seo-optimization' },
   keywords: [
     'SEO agency Gurgaon',
     'SEO services India',

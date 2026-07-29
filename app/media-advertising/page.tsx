@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Media Advertising Agency: TV, Radio & OTT | ThinkSuite',
   description: 'Media advertising from ThinkSuite\'s in-house team: TV, radio, print, OTT, and programmatic buying with cross-channel planning for regional and national ads.',
+  alternates: { canonical: 'https://thinksuite.in/media-advertising' },
   keywords: [
     'media advertising agency India',
     'TV advertising agency India',

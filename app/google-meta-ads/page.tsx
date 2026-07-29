@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Google & Meta Ads Management Agency | ThinkSuite',
   description: 'Google Ads and Meta Ads management from ThinkSuite\'s in-house team: search, shopping, display, Facebook, and Instagram campaigns built for real ROI, worldwide.',
+  alternates: { canonical: 'https://thinksuite.in/google-meta-ads' },
   keywords: [
     'Google Ads management agency India',
     'Meta Ads management agency Gurgaon',

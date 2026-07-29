@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Content Marketing Services Agency | ThinkSuite',
   description: 'Content marketing from ThinkSuite\'s in-house team: SEO blog writing, video scripts, case studies, newsletters, and website copy built to earn trust, worldwide.',
+  alternates: { canonical: 'https://thinksuite.in/content-marketing' },
   keywords: [
     'content marketing agency Gurgaon',
     'content marketing agency India',

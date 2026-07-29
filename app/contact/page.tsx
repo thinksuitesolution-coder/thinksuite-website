@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     'ThinkSuite Gurgaon contact', 'digital agency inquiry India', 'free strategy call digital agency',
     'request a project proposal India', 'hire digital agency worldwide', 'digital agency inquiry',
   ],
+  alternates: { canonical: 'https://thinksuite.in/contact' },
 }
 
 const contactFaqs = [

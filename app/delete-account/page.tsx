@@ -8,6 +8,7 @@ export const metadata: Metadata = {
     'delete ThinkSuite account', 'how to delete my account', 'ThinkSuite account deletion policy',
     'cancel subscription before deleting account', 'account data retention policy',
   ],
+  alternates: { canonical: 'https://thinksuite.in/delete-account' },
 }
 
 const deleteAccountFaqs = [

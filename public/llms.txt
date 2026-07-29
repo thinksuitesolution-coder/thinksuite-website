@@ -5,8 +5,65 @@
 ## Company
 
 - [About ThinkSuite](https://thinksuite.in/about): who we are and what we do
+- [Our Team](https://thinksuite.in/team): the in-house team behind ThinkSuite
 - [Services](https://thinksuite.in/services): full list of services (software development, digital marketing, branding & design, AI automation, media advertising, consulting)
+- [Projects](https://thinksuite.in/projects): case studies and client work
+- [Careers](https://thinksuite.in/careers): open roles
+- [FAQ](https://thinksuite.in/faq): common questions about working with ThinkSuite
 - [Contact](https://thinksuite.in/contact): get in touch
+
+## Software Development
+
+- [Software Development](https://thinksuite.in/software-development): overview of custom software, web, and mobile development
+- [Custom Software Development](https://thinksuite.in/custom-software)
+- [Web Development](https://thinksuite.in/web-development)
+- [Mobile App Development](https://thinksuite.in/mobile-app-development)
+- [AI Tools Development](https://thinksuite.in/ai-tools-development)
+- [AI Automation](https://thinksuite.in/ai-automation): overview of chatbot and workflow automation services
+- [Chatbot Solutions](https://thinksuite.in/chatbot-solutions)
+- [Workflow Automation](https://thinksuite.in/workflow-automation)
+
+## Digital Marketing
+
+- [Digital Marketing](https://thinksuite.in/digital-marketing): overview of SEO, social, ads, and content marketing services
+- [SEO & GEO Optimization](https://thinksuite.in/seo-optimization)
+- [Social Media Marketing](https://thinksuite.in/social-media-marketing)
+- [Google & Meta Ads](https://thinksuite.in/google-meta-ads)
+- [Content Marketing](https://thinksuite.in/content-marketing)
+- [Influencer Marketing](https://thinksuite.in/influencer-marketing)
+- [AI Marketing Systems](https://thinksuite.in/ai-marketing-systems)
+- [PR Campaigns](https://thinksuite.in/pr-campaigns)
+
+## Branding & Design
+
+- [Branding & Design](https://thinksuite.in/branding-design): overview of brand identity, graphic, and product design services
+- [Brand Identity](https://thinksuite.in/brand-identity)
+- [Graphic Design](https://thinksuite.in/graphic-design)
+- [Product Design](https://thinksuite.in/product-design)
+- [UI/UX Design](https://thinksuite.in/ui-ux-design)
+
+## Media & Advertising
+
+- [Media & Advertising](https://thinksuite.in/media-advertising): overview of indoor and outdoor advertising services
+- [Indoor Advertising](https://thinksuite.in/indoor-advertising)
+- [Outdoor Advertising](https://thinksuite.in/outdoor-advertising)
+
+## Consulting & Growth
+
+- [Consulting & Growth](https://thinksuite.in/consulting-growth): overview of business strategy, startup consulting, and growth planning services
+- [Business Strategy](https://thinksuite.in/business-strategy)
+- [Startup Consulting](https://thinksuite.in/startup-consulting)
+- [Growth Planning](https://thinksuite.in/growth-planning)
+- [Market Research](https://thinksuite.in/market-research)
+
+## AI Tools & SaaS Products
+
+- [AI Tools Hub](https://thinksuite.in/tools): five AI tools under one subscription — content, image, video, voice, lead generation
+- [SaaS Products](https://thinksuite.in/saas-products): ThinkSuite's own in-house products
+- [ThinkVirtual](https://thinksuite.in/ecosystem/thinkvirtual)
+- [WavCart](https://thinksuite.in/ecosystem/wavcart)
+- [MyThinkAI](https://thinksuite.in/ecosystem/mythinkai)
+- [Visibility](https://thinksuite.in/ecosystem/visibility)
 
 ## AI Pulse — AI Industry News
 

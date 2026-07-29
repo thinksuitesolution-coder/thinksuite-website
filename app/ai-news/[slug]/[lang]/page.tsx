@@ -116,16 +116,43 @@ export default async function TranslatedArticlePage({ params }: { params: { slug
     author: { '@type': 'Organization', name: 'ThinkSuite AI', url: `${SITE_URL}/ai-news` },
     publisher: {
       '@type': 'Organization', name: 'ThinkSuite',
-      logo: { '@type': 'ImageObject', url: `${SITE_URL}/assets/img/favicon.svg` },
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/assets/img/logo.png`, width: 2000, height: 2000 },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/ai-news/${article.slug}/${params.lang}` },
     url: `${SITE_URL}/ai-news/${article.slug}/${params.lang}`,
     articleSection: article.category || undefined,
+    citation: article.originalUrl || undefined,
+    isBasedOn: article.originalUrl ? {
+      '@type': 'CreativeWork',
+      url: article.originalUrl,
+      name: article.sourceName,
+    } : undefined,
   };
+  const factCheckSchema = article.factCheck ? {
+    '@context': 'https://schema.org', '@type': 'ClaimReview',
+    datePublished: article.publishedAt,
+    url: `${SITE_URL}/ai-news/${article.slug}/${params.lang}`,
+    author: { '@type': 'Organization', name: 'ThinkSuite AI Pulse', url: `${SITE_URL}/ai-news` },
+    claimReviewed: article.title,
+    itemReviewed: {
+      '@type': 'CreativeWork',
+      author: { '@type': 'Organization', name: article.sourceName },
+      datePublished: article.publishedAt,
+      url: article.originalUrl,
+    },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: article.factCheck.confidenceScore,
+      bestRating: 100,
+      worstRating: 0,
+      alternateName: article.factCheck.verificationStatus,
+    },
+  } : null;
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJson) }} />
+      {factCheckSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(factCheckSchema) }} />}
       <main dir={langConfig?.dir || 'ltr'}>
         <div className="article-breadcrumb">
           <div className="container">

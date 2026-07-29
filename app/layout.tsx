@@ -88,9 +88,19 @@ const organizationSchema = {
   '@type': 'Organization',
   name: 'ThinkSuite',
   url: 'https://thinksuite.in',
-  logo: 'https://thinksuite.in/assets/img/fevicon.svg',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://thinksuite.in/assets/img/logo.png',
+    width: 2000,
+    height: 2000,
+  },
   description: 'Full-stack digital agency offering AI software development, digital marketing, branding and design, and business consulting to clients worldwide, delivered by one in-house team.',
   foundingDate: '2020',
+  sameAs: [
+    'https://twitter.com/thinksuite',
+    'https://www.linkedin.com/in/thinksuite-solution-6a1b2437a/',
+    'https://instagram.com/thinksuite',
+  ],
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer service',

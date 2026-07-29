@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     'clothing store website',
     'printing design website',
   ],
+  alternates: { canonical: 'https://thinksuite.in/projects' },
 }
 
 export default function ProjectsPage() {

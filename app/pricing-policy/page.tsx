@@ -8,6 +8,7 @@ export const metadata: Metadata = {
     'ThinkSuite pricing policy', 'digital agency pricing India', 'subscription billing policy',
     'custom project quote policy', 'ThinkSuite GST and taxes',
   ],
+  alternates: { canonical: 'https://thinksuite.in/pricing-policy' },
 }
 
 const pricingFaqs = [

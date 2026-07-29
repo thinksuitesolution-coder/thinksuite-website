@@ -5,6 +5,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Business Consulting & Growth Advisory | ThinkSuite',
   description: 'Business consulting for companies worldwide who want a strategic partner, not just a report. Growth advisory, operations, and leadership guidance.',
+  alternates: { canonical: 'https://thinksuite.in/consulting-growth' },
   keywords: [
     'business consulting India',
     'growth advisory India',

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Branding and Design Agency | ThinkSuite',
   description: 'Professional branding and design services worldwide: brand identity design, UI/UX design, graphic design, and product design for startups and growing businesses.',
   keywords: ['branding and design agency Gurgaon', 'brand identity design India', 'logo design company India', 'UI UX design agency India', 'graphic design agency Gurgaon', 'product design company India', 'brand design agency Gurgaon', 'visual identity design India', 'creative agency for startups India', 'branding and design agency', 'brand identity design worldwide', 'creative agency for startups', 'branding agency', 'brand design agency', 'brand strategy agency', 'rebranding agency', 'branding agency for startups'],
+  alternates: { canonical: 'https://thinksuite.in/branding-design' },
 }
 
 const FAQS = [

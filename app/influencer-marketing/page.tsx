@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Influencer Marketing Agency | ThinkSuite',
   description: 'Influencer marketing from ThinkSuite\'s in-house team: micro-influencer and celebrity campaigns, UGC content, and affiliate programs for brands worldwide.',
+  alternates: { canonical: 'https://thinksuite.in/influencer-marketing' },
   keywords: [
     'influencer marketing agency Gurgaon',
     'influencer marketing agency India',

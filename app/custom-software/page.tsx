@@ -6,6 +6,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Custom Software Development Company | ThinkSuite',
   description: 'Custom software development for businesses worldwide: ERP systems, CRM platforms, automation tools, and enterprise applications engineered around your exact workflows.',
+  alternates: { canonical: 'https://thinksuite.in/custom-software' },
   keywords: [
     'custom software development company Gurgaon',
     'bespoke software development India',

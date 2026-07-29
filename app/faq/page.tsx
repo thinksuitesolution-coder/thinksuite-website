@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     'digital marketing agency FAQ', 'ThinkSuite services explained',
     'digital agency questions', 'how much does a website cost', 'digital agency pricing',
   ],
+  alternates: { canonical: 'https://thinksuite.in/faq' },
 }
 
 export default function FaqPage() {

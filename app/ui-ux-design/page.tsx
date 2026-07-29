@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'UI/UX Design Services | ThinkSuite',
   description: 'Professional UI/UX design for businesses worldwide: user research, wireframing, Figma prototyping, and conversion-focused interface design for web and mobile products.',
   keywords: ['UI UX design company Gurgaon', 'user experience design India', 'Figma design agency India', 'product design agency Gurgaon', 'app UX design India', 'interface design India', 'UX research and testing India', 'mobile app UX design', 'website UX audit services', 'UI UX design company', 'user experience design agency worldwide', 'Figma design agency', 'product design agency', 'UI/UX design agency', 'UI UX design services', 'UX design company', 'SaaS UI/UX design agency', 'website UX design services'],
+  alternates: { canonical: 'https://thinksuite.in/ui-ux-design' },
 }
 
 const FAQS = [

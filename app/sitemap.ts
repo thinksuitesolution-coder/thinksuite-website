@@ -23,10 +23,75 @@ const STATIC_ROUTES = [
   'pricing-policy', 'child-safety-policy', 'delete-account',
 ];
 
+// Last real content-edit date per route (from git history), not a fabricated "now".
+// Bump a route's date here when its page content actually changes.
+const ROUTE_LAST_MODIFIED: Record<string, string> = {
+  '': '2026-07-15',
+  about: '2026-07-20',
+  services: '2026-07-15',
+  'saas-products': '2026-07-15',
+  tools: '2026-07-15',
+  'tools/content': '2026-07-15',
+  'tools/imagestudio': '2026-07-15',
+  'tools/lead-generation': '2026-07-15',
+  'tools/video': '2026-07-15',
+  'tools/voice': '2026-07-15',
+  'ai-news': '2026-07-24',
+  blog: '2026-07-01',
+  faq: '2026-07-15',
+  careers: '2026-07-15',
+  contact: '2026-07-15',
+  team: '2026-07-15',
+  projects: '2026-07-22',
+  ecosystem: '2026-07-20',
+  'ecosystem/mythinkai': '2026-07-13',
+  'ecosystem/thinkvirtual': '2026-07-15',
+  'ecosystem/visibility': '2026-07-13',
+  'ecosystem/wavcart': '2026-07-13',
+  'software-development': '2026-07-15',
+  'custom-software': '2026-07-15',
+  'web-development': '2026-07-15',
+  'mobile-app-development': '2026-07-15',
+  'ai-tools-development': '2026-07-15',
+  'ai-automation': '2026-07-15',
+  'chatbot-solutions': '2026-07-15',
+  'workflow-automation': '2026-07-15',
+  'digital-marketing': '2026-07-15',
+  'seo-optimization': '2026-07-15',
+  'social-media-marketing': '2026-07-15',
+  'google-meta-ads': '2026-07-15',
+  'content-marketing': '2026-07-15',
+  'influencer-marketing': '2026-07-15',
+  'ai-marketing-systems': '2026-07-15',
+  'pr-campaigns': '2026-07-15',
+  'branding-design': '2026-07-15',
+  'brand-identity': '2026-07-15',
+  'graphic-design': '2026-07-15',
+  'product-design': '2026-07-15',
+  'ui-ux-design': '2026-07-15',
+  'media-advertising': '2026-07-15',
+  'indoor-advertising': '2026-07-15',
+  'outdoor-advertising': '2026-07-15',
+  'consulting-growth': '2026-07-15',
+  'business-strategy': '2026-07-15',
+  'startup-consulting': '2026-07-15',
+  'growth-planning': '2026-07-15',
+  'market-research': '2026-07-15',
+  'privacy-policy': '2026-07-15',
+  'terms-and-conditions': '2026-07-15',
+  'refund-cancellation': '2026-07-15',
+  'shipping-policy': '2026-07-15',
+  'pricing-policy': '2026-07-13',
+  'child-safety-policy': '2026-07-13',
+  'delete-account': '2026-07-13',
+};
+
+const PROJECTS_DATA_LAST_MODIFIED = '2026-07-22';
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
     url: `${SITE_URL}/${route}`,
-    lastModified: new Date(),
+    lastModified: new Date(ROUTE_LAST_MODIFIED[route] || ROUTE_LAST_MODIFIED['']),
     changeFrequency: route === '' || route === 'ai-news' ? 'daily' : 'weekly',
     priority: route === '' ? 1 : 0.7,
   }));
@@ -40,7 +105,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const projectEntries: MetadataRoute.Sitemap = projects.map((p) => ({
     url: `${SITE_URL}/projects/${p.id}`,
-    lastModified: new Date(),
+    lastModified: new Date(PROJECTS_DATA_LAST_MODIFIED),
     changeFrequency: 'monthly',
     priority: 0.6,
   }));

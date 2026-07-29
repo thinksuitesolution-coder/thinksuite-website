@@ -8,6 +8,7 @@ export const metadata: Metadata = {
     'ThinkSuite shipping policy', 'digital delivery policy', 'no physical shipping digital agency',
     'subscription activation time', 'project deliverable timeline agency', 'digital delivery policy India',
   ],
+  alternates: { canonical: 'https://thinksuite.in/shipping-policy' },
 }
 
 const shippingFaqs = [

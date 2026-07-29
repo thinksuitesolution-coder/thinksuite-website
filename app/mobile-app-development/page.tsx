@@ -6,6 +6,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Mobile App Development Company | ThinkSuite',
   description: 'iOS and Android app development for startups and growing businesses worldwide. ThinkSuite builds native Swift, Kotlin, React Native, and Flutter apps.',
+  alternates: { canonical: 'https://thinksuite.in/mobile-app-development' },
   keywords: [
     'mobile app development company Gurgaon',
     'iOS app development India',

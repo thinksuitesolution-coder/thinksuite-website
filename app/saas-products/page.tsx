@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     'multi-tenant SaaS development',
     'SaaS billing integration development',
   ],
+  alternates: { canonical: 'https://thinksuite.in/saas-products' },
 }
 
 const serviceSchema = buildServiceSchema({

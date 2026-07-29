@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'About ThinkSuite | Digital Agency',
   description: 'ThinkSuite is a full-service digital agency founded in India in 2020, helping businesses worldwide grow through web development, marketing, AI automation, and design.',
   keywords: ['about ThinkSuite', 'digital agency Gurgaon', 'full service digital agency India', 'web development agency Gurgaon', 'marketing agency India', 'AI agency Gurgaon', 'ThinkSuite founder story', 'in-house digital agency team India', 'full service digital agency worldwide', 'web development agency', 'marketing agency'],
+  alternates: { canonical: 'https://thinksuite.in/about' },
 }
 
 // ── HERO ─────────────────────────────────────────────────────────────────────
@@ -902,10 +903,6 @@ function IndustriesSection() {
 // ── FAQ ───────────────────────────────────────────────────────────────────────
 
 const aboutFaqs = [
-  {
-    q: 'Who is behind ThinkSuite?',
-    a: 'ThinkSuite was founded in 2020 by Aakash Upadhyay and is run today by an in-house team of developers, designers, marketers, AI engineers, and strategists based in Gurgaon. Every project is delivered by full-time ThinkSuite staff, not outsourced freelancers or subcontractors.',
-  },
   {
     q: 'When was ThinkSuite founded and where is it based?',
     a: 'ThinkSuite was founded in Gurgaon, India in 2020 as a small web studio and has since grown into a full-stack digital agency and AI product company. Our team and operations remain based in Gurgaon, serving clients across India and beyond.',

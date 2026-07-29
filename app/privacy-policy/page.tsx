@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     'website cookies policy', 'personal information rights', 'GDPR rights ThinkSuite', 'CCPA rights ThinkSuite',
     'digital agency data privacy India', 'personal information rights India',
   ],
+  alternates: { canonical: 'https://thinksuite.in/privacy-policy' },
 }
 
 const privacyFaqs = [

@@ -6,6 +6,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Web Development Company | ThinkSuite',
   description: 'Custom web development for businesses worldwide: corporate sites, e-commerce platforms, and web apps built with Next.js, React, and TypeScript for real business growth.',
+  alternates: { canonical: 'https://thinksuite.in/web-development' },
   keywords: [
     'web development company Gurgaon',
     'Next.js development company India',

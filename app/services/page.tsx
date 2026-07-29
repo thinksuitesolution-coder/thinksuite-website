@@ -34,6 +34,7 @@ export const metadata: Metadata = {
     'business consulting services India', 'full stack agency service list', 'website and app development services',
     'SEO and social media marketing services',
   ],
+  alternates: { canonical: 'https://thinksuite.in/services' },
 }
 
 export default function ServicesPage() {

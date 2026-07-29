@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     'software developer jobs Gurgaon', 'work at ThinkSuite', 'UI UX design jobs India', 'AI engineer jobs Gurgaon',
     'remote digital marketing jobs', 'remote software developer jobs', 'work at ThinkSuite remote',
   ],
+  alternates: { canonical: 'https://thinksuite.in/careers' },
 }
 
 const careersFaqs = [

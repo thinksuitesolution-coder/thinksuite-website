@@ -5,6 +5,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Startup Consulting for Founders | ThinkSuite',
   description: 'ThinkSuite helps early-stage founders worldwide validate ideas, build go-to-market plans, and raise funding, backed by an in-house team that builds the product too.',
+  alternates: { canonical: 'https://thinksuite.in/startup-consulting' },
   keywords: [
     'startup consulting India',
     'startup advisor Gurgaon',

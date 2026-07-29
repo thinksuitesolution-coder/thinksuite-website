@@ -5,6 +5,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Custom AI Tools Development Agency | ThinkSuite',
   description: 'Custom AI tool development for businesses worldwide, including NLP, computer vision, recommendation engines, and predictive analytics built around your specific data and business logic.',
+  alternates: { canonical: 'https://thinksuite.in/ai-tools-development' },
   keywords: [
     'custom AI development India',
     'AI tools development agency Gurgaon',

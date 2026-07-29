@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Brand Identity Design Agency | ThinkSuite',
   description: 'Professional brand identity design for businesses worldwide. Logo design, color systems, typography, brand guidelines, and complete visual identity packages.',
   keywords: ['brand identity design agency Gurgaon', 'logo design company India', 'brand guidelines design India', 'visual identity design India', 'logo designer Gurgaon', 'brand design agency India', 'corporate identity design India', 'startup branding agency India', 'brand identity design agency', 'logo design company worldwide', 'brand design agency', 'brand identity design services', 'visual identity design agency', 'logo and brand identity design', 'brand identity design for startups', 'brand identity guidelines design'],
+  alternates: { canonical: 'https://thinksuite.in/brand-identity' },
 }
 
 const FAQS = [

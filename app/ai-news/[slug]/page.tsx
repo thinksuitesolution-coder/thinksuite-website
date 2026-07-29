@@ -127,22 +127,49 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     publisher: {
       '@type': 'Organization',
       name: 'ThinkSuite',
-      logo: { '@type': 'ImageObject', url: 'https://thinksuite.in/assets/img/favicon.svg' },
+      logo: { '@type': 'ImageObject', url: 'https://thinksuite.in/assets/img/logo.png', width: 2000, height: 2000 },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://thinksuite.in/ai-news/${article.slug}` },
     url: `https://thinksuite.in/ai-news/${article.slug}`,
     articleSection: article.category || undefined,
     keywords: article.tags?.length ? article.tags.join(', ') : undefined,
+    citation: article.originalUrl || undefined,
+    isBasedOn: article.originalUrl ? {
+      '@type': 'CreativeWork',
+      url: article.originalUrl,
+      name: article.sourceName,
+    } : undefined,
   };
   const faqSchema = article.faqs?.length ? {
     '@context': 'https://schema.org', '@type': 'FAQPage',
     mainEntity: article.faqs.map(f => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+  } : null;
+  const factCheckSchema = article.factCheck ? {
+    '@context': 'https://schema.org', '@type': 'ClaimReview',
+    datePublished: article.publishedAt,
+    url: `https://thinksuite.in/ai-news/${article.slug}`,
+    author: { '@type': 'Organization', name: 'ThinkSuite AI Pulse', url: 'https://thinksuite.in/ai-news' },
+    claimReviewed: article.title,
+    itemReviewed: {
+      '@type': 'CreativeWork',
+      author: { '@type': 'Organization', name: article.sourceName },
+      datePublished: article.publishedAt,
+      url: article.originalUrl,
+    },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: article.factCheck.confidenceScore,
+      bestRating: 100,
+      worstRating: 0,
+      alternateName: article.factCheck.verificationStatus,
+    },
   } : null;
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJson) }} />
       {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
+      {factCheckSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(factCheckSchema) }} />}
 
       <main>
         {/* Breadcrumb */}

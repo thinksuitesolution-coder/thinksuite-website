@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Graphic Design Services Agency | ThinkSuite',
   description: 'Professional graphic design for businesses worldwide. Social media graphics, brochures, presentations, packaging, banners, and infographics designed for impact.',
   keywords: ['graphic design agency Gurgaon', 'social media design India', 'brochure design services India', 'presentation design agency', 'infographic design India', 'packaging design India', 'banner and poster design India', 'graphic designer Gurgaon', 'graphic design agency', 'brochure design services worldwide', 'packaging design agency', 'graphic design services', 'graphic design company', 'graphic design agency for small business', 'social media graphic design service', 'print graphic design agency'],
+  alternates: { canonical: 'https://thinksuite.in/graphic-design' },
 }
 
 const FAQS = [

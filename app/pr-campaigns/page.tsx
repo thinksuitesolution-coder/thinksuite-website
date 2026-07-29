@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'PR & Media Relations Agency | ThinkSuite',
   description: 'PR campaigns from ThinkSuite\'s in-house team: media coverage, press releases, journalist outreach, crisis communications, and thought leadership programs for brands worldwide.',
+  alternates: { canonical: 'https://thinksuite.in/pr-campaigns' },
   keywords: [
     'PR agency Gurgaon',
     'public relations agency India',
