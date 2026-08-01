@@ -209,9 +209,8 @@ ${tenders.map((t, i) => `${i}: ${t.title} | Sector: ${t.sector || "N/A"} | Org: 
 
 async function triggerBackgroundScrape() {
   try {
-    const base = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : (process.env.NEXTAUTH_URL || "http://localhost:3000");
+    const base = process.env.HEAVY_JOBS_BASE_URL
+      || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : (process.env.NEXTAUTH_URL || "http://localhost:3000"));
     fetch(`${base}/api/cron/scrape-tenders?type=gem`, {
       headers: { "x-cron-secret": process.env.CRON_SECRET || "dev-secret" },
       signal: AbortSignal.timeout(5000),

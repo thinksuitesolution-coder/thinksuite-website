@@ -248,9 +248,8 @@ ${tenders.map((t, i) => `${i}: ${t.title} | ${t.sector || ""} | ${t.state_city |
 
 function triggerCountrySpecificScrape(country) {
   try {
-    const base = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : (process.env.NEXTAUTH_URL || "http://localhost:3000");
+    const base = process.env.HEAVY_JOBS_BASE_URL
+      || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : (process.env.NEXTAUTH_URL || "http://localhost:3000"));
     fetch(`${base}/api/cron/scrape-tenders?type=intl&country=${encodeURIComponent(country)}`, {
       headers: { "x-cron-secret": process.env.CRON_SECRET || "dev-secret" },
       signal: AbortSignal.timeout(5000),

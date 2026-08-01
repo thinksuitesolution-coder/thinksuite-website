@@ -125,9 +125,10 @@ export async function POST(request) {
       if (portal) params.set("portal", portal);
       if (type)   params.set("type",   type);
 
-      const baseUrl  = process.env.NEXTAUTH_URL || process.env.VERCEL_URL
-        ? `https://${process.env.VERCEL_URL}`
-        : "http://localhost:3000";
+      // Route heavy scraping to Railway (flat compute pricing) instead of
+      // Vercel's own URL (per-invocation Fluid Compute billing).
+      const baseUrl  = process.env.HEAVY_JOBS_BASE_URL
+        || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
       const scrapeUrl = `${baseUrl}/api/cron/scrape-tenders?${params.toString()}`;
 
       /* Trigger in background  don't await since it can take minutes */
