@@ -1,16 +1,1 @@
-{
-  "crons": [
-    {
-      "path": "/api/cron/fetch-news",
-      "schedule": "0 */2 * * *"
-    },
-    {
-      "path": "/api/cron/cleanup-news",
-      "schedule": "0 3 * * *"
-    },
-    {
-      "path": "/api/cron/send-newsletter",
-      "schedule": "0 8 * * *"
-    }
-  ]
-}
+{}
