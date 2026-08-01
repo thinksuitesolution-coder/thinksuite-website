@@ -21,7 +21,7 @@ const products = [
   {
     id: 'Thinksuite',
     emoji: '🤖',
-    logo: '/assets/img/logos/thinksuite.png',
+    logo: '/assets/img/logos/thinksuite%20logo.png',
     name: 'Thinksuite',
     tagline: 'Your Personal AI Workspace',
     desc: 'Write content, conduct research, and automate repetitive tasks with an AI assistant trained and tailored specifically for your business needs.',
@@ -38,7 +38,7 @@ const products = [
   {
     id: 'thinkvirtual',
     emoji: '🌐',
-    logo: '/assets/img/logos/thinkvirtual.png',
+    logo: '/assets/img/logos/thinkvirtual%20logo.png',
     name: 'ThinkVirtual',
     tagline: 'Freelancer & Client Network',
     desc: 'Connect freelancers, clients, and influencers, post projects, find talent, and collaborate. A LinkedIn-style professional network built for India\'s digital and creative economy.',
@@ -55,7 +55,7 @@ const products = [
   {
     id: 'wavcart',
     emoji: '🛒',
-    logo: '/assets/img/logos/wavcart.png',
+    logo: '/assets/img/logos/wavcart%20logo.png',
     name: 'WavCart',
     tagline: 'AI-Powered E-Commerce Platform',
     desc: 'Launch and grow your online store with AI: smart product listings, automated marketing campaigns, conversion optimization, and inventory intelligence.',
