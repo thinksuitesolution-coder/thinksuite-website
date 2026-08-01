@@ -2,6 +2,7 @@
 import { firecrawlScrape, extractEmails, extractPhones, extractWebsites, applyQualityGate, getGl, serperSearch } from "@/lib/scraperUtils";
 import { checkLeadQuota, incrementLeadQuota, saveLeadHistory } from "@/lib/leadGenQuota";
 import { verifyUser } from "@/lib/authUtils";
+import { heavyJobGateway } from "@/lib/heavyJobGateway";
 const SCRAPER_KEY = null;
 
 export const maxDuration = 90;
@@ -192,6 +193,9 @@ function buildLeadsFromItems(items, seenIds, locationStr, count, searchType = "b
 
 export async function POST(request) {
   try {
+    const gated = await heavyJobGateway(request);
+    if (gated) return gated;
+
     const userId = await verifyUser(request);
     if (!userId) return Response.json({ error: "Unauthorized" }, { status: 401 });
 

@@ -3,6 +3,7 @@ import { getAIClient }   from "@/lib/aiClient";
 import { extractEmails, extractPhones, serperSearch } from "@/lib/scraperUtils";
 import { checkLeadQuota, incrementLeadQuota, saveLeadHistory } from "@/lib/leadGenQuota";
 import { verifyUser } from "@/lib/authUtils";
+import { heavyJobGateway } from "@/lib/heavyJobGateway";
 const SCRAPER_KEY = null;
 const FIRECRAWL = null;
 
@@ -143,6 +144,9 @@ async function enrichWithContact(companyName, city, state) {
 /* ── Main handler ─────────────────────────────────────────────────────────── */
 export async function POST(req) {
   try {
+    const gated = await heavyJobGateway(req);
+    if (gated) return gated;
+
     const userId = await verifyUser(req);
     if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 

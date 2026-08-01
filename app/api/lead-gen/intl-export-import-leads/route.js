@@ -3,6 +3,7 @@ import { getAdminDb } from "@/lib/firebaseAdmin";
 import { scraperFetch, extractEmails, extractPhones, applyQualityGate } from "@/lib/scraperUtils";
 import { verifyUser } from "@/lib/authUtils";
 import { checkLeadQuota, incrementLeadQuota, saveLeadHistory } from "@/lib/leadGenQuota";
+import { heavyJobGateway } from "@/lib/heavyJobGateway";
 const SCRAPER_KEY = null;
 const FIRECRAWL = null;
 
@@ -95,6 +96,9 @@ function dedupKey(userId, product, tradeType, country) {
 
 export async function POST(request) {
   try {
+    const gated = await heavyJobGateway(request);
+    if (gated) return gated;
+
     const userId = await verifyUser(request);
     if (!userId) return Response.json({ error: "Unauthorized" }, { status: 401 });
 

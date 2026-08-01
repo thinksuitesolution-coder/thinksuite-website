@@ -2,6 +2,7 @@ import { getAIClient } from "@/lib/aiClient";
 import { applyQualityGate, extractEmails, extractPhones, extractEmailFromHtml, extractPhoneFromHtml, extractWhatsAppNumber, getGl, ddgSearch, scraperFetch } from "@/lib/scraperUtils";
 import { checkLeadQuota, incrementLeadQuota, saveLeadHistory } from "@/lib/leadGenQuota";
 import { verifyUser } from "@/lib/authUtils";
+import { heavyJobGateway } from "@/lib/heavyJobGateway";
 
 export const maxDuration = 90;
 
@@ -103,6 +104,9 @@ function isDirectoryUrl(url) {
 ═══════════════════════════════════════════════════════════════════════════ */
 export async function POST(request) {
   try {
+    const gated = await heavyJobGateway(request);
+    if (gated) return gated;
+
     const userId = await verifyUser(request);
     if (!userId) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
