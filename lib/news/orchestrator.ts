@@ -213,7 +213,18 @@ export async function runNewsPipeline(): Promise<PipelineResult> {
   let failed = 0;
   let broadcasted = 0;
 
+  // Optional wall-clock budget. A full run takes ~20+ min, so the scheduled
+  // GitHub Actions run sets this to stop between articles and exit cleanly
+  // rather than being killed mid-write by the job timeout. Unset (the Vercel
+  // route) means no limit, as before.
+  const timeBudgetMs = Number(process.env.PIPELINE_TIME_BUDGET_MS) || 0;
+
   for (const event of toProcess) {
+    if (timeBudgetMs && Date.now() - start > timeBudgetMs) {
+      console.log(`⏱️  Time budget reached — stopping after ${published} article(s)`);
+      break;
+    }
+
     try {
       const article = await generateBlogArticle(event);
       if (!article) { failed++; continue; }
