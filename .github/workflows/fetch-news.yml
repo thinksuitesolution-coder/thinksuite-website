@@ -3,14 +3,14 @@ name: Fetch AI News
 # Runs the news pipeline on GitHub's runners instead of Vercel — the Vercel
 # crons were removed for Hobby-plan/cost reasons, and hitting the Vercel route
 # from outside would still bill Vercel fluid compute for a ~5 minute function.
-# Every 8 hours, not 2: a full run is ~20 min, and 12 runs/day would burn
-# ~7,200 min against the 2,000 free private-repo minutes. At 3 runs/day with a
-# 15-minute budget it lands near ~1,500 min/month — and since Vercel's 300s cap
-# was truncating each run to ~1 article, 3 uncapped runs still publish more per
-# day than the old 2-hourly schedule did.
+# Every 3 hours, not 2. Each run pays a fixed ~3 min collection cost before the
+# first article, so 12 runs/day would spend ~7,200 min against the 2,000 free
+# private-repo minutes while publishing *fewer* articles. 8 runs/day inside a
+# 5-minute budget lands near ~1,740 min/month at ~18 articles/day — against the
+# 8-10/day the 2-hourly Vercel cron managed under its 300s truncation.
 on:
   schedule:
-    - cron: '0 */8 * * *'
+    - cron: '0 */3 * * *'
   workflow_dispatch:
 
 concurrency:
@@ -20,7 +20,9 @@ concurrency:
 jobs:
   fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # Backstop only — the pipeline's own time budget below is what normally
+    # ends a run. Kept tight so a hung run can't eat the monthly minute budget.
+    timeout-minutes: 10
     steps:
       # Sparse checkout + a 4-package install instead of `npm ci` on the whole
       # Next app: billed minutes are wall-clock, so keeping setup near zero is
@@ -44,9 +46,9 @@ jobs:
       - name: Run news pipeline
         run: npx tsx scripts/run-news-pipeline.ts
         env:
-          # Stop starting new articles after 15 min and exit cleanly; the job
+          # Stop starting new articles after 5 min and exit cleanly; the job
           # timeout above is only a backstop, not the normal way a run ends.
-          PIPELINE_TIME_BUDGET_MS: '900000'
+          PIPELINE_TIME_BUDGET_MS: '300000'
           TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
           TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
