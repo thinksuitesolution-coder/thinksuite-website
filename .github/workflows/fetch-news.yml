@@ -1,0 +1,59 @@
+name: Fetch AI News
+
+# Runs the news pipeline on GitHub's runners instead of Vercel — the Vercel
+# crons were removed for Hobby-plan/cost reasons, and hitting the Vercel route
+# from outside would still bill Vercel fluid compute for a ~5 minute function.
+on:
+  schedule:
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: fetch-news
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      # Sparse checkout + a 4-package install instead of `npm ci` on the whole
+      # Next app: billed minutes are wall-clock, so keeping setup near zero is
+      # what keeps 12 runs/day inside the free tier.
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            lib
+            scripts
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Versions pinned to package.json so runner output matches what Vercel
+      # produced — same deps, same pipeline, same article quality.
+      - name: Install pipeline deps
+        run: npm i --no-save --no-audit --no-fund @libsql/client@^0.17.4 openai@^6.44.0 rss-parser@^3.13.0 uuid@^14.0.0 tsx@^4.19.2
+
+      - name: Run news pipeline
+        run: npx tsx scripts/run-news-pipeline.ts
+        env:
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_AI_API_KEY: ${{ secrets.GOOGLE_AI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          DATAFORSEO_LOGIN: ${{ secrets.DATAFORSEO_LOGIN }}
+          DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          NEXT_PUBLIC_SITE_URL: https://thinksuite.in
+          # Auto-provided by Actions; enough for the GitHub-releases collector.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
