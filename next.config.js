@@ -7,28 +7,6 @@ const nextConfig = {
     // it natively at runtime, where the ESM/CJS interop works correctly.
     serverComponentsExternalPackages: ["firebase-admin"],
   },
-  // The news pages read `searchParams`, which makes them render per request —
-  // every visitor costs a function invocation even though the HTML is identical
-  // for everyone (nothing here reads cookies or auth on the server). Letting the
-  // CDN hold each URL for a few minutes collapses repeat traffic into cache hits.
-  // The underlying article query is already cached for 300s, so this serves no
-  // staler than the page did before.
-  async headers() {
-    return [
-      {
-        source: '/ai-news',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=300, stale-while-revalidate=600' },
-        ],
-      },
-      {
-        source: '/blog/:slug',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=600, stale-while-revalidate=1800' },
-        ],
-      },
-    ]
-  },
   async redirects() {
     const htmlPages = [
       'home', 'about', 'contact', 'service', 'faq', 'team-details',
