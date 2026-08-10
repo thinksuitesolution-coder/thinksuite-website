@@ -50,7 +50,12 @@ function generateSlug(title: string): string {
 
 export async function generateBlogArticle(event: ScoredEvent): Promise<BlogArticle | null> {
   try {
-    const data = await groqJSON<Partial<BlogArticle>>(buildPrompt(event), 6000);
+    // 3000, not 6000: Groq counts the completion reserve toward tokens per
+    // minute, and the ceiling on both models is 6000. Asking for 6000 made a
+    // single article cost ~7140 and get rejected outright with a 413 — no
+    // amount of pacing fits a request larger than the whole budget. The article
+    // itself is ~800-1000 words, so 3000 leaves room to spare.
+    const data = await groqJSON<Partial<BlogArticle>>(buildPrompt(event), 3000);
     const now = new Date().toISOString();
     const title = data.title || event.title;
 

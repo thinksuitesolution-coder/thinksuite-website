@@ -8,8 +8,11 @@ export const groq = new OpenAI({
 // Groq model tiers — llama-3.2-90b-text-preview, gemma2-9b-it, and
 // llama3-groq-8b-8192-tool-use-preview were removed from the chain below:
 // Groq decommissioned all three, they only ever return 400s.
+// TPM figures below are what Groq's 413s actually report for this org on the
+// on_demand tier, not the published free-tier table — the fast model rejected a
+// 7140-token request citing "Limit 6000", so both ceilings are 6K here.
 export const GROQ_MODEL_HIGH = 'llama-3.3-70b-versatile'; // 100K TPD, 6K TPM
-export const GROQ_MODEL_FAST = 'llama-3.1-8b-instant';    // 500K TPD, 30K TPM
+export const GROQ_MODEL_FAST = 'llama-3.1-8b-instant';    // 500K TPD, 6K TPM
 export const GROQ_MODEL = GROQ_MODEL_HIGH;
 
 // Gemini free tier — separate quota pool from Groq entirely
@@ -66,7 +69,14 @@ async function callGemini(prompt: string, maxTokens: number): Promise<string> {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: { maxOutputTokens: maxTokens, temperature: 0.7 },
+        generationConfig: {
+          maxOutputTokens: maxTokens,
+          temperature: 0.7,
+          // Without this Gemini answers the "return JSON" prompts in markdown
+          // ("**AI's Energy Appetite**…"), which extractJSON cannot salvage —
+          // so the one provider still holding quota was failing every article.
+          responseMimeType: 'application/json',
+        },
       }),
       signal: AbortSignal.timeout(30000),
     }
@@ -90,7 +100,7 @@ async function callGemini(prompt: string, maxTokens: number): Promise<string> {
 // nothing. Spending a few seconds waiting is cheaper than losing the article.
 const TPM_BUDGET: Record<string, number> = {
   [GROQ_MODEL_HIGH]: 6000,
-  [GROQ_MODEL_FAST]: 30000,
+  [GROQ_MODEL_FAST]: 6000,
 };
 
 const recentSpend: Record<string, { at: number; tokens: number }[]> = {};
