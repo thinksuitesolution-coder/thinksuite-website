@@ -1,0 +1,13 @@
+name: Cron - fetch-news
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  run:
+    uses: ./.github/workflows/_run-cron.yml
+    with:
+      slug: fetch-news
+    secrets: inherit
