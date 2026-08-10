@@ -83,9 +83,52 @@ async function callGemini(prompt: string, maxTokens: number): Promise<string> {
   return text;
 }
 
+// Groq enforces tokens-per-minute per model, and an article prompt is large
+// enough that two or three back-to-back calls trip the 6K TPM ceiling on the
+// 70B model. Every provider after it in the chain is now dead or free-tier
+// limited too, so a tripped TPM used to cascade into a run that published
+// nothing. Spending a few seconds waiting is cheaper than losing the article.
+const TPM_BUDGET: Record<string, number> = {
+  [GROQ_MODEL_HIGH]: 6000,
+  [GROQ_MODEL_FAST]: 30000,
+};
+
+const recentSpend: Record<string, { at: number; tokens: number }[]> = {};
+
+// Groq bills prompt + completion; ~4 chars per token is close enough to pace
+// against, and over-estimating just makes us a little more conservative.
+function estimateTokens(prompt: string, maxTokens: number): number {
+  return Math.ceil(prompt.length / 4) + maxTokens;
+}
+
+async function awaitTpmBudget(model: string, prompt: string, maxTokens: number): Promise<void> {
+  const budget = TPM_BUDGET[model];
+  if (!budget) return;
+
+  const cost = estimateTokens(prompt, maxTokens);
+
+  for (;;) {
+    const now = Date.now();
+    const window = (recentSpend[model] ?? []).filter((e) => now - e.at < 60_000);
+    recentSpend[model] = window;
+
+    const spent = window.reduce((total, e) => total + e.tokens, 0);
+    // An empty window means this single call is bigger than the whole budget;
+    // let it through and let the fallback chain deal with the 429.
+    if (spent + cost <= budget || window.length === 0) break;
+
+    const waitMs = 60_000 - (now - window[0].at) + 250;
+    console.log(`[LLM] ${model} at ${spent}/${budget} TPM — waiting ${Math.ceil(waitMs / 1000)}s`);
+    await new Promise((r) => setTimeout(r, waitMs));
+  }
+
+  recentSpend[model].push({ at: Date.now(), tokens: cost });
+}
+
 async function callGroq(model: string, prompt: string, maxTokens: number): Promise<string> {
   const key = process.env.GROQ_API_KEY;
   if (!key || key === 'build-placeholder') throw new Error('GROQ_API_KEY not configured — skipping Groq');
+  await awaitTpmBudget(model, prompt, maxTokens);
   const completion = await groq.chat.completions.create({
     model,
     messages: [{ role: 'user', content: prompt }],
@@ -106,6 +149,22 @@ function extractJSON<T>(raw: string): T {
 // whole pipeline the way it did on 2026-07-13.
 type Provider = { name: string; call: (prompt: string, maxTokens: number) => Promise<string> };
 
+// Providers that failed for a reason no retry can cure — a rejected key, an
+// exhausted balance, a missing env var. Dropped for the rest of the process so
+// the remaining articles don't each pay for the same doomed attempts.
+const deadProviders = new Set<string>();
+
+function isDead(msg: string): boolean {
+  const m = msg.toLowerCase();
+  return m.includes('insufficient balance')
+    || m.includes('api key not valid')
+    || m.includes('incorrect api key')
+    || m.includes('not configured')
+    || m.includes('invalid_api_key')
+    || msg.includes('401')
+    || msg.includes('403');
+}
+
 function buildChain(preferFast: boolean): Provider[] {
   const groqHigh: Provider = { name: GROQ_MODEL_HIGH, call: (p, t) => callGroq(GROQ_MODEL_HIGH, p, t) };
   const groqFast: Provider = { name: GROQ_MODEL_FAST, call: (p, t) => callGroq(GROQ_MODEL_FAST, p, t) };
@@ -123,7 +182,7 @@ export async function groqJSON<T = Record<string, unknown>>(
   maxTokens = 3000,
   preferFast = false
 ): Promise<T> {
-  const chain = buildChain(preferFast);
+  const chain = buildChain(preferFast).filter((p) => !deadProviders.has(p.name));
 
   let lastErr: Error | null = null;
   for (const provider of chain) {
@@ -132,6 +191,17 @@ export async function groqJSON<T = Record<string, unknown>>(
       return extractJSON<T>(raw);
     } catch (err) {
       const msg = (err as Error).message || '';
+
+      // A bad key or an empty balance will not fix itself mid-run, so retrying
+      // it once per article only wastes time and buries the real reason under
+      // "rate limited" — the catch-all below treats 401/403 as throttling.
+      if (isDead(msg)) {
+        deadProviders.add(provider.name);
+        console.warn(`[LLM] ${provider.name} unusable this run (${msg.slice(0, 80)}) — dropping from chain`);
+        lastErr = err as Error;
+        continue;
+      }
+
       const isRateLimit = msg.toLowerCase().includes('rate limit') || msg.includes('429')
         || msg.includes('quota') || msg.includes('tokens per day') || msg.includes('exceeded')
         || msg.includes('RESOURCE_EXHAUSTED') || msg.includes('401') || msg.includes('403')
