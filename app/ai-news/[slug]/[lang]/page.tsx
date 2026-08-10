@@ -67,7 +67,9 @@ export async function generateMetadata({ params }: { params: { slug: string; lan
   const { article, translation } = result;
 
   const languages: Record<string, string> = { 'x-default': `${SITE_URL}/ai-news/${article.slug}`, en: `${SITE_URL}/ai-news/${article.slug}` };
-  for (const t of article.translations || []) {
+  // Same guard as the base article page: `translations` is an object on some
+  // stored articles, which `|| []` lets through into a for...of.
+  for (const t of Array.isArray(article.translations) ? article.translations : []) {
     languages[t.lang] = `${SITE_URL}/ai-news/${article.slug}/${t.lang}`;
   }
 

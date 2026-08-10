@@ -141,6 +141,19 @@ function publishedClauses(opts: GetPublishedArticlesOpts): { where: string; args
   return { where: clauses.join(' AND '), args };
 }
 
+// Selecting `data` pulls each article's full JSON blob — ~30KB a row, so a
+// 500-row read moves ~15MB and has been enough to knock the free-tier Turso
+// instance over with SQLITE_NOMEM. Callers that only need identifiers should
+// ask for identifiers.
+export async function getPublishedSlugs(limit = 500): Promise<string[]> {
+  await ensureSchema();
+  const result = await getClient().execute({
+    sql: `SELECT slug FROM articles WHERE status = 'published' ORDER BY published_at DESC LIMIT ?`,
+    args: [limit],
+  });
+  return result.rows.map((row) => row.slug as string);
+}
+
 // Callers that paginate need the unpaginated total. Counting in SQL keeps them
 // from having to read every row just to measure the set.
 export async function countPublishedArticles(opts: GetPublishedArticlesOpts = {}): Promise<number> {

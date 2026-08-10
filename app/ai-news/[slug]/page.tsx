@@ -6,11 +6,37 @@ import { StartupOpportunity } from '@/lib/news/pipeline/opportunities';
 import { CompetitorAnalysis } from '@/lib/news/pipeline/competitor-intel';
 import { PersonalizedVersion } from '@/lib/news/pipeline/personalized-versions';
 import ArticleTabs from '@/components/blog/ArticleTabs';
-import { getArticleBySlug } from '@/lib/news/db';
+import { getArticleBySlug, getPublishedSlugs } from '@/lib/news/db';
 import { categoryToSlug, CATEGORY_SERVICE_LINK, NewsCategory } from '@/lib/news/categories';
 import { LANGUAGE_CONFIG } from '@/lib/news/pipeline/multilang';
 
 export const revalidate = 3600;
+
+// `revalidate` alone did not make these pages cacheable: without static params
+// Next treats the segment as server-rendered on demand (ƒ in the build output)
+// and sends `no-store`, so every article view — the bulk of search traffic —
+// cost a function invocation and a Turso query. Prerendering them turns those
+// views into CDN hits.
+//
+// Failing softly matters more than prerendering everything: if the database is
+// unreachable at build time we fall back to on-demand rendering, which is what
+// the page did before, rather than failing the deploy.
+export async function generateStaticParams() {
+  try {
+    const slugs = await getPublishedSlugs(500);
+    console.log(`[ai-news] prerendering ${slugs.length} article pages`);
+    return slugs.map((slug) => ({ slug }));
+  } catch (err) {
+    // Swallowing this silently once already cost a build that prerendered
+    // nothing and looked fine, so say why before falling back.
+    console.error('[ai-news] generateStaticParams failed, falling back to on-demand:', err);
+    return [];
+  }
+}
+
+// Articles published between builds are rendered on first request and cached
+// from then on, so the 6-hourly pipeline does not need a redeploy to go live.
+export const dynamicParams = true;
 
 interface EnrichedArticle extends BlogArticle {
   opportunities?: { opportunities: StartupOpportunity[]; topOpportunity: StartupOpportunity; investmentAngles: string[]; threatenedStartups: string[]; emergingJobRoles: string[]; summary: string } | null;
@@ -37,7 +63,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const description = article.metaDescription || article.summary || `Latest AI news from ${article.company || 'the AI industry'}, tracked and analyzed by ThinkSuite AI Pulse.`;
 
   const languages: Record<string, string> = {};
-  for (const t of article.translations || []) {
+  // Some stored articles have `translations` as an object rather than an array,
+  // and `|| []` does not catch that — a truthy non-iterable reached the loop and
+  // threw "object is not iterable", breaking those pages outright.
+  const translations = Array.isArray(article.translations) ? article.translations : [];
+  for (const t of translations) {
     languages[t.lang] = `https://thinksuite.in/ai-news/${article.slug}/${t.lang}`;
   }
 
