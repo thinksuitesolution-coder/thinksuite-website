@@ -128,8 +128,29 @@ export async function upsertArticles(articles: Record<string, unknown>[]): Promi
 
 export interface GetPublishedArticlesOpts {
   limit?: number;
+  offset?: number;
   category?: string;
   company?: string;
+}
+
+function publishedClauses(opts: GetPublishedArticlesOpts): { where: string; args: string[] } {
+  const clauses = [`status = 'published'`];
+  const args: string[] = [];
+  if (opts.category) { clauses.push('category = ?'); args.push(opts.category); }
+  if (opts.company)  { clauses.push('company = ?');  args.push(opts.company); }
+  return { where: clauses.join(' AND '), args };
+}
+
+// Callers that paginate need the unpaginated total. Counting in SQL keeps them
+// from having to read every row just to measure the set.
+export async function countPublishedArticles(opts: GetPublishedArticlesOpts = {}): Promise<number> {
+  await ensureSchema();
+  const { where, args } = publishedClauses(opts);
+  const result = await getClient().execute({
+    sql: `SELECT COUNT(*) AS n FROM articles WHERE ${where}`,
+    args,
+  });
+  return Number(result.rows[0]?.n ?? 0);
 }
 
 // Single source of truth for the "give me published articles, newest first"
@@ -138,17 +159,13 @@ export interface GetPublishedArticlesOpts {
 export async function getPublishedArticles(opts: GetPublishedArticlesOpts = {}): Promise<BlogArticle[]> {
   await ensureSchema();
   const client = getClient();
-  const { limit = 500, category, company } = opts;
+  const { limit = 500, offset = 0 } = opts;
 
-  const clauses = [`status = 'published'`];
-  const args: (string | number)[] = [];
-  if (category) { clauses.push('category = ?'); args.push(category); }
-  if (company)  { clauses.push('company = ?');  args.push(company); }
-  args.push(limit);
+  const { where, args } = publishedClauses(opts);
 
   const result = await client.execute({
-    sql: `SELECT data FROM articles WHERE ${clauses.join(' AND ')} ORDER BY published_at DESC LIMIT ?`,
-    args,
+    sql: `SELECT data FROM articles WHERE ${where} ORDER BY published_at DESC LIMIT ? OFFSET ?`,
+    args: [...args, limit, offset],
   });
   return result.rows.map(row => JSON.parse(row.data as string) as BlogArticle);
 }

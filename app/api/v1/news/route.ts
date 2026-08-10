@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getPublishedArticles } from '@/lib/news/db';
+import { countPublishedArticles, getPublishedArticles } from '@/lib/news/db';
 
 /**
  * ThinkSuite Public AI News API v1
@@ -10,43 +10,43 @@ export async function GET(req: NextRequest) {
   const p = req.nextUrl.searchParams;
   const limit = Math.min(parseInt(p.get('limit') || '10'), 50);
   const page  = Math.max(parseInt(p.get('page')  || '1'), 1);
-  const category = p.get('category');
-  const company  = p.get('company');
+  const category = p.get('category') || undefined;
+  const company  = p.get('company')  || undefined;
 
   try {
-    const combinedDocs = await getPublishedArticles({ limit: 500 }) as unknown as Record<string, unknown>[];
+    // Filtering and paging happen in SQL. This used to read 500 rows and slice
+    // them in JS, which meant every cache miss parsed the whole table's JSON
+    // blobs to return ten items — ~6.6s of billed function time per call.
+    const filters = { category, company };
+    const [articles, total] = await Promise.all([
+      getPublishedArticles({ ...filters, limit, offset: (page - 1) * limit }),
+      countPublishedArticles(filters),
+    ]);
 
-    let all = combinedDocs.map((data) => {
-      return {
-        id: data.id,
-        slug: data.slug,
-        title: data.title,
-        summary: data.summary,
-        company: data.company,
-        category: data.category,
-        eventType: data.eventType,
-        importanceScore: data.importanceScore,
-        tags: data.tags,
-        sourceName: data.sourceName,
-        originalUrl: data.originalUrl,
-        publishedAt: data.publishedAt,
-        url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${data.slug}`,
-      };
-    });
-
-    if (category) all = all.filter(a => a.category === category);
-    if (company)  all = all.filter(a => a.company === company);
-
-    const paginated = all.slice((page - 1) * limit, page * limit);
+    const data = articles.map((a) => ({
+      id: a.id,
+      slug: a.slug,
+      title: a.title,
+      summary: a.summary,
+      company: a.company,
+      category: a.category,
+      eventType: a.eventType,
+      importanceScore: a.importanceScore,
+      tags: a.tags,
+      sourceName: a.sourceName,
+      originalUrl: a.originalUrl,
+      publishedAt: a.publishedAt,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${a.slug}`,
+    }));
 
     return NextResponse.json({
       success: true,
-      data: paginated,
+      data,
       meta: {
-        total: all.length,
+        total,
         page,
         limit,
-        hasMore: page * limit < all.length,
+        hasMore: page * limit < total,
       },
     }, {
       headers: {
