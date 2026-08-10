@@ -3,14 +3,15 @@ name: Fetch AI News
 # Runs the news pipeline on GitHub's runners instead of Vercel — the Vercel
 # crons were removed for Hobby-plan/cost reasons, and hitting the Vercel route
 # from outside would still bill Vercel fluid compute for a ~5 minute function.
-# Every 3 hours, not 2. Each run pays a fixed ~3 min collection cost before the
-# first article, so 12 runs/day would spend ~7,200 min against the 2,000 free
-# private-repo minutes while publishing *fewer* articles. 8 runs/day inside a
-# 5-minute budget lands near ~1,740 min/month at ~18 articles/day — against the
-# 8-10/day the 2-hourly Vercel cron managed under its 300s truncation.
+# Every 6 hours with a long budget, rather than often with a short one. A run
+# spends ~3.5 min collecting and fact-checking before it can write anything, so
+# that cost is paid per run no matter how little writing follows: 8 short runs
+# a day published 1 article each, while 4 long ones reach the 8-article cap.
+# Billed minutes work out to roughly (budget + 2.4) per run — 4 x 14.4 x 31 is
+# ~1,786 against the 2,000 free private-repo minutes.
 on:
   schedule:
-    - cron: '0 */3 * * *'
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 concurrency:
@@ -21,8 +22,9 @@ jobs:
   fetch:
     runs-on: ubuntu-latest
     # Backstop only — the pipeline's own time budget below is what normally
-    # ends a run. Kept tight so a hung run can't eat the monthly minute budget.
-    timeout-minutes: 10
+    # ends a run. Kept just above budget + tail so a hung run can't eat the
+    # monthly minute budget.
+    timeout-minutes: 18
     steps:
       # Sparse checkout + a 4-package install instead of `npm ci` on the whole
       # Next app: billed minutes are wall-clock, so keeping setup near zero is
@@ -46,9 +48,9 @@ jobs:
       - name: Run news pipeline
         run: npx tsx scripts/run-news-pipeline.ts
         env:
-          # Stop starting new articles after 5 min and exit cleanly; the job
+          # Stop starting new articles after 12 min and exit cleanly; the job
           # timeout above is only a backstop, not the normal way a run ends.
-          PIPELINE_TIME_BUDGET_MS: '300000'
+          PIPELINE_TIME_BUDGET_MS: '720000'
           TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
           TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
