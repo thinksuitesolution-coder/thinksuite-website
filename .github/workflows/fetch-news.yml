@@ -9,9 +9,13 @@ name: Fetch AI News
 # a day published 1 article each, while 4 long ones reach the 8-article cap.
 # Billed minutes work out to roughly (budget + 2.4) per run — 4 x 14.4 x 31 is
 # ~1,786 against the 2,000 free private-repo minutes.
+#
+# Minute 17, not 0: GitHub queues scheduled workflows behind everyone else's,
+# and the top of the hour is the worst of it — the 03:00 slot landed at 05:10.
+# An odd minute sits outside the crowd and tends to start closer to on time.
 on:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '17 */6 * * *'
   workflow_dispatch:
 
 concurrency:
