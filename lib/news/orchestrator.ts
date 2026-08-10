@@ -179,9 +179,23 @@ export async function runNewsPipeline(): Promise<PipelineResult> {
     .sort((a, b) => b.importanceScore - a.importanceScore)
     .slice(0, 15);
 
+  // Optional wall-clock budget, honoured by every sequential stage below.
+  // Steps 6-8 are all serial network work — 15 fact-check calls, up to 8
+  // Firecrawl scrapes, then a write per article — so a slow day can overrun
+  // long before the publish loop starts. Guarding only that loop is what let a
+  // scheduled run sit until the job timeout killed it mid-flight.
+  // Unset (the local/manual path) means no limit, as before.
+  const timeBudgetMs = Number(process.env.PIPELINE_TIME_BUDGET_MS) || 0;
+  const outOfTime = () => timeBudgetMs > 0 && Date.now() - start > timeBudgetMs;
+
   // STEP 6: Fact-check (light LLM call, only for these top 15)
   const factCheckedEvents: ScoredEvent[] = [];
   for (const event of topEvents) {
+    if (outOfTime()) {
+      console.log(`⏱️  Time budget reached during fact-check — ${factCheckedEvents.length} kept`);
+      break;
+    }
+
     const factCheck = await factCheckEvent(event).catch(() => null);
     if (!factCheck || shouldPublish(factCheck)) {
       if (factCheck) {
@@ -203,6 +217,11 @@ export async function runNewsPipeline(): Promise<PipelineResult> {
   const toProcess = factCheckedEvents.slice(0, 8); // max 8 full articles per run
 
   for (const event of toProcess) {
+    if (outOfTime()) {
+      console.log('⏱️  Time budget reached during enrichment — skipping the rest');
+      break;
+    }
+
     if (event.importanceScore >= 70) {
       event.content = await enrichWithFirecrawl(event);
     }
@@ -213,14 +232,8 @@ export async function runNewsPipeline(): Promise<PipelineResult> {
   let failed = 0;
   let broadcasted = 0;
 
-  // Optional wall-clock budget. A full run takes ~20+ min, so the scheduled
-  // GitHub Actions run sets this to stop between articles and exit cleanly
-  // rather than being killed mid-write by the job timeout. Unset (the Vercel
-  // route) means no limit, as before.
-  const timeBudgetMs = Number(process.env.PIPELINE_TIME_BUDGET_MS) || 0;
-
   for (const event of toProcess) {
-    if (timeBudgetMs && Date.now() - start > timeBudgetMs) {
+    if (outOfTime()) {
       console.log(`⏱️  Time budget reached — stopping after ${published} article(s)`);
       break;
     }
