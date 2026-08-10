@@ -1,20 +1,24 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { runNewsPipeline } from '@/lib/news/orchestrator';
+import { NextResponse } from 'next/server';
 
-// Sync pipeline run — for local/manual triggering only, NOT used by Vercel cron
-export const maxDuration = 300;
+/**
+ * Retired alongside /api/cron/fetch-news. This was the synchronous door to the
+ * same pipeline — `maxDuration = 300` and a blocking `runNewsPipeline()` — so
+ * leaving it live would have re-opened the exact Fluid CPU drain that moving
+ * the pipeline to GitHub Actions was meant to close.
+ *
+ * To run the pipeline on demand now, dispatch the fetch-news workflow.
+ */
+export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 
-export async function GET(req: NextRequest) {
-  const secret = req.nextUrl.searchParams.get('secret');
-  if (secret !== process.env.CRON_SECRET && secret !== process.env.GROQ_API_KEY) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
-
-  const start = Date.now();
-  try {
-    const result = await runNewsPipeline();
-    return NextResponse.json({ success: true, durationMs: Date.now() - start, result });
-  } catch (err) {
-    return NextResponse.json({ success: false, error: (err as Error).message }, { status: 500 });
-  }
+export async function GET() {
+  return NextResponse.json(
+    {
+      error: 'Gone',
+      message:
+        'The news pipeline no longer runs on Vercel. Trigger the fetch-news ' +
+        'workflow on GitHub Actions instead.',
+    },
+    { status: 410 },
+  );
 }

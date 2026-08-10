@@ -1,32 +1,32 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { waitUntil } from '@vercel/functions';
-import { runNewsPipeline } from '@/lib/news/orchestrator';
+import { NextResponse } from 'next/server';
 
-// Fluid/background execution — no hard timeout
-export const runtime = 'nodejs';
-export const maxDuration = 300;
+/**
+ * Retired. The news pipeline moved to GitHub Actions
+ * (.github/workflows/fetch-news.yml → scripts/run-news-pipeline.ts), which
+ * writes straight to Turso; Vercel only serves reads now.
+ *
+ * The route is kept as a cheap 410 rather than deleted because external
+ * schedulers still point at this URL, and a 404 from a Next app costs about
+ * as much to serve. What it must never do again is start the pipeline: this
+ * used to run it under `waitUntil` with `maxDuration = 300`, so every hit —
+ * from any scheduler, authorized or not — burned up to five minutes of Fluid
+ * Active CPU on a Hobby plan that has no budget for it.
+ */
+export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 
-export async function GET(req: NextRequest) {
-  const authHeader = req.headers.get('authorization');
-  const querySecret = req.nextUrl.searchParams.get('secret');
-  const cronSecret = process.env.CRON_SECRET;
+const GONE = {
+  error: 'Gone',
+  message:
+    'The news pipeline no longer runs on Vercel. It runs on GitHub Actions ' +
+    '(fetch-news workflow). Point any scheduler at that workflow instead — ' +
+    'hitting this URL does nothing.',
+};
 
-  const provided = querySecret ?? authHeader?.replace('Bearer ', '') ?? '';
-  if (cronSecret && provided !== cronSecret && provided !== (process.env.GROQ_API_KEY ?? '')) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
-
-  // Return immediately so the HTTP request doesn't timeout.
-  // waitUntil keeps the function alive in the background.
-  waitUntil(
-    runNewsPipeline()
-      .then(r => console.log('[Pipeline] Done:', JSON.stringify(r)))
-      .catch(e => console.error('[Pipeline] Error:', e.message))
-  );
-
-  return NextResponse.json({ success: true, message: 'Pipeline started in background' });
+export async function GET() {
+  return NextResponse.json(GONE, { status: 410 });
 }
 
-export async function POST(req: NextRequest) {
-  return GET(req);
+export async function POST() {
+  return NextResponse.json(GONE, { status: 410 });
 }
