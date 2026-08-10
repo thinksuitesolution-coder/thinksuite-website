@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { runAllAgents } from "@/agents/engine";
+import { verifyCronAuth } from "@/lib/cron-auth";
 
 /**
  * GET /api/cron/run-agents
@@ -7,11 +8,7 @@ import { runAllAgents } from "@/agents/engine";
  * Runs all active agent subscriptions across all users.
  */
 export async function GET(req) {
-  // Vercel cron sends this header; protect against accidental external calls
-  const authHeader = req.headers.get("authorization");
-  const cronSecret = process.env.CRON_SECRET;
-
-  if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
+  if (!verifyCronAuth(req)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

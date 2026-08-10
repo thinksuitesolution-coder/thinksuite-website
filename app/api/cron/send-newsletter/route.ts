@@ -3,6 +3,7 @@ import { waitUntil } from '@vercel/functions';
 import { getPublishedArticles, getActiveSubscribers } from '@/lib/news/db';
 import { generateNewsletter, NewsletterEdition, NewsletterRole } from '@/lib/news/newsletter';
 import { sendNewsletterEmail } from '@/lib/newsletterMailer';
+import { verifyCronAuth } from '@/lib/cron-auth';
 import { BlogArticle } from '@/lib/news/types';
 
 export const runtime = 'nodejs';
@@ -57,12 +58,7 @@ async function sendAllNewsletters() {
 }
 
 export async function GET(req: NextRequest) {
-  const authHeader = req.headers.get('authorization');
-  const querySecret = req.nextUrl.searchParams.get('secret');
-  const cronSecret = process.env.CRON_SECRET;
-  const provided = querySecret ?? authHeader?.replace('Bearer ', '') ?? '';
-
-  if (cronSecret && provided !== cronSecret) {
+  if (!verifyCronAuth(req)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

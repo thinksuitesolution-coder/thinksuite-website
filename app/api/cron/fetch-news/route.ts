@@ -1,18 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { waitUntil } from '@vercel/functions';
 import { runNewsPipeline } from '@/lib/news/orchestrator';
+import { verifyCronAuth } from '@/lib/cron-auth';
 
 // Fluid/background execution — no hard timeout
 export const runtime = 'nodejs';
 export const maxDuration = 300;
 
 export async function GET(req: NextRequest) {
-  const authHeader = req.headers.get('authorization');
-  const querySecret = req.nextUrl.searchParams.get('secret');
-  const cronSecret = process.env.CRON_SECRET;
-
-  const provided = querySecret ?? authHeader?.replace('Bearer ', '') ?? '';
-  if (cronSecret && provided !== cronSecret && provided !== (process.env.GROQ_API_KEY ?? '')) {
+  if (!verifyCronAuth(req)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

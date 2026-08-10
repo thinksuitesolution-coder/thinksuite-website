@@ -44,9 +44,13 @@ export const revalidate = 300;
 // Letting the fetch throw means a failed attempt isn't cached at all — the
 // very next request just retries for real. Errors are caught once, outside
 // the cache, at the call site below.
+// 150, matching visibilityai's listing. Each row carries the article's full
+// JSON blob, so 500 of them is ~15MB in one read - enough to come back as
+// SQLITE_NOMEM from the free-tier database, which is what has been breaking
+// this page and the pipeline intermittently.
 const getAllArticles = unstable_cache(
-  async (): Promise<BlogArticle[]> => getPublishedArticles({ limit: 500 }),
-  ['ai-news-all-articles-v4'],
+  async (): Promise<BlogArticle[]> => getPublishedArticles({ limit: 150 }),
+  ['ai-news-all-articles-v5'],
   { revalidate: 300 }
 );
 
