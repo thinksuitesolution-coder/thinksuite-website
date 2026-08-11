@@ -8,6 +8,21 @@ const nextConfig = {
     serverComponentsExternalPackages: ["firebase-admin"],
   },
   async redirects() {
+    // /blog and /blog/<slug> are pure aliases for the AI-news pages. They used
+    // to be page.tsx files whose only job was to call redirect() - a full
+    // serverless function invocation, and Fluid Active CPU, per hit just to
+    // emit a Location header. Declaring them here serves the redirect from
+    // Vercel's edge with no function invoked at all.
+    //
+    // This is the hot path, not an obscure one: /blog/<slug> is the URL the
+    // public API returns for every article, and the one every Telegram and
+    // social broadcast links to, so it is what the outside world actually
+    // clicks.
+    const blogAliases = [
+      { source: '/blog', destination: '/ai-news', permanent: true },
+      { source: '/blog/:slug', destination: '/ai-news/:slug', permanent: true },
+    ]
+
     const htmlPages = [
       'home', 'about', 'contact', 'service', 'faq', 'team-details',
       'privacy-policy', 'terms-and-conditions', 'error',
@@ -27,11 +42,14 @@ const nextConfig = {
       'home': '/',
       'error': '/404',
     }
-    return htmlPages.map((page) => ({
-      source: `/${page}.html`,
-      destination: urlMap[page] || `/${page}`,
-      permanent: true,
-    }))
+    return [
+      ...blogAliases,
+      ...htmlPages.map((page) => ({
+        source: `/${page}.html`,
+        destination: urlMap[page] || `/${page}`,
+        permanent: true,
+      })),
+    ]
   },
 }
 
