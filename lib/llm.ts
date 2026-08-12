@@ -103,6 +103,11 @@ const TPM_BUDGET: Record<string, number> = {
   [GROQ_MODEL_FAST]: 6000,
 };
 
+// Prompt + completion has to fit the 6000 TPM ceiling above, and an article
+// prompt is already ~1500 tokens, so this is about as much as Groq can be
+// asked to return without a 413.
+const GROQ_MAX_TOKENS = 3000;
+
 const recentSpend: Record<string, { at: number; tokens: number }[]> = {};
 
 // Groq bills prompt + completion; ~4 chars per token is close enough to pace
@@ -157,7 +162,17 @@ function extractJSON<T>(raw: string): T {
 // Fallback chain across independent free-tier providers (Groq, Gemini, GLM),
 // with paid OpenAI last so one shared free-quota wipeout doesn't stall the
 // whole pipeline the way it did on 2026-07-13.
-type Provider = { name: string; call: (prompt: string, maxTokens: number) => Promise<string> };
+type Provider = {
+  name: string;
+  call: (prompt: string, maxTokens: number) => Promise<string>;
+  // Groq bills the completion reserve against its 6000 tokens-per-minute
+  // ceiling, so a request there cannot ask for much more than 3000 without
+  // being rejected outright. That cap used to apply to every provider, and an
+  // article prompt — 800+ words of markdown plus ten more fields in one JSON
+  // object — does not fit in it: the response was truncated mid-object and
+  // JSON.parse failed on every provider in turn. Only Groq needs the cap.
+  maxTokensCap?: number;
+};
 
 // Providers that failed for a reason no retry can cure — a rejected key, an
 // exhausted balance, a missing env var. Dropped for the rest of the process so
@@ -176,15 +191,27 @@ function isDead(msg: string): boolean {
 }
 
 function buildChain(preferFast: boolean): Provider[] {
-  const groqHigh: Provider = { name: GROQ_MODEL_HIGH, call: (p, t) => callGroq(GROQ_MODEL_HIGH, p, t) };
-  const groqFast: Provider = { name: GROQ_MODEL_FAST, call: (p, t) => callGroq(GROQ_MODEL_FAST, p, t) };
+  const groqHigh: Provider = { name: GROQ_MODEL_HIGH, call: (p, t) => callGroq(GROQ_MODEL_HIGH, p, t), maxTokensCap: GROQ_MAX_TOKENS };
+  const groqFast: Provider = { name: GROQ_MODEL_FAST, call: (p, t) => callGroq(GROQ_MODEL_FAST, p, t), maxTokensCap: GROQ_MAX_TOKENS };
   const gemini: Provider = { name: GEMINI_MODEL, call: callGemini };
   const glmProvider: Provider = { name: GLM_MODEL, call: callGLM };
   const openaiProvider: Provider = { name: OPENAI_MODEL, call: callOpenAI };
 
+  // Two different orders, because the two kinds of call want opposite things.
+  //
+  // The small calls — fact-checks, a few hundred tokens — fit inside Groq's
+  // ceiling comfortably and were the one stage still working, so they keep
+  // leading with the free providers.
+  //
+  // The article calls do not fit, and leading with free providers meant every
+  // article paid four truncated responses before reaching one that could
+  // answer in full. OpenAI leads there instead: it is the provider with credit
+  // on it, and its cost on this volume is a couple of dollars a month. GLM is
+  // last on both — its balance is empty, so it is dropped from the chain after
+  // its first failure of a run anyway.
   return preferFast
-    ? [groqFast, glmProvider, gemini, groqHigh, openaiProvider]
-    : [groqHigh, glmProvider, gemini, groqFast, openaiProvider];
+    ? [groqFast, gemini, groqHigh, openaiProvider, glmProvider]
+    : [openaiProvider, gemini, groqHigh, groqFast, glmProvider];
 }
 
 export async function groqJSON<T = Record<string, unknown>>(
@@ -197,7 +224,8 @@ export async function groqJSON<T = Record<string, unknown>>(
   let lastErr: Error | null = null;
   for (const provider of chain) {
     try {
-      const raw = await provider.call(prompt, maxTokens);
+      const cap = provider.maxTokensCap;
+      const raw = await provider.call(prompt, cap ? Math.min(maxTokens, cap) : maxTokens);
       return extractJSON<T>(raw);
     } catch (err) {
       const msg = (err as Error).message || '';

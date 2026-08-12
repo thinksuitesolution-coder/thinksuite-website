@@ -50,12 +50,18 @@ function generateSlug(title: string): string {
 
 export async function generateBlogArticle(event: ScoredEvent): Promise<BlogArticle | null> {
   try {
-    // 3000, not 6000: Groq counts the completion reserve toward tokens per
-    // minute, and the ceiling on both models is 6000. Asking for 6000 made a
-    // single article cost ~7140 and get rejected outright with a 413 — no
-    // amount of pacing fits a request larger than the whole budget. The article
-    // itself is ~800-1000 words, so 3000 leaves room to spare.
-    const data = await groqJSON<Partial<BlogArticle>>(buildPrompt(event), 3000);
+    // What this prompt actually asks for: 800+ words of markdown, plus
+    // whyItMatters, expertAnalysis, marketImpact, developerImpact,
+    // futurePrediction, three FAQs and five highlights, all inside one JSON
+    // object. That runs past 3000 tokens, which is what this used to request —
+    // every provider returned a truncated object and JSON.parse rejected all of
+    // them, so a run could fact-check eleven stories and publish none.
+    //
+    // Groq still cannot be asked for this much; its 6000 TPM ceiling counts the
+    // completion reserve and a larger request is rejected with a 413. The chain
+    // caps it per provider now, so asking for the real size here no longer
+    // breaks the ones that have to stay small.
+    const data = await groqJSON<Partial<BlogArticle>>(buildPrompt(event), 8000);
     const now = new Date().toISOString();
     const title = data.title || event.title;
 
