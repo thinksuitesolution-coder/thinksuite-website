@@ -70,6 +70,11 @@ async function ensureSchema(): Promise<void> {
 
 // ─── ARTICLES ─────────────────────────────────────────────────────────────
 
+// The columns beside `data` are a denormalised copy of fields that also live
+// inside the JSON blob. On conflict they are rewritten from the incoming row
+// too, not just `data` — otherwise a re-processed article keeps whatever title,
+// score or published_at it had on first insert, and getArticleCards (which
+// reads the columns, not the blob) would serve those stale values.
 export async function upsertArticle(article: Record<string, unknown>): Promise<void> {
   await ensureSchema();
   const client = getClient();
@@ -78,7 +83,16 @@ export async function upsertArticle(article: Record<string, unknown>): Promise<v
   await client.execute({
     sql: `INSERT INTO articles (id, slug, title, company, category, event_type, importance_score, status, published_at, archived_at, data)
           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-          ON CONFLICT(slug) DO UPDATE SET data = excluded.data, status = excluded.status, archived_at = excluded.archived_at`,
+          ON CONFLICT(slug) DO UPDATE SET
+            data = excluded.data,
+            status = excluded.status,
+            archived_at = excluded.archived_at,
+            title = excluded.title,
+            company = excluded.company,
+            category = excluded.category,
+            event_type = excluded.event_type,
+            importance_score = excluded.importance_score,
+            published_at = excluded.published_at`,
     args: [
       String(article.id ?? ''),
       String(article.slug ?? ''),
@@ -106,7 +120,16 @@ export async function upsertArticles(articles: Record<string, unknown>[]): Promi
   const batch = articles.map(a => ({
     sql: `INSERT INTO articles (id, slug, title, company, category, event_type, importance_score, status, published_at, archived_at, data)
           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-          ON CONFLICT(slug) DO UPDATE SET data = excluded.data, status = excluded.status, archived_at = excluded.archived_at`,
+          ON CONFLICT(slug) DO UPDATE SET
+            data = excluded.data,
+            status = excluded.status,
+            archived_at = excluded.archived_at,
+            title = excluded.title,
+            company = excluded.company,
+            category = excluded.category,
+            event_type = excluded.event_type,
+            importance_score = excluded.importance_score,
+            published_at = excluded.published_at`,
     args: [
       String(a.id ?? ''),
       String(a.slug ?? ''),
@@ -168,6 +191,74 @@ export async function getPublishedArticles(opts: GetPublishedArticlesOpts = {}):
     args: [...args, limit, offset],
   });
   return result.rows.map(row => JSON.parse(row.data as string) as BlogArticle);
+}
+
+// What a listing row actually renders: a headline, a summary, a thumbnail and
+// enough metadata to filter on. Everything else in a BlogArticle — body,
+// sections, translations, sources — is only ever read on the article page.
+export interface ArticleCard {
+  id: string;
+  slug: string;
+  title: string;
+  summary: string;
+  company: string;
+  industry: string;
+  category: string;
+  eventType: string;
+  importanceScore: number;
+  heroImageUrl: string;
+  sourceName: string;
+  publishedAt: string;
+  tags: string[];
+}
+
+function parseTags(raw: unknown): string[] {
+  if (typeof raw !== 'string') return [];
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed.map(String) : [];
+  } catch {
+    return [];
+  }
+}
+
+// The listing counterpart to getPublishedArticles. `SELECT data` hands back
+// every row's full JSON blob — ~30KB each, ~15MB across 500 rows — which the
+// free-tier Turso instance answers with SQLITE_NOMEM, and which is far too
+// large to sit in Next's Data Cache or to ship to the browser. Lifting the
+// dozen fields a card needs out of the blob in SQL puts a row near 1KB, so the
+// whole listing fits in one read and the page can be prerendered with it.
+export async function getArticleCards(opts: GetPublishedArticlesOpts = {}): Promise<ArticleCard[]> {
+  await ensureSchema();
+  const { limit = 500, offset = 0 } = opts;
+  const { where, args } = publishedClauses(opts);
+
+  const result = await getClient().execute({
+    sql: `SELECT id, slug, title, company, category, event_type, importance_score, published_at,
+                 json_extract(data, '$.summary')      AS summary,
+                 json_extract(data, '$.heroImageUrl') AS hero_image_url,
+                 json_extract(data, '$.sourceName')   AS source_name,
+                 json_extract(data, '$.industry')     AS industry,
+                 json_extract(data, '$.tags')         AS tags
+          FROM articles WHERE ${where} ORDER BY published_at DESC LIMIT ? OFFSET ?`,
+    args: [...args, limit, offset],
+  });
+
+  return result.rows.map(row => ({
+    id: String(row.id ?? ''),
+    slug: String(row.slug ?? ''),
+    title: String(row.title ?? ''),
+    summary: (row.summary as string) ?? '',
+    company: (row.company as string) ?? '',
+    industry: (row.industry as string) ?? '',
+    category: (row.category as string) ?? '',
+    eventType: (row.event_type as string) ?? 'general',
+    importanceScore: Number(row.importance_score ?? 0),
+    heroImageUrl: (row.hero_image_url as string) ?? '',
+    sourceName: (row.source_name as string) ?? '',
+    publishedAt: String(row.published_at ?? ''),
+    tags: parseTags(row.tags),
+  }));
 }
 
 export interface GetArticleBySlugOpts {

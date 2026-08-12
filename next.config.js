@@ -7,6 +7,21 @@ const nextConfig = {
     // it natively at runtime, where the ESM/CJS interop works correctly.
     serverComponentsExternalPackages: ["firebase-admin"],
   },
+  // 8217163 tried this and it did nothing: /ai-news read searchParams, so Next
+  // rendered it per request and overrode Cache-Control with no-store. The page
+  // is prerendered now, which makes the header stick — Vercel already serves it
+  // from its own edge cache, and this lets Cloudflare hold it in front of that
+  // rather than passing every hit through.
+  async headers() {
+    return [
+      {
+        source: '/ai-news',
+        headers: [
+          { key: 'Cache-Control', value: 'public, s-maxage=300, stale-while-revalidate=600' },
+        ],
+      },
+    ]
+  },
   async redirects() {
     // /blog and /blog/<slug> are pure aliases for the AI-news pages. They used
     // to be page.tsx files whose only job was to call redirect() - a full
