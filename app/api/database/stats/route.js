@@ -3,6 +3,12 @@ import { getAdminDb }  from "@/lib/firebaseAdmin";
 import { verifyUser }  from "@/lib/authUtils";
 
 export const maxDuration = 20;
+// verifyUser() reads the Authorization header, which Next treats as dynamic
+// usage. Without this, the framework's own bailout-to-dynamic signal gets
+// thrown from inside the handler's try/catch below and is caught as if it
+// were a real failure, turning a normal request into a bogus 500 whose body
+// is literally the "couldn't be rendered statically" message.
+export const dynamic = 'force-dynamic';
 
 export async function GET(req) {
   try {

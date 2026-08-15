@@ -4,6 +4,10 @@ import { checkLeadQuota, incrementLeadQuota, saveLeadHistory } from "@/lib/leadG
 import { verifyUser } from "@/lib/authUtils";
 
 export const maxDuration = 60;
+// verifyUser() reads the Authorization header — force-dynamic so Next's own
+// dynamic-usage bailout can't get caught by this route's try/catch and
+// returned to the client as a bogus 500.
+export const dynamic = 'force-dynamic';
 
 const FIELD_MASK =
   "places.id,places.displayName,places.formattedAddress,places.nationalPhoneNumber,places.internationalPhoneNumber,places.websiteUri,places.rating,places.userRatingCount,places.primaryTypeDisplayName,places.googleMapsUri,nextPageToken";

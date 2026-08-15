@@ -3,6 +3,10 @@ import { verifyUser }  from "@/lib/authUtils";
 import dns from "dns/promises";
 
 export const maxDuration = 30;
+// verifyUser() reads the Authorization header — force-dynamic so Next's own
+// dynamic-usage bailout can't get caught by this route's try/catch and
+// returned to the client as a bogus 500.
+export const dynamic = 'force-dynamic';
 
 // ── Generate email permutations for a name + domain ──────────────────────────
 function generatePermutations(firstName, lastName, domain) {

@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { verifyUser } from "@/lib/authUtils";
 
+// verifyUser() reads the Authorization header — force-dynamic so Next's own
+// dynamic-usage bailout can't get caught by this route's try/catch and
+// returned to the client as a bogus 500.
+export const dynamic = 'force-dynamic';
+
 // Neutralize CSV/formula injection: if a cell starts with =, +, -, @, tab or CR,
 // Excel/Sheets can interpret it as a formula when the file is opened. Prefixing
 // with a leading apostrophe forces it to be read as plain text.

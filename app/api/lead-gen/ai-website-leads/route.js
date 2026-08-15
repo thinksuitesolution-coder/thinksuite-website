@@ -5,6 +5,10 @@ import { verifyUser } from "@/lib/authUtils";
 import { heavyJobGateway } from "@/lib/heavyJobGateway";
 
 export const maxDuration = 90;
+// verifyUser() reads the Authorization header — force-dynamic so Next's own
+// dynamic-usage bailout can't get caught by this route's try/catch and
+// returned to the client as a bogus 500.
+export const dynamic = 'force-dynamic';
 
 const anthropic = getAIClient();
 
