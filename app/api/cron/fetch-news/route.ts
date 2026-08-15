@@ -14,8 +14,14 @@ import { verifyCronAuth } from '@/lib/cron-auth';
 // (GitHub Actions' timeout-minutes, and Railway has no equivalent). Awaiting
 // the pipeline here means run-cron.ts's own await returns only once the work
 // is actually done, and the process can exit cleanly on its own.
+//
+// 300, not the pipeline's real worst-case runtime: Vercel Hobby rejects the
+// whole build if a function declares more than 300, and nothing hits this
+// route over HTTP on Vercel to actually need the longer window — the runner
+// invokes the handler in-process, not over the network, so Vercel's function
+// timeout never applies to it either way.
 export const runtime = 'nodejs';
-export const maxDuration = 800;
+export const maxDuration = 300;
 
 export async function GET(req: NextRequest) {
   if (!verifyCronAuth(req)) {
