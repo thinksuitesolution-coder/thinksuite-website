@@ -121,8 +121,25 @@ async function enrichAndPublishArticle(article: BlogArticle, event: ScoredEvent)
 }
 
 // ─── MAIN PIPELINE ────────────────────────────────────────────────────────────
+// Soft wall-clock budget. Steps 6-8 below are all serial network work — up to
+// 15 fact-check calls, up to 8 Firecrawl scrapes, then a write per article,
+// each with its own retry/rate-limit waits — so a run with several TPM waits
+// stacked up has no natural upper bound otherwise. This is what makes the run
+// stop starting new work and return cleanly on its own; scripts/run-cron.ts
+// has its own hard kill-switch above this as a backstop in case something
+// hangs in a way this budget can't see (a stuck fetch, a dependency that never
+// resolves) — Railway does not force-kill a cron job that outlives its
+// schedule the way GitHub Actions' timeout-minutes used to.
+// Override via env for a longer manual run; unset means no limit.
+const DEFAULT_TIME_BUDGET_MS = 10 * 60 * 1000;
+
 export async function runNewsPipeline(): Promise<PipelineResult> {
   const start = Date.now();
+  const timeBudgetMs = process.env.PIPELINE_TIME_BUDGET_MS
+    ? Number(process.env.PIPELINE_TIME_BUDGET_MS)
+    : DEFAULT_TIME_BUDGET_MS;
+  const outOfTime = () => timeBudgetMs > 0 && Date.now() - start > timeBudgetMs;
+
   console.log('🚀 Starting AI Intelligence Pipeline...');
 
   // STEP 1: Collect from all RSS + GitHub + ArXiv + HuggingFace + DataForSEO + Serper + Twitter in parallel
@@ -182,6 +199,10 @@ export async function runNewsPipeline(): Promise<PipelineResult> {
   // STEP 6: Fact-check (light LLM call, only for these top 15)
   const factCheckedEvents: ScoredEvent[] = [];
   for (const event of topEvents) {
+    if (outOfTime()) {
+      console.log(`⏱️  Time budget reached during fact-check — ${factCheckedEvents.length} kept`);
+      break;
+    }
     const factCheck = await factCheckEvent(event).catch(() => null);
     if (!factCheck || shouldPublish(factCheck)) {
       if (factCheck) {
@@ -203,6 +224,10 @@ export async function runNewsPipeline(): Promise<PipelineResult> {
   const toProcess = factCheckedEvents.slice(0, 8); // max 8 full articles per run
 
   for (const event of toProcess) {
+    if (outOfTime()) {
+      console.log('⏱️  Time budget reached during enrichment — skipping the rest');
+      break;
+    }
     if (event.importanceScore >= 70) {
       event.content = await enrichWithFirecrawl(event);
     }
@@ -214,6 +239,10 @@ export async function runNewsPipeline(): Promise<PipelineResult> {
   let broadcasted = 0;
 
   for (const event of toProcess) {
+    if (outOfTime()) {
+      console.log(`⏱️  Time budget reached — stopping after ${published} article(s)`);
+      break;
+    }
     try {
       const article = await generateBlogArticle(event);
       if (!article) { failed++; continue; }

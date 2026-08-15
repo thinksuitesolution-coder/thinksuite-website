@@ -84,7 +84,9 @@ async function callGemini(prompt: string, maxTokens: number): Promise<string> {
 
   if (!res.ok) {
     const body = await res.text();
-    throw new Error(`Gemini ${res.status}: ${body.slice(0, 200)}`);
+    const err = new Error(`Gemini ${res.status}: ${body.slice(0, 200)}`) as Error & { status?: number };
+    err.status = res.status;
+    throw err;
   }
 
   const data = await res.json();
@@ -179,15 +181,26 @@ type Provider = {
 // the remaining articles don't each pay for the same doomed attempts.
 const deadProviders = new Set<string>();
 
-function isDead(msg: string): boolean {
-  const m = msg.toLowerCase();
+// The OpenAI SDK (Groq/GLM/OpenAI all go through it) sets `.status` on the
+// error it throws; callGemini attaches the same for its own fetch-based 401s.
+// Reading that beats scanning err.message for "401"/"403"/"429" as bare
+// substrings — a JSON parse error whose text happens to be "...at position
+// 401 (line 4..." matched `msg.includes('401')` and got a provider that had
+// simply returned a truncated response permanently blacklisted as if its key
+// were rejected, for the rest of that run.
+function statusOf(err: unknown): number | undefined {
+  const status = (err as { status?: unknown } | null)?.status;
+  return typeof status === 'number' ? status : undefined;
+}
+
+function isDead(err: Error, status?: number): boolean {
+  if (status === 401 || status === 403) return true;
+  const m = err.message.toLowerCase();
   return m.includes('insufficient balance')
     || m.includes('api key not valid')
     || m.includes('incorrect api key')
     || m.includes('not configured')
-    || m.includes('invalid_api_key')
-    || msg.includes('401')
-    || msg.includes('403');
+    || m.includes('invalid_api_key');
 }
 
 function buildChain(preferFast: boolean): Provider[] {
@@ -228,34 +241,37 @@ export async function groqJSON<T = Record<string, unknown>>(
       const raw = await provider.call(prompt, cap ? Math.min(maxTokens, cap) : maxTokens);
       return extractJSON<T>(raw);
     } catch (err) {
-      const msg = (err as Error).message || '';
+      const e = err as Error;
+      const msg = e.message || '';
+      const status = statusOf(e);
 
       // A bad key or an empty balance will not fix itself mid-run, so retrying
       // it once per article only wastes time and buries the real reason under
       // "rate limited" — the catch-all below treats 401/403 as throttling.
-      if (isDead(msg)) {
+      if (isDead(e, status)) {
         deadProviders.add(provider.name);
         console.warn(`[LLM] ${provider.name} unusable this run (${msg.slice(0, 80)}) — dropping from chain`);
-        lastErr = err as Error;
+        lastErr = e;
         continue;
       }
 
-      const isRateLimit = msg.toLowerCase().includes('rate limit') || msg.includes('429')
-        || msg.includes('quota') || msg.includes('tokens per day') || msg.includes('exceeded')
-        || msg.includes('RESOURCE_EXHAUSTED') || msg.includes('401') || msg.includes('403')
-        || msg.includes('tokens per minute') || msg.includes('TPM') || msg.includes('model_not_found')
+      const isRateLimit = status === 429 || status === 401 || status === 403
+        || msg.toLowerCase().includes('rate limit') || msg.includes('quota')
+        || msg.includes('tokens per day') || msg.includes('exceeded')
+        || msg.includes('RESOURCE_EXHAUSTED') || msg.includes('tokens per minute')
+        || msg.includes('TPM') || msg.includes('model_not_found')
         || msg.toLowerCase().includes('not configured');
-      const isTooLarge = msg.includes('413') || msg.toLowerCase().includes('too large')
+      const isTooLarge = status === 413 || msg.toLowerCase().includes('too large')
         || msg.includes('tokens per minute') || msg.includes('TPM');
-      const isParseErr = msg.includes('JSON') || msg.includes('parse') || err instanceof SyntaxError;
+      const isParseErr = msg.includes('JSON') || msg.includes('parse') || e instanceof SyntaxError;
       // Any known transient/capacity error → try next provider instead of failing the whole call
       if (isRateLimit || isTooLarge || isParseErr) {
         console.warn(`[LLM] ${provider.name} ${isRateLimit ? 'rate limited' : isTooLarge ? 'request too large' : 'parse error'}, trying next...`);
-        lastErr = err as Error;
+        lastErr = e;
         continue;
       }
       console.warn(`[LLM] ${provider.name} unrecognized error, trying next anyway:`, msg.slice(0, 100));
-      lastErr = err as Error;
+      lastErr = e;
     }
   }
   throw lastErr || new Error('All LLM models failed');
