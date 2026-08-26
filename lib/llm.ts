@@ -5,18 +5,25 @@ export const groq = new OpenAI({
   baseURL: 'https://api.groq.com/openai/v1',
 });
 
-// Groq model tiers — llama-3.2-90b-text-preview, gemma2-9b-it, and
-// llama3-groq-8b-8192-tool-use-preview were removed from the chain below:
-// Groq decommissioned all three, they only ever return 400s.
+// Groq model tiers — llama-3.2-90b-text-preview, gemma2-9b-it,
+// llama3-groq-8b-8192-tool-use-preview, llama-3.3-70b-versatile and
+// llama-3.1-8b-instant were removed from the chain below: this org's Groq key
+// started getting "does not exist or you do not have access to it" on all
+// five (2026-08-26), while Groq's own docs still list llama-3.3/3.1 as active
+// production models — so this is an org/plan access change, not a global
+// deprecation. gpt-oss is Groq's own model, not a proxy to OpenAI, and is
+// unaffected by the OPENAI_API_KEY used for the separate OpenAI fallback below.
 // TPM figures below are what Groq's 413s actually report for this org on the
 // on_demand tier, not the published free-tier table — the fast model rejected a
 // 7140-token request citing "Limit 6000", so both ceilings are 6K here.
-export const GROQ_MODEL_HIGH = 'llama-3.3-70b-versatile'; // 100K TPD, 6K TPM
-export const GROQ_MODEL_FAST = 'llama-3.1-8b-instant';    // 500K TPD, 6K TPM
+export const GROQ_MODEL_HIGH = 'openai/gpt-oss-120b'; // 131K context
+export const GROQ_MODEL_FAST = 'openai/gpt-oss-20b';  // 131K context
 export const GROQ_MODEL = GROQ_MODEL_HIGH;
 
-// Gemini free tier — separate quota pool from Groq entirely
-const GEMINI_MODEL = 'gemini-2.5-flash';
+// Gemini free tier — separate quota pool from Groq entirely. gemini-2.5-flash
+// returns 404 "no longer available to new users" on freshly issued keys as of
+// 2026-08-26; Google's own error message points at this replacement.
+const GEMINI_MODEL = 'gemini-3.6-flash';
 
 // Z.ai / Zhipu AI — OpenAI-compatible endpoint, separate quota pool from Groq/Gemini
 export const glm = new OpenAI({
@@ -161,9 +168,6 @@ function extractJSON<T>(raw: string): T {
   return JSON.parse(match ? match[0] : cleaned) as T;
 }
 
-// Fallback chain across independent free-tier providers (Groq, Gemini, GLM),
-// with paid OpenAI last so one shared free-quota wipeout doesn't stall the
-// whole pipeline the way it did on 2026-07-13.
 type Provider = {
   name: string;
   call: (prompt: string, maxTokens: number) => Promise<string>;
@@ -194,13 +198,14 @@ function statusOf(err: unknown): number | undefined {
 }
 
 function isDead(err: Error, status?: number): boolean {
-  if (status === 401 || status === 403) return true;
+  if (status === 401 || status === 403 || status === 404) return true;
   const m = err.message.toLowerCase();
   return m.includes('insufficient balance')
     || m.includes('api key not valid')
     || m.includes('incorrect api key')
     || m.includes('not configured')
-    || m.includes('invalid_api_key');
+    || m.includes('invalid_api_key')
+    || m.includes('does not exist or you do not have access');
 }
 
 function buildChain(preferFast: boolean): Provider[] {
@@ -210,21 +215,16 @@ function buildChain(preferFast: boolean): Provider[] {
   const glmProvider: Provider = { name: GLM_MODEL, call: callGLM };
   const openaiProvider: Provider = { name: OPENAI_MODEL, call: callOpenAI };
 
-  // Two different orders, because the two kinds of call want opposite things.
-  //
-  // The small calls — fact-checks, a few hundred tokens — fit inside Groq's
-  // ceiling comfortably and were the one stage still working, so they keep
-  // leading with the free providers.
-  //
-  // The article calls do not fit, and leading with free providers meant every
-  // article paid four truncated responses before reaching one that could
-  // answer in full. OpenAI leads there instead: it is the provider with credit
-  // on it, and its cost on this volume is a couple of dollars a month. GLM is
-  // last on both — its balance is empty, so it is dropped from the chain after
-  // its first failure of a run anyway.
+  // Free providers first on both chains - Gemini has no token cap (the
+  // responseMimeType fix above means it returns full JSON, not truncated
+  // markdown) so it leads the article chain; Groq backs it up but is capped
+  // at GROQ_MAX_TOKENS. OpenAI and GLM are paid (OpenAI needs credit on the
+  // key, GLM needs a topped-up balance) and sit last on purpose - they only
+  // get called, and only spend money, when both free providers fail on a
+  // given article.
   return preferFast
     ? [groqFast, gemini, groqHigh, openaiProvider, glmProvider]
-    : [openaiProvider, gemini, groqHigh, groqFast, glmProvider];
+    : [gemini, groqHigh, groqFast, openaiProvider, glmProvider];
 }
 
 export async function groqJSON<T = Record<string, unknown>>(
