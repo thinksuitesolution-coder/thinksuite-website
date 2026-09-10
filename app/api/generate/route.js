@@ -188,7 +188,7 @@ Return ONLY JSON:
     // AI POSTER GENERATION
     if (posterPrompt) {
       const [posterHTML, bgImage] = await Promise.all([
-        generatePosterHTML(posterPrompt, phone || "+91 9311821726", website || "www.Thinksuite.in"),
+        generatePosterHTML(posterPrompt, phone || "+91 9289104726", website || "www.Thinksuite.in"),
         generateBgImage(posterPrompt)
       ]);
       

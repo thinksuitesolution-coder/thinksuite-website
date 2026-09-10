@@ -63,9 +63,9 @@ export default function Footer() {
                 <i className="fa-solid fa-location-dot" style={{ color: 'var(--cyan)', marginTop: 3, flexShrink: 0 }} />
                 Gurgaon, India
               </span>
-              <a href="tel:+919311821726" className="footer-link" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <a href="tel:+919289104726" className="footer-link" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <i className="fa-solid fa-phone" style={{ color: 'var(--cyan)', flexShrink: 0 }} />
-                +91 93118 21726
+                +91 92891 04726
               </a>
               <a href="mailto:info@thinksuite.in" className="footer-link" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <i className="fa-solid fa-envelope" style={{ color: 'var(--cyan)', flexShrink: 0 }} />

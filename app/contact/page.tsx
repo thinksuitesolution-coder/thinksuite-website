@@ -77,7 +77,7 @@ export default function ContactPage() {
                   <div className="ci-icon"><i className="fa-solid fa-phone" /></div>
                   <div>
                     <div className="ci-label">Phone</div>
-                    <div className="ci-value"><a href="tel:+919311821726">+91 93118 21726</a></div>
+                    <div className="ci-value"><a href="tel:+919289104726">+91 92891 04726</a></div>
                   </div>
                 </div>
                 <div className="contact-info-item">
