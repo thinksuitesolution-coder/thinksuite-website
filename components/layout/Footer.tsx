@@ -3,6 +3,7 @@
 const companyLinks = [
   { label: 'FAQ', href: '/faq' },
   { label: 'Careers', href: '/careers' },
+  { label: 'Contact Us', href: '/contact' },
 ]
 
 const legalLinks = [
